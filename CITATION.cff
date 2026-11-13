@@ -5,6 +5,14 @@ type: software
 license: Apache-2.0
 version: "0.9.0"
 date-released: "2026-11-13"
+doi: "10.5281/zenodo.24199105"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24199105"
+    description: "Zenodo archive of release v0.9.0"
+  - type: doi
+    value: "10.5281/zenodo.24199104"
+    description: "Zenodo concept DOI (all versions)"
 repository-code: "https://github.com/chenle02/stratonovich-ham-second-moment-lean"
 authors:
   - family-names: "Chen"

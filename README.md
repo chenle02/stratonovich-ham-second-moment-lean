@@ -10,6 +10,7 @@ Lean 4 checks of finite, algebraic and scalar steps in the paper
 [![Lean](https://img.shields.io/badge/Lean-v4.35.0-153e63)](lean-toolchain)
 [![Mathlib](https://img.shields.io/badge/Mathlib-56a0058-153e63)](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679)
 [![Release](https://img.shields.io/badge/release-v0.9.0-153e63)](https://github.com/chenle02/stratonovich-ham-second-moment-lean/releases/tag/v0.9.0)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24199105.svg)](https://doi.org/10.5281/zenodo.24199105)
 [![License](https://img.shields.io/badge/license-Apache--2.0-153e63)](LICENSE)
 [![sorry](https://img.shields.io/badge/library%20sorry-0-153e63)](#verification-record)
 [![Axioms](https://img.shields.io/badge/library%20axioms-standard%20only-153e63)](#verification-record)
@@ -673,7 +674,9 @@ receipt claim by claim (`verification/slurm-receipt-pilot-wave-l9/`).
 ## Citation
 
 Cite the paper, and this repository by its release tag or exact commit. See
-[CITATION.cff](CITATION.cff).
+[CITATION.cff](CITATION.cff). Release v0.9.0 is archived on Zenodo as
+[doi:10.5281/zenodo.24199105](https://doi.org/10.5281/zenodo.24199105); the concept DOI
+[doi:10.5281/zenodo.24199104](https://doi.org/10.5281/zenodo.24199104) always resolves to the latest release.
 
 ```bibtex
 @software{chen:26:stratonovich,
@@ -681,6 +684,7 @@ Cite the paper, and this repository by its release tag or exact commit. See
   title   = {stratonovich-ham-second-moment-lean: Lean companion to the second moment of the Stratonovich hyperbolic Anderson model},
   year    = {2026},
   version = {0.9.0},
+  doi     = {10.5281/zenodo.24199105},
   url     = {https://github.com/chenle02/stratonovich-ham-second-moment-lean}
 }
 ```
