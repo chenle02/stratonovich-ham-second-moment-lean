@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{description}">
+  <title>{title}</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/code.css">
+  <link rel="canonical" href="{canonical}">
+  <script defer src="assets/code.js"></script>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header>
+    <a class="brand" href="./"><span>{site_title}</span></a>
+    <span class="tagline">{tagline}</span>
+  </header>
+  <div class="shell">
+    <nav class="side" aria-label="Site">{menu}</nav>
+    <details class="side-mobile"><summary>Menu</summary><nav aria-label="Site (compact)">{menu}</nav></details>
+    <main id="content">
+{content}
+    </main>
+  </div>
+  <footer>
+    {footer}
+  </footer>
+</body>
+</html>

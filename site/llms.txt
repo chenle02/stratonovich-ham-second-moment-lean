@@ -1,0 +1,28 @@
+# stratonovich-ham-second-moment-lean
+
+> Lean 4 / Mathlib companion to Le Chen, "The second moment of the hyperbolic Anderson model" (in preparation). A PARTIAL formalization: Lean checks finite, algebraic and scalar steps of the paper. It does not check the paper end to end. The SPDE, its solution, the Stratonovich integrals, the Gaussian noise and the analytic estimates are outside Lean; where a checked step needs such a fact, the Lean statement takes it as an explicit hypothesis. The correspondence between Lean statements and the paper was checked by AI review from a different model family, not by a human. No theorem of the manuscript is verified end to end.
+
+Authority order: COMPLETION.md (status of every labelled result), docs/statement-ledger.md (Lean declaration to manuscript label), coverage.yaml (coverage class and conclusion scope), claims.yaml (checked facts), then README.md. This site repeats those files.
+
+## Required context
+
+- [README](https://raw.githubusercontent.com/chenle02/stratonovich-ham-second-moment-lean/main/README.md): what is and is not checked, build, trust, verification record
+- [COMPLETION.md](https://raw.githubusercontent.com/chenle02/stratonovich-ham-second-moment-lean/main/COMPLETION.md): milestones and the status of each labelled result
+- [FORMALIZATION.md](https://raw.githubusercontent.com/chenle02/stratonovich-ham-second-moment-lean/main/FORMALIZATION.md): overall scope
+- [coverage.yaml](https://raw.githubusercontent.com/chenle02/stratonovich-ham-second-moment-lean/main/coverage.yaml): covered results, coverage class, conclusion scope
+
+## Source and evidence
+
+- [docs/statement-ledger.md](https://raw.githubusercontent.com/chenle02/stratonovich-ham-second-moment-lean/main/docs/statement-ledger.md): every Lean declaration and the manuscript label it supports (large file)
+- [claims.yaml](https://raw.githubusercontent.com/chenle02/stratonovich-ham-second-moment-lean/main/claims.yaml): checked facts with one-line summaries
+- [StratonovichHAMSecondMoment/](https://github.com/chenle02/stratonovich-ham-second-moment-lean/tree/main/StratonovichHAMSecondMoment) and [StratonovichHAMAudit/](https://github.com/chenle02/stratonovich-ham-second-moment-lean/tree/main/StratonovichHAMAudit): the Lean sources
+- [.lean-receipts/](https://github.com/chenle02/stratonovich-ham-second-moment-lean/tree/main/.lean-receipts): lean-pkg receipts (lower tier and comparator)
+
+## Build gate
+
+`lake exe cache get && lake build && lake build StratonovichHAMSecondMoment.Axioms && scripts/check-controls.sh` with the pinned `lean-toolchain` and `lake-manifest.json` (do not `lake update`). Library axioms: only `propext`, `Classical.choice`, `Quot.sound`; no `sorry` in the library (`Challenge.lean` states compared theorems with `sorry` by design).
+
+## Optional
+
+- [Documentation site](https://chenle02.github.io/stratonovich-ham-second-moment-lean/)
+- [Release v0.9.0, DOI 10.5281/zenodo.24199105](https://doi.org/10.5281/zenodo.24199105)
