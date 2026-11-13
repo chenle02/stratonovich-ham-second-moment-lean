@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lean 4 companion (partial formalization) to the second moment of the Stratonovich hyperbolic Anderson model: finite, algebraic and scalar steps checked by Lean, analytic inputs as explicit hypotheses; correspondence reviewed by AI, not by a human.">
+  <title>Build and verify · Stratonovich HAM Second Moment: Lean Companion</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/code.css">
+  <link rel="canonical" href="https://chenle02.github.io/stratonovich-ham-second-moment-lean/getting-started.html">
+  <script defer src="assets/code.js"></script>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header>
+    <a class="brand" href="./"><span>Stratonovich HAM Second Moment: Lean Companion</span></a>
+    <span class="tagline">Lean 4 paper companion · partial formalization · Apache-2.0</span>
+  </header>
+  <div class="shell">
+    <nav class="side" aria-label="Site"><p class="group">Start</p>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="getting-started.html" aria-current="page">Build and verify</a></li>
+</ul>
+<p class="group">Results</p>
+<ul>
+<li><a href="what-is-checked.html">What is checked</a></li>
+<li><a href="completion.html">Completion record</a></li>
+<li><a href="statement-ledger.html">Statement ledger</a></li>
+<li><a href="formalization.html">Formalization scope</a></li>
+</ul>
+<p class="group">Evidence</p>
+<ul>
+<li><a href="trust.html">Trust and verification</a></li>
+<li><a href="cite.html">Cite</a></li>
+</ul>
+<p class="group">Elsewhere</p>
+<ul>
+<li><a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean">Source on GitHub</a></li>
+<li><a href="https://doi.org/10.5281/zenodo.24199104">Zenodo (all versions)</a></li>
+<li><a href="llms.txt">llms.txt</a></li>
+</ul></nav>
+    <details class="side-mobile"><summary>Menu</summary><nav aria-label="Site (compact)"><p class="group">Start</p>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="getting-started.html" aria-current="page">Build and verify</a></li>
+</ul>
+<p class="group">Results</p>
+<ul>
+<li><a href="what-is-checked.html">What is checked</a></li>
+<li><a href="completion.html">Completion record</a></li>
+<li><a href="statement-ledger.html">Statement ledger</a></li>
+<li><a href="formalization.html">Formalization scope</a></li>
+</ul>
+<p class="group">Evidence</p>
+<ul>
+<li><a href="trust.html">Trust and verification</a></li>
+<li><a href="cite.html">Cite</a></li>
+</ul>
+<p class="group">Elsewhere</p>
+<ul>
+<li><a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean">Source on GitHub</a></li>
+<li><a href="https://doi.org/10.5281/zenodo.24199104">Zenodo (all versions)</a></li>
+<li><a href="llms.txt">llms.txt</a></li>
+</ul></nav></details>
+    <main id="content">
+<h1>Build and verify</h1>
+<h2 id="build">Build</h2>
+<p>Requires <a href="https://github.com/leanprover/elan">elan</a>. Pinned: Lean <code>4.35.0</code>,
+Mathlib <code>56a005855ea17e0b0958f73ec801ae140b0a1679</code>. Transitive pins are in
+<code>lake-manifest.json</code>; do not run <code>lake update</code> for a routine build.</p>
+<pre><code class="language-sh">lake exe cache get        # Mathlib build cache
+lake build                # all 100 modules (umbrella: StratonovichHAMSecondMoment)
+lake build StratonovichHAMSecondMoment.Axioms   # axioms of every public declaration
+scripts/check-controls.sh # all negative controls must be rejected
+</code></pre>
+<p>To use one step, import its module, for example
+<code>import StratonovichHAMAudit.MiddleCross</code>.</p>
+<p>To use the companion as a Lake dependency:</p>
+<pre><code class="language-toml">[[require]]
+name = &quot;stratonovich-ham-second-moment-lean&quot;
+git = &quot;https://github.com/chenle02/stratonovich-ham-second-moment-lean&quot;
+rev = &quot;v0.9.0&quot;
+</code></pre>
+<h2 id="architecture">Architecture</h2>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>StratonovichHAMAudit/</code></td>
+<td>the 24 step modules</td>
+</tr>
+<tr>
+<td><code>StratonovichHAMSecondMoment/</code></td>
+<td>the 76 library modules (whole results, narrower results, foundations and proof steps)</td>
+</tr>
+<tr>
+<td><code>StratonovichHAMSecondMoment.lean</code></td>
+<td>umbrella module importing all of them</td>
+</tr>
+<tr>
+<td><code>StratonovichHAMSecondMoment/Axioms.lean</code></td>
+<td><code>#print axioms</code> for every public declaration</td>
+</tr>
+<tr>
+<td><code>controls/</code></td>
+<td>negative controls, one directory per module</td>
+</tr>
+<tr>
+<td><code>refutations/</code></td>
+<td>Lean proofs refuting specified variants of declarations: manuscript scalar steps, Lean-route-only constructions, and controls of totalized arithmetic or of broader generalizations (the ledger states each one's domain)</td>
+</tr>
+<tr>
+<td><code>Audit/</code></td>
+<td>full-type and axiom printouts and a consumer example for each proof module</td>
+</tr>
+<tr>
+<td><code>claims.yaml</code></td>
+<td>the checked facts, with summaries</td>
+</tr>
+<tr>
+<td><code>docs/statement-ledger.md</code></td>
+<td>manuscript label to Lean declaration map</td>
+</tr>
+<tr>
+<td><code>provenance/manuscript-anchor.json</code></td>
+<td>SHA-256 of the manuscript revision the labels refer to, and of each Lean source</td>
+</tr>
+<tr>
+<td><code>verify.sh</code></td>
+<td>the build-and-axiom check used for verification records</td>
+</tr>
+<tr>
+<td><code>coverage.yaml</code></td>
+<td>one row per covered manuscript result, with its coverage class and the exact scope of the conclusion</td>
+</tr>
+<tr>
+<td><code>docs/coverage-scope-tex.yaml</code></td>
+<td>LaTeX versions of the coverage scope sentences</td>
+</tr>
+<tr>
+<td><code>comparator.json</code>, <code>Challenge.lean</code>, <code>Solution.lean</code>, <code>ChallengeDefs/</code></td>
+<td>the comparator tier: every theorem claim restated in <code>Challenge.lean</code> and proved from the project in <code>Solution.lean</code></td>
+</tr>
+<tr>
+<td><code>scripts/</code></td>
+<td>the negative-control runner and the comparator scaffolding</td>
+</tr>
+<tr>
+<td><code>COMPLETION.md</code></td>
+<td>milestones and the status of every labelled result</td>
+</tr>
+<tr>
+<td><code>.lean-receipts/</code></td>
+<td>lean-pkg receipts (lower tier and comparator)</td>
+</tr>
+<tr>
+<td><code>verification/</code></td>
+<td>external-kernel replays and the Slurm receipt pilot on the Easley cluster</td>
+</tr>
+<tr>
+<td><code>provenance/DEVELOPMENT.md</code></td>
+<td>the development repository, the release commit and what changed</td>
+</tr>
+</tbody>
+</table>
+    </main>
+  </div>
+  <footer>
+    stratonovich-ham-second-moment-lean · Le Chen · developed with <a href="https://github.com/lean-pkg/lean-pkg">lean-pkg</a> · <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/CITATION.cff">CITATION.cff</a> · <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/LICENSE">Apache-2.0</a>
+  </footer>
+</body>
+</html>

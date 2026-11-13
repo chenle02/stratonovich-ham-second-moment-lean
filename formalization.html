@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lean 4 companion (partial formalization) to the second moment of the Stratonovich hyperbolic Anderson model: finite, algebraic and scalar steps checked by Lean, analytic inputs as explicit hypotheses; correspondence reviewed by AI, not by a human.">
+  <title>Formalization scope · Stratonovich HAM Second Moment: Lean Companion</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/code.css">
+  <link rel="canonical" href="https://chenle02.github.io/stratonovich-ham-second-moment-lean/formalization.html">
+  <script defer src="assets/code.js"></script>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header>
+    <a class="brand" href="./"><span>Stratonovich HAM Second Moment: Lean Companion</span></a>
+    <span class="tagline">Lean 4 paper companion · partial formalization · Apache-2.0</span>
+  </header>
+  <div class="shell">
+    <nav class="side" aria-label="Site"><p class="group">Start</p>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="getting-started.html">Build and verify</a></li>
+</ul>
+<p class="group">Results</p>
+<ul>
+<li><a href="what-is-checked.html">What is checked</a></li>
+<li><a href="completion.html">Completion record</a></li>
+<li><a href="statement-ledger.html">Statement ledger</a></li>
+<li><a href="formalization.html" aria-current="page">Formalization scope</a></li>
+</ul>
+<p class="group">Evidence</p>
+<ul>
+<li><a href="trust.html">Trust and verification</a></li>
+<li><a href="cite.html">Cite</a></li>
+</ul>
+<p class="group">Elsewhere</p>
+<ul>
+<li><a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean">Source on GitHub</a></li>
+<li><a href="https://doi.org/10.5281/zenodo.24199104">Zenodo (all versions)</a></li>
+<li><a href="llms.txt">llms.txt</a></li>
+</ul></nav>
+    <details class="side-mobile"><summary>Menu</summary><nav aria-label="Site (compact)"><p class="group">Start</p>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="getting-started.html">Build and verify</a></li>
+</ul>
+<p class="group">Results</p>
+<ul>
+<li><a href="what-is-checked.html">What is checked</a></li>
+<li><a href="completion.html">Completion record</a></li>
+<li><a href="statement-ledger.html">Statement ledger</a></li>
+<li><a href="formalization.html" aria-current="page">Formalization scope</a></li>
+</ul>
+<p class="group">Evidence</p>
+<ul>
+<li><a href="trust.html">Trust and verification</a></li>
+<li><a href="cite.html">Cite</a></li>
+</ul>
+<p class="group">Elsewhere</p>
+<ul>
+<li><a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean">Source on GitHub</a></li>
+<li><a href="https://doi.org/10.5281/zenodo.24199104">Zenodo (all versions)</a></li>
+<li><a href="llms.txt">llms.txt</a></li>
+</ul></nav></details>
+    <main id="content">
+<h1>Formalization scope</h1>
+<h1 id="formalization-scope">Formalization scope</h1>
+<h2 id="the-papers-argument-and-where-lean-enters">The paper's argument and where Lean enters</h2>
+<p>The paper bounds and identifies the growth of <code>log E[u(t,x)²]</code> for the
+Stratonovich hyperbolic Anderson model. The argument has three layers.</p>
+<ol>
+<li><strong>Stochastic and analytic layer.</strong> The chaos expansion, the two-chain
+   pairing integrals, Wick pairings (beyond finite families of Gaussian
+   values), Gaussian integration (beyond finitely many standard Gaussians),
+   imported bounds,
+   Laplace transforms and the variational asymptotics. <strong>Not in Lean</strong>,
+   except a few slices: the Laplace transforms of the wave kernel and of
+   the two-time kernel and the subordination formula (<code>ClockCopy</code> and its
+   foundation modules), the Gaussian transform of the spectral measure
+   (<code>MaskedSpectralGrowth</code>), the uniform scalar frequency row
+   (<code>FrequencyRow</code>), the temporal completion <code>H_a</code> (<code>TimeCompletion</code>), the
+   auxiliary mask norm (<code>MaskedAuxiliaryNorm</code>), the Gaussian heat envelope
+   of the covariance (<code>VariationalMean</code>), a finite Hilbert-valued Bessel
+   inequality (<code>PhaseBessel</code>), the wave Green measures <code>G_s</code> for
+   <code>d = 1, 2, 3</code> (<code>WaveGreen</code>), the spectral identity and positive
+   definiteness of <code>Gamma = delta_0(dx_1) dx_2</code> (<code>QuotientObstruction</code>), a
+   finite Gaussian comparison under the positive semidefinite order
+   (<code>GaussianComparison</code>), the two wave variance directions in spectral
+   form (<code>WaveTwoVariances</code>), the variational floor and the Rayleigh-form
+   rate (<code>VariationalFloor</code>, <code>VariationalRate</code>), the deterministic Fourier
+   bound <code>L:spatial-fourier-bound</code> for the smooth spatial ratio and the
+   static controls
+   (<code>SpatialFourierBound</code>, <code>SpatialSmoothRatio</code>, <code>SpatialStaticControls</code>,
+   <code>SpatialOccupationCompleted</code>), series types and the continuity of the
+   growth types in the temporal exponent (<code>SeriesType</code>, <code>TypeContinuity</code>),
+   the white-noise bound formulas and clock transforms
+   (<code>WhiteRelativeWidth</code>, <code>WhiteClockLaplace</code>), the coefficient bound of
+   the interval inventory product (<code>InventoryProduct</code>), an abstract <code>L^2</code>
+   limit of a regularized series under a uniform scaled moment bound
+   (<code>UniformSeriesTail</code>), the density of test functions in the
+   weak-gradient <code>H^1</code> (<code>H1Density</code>), the physical four-linear extension
+   and the spatial energy (<code>SpatialFourLinear</code>), the full physical
+   occupation class (<code>OccupationPhysicalClass</code>; both completed in
+   <code>SpatialOccupationL7Completed</code>), the scalar and Hilbert-space steps
+   of the static interaction and interval coefficient bounds
+   (<code>IntervalScalar</code>, <code>IntervalScalarCompleted</code>), the spectral-mass
+   identity <code>R_Gamma(1) = R_alpha</code> (<code>SpectralMassIdentity</code>), Gaussian
+   smoothing as a Fourier multiplier (<code>DampedMultiplier</code>), the positivity of
+   the space-time occupation form, the deterministic occupation ceiling and
+   the spatial bracket (<code>SpaceTimePositivity</code>, <code>OccupationCeilingFinite</code>,
+   <code>SpatialBracket</code>, completed in <code>L8Completed</code>), the masked rates
+   (<code>RemoveMask</code>), the finite Wick formula and the terminal-chain Wick
+   formula with the chain measures given by their masses (<code>FiniteWick</code>,
+   <code>TerminalWick</code>), an abstract compact Young baseline (<code>SymplecticFree</code>)
+   and the Cauchy steps of the static phase orders (<code>StaticPhaseCauchy</code>),
+   the Fourier transforms of the wave Green measures in <code>d = 1, 2, 3</code> and
+   Archimedes' law for the sphere measure (<code>WaveGreenFourier</code>), the low-alpha
+   convolution bound and the static contraction bounds
+   (<code>LowAlphaConvolution</code>, <code>PhaseContractions</code>, completed in <code>L9Completed</code>),
+   the exact occupation constant and ceiling (<code>RawOccupationEnergy</code>,
+   <code>OccupationCeilingExact</code>), the normalized Hermite polynomials and the
+   finite Gaussian Fock layer with values in a Hilbert factor
+   (<code>GaussianHermite</code>, <code>HermiteFock</code>) and their consumers <code>L:fock-form</code>,
+   <code>L:interval-contractions</code> and <code>E:occupied-multiplication</code> (<code>FockForm</code>),
+   and the scalar and numerical-range steps of the complex phase bounds
+   (<code>ComplexPhaseScalar</code>).</li>
+<li><strong>Reductions to explicit inequalities.</strong> At many points the analytic
+   argument reduces to a finite statement: an exponent range, an exact
+   rational or square-root inequality, a polynomial that must stay positive
+   on a region, a determinant or matrix inverse, a count of coefficients in
+   a finite word, or an integral comparison once integrability is known.
+   <strong>These are what Lean checks.</strong></li>
+<li><strong>Assembly</strong> of the main theorems from the layers above. <strong>Not in Lean.</strong></li>
+</ol>
+<p>So each module checks one reduction in layer 2. Its hypotheses state the
+facts that layer 1 supplies (for example positivity of a parameter,
+integrability of a function, or an inequality proved analytically in the
+paper). Its conclusion is the fact that the paper then uses.</p>
+<h2 id="status-of-each-kind-of-statement">Status of each kind of statement</h2>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Count</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Whole result (ledger heading "whole result"), nothing supplied</td>
+<td>25 labelled results, <code>H:homog</code>, <code>E:kappa</code>, <code>E:driver-parameters</code>, <code>E:masked-time-schur</code> and <code>R:gaussian-one-variance-test</code>; 27 modules: 559 theorems, 135 definitions</td>
+<td>Every conclusion of the result is a Lean conclusion under the manuscript's hypotheses (<code>H:homog</code> modelled in full; most results via exact-hypothesis wrappers); coverage class same-assumptions, conclusion full</td>
+</tr>
+<tr>
+<td>Whole result, inputs supplied</td>
+<td>none: the three results formerly here (<code>P:radius-mean-anchor</code>, <code>P:moment-growth-logconvex</code>, <code>C:static-moment-constant-continuity</code>) are proved for abstract objects whose construction is missing, so they are narrower results</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Narrower result (ledger heading "narrower result: ...", naming what is missing)</td>
+<td>18 results with the manuscript's hypotheses and steps or parts of 30 further results; 31 modules and the audit file <code>HermiteWordFock</code>: 943 theorems, 199 definitions</td>
+<td>Kernel-checked; some conclusion of the result is not a Lean conclusion. The 18 with the manuscript's hypotheses (coverage same-assumptions, weaker): <code>P:masked-quotient-obstruction</code> for the covariance functional (the noise <code>W</code> not constructed), <code>L:damped-homogeneous-norms</code> with its closing smoothing remark in a narrower reading (covariance smoothing only as membership of the Gaussian multiplier, without its spectral identification; the Green-smoothing identification is proved in <code>d = 1, 2, 3</code>), the Rayleigh lemma without its application, the dilation lemma for the integral-form cost, <code>P:masked-auxiliary-norm</code> without its clause for a real <code>H</code>, <code>L:variational-global-mean</code> without the mixed-derivative bounds, <code>P:variational-unmasked-rate</code> without its operator half, <code>L:spatial-static-controls</code>, <code>P:spatial-smooth-ratio</code> and <code>P:spatial-energy-map</code> for the Rayleigh-form rate and the integral-form cost, <code>P:spatial-four-linear</code> with the joint continuity of <code>C_4</code> in sequential form, <code>P:occupation-physical-class</code> over the class <code>O</code> modelled by joint representatives, <code>P:variational-positive-scores</code> without <code>Q_2 &gt;= S_2^pos</code>, <code>T:intrinsic-occupation-ceiling</code> with the exact <code>C_occ</code> in both forms over the modelled class <code>O</code>, without <code>C_2 &lt;= U_2</code>, <code>C:intrinsic-spatial-bracket</code> for <code>S_2^pos</code> in place of <code>C_2</code>, <code>L:positive-raw-embedding</code> in integral form (variance identity, row and Schur bounds), and <code>P:raw-occupation-energy</code> and <code>L:occupation-rayleigh-selection</code> over the class <code>O</code> modelled by joint representatives. The 30 further results (coverage inputs-supplied, weaker) have analytic inputs supplied or only some conclusions formalized: <code>P:radius-mean-anchor</code> for abstract random paths (the operator paths <code>M_R(Y_m)</code> not constructed), <code>P:moment-growth-logconvex</code> and <code>C:static-moment-constant-continuity</code> for an abstract moment function (the solution moments not constructed), <code>L:raw-block-indexed-cone</code> for an abstract ground family, <code>L:uniform-series-tail</code> for an abstract <code>L^2</code> family (chain measures fixed only by their masses), the finite comparison of <code>P:masked-noise-completion</code>, <code>P:wave-two-variances</code> with named inputs (spectral core with none), <code>P:interval-coefficients</code> with named inputs, <code>P:variational-remove-mask</code> (rates with none, the point display over a named input), <code>L:terminal-wick</code> (named measurability input, chain measures by their masses), <code>L:symplectic-free</code> (free group and Young convergence supplied), <code>L:fock-form</code> and <code>L:interval-contractions</code> (spatial column bound supplied), the scalar steps of <code>L:complex-phase</code> and <code>L:interval-complex</code>, <code>L:finite-word-cutoff</code> for one Gaussian mode per color, and the others listed in <code>coverage.yaml</code></td>
+</tr>
+<tr>
+<td>Foundation or proof steps (ledger heading "foundation: ..." or "proof steps of ...")</td>
+<td>18 modules: 466 theorems, 78 definitions</td>
+<td>Kernel-checked facts used by labelled results, not a labelled result themselves: <code>WaveKernel</code>, <code>SpectralHomog</code>, <code>TimeFractional</code>, <code>DampedNorms</code>, <code>GaussianIBP</code>, <code>GaussianTest</code>, <code>WeakSobolev</code>, <code>VariationalFloor</code>, <code>SeriesType</code>, <code>H1Density</code>, <code>FiniteWick</code>, <code>GaussianHermite</code>, <code>HermiteFock</code>, <code>WaveGreen</code>, <code>WaveGreenFourier</code>, <code>SpaceTimePositivity</code>, and the proof steps <code>IntervalScalar</code> (the steps of <code>C:static-interaction</code>, with <code>E:static-block-series</code> in full) and <code>StaticPhaseCauchy</code> (the Cauchy steps of <code>P:static-phase-all-orders</code>), whose analytic inputs are supplied</td>
+</tr>
+<tr>
+<td>Checked step fact (<code>StratonovichHAMAudit/</code>, except <code>HermiteWordFock</code>)</td>
+<td>82 theorems, 6 definitions</td>
+<td>Kernel-checked; the ledger gives its paper label and outside inputs</td>
+</tr>
+<tr>
+<td>of which helper lemmas (<code>internal</code>)</td>
+<td>847 theorems, 51 definitions</td>
+<td>Kernel-checked; used inside one module</td>
+</tr>
+<tr>
+<td>Other public definitions</td>
+<td>91</td>
+<td>Named quantities and measures used in the statements (87), and four instances on <code>TimeCompletion.Pre</code> (counting convention in the ledger Scope)</td>
+</tr>
+<tr>
+<td>Negative controls</td>
+<td>68</td>
+<td>Wrong variants that Lean must reject</td>
+</tr>
+<tr>
+<td>Refutations</td>
+<td>235</td>
+<td>Lean proofs refuting specified variants of declarations: manuscript scalar steps, Lean-route-only constructions, and controls of totalized arithmetic or of broader generalizations (the ledger states each one's domain)</td>
+</tr>
+</tbody>
+</table>
+<p>Heading categories (the same three are used for the statement ledger's
+section headings; its Index by label points from each label to those sections
+with their category, and states nothing per declaration). Labelling
+convention of the ledger's section tables: every backticked manuscript label
+in a label cell is an assignment and creates an Index pointer; a label
+mentioned only as context goes in the "What it states" cell as "(Context:
+...)"; a "no direct label" cell contains no manuscript label. The ledger Scope keeps the
+model-choice register. M1, its only entry, is the <code>d = 3</code> wave Green measure
+<code>(s/(4 pi)) map (omega -&gt; s omega) volume.toSphere</code> (wave L6, decision 4);
+its identification with the surface measure of the TeX is not proved. A
+registered standard choice preserves whole status only when the result's
+section names the model (as <code>LowAlphaConvolution</code>, <code>PhaseContractions</code> and
+<code>L9Completed</code> do for M1); a missing construction (the noise <code>W</code>, an abstract
+ground family, chain measures fixed by their masses, abstract random paths,
+an abstract moment function) makes the result narrower.
+(A) "whole result": every conclusion of the labelled result is a Lean
+conclusion under the manuscript's hypotheses, possibly with named supplied
+inputs that are disclosed (coverage class same-assumptions or
+inputs-supplied, conclusion full; at present every whole result has the
+manuscript's hypotheses alone); no other module carries it. (B) "narrower
+result: ...": a labelled result some of whose conclusions are not Lean
+conclusions, or are proved for a modelled object (such as the class <code>O</code> by
+joint representatives, or the rate in Rayleigh form and the cost in integral
+form) whose identification with the manuscript's object is not formalized;
+the heading names what is missing. (C) "foundation: ..." or "proof steps of
+...": facts used by labelled results, not a labelled result themselves; the
+<code>StratonovichHAMAudit</code> step modules are of this kind except <code>HermiteWordFock</code>,
+a narrower result.</p>
+<p>Modules are counted by their ledger heading; a module that also proves
+pieces of other results is counted once. Completion modules
+(<code>ClockCopyHomog</code>, <code>MaskedContinuousWaveCompleted</code>, <code>L9Completed</code>,
+<code>SpatialOccupationCompleted</code>, <code>SpatialOccupationL7Completed</code>,
+<code>IntervalScalarCompleted</code>, <code>L8Completed</code>) discharge named inputs of other
+modules; discharging an input does not make a narrower result whole, so
+<code>L8Completed</code> (narrower results, including <code>L:uniform-series-tail</code> with the
+chain measures fixed only by their masses) and the spatial and occupation
+modules remain "narrower result". <code>ClockCopyHomog</code>,
+<code>MaskedContinuousWaveCompleted</code> and <code>TimeSchur</code>, which have no section of
+their own, count as whole-result modules; <code>DampedNorms</code>, <code>SpectralHomog</code>,
+<code>TimeFractional</code>, <code>WaveKernel</code>, <code>GaussianIBP</code>, <code>GaussianTest</code> and
+<code>WeakSobolev</code> as foundations.</p>
+<p>These counts describe the package. They are not a percentage of the paper.
+The 25 whole results and 18 narrower results with the manuscript's
+hypotheses are deterministic lemmas,
+propositions and corollaries used inside the analytic argument, and the
+occupation ceiling <code>T:intrinsic-occupation-ceiling</code> (a narrower result: both
+forms with the exact constant, for <code>S_c^pos</code>; <code>C_2 &lt;= U_2</code> not formalized);
+the other three main theorems are not formalized.</p>
+<h2 id="reading-a-statement">Reading a statement</h2>
+<p>For each declaration, check three things against the paper:</p>
+<ol>
+<li>the hypotheses match what the paper has available at that point;</li>
+<li>the conclusion is what the paper uses next;</li>
+<li>parameter ranges, strict versus non-strict inequalities and quantifier
+   order agree.</li>
+</ol>
+<p>The <a href="statement-ledger.html">statement ledger</a> records this for every row.
+<code>Audit/&lt;module&gt;/</code> prints the full elaborated types, so the statements can be
+read without opening an editor.</p>
+<h2 id="not-yet-included">Not yet included</h2>
+<p>Three development modules use a Gaussian-chaos library that is not yet
+public: normalized Gaussian coordinates, vector Gaussian projection and
+colored vector words. They are checked in the private development record
+and will be added here when that library is released.</p>
+<h2 id="possible-next-steps">Possible next steps</h2>
+<ul>
+<li>the finite pair-partition counts behind the two-chain integrals;</li>
+<li>a reusable Laplace-to-time growth lemma, with its analytic inputs as
+  hypotheses;</li>
+<li>the constant and exponent algebra of the main upper and lower bounds.</li>
+</ul>
+    </main>
+  </div>
+  <footer>
+    stratonovich-ham-second-moment-lean · Le Chen · developed with <a href="https://github.com/lean-pkg/lean-pkg">lean-pkg</a> · <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/CITATION.cff">CITATION.cff</a> · <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/LICENSE">Apache-2.0</a>
+  </footer>
+</body>
+</html>

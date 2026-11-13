@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lean 4 companion (partial formalization) to the second moment of the Stratonovich hyperbolic Anderson model: finite, algebraic and scalar steps checked by Lean, analytic inputs as explicit hypotheses; correspondence reviewed by AI, not by a human.">
+  <title>Stratonovich HAM Second Moment: Lean Companion</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/code.css">
+  <link rel="canonical" href="https://chenle02.github.io/stratonovich-ham-second-moment-lean/">
+  <script defer src="assets/code.js"></script>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header>
+    <a class="brand" href="./"><span>Stratonovich HAM Second Moment: Lean Companion</span></a>
+    <span class="tagline">Lean 4 paper companion · partial formalization · Apache-2.0</span>
+  </header>
+  <div class="shell">
+    <nav class="side" aria-label="Site"><p class="group">Start</p>
+<ul>
+<li><a href="index.html" aria-current="page">Home</a></li>
+<li><a href="getting-started.html">Build and verify</a></li>
+</ul>
+<p class="group">Results</p>
+<ul>
+<li><a href="what-is-checked.html">What is checked</a></li>
+<li><a href="completion.html">Completion record</a></li>
+<li><a href="statement-ledger.html">Statement ledger</a></li>
+<li><a href="formalization.html">Formalization scope</a></li>
+</ul>
+<p class="group">Evidence</p>
+<ul>
+<li><a href="trust.html">Trust and verification</a></li>
+<li><a href="cite.html">Cite</a></li>
+</ul>
+<p class="group">Elsewhere</p>
+<ul>
+<li><a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean">Source on GitHub</a></li>
+<li><a href="https://doi.org/10.5281/zenodo.24199104">Zenodo (all versions)</a></li>
+<li><a href="llms.txt">llms.txt</a></li>
+</ul></nav>
+    <details class="side-mobile"><summary>Menu</summary><nav aria-label="Site (compact)"><p class="group">Start</p>
+<ul>
+<li><a href="index.html" aria-current="page">Home</a></li>
+<li><a href="getting-started.html">Build and verify</a></li>
+</ul>
+<p class="group">Results</p>
+<ul>
+<li><a href="what-is-checked.html">What is checked</a></li>
+<li><a href="completion.html">Completion record</a></li>
+<li><a href="statement-ledger.html">Statement ledger</a></li>
+<li><a href="formalization.html">Formalization scope</a></li>
+</ul>
+<p class="group">Evidence</p>
+<ul>
+<li><a href="trust.html">Trust and verification</a></li>
+<li><a href="cite.html">Cite</a></li>
+</ul>
+<p class="group">Elsewhere</p>
+<ul>
+<li><a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean">Source on GitHub</a></li>
+<li><a href="https://doi.org/10.5281/zenodo.24199104">Zenodo (all versions)</a></li>
+<li><a href="llms.txt">llms.txt</a></li>
+</ul></nav></details>
+    <main id="content">
+<section class="hero">
+<p class="eyebrow">Lean 4 / Mathlib paper companion · partial formalization · Apache-2.0</p>
+<h1>Stratonovich HAM Second Moment: Lean Companion</h1>
+</section>
+
+<p>Lean 4 checks of finite, algebraic and scalar steps in the paper Le Chen,
+<em>The second moment of the hyperbolic Anderson model</em> (in preparation).</p>
+<p><a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/lean-toolchain"><img alt="Lean" src="https://img.shields.io/badge/Lean-v4.35.0-153e63" /></a>
+<a href="https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679"><img alt="Mathlib" src="https://img.shields.io/badge/Mathlib-56a0058-153e63" /></a>
+<a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/releases/tag/v0.9.0"><img alt="Release" src="https://img.shields.io/badge/release-v0.9.0-153e63" /></a>
+<a href="https://doi.org/10.5281/zenodo.24199105"><img alt="DOI" src="https://zenodo.org/badge/DOI/10.5281/zenodo.24199105.svg" /></a>
+<a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache--2.0-153e63" /></a>
+<a href="trust.html#verification-record"><img alt="sorry" src="https://img.shields.io/badge/library%20sorry-0-153e63" /></a>
+<a href="trust.html#verification-record"><img alt="Axioms" src="https://img.shields.io/badge/library%20axioms-standard%20only-153e63" /></a></p>
+<p>The paper studies the Stratonovich hyperbolic Anderson model with temporal
+covariance <code>|s-t|^(-α₀)</code> and homogeneous spatial covariance of order <code>α</code>.
+It shows that <code>log E[u(t,x)²]</code> grows on the scale <code>t^κ</code>, with
+<code>κ = (4-α-α₀)/(3-α)</code>, and identifies the limit by a variational formula.</p>
+<div class="boundary">
+<p><strong>This is a partial formalization.</strong> Lean checks the steps listed on the <a href="what-is-checked.html">What is checked</a> page. It
+does not check the paper end to end. The SPDE, its solution, the
+Stratonovich integrals, the Gaussian noise and the analytic estimates are
+outside Lean. Where a checked step needs such a fact, the Lean statement takes
+it as an explicit hypothesis, and the paper's proof supplies it.</p>
+<p>The correspondence between the Lean statements and the paper was checked by
+<strong>AI correspondence review</strong> (models from a different family than the
+ledger's author), <strong>not by human verification</strong>; see <a href="trust.html#trust">Trust</a>.</p>
+</div>
+<p class="actions"><a class="button" href="completion.html">Status of every result</a> <a class="button secondary" href="what-is-checked.html">What is checked</a> <a class="button secondary" href="getting-started.html">Build and verify</a></p>
+
+<h2 id="at-a-glance">At a glance</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lean modules</td>
+<td>100 proof modules: 24 step modules in <code>StratonovichHAMAudit/</code> and 76 in <code>StratonovichHAMSecondMoment/</code> (besides these, the consumer <code>HermiteWordConsumer</code>, the axiom report <code>Axioms</code> and the umbrella)</td>
+</tr>
+<tr>
+<td>Labelled results of the manuscript (220)</td>
+<td>25 whole results; 18 narrower results; steps or parts of 30 further results; 3 main theorems outside Lean; 144 not formalized (<a href="completion.html">COMPLETION.md</a>)</td>
+</tr>
+<tr>
+<td>Public declarations</td>
+<td>2050 theorems and 509 definitions; 2468 checked facts in <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/claims.yaml"><code>claims.yaml</code></a></td>
+</tr>
+<tr>
+<td>Axioms</td>
+<td>proof library: only <code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>; no <code>sorry</code> (<code>Challenge.lean</code>, the comparator's statement file, states each compared theorem with <code>sorry</code> by design)</td>
+</tr>
+<tr>
+<td>Negative controls, refutations, audit files</td>
+<td>68, 235, 101</td>
+</tr>
+<tr>
+<td>Pinned toolchain</td>
+<td>Lean <code>4.35.0</code>, Mathlib <code>56a0058</code></td>
+</tr>
+<tr>
+<td>Verified state</td>
+<td>the wave-L9 gate (development commit <code>6eb79c7</code>, manuscript revision <code>a284420</code>); the receipts that bind this repository's root commit are added by the commit after it, which the tag <code>v0.9.0</code> marks</td>
+</tr>
+<tr>
+<td>Correspondence to the paper</td>
+<td>AI review from a different model family, accepted by the author; not a human verification</td>
+</tr>
+</tbody>
+</table>
+<h2 id="this-release">This release</h2>
+<p><code>v0.9.0</code> is the first public release. Its tree is the tree of the wave-L9 gate
+of the private development repository (development commit <code>34b65d7</code>, a
+docs-only successor of the verified commit <code>6eb79c7</code>), with release
+documentation added and the cluster evidence in <code>verification/</code> redacted; no
+Lean file and no other build input changed. <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/provenance/DEVELOPMENT.md">provenance/DEVELOPMENT.md</a> names the
+development repository and the commit, and lists every change. Waves L10 to
+L14 are in development and not part of this release (see
+<a href="completion.html">COMPLETION.md</a>, "In progress"); <code>v1.0.0</code> is planned after they
+are gated.</p>
+<p>Commit hashes in this README, in <a href="completion.html">COMPLETION.md</a>, in the
+<a href="statement-ledger.html">statement ledger</a> and in <code>verification/</code> are
+commits of the development repository.</p>
+<h2 id="find-your-way">Find your way</h2>
+<div class="cards">
+<div class="card"><h4><a href="what-is-checked.html">What is checked</a></h4><p>The checked results by kind, and what stays outside Lean.</p></div>
+<div class="card"><h4><a href="completion.html">Completion record</a></h4><p>Milestones, work in progress, and the status of each of the manuscript's labelled results, with its TeX file and line.</p></div>
+<div class="card"><h4><a href="statement-ledger.html">Statement ledger</a></h4><p>Every Lean declaration, the manuscript label it supports, what it states, and the inputs that stay outside Lean.</p></div>
+<div class="card"><h4><a href="formalization.html">Formalization scope</a></h4><p>The overall scope of the companion.</p></div>
+<div class="card"><h4><a href="trust.html">Trust and verification</a></h4><p>What a build establishes, the correspondence review, the receipts and the external kernel replays.</p></div>
+<div class="card"><h4><a href="getting-started.html">Build and verify</a></h4><p>Pinned toolchain, build commands, the repository layout, and use as a Lake dependency.</p></div>
+<div class="card"><h4><a href="cite.html">Cite</a></h4><p>Zenodo DOI, BibTeX, license and acknowledgments.</p></div>
+</div>
+
+<div class="boundary">
+<p><strong>The generated coverage and verification pages come with v0.10.0.</strong>
+lean-pkg renders a package's verification and coverage pages only when every
+theorem judged by the recorded comparator receipt is credited to a row of
+<code>coverage.yaml</code>. In v0.9.0 the comparator judged all 2050 theorem claims, and
+1408 of them are helper theorems that no coverage row names yet, so lean-pkg
+0.29.0 refuses to render those pages. The helpers will be mapped in v0.10.0;
+they are not attributed to results here. Until then the status of each
+labelled result is in the <a href="completion.html">completion record</a> and the
+<a href="statement-ledger.html">statement ledger</a>, and
+<a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/coverage.yaml"><code>coverage.yaml</code></a>
+is the machine-readable map of the covered results.</p>
+</div>
+<p>The pages of this site are rendered from the repository's own files
+(<code>README.md</code>, <code>COMPLETION.md</code>, <code>FORMALIZATION.md</code>,
+<code>docs/statement-ledger.md</code>) by <code>site/build.py</code>; those files are the
+authority, and this site repeats them.</p>
+    </main>
+  </div>
+  <footer>
+    stratonovich-ham-second-moment-lean · Le Chen · developed with <a href="https://github.com/lean-pkg/lean-pkg">lean-pkg</a> · <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/CITATION.cff">CITATION.cff</a> · <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/LICENSE">Apache-2.0</a>
+  </footer>
+</body>
+</html>

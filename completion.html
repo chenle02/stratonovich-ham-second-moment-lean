@@ -1,0 +1,1666 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lean 4 companion (partial formalization) to the second moment of the Stratonovich hyperbolic Anderson model: finite, algebraic and scalar steps checked by Lean, analytic inputs as explicit hypotheses; correspondence reviewed by AI, not by a human.">
+  <title>Completion record · Stratonovich HAM Second Moment: Lean Companion</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/code.css">
+  <link rel="canonical" href="https://chenle02.github.io/stratonovich-ham-second-moment-lean/completion.html">
+  <script defer src="assets/code.js"></script>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header>
+    <a class="brand" href="./"><span>Stratonovich HAM Second Moment: Lean Companion</span></a>
+    <span class="tagline">Lean 4 paper companion · partial formalization · Apache-2.0</span>
+  </header>
+  <div class="shell">
+    <nav class="side" aria-label="Site"><p class="group">Start</p>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="getting-started.html">Build and verify</a></li>
+</ul>
+<p class="group">Results</p>
+<ul>
+<li><a href="what-is-checked.html">What is checked</a></li>
+<li><a href="completion.html" aria-current="page">Completion record</a></li>
+<li><a href="statement-ledger.html">Statement ledger</a></li>
+<li><a href="formalization.html">Formalization scope</a></li>
+</ul>
+<p class="group">Evidence</p>
+<ul>
+<li><a href="trust.html">Trust and verification</a></li>
+<li><a href="cite.html">Cite</a></li>
+</ul>
+<p class="group">Elsewhere</p>
+<ul>
+<li><a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean">Source on GitHub</a></li>
+<li><a href="https://doi.org/10.5281/zenodo.24199104">Zenodo (all versions)</a></li>
+<li><a href="llms.txt">llms.txt</a></li>
+</ul></nav>
+    <details class="side-mobile"><summary>Menu</summary><nav aria-label="Site (compact)"><p class="group">Start</p>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="getting-started.html">Build and verify</a></li>
+</ul>
+<p class="group">Results</p>
+<ul>
+<li><a href="what-is-checked.html">What is checked</a></li>
+<li><a href="completion.html" aria-current="page">Completion record</a></li>
+<li><a href="statement-ledger.html">Statement ledger</a></li>
+<li><a href="formalization.html">Formalization scope</a></li>
+</ul>
+<p class="group">Evidence</p>
+<ul>
+<li><a href="trust.html">Trust and verification</a></li>
+<li><a href="cite.html">Cite</a></li>
+</ul>
+<p class="group">Elsewhere</p>
+<ul>
+<li><a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean">Source on GitHub</a></li>
+<li><a href="https://doi.org/10.5281/zenodo.24199104">Zenodo (all versions)</a></li>
+<li><a href="llms.txt">llms.txt</a></li>
+</ul></nav></details>
+    <main id="content">
+<h1>Completion record</h1>
+<h1 id="completion-record">Completion record</h1>
+<p>What the Lean companion verifies of the manuscript, kept current at every milestone. Every milestone is an annotated git tag on the commit where the author closed the gate. The tags and the commits in this file belong to the private development repository named in <code>provenance/DEVELOPMENT.md</code>; the public repository carries only the release tag <code>v0.9.0</code>, whose Lean files and other build inputs are those of the wave-L9 gate (release documentation added, cluster evidence redacted). Claims count Lean declarations in <code>claims.yaml</code>; coverage rows count manuscript labelled results (see <code>coverage.yaml</code> for the exact scope of each). "Same" = formalized with the manuscript's hypotheses; "inputs" = analytic inputs supplied as named hypotheses. Correspondence was checked by AI reviews from a different model family, not by a human; supplied inputs are not verified.</p>
+<h2 id="milestones">Milestones</h2>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Commit</th>
+<th>Date</th>
+<th>Manuscript</th>
+<th>Claims</th>
+<th>Theorems</th>
+<th>Coverage rows (same / inputs / outside)</th>
+<th>Milestone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>L0-companion-created</code></td>
+<td><code>38d1616</code></td>
+<td>2026-11-09</td>
+<td><code>cf979d6</code></td>
+<td>88</td>
+<td>82</td>
+<td>25: 21 inputs-supplied, 4 outside</td>
+<td>companion created and registered; 23 Mathlib-only seams; lean-pkg verified-private</td>
+</tr>
+<tr>
+<td><code>ledger-gate</code></td>
+<td><code>48ce162</code></td>
+<td>2026-11-10</td>
+<td><code>ba01d98</code></td>
+<td>88</td>
+<td>82</td>
+<td>28: 24 / 4</td>
+<td>statement-ledger correspondence gate closed by the author</td>
+</tr>
+<tr>
+<td><code>L1-gate</code></td>
+<td><code>b876362</code></td>
+<td>2026-11-10</td>
+<td><code>ba01d98</code></td>
+<td>117</td>
+<td>104</td>
+<td>28: 5 same / 19 inputs / 4</td>
+<td>wave L1: five labelled results in full; H:homog modelled</td>
+</tr>
+<tr>
+<td><code>L2-gate</code></td>
+<td><code>79afdde</code></td>
+<td>2026-11-10</td>
+<td><code>ba01d98</code></td>
+<td>223</td>
+<td>188</td>
+<td>29: 7 / 18 / 4</td>
+<td>wave L2: S:temporal-equilibrium, P:radius-mean-anchor, L:masked-trig-products</td>
+</tr>
+<tr>
+<td><code>L3-gate</code></td>
+<td><code>dfc2fe8</code></td>
+<td>2026-11-10</td>
+<td><code>3920258</code></td>
+<td>557</td>
+<td>470</td>
+<td>33: 11 / 18 / 4</td>
+<td>wave L3: control dilation, indexed cone, clock-copy obstruction, finite Gaussian slice</td>
+</tr>
+<tr>
+<td><code>L4-gate</code></td>
+<td><code>ac6f767</code></td>
+<td>2026-11-11</td>
+<td><code>3920258</code></td>
+<td>724</td>
+<td>611</td>
+<td>40: 20 / 16 / 4</td>
+<td>wave L4: masked spectral growth, time-Schur, frequency row, occupation kernel row</td>
+</tr>
+<tr>
+<td><code>reanchor-975feb3</code></td>
+<td><code>d40f394</code></td>
+<td>2026-11-11</td>
+<td><code>975feb3</code></td>
+<td>724</td>
+<td>611</td>
+<td>40: 20 / 16 / 4</td>
+<td>re-anchor to manuscript 975feb3 (zero-covariance remark), narrow re-check accepted</td>
+</tr>
+<tr>
+<td><code>L5-gate</code></td>
+<td><code>712c307</code></td>
+<td>2026-11-11</td>
+<td><code>975feb3</code></td>
+<td>972</td>
+<td>810</td>
+<td>46: 26 / 16 / 4</td>
+<td>wave L5: H_a completion, masked continuous wave, auxiliary norm, damped norms, heat envelope, phase Bessel</td>
+</tr>
+<tr>
+<td><code>L6-gate</code></td>
+<td><code>bfa2fd0</code></td>
+<td>2026-11-11</td>
+<td><code>975feb3</code></td>
+<td>1463</td>
+<td>1210</td>
+<td>59: 34 / 21 / 4</td>
+<td>wave L6: wave Green measures, quotient obstruction, two variances, variational floor and rate, spatial ratio, static controls, series type, white width</td>
+</tr>
+<tr>
+<td><code>L7-gate</code></td>
+<td><code>f3be834</code></td>
+<td>2026-11-12</td>
+<td><code>a284420</code></td>
+<td>1731</td>
+<td>1430</td>
+<td>67: 39 / 24 / 4</td>
+<td>wave L7 (inventory product, series tail, H^1 density, four-linear, occupation class, interval/static steps) and re-anchor to a284420</td>
+</tr>
+<tr>
+<td><code>L8-gate</code></td>
+<td><code>aff7409</code></td>
+<td>2026-11-12</td>
+<td><code>a284420</code></td>
+<td>2108</td>
+<td>1747</td>
+<td>71: 43 / 25 / 3</td>
+<td>wave L8 (spectral mass identity, damped-norm lower bounds, space-time positivity, finite occupation ceiling, spatial bracket, mask removal, finite and terminal Wick, symplectic free group, static phase Cauchy-Schwarz; S1Bdd proved)</td>
+</tr>
+<tr>
+<td><code>L9-gate</code></td>
+<td><code>6eb79c7</code></td>
+<td>2026-11-12</td>
+<td><code>a284420</code></td>
+<td>2468</td>
+<td>2050</td>
+<td>80: 47 / 30 / 3</td>
+<td>wave L9 (low-alpha convolution in d = 1, 2, 3 and phase contractions in d = 3 with nothing supplied, wave Green Fourier identities, complex phase scalar steps, exact occupation ceiling C_occ, Gaussian Hermite polynomials, Fock layer and Fock form, one-mode finite word cutoff)</td>
+</tr>
+</tbody>
+</table>
+<p>Every tagged commit carries lean-pkg receipts or is a docs-only descendant of one (see <code>.lean-receipts/</code> and the README verification record). External kernel replays (<code>leanchecker --fresh</code> on Easley) cover every library module through wave L9, all of them at <code>6eb79c7</code> (the wave-L9 gate); see <code>verification/</code>.</p>
+<h2 id="in-progress-not-yet-gated-updated-2026-11-12">In progress (not yet gated; updated 2026-11-12)</h2>
+<p>The milestone table above lists closed gates only. The table by labelled result below is at the wave-L9 gate; waves L10 to L14 are not counted anywhere yet.</p>
+<table>
+<thead>
+<tr>
+<th>Wave</th>
+<th>State</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L10</td>
+<td>all eight items integrated; comparator over 2268 theorem claims; external kernel replay of its 21 new modules passed; documentation being brought to the wave-L9 conventions before its reviews</td>
+<td>higher Riesz bound in full for d = 2 and 3 with the optimal constant, the white-noise model and the white moment bounds for S_2^pos (spatial energy supplied), the fixed split (model-free core, and the assembly on the Fock model with its analytic inputs supplied), alpha-one convolution from the homogeneity hypothesis alone</td>
+</tr>
+<tr>
+<td>L11</td>
+<td>five items done (four integrated); documentation drafted; documentation merge after wave L10</td>
+<td>the spatial column bound of the Fock form proved for a concrete Fourier-side model; the chain measures of the terminal Wick lemma constructed, the lemma and the second-moment sentence of the uniform series tail stated for them with the manuscript's hypotheses only, and their Green regularization limit; the static interaction bounds with fewer supplied inputs; the finite word cutoff for several modes per color, which removes the fixed split's added hypothesis on the cutoff coefficients (the Duhamel word expansion of the coefficients supplied instead)</td>
+</tr>
+<tr>
+<td>L12</td>
+<td>four items done and checked independently; the re-anchor to the current manuscript and the remaining items wait for the L11 documentation merge</td>
+<td>terminal Wick comparison for the constructed chain measures; spectral identification of the smoothed covariance (damped homogeneous norms with nothing supplied); source finite comparison and the tube half action; the Fock sandwich proved on the concrete Fourier-side model</td>
+</tr>
+<tr>
+<td>L13</td>
+<td>three items done and checked independently; the two-chain diagram model built, its fidelity review passed the definitions and asked for two refutation repairs (running); the diagram bounds wait for the repair</td>
+<td>the variational global mean with every mixed derivative bounded; the real-H clause of the masked auxiliary norm; an in-domain refutation for the static-phase shift bound; the diagram model with the mixed-moment proposition as a supplied input</td>
+</tr>
+<tr>
+<td>L14</td>
+<td>three items done and checked independently; a follow-up running</td>
+<td>the completion spaces of the occupation layer (raw square and embedding, still narrower); source spatial heat lemma in full and the physical Gram vectors; the d = 3 endpoint lemmas (positive definiteness of product Riesz densities supplied) and their two corollaries</td>
+</tr>
+</tbody>
+</table>
+<h2 id="completion-by-labelled-result-manuscript-a284420-companion-6eb79c7-gate-l9-gate">Completion by labelled result (manuscript a284420, companion 6eb79c7, gate L9-gate)</h2>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Count</th>
+<th>Share</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>formalized, manuscript hypotheses</td>
+<td>25</td>
+<td>11%</td>
+</tr>
+<tr>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+<td>18</td>
+<td>8%</td>
+</tr>
+<tr>
+<td>inputs supplied, every conclusion proved</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>inputs supplied, steps/narrower</td>
+<td>30</td>
+<td>14%</td>
+</tr>
+<tr>
+<td>outside Lean (main theorem)</td>
+<td>3</td>
+<td>1%</td>
+</tr>
+<tr>
+<td>not formalized</td>
+<td>144</td>
+<td>65%</td>
+</tr>
+<tr>
+<td>total labelled results (Theorem, Proposition, Lemma, Corollary)</td>
+<td>220</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<p>No theorem of the manuscript is verified end to end. Of the four main theorems, three are recorded as outside Lean; <code>T:intrinsic-occupation-ceiling</code> is formalized in both forms with the exact constant <code>C_occ</code>, over the class <code>O</code> modelled by joint representatives, for <code>S_c^pos</code>; its moment sentence <code>C_2 &lt;= U_2</code> is not formalized. The remaining work is dominated by foundations Mathlib lacks (Gaussian chaos, Cameron-Martin, the chaos expansion of the solution, Young integration of operator paths, Sobolev spaces and self-adjoint operators).</p>
+<h2 id="covered-displays-and-remarks-not-counted-above">Covered displays and remarks (not counted above)</h2>
+<p>Four coverage rows are for a displayed equation or a remark rather than a numbered result:</p>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Coverage class</th>
+<th>Conclusion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>E:driver-parameters</code></td>
+<td>same-assumptions</td>
+<td>full</td>
+</tr>
+<tr>
+<td><code>E:kappa</code></td>
+<td>same-assumptions</td>
+<td>full</td>
+</tr>
+<tr>
+<td><code>E:masked-time-schur</code></td>
+<td>same-assumptions</td>
+<td>full</td>
+</tr>
+<tr>
+<td><code>R:gaussian-one-variance-test</code></td>
+<td>same-assumptions</td>
+<td>full</td>
+</tr>
+</tbody>
+</table>
+<h2 id="every-labelled-result">Every labelled result</h2>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Kind</th>
+<th>File:line (a284420)</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>T:first</code></td>
+<td>Theorem</td>
+<td>notes_stratonovich_ham_second_moment.tex:445</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>T:crude</code></td>
+<td>Theorem</td>
+<td>notes_stratonovich_ham_second_moment.tex:475</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:Jensen</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:494</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>T:intro-upper</code></td>
+<td>Theorem</td>
+<td>notes_stratonovich_ham_second_moment.tex:534</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>T:intro-second-moment</code></td>
+<td>Theorem</td>
+<td>notes_stratonovich_ham_second_moment.tex:583</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:mixed</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:658</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:white-test</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:734</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:damped-homogeneous-norms</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:804</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>L:translated-covariance-CS</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:952</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:pairing-product-envelope</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:1233</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:spatial-wick-measures</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:1395</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:joint-fixed-order</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:1543</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:crude-corrected</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:1643</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:vertex-crude</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:1705</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:mild-construction</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:1774</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>P:envelope</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:1937</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:phase-contractions</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:2072</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>P:static-phase-variance</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:2165</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:complex-phase</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:2288</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:fock-form</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:2472</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:finite-word-cutoff</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:2531</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>P:static-phase-all-orders</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:2578</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>C:static-interaction</code></td>
+<td>Corollary</td>
+<td>notes_stratonovich_ham_second_moment.tex:2686</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:interval-contractions</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:2829</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:interval-complex</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:2900</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:inventory-product</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:2986</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>L:fixed-split</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:3053</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:interval-coefficients</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:3402</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:terminal-wick</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:3600</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:uniform-series-tail</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:3703</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>T:full-upper</code></td>
+<td>Theorem</td>
+<td>notes_stratonovich_ham_second_moment.tex:3758</td>
+<td>outside Lean (main theorem)</td>
+</tr>
+<tr>
+<td><code>P:white-four</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:4160</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:static-four</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:4222</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:riesz-small</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:4313</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:d1-spatial</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:4525</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:d1-upper</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:4605</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:low-alpha-convolution</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:4702</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>L:alpha-one-convolution</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:4760</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:low-alpha-upper</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:4820</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>C:d1-first-calibration</code></td>
+<td>Corollary</td>
+<td>notes_stratonovich_ham_second_moment.tex:4923</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:higher-transfer</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:5020</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:higher-riesz</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:5167</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>C:higher-riesz</code></td>
+<td>Corollary</td>
+<td>notes_stratonovich_ham_second_moment.tex:5239</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:higher-obstructions</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:5272</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:static-holder-input</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:5395</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:static-holder-upper</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:5442</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:planar-endpoints</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:5671</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:planar-static-input</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:5827</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:planar-upper</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:5893</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>C:planar-range</code></td>
+<td>Corollary</td>
+<td>notes_stratonovich_ham_second_moment.tex:6065</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:product-endpoints</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:6106</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:plane-endpoints</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:6235</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:endpoint-closure</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:6317</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:three-transfer</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:6422</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>C:three-product-riesz</code></td>
+<td>Corollary</td>
+<td>notes_stratonovich_ham_second_moment.tex:6796</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>C:three-finite-images</code></td>
+<td>Corollary</td>
+<td>notes_stratonovich_ham_second_moment.tex:6841</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:physical-spectral-energy</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:6929</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:mean-coefficient-holder</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:7116</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:positive-series-type</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:7222</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>P:static-minorant-lower</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:7265</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:near-static-mean-gap</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:7337</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:full-moment-coefficient-holder</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:7434</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:moment-growth-logconvex</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:7517</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>C:static-moment-constant-continuity</code></td>
+<td>Corollary</td>
+<td>notes_stratonovich_ham_second_moment.tex:7575</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:white-clock-laplace</code></td>
+<td>Lemma</td>
+<td>notes_stratonovich_ham_second_moment.tex:7646</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>P:clock-copy-obstruction</code></td>
+<td>Proposition</td>
+<td>notes_stratonovich_ham_second_moment.tex:7754</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>P:actual-operator-driver</code></td>
+<td>Proposition</td>
+<td>integrated_actual_operator_driver.tex:26</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:driver-noise-basis</code></td>
+<td>Lemma</td>
+<td>integrated_actual_operator_driver.tex:58</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:driver-covariance-coefficients</code></td>
+<td>Lemma</td>
+<td>integrated_actual_operator_driver.tex:121</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:driver-gain-localization</code></td>
+<td>Lemma</td>
+<td>integrated_actual_operator_driver.tex:165</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:driver-actual-variances</code></td>
+<td>Lemma</td>
+<td>integrated_actual_operator_driver.tex:245</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:driver-dominated-tails</code></td>
+<td>Lemma</td>
+<td>integrated_actual_operator_driver.tex:372</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:driver-gaussian-tail-average</code></td>
+<td>Lemma</td>
+<td>integrated_actual_operator_driver.tex:397</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:driver-interval-limit</code></td>
+<td>Lemma</td>
+<td>integrated_actual_operator_driver.tex:427</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:driver-holder-limit</code></td>
+<td>Lemma</td>
+<td>integrated_actual_operator_driver.tex:528</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:cameron-fractional-products</code></td>
+<td>Lemma</td>
+<td>integrated_cameron_mean.tex:26</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:cameron-spatial-map</code></td>
+<td>Proposition</td>
+<td>integrated_cameron_mean.tex:77</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:cameron-supported-tensor</code></td>
+<td>Lemma</td>
+<td>integrated_cameron_mean.tex:139</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:cameron-temporal-map</code></td>
+<td>Proposition</td>
+<td>integrated_cameron_mean.tex:168</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:cameron-full-mean</code></td>
+<td>Proposition</td>
+<td>integrated_cameron_mean.tex:230</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:cameron-actual-residual</code></td>
+<td>Lemma</td>
+<td>integrated_cameron_mean.tex:316</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:cameron-actual-embedding</code></td>
+<td>Proposition</td>
+<td>integrated_cameron_mean.tex:359</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:gaussian-scalar-powers</code></td>
+<td>Lemma</td>
+<td>integrated_compact_gaussian.tex:13</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>L:gaussian-trace-bounds</code></td>
+<td>Lemma</td>
+<td>integrated_compact_gaussian.tex:47</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>P:finite-gaussian-matrix</code></td>
+<td>Proposition</td>
+<td>integrated_compact_gaussian.tex:98</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>L:cutoff-factorization</code></td>
+<td>Lemma</td>
+<td>integrated_compact_gaussian.tex:205</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:cutoff-singular-values</code></td>
+<td>Proposition</td>
+<td>integrated_compact_gaussian.tex:304</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:compact-two-envelopes</code></td>
+<td>Proposition</td>
+<td>integrated_compact_gaussian.tex:385</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:compact-positive-order</code></td>
+<td>Lemma</td>
+<td>integrated_compact_gaussian.tex:436</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:localized-finite-variance</code></td>
+<td>Proposition</td>
+<td>integrated_compact_gaussian.tex:465</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>C:finite-gaussian-operators</code></td>
+<td>Corollary</td>
+<td>integrated_compact_gaussian.tex:508</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:cutoff-boundary-tests</code></td>
+<td>Proposition</td>
+<td>integrated_compact_gaussian.tex:567</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:compact-ground-family</code></td>
+<td>Proposition</td>
+<td>integrated_compact_mean_family.tex:34</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:compact-fractional-phase</code></td>
+<td>Lemma</td>
+<td>integrated_compact_mean_family.tex:114</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:compact-E-wave</code></td>
+<td>Proposition</td>
+<td>integrated_compact_mean_family.tex:162</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:compact-F-projection</code></td>
+<td>Proposition</td>
+<td>integrated_compact_mean_family.tex:256</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:compact-F-complement</code></td>
+<td>Proposition</td>
+<td>integrated_compact_mean_family.tex:338</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:compact-raw-profile</code></td>
+<td>Lemma</td>
+<td>integrated_compact_mean_family.tex:398</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:compact-original-common-trial</code></td>
+<td>Proposition</td>
+<td>integrated_compact_mean_family.tex:461</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:constant-phase-free</code></td>
+<td>Lemma</td>
+<td>integrated_constant_phase_young.tex:21</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:constant-phase-driver</code></td>
+<td>Proposition</td>
+<td>integrated_constant_phase_young.tex:97</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:constant-source-response</code></td>
+<td>Lemma</td>
+<td>integrated_constant_phase_young.tex:137</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:constant-young-linear</code></td>
+<td>Proposition</td>
+<td>integrated_constant_phase_young.tex:190</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:constant-gaussian-flow</code></td>
+<td>Proposition</td>
+<td>integrated_constant_phase_young.tex:259</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:constant-source-solution</code></td>
+<td>Lemma</td>
+<td>integrated_constant_phase_young.tex:381</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:constant-raw-average</code></td>
+<td>Proposition</td>
+<td>integrated_constant_phase_young.tex:439</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:constant-compact-base</code></td>
+<td>Proposition</td>
+<td>integrated_constant_phase_young.tex:522</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:masked-spectral-growth</code></td>
+<td>Proposition</td>
+<td>integrated_covariance_foundation.tex:34</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>P:masked-auxiliary-norm</code></td>
+<td>Proposition</td>
+<td>integrated_covariance_foundation.tex:88</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>L:masked-time-completion</code></td>
+<td>Lemma</td>
+<td>integrated_covariance_foundation.tex:141</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>P:masked-noise-completion</code></td>
+<td>Proposition</td>
+<td>integrated_covariance_foundation.tex:188</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>P:masked-quotient-obstruction</code></td>
+<td>Proposition</td>
+<td>integrated_covariance_foundation.tex:258</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>L:masked-temporal-modulation</code></td>
+<td>Lemma</td>
+<td>integrated_covariance_foundation.tex:300</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>L:masked-trig-products</code></td>
+<td>Lemma</td>
+<td>integrated_covariance_foundation.tex:347</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>L:masked-continuous-wave</code></td>
+<td>Lemma</td>
+<td>integrated_covariance_foundation.tex:378</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>L:exact-canonical-scaling</code></td>
+<td>Lemma</td>
+<td>integrated_exact_scaling.tex:4</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>P:tube-wiener-realization</code></td>
+<td>Proposition</td>
+<td>integrated_gaussian_tubes.tex:21</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:tube-closed-geometry</code></td>
+<td>Lemma</td>
+<td>integrated_gaussian_tubes.tex:127</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:tube-rayleigh-transfer</code></td>
+<td>Proposition</td>
+<td>integrated_gaussian_tubes.tex:184</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:tube-actual-law</code></td>
+<td>Proposition</td>
+<td>integrated_gaussian_tubes.tex:251</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:tube-actual-endpoint</code></td>
+<td>Lemma</td>
+<td>integrated_gaussian_tubes.tex:318</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:tube-coarse-envelope</code></td>
+<td>Proposition</td>
+<td>integrated_gaussian_tubes.tex:379</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:tube-rayleigh-tail</code></td>
+<td>Lemma</td>
+<td>integrated_gaussian_tubes.tex:458</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>L:tube-half-action</code></td>
+<td>Lemma</td>
+<td>integrated_gaussian_tubes.tex:485</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:positive-raw-embedding</code></td>
+<td>Lemma</td>
+<td>integrated_intrinsic_constant.tex:23</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>L:positive-physical-gram</code></td>
+<td>Lemma</td>
+<td>integrated_intrinsic_constant.tex:113</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:positive-uniform-optimizer</code></td>
+<td>Lemma</td>
+<td>integrated_intrinsic_constant.tex:158</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:positive-signed-comparison</code></td>
+<td>Proposition</td>
+<td>integrated_intrinsic_constant.tex:220</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:positive-score-cutoff</code></td>
+<td>Proposition</td>
+<td>integrated_intrinsic_constant.tex:298</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>T:intrinsic-second-moment</code></td>
+<td>Theorem</td>
+<td>integrated_intrinsic_constant.tex:332</td>
+<td>outside Lean (main theorem)</td>
+</tr>
+<tr>
+<td><code>L:masked-chain-comparison</code></td>
+<td>Lemma</td>
+<td>integrated_masked_moments.tex:24</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:masked-source-moments</code></td>
+<td>Proposition</td>
+<td>integrated_masked_moments.tex:101</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:masked-canonical-transfer</code></td>
+<td>Proposition</td>
+<td>integrated_masked_moments.tex:162</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:occupation-raw-square</code></td>
+<td>Lemma</td>
+<td>integrated_occupation_ceiling.tex:24</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:raw-occupation-energy</code></td>
+<td>Proposition</td>
+<td>integrated_occupation_ceiling.tex:93</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>L:occupation-rayleigh-selection</code></td>
+<td>Lemma</td>
+<td>integrated_occupation_ceiling.tex:150</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>T:intrinsic-occupation-ceiling</code></td>
+<td>Theorem</td>
+<td>integrated_occupation_ceiling.tex:205</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>C:intrinsic-spatial-bracket</code></td>
+<td>Corollary</td>
+<td>integrated_occupation_ceiling.tex:253</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>L:point-actual-finiteness</code></td>
+<td>Lemma</td>
+<td>integrated_point_transfer.tex:20</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:point-fast-sources</code></td>
+<td>Lemma</td>
+<td>integrated_point_transfer.tex:62</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:point-compact-source</code></td>
+<td>Lemma</td>
+<td>integrated_point_transfer.tex:127</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:point-source-cone</code></td>
+<td>Proposition</td>
+<td>integrated_point_transfer.tex:192</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:original-point-transfer</code></td>
+<td>Proposition</td>
+<td>integrated_point_transfer.tex:245</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:gram-scalar-algebra</code></td>
+<td>Lemma</td>
+<td>integrated_positive_gram.tex:26</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>L:gram-dual-minimum</code></td>
+<td>Lemma</td>
+<td>integrated_positive_gram.tex:52</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:gram-positive-optimizer</code></td>
+<td>Proposition</td>
+<td>integrated_positive_gram.tex:101</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:gram-realization</code></td>
+<td>Lemma</td>
+<td>integrated_positive_gram.tex:149</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:gram-entrywise-comparison</code></td>
+<td>Proposition</td>
+<td>integrated_positive_gram.tex:175</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:radius-outer-maps</code></td>
+<td>Lemma</td>
+<td>integrated_radius_anchor.tex:39</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:radius-compact-envelopes</code></td>
+<td>Proposition</td>
+<td>integrated_radius_anchor.tex:89</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:radius-actual-moments</code></td>
+<td>Proposition</td>
+<td>integrated_radius_anchor.tex:159</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>C:radius-covariance-residuals</code></td>
+<td>Corollary</td>
+<td>integrated_radius_anchor.tex:248</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:radius-mean-anchor</code></td>
+<td>Proposition</td>
+<td>integrated_radius_anchor.tex:281</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:raw-block-inputs</code></td>
+<td>Lemma</td>
+<td>integrated_raw_block_lower.tex:51</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>P:raw-block-gaussian-law</code></td>
+<td>Proposition</td>
+<td>integrated_raw_block_lower.tex:120</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:raw-block-uniform-error</code></td>
+<td>Lemma</td>
+<td>integrated_raw_block_lower.tex:166</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:raw-block-indexed-cone</code></td>
+<td>Lemma</td>
+<td>integrated_raw_block_lower.tex:233</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:raw-block-restart</code></td>
+<td>Lemma</td>
+<td>integrated_raw_block_lower.tex:339</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>P:raw-block-point-comparison</code></td>
+<td>Proposition</td>
+<td>integrated_raw_block_lower.tex:423</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:raw-block-original-lower</code></td>
+<td>Proposition</td>
+<td>integrated_raw_block_lower.tex:542</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:signed-score-envelope</code></td>
+<td>Lemma</td>
+<td>integrated_signed_moment_upper.tex:20</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:signed-moment-bulk-tail</code></td>
+<td>Proposition</td>
+<td>integrated_signed_moment_upper.tex:88</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:signed-operator-upper</code></td>
+<td>Proposition</td>
+<td>integrated_signed_moment_upper.tex:150</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:original-signed-point-upper</code></td>
+<td>Proposition</td>
+<td>integrated_signed_moment_upper.tex:198</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:signed-limiting-multiplier</code></td>
+<td>Lemma</td>
+<td>integrated_signed_static.tex:11</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:signed-closed-form</code></td>
+<td>Proposition</td>
+<td>integrated_signed_static.tex:40</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:signed-spectral-wave</code></td>
+<td>Lemma</td>
+<td>integrated_signed_static.tex:111</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:signed-physical-wave</code></td>
+<td>Proposition</td>
+<td>integrated_signed_static.tex:176</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:source-finite-comparison</code></td>
+<td>Lemma</td>
+<td>integrated_source_convergence.tex:20</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:source-gaussian-transfer</code></td>
+<td>Proposition</td>
+<td>integrated_source_convergence.tex:43</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:source-spatial-heat</code></td>
+<td>Lemma</td>
+<td>integrated_source_convergence.tex:129</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:source-retaining-isometry</code></td>
+<td>Lemma</td>
+<td>integrated_source_convergence.tex:168</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:source-canonical-convergence</code></td>
+<td>Proposition</td>
+<td>integrated_source_convergence.tex:245</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:source-pointfield-regularity</code></td>
+<td>Lemma</td>
+<td>integrated_source_convergence.tex:347</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:source-ordinary-response</code></td>
+<td>Proposition</td>
+<td>integrated_source_convergence.tex:404</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:spatial-physical-pair</code></td>
+<td>Lemma</td>
+<td>integrated_spatial_occupation.tex:12</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>L:spatial-static-controls</code></td>
+<td>Lemma</td>
+<td>integrated_spatial_occupation.tex:40</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>L:spatial-fourier-bound</code></td>
+<td>Lemma</td>
+<td>integrated_spatial_occupation.tex:102</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>P:spatial-smooth-ratio</code></td>
+<td>Proposition</td>
+<td>integrated_spatial_occupation.tex:167</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>P:spatial-four-linear</code></td>
+<td>Proposition</td>
+<td>integrated_spatial_occupation.tex:220</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>P:spatial-energy-map</code></td>
+<td>Proposition</td>
+<td>integrated_spatial_occupation.tex:301</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>L:occupation-kernel-row</code></td>
+<td>Lemma</td>
+<td>integrated_spatial_occupation.tex:361</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>P:occupation-physical-class</code></td>
+<td>Proposition</td>
+<td>integrated_spatial_occupation.tex:387</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>L:symplectic-free</code></td>
+<td>Lemma</td>
+<td>integrated_symplectic_phase.tex:31</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:symplectic-source-mean</code></td>
+<td>Lemma</td>
+<td>integrated_symplectic_phase.tex:136</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:symplectic-source</code></td>
+<td>Proposition</td>
+<td>integrated_symplectic_phase.tex:187</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:symplectic-raw</code></td>
+<td>Proposition</td>
+<td>integrated_symplectic_phase.tex:221</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:symplectic-block-mean</code></td>
+<td>Proposition</td>
+<td>integrated_symplectic_phase.tex:282</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:equilibrium-gamma-beta</code></td>
+<td>Lemma</td>
+<td>integrated_temporal_equilibrium.tex:13</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>L:temporal-equilibrium</code></td>
+<td>Lemma</td>
+<td>integrated_temporal_equilibrium.tex:37</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>L:uniform-mean-cutoff</code></td>
+<td>Lemma</td>
+<td>integrated_uniform_mean.tex:25</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:uniform-mean-spatial-tails</code></td>
+<td>Lemma</td>
+<td>integrated_uniform_mean.tex:61</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:uniform-mean-tensor</code></td>
+<td>Lemma</td>
+<td>integrated_uniform_mean.tex:145</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:uniform-mean-regulator</code></td>
+<td>Proposition</td>
+<td>integrated_uniform_mean.tex:202</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:uniform-actual-cameron</code></td>
+<td>Proposition</td>
+<td>integrated_uniform_mean.tex:278</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:uniform-E-lift</code></td>
+<td>Lemma</td>
+<td>integrated_uniform_products.tex:33</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:uniform-E-spectral</code></td>
+<td>Proposition</td>
+<td>integrated_uniform_products.tex:69</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:uniform-rate-averaging</code></td>
+<td>Proposition</td>
+<td>integrated_uniform_products.tex:206</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:uniform-product-budgets</code></td>
+<td>Lemma</td>
+<td>integrated_uniform_products.tex:279</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:uniform-mean-product</code></td>
+<td>Proposition</td>
+<td>integrated_uniform_products.tex:333</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>C:uniform-polynomial-balls</code></td>
+<td>Corollary</td>
+<td>integrated_uniform_products.tex:413</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:uniform-arbitrary-residual</code></td>
+<td>Proposition</td>
+<td>integrated_uniform_products.tex:451</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:variational-heat-envelope</code></td>
+<td>Lemma</td>
+<td>integrated_unmasked_variational.tex:24</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>L:variational-global-mean</code></td>
+<td>Lemma</td>
+<td>integrated_unmasked_variational.tex:65</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>P:variational-unmasked-rate</code></td>
+<td>Proposition</td>
+<td>integrated_unmasked_variational.tex:99</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>P:variational-remove-mask</code></td>
+<td>Proposition</td>
+<td>integrated_unmasked_variational.tex:169</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:variational-control-dilation</code></td>
+<td>Lemma</td>
+<td>integrated_unmasked_variational.tex:225</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>P:variational-positive-scores</code></td>
+<td>Proposition</td>
+<td>integrated_unmasked_variational.tex:271</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
+</tr>
+<tr>
+<td><code>P:frequency-row</code></td>
+<td>Proposition</td>
+<td>integrated_wave_variance.tex:47</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>C:frequency-time</code></td>
+<td>Corollary</td>
+<td>integrated_wave_variance.tex:141</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>P:actual-wave-form</code></td>
+<td>Proposition</td>
+<td>integrated_wave_variance.tex:212</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>L:phase-bessel</code></td>
+<td>Lemma</td>
+<td>integrated_wave_variance.tex:346</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>P:wave-two-variances</code></td>
+<td>Proposition</td>
+<td>integrated_wave_variance.tex:368</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>P:wave-square-columns</code></td>
+<td>Proposition</td>
+<td>integrated_wave_variance.tex:465</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>L:white-cdf-square</code></td>
+<td>Lemma</td>
+<td>integrated_white_evaluation.tex:17</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:white-spatial-energy</code></td>
+<td>Proposition</td>
+<td>integrated_white_evaluation.tex:58</td>
+<td>inputs supplied, steps/narrower</td>
+</tr>
+<tr>
+<td><code>T:white-moment-bounds</code></td>
+<td>Theorem</td>
+<td>integrated_white_evaluation.tex:101</td>
+<td>outside Lean (main theorem)</td>
+</tr>
+<tr>
+<td><code>C:white-relative-width</code></td>
+<td>Corollary</td>
+<td>integrated_white_evaluation.tex:131</td>
+<td>formalized, manuscript hypotheses</td>
+</tr>
+<tr>
+<td><code>L:young-upper-growth</code></td>
+<td>Lemma</td>
+<td>integrated_young_upper_foundation.tex:15</td>
+<td>not formalized</td>
+</tr>
+<tr>
+<td><code>P:young-upper-multiplicative</code></td>
+<td>Proposition</td>
+<td>integrated_young_upper_foundation.tex:57</td>
+<td>not formalized</td>
+</tr>
+</tbody>
+</table>
+    </main>
+  </div>
+  <footer>
+    stratonovich-ham-second-moment-lean · Le Chen · developed with <a href="https://github.com/lean-pkg/lean-pkg">lean-pkg</a> · <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/CITATION.cff">CITATION.cff</a> · <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/LICENSE">Apache-2.0</a>
+  </footer>
+</body>
+</html>

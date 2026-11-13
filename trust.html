@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lean 4 companion (partial formalization) to the second moment of the Stratonovich hyperbolic Anderson model: finite, algebraic and scalar steps checked by Lean, analytic inputs as explicit hypotheses; correspondence reviewed by AI, not by a human.">
+  <title>Trust and verification · Stratonovich HAM Second Moment: Lean Companion</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/code.css">
+  <link rel="canonical" href="https://chenle02.github.io/stratonovich-ham-second-moment-lean/trust.html">
+  <script defer src="assets/code.js"></script>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header>
+    <a class="brand" href="./"><span>Stratonovich HAM Second Moment: Lean Companion</span></a>
+    <span class="tagline">Lean 4 paper companion · partial formalization · Apache-2.0</span>
+  </header>
+  <div class="shell">
+    <nav class="side" aria-label="Site"><p class="group">Start</p>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="getting-started.html">Build and verify</a></li>
+</ul>
+<p class="group">Results</p>
+<ul>
+<li><a href="what-is-checked.html">What is checked</a></li>
+<li><a href="completion.html">Completion record</a></li>
+<li><a href="statement-ledger.html">Statement ledger</a></li>
+<li><a href="formalization.html">Formalization scope</a></li>
+</ul>
+<p class="group">Evidence</p>
+<ul>
+<li><a href="trust.html" aria-current="page">Trust and verification</a></li>
+<li><a href="cite.html">Cite</a></li>
+</ul>
+<p class="group">Elsewhere</p>
+<ul>
+<li><a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean">Source on GitHub</a></li>
+<li><a href="https://doi.org/10.5281/zenodo.24199104">Zenodo (all versions)</a></li>
+<li><a href="llms.txt">llms.txt</a></li>
+</ul></nav>
+    <details class="side-mobile"><summary>Menu</summary><nav aria-label="Site (compact)"><p class="group">Start</p>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="getting-started.html">Build and verify</a></li>
+</ul>
+<p class="group">Results</p>
+<ul>
+<li><a href="what-is-checked.html">What is checked</a></li>
+<li><a href="completion.html">Completion record</a></li>
+<li><a href="statement-ledger.html">Statement ledger</a></li>
+<li><a href="formalization.html">Formalization scope</a></li>
+</ul>
+<p class="group">Evidence</p>
+<ul>
+<li><a href="trust.html" aria-current="page">Trust and verification</a></li>
+<li><a href="cite.html">Cite</a></li>
+</ul>
+<p class="group">Elsewhere</p>
+<ul>
+<li><a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean">Source on GitHub</a></li>
+<li><a href="https://doi.org/10.5281/zenodo.24199104">Zenodo (all versions)</a></li>
+<li><a href="llms.txt">llms.txt</a></li>
+</ul></nav></details>
+    <main id="content">
+<h1>Trust and verification</h1>
+<div class="boundary">
+<p><strong>The generated coverage and verification pages come with v0.10.0.</strong>
+lean-pkg renders a package's verification and coverage pages only when every
+theorem judged by the recorded comparator receipt is credited to a row of
+<code>coverage.yaml</code>. In v0.9.0 the comparator judged all 2050 theorem claims, and
+1408 of them are helper theorems that no coverage row names yet, so lean-pkg
+0.29.0 refuses to render those pages. The helpers will be mapped in v0.10.0;
+they are not attributed to results here. Until then the status of each
+labelled result is in the <a href="completion.html">completion record</a> and the
+<a href="statement-ledger.html">statement ledger</a>, and
+<a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/coverage.yaml"><code>coverage.yaml</code></a>
+is the machine-readable map of the covered results.</p>
+</div>
+<h2 id="trust">Trust</h2>
+<p>A successful build checks that the proofs are correct for the statements as
+written in Lean. Whether a Lean statement says what the paper needs is a
+separate question. The statement ledger answers it row by row and is meant
+to be read next to the paper. Lean does not check that correspondence.</p>
+<p><strong>Correspondence review, in short.</strong> Each wave's ledger rows were reviewed
+against the manuscript by AI models from a different family than the ledger's
+author, and the author accepted every wave, the last at the wave-L9 gate. The
+full record follows.</p>
+<details>
+<summary><b>Correspondence review record, wave by wave</b></summary>
+<p><strong>Correspondence review.</strong> The statement ledger at commit <code>48ce162</code>, read
+against manuscript revision <code>ba01d98</code>, has passed independent
+correspondence review: every one of its 88 rows was checked with complete
+reading of the cited manuscript sources, every finding was resolved, and
+the author accepted the result on 2026-11-10. The 29 rows added since then
+for the <code>StratonovichHAMSecondMoment</code> modules (including the Lean model of Hypothesis
+<code>H:homog</code>) passed a separate sequence of three independent reviews at
+commit <code>b876362</code>, against the same revision; the author accepted it on
+2026-11-10. The 106 rows added for the wave-L2 modules
+(<code>TemporalEquilibrium</code>, <code>RadiusMeanAnchor</code>, <code>MaskedTrigProducts</code>) passed
+three independent reviews and a confirmation review at commit <code>79afdde</code>,
+against the same revision; every finding was resolved, and the author
+accepted the result on 2026-11-10. The 334 rows of wave L3
+(<code>VariationalDilation</code> with <code>WeakSobolev</code>, <code>IndexedCone</code>, <code>ClockCopy</code> with
+its foundation, <code>FiniteGaussianMatrix</code> with <code>GaussianIBP</code>) passed four
+independent reviews, whose findings were all repaired, and a confirmation
+review, at commit <code>dfc2fe8</code> against manuscript revision <code>3920258</code>; the
+author accepted the result on 2026-11-10. After wave L3, 347 declarations
+mapped to a manuscript label and 210 checked computations with no direct
+label. The 167 rows of wave L4 (<code>GaussianTest</code>, <code>MaskedSpectralGrowth</code>,
+<code>ClockCopyHomog</code>, <code>TimeSchur</code>, <code>MaskedModulation</code>, <code>FrequencyRow</code>,
+<code>OccupationKernelRow</code>; totals now 419 labelled and 305 unlabelled), and the
+changes wave L4 made to existing ledger sections and coverage rows
+(<code>P:clock-copy-obstruction</code>, <code>L:damped-homogeneous-norms</code>,
+<code>L:masked-trig-products</code>), passed four independent reviews, whose findings
+were all repaired, and a confirmation review at commit <code>ac6f767</code>, against
+manuscript revision <code>3920258</code>; the author accepted the result on
+2026-11-11. The ledger was then re-anchored to manuscript revision
+<code>975feb3</code>, which adds a remark that <code>H:homog</code> allows zero covariance and
+qualifies a strict comparison in <code>T:first</code> (not cited here), and moves TeX
+line numbers; a narrow independent review of the rows that depend on
+<code>H:homog</code> and of the re-anchor passed at commit <code>d40f394</code> with no findings;
+the author accepted it on 2026-11-11. The 248 rows of wave L5
+(<code>TimeCompletion</code>, <code>MaskedContinuousWaveCompleted</code>, <code>MaskedContinuousWave</code>,
+<code>MaskedAuxiliaryNorm</code>, <code>DampedNormsHomog</code>, <code>VariationalMean</code>,
+<code>PhaseBessel</code>; totals now 535 labelled and 437 unlabelled), and the changes
+wave L5 made to existing ledger sections and coverage rows, passed six
+independent reviews, whose findings (all in the documentation) were
+repaired, and a confirmation review at commit <code>712c307</code>, against manuscript
+revision <code>975feb3</code>; the author accepted the result on 2026-11-11. The 491
+rows of wave L6 (<code>WaveGreen</code>, <code>QuotientObstruction</code>, <code>GaussianComparison</code>,
+<code>WaveTwoVariances</code>, <code>VariationalFloor</code>, <code>VariationalRate</code>,
+<code>SpatialFourierBound</code>, <code>SpatialSmoothRatio</code>, <code>SpatialStaticControls</code>,
+<code>SpatialOccupationCompleted</code>, <code>SeriesType</code>, <code>TypeContinuity</code>,
+<code>WhiteRelativeWidth</code>, <code>WhiteClockLaplace</code>; totals now 737 labelled and 726
+unlabelled), and the changes wave L6 made to existing ledger sections and
+coverage rows, passed eight independent reviews, whose findings (all in
+the documentation) were repaired, and a confirmation review, whose one
+finding (a stale doc comment) was repaired; a narrow re-confirmation of
+that repair passed at commit <code>bfa2fd0</code>, against manuscript revision
+<code>975feb3</code>, with no findings; the author accepted the result on 2026-11-11.
+The 268 rows of wave L7 (<code>InventoryProduct</code>, <code>UniformSeriesTail</code>,
+<code>H1Density</code>, <code>SpatialFourLinear</code>, <code>OccupationPhysicalClass</code>,
+<code>IntervalScalar</code>, <code>IntervalScalarCompleted</code>,
+<code>SpatialOccupationL7Completed</code>), and the changes wave L7 made to existing
+ledger sections and coverage rows, passed six independent reviews at commit
+<code>a8fb495</code> against manuscript revision <code>975feb3</code>, whose findings (one fatal,
+a wrong plain-English description of the rate lambda as the Rayleigh
+supremum instead of its square root; one major; seven minor; all in the
+documentation) were repaired, and a confirmation review, whose two remaining
+documentation findings were repaired with the re-anchor below. The ledger was then re-anchored
+to manuscript revision <code>a284420</code>, which adds Lemma <code>L:spatial-fourier-bound</code>
+(the deterministic bound of <code>SpatialFourierBound</code>, now used by the
+manuscript for <code>R_0 &lt; infinity</code> in <code>P:spatial-smooth-ratio</code>) and replaces
+the smoothing sentence of <code>L:damped-homogeneous-norms</code> by the multiplier
+comparison <code>E:damped-multiplier-comparison</code>; TeX line numbers moved, the
+rows for both edited results were rewritten and a coverage row was added for
+<code>L:spatial-fourier-bound</code> (totals now 891 labelled and 840 unlabelled). A
+narrow independent review of the re-anchor and of the rows of the two edited
+results found four documentation findings, among them wrong TeX line
+locators caused by file misattribution; all 1781 affected citations were
+then checked against the TeX and 46 corrected, and a confirmation review
+passed at commit <code>f3be834</code>, against manuscript revision <code>a284420</code>, with no
+findings; the author accepted wave L7 and the re-anchor on 2026-11-12
+(gate closed at <code>f3be834</code> over manuscript revision <code>a284420</code>). The 377
+rows of wave L8 (<code>SpectralMassIdentity</code>, <code>DampedMultiplier</code>,
+<code>SpaceTimePositivity</code>, <code>OccupationCeilingFinite</code>, <code>SpatialBracket</code>,
+<code>RemoveMask</code>, <code>FiniteWick</code>, <code>TerminalWick</code>, <code>SymplecticFree</code>,
+<code>StaticPhaseCauchy</code>, <code>L8Completed</code>; totals now 1122 labelled and 986
+unlabelled) and the changes wave L8 made to existing ledger sections and
+coverage rows passed six reviews at commit <code>3518233</code> (documentation
+findings only, no Lean error, all repaired in two rounds: among them the
+global measurability of the covariance in <code>L:terminal-wick</code> is now recorded
+as an added restriction, and the smoothing scope of
+<code>L:damped-homogeneous-norms</code> states both gaps), a confirmation review and a
+re-confirmation, which passed with high confidence at commit <code>168b3c0</code>; the
+author accepted wave L8 on 2026-11-12 (gate closed at <code>aff7409</code> over
+manuscript revision <code>a284420</code>, with the chain measures of <code>L:terminal-wick</code>
+supplied through their mass and that added restriction recorded). The 360 rows of wave L9
+(<code>WaveGreenFourier</code>, <code>LowAlphaConvolution</code>, <code>PhaseContractions</code>,
+<code>RawOccupationEnergy</code>, <code>OccupationCeilingExact</code>, <code>ComplexPhaseScalar</code>,
+<code>GaussianHermite</code>, <code>HermiteFock</code>, <code>FockForm</code>, <code>HermiteWordFock</code>,
+<code>L9Completed</code>; totals now 1300 labelled and 1168 unlabelled after the review repairs) and the changes
+wave L9 made to existing ledger sections and coverage rows were reviewed in
+eight correspondence reviews and the documentation was repaired over several
+rounds (the strict "whole result" convention, the split modelled-object rule
+with a model-choice register, and the Index as a pointer table, all decided
+by the author), with a final confirmation at commit <code>ff40fde</code> (among
+other changes, <code>L:damped-homogeneous-norms</code> keeps a narrower conclusion and
+<code>L:finite-word-cutoff</code> counts as formalized in part, for one Gaussian mode
+per color); the author accepted wave L9 on 2026-11-12 (gate closed at
+<code>6eb79c7</code> over manuscript revision <code>a284420</code>). These
+reviews were done by AI
+models from a different family than the ledger's author; they are not a
+human verification, and they do not check the analytic inputs that stay
+outside Lean. A later change to the ledger or to a cited label needs a new
+review.</p>
+</details>
+<h2 id="verification-record">Verification record</h2>
+<p><strong>This repository.</strong> A receipt names the commit it binds, so the receipts
+for this repository's root commit cannot be part of that commit: a lower-tier
+receipt and a comparator receipt are cut at the root commit and added, with
+nothing else, by the commit after it, which the release tag <code>v0.9.0</code> marks.
+They are the files in <code>.lean-receipts/</code> whose 12-hex prefix is the root commit
+(<code>git rev-list --max-parents=0 HEAD</code>). The other receipts in <code>.lean-receipts/</code>
+bind commits of the development repository and are kept as development
+evidence.</p>
+<p><strong>Development record.</strong></p>
+<p>Commit <code>6eb79c7</code> (the wave-L9 gate) has both lean-pkg receipts in
+<code>.lean-receipts/</code> (earlier commits have their own): a lower-tier receipt (a
+fresh build of all modules and the axiom report, 0 <code>sorry</code>, only the standard
+axioms, and the axioms of all 2468 claims read from the built environment)
+and a comparator receipt (Palomar's toolchain mechanism): every one of the
+2050 theorem claims is
+judged against its own restatement in <code>Challenge.lean</code>, whose types are
+checked to be equal to the claimed declarations' by
+<code>scripts/comparator/CheckFidelity.lean</code>. With both, <code>lean-pkg claims ledger</code>
+reports no open claim. Later commits that change only documentation stay
+bound to it. A receipt records the build and the statements'
+self-consistency; it does not by itself establish that the statements
+match the paper (see Trust).</p>
+<p>Independent external-kernel replays on the Easley cluster ran
+<code>leanchecker --fresh</code> (which also re-checks every imported Mathlib
+declaration) on each module separately, in three gates: commit <code>837778a</code>
+(35 targets), <code>687e631</code> (12 wave-L3 targets) and <code>2f5ee14</code> (17 targets).
+All 64 runs pass. Together they cover every one of the 51 library modules
+and the umbrella at a commit where that module and all its imports are
+identical to <code>2f5ee14</code> (<code>verification/leanchecker-easley-2026-11-10/</code>,
+<code>verification/leanchecker-easley-wave-l3/</code>,
+<code>verification/leanchecker-easley-wave-l4/</code>). The three comparator-tier
+libraries (<code>ChallengeDefs</code>, <code>Challenge</code>, <code>Solution</code>), which the umbrella
+does not import, were not replayed. The Lean sources of the modules
+covered there are unchanged at <code>712c307</code> except for doc comments (TeX
+line numbers moved to manuscript revision <code>975feb3</code>), so these replays
+were not repeated. A fourth gate replayed commit <code>712c307</code>, where wave L5
+closed: the seven modules added in wave L5 (<code>TimeCompletion</code>,
+<code>MaskedContinuousWave</code>, <code>MaskedContinuousWaveCompleted</code>,
+<code>MaskedAuxiliaryNorm</code>, <code>DampedNormsHomog</code>, <code>VariationalMean</code>,
+<code>PhaseBessel</code>), the umbrella and <code>Axioms</code> (9 targets, all pass;
+<code>verification/leanchecker-easley-wave-l5/</code>). Since <code>712c307</code>,
+<code>DampedNorms</code> and <code>DampedNormsHomog</code> have changed only in comments. A fifth
+gate replayed commit <code>bfa2fd0</code>, where wave L6 closed: the fourteen modules
+added in wave L6, the umbrella and <code>Axioms</code> (16 targets, all pass; default
+mode 73/73; <code>verification/leanchecker-easley-wave-l6/</code>); every other module
+has, with comments stripped, the same source and imports as at an earlier
+<code>--fresh</code> replay. A sixth gate replayed commit <code>f3be834</code>, where wave L7
+closed: the eight modules added in wave L7, the umbrella and <code>Axioms</code> (10
+targets, all pass; default mode 81/81;
+<code>verification/leanchecker-easley-wave-l7/</code>); every other module has, with
+comments stripped, the same source and imports as at an earlier <code>--fresh</code>
+replay. So every library module through wave L7 has passed a <code>--fresh</code>
+replay. A seventh gate replayed commit <code>aff7409</code>, where wave L8 closed, as
+a cluster array with one target per task: all 92 targets <code>--fresh</code> (92/92
+pass) and a default-mode replay of all of them (92/92 pass;
+<code>verification/leanchecker-easley-wave-l8/</code>). So every library module
+through wave L8 has passed a <code>--fresh</code> replay, all of them at <code>aff7409</code>.
+An eighth gate replayed commit <code>6eb79c7</code>, where wave L9 closed, as a
+cluster array: all 103 targets <code>--fresh</code> (103/103 pass) and a default-mode
+replay of all of them (pass; <code>verification/leanchecker-easley-wave-l9/</code>). So
+every library module through wave L9 has passed a <code>--fresh</code> replay, all of
+them at <code>6eb79c7</code>. At the same commit a lower-tier receipt was also produced
+on the cluster with <code>lean-pkg receipt slurm</code>; it agrees with the local
+receipt claim by claim (<code>verification/slurm-receipt-pilot-wave-l9/</code>).</p>
+    </main>
+  </div>
+  <footer>
+    stratonovich-ham-second-moment-lean · Le Chen · developed with <a href="https://github.com/lean-pkg/lean-pkg">lean-pkg</a> · <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/CITATION.cff">CITATION.cff</a> · <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/LICENSE">Apache-2.0</a>
+  </footer>
+</body>
+</html>
