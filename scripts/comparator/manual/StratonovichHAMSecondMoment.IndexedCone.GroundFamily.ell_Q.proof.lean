@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.IndexedCone.GroundFamily.ell_Q

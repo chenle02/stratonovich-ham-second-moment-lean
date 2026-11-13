@@ -1,0 +1,7 @@
+import StratonovichHAMAudit.AllAlphaMoment
+set_option pp.universes true
+set_option pp.all true
+#check StratonovichHAMAudit.AllAlphaMoment.moment_lower
+#print axioms StratonovichHAMAudit.AllAlphaMoment.moment_lower
+#check StratonovichHAMAudit.AllAlphaMoment.rational_gap
+#print axioms StratonovichHAMAudit.AllAlphaMoment.rational_gap

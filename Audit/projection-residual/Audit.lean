@@ -1,0 +1,7 @@
+module
+import StratonovichHAMAudit.ProjectionResidual
+set_option pp.all true
+#check @StratonovichHAMAudit.ProjectionResidual.projection_gap
+#check @StratonovichHAMAudit.ProjectionResidual.tilted_gap
+#print axioms StratonovichHAMAudit.ProjectionResidual.projection_gap
+#print axioms StratonovichHAMAudit.ProjectionResidual.tilted_gap

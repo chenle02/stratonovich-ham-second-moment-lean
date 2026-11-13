@@ -1,0 +1,5 @@
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:854:0: 'StratonovichHAMSecondMoment.MaskedModulation.timeForm_eq_acorr' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Build completed successfully (9099 jobs).

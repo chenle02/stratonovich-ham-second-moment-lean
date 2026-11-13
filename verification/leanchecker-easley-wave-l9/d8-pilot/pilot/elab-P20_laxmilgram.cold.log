@@ -1,0 +1,21 @@
+@IsCoercive : {E : Type u_1} →
+  [inst : SeminormedAddCommGroup E] → [inst_1 : NormedSpace ℝ E] → (E →L[ℝ] E →L[ℝ] ℝ) → Prop
+@IsCoercive.continuousLinearEquivOfBilin : {V : Type u_1} →
+  [inst : NormedAddCommGroup V] →
+    [inst_1 : InnerProductSpace ℝ V] → [CompleteSpace V] → {B : V →L[ℝ] V →L[ℝ] ℝ} → IsCoercive B → V ≃L[ℝ] V
+@IsCoercive.continuousLinearEquivOfBilin_apply : ∀ {V : Type u_1} [inst : NormedAddCommGroup V]
+  [inst_1 : InnerProductSpace ℝ V] [inst_2 : CompleteSpace V] {B : V →L[ℝ] V →L[ℝ] ℝ} (coercive : IsCoercive B)
+  (v w : V), ⟪coercive.continuousLinearEquivOfBilin v, w⟫_ℝ = (B v) w
+@IsCoercive.unique_continuousLinearEquivOfBilin : ∀ {V : Type u_1} [inst : NormedAddCommGroup V]
+  [inst_1 : InnerProductSpace ℝ V] [inst_2 : CompleteSpace V] {B : V →L[ℝ] V →L[ℝ] ℝ} (coercive : IsCoercive B)
+  {v f : V}, (∀ (w : V), ⟪f, w⟫_ℝ = (B v) w) → f = coercive.continuousLinearEquivOfBilin v
+InnerProductSpace.toDual : (𝕜 : Type u_1) →
+  (E : Type u_2) →
+    [inst : RCLike 𝕜] →
+      [inst_1 : NormedAddCommGroup E] → [inst_2 : InnerProductSpace 𝕜 E] → [CompleteSpace E] → E ≃ₗᵢ⋆[𝕜] StrongDual 𝕜 E
+@InnerProductSpace.continuousLinearMapOfBilin : {𝕜 : Type u_1} →
+  {E : Type u_2} →
+    [inst : RCLike 𝕜] →
+      [inst_1 : NormedAddCommGroup E] →
+        [inst_2 : InnerProductSpace 𝕜 E] → [CompleteSpace E] → (E →L⋆[𝕜] E →L[𝕜] 𝕜) → E →L[𝕜] E
+MEASURE P20_laxmilgram.cold rc=0 wall_s=6.58 maxrss_kb=3299124

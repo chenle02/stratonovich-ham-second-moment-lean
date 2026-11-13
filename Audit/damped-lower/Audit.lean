@@ -1,0 +1,9 @@
+import StratonovichHAMAudit.DampedLower
+set_option pp.universes true
+set_option pp.all true
+#check StratonovichHAMAudit.DampedLower.exact_margin
+#print axioms StratonovichHAMAudit.DampedLower.exact_margin
+#check StratonovichHAMAudit.DampedLower.pi_cube_certificate
+#print axioms StratonovichHAMAudit.DampedLower.pi_cube_certificate
+#check StratonovichHAMAudit.DampedLower.rational_pi_gain
+#print axioms StratonovichHAMAudit.DampedLower.rational_pi_gain

@@ -1,0 +1,9 @@
+Command: timeout -k 30s 14400s lake env leanchecker --fresh StratonovichHAMAudit.HermiteWordConsumer
+Exit status: 0
+Elapsed wall (s): 127.23
+Elapsed wall (h:mm:ss): 0:02:07.23
+User CPU (s): 123.38
+System CPU (s): 3.83
+Peak RSS of largest waited descendant (KiB): 702280
+Output bytes: 0
+Host: node868  Job: NA

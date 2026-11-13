@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.ClockCopyHomog.damped_N2_nonneg_paper

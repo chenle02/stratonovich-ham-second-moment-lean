@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.TypeContinuity.static_moment_constant_continuity_paper

@@ -1,0 +1,20 @@
+PiLp.continuousLinearEquiv : (p : ENNReal) →
+  (𝕜 : Type u_2) →
+    {ι : Type u_3} →
+      (β : ι → Type u_4) →
+        [inst : Semiring 𝕜] →
+          [inst_1 : (i : ι) → AddCommGroup (β i)] →
+            [inst_2 : (i : ι) → Module 𝕜 (β i)] →
+              [inst_3 : (i : ι) → TopologicalSpace (β i)] → PiLp p β ≃L[𝕜] (i : ι) → β i
+@ContinuousLinearMap.pi : {R : Type u_2} →
+  [inst : Semiring R] →
+    {M : Type u_3} →
+      [inst_1 : TopologicalSpace M] →
+        [inst_2 : AddCommMonoid M] →
+          [inst_3 : Module R M] →
+            {ι : Type u_4} →
+              {φ : ι → Type u_5} →
+                [inst_4 : (i : ι) → TopologicalSpace (φ i)] →
+                  [inst_5 : (i : ι) → AddCommMonoid (φ i)] →
+                    [inst_6 : (i : ι) → Module R (φ i)] → ((i : ι) → M →L[R] φ i) → M →L[R] (i : ι) → φ i
+MEASURE P32_cfc_multiplication.warm rc=0 wall_s=9.19 maxrss_kb=3324592

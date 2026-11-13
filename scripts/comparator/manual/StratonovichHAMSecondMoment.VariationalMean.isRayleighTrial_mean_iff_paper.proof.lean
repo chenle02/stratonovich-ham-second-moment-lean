@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.VariationalMean.isRayleighTrial_mean_iff_paper

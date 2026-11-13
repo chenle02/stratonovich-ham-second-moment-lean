@@ -1,0 +1,4 @@
+import StratonovichHAMAudit.FiniteYoung
+set_option pp.all true in
+#print StratonovichHAMAudit.FiniteYoung.weighted_natural_powers
+#print axioms StratonovichHAMAudit.FiniteYoung.weighted_natural_powers

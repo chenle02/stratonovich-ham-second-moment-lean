@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.SpaceTimePositivity.positive_raw_variance_form_paper

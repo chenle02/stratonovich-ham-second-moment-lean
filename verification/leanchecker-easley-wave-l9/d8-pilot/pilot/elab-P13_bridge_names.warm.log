@@ -1,0 +1,36 @@
+@Lp.toTemperedDistributionCLM : {E : Type u_1} →
+  (F : Type u_2) →
+    [inst : NormedAddCommGroup E] →
+      [inst_1 : NormedSpace ℝ E] →
+        [inst_2 : NormedAddCommGroup F] →
+          [inst_3 : NormedSpace ℂ F] →
+            [CompleteSpace F] →
+              [inst_5 : MeasurableSpace E] →
+                [BorelSpace E] →
+                  (μ : autoParam (Measure E) Lp.toTemperedDistributionCLM._auto_1) →
+                    [μ.HasTemperateGrowth] → (p : ENNReal) → [hp : Fact (1 ≤ p)] → ↥(Lp F p μ) →L[ℂ] 𝓢'(E, F)
+@Lp.ker_toTemperedDistributionCLM_eq_bot : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup E]
+  [inst_1 : NormedSpace ℝ E] [inst_2 : NormedAddCommGroup F] [inst_3 : NormedSpace ℂ F] [inst_4 : CompleteSpace F]
+  [inst_5 : MeasurableSpace E] [inst_6 : BorelSpace E] {μ : Measure E} [hμ : μ.HasTemperateGrowth]
+  [FiniteDimensional ℝ E] [IsLocallyFiniteMeasure μ] {p : ENNReal} [hp : Fact (1 ≤ p)],
+  (↑(Lp.toTemperedDistributionCLM F μ p)).ker = ⊥
+@lineDerivOp_apply_apply : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℝ E]
+  [inst_2 : AddCommGroup F] [inst_3 : Module ℂ F] [inst_4 : TopologicalSpace F] [inst_5 : IsTopologicalAddGroup F]
+  [inst_6 : ContinuousConstSMul ℂ F] (f : 𝓢'(E, F)) (g : 𝓢(E, ℂ)) (m : E), (∂_{m} f) g = f (-∂_{m} g)
+@lineDeriv_eq_fourierMultiplierCLM : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup E]
+  [inst_1 : NormedAddCommGroup F] [inst_2 : InnerProductSpace ℝ E] [inst_3 : NormedSpace ℂ F]
+  [inst_4 : FiniteDimensional ℝ E] [inst_5 : MeasurableSpace E] [inst_6 : BorelSpace E] (m : E) (f : 𝓢'(E, F)),
+  ∂_{m} f = (2 * ↑Real.pi * Complex.I) • (fourierMultiplierCLM F fun x => ↑(inner ℝ x m)) f
+@memSobolev_zero_iff_exists_fourier : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup E]
+  [inst_1 : NormedAddCommGroup F] [inst_2 : InnerProductSpace ℝ E] [inst_3 : FiniteDimensional ℝ E]
+  [inst_4 : MeasurableSpace E] [inst_5 : BorelSpace E] [inst_6 : InnerProductSpace ℂ F] [inst_7 : CompleteSpace F]
+  {f : 𝓢'(E, F)}, MemSobolev 0 2 f ↔ ∃ f', FourierTransform.fourier f = Lp.toTemperedDistribution f'
+@Lp.fourier_toTemperedDistribution_eq : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup E]
+  [inst_1 : MeasurableSpace E] [inst_2 : BorelSpace E] [inst_3 : NormedAddCommGroup F] [inst_4 : InnerProductSpace ℂ F]
+  [inst_5 : CompleteSpace F] [inst_6 : InnerProductSpace ℝ E] [inst_7 : FiniteDimensional ℝ E] (f : ↥(Lp F 2 volume)),
+  FourierTransform.fourier (Lp.toTemperedDistribution f) = Lp.toTemperedDistribution (FourierTransform.fourier f)
+@SchwartzMap.toLp_fourier_eq : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup E]
+  [inst_1 : MeasurableSpace E] [inst_2 : BorelSpace E] [inst_3 : NormedAddCommGroup F] [inst_4 : InnerProductSpace ℂ F]
+  [inst_5 : CompleteSpace F] [inst_6 : InnerProductSpace ℝ E] [inst_7 : FiniteDimensional ℝ E] (f : 𝓢(E, F)),
+  FourierTransform.fourier (f.toLp 2 volume) = (FourierTransform.fourier f).toLp 2 volume
+MEASURE P13_bridge_names.warm rc=0 wall_s=7.56 maxrss_kb=3306500

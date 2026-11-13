@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.OccupationCeilingFinite.R0_le_of_st_paper

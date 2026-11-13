@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.SpatialFourLinear.spatial_homogeneous_bound_paper

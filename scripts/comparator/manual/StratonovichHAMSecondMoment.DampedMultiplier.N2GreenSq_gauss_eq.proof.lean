@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.DampedMultiplier.N2GreenSq_gauss_eq

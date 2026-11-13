@@ -1,0 +1,15 @@
+module
+import StratonovichHAMAudit.PhaseResponse
+set_option pp.all true
+#check @StratonovichHAMAudit.PhaseResponse.rough_phase_choice
+#check @StratonovichHAMAudit.PhaseResponse.balanced_phase
+#check @StratonovichHAMAudit.PhaseResponse.energy_boundary
+#check @StratonovichHAMAudit.PhaseResponse.four_component_gram
+#check @StratonovichHAMAudit.PhaseResponse.two_frequency_average
+#check @StratonovichHAMAudit.PhaseResponse.frequency_window
+#print axioms StratonovichHAMAudit.PhaseResponse.rough_phase_choice
+#print axioms StratonovichHAMAudit.PhaseResponse.balanced_phase
+#print axioms StratonovichHAMAudit.PhaseResponse.energy_boundary
+#print axioms StratonovichHAMAudit.PhaseResponse.four_component_gram
+#print axioms StratonovichHAMAudit.PhaseResponse.two_frequency_average
+#print axioms StratonovichHAMAudit.PhaseResponse.frequency_window

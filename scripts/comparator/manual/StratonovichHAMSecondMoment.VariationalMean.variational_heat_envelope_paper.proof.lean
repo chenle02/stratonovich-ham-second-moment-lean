@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.VariationalMean.variational_heat_envelope_paper

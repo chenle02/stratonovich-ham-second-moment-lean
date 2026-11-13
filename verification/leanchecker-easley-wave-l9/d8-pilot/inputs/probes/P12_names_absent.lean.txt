@@ -1,0 +1,15 @@
+import Mathlib
+/-! Expected to FAIL on each line: names that a full D8 would need and Mathlib lacks. -/
+#check @MeasureTheory.SobolevSpace
+#check @MeasureTheory.MemW1p
+#check @HasWeakDeriv
+#check @ClosedQuadraticForm
+#check @LinearPMap.ofClosedForm
+#check @Rellich
+#check @IsCompactOperator.rellich
+#check @ContinuousLinearMap.IsHilbertSchmidt
+#check @LinearPMap.spectrum
+#check @LinearPMap.resolvent
+#check @courantFischer
+#check @ContinuousLinearMap.iInf_rayleigh_eq_minmax
+#check @LinearPMap.cfc

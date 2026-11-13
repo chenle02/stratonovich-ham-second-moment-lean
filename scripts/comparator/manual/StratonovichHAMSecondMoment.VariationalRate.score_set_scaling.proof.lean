@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.VariationalRate.score_set_scaling

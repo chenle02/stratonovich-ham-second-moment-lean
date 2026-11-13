@@ -1,0 +1,721 @@
+module
+
+/-
+Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
+
+Finite Wick (Isserlis) formula: a reusable foundation (a D1 slice; no manuscript
+label of its own; nothing supplied).
+
+Source: the Wick step of the proof of `L:terminal-wick` in the main TeX file
+`notes/notes_stratonovich_ham_second_moment.tex` at revision a284420 (lemma
+statement lines 3600-3645, the formula `E:terminal-wick-formula` at 3619-3622,
+"each pairing has coefficient one" and "if `m+n` is odd, the expectation is
+zero" at 3638; proof lines 3662-3675 for the Wick step, 3651-3656 for the moment
+bound, 3693-3695 for nonnegativity and monotonicity).  The terminal-chain
+integrals themselves are in `TerminalWick`.
+
+Formalized (all proved):
+* Pairings (`pairings S`): fixed-point-free involutions of a finite set `S` of a
+  linearly ordered finite type, normalized to the identity off `S`; one product
+  factor per unordered pair (`pairWeight`), coefficient one; pairing sums
+  `wickSum c S`.
+* Combinatorics: the recursion along the partner of the least element
+  (`wickSum_eq_sum_erase`); `(2k-1)!!` pairings of a `2k`-set
+  (`card_pairings_even`), none of an odd set (`card_pairings_odd`,
+  `wickSum_odd`); `|Σ_D ∏ c| ≤ (2k-1)!! V^k` when `|c| ≤ V` (`wickSum_abs_le`);
+  nonnegativity (`wickSum_nonneg`) and entrywise monotonicity for `0 ≤ c₁ ≤ c₂`
+  (`wickSum_mono`).
+* Gaussian side: for `x = A g`, `g ~ stdPi N`, any real square `A`,
+  `E ∏_{i ∈ S} x_{j(i)} = Σ_D ∏ (A Aᵀ)_{j(a) j(b)}` (`wick_stdPi`); for
+  `x ~ multivariateGaussian 0 K`, `K ⪰ 0` (`wick_multivariateGaussian`), on a
+  probability space through `HasLaw` (`wick_hasLaw`), and for a centered real
+  Gaussian field (`CenteredGaussianField`, `.wick`, `.wick_univ`,
+  `.wick_append`), with the integrability of every monomial.  Odd orders vanish
+  by `wickSum_odd`.  The variance bound `|K(x,y)| ≤ V` (`.abs_le`) and
+  `E(∏_{a<n} W(p_a))² ≤ (2n-1)!! V^n` (`.sq_moment_le`).
+
+Proof route (differs from the TeX): the Gaussian identity is proved by the Stein
+recursion `E[g_e F(g)] = E[∂_e F(g)]` (`GaussianIBP.integral_coord_mul_eq_of_growth`)
+applied to `x = √K g` (Mathlib defines `multivariateGaussian 0 K` as the image
+of `stdGaussian` under `√K`; `map_pi_eq_stdGaussian` identifies `stdGaussian`
+with `stdPi N`), instead of differentiating the moment generating function as in
+TeX lines 3664-3673; the moment bound uses the Wick formula and the count of
+pairings instead of Hölder's inequality (lines 3651-3656); the bounds are the
+same.  Lemmas marked "Auxiliary" serve only this Lean route.
+
+Implicit hypotheses made explicit: `K ⪰ 0` (Mathlib's `multivariateGaussian 0 K`
+is the Dirac mass at `0` otherwise), and every integral conclusion comes with
+the integrability of its integrand.  The double factorial is `Nat.doubleFactorial`
+with `(2·0-1)!! = 0!! = 1` (natural subtraction), the empty-product convention of
+the TeX for `n = 0`.
+-/
+public import Mathlib
+public import StratonovichHAMSecondMoment.GaussianIBP
+
+@[expose] public section
+
+noncomputable section
+
+set_option autoImplicit false
+
+open Finset
+
+namespace StratonovichHAMSecondMoment.FiniteWick
+
+variable {ι : Type*} [Fintype ι] [LinearOrder ι]
+
+/-- The pairings (perfect matchings) of a finite set `S`, encoded as
+fixed-point-free involutions of `S`: maps `p : ι → ι` with `p x ∈ S`, `p x ≠ x`,
+`p (p x) = x` for `x ∈ S`, normalized by `p x = x` off `S` (so that each pairing
+of `S` is one function).  For `S` all of `Fin (2k)` these are the pair partitions
+`D ∈ Π_k` of the TeX (main TeX lines 3619-3622, 3670-3673). -/
+def pairings (S : Finset ι) : Finset (ι → ι) :=
+  univ.filter fun p => (∀ x ∈ S, p x ∈ S ∧ p x ≠ x ∧ p (p x) = x) ∧ ∀ x, x ∉ S → p x = x
+
+/-- The weight `∏_{{a,b} ∈ D} c(a,b)` of a pairing: one factor per pair, taken
+at its smaller element `a < p a` (so each unordered pair contributes exactly once,
+with coefficient one). -/
+def pairWeight (c : ι → ι → ℝ) (S : Finset ι) (p : ι → ι) : ℝ :=
+  ∏ x ∈ S with x < p x, c x (p x)
+
+/-- The pairing sum `Σ_{D} ∏_{{a,b} ∈ D} c(a,b)` over all pairings of `S`. -/
+def wickSum (c : ι → ι → ℝ) (S : Finset ι) : ℝ :=
+  ∑ p ∈ pairings S, pairWeight c S p
+
+/-- Membership in `pairings S`. -/
+theorem mem_pairings {S : Finset ι} {p : ι → ι} :
+    p ∈ pairings S ↔ (∀ x ∈ S, p x ∈ S ∧ p x ≠ x ∧ p (p x) = x) ∧ ∀ x, x ∉ S → p x = x := by
+  simp [pairings]
+
+/-- The empty set has exactly one pairing, the identity. -/
+theorem pairings_empty : pairings (∅ : Finset ι) = {id} := by
+  ext p
+  rw [mem_pairings, Finset.mem_singleton]
+  constructor
+  · rintro ⟨-, h⟩; funext x; exact h x (Finset.notMem_empty x)
+  · rintro rfl; exact ⟨fun x hx => absurd hx (Finset.notMem_empty x), fun x _ => rfl⟩
+
+/-- The empty pairing sum is `1` (empty product). -/
+theorem wickSum_empty (c : ι → ι → ℝ) : wickSum c ∅ = 1 := by
+  simp [wickSum, pairings_empty, pairWeight]
+
+/-- Auxiliary (Lean proof route): remove the pair `{a, b}` from `p`, fixing `a` and `b`. -/
+def unpair (a b : ι) (p : ι → ι) : ι → ι := Function.update (Function.update p a a) b b
+
+/-- Auxiliary (Lean proof route): add the pair `{a, b}` to `q`. -/
+def pairUp (a b : ι) (q : ι → ι) : ι → ι := Function.update (Function.update q a b) b a
+
+omit [Fintype ι] in
+/-- Auxiliary: value of `unpair` at `a`. -/
+theorem unpair_a {a b : ι} (h : a ≠ b) (p : ι → ι) : unpair a b p a = a := by
+  simp [unpair, h]
+omit [Fintype ι] in
+/-- Auxiliary: value of `unpair` at `b`. -/
+theorem unpair_b (a b : ι) (p : ι → ι) : unpair a b p b = b := by simp [unpair]
+omit [Fintype ι] in
+/-- Auxiliary: `unpair` leaves the other points unchanged. -/
+theorem unpair_other {a b x : ι} (ha : x ≠ a) (hb : x ≠ b) (p : ι → ι) : unpair a b p x = p x := by
+  simp [unpair, ha, hb]
+omit [Fintype ι] in
+/-- Auxiliary: value of `pairUp` at `a`. -/
+theorem pairUp_a {a b : ι} (h : a ≠ b) (q : ι → ι) : pairUp a b q a = b := by
+  simp [pairUp, h]
+omit [Fintype ι] in
+/-- Auxiliary: value of `pairUp` at `b`. -/
+theorem pairUp_b (a b : ι) (q : ι → ι) : pairUp a b q b = a := by simp [pairUp]
+omit [Fintype ι] in
+/-- Auxiliary: `pairUp` leaves the other points unchanged. -/
+theorem pairUp_other {a b x : ι} (ha : x ≠ a) (hb : x ≠ b) (q : ι → ι) : pairUp a b q x = q x := by
+  simp [pairUp, ha, hb]
+
+/-- Auxiliary (Lean proof route): the pairings of `S` in which the least
+element `a` is paired with a fixed `b` correspond bijectively (by `unpair`,
+`pairUp`) to the pairings of `S \ {a, b}`, and the weight factors off
+`c(a, b)`. -/
+theorem fiber_sum (c : ι → ι → ℝ) (S : Finset ι) (a b : ι) (ha : a ∈ S)
+    (hmin : ∀ x ∈ S, a ≤ x) (hb : b ∈ S.erase a) :
+    ∑ p ∈ pairings S with p a = b, pairWeight c S p =
+      c a b * wickSum c ((S.erase a).erase b) := by
+  have hab : a ≠ b := fun h => (Finset.mem_erase.1 hb).1 h.symm
+  have hbS : b ∈ S := (Finset.mem_erase.1 hb).2
+  have hlt : a < b := lt_of_le_of_ne (hmin b hbS) hab
+  set S'' := (S.erase a).erase b with hS''
+  have memS'' : ∀ x, x ∈ S'' ↔ x ∈ S ∧ x ≠ a ∧ x ≠ b := by
+    intro x; simp only [hS'', Finset.mem_erase]; tauto
+  rw [wickSum, Finset.mul_sum]
+  refine Finset.sum_nbij' (unpair a b) (pairUp a b) ?_ ?_ ?_ ?_ ?_
+  · intro p hp
+    simp only [Finset.mem_filter, mem_pairings] at hp
+    obtain ⟨⟨h1, h2⟩, hpa⟩ := hp
+    have hpb : p b = a := by rw [← hpa]; exact (h1 a ha).2.2
+    rw [mem_pairings]
+    refine ⟨fun x hx => ?_, fun x hx => ?_⟩
+    · rw [memS''] at hx
+      obtain ⟨hxS, hxa, hxb⟩ := hx
+      obtain ⟨q1, q2, q3⟩ := h1 x hxS
+      have hpxa : p x ≠ a := fun h => hxb (by rw [← q3, h, hpa])
+      have hpxb : p x ≠ b := fun h => hxa (by rw [← q3, h, hpb])
+      rw [unpair_other hxa hxb, unpair_other hpxa hpxb, memS'']
+      exact ⟨⟨q1, hpxa, hpxb⟩, q2, q3⟩
+    · rw [memS''] at hx
+      by_cases hxa : x = a
+      · subst hxa; exact unpair_a hab p
+      by_cases hxb : x = b
+      · subst hxb; exact unpair_b _ _ p
+      rw [unpair_other hxa hxb]
+      exact h2 x (fun h => hx ⟨h, hxa, hxb⟩)
+  · intro q hq
+    rw [mem_pairings] at hq
+    obtain ⟨h1, h2⟩ := hq
+    have hqa : q a = a := h2 a (by rw [memS'']; tauto)
+    have hqb : q b = b := h2 b (by rw [memS'']; tauto)
+    simp only [Finset.mem_filter, mem_pairings]
+    refine ⟨⟨fun x hx => ?_, fun x hx => ?_⟩, pairUp_a hab q⟩
+    · by_cases hxa : x = a
+      · subst hxa; rw [pairUp_a hab, pairUp_b]; exact ⟨hbS, Ne.symm hab, rfl⟩
+      by_cases hxb : x = b
+      · subst hxb; rw [pairUp_b, pairUp_a hab]; exact ⟨ha, hab, rfl⟩
+      have hx'' : x ∈ S'' := (memS'' x).2 ⟨hx, hxa, hxb⟩
+      obtain ⟨q1, q2, q3⟩ := h1 x hx''
+      rw [memS''] at q1
+      rw [pairUp_other hxa hxb, pairUp_other q1.2.1 q1.2.2]
+      exact ⟨q1.1, q2, q3⟩
+    · have hxa : x ≠ a := fun h => hx (h ▸ ha)
+      have hxb : x ≠ b := fun h => hx (h ▸ hbS)
+      rw [pairUp_other hxa hxb]
+      exact h2 x (fun h => hx ((memS'' x).1 h).1)
+  · intro p hp
+    simp only [Finset.mem_filter, mem_pairings] at hp
+    obtain ⟨⟨h1, -⟩, hpa⟩ := hp
+    have hpb : p b = a := by rw [← hpa]; exact (h1 a ha).2.2
+    funext x
+    by_cases hxa : x = a
+    · subst hxa; rw [pairUp_a hab, hpa]
+    by_cases hxb : x = b
+    · subst hxb; rw [pairUp_b, hpb]
+    rw [pairUp_other hxa hxb, unpair_other hxa hxb]
+  · intro q hq
+    simp only [mem_pairings] at hq
+    have hqa : q a = a := hq.2 a (by rw [memS'']; tauto)
+    have hqb : q b = b := hq.2 b (by rw [memS'']; tauto)
+    funext x
+    by_cases hxa : x = a
+    · subst hxa; rw [unpair_a hab, hqa]
+    by_cases hxb : x = b
+    · subst hxb; rw [unpair_b, hqb]
+    rw [unpair_other hxa hxb, pairUp_other hxa hxb]
+  · intro p hp
+    simp only [Finset.mem_filter, mem_pairings] at hp
+    obtain ⟨⟨h1, -⟩, hpa⟩ := hp
+    have hpb : p b = a := by rw [← hpa]; exact (h1 a ha).2.2
+    have hset : S.filter (fun x => x < p x) =
+        insert a (S''.filter (fun x => x < unpair a b p x)) := by
+      ext x
+      simp only [Finset.mem_filter, Finset.mem_insert]
+      constructor
+      · rintro ⟨hxS, hx⟩
+        by_cases hxa : x = a
+        · exact Or.inl hxa
+        right
+        have hxb : x ≠ b := by
+          rintro rfl; rw [hpb] at hx; exact absurd hx (not_lt.2 hlt.le)
+        rw [memS'', unpair_other hxa hxb]
+        exact ⟨⟨hxS, hxa, hxb⟩, hx⟩
+      · rintro (rfl | ⟨hx, hlt'⟩)
+        · exact ⟨ha, by rw [hpa]; exact hlt⟩
+        · rw [memS''] at hx
+          rw [unpair_other hx.2.1 hx.2.2] at hlt'
+          exact ⟨hx.1, hlt'⟩
+    have hnot : a ∉ S''.filter (fun x => x < unpair a b p x) := by
+      simp [memS'']
+    unfold pairWeight
+    rw [hset, Finset.prod_insert hnot, hpa]
+    congr 1
+    refine Finset.prod_congr rfl fun x hx => ?_
+    simp only [Finset.mem_filter, memS''] at hx
+    rw [unpair_other hx.1.2.1 hx.1.2.2]
+
+/-- The pairing recursion: expanding along the partner `b` of the least element
+`a` of `S`, `Σ_D ∏ c = Σ_{b ∈ S \ {a}} c(a,b) Σ_{D'} ∏ c` with `D'` the
+pairings of `S \ {a, b}`. -/
+theorem wickSum_eq_sum_erase (c : ι → ι → ℝ) (S : Finset ι) (a : ι) (ha : a ∈ S)
+    (hmin : ∀ x ∈ S, a ≤ x) :
+    wickSum c S = ∑ b ∈ S.erase a, c a b * wickSum c ((S.erase a).erase b) := by
+  have hmaps : ∀ p ∈ pairings S, p a ∈ S.erase a := by
+    intro p hp
+    rw [mem_pairings] at hp
+    obtain ⟨h1, h2, -⟩ := hp.1 a ha
+    exact Finset.mem_erase.2 ⟨h2, h1⟩
+  rw [wickSum, ← Finset.sum_fiberwise_of_maps_to hmaps]
+  exact Finset.sum_congr rfl fun b hb => fiber_sum c S a b ha hmin hb
+
+
+omit [Fintype ι] in
+/-- Auxiliary: removing two distinct elements lowers the cardinality by two. -/
+theorem card_erase_erase {S : Finset ι} {a b : ι} (ha : a ∈ S) (hb : b ∈ S.erase a) :
+    ((S.erase a).erase b).card = S.card - 2 := by
+  rw [Finset.card_erase_of_mem hb, Finset.card_erase_of_mem ha]; omega
+
+/-- A set of odd cardinality has no pairing: the pairing sum is `0`. -/
+theorem wickSum_odd (c : ι → ι → ℝ) (k : ℕ) :
+    ∀ S : Finset ι, S.card = 2 * k + 1 → wickSum c S = 0 := by
+  induction k with
+  | zero =>
+    intro S hS
+    have hne : S.Nonempty := Finset.card_pos.1 (by omega)
+    rw [wickSum_eq_sum_erase c S _ (S.min'_mem hne) (fun x hx => S.min'_le x hx)]
+    have : S.erase (S.min' hne) = ∅ := by
+      rw [← Finset.card_eq_zero, Finset.card_erase_of_mem (S.min'_mem hne)]; omega
+    simp [this]
+  | succ k ih =>
+    intro S hS
+    have hne : S.Nonempty := Finset.card_pos.1 (by omega)
+    rw [wickSum_eq_sum_erase c S _ (S.min'_mem hne) (fun x hx => S.min'_le x hx)]
+    refine Finset.sum_eq_zero fun b hb => ?_
+    rw [ih _ (by rw [card_erase_erase (S.min'_mem hne) hb]; omega), mul_zero]
+
+/-- Auxiliary: with all weights `1`, the pairing sum counts the pairings. -/
+theorem wickSum_const_one (S : Finset ι) :
+    wickSum (fun _ _ => 1) S = (pairings S).card := by
+  simp [wickSum, pairWeight]
+
+/-- If `|c(a,b)| ≤ V` for all `a, b`, then the pairing sum over a set of `2k`
+elements is at most `(2k-1)!! V^k` in absolute value (there are `(2k-1)!!`
+pairings, each a product of `k` factors). -/
+theorem wickSum_abs_le (c : ι → ι → ℝ) (V : ℝ) (hc : ∀ x y, |c x y| ≤ V) (k : ℕ) :
+    ∀ S : Finset ι, S.card = 2 * k → |wickSum c S| ≤ ((2 * k - 1).doubleFactorial : ℝ) * V ^ k := by
+  induction k with
+  | zero =>
+    intro S hS
+    obtain rfl : S = ∅ := Finset.card_eq_zero.1 (by omega)
+    rw [wickSum_empty]; simp
+  | succ k ih =>
+    intro S hS
+    have hne : S.Nonempty := Finset.card_pos.1 (by omega)
+    set a := S.min' hne
+    have ha : a ∈ S := S.min'_mem hne
+    have hV : 0 ≤ V := (abs_nonneg _).trans (hc a a)
+    rw [wickSum_eq_sum_erase c S a ha (fun x hx => S.min'_le x hx)]
+    refine (Finset.abs_sum_le_sum_abs _ _).trans ?_
+    have hterm : ∀ b ∈ S.erase a, |c a b * wickSum c ((S.erase a).erase b)| ≤
+        V * (((2 * k - 1).doubleFactorial : ℝ) * V ^ k) := by
+      intro b hb
+      rw [abs_mul]
+      exact mul_le_mul (hc a b) (ih _ (by rw [card_erase_erase ha hb]; omega))
+        (abs_nonneg _) hV
+    refine (Finset.sum_le_sum hterm).trans ?_
+    rw [Finset.sum_const, Finset.card_erase_of_mem ha, hS, nsmul_eq_mul]
+    have hdf : (2 * (k + 1) - 1).doubleFactorial = (2 * k + 1) * (2 * k - 1).doubleFactorial := by
+      rcases k with _ | k
+      · simp
+      · rw [show 2 * (k + 1 + 1) - 1 = (2 * k + 1) + 2 by omega, Nat.doubleFactorial_add_two,
+          show 2 * (k + 1) - 1 = 2 * k + 1 by omega]; ring
+    rw [hdf, show 2 * (k + 1) - 1 = 2 * k + 1 by omega]
+    push_cast
+    ring_nf
+    exact le_rfl
+
+/-- A set of `2k` elements has `(2k-1)!!` pairings (`Nat.doubleFactorial`; `(-1)!! = 0!! = 1`). -/
+theorem card_pairings_even (k : ℕ) (S : Finset ι) (hS : S.card = 2 * k) :
+    (pairings S).card = (2 * k - 1).doubleFactorial := by
+  have h : ∀ k : ℕ, ∀ S : Finset ι, S.card = 2 * k →
+      wickSum (fun _ _ => 1) S = ((2 * k - 1).doubleFactorial : ℝ) := by
+    intro k
+    induction k with
+    | zero =>
+      intro S hS
+      obtain rfl : S = ∅ := Finset.card_eq_zero.1 (by omega)
+      rw [wickSum_empty]; simp
+    | succ k ih =>
+      intro S hS
+      have hne : S.Nonempty := Finset.card_pos.1 (by omega)
+      have ha : S.min' hne ∈ S := S.min'_mem hne
+      rw [wickSum_eq_sum_erase _ S _ ha (fun x hx => S.min'_le x hx)]
+      rw [Finset.sum_congr rfl fun b hb => by
+        rw [ih _ (by rw [card_erase_erase ha hb]; omega), one_mul]]
+      rw [Finset.sum_const, Finset.card_erase_of_mem ha, hS, nsmul_eq_mul]
+      have hdf : (2 * (k + 1) - 1).doubleFactorial = (2 * k + 1) * (2 * k - 1).doubleFactorial := by
+        rcases k with _ | k
+        · simp
+        · rw [show 2 * (k + 1 + 1) - 1 = (2 * k + 1) + 2 by omega, Nat.doubleFactorial_add_two,
+            show 2 * (k + 1) - 1 = 2 * k + 1 by omega]; ring
+      rw [hdf, show 2 * (k + 1) - 1 = 2 * k + 1 by omega]
+      push_cast; ring
+  have := h k S hS
+  rw [wickSum_const_one] at this
+  exact_mod_cast this
+
+/-- A set of odd cardinality has no pairings. -/
+theorem card_pairings_odd (k : ℕ) (S : Finset ι) (hS : S.card = 2 * k + 1) :
+    pairings S = ∅ := by
+  have := wickSum_odd (fun _ _ => (1 : ℝ)) k S hS
+  rw [wickSum_const_one] at this
+  exact Finset.card_eq_zero.1 (by exact_mod_cast this)
+
+/-- Nonnegative weights give a nonnegative pairing sum. -/
+theorem wickSum_nonneg (c : ι → ι → ℝ) (hc : ∀ x y, 0 ≤ c x y) (S : Finset ι) :
+    0 ≤ wickSum c S :=
+  Finset.sum_nonneg fun p _ => Finset.prod_nonneg fun x _ => hc x (p x)
+
+/-- Entrywise monotonicity: `0 ≤ c₁ ≤ c₂` implies `Σ_D ∏ c₁ ≤ Σ_D ∏ c₂`. -/
+theorem wickSum_mono (c₁ c₂ : ι → ι → ℝ) (h0 : ∀ x y, 0 ≤ c₁ x y) (h12 : ∀ x y, c₁ x y ≤ c₂ x y)
+    (S : Finset ι) : wickSum c₁ S ≤ wickSum c₂ S :=
+  Finset.sum_le_sum fun p _ =>
+    Finset.prod_le_prod₀ (fun x _ => h0 x (p x)) fun x _ => h12 x (p x)
+
+
+section Gauss
+open MeasureTheory ProbabilityTheory StratonovichHAMSecondMoment.GaussianIBP Matrix
+variable {N : ℕ}
+
+/-- Auxiliary (Lean proof route): the growth constant `1 + Σ_{c,k} |A_{ck}|` of `g ↦ A g`. -/
+def matBound (A : Matrix (Fin N) (Fin N) ℝ) : ℝ := 1 + ∑ c, ∑ k, |A c k|
+
+omit [Fintype ι] [LinearOrder ι] in
+/-- Auxiliary: `1 ≤ matBound A`. -/
+theorem one_le_matBound (A : Matrix (Fin N) (Fin N) ℝ) : 1 ≤ matBound A := by
+  unfold matBound
+  have : 0 ≤ ∑ c, ∑ k, |A c k| := Finset.sum_nonneg fun _ _ => Finset.sum_nonneg fun _ _ => abs_nonneg _
+  linarith
+
+omit [Fintype ι] [LinearOrder ι] in
+/-- Auxiliary: coordinates of `A g`. -/
+theorem mulVec_apply_eq (A : Matrix (Fin N) (Fin N) ℝ) (g : Fin N → ℝ) (c : Fin N) :
+    (A *ᵥ g) c = ∑ k, A c k * g k := rfl
+
+omit [Fintype ι] [LinearOrder ι] in
+/-- Auxiliary: `|(A g)_c| ≤ M (1 + ‖g‖)` (sup norm). -/
+theorem abs_mulVec_le (A : Matrix (Fin N) (Fin N) ℝ) (g : Fin N → ℝ) (c : Fin N) :
+    |(A *ᵥ g) c| ≤ matBound A * (1 + ‖g‖) := by
+  rw [mulVec_apply_eq]
+  have h1 : |∑ k, A c k * g k| ≤ (∑ k, |A c k|) * ‖g‖ := by
+    refine (Finset.abs_sum_le_sum_abs _ _).trans ?_
+    rw [Finset.sum_mul]
+    refine Finset.sum_le_sum fun k _ => ?_
+    rw [abs_mul]
+    refine mul_le_mul_of_nonneg_left ?_ (abs_nonneg _)
+    have := norm_le_pi_norm g k
+    rwa [Real.norm_eq_abs] at this
+  have h2 : ∑ k, |A c k| ≤ ∑ c', ∑ k, |A c' k| :=
+    Finset.single_le_sum (f := fun c' => ∑ k, |A c' k|)
+      (fun _ _ => Finset.sum_nonneg fun _ _ => abs_nonneg _) (Finset.mem_univ c)
+  have h3 : 0 ≤ ∑ k, |A c k| := Finset.sum_nonneg fun _ _ => abs_nonneg _
+  have hg : 0 ≤ ‖g‖ := norm_nonneg _
+  unfold matBound
+  nlinarith
+
+omit [Fintype ι] [LinearOrder ι] in
+/-- Auxiliary: polynomial growth of a monomial in the coordinates of `A g`. -/
+theorem abs_prod_mulVec_le (A : Matrix (Fin N) (Fin N) ℝ) (j : ι → Fin N) (T : Finset ι)
+    (g : Fin N → ℝ) :
+    |∏ i ∈ T, (A *ᵥ g) (j i)| ≤ matBound A ^ T.card * (1 + ‖g‖) ^ T.card := by
+  rw [Finset.abs_prod, ← mul_pow, ← Finset.prod_const]
+  exact Finset.prod_le_prod₀ (fun _ _ => abs_nonneg _) fun i _ => abs_mulVec_le A g (j i)
+
+omit [Fintype ι] [LinearOrder ι] in
+/-- Auxiliary: continuity of a coordinate of `A g`. -/
+theorem continuous_mulVec_apply (A : Matrix (Fin N) (Fin N) ℝ) (c : Fin N) :
+    Continuous fun g : Fin N → ℝ => (A *ᵥ g) c := by
+  simp only [mulVec_apply_eq]
+  exact continuous_finsetSum _ fun k _ => continuous_const.mul (continuous_apply k)
+
+omit [Fintype ι] [LinearOrder ι] in
+/-- Auxiliary: continuity of a monomial in the coordinates of `A g`. -/
+theorem continuous_prod_mulVec (A : Matrix (Fin N) (Fin N) ℝ) (j : ι → Fin N) (T : Finset ι) :
+    Continuous fun g : Fin N → ℝ => ∏ i ∈ T, (A *ᵥ g) (j i) :=
+  continuous_finsetProd _ fun i _ => continuous_mulVec_apply A (j i)
+
+omit [Fintype ι] [LinearOrder ι] in
+/-- Auxiliary: `∂_e (A g)_c = A_{ce}` on every coordinate slice. -/
+theorem hasDerivAt_mulVec_update (A : Matrix (Fin N) (Fin N) ℝ) (x : Fin N → ℝ) (e c : Fin N)
+    (t : ℝ) : HasDerivAt (fun s => (A *ᵥ Function.update x e s) c) (A c e) t := by
+  have h := hasDerivAt_pi.1 (hasDerivAt_update x e t)
+  simp only [mulVec_apply_eq]
+  have := HasDerivAt.fun_sum (u := Finset.univ) (fun k _ => (h k).const_mul (A c k))
+  convert this using 1
+  simp [Pi.single_apply]
+
+/-- Auxiliary (Lean proof route): the partial derivative in the coordinate `e`
+of `g ↦ ∏_{i ∈ T} (A g)_{j(i)}`, namely `Σ_{b ∈ T} A_{j(b) e} ∏_{i ∈ T \ {b}} (A g)_{j(i)}`. -/
+def monoDeriv (A : Matrix (Fin N) (Fin N) ℝ) (j : ι → Fin N) (T : Finset ι) (e : Fin N)
+    (y : Fin N → ℝ) : ℝ :=
+  ∑ b ∈ T, (∏ i ∈ T.erase b, (A *ᵥ y) (j i)) * A (j b) e
+
+omit [Fintype ι] in
+/-- Auxiliary: `monoDeriv` is the slice derivative of the monomial. -/
+theorem hasDerivAt_prod_update (A : Matrix (Fin N) (Fin N) ℝ) (j : ι → Fin N) (T : Finset ι)
+    (e : Fin N) (x : Fin N → ℝ) (t : ℝ) :
+    HasDerivAt (fun s => ∏ i ∈ T, (A *ᵥ Function.update x e s) (j i))
+      (monoDeriv A j T e (Function.update x e t)) t := by
+  have := HasDerivAt.fun_finsetProd (u := T) (x := t)
+    (f := fun i s => (A *ᵥ Function.update x e s) (j i))
+    (fun i _ => hasDerivAt_mulVec_update A x e (j i) t)
+  convert this using 1
+  simp only [monoDeriv, smul_eq_mul]
+
+omit [Fintype ι] in
+/-- Auxiliary: polynomial growth of `monoDeriv`. -/
+theorem abs_monoDeriv_le (A : Matrix (Fin N) (Fin N) ℝ) (j : ι → Fin N) (T : Finset ι)
+    (e : Fin N) (y : Fin N → ℝ) :
+    |monoDeriv A j T e y| ≤
+      (T.card * matBound A * matBound A ^ T.card) * (1 + ‖y‖) ^ T.card := by
+  unfold monoDeriv
+  have hM := one_le_matBound A
+  have hy : 1 ≤ 1 + ‖y‖ := by linarith [norm_nonneg y]
+  refine (Finset.abs_sum_le_sum_abs _ _).trans ?_
+  have hterm : ∀ b ∈ T, |(∏ i ∈ T.erase b, (A *ᵥ y) (j i)) * A (j b) e| ≤
+      matBound A * matBound A ^ T.card * (1 + ‖y‖) ^ T.card := by
+    intro b hb
+    rw [abs_mul]
+    have h1 := abs_prod_mulVec_le A j (T.erase b) y
+    have hc : (T.erase b).card ≤ T.card := Finset.card_erase_le
+    have h2 : matBound A ^ (T.erase b).card ≤ matBound A ^ T.card := pow_le_pow_right₀ hM hc
+    have h3 : (1 + ‖y‖) ^ (T.erase b).card ≤ (1 + ‖y‖) ^ T.card := pow_le_pow_right₀ hy hc
+    have h4 : |A (j b) e| ≤ matBound A := by
+      unfold matBound
+      have := Finset.single_le_sum (f := fun k => |A (j b) k|) (fun _ _ => abs_nonneg _)
+        (Finset.mem_univ e)
+      have := Finset.single_le_sum (f := fun c' => ∑ k, |A c' k|)
+        (fun _ _ => Finset.sum_nonneg fun _ _ => abs_nonneg _) (Finset.mem_univ (j b))
+      linarith
+    calc |∏ i ∈ T.erase b, (A *ᵥ y) (j i)| * |A (j b) e|
+        ≤ (matBound A ^ T.card * (1 + ‖y‖) ^ T.card) * matBound A := by
+          refine mul_le_mul (h1.trans (mul_le_mul h2 h3 (by positivity) (by positivity))) h4
+            (abs_nonneg _) (by positivity)
+      _ = matBound A * matBound A ^ T.card * (1 + ‖y‖) ^ T.card := by ring
+  refine (Finset.sum_le_sum hterm).trans ?_
+  rw [Finset.sum_const, nsmul_eq_mul]
+  ring_nf
+  exact le_rfl
+
+omit [Fintype ι] [LinearOrder ι] in
+/-- Every monomial in the coordinates of `A g` is integrable for `g ~ stdPi N`. -/
+theorem integrable_prod_mulVec (A : Matrix (Fin N) (Fin N) ℝ) (j : ι → Fin N) (T : Finset ι) :
+    Integrable (fun g => ∏ i ∈ T, (A *ᵥ g) (j i)) (stdPi N) :=
+  integrable_of_growth (continuous_prod_mulVec A j T).aestronglyMeasurable
+    (abs_prod_mulVec_le A j T)
+
+omit [Fintype ι] in
+/-- Auxiliary: continuity of `monoDeriv`. -/
+theorem continuous_monoDeriv (A : Matrix (Fin N) (Fin N) ℝ) (j : ι → Fin N) (T : Finset ι)
+    (e : Fin N) : Continuous (monoDeriv A j T e) := by
+  unfold monoDeriv
+  exact continuous_finsetSum _ fun b _ => (continuous_prod_mulVec A j _).mul continuous_const
+
+/-- The Wick (Isserlis) formula for `x = A g`, `g ~ N(0, I_N)` (`stdPi N`), any
+real `N × N` matrix `A`: for indices `j : ι → Fin N` and a finite set `S`,
+`E ∏_{i ∈ S} x_{j(i)} = Σ_{D} ∏_{{a,b} ∈ D} (A Aᵀ)_{j(a) j(b)}`.  Proof (Lean
+route, the Stein recursion): integration by parts `E[g_e F(g)] = E[∂_e F(g)]`
+(`GaussianIBP.integral_coord_mul_eq_of_growth`) in every coordinate `e` for the
+least index `a`, then `wickSum_eq_sum_erase`.  The TeX instead differentiates
+the moment generating function (main TeX lines 3664-3673); the conclusion is
+the same. -/
+theorem wick_stdPi (A : Matrix (Fin N) (Fin N) ℝ) (j : ι → Fin N) (n : ℕ) :
+    ∀ S : Finset ι, S.card = n →
+      ∫ g, ∏ i ∈ S, (A *ᵥ g) (j i) ∂stdPi N = wickSum (fun x y => (A * Aᵀ) (j x) (j y)) S := by
+  induction n using Nat.strong_induction_on with
+  | _ n ih =>
+  intro S hS
+  rcases S.eq_empty_or_nonempty with rfl | hne
+  · simp [wickSum_empty]
+  set a := S.min' hne
+  have ha : a ∈ S := S.min'_mem hne
+  set T := S.erase a with hT
+  have hsplit : ∀ g : Fin N → ℝ, ∏ i ∈ S, (A *ᵥ g) (j i) =
+      ∑ e, A (j a) e * (g e * ∏ i ∈ T, (A *ᵥ g) (j i)) := by
+    intro g
+    rw [← Finset.mul_prod_erase S _ ha, mulVec_apply_eq, Finset.sum_mul]
+    refine Finset.sum_congr rfl fun e _ => by ring
+  have hcoord : ∀ e : Fin N, ∫ g, g e * ∏ i ∈ T, (A *ᵥ g) (j i) ∂stdPi N =
+      ∫ g, monoDeriv A j T e g ∂stdPi N := fun e =>
+    (integral_coord_mul_eq_of_growth e _ _ (fun x t => hasDerivAt_prod_update A j T e x t)
+      (continuous_prod_mulVec A j T).aestronglyMeasurable
+      (continuous_monoDeriv A j T e).aestronglyMeasurable
+      (abs_prod_mulVec_le A j T) (abs_monoDeriv_le A j T e)).2.2
+  have hderiv : ∀ e : Fin N, ∫ g, monoDeriv A j T e g ∂stdPi N =
+      ∑ b ∈ T, wickSum (fun x y => (A * Aᵀ) (j x) (j y)) (T.erase b) * A (j b) e := by
+    intro e
+    unfold monoDeriv
+    rw [integral_finsetSum _ fun b _ => (integrable_prod_mulVec A j _).mul_const _]
+    refine Finset.sum_congr rfl fun b hb => ?_
+    rw [integral_mul_const, ih _ ?_ _ rfl]
+    rw [Finset.card_erase_of_mem hb, hT, Finset.card_erase_of_mem ha]
+    have : 0 < S.card := Finset.card_pos.2 hne
+    omega
+  calc ∫ g, ∏ i ∈ S, (A *ᵥ g) (j i) ∂stdPi N
+      = ∫ g, ∑ e, A (j a) e * (g e * ∏ i ∈ T, (A *ᵥ g) (j i)) ∂stdPi N := by
+        simp_rw [hsplit]
+    _ = ∑ e, A (j a) e * ∫ g, g e * ∏ i ∈ T, (A *ᵥ g) (j i) ∂stdPi N := by
+        rw [integral_finsetSum _ fun e _ =>
+          ((integrable_coord_mul_of_growth e (continuous_prod_mulVec A j T).aestronglyMeasurable
+            (abs_prod_mulVec_le A j T)).const_mul _)]
+        exact Finset.sum_congr rfl fun e _ => integral_const_mul _ _
+    _ = ∑ e, A (j a) e * ∑ b ∈ T, wickSum (fun x y => (A * Aᵀ) (j x) (j y)) (T.erase b) * A (j b) e := by
+        simp_rw [hcoord, hderiv]
+    _ = ∑ b ∈ T, (A * Aᵀ) (j a) (j b) * wickSum (fun x y => (A * Aᵀ) (j x) (j y)) (T.erase b) := by
+        simp_rw [Finset.mul_sum, Matrix.mul_apply, Matrix.transpose_apply, Finset.sum_mul]
+        rw [Finset.sum_comm]
+        refine Finset.sum_congr rfl fun b _ => Finset.sum_congr rfl fun e _ => by ring
+    _ = wickSum (fun x y => (A * Aᵀ) (j x) (j y)) S :=
+        (wickSum_eq_sum_erase (fun x y => (A * Aᵀ) (j x) (j y)) S a ha
+          (fun x hx => S.min'_le x hx)).symm
+
+open WithLp
+open scoped MatrixOrder Matrix.Norms.L2Operator
+
+/-- For `K ⪰ 0`, `√K (√K)ᵀ = K` (`CFC.sqrt`). -/
+theorem sqrt_mul_transpose (K : Matrix (Fin N) (Fin N) ℝ) (hK : K.PosSemidef) :
+    CFC.sqrt K * (CFC.sqrt K)ᵀ = K := by
+  have hT : (CFC.sqrt K)ᵀ = CFC.sqrt K := by
+    have := (CFC.sqrt_nonneg K).isSelfAdjoint
+    simpa [IsSelfAdjoint, Matrix.star_eq_conjTranspose] using this
+  rw [hT]
+  exact CFC.sqrt_mul_sqrt_self K hK.nonneg
+
+/-- Expectations under `multivariateGaussian 0 K` (Mathlib's definition: the image
+of `stdGaussian` under `x ↦ √K x`) are expectations of `F(√K g)` under
+`stdPi N`, for continuous `F` (bridge `map_pi_eq_stdGaussian`). -/
+theorem integral_multivariateGaussian_eq (K : Matrix (Fin N) (Fin N) ℝ)
+    {F : EuclideanSpace ℝ (Fin N) → ℝ} (hF : Continuous F) :
+    ∫ x, F x ∂multivariateGaussian 0 K = ∫ g, F (toLp 2 (CFC.sqrt K *ᵥ g)) ∂stdPi N := by
+  rw [multivariateGaussian, ← map_pi_eq_stdGaussian, integral_map (by fun_prop)
+    hF.aestronglyMeasurable, integral_map (by fun_prop) (by fun_prop)]
+  simp [stdPi]
+
+/-- The integrability form of `integral_multivariateGaussian_eq`. -/
+theorem integrable_multivariateGaussian_iff (K : Matrix (Fin N) (Fin N) ℝ)
+    {F : EuclideanSpace ℝ (Fin N) → ℝ} (hF : Continuous F) :
+    Integrable F (multivariateGaussian 0 K) ↔
+      Integrable (fun g => F (toLp 2 (CFC.sqrt K *ᵥ g))) (stdPi N) := by
+  rw [multivariateGaussian, ← map_pi_eq_stdGaussian, integrable_map_measure
+    hF.aestronglyMeasurable (by fun_prop), integrable_map_measure (by fun_prop) (by fun_prop)]
+  simp [stdPi, Function.comp_def]
+
+/-- The Wick (Isserlis) formula for `x ~ multivariateGaussian 0 K`, `K` positive
+semidefinite: every monomial `∏_{i ∈ S} x_{j(i)}` is integrable and
+`E ∏_{i ∈ S} x_{j(i)} = Σ_D ∏_{{a,b} ∈ D} K_{j(a) j(b)}` (zero when `|S|` is
+odd, `wickSum_odd`).  `K ⪰ 0` is needed: otherwise Mathlib's
+`multivariateGaussian 0 K` is the Dirac mass at `0`. -/
+theorem wick_multivariateGaussian (K : Matrix (Fin N) (Fin N) ℝ) (hK : K.PosSemidef)
+    (j : ι → Fin N) (S : Finset ι) :
+    Integrable (fun x : EuclideanSpace ℝ (Fin N) => ∏ i ∈ S, x (j i)) (multivariateGaussian 0 K) ∧
+      ∫ x, ∏ i ∈ S, x (j i) ∂multivariateGaussian 0 K = wickSum (fun a b => K (j a) (j b)) S := by
+  have hc : Continuous fun x : EuclideanSpace ℝ (Fin N) => ∏ i ∈ S, x (j i) := by fun_prop
+  constructor
+  · rw [integrable_multivariateGaussian_iff K hc]
+    simpa using integrable_prod_mulVec (CFC.sqrt K) j S
+  · rw [integral_multivariateGaussian_eq K hc]
+    rw [wick_stdPi (CFC.sqrt K) j _ S rfl, sqrt_mul_transpose K hK]
+
+
+section Law
+variable {Ω : Type*} [MeasurableSpace Ω] {P : Measure Ω}
+
+/-- The Wick formula on a probability space, for a random vector with law
+`multivariateGaussian 0 K`, `K ⪰ 0`.  No finiteness of `P` is assumed
+separately (the `HasLaw` hypothesis with a probability law forces `P` to have
+total mass one). -/
+theorem wick_hasLaw (K : Matrix (Fin N) (Fin N) ℝ) (hK : K.PosSemidef)
+    (Xv : Ω → EuclideanSpace ℝ (Fin N)) (hX : HasLaw Xv (multivariateGaussian 0 K) P)
+    (j : ι → Fin N) (S : Finset ι) :
+    Integrable (fun ω => ∏ i ∈ S, Xv ω (j i)) P ∧
+      ∫ ω, ∏ i ∈ S, Xv ω (j i) ∂P = wickSum (fun a b => K (j a) (j b)) S := by
+  have hc : Continuous fun x : EuclideanSpace ℝ (Fin N) => ∏ i ∈ S, x (j i) := by fun_prop
+  obtain ⟨hi, he⟩ := wick_multivariateGaussian K hK j S
+  constructor
+  · rw [← hX.map_eq] at hi
+    exact (integrable_map_measure hc.aestronglyMeasurable hX.aemeasurable).1 hi
+  · rw [← he]
+    exact hX.integral_comp (f := fun x : EuclideanSpace ℝ (Fin N) => ∏ i ∈ S, x (j i))
+      hc.aestronglyMeasurable
+
+end Law
+
+/-- A centered real Gaussian field `W` on a point set `X` with covariance `K`
+(the hypothesis of `L:terminal-wick`, main TeX lines 3601-3602): for every finite
+family of points `p : Fin n → X`, the covariance matrix `(K(p_a, p_b))` is
+positive semidefinite and the vector `(W(p_a))_a` has law
+`multivariateGaussian 0 (K(p_a, p_b))`.  The positive semidefiniteness is part
+of `K` being a covariance; it is stated because Mathlib's
+`multivariateGaussian 0 M` is the Dirac mass at `0` when `M` is not positive
+semidefinite. -/
+structure CenteredGaussianField {X Ω : Type*} [MeasurableSpace Ω] (W : X → Ω → ℝ)
+    (K : X → X → ℝ) (P : Measure Ω) : Prop where
+  psd : ∀ (n : ℕ) (p : Fin n → X), (Matrix.of fun a b => K (p a) (p b)).PosSemidef
+  law : ∀ (n : ℕ) (p : Fin n → X), HasLaw (fun ω => toLp 2 (fun a => W (p a) ω))
+    (multivariateGaussian 0 (Matrix.of fun a b => K (p a) (p b))) P
+
+section Field
+variable {X Ω : Type*} [MeasurableSpace Ω] {P : Measure Ω} {W : X → Ω → ℝ} {K : X → X → ℝ}
+
+/-- The Wick formula for field values: `E ∏_{i ∈ S} W(p_{j(i)}) = Σ_D ∏ K`. -/
+theorem CenteredGaussianField.wick (hW : CenteredGaussianField W K P) {n : ℕ} (p : Fin n → X)
+    (j : ι → Fin n) (S : Finset ι) :
+    Integrable (fun ω => ∏ i ∈ S, W (p (j i)) ω) P ∧
+      ∫ ω, ∏ i ∈ S, W (p (j i)) ω ∂P = wickSum (fun a b => K (p (j a)) (p (j b))) S := by
+  have h := wick_hasLaw _ (hW.psd n p) _ (hW.law n p) j S
+  simpa using h
+
+/-- The Wick formula for `n` field values: `E ∏_a W(p_a) = Σ_{D ∈ Π(n)} ∏ K`. -/
+theorem CenteredGaussianField.wick_univ (hW : CenteredGaussianField W K P) {n : ℕ}
+    (p : Fin n → X) :
+    Integrable (fun ω => ∏ a, W (p a) ω) P ∧
+      ∫ ω, ∏ a, W (p a) ω ∂P = wickSum (fun a b => K (p a) (p b)) Finset.univ :=
+  CenteredGaussianField.wick hW p (id : Fin n → Fin n) Finset.univ
+
+/-- The covariance of a Gaussian field is symmetric. -/
+theorem CenteredGaussianField.symm (hW : CenteredGaussianField W K P) (x y : X) :
+    K y x = K x y := by
+  have h := (hW.psd 2 ![x, y]).isHermitian.apply 0 1
+  simpa using h
+
+/-- `|K(x,y)| ≤ V` when `K(z,z) ≤ V` for every `z` (positive semidefiniteness at
+the two points `x, y`; Lean route for the variance bound). -/
+theorem CenteredGaussianField.abs_le (hW : CenteredGaussianField W K P) (V : ℝ)
+    (hV : ∀ x, K x x ≤ V) (x y : X) : |K x y| ≤ V := by
+  have hpsd := hW.psd 2 ![x, y]
+  have h1 := hpsd.dotProduct_mulVec_nonneg ![1, -1]
+  have h2 := hpsd.dotProduct_mulVec_nonneg ![1, 1]
+  have hs := hW.symm x y
+  simp [Matrix.mulVec, dotProduct, Fin.sum_univ_two] at h1 h2
+  have := hV x
+  have := hV y
+  rw [_root_.abs_le]
+  constructor <;> nlinarith
+
+/-- The concatenated mixed moment (main TeX lines 3616-3618, 3662-3673): for
+`p : Fin m → X`, `q : Fin n → X`,
+`E[∏_a W(p_a) ∏_b W(q_b)] = Σ_{D ∈ Π(m+n)} ∏_{{a,b} ∈ D} K(τ_a, τ_b)` with
+`τ = Fin.append p q`, and the product is integrable. -/
+theorem CenteredGaussianField.wick_append (hW : CenteredGaussianField W K P) {m n : ℕ}
+    (p : Fin m → X) (q : Fin n → X) :
+    Integrable (fun ω => (∏ a, W (p a) ω) * ∏ b, W (q b) ω) P ∧
+      ∫ ω, (∏ a, W (p a) ω) * ∏ b, W (q b) ω ∂P =
+        wickSum (fun a b => K (Fin.append p q a) (Fin.append p q b)) Finset.univ := by
+  have h := hW.wick_univ (Fin.append p q)
+  have heq : ∀ ω, ∏ i, W (Fin.append p q i) ω = (∏ a, W (p a) ω) * ∏ b, W (q b) ω := by
+    intro ω; rw [Fin.prod_univ_add]; simp
+  simp_rw [heq] at h
+  exact h
+
+/-- The moment bound behind `E:terminal-term-majorant` (main TeX lines
+3651-3656): if `K(z,z) ≤ V` for every `z`, then
+`E(∏_{a<n} W(p_a))² ≤ (2n-1)!! V^n`.  Lean route: the Wick formula for the
+`2n` values and `wickSum_abs_le` (`(2n-1)!!` pairings, each at most `V^n` in
+absolute value), instead of the TeX's Hölder inequality and `L^{2n}` Gaussian
+moments; same bound. -/
+theorem CenteredGaussianField.sq_moment_le (hW : CenteredGaussianField W K P) (V : ℝ)
+    (hV : ∀ x, K x x ≤ V) {n : ℕ} (p : Fin n → X) :
+    Integrable (fun ω => (∏ a, W (p a) ω) ^ 2) P ∧
+      ∫ ω, (∏ a, W (p a) ω) ^ 2 ∂P ≤ ((2 * n - 1).doubleFactorial : ℝ) * V ^ n := by
+  obtain ⟨hi, he⟩ := hW.wick_append p p
+  simp_rw [sq]
+  refine ⟨hi, ?_⟩
+  rw [he]
+  refine (le_abs_self _).trans ?_
+  exact wickSum_abs_le _ V (fun a b => hW.abs_le V hV _ _) n _ (by simp; ring)
+
+end Field
+
+end Gauss
+end StratonovichHAMSecondMoment.FiniteWick

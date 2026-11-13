@@ -1,0 +1,203 @@
+module
+import StratonovichHAMSecondMoment.QuotientObstruction
+set_option autoImplicit false
+set_option pp.all true
+#check @StratonovichHAMSecondMoment.QuotientObstruction.plane
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.plane
+#check @StratonovichHAMSecondMoment.QuotientObstruction.plane_apply_zero
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.plane_apply_zero
+#check @StratonovichHAMSecondMoment.QuotientObstruction.plane_apply_one
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.plane_apply_one
+#check @StratonovichHAMSecondMoment.QuotientObstruction.measurePreserving_plane
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.measurePreserving_plane
+#check @StratonovichHAMSecondMoment.QuotientObstruction.measurableEmbedding_plane
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.measurableEmbedding_plane
+#check @StratonovichHAMSecondMoment.QuotientObstruction.integral_plane
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.integral_plane
+#check @StratonovichHAMSecondMoment.QuotientObstruction.integrable_plane_iff
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.integrable_plane_iff
+#check @StratonovichHAMSecondMoment.QuotientObstruction.plane_add
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.plane_add
+#check @StratonovichHAMSecondMoment.QuotientObstruction.plane_smul
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.plane_smul
+#check @StratonovichHAMSecondMoment.QuotientObstruction.plane_neg
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.plane_neg
+#check @StratonovichHAMSecondMoment.QuotientObstruction.abs_fst_le_norm_plane
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.abs_fst_le_norm_plane
+#check @StratonovichHAMSecondMoment.QuotientObstruction.abs_snd_le_norm_plane
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.abs_snd_le_norm_plane
+#check @StratonovichHAMSecondMoment.QuotientObstruction.e1
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.e1
+#check @StratonovichHAMSecondMoment.QuotientObstruction.e2
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.e2
+#check @StratonovichHAMSecondMoment.QuotientObstruction.smul_e1
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.smul_e1
+#check @StratonovichHAMSecondMoment.QuotientObstruction.smul_e2
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.smul_e2
+#check @StratonovichHAMSecondMoment.QuotientObstruction.inner_smul_e1
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.inner_smul_e1
+#check @StratonovichHAMSecondMoment.QuotientObstruction.norm_e1
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.norm_e1
+#check @StratonovichHAMSecondMoment.QuotientObstruction.norm_e2
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.norm_e2
+#check @StratonovichHAMSecondMoment.QuotientObstruction.plane_eq
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.plane_eq
+#check @StratonovichHAMSecondMoment.QuotientObstruction.continuous_plane
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.continuous_plane
+#check @StratonovichHAMSecondMoment.QuotientObstruction.lineMeasure
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.lineMeasure
+#check @StratonovichHAMSecondMoment.QuotientObstruction.isometry_smul_unit
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.isometry_smul_unit
+#check @StratonovichHAMSecondMoment.QuotientObstruction.measurableEmbedding_line
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.measurableEmbedding_line
+#check @StratonovichHAMSecondMoment.QuotientObstruction.integral_lineMeasure
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.integral_lineMeasure
+#check @StratonovichHAMSecondMoment.QuotientObstruction.integrable_lineMeasure_iff
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.integrable_lineMeasure_iff
+#check @StratonovichHAMSecondMoment.QuotientObstruction.lintegral_lineMeasure
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.lintegral_lineMeasure
+#check @StratonovichHAMSecondMoment.QuotientObstruction.lineMeasure_apply
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.lineMeasure_apply
+#check @StratonovichHAMSecondMoment.QuotientObstruction.isLocallyFiniteMeasure_lineMeasure
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.isLocallyFiniteMeasure_lineMeasure
+#check @StratonovichHAMSecondMoment.QuotientObstruction.isEven_lineMeasure
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.isEven_lineMeasure
+#check @StratonovichHAMSecondMoment.QuotientObstruction.isTempered_lineMeasure
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.isTempered_lineMeasure
+#check @StratonovichHAMSecondMoment.QuotientObstruction.lineMeasure_smul_set
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.lineMeasure_smul_set
+#check @StratonovichHAMSecondMoment.QuotientObstruction.wt
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.wt
+#check @StratonovichHAMSecondMoment.QuotientObstruction.wt_pos
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.wt_pos
+#check @StratonovichHAMSecondMoment.QuotientObstruction.wt_le_one
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.wt_le_one
+#check @StratonovichHAMSecondMoment.QuotientObstruction.continuous_wt
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.continuous_wt
+#check @StratonovichHAMSecondMoment.QuotientObstruction.integrable_wt
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.integrable_wt
+#check @StratonovichHAMSecondMoment.QuotientObstruction.PlaneDecay
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.PlaneDecay
+#check @StratonovichHAMSecondMoment.QuotientObstruction.PlaneDecay.integrable
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.PlaneDecay.integrable
+#check @StratonovichHAMSecondMoment.QuotientObstruction.marg
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.marg
+#check @StratonovichHAMSecondMoment.QuotientObstruction.autoInt
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.autoInt
+#check @StratonovichHAMSecondMoment.QuotientObstruction.integrable_autoInt
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.integrable_autoInt
+#check @StratonovichHAMSecondMoment.QuotientObstruction.integral_shift_e2
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.integral_shift_e2
+#check @StratonovichHAMSecondMoment.QuotientObstruction.autocorr_e2
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.autocorr_e2
+#check @StratonovichHAMSecondMoment.QuotientObstruction.Gamma0
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.Gamma0
+#check @StratonovichHAMSecondMoment.QuotientObstruction.mu0
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.mu0
+#check @StratonovichHAMSecondMoment.QuotientObstruction.Gamma0_ne_zero
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.Gamma0_ne_zero
+#check @StratonovichHAMSecondMoment.QuotientObstruction.schwartz_planeDecay
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.schwartz_planeDecay
+#check @StratonovichHAMSecondMoment.QuotientObstruction.posDef_Gamma0
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.posDef_Gamma0
+#check @StratonovichHAMSecondMoment.QuotientObstruction.integrable_schwartz_e1
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.integrable_schwartz_e1
+#check @StratonovichHAMSecondMoment.QuotientObstruction.spectral_Gamma0
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.spectral_Gamma0
+#check @StratonovichHAMSecondMoment.QuotientObstruction.homogCovariance_Gamma0
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.homogCovariance_Gamma0
+#check @StratonovichHAMSecondMoment.QuotientObstruction.covW
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.covW
+#check @StratonovichHAMSecondMoment.QuotientObstruction.spatialCov
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.spatialCov
+#check @StratonovichHAMSecondMoment.QuotientObstruction.timeQ
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.timeQ
+#check @StratonovichHAMSecondMoment.QuotientObstruction.margV
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.margV
+#check @StratonovichHAMSecondMoment.QuotientObstruction.covW_tensor
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.covW_tensor
+#check @StratonovichHAMSecondMoment.QuotientObstruction.planeDecay_of_hasCompactSupport
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.planeDecay_of_hasCompactSupport
+#check @StratonovichHAMSecondMoment.QuotientObstruction.spatialCov_Gamma0
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.spatialCov_Gamma0
+#check @StratonovichHAMSecondMoment.QuotientObstruction.margV_tensor
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.margV_tensor
+#check @StratonovichHAMSecondMoment.QuotientObstruction.contDiff_tensor
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.contDiff_tensor
+#check @StratonovichHAMSecondMoment.QuotientObstruction.norm_le_abs_add_abs
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.norm_le_abs_add_abs
+#check @StratonovichHAMSecondMoment.QuotientObstruction.hasCompactSupport_tensor
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.hasCompactSupport_tensor
+#check @StratonovichHAMSecondMoment.QuotientObstruction.chiBump
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.chiBump
+#check @StratonovichHAMSecondMoment.QuotientObstruction.chi
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.chi
+#check @StratonovichHAMSecondMoment.QuotientObstruction.chi2
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.chi2
+#check @StratonovichHAMSecondMoment.QuotientObstruction.contDiff_chi
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.contDiff_chi
+#check @StratonovichHAMSecondMoment.QuotientObstruction.hasCompactSupport_chi
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.hasCompactSupport_chi
+#check @StratonovichHAMSecondMoment.QuotientObstruction.chi_zero
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.chi_zero
+#check @StratonovichHAMSecondMoment.QuotientObstruction.chi_three
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.chi_three
+#check @StratonovichHAMSecondMoment.QuotientObstruction.contDiff_deriv_chi
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.contDiff_deriv_chi
+#check @StratonovichHAMSecondMoment.QuotientObstruction.contDiff_chi2
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.contDiff_chi2
+#check @StratonovichHAMSecondMoment.QuotientObstruction.hasCompactSupport_chi2
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.hasCompactSupport_chi2
+#check @StratonovichHAMSecondMoment.QuotientObstruction.integral_chi2
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.integral_chi2
+#check @StratonovichHAMSecondMoment.QuotientObstruction.tendsto_zero_of_hasCompactSupport
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.tendsto_zero_of_hasCompactSupport
+#check @StratonovichHAMSecondMoment.QuotientObstruction.Ichi
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.Ichi
+#check @StratonovichHAMSecondMoment.QuotientObstruction.Jchi
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.Jchi
+#check @StratonovichHAMSecondMoment.QuotientObstruction.integral_chi_mul_chi2
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.integral_chi_mul_chi2
+#check @StratonovichHAMSecondMoment.QuotientObstruction.Ichi_pos
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.Ichi_pos
+#check @StratonovichHAMSecondMoment.QuotientObstruction.Jchi_pos
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.Jchi_pos
+#check @StratonovichHAMSecondMoment.QuotientObstruction.timeQ_pos
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.timeQ_pos
+#check @StratonovichHAMSecondMoment.QuotientObstruction.IsTest
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.IsTest
+#check @StratonovichHAMSecondMoment.QuotientObstruction.isTest_tensor
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.isTest_tensor
+#check @StratonovichHAMSecondMoment.QuotientObstruction.zeta
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.zeta
+#check @StratonovichHAMSecondMoment.QuotientObstruction.gtest
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.gtest
+#check @StratonovichHAMSecondMoment.QuotientObstruction.masked_quotient_obstruction
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.masked_quotient_obstruction
+#check @StratonovichHAMSecondMoment.QuotientObstruction.masked_quotient_obstruction_paper
+#print axioms StratonovichHAMSecondMoment.QuotientObstruction.masked_quotient_obstruction_paper
+
+open MeasureTheory StratonovichHAMSecondMoment
+
+namespace StratonovichHAMSecondMoment.Audit.QuotientObstruction
+
+open StratonovichHAMSecondMoment.QuotientObstruction
+
+/-- Consumer of the wrapper: at `a = 1/2`, `T = 1`, `Γ = δ₀(dx₁) dx₂` satisfies
+`H:homog`, hence `κ ∈ (1,2)` for `α = 1`, and some compact smooth mask is not bounded
+by `1` times the unmasked variance on some test. -/
+private theorem audit_consumer :
+    KappaRange.kappa 1 (1 / 2) ∈ Set.Ioo 1 2 ∧
+      ∃ ζ : HomogHypothesis.Rd 2 → ℝ, ∃ F : ℝ → HomogHypothesis.Rd 2 → ℝ, IsTest 1 F ∧
+        covW (1 / 2) Gamma0 F < covW (1 / 2) Gamma0 (fun t x => ζ x * F t x) := by
+  obtain ⟨h, -, ζ, -, -, hn⟩ :=
+    masked_quotient_obstruction_paper (a := 1 / 2) (by norm_num) (by norm_num) (T := 1) one_pos
+  refine ⟨HomogHypothesis.kappa_mem_Ioo_paper h, ζ, ?_⟩
+  by_contra hc
+  push Not at hc
+  exact hn ⟨1, fun F hF => by simpa using hc F hF⟩
+
+#check @audit_consumer
+#print axioms audit_consumer
+
+end StratonovichHAMSecondMoment.Audit.QuotientObstruction

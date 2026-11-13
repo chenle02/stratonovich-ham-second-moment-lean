@@ -1,0 +1,5 @@
+/tmp/stratham-d8-5695592.BQeNrc/probes/P31_cfc_real_fails.lean:4:53: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  StarOrderedRing (E →L[ℝ] E)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+MEASURE P31_cfc_real_fails.cold rc=1 wall_s=7.18 maxrss_kb=3294356

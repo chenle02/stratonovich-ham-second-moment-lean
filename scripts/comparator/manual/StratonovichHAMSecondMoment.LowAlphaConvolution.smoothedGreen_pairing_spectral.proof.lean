@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.LowAlphaConvolution.smoothedGreen_pairing_spectral

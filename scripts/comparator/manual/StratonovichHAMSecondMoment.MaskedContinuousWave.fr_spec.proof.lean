@@ -1,0 +1,1 @@
+  bridge_cases_auto _root_.StratonovichHAMSecondMoment.MaskedContinuousWave.fr_spec

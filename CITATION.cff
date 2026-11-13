@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it by its release version or exact commit, together with the paper."
+title: "stratonovich-ham-second-moment-lean: Lean companion to the second moment of the Stratonovich hyperbolic Anderson model"
+type: software
+license: Apache-2.0
+version: "0.9.0"
+date-released: "2026-11-13"
+repository-code: "https://github.com/chenle02/stratonovich-ham-second-moment-lean"
+authors:
+  - family-names: "Chen"
+    given-names: "Le"
+    affiliation: "Auburn University"
+abstract: >-
+  Lean 4 checks of the finite, algebraic, scalar and selected analytic steps
+  of the paper on the second moment of the Stratonovich hyperbolic Anderson
+  model with time-dependent noise. Each Lean statement is mapped to the
+  manuscript label it supports in docs/statement-ledger.md; analytic and
+  probabilistic inputs that stay outside Lean enter as explicit named
+  hypotheses. This is a partial formalization, not an end-to-end
+  verification of the paper.
+keywords:
+  - Lean 4
+  - hyperbolic Anderson model
+  - stochastic wave equation
+  - moment asymptotics
+  - Stratonovich integral
+  - formal verification
+references:
+  - type: unpublished
+    title: "The second moment of the hyperbolic Anderson model"
+    authors:
+      - family-names: "Chen"
+        given-names: "Le"
+        affiliation: "Auburn University"
+    notes: "Manuscript in preparation; the Lean statements are mapped to its labels in docs/statement-ledger.md."

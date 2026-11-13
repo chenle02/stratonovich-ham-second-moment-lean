@@ -1,0 +1,11 @@
+import Mathlib
+/-! Unbounded operators: what exists (adjoint, self-adjointness, closedness of LinearPMap). -/
+variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
+#check @LinearPMap.adjoint
+#check @LinearPMap.isSelfAdjoint_def
+#check @IsSelfAdjoint.isClosed
+#check @LinearPMap.IsClosed
+#check @LinearPMap.IsClosable
+#check @LinearPMap.closure
+#check @LinearPMap.graph
+#check @LinearPMap.adjoint_isClosed

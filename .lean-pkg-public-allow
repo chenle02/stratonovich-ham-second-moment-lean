@@ -1,0 +1,6 @@
+allow: *.lean: ^notes/$
+allow: docs/statement-ledger.md: ^notes/$
+allow: provenance/manuscript-anchor.json: ^notes/$
+allow: replay*.py: se[c]:05\.2f
+allow: provenance/DEVELOPMENT.md: ^stratonovich-ham-second-momen[t]-lean-dev$
+allow: provenance/DEVELOPMENT.md: ^stratonovich-ham-second-momen[t]$

@@ -1,0 +1,33 @@
+import Mathlib
+/-! K5 probe: Bessel potential (Fourier) Sobolev spaces at the pinned Mathlib. -/
+open scoped SchwartzMap ENNReal
+open TemperedDistribution BesselPotentialSpace MeasureTheory
+
+abbrev R3 := EuclideanSpace ℝ (Fin 3)
+
+#check @BesselPotentialSpace
+#check @TemperedDistribution.MemSobolev
+#check @TemperedDistribution.besselPotential
+#check @TemperedDistribution.memSobolev_iff_exists_smulLeftCLM_fourier
+#check @TemperedDistribution.MemSobolev.lineDerivOp
+#check @TemperedDistribution.MemSobolev.laplacian
+#check @TemperedDistribution.MemSobolev.fourierMultiplierCLM_of_bounded
+#check @TemperedDistribution.MemSobolev.mono
+#check @TemperedDistribution.MemSobolev.toBesselPotentialSpace
+#check @SchwartzMap.memSobolev
+#check @BesselPotentialSpace.toLpₗᵢ
+#check @BesselPotentialSpace.norm_fourier_toLp_eq
+#check @TemperedDistribution.besselPotential_neg_two_laplacian_eq
+#check @TemperedDistribution.fourier_besselPotential_eq_smulLeftCLM_fourier_apply
+
+-- H^1(R^3) is a complex Hilbert space
+noncomputable example : InnerProductSpace ℂ (BesselPotentialSpace R3 ℂ 1 2) := inferInstance
+example : CompleteSpace (BesselPotentialSpace R3 ℂ 1 2) := inferInstance
+-- Real-valued version: F = ℝ is not a ℂ-normed space, so H^{s}(E, ℝ) should fail
+-- (checked separately in P11).
+-- Lp Fourier transform is a linear isometry equivalence on L^2
+#check @MeasureTheory.Lp.fourierTransformₗᵢ
+#check @MeasureTheory.Lp.inner_fourier_eq
+#check @TemperedDistribution.fourierMultiplierCLM
+#check @SchwartzMap.fourierMultiplierCLM
+#check @SchwartzMap.laplacian_eq_fourierMultiplierCLM

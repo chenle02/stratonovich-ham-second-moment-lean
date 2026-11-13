@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.SymplecticFree.compact_product_baseline

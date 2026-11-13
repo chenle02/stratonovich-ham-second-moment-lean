@@ -1,0 +1,17 @@
+StratonovichHAMSecondMoment	0	0:43:44.80	7684220	0	5688553
+StratonovichHAMSecondMoment.Axioms	0	0:43:20.37	7684320	0	5688553
+StratonovichHAMSecondMoment.MaskedModulation	0	0:43:14.71	7573616	0	5688553
+StratonovichHAMSecondMoment.FrequencyRow	0	0:43:16.00	7573956	0	5688553
+StratonovichHAMSecondMoment.MaskedSpectralGrowth	0	0:43:17.42	7574216	0	5688553
+StratonovichHAMSecondMoment.OccupationKernelRow	0	0:43:12.50	7572196	0	5688553
+StratonovichHAMSecondMoment.TimeSchur	0	0:42:49.46	7570664	0	5688553
+StratonovichHAMSecondMoment.GaussianTest	0	0:43:16.23	7571460	0	5688553
+StratonovichHAMSecondMoment.ClockCopyHomog	0	0:42:56.08	7577404	0	5688553
+StratonovichHAMSecondMoment.ClockCopy	0	0:43:15.95	7575800	0	5688553
+StratonovichHAMSecondMoment.FiniteGaussianMatrix	0	0:43:11.32	7573792	0	5688553
+StratonovichHAMSecondMoment.IndexedCone	0	0:43:13.91	7572832	0	5688553
+StratonovichHAMSecondMoment.TimeFractional	0	0:43:13.89	7571172	0	5688553
+StratonovichHAMSecondMoment.VariationalDilation	0	0:42:46.52	7572476	0	5688553
+StratonovichHAMSecondMoment.DampedNorms	0	0:43:13.69	7574152	0	5688619
+StratonovichHAMSecondMoment.SpectralHomog	0	0:43:39.90	7572288	0	5688619
+StratonovichHAMSecondMoment.WaveKernel	0	0:41:44.01	7572492	0	5688619

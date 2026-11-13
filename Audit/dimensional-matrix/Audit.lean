@@ -1,0 +1,8 @@
+import StratonovichHAMAudit.DimensionalMatrix
+set_option pp.universes true
+set_option pp.all true
+#print StratonovichHAMAudit.DimensionalMatrix.backward
+#print StratonovichHAMAudit.DimensionalMatrix.coupling
+#print StratonovichHAMAudit.DimensionalMatrix.forward
+#check StratonovichHAMAudit.DimensionalMatrix.full_interaction
+#print axioms StratonovichHAMAudit.DimensionalMatrix.full_interaction

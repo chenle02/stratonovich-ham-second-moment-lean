@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.DampedMultiplier.isFiniteMeasure_of_greenMass

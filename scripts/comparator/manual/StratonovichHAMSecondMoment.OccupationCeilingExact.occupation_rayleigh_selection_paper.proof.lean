@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.OccupationCeilingExact.occupation_rayleigh_selection_paper

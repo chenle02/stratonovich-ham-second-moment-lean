@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.FrequencyRow.frequency_time_paper

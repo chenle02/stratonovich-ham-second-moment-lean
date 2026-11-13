@@ -1,0 +1,129 @@
+BesselPotentialSpace : (E : Type u_1) →
+  (F : Type u_2) →
+    [inst : NormedAddCommGroup E] →
+      [inst_1 : NormedAddCommGroup F] →
+        [inst_2 : InnerProductSpace ℝ E] →
+          [FiniteDimensional ℝ E] →
+            [inst_4 : MeasurableSpace E] →
+              [BorelSpace E] →
+                [CompleteSpace F] → [NormedSpace ℂ F] → ℝ → (p : ℝ≥0∞) → [hp : Fact (1 ≤ p)] → Type (max u_1 u_2)
+@MemSobolev : {E : Type u_1} →
+  {F : Type u_2} →
+    [inst : NormedAddCommGroup E] →
+      [inst_1 : NormedAddCommGroup F] →
+        [inst_2 : InnerProductSpace ℝ E] →
+          [FiniteDimensional ℝ E] →
+            [inst_4 : MeasurableSpace E] →
+              [BorelSpace E] →
+                [inst_6 : NormedSpace ℂ F] → [CompleteSpace F] → ℝ → (p : ℝ≥0∞) → [hp : Fact (1 ≤ p)] → 𝓢'(E, F) → Prop
+besselPotential : (E : Type u_1) →
+  (F : Type u_2) →
+    [inst : NormedAddCommGroup E] →
+      [inst_1 : NormedAddCommGroup F] →
+        [inst_2 : InnerProductSpace ℝ E] →
+          [FiniteDimensional ℝ E] →
+            [inst_4 : MeasurableSpace E] → [BorelSpace E] → [inst_6 : NormedSpace ℂ F] → ℝ → 𝓢'(E, F) →L[ℂ] 𝓢'(E, F)
+@memSobolev_iff_exists_smulLeftCLM_fourier : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup E]
+  [inst_1 : NormedAddCommGroup F] [inst_2 : InnerProductSpace ℝ E] [inst_3 : FiniteDimensional ℝ E]
+  [inst_4 : MeasurableSpace E] [inst_5 : BorelSpace E] [inst_6 : InnerProductSpace ℂ F] [inst_7 : CompleteSpace F]
+  {s : ℝ} {f : 𝓢'(E, F)},
+  MemSobolev s 2 f ↔
+    ∃ f',
+      (smulLeftCLM F fun x => ↑((1 + ‖x‖ ^ 2) ^ (s / 2))) (FourierTransform.fourier f) = Lp.toTemperedDistribution f'
+@MemSobolev.lineDerivOp : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup E] [inst_1 : NormedAddCommGroup F]
+  [inst_2 : InnerProductSpace ℝ E] [inst_3 : FiniteDimensional ℝ E] [inst_4 : MeasurableSpace E] [inst_5 : BorelSpace E]
+  [inst_6 : InnerProductSpace ℂ F] [inst_7 : CompleteSpace F] {s : ℝ} {f : 𝓢'(E, F)},
+  MemSobolev s 2 f → ∀ {m : E}, MemSobolev (s - 1) 2 (LineDeriv.lineDerivOp m f)
+@MemSobolev.laplacian : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup E] [inst_1 : NormedAddCommGroup F]
+  [inst_2 : InnerProductSpace ℝ E] [inst_3 : FiniteDimensional ℝ E] [inst_4 : MeasurableSpace E] [inst_5 : BorelSpace E]
+  [inst_6 : InnerProductSpace ℂ F] [inst_7 : CompleteSpace F] {s : ℝ} {f : 𝓢'(E, F)},
+  MemSobolev s 2 f → MemSobolev (s - 2) 2 (Laplacian.laplacian f)
+@MemSobolev.fourierMultiplierCLM_of_bounded : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup E]
+  [inst_1 : NormedAddCommGroup F] [inst_2 : InnerProductSpace ℝ E] [inst_3 : FiniteDimensional ℝ E]
+  [inst_4 : MeasurableSpace E] [inst_5 : BorelSpace E] [inst_6 : InnerProductSpace ℂ F] [inst_7 : CompleteSpace F]
+  {s : ℝ} {f : 𝓢'(E, F)},
+  MemSobolev s 2 f →
+    ∀ {g : E → ℂ},
+      Function.HasTemperateGrowth g → (∃ C, ∀ (x : E), ‖g x‖ ≤ C) → MemSobolev s 2 ((fourierMultiplierCLM F g) f)
+@MemSobolev.mono : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup E] [inst_1 : NormedAddCommGroup F]
+  [inst_2 : InnerProductSpace ℝ E] [inst_3 : FiniteDimensional ℝ E] [inst_4 : MeasurableSpace E] [inst_5 : BorelSpace E]
+  [inst_6 : InnerProductSpace ℂ F] [inst_7 : CompleteSpace F] {s s' : ℝ},
+  s' ≤ s → ∀ {f : 𝓢'(E, F)}, MemSobolev s 2 f → MemSobolev s' 2 f
+@MemSobolev.toBesselPotentialSpace : {E : Type u_1} →
+  {F : Type u_2} →
+    [inst : NormedAddCommGroup E] →
+      [inst_1 : NormedAddCommGroup F] →
+        [inst_2 : InnerProductSpace ℝ E] →
+          [inst_3 : FiniteDimensional ℝ E] →
+            [inst_4 : MeasurableSpace E] →
+              [inst_5 : BorelSpace E] →
+                [inst_6 : CompleteSpace F] →
+                  [inst_7 : NormedSpace ℂ F] →
+                    {s : ℝ} → {p : ℝ≥0∞} → [hp : Fact (1 ≤ p)] → {f : 𝓢'(E, F)} → MemSobolev s p f → H^{s, p}(E, F)
+@SchwartzMap.memSobolev : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup E] [inst_1 : NormedAddCommGroup F]
+  [inst_2 : InnerProductSpace ℝ E] [inst_3 : FiniteDimensional ℝ E] [inst_4 : MeasurableSpace E] [inst_5 : BorelSpace E]
+  [inst_6 : NormedSpace ℂ F] [inst_7 : CompleteSpace F] {s : ℝ} {p : ℝ≥0∞} [hp : Fact (1 ≤ p)] (f : 𝓢(E, F)),
+  MemSobolev s p ((SchwartzMap.toTemperedDistributionCLM E F volume) f)
+toLpₗᵢ : (E : Type u_1) →
+  (F : Type u_2) →
+    [inst : NormedAddCommGroup E] →
+      [inst_1 : NormedAddCommGroup F] →
+        [inst_2 : InnerProductSpace ℝ E] →
+          [inst_3 : FiniteDimensional ℝ E] →
+            [inst_4 : MeasurableSpace E] →
+              [inst_5 : BorelSpace E] →
+                [inst_6 : CompleteSpace F] →
+                  [inst_7 : NormedSpace ℂ F] →
+                    (s : ℝ) → (p : ℝ≥0∞) → [hp : Fact (1 ≤ p)] → H^{s, p}(E, F) ≃ₗᵢ[ℂ] ↥(Lp F p volume)
+@norm_fourier_toLp_eq : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup E] [inst_1 : NormedAddCommGroup F]
+  [inst_2 : InnerProductSpace ℝ E] [inst_3 : FiniteDimensional ℝ E] [inst_4 : MeasurableSpace E] [inst_5 : BorelSpace E]
+  [inst_6 : CompleteSpace F] [inst_7 : InnerProductSpace ℂ F] {s : ℝ} (f : H^{s}(E, F)),
+  ‖FourierTransform.fourier f.toLp‖ = ‖f‖
+@besselPotential_neg_two_laplacian_eq : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup E]
+  [inst_1 : NormedAddCommGroup F] [inst_2 : InnerProductSpace ℝ E] [inst_3 : FiniteDimensional ℝ E]
+  [inst_4 : MeasurableSpace E] [inst_5 : BorelSpace E] [inst_6 : NormedSpace ℂ F] (f : 𝓢'(E, F)),
+  (besselPotential E F (-2)) (Laplacian.laplacian f) =
+    -(2 * Real.pi) ^ 2 • (fourierMultiplierCLM F fun x => ↑(‖x‖ ^ 2 * (1 + ‖x‖ ^ 2) ^ (-1))) f
+@fourier_besselPotential_eq_smulLeftCLM_fourier_apply : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup E]
+  [inst_1 : NormedAddCommGroup F] [inst_2 : InnerProductSpace ℝ E] [inst_3 : FiniteDimensional ℝ E]
+  [inst_4 : MeasurableSpace E] [inst_5 : BorelSpace E] [inst_6 : InnerProductSpace ℂ F] (s : ℝ) (f : 𝓢'(E, F)),
+  FourierTransform.fourier ((besselPotential E F s) f) =
+    (smulLeftCLM F fun x => ↑((1 + ‖x‖ ^ 2) ^ (s / 2))) (FourierTransform.fourier f)
+Lp.fourierTransformₗᵢ : (E : Type u_1) →
+  (F : Type u_2) →
+    [inst : NormedAddCommGroup E] →
+      [inst_1 : MeasurableSpace E] →
+        [inst_2 : BorelSpace E] →
+          [inst_3 : NormedAddCommGroup F] →
+            [inst_4 : InnerProductSpace ℂ F] →
+              [CompleteSpace F] →
+                [inst_6 : InnerProductSpace ℝ E] →
+                  [inst_7 : FiniteDimensional ℝ E] → ↥(Lp F 2 volume) ≃ₗᵢ[ℂ] ↥(Lp F 2 volume)
+@Lp.inner_fourier_eq : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup E] [inst_1 : MeasurableSpace E]
+  [inst_2 : BorelSpace E] [inst_3 : NormedAddCommGroup F] [inst_4 : InnerProductSpace ℂ F] [inst_5 : CompleteSpace F]
+  [inst_6 : InnerProductSpace ℝ E] [inst_7 : FiniteDimensional ℝ E] (f : ↥(Lp F 2 volume)) (g : ↥(Lp F 2 volume)),
+  inner ℂ (FourierTransform.fourier f) (FourierTransform.fourier g) = inner ℂ f g
+@fourierMultiplierCLM : {E : Type u_1} →
+  (F : Type u_2) →
+    [inst : NormedAddCommGroup E] →
+      [inst_1 : NormedAddCommGroup F] →
+        [inst_2 : InnerProductSpace ℝ E] →
+          [inst_3 : NormedSpace ℂ F] →
+            [FiniteDimensional ℝ E] → [inst_5 : MeasurableSpace E] → [BorelSpace E] → (E → ℂ) → 𝓢'(E, F) →L[ℂ] 𝓢'(E, F)
+@SchwartzMap.fourierMultiplierCLM : {𝕜 : Type u_1} →
+  {E : Type u_2} →
+    (F : Type u_3) →
+      [inst : RCLike 𝕜] →
+        [inst_1 : NormedAddCommGroup E] →
+          [inst_2 : NormedAddCommGroup F] →
+            [inst_3 : InnerProductSpace ℝ E] →
+              [inst_4 : NormedSpace ℂ F] →
+                [inst_5 : NormedSpace 𝕜 F] →
+                  [inst_6 : SMulCommClass ℂ 𝕜 F] →
+                    [FiniteDimensional ℝ E] →
+                      [inst_8 : MeasurableSpace E] → [BorelSpace E] → (E → 𝕜) → 𝓢(E, F) →L[𝕜] 𝓢(E, F)
+@SchwartzMap.laplacian_eq_fourierMultiplierCLM : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup E]
+  [inst_1 : NormedAddCommGroup F] [inst_2 : InnerProductSpace ℝ E] [inst_3 : NormedSpace ℂ F]
+  [inst_4 : FiniteDimensional ℝ E] [inst_5 : MeasurableSpace E] [inst_6 : BorelSpace E] [CompleteSpace F] (f : 𝓢(E, F)),
+  Laplacian.laplacian f = -(2 * Real.pi) ^ 2 • (SchwartzMap.fourierMultiplierCLM F fun x => ‖x‖ ^ 2) f
+MEASURE P10_bessel_api.cold rc=0 wall_s=6.47 maxrss_kb=3297984

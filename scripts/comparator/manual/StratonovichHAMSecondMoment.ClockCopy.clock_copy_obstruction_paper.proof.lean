@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.ClockCopy.clock_copy_obstruction_paper

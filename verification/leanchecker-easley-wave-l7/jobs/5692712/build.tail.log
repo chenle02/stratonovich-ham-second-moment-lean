@@ -1,0 +1,13 @@
+info: StratonovichHAMSecondMoment/Axioms.lean:1904:0: 'StratonovichHAMSecondMoment.SpatialOccupationL7Completed.squareBound_of_smooth_completed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:1905:0: 'StratonovichHAMSecondMoment.SpatialOccupationL7Completed.squarePairingBounds_holds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:1906:0: 'StratonovichHAMSecondMoment.SpatialOccupationL7Completed.squarePairingBounds_paper_completed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:1907:0: 'StratonovichHAMSecondMoment.SpatialOccupationL7Completed.square_pairing_CS_completed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Build completed successfully (9128 jobs).

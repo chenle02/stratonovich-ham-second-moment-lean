@@ -1,0 +1,7 @@
+  intro I F G r ρ
+  rw [StratonovichHamSecondMomentLeanAuditBridge.MaskedContinuousWave.waveFn_eq, StratonovichHamSecondMomentLeanAuditBridge.MaskedTrigProducts.prodFn_eq,
+    StratonovichHamSecondMomentLeanAuditBridge.MaskedContinuousWave.trig_eq, StratonovichHamSecondMomentLeanAuditBridge.MaskedContinuousWave.trig_eq,
+    StratonovichHamSecondMomentLeanAuditBridge.MaskedContinuousWave.amp_eq, StratonovichHamSecondMomentLeanAuditBridge.MaskedContinuousWave.amp_eq,
+    StratonovichHamSecondMomentLeanAuditBridge.MaskedContinuousWave.fr_eq, StratonovichHamSecondMomentLeanAuditBridge.MaskedContinuousWave.fr_eq]
+  exact _root_.StratonovichHAMSecondMoment.MaskedContinuousWave.waveFn_eq_prodFn I (StratonovichHamSecondMomentLeanAuditBridge.MaskedContinuousWave.toP F)
+    (StratonovichHamSecondMomentLeanAuditBridge.MaskedContinuousWave.toP G) r ρ

@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.DampedNorms.damped_norms_finite_paper

@@ -1,0 +1,13 @@
+node=node890 job=5695647 array=5695614_33 mode=fresh target=StratonovichHAMSecondMoment.DriverParameters start=2026-11-12T16:10:10-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=6eb79c7b2ec4ca52f02121224484aa4865e43ac8 TREE=de6f79a14664bfad0e9c60dff29dc2f0ed37711e MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1400 waited_s=0
+REPLAY_STARTED 2026-11-12T16:14:51-0600
+BEGIN fresh StratonovichHAMSecondMoment.DriverParameters 16:14:52
+END fresh StratonovichHAMSecondMoment.DriverParameters	0	0:10:15.41	3015948	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=617 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.DriverParameters
+PROCESS_EXIT=0 end=2026-11-12T16:25:08-0600

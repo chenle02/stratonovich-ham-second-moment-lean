@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.L8Completed.intrinsic_spatial_bracket_paper_completed

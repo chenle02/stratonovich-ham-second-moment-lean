@@ -1,0 +1,55 @@
+import Mathlib
+/-! Workload probe: small proofs of the kind K5/K6 need, to measure elaboration cost
+(not just import cost) of the H^{s} / CFC / Lax–Milgram slice. -/
+open scoped SchwartzMap ENNReal InnerProductSpace FourierTransform
+open TemperedDistribution BesselPotentialSpace MeasureTheory
+
+noncomputable section
+abbrev R3 := EuclideanSpace ℝ (Fin 3)
+
+/-- Schwartz functions embed into H^{1}(R^3). -/
+def schwartzH1 (f : 𝓢(R3, ℂ)) : BesselPotentialSpace R3 ℂ 1 2 :=
+  (SchwartzMap.memSobolev (s := 1) (p := 2) f).toBesselPotentialSpace
+
+/-- The H^{1} norm is the L² norm of the Fourier side of the Bessel potential. -/
+theorem norm_H1_fourier (u : BesselPotentialSpace R3 ℂ 1 2) : ‖𝓕 u.toLp‖ = ‖u‖ :=
+  norm_fourier_toLp_eq u
+
+/-- Riesz map on H^{1}. -/
+def rieszH1 : BesselPotentialSpace R3 ℂ 1 2 ≃ₗᵢ⋆[ℂ] StrongDual ℂ (BesselPotentialSpace R3 ℂ 1 2) :=
+  InnerProductSpace.toDual ℂ _
+
+section LM
+variable {V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V] [CompleteSpace V]
+
+/-- A bounded form ⟪u,v⟫ + ⟪K u, v⟫ with K positive is coercive (the shifted Schrödinger form
+pattern `q + c` on H^1, with K standing for the potential part after the shift). -/
+theorem coercive_shift (K : V →L[ℝ] V) (hK : K.IsPositive) :
+    IsCoercive ((innerSL ℝ : V →L[ℝ] V →L[ℝ] ℝ) + (innerSL ℝ).comp K) := by
+  refine ⟨1, one_pos, fun u => ?_⟩
+  have h1 : 0 ≤ ⟪K u, u⟫_ℝ := by
+    have := hK.inner_nonneg_left u
+    simpa [real_inner_comm] using this
+  simp only [ContinuousLinearMap.add_apply, innerSL_apply_apply, ContinuousLinearMap.coe_comp',
+    Function.comp_apply, one_mul]
+  rw [innerSL_apply_apply, real_inner_self_eq_norm_mul_norm]
+  linarith
+
+/-- Lax–Milgram gives the bounded inverse of the shifted operator. -/
+def shiftedInverse (K : V →L[ℝ] V) (hK : K.IsPositive) : V ≃L[ℝ] V :=
+  (coercive_shift K hK).continuousLinearEquivOfBilin
+end LM
+
+section CFCdiag
+variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
+
+/-- sqrt of a nonnegative scalar operator. -/
+theorem sqrt_scalar {c : ℝ} (hc : 0 ≤ c) :
+    CFC.sqrt (algebraMap ℝ (H →L[ℂ] H) (c ^ 2)) = algebraMap ℝ (H →L[ℂ] H) c := by
+  have hc' : (0 : H →L[ℂ] H) ≤ algebraMap ℝ (H →L[ℂ] H) c := algebraMap_nonneg _ hc
+  have hc2 : (0 : H →L[ℂ] H) ≤ algebraMap ℝ (H →L[ℂ] H) (c ^ 2) := algebraMap_nonneg _ (sq_nonneg c)
+  rw [CFC.sqrt_eq_iff _ _ hc2 hc', ← map_mul, sq]
+
+-- (invertibility of the shifted root is already proved in the companion: ComplexPhaseScalar.sqrtShift_isUnit)
+end CFCdiag
+end

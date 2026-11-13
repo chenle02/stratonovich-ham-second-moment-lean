@@ -1,0 +1,10 @@
+receipt slurm --check: ok; nothing written
+  ✓ sacct: job 5695604 COMPLETED, exit 0:0 (--sacct-file)
+  ✓ seal: job stdout verify-log-sha256 = sha256(raw verify log) 283bc64143a1…
+  ✓ manifest: pre = post = lake-manifest.json at 6eb79c7b2ec4 (9b7a4fffce48…)
+  ✓ stderr: empty
+  ✓ lake: no root-package module shown Reused, Replayed or Unpacked in the build log
+  ✓ log: `commit:` line = --commit 6eb79c7b2ec4
+  ✓ container: Singularity container, SIF SHA-256 0639ce71c13d479d456499b53f1efd887055123fe67573873170b7d1d9bba36a (image `/tmp/<USER>-job-5695604/image.sif`); verify log = job stdout
+  ✓ claim axioms: 2468 claim(s) read from the built environment (collectAxioms), every claim in claims.yaml; 2468 agree with their #print axioms output
+  ✓ hypotheses: hyp-probe/1 section complete: 2468 decl(s), 0 Challenge theorem(s), 0 fact(s) (sealed by report_sha256; judged by the claims ledger in a later stage)

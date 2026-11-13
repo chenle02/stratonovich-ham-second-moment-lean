@@ -1,0 +1,4 @@
+@IsCoercive.continuousLinearEquivOfBilin : {V : Type u_1} →
+  [inst : NormedAddCommGroup V] →
+    [inst_1 : InnerProductSpace ℝ V] → [CompleteSpace V] → {B : V →L[ℝ] V →L[ℝ] ℝ} → IsCoercive B → V ≃L[ℝ] V
+MEASURE P02_import_operator.warm rc=0 wall_s=3.84 maxrss_kb=1775104

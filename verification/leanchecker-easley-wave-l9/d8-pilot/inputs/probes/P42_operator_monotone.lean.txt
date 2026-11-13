@@ -1,0 +1,20 @@
+import Mathlib
+/-! Operator monotonicity (Löwner–Heinz for p ∈ [0,1]) and antitonicity of the inverse:
+the bounded-resolvent form of E:compact-quarter-power (B ≤ A ≤ cB ⇒ quarter powers compare). -/
+open scoped NNReal
+variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
+#check @CFC.sqrt_le_sqrt
+#check @CFC.nnrpow_le_nnrpow
+#check @CFC.rpow_le_rpow
+#check @CStarAlgebra.inv_le_inv_iff
+#check @CStarAlgebra.inv_le_inv
+
+/-- Resolvent order ⇒ quarter-power order: if `0 ≤ a ≤ b` then `a^{1/4} ≤ b^{1/4}`
+(apply to the resolvents `R_A ≤ R_B` of `B ≤ A`). -/
+example (a b : H →L[ℂ] H) (hab : a ≤ b) :
+    CFC.nnrpow a (1/4 : ℝ≥0) ≤ CFC.nnrpow b (1/4 : ℝ≥0) :=
+  CFC.nnrpow_le_nnrpow (Set.mem_Icc.mpr ⟨bot_le, by norm_num [div_le_one]⟩) hab
+/-- Square root twice is the quarter power route that avoids rpow: sqrt ∘ sqrt is monotone. -/
+example (a b : H →L[ℂ] H) (hab : a ≤ b) :
+    CFC.sqrt (CFC.sqrt a) ≤ CFC.sqrt (CFC.sqrt b) :=
+  CFC.sqrt_le_sqrt _ _ (CFC.sqrt_le_sqrt _ _ hab)

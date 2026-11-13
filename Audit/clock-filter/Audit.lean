@@ -1,0 +1,12 @@
+module
+public import StratonovichHAMAudit.ClockFilter
+set_option autoImplicit false
+set_option pp.explicit true
+set_option pp.universes true
+set_option pp.fullNames true
+#check @StratonovichHAMAudit.ClockFilter.resolvent_partial_fraction
+#check @StratonovichHAMAudit.ClockFilter.clock_filter_bounds
+#check @StratonovichHAMAudit.ClockFilter.strict_filter_integral
+#print axioms StratonovichHAMAudit.ClockFilter.resolvent_partial_fraction
+#print axioms StratonovichHAMAudit.ClockFilter.clock_filter_bounds
+#print axioms StratonovichHAMAudit.ClockFilter.strict_filter_integral

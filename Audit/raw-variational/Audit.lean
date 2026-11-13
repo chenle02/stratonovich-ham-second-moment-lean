@@ -1,0 +1,11 @@
+import StratonovichHAMAudit.RawVariational
+set_option pp.universes true
+set_option pp.all true
+#check StratonovichHAMAudit.RawVariational.dilation_factors
+#print axioms StratonovichHAMAudit.RawVariational.dilation_factors
+#check StratonovichHAMAudit.RawVariational.label_score
+#print axioms StratonovichHAMAudit.RawVariational.label_score
+#check StratonovichHAMAudit.RawVariational.positive_score
+#print axioms StratonovichHAMAudit.RawVariational.positive_score
+#check StratonovichHAMAudit.RawVariational.strict_label_factor
+#print axioms StratonovichHAMAudit.RawVariational.strict_label_factor

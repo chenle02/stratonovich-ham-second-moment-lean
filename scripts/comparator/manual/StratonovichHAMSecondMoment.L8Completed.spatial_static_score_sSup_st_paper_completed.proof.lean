@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.L8Completed.spatial_static_score_sSup_st_paper_completed

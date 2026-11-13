@@ -1,0 +1,14 @@
+import StratonovichHAMAudit.GlobalOmega
+set_option pp.universes true
+set_option pp.all true
+#print StratonovichHAMAudit.GlobalOmega.envelopePolynomial
+#print StratonovichHAMAudit.GlobalOmega.envelopeDenom
+#print StratonovichHAMAudit.GlobalOmega.envelopeRational
+#check StratonovichHAMAudit.GlobalOmega.left_certificate
+#print axioms StratonovichHAMAudit.GlobalOmega.left_certificate
+#check StratonovichHAMAudit.GlobalOmega.right_certificate
+#print axioms StratonovichHAMAudit.GlobalOmega.right_certificate
+#check StratonovichHAMAudit.GlobalOmega.polynomial_pos
+#print axioms StratonovichHAMAudit.GlobalOmega.polynomial_pos
+#check StratonovichHAMAudit.GlobalOmega.rational_lt_one
+#print axioms StratonovichHAMAudit.GlobalOmega.rational_lt_one

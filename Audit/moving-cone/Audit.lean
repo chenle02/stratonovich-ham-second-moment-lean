@@ -1,0 +1,9 @@
+import StratonovichHAMAudit.MovingCone
+set_option pp.universes true
+set_option pp.all true
+#check StratonovichHAMAudit.MovingCone.residual_budget
+#print axioms StratonovichHAMAudit.MovingCone.residual_budget
+#check StratonovichHAMAudit.MovingCone.cone_conversion
+#print axioms StratonovichHAMAudit.MovingCone.cone_conversion
+#check StratonovichHAMAudit.MovingCone.terminal_margin
+#print axioms StratonovichHAMAudit.MovingCone.terminal_margin

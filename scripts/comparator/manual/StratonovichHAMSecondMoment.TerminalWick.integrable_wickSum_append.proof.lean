@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.TerminalWick.integrable_wickSum_append

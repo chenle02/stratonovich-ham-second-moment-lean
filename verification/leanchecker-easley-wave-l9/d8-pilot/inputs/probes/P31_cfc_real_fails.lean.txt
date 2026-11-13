@@ -1,0 +1,4 @@
+import Mathlib
+/-! Expected to FAIL: no CStarAlgebra / CFC instance for operators on a REAL Hilbert space. -/
+variable {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E] [CompleteSpace E]
+noncomputable example (T : E →L[ℝ] E) : E →L[ℝ] E := CFC.sqrt T

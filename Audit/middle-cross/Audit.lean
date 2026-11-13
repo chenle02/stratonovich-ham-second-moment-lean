@@ -1,0 +1,20 @@
+module
+public import StratonovichHAMAudit.MiddleCross
+set_option autoImplicit false
+set_option pp.explicit true
+set_option pp.universes true
+set_option pp.fullNames true
+#check @StratonovichHAMAudit.MiddleCross.certificate_pos
+#check @StratonovichHAMAudit.MiddleCross.parameter_identity
+#check @StratonovichHAMAudit.MiddleCross.parameter_numerator_pos
+#check @StratonovichHAMAudit.MiddleCross.difference_identity
+#check @StratonovichHAMAudit.MiddleCross.resolvent_difference
+#check @StratonovichHAMAudit.MiddleCross.root_numerator_pos
+#check @StratonovichHAMAudit.MiddleCross.middle_bound
+#print axioms StratonovichHAMAudit.MiddleCross.certificate_pos
+#print axioms StratonovichHAMAudit.MiddleCross.parameter_identity
+#print axioms StratonovichHAMAudit.MiddleCross.parameter_numerator_pos
+#print axioms StratonovichHAMAudit.MiddleCross.difference_identity
+#print axioms StratonovichHAMAudit.MiddleCross.resolvent_difference
+#print axioms StratonovichHAMAudit.MiddleCross.root_numerator_pos
+#print axioms StratonovichHAMAudit.MiddleCross.middle_bound

@@ -1,0 +1,85 @@
+################ $ python3 -I harness/replay-coverage.py <companion checkout> f3be834 harness/modules-wavel7.txt
+new f3be8348e28d0f050f8aa9896aaf029af8867b45
+modules at new: 81; replayed --fresh here: 10
+  StratonovichHAMAudit.ActualEvent: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.AllAlphaMoment: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.ClockFilter: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.DampedLower: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.DimensionalMatrix: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.DirectEvent: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.FiniteYoung: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.GaussianTail: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.GlobalOmega: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.HermiteWord: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.HermiteWordConsumer: 837778a (leanchecker-easley-2026-11-10) own source identical; 1 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.InteractionDriver: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.JointTilt: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.LocalFlow: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.MiddleCross: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.MovingCone: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.OccupationForm: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.PhaseResponse: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.PositiveGram: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.ProjectionResidual: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.RawValueCeiling: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.RawVariational: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.TerminalCross: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMAudit.WhiteCDF: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.ClockCopy: 2f5ee14 (leanchecker-easley-wave-l4) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.ClockCopyHomog: 2f5ee14 (leanchecker-easley-wave-l4) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.DampedNorms: 2f5ee14 (leanchecker-easley-wave-l4) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.DampedNormsHomog: 712c307 (leanchecker-easley-wave-l5) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.DriverParameters: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.FiniteGaussianMatrix: 2f5ee14 (leanchecker-easley-wave-l4) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.FrequencyRow: 2f5ee14 (leanchecker-easley-wave-l4) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.GaussianComparison: bfa2fd0 (leanchecker-easley-wave-l6) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.GaussianIBP: 687e631 (leanchecker-easley-wave-l3) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.GaussianScalarPowers: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.GaussianTest: 2f5ee14 (leanchecker-easley-wave-l4) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.GramScalarAlgebra: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.HomogHypothesis: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.IndexedCone: 2f5ee14 (leanchecker-easley-wave-l4) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.KappaRange: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.MaskedAuxiliaryNorm: 712c307 (leanchecker-easley-wave-l5) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.MaskedContinuousWave: 712c307 (leanchecker-easley-wave-l5) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.MaskedContinuousWaveCompleted: 712c307 (leanchecker-easley-wave-l5) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.MaskedModulation: 2f5ee14 (leanchecker-easley-wave-l4) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.MaskedSpectralGrowth: 2f5ee14 (leanchecker-easley-wave-l4) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.MaskedTrigProducts: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.OccupationKernelRow: 2f5ee14 (leanchecker-easley-wave-l4) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.PhaseBessel: 712c307 (leanchecker-easley-wave-l5) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.QuotientObstruction: bfa2fd0 (leanchecker-easley-wave-l6) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.RadiusMeanAnchor: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.RayleighTail: 837778a (leanchecker-easley-2026-11-10) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.SeriesType: bfa2fd0 (leanchecker-easley-wave-l6) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.SpatialFourierBound: bfa2fd0 (leanchecker-easley-wave-l6) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.SpatialOccupationCompleted: bfa2fd0 (leanchecker-easley-wave-l6) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.SpatialSmoothRatio: bfa2fd0 (leanchecker-easley-wave-l6) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.SpatialStaticControls: bfa2fd0 (leanchecker-easley-wave-l6) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.SpectralHomog: 2f5ee14 (leanchecker-easley-wave-l4) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.TemporalEquilibrium: 837778a (leanchecker-easley-2026-11-10) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.TimeCompletion: 712c307 (leanchecker-easley-wave-l5) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.TimeFractional: 2f5ee14 (leanchecker-easley-wave-l4) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.TimeSchur: 2f5ee14 (leanchecker-easley-wave-l4) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.TypeContinuity: bfa2fd0 (leanchecker-easley-wave-l6) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.VariationalDilation: 2f5ee14 (leanchecker-easley-wave-l4) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.VariationalFloor: bfa2fd0 (leanchecker-easley-wave-l6) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.VariationalMean: 712c307 (leanchecker-easley-wave-l5) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.VariationalRate: bfa2fd0 (leanchecker-easley-wave-l6) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.WaveGreen: bfa2fd0 (leanchecker-easley-wave-l6) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.WaveKernel: 2f5ee14 (leanchecker-easley-wave-l4) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.WaveTwoVariances: bfa2fd0 (leanchecker-easley-wave-l6) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.WeakSobolev: 687e631 (leanchecker-easley-wave-l3) own source identical; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.WhiteClockLaplace: bfa2fd0 (leanchecker-easley-wave-l6) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+  StratonovichHAMSecondMoment.WhiteRelativeWidth: bfa2fd0 (leanchecker-easley-wave-l6) own source comment-only; 0 project imports; stripped sources incl. imports equal: yes
+
+summary (replay commit, own source vs that commit): count
+  2f5ee14 comment-only: 13
+  2f5ee14 identical: 2
+  687e631 comment-only: 1
+  687e631 identical: 1
+  712c307 comment-only: 7
+  837778a comment-only: 1
+  837778a identical: 32
+  bfa2fd0 comment-only: 14
+modules failing the check: 0

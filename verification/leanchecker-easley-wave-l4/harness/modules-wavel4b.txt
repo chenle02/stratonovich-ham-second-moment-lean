@@ -1,0 +1,3 @@
+StratonovichHAMSecondMoment.DampedNorms
+StratonovichHAMSecondMoment.SpectralHomog
+StratonovichHAMSecondMoment.WaveKernel

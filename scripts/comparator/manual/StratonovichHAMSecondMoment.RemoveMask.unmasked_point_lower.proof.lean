@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.RemoveMask.unmasked_point_lower

@@ -1,0 +1,7 @@
+import StratonovichHAMAudit.ActualEvent
+set_option pp.universes true
+set_option pp.all true
+#check StratonovichHAMAudit.ActualEvent.finite_error_accumulation
+#print axioms StratonovichHAMAudit.ActualEvent.finite_error_accumulation
+#check StratonovichHAMAudit.ActualEvent.moderate_penalty
+#print axioms StratonovichHAMAudit.ActualEvent.moderate_penalty

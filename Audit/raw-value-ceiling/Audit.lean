@@ -1,0 +1,7 @@
+import StratonovichHAMAudit.RawValueCeiling
+set_option pp.universes true
+set_option pp.all true
+#check StratonovichHAMAudit.RawValueCeiling.exact_gap
+#print axioms StratonovichHAMAudit.RawValueCeiling.exact_gap
+#check StratonovichHAMAudit.RawValueCeiling.strict_log_gap
+#print axioms StratonovichHAMAudit.RawValueCeiling.strict_log_gap

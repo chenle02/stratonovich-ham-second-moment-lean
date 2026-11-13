@@ -1,0 +1,14 @@
+/tmp/stratham-d8-5695592.BQeNrc/probes/P12_names_absent.lean:3:8: error(lean.unknownIdentifier): Unknown identifier `MeasureTheory.SobolevSpace`
+/tmp/stratham-d8-5695592.BQeNrc/probes/P12_names_absent.lean:4:8: error(lean.unknownIdentifier): Unknown identifier `MeasureTheory.MemW1p`
+/tmp/stratham-d8-5695592.BQeNrc/probes/P12_names_absent.lean:5:8: error(lean.unknownIdentifier): Unknown identifier `HasWeakDeriv`
+/tmp/stratham-d8-5695592.BQeNrc/probes/P12_names_absent.lean:6:8: error(lean.unknownIdentifier): Unknown identifier `ClosedQuadraticForm`
+/tmp/stratham-d8-5695592.BQeNrc/probes/P12_names_absent.lean:7:8: error(lean.unknownIdentifier): Unknown constant `LinearPMap.ofClosedForm`
+/tmp/stratham-d8-5695592.BQeNrc/probes/P12_names_absent.lean:8:8: error(lean.unknownIdentifier): Unknown identifier `Rellich`
+/tmp/stratham-d8-5695592.BQeNrc/probes/P12_names_absent.lean:9:8: error(lean.unknownIdentifier): Unknown constant `IsCompactOperator.rellich`
+/tmp/stratham-d8-5695592.BQeNrc/probes/P12_names_absent.lean:10:8: error(lean.unknownIdentifier): Unknown constant `ContinuousLinearMap.IsHilbertSchmidt`
+/tmp/stratham-d8-5695592.BQeNrc/probes/P12_names_absent.lean:11:8: error(lean.unknownIdentifier): Unknown constant `LinearPMap.spectrum`
+/tmp/stratham-d8-5695592.BQeNrc/probes/P12_names_absent.lean:12:8: error(lean.unknownIdentifier): Unknown constant `LinearPMap.resolvent`
+/tmp/stratham-d8-5695592.BQeNrc/probes/P12_names_absent.lean:13:8: error(lean.unknownIdentifier): Unknown identifier `courantFischer`
+/tmp/stratham-d8-5695592.BQeNrc/probes/P12_names_absent.lean:14:8: error(lean.unknownIdentifier): Unknown constant `ContinuousLinearMap.iInf_rayleigh_eq_minmax`
+/tmp/stratham-d8-5695592.BQeNrc/probes/P12_names_absent.lean:15:8: error(lean.unknownIdentifier): Unknown constant `LinearPMap.cfc`
+MEASURE P12_names_absent.warm rc=1 wall_s=6.26 maxrss_kb=3285612

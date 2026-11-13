@@ -1,0 +1,9 @@
+Command: timeout -k 30s 14400s lake env leanchecker --fresh StratonovichHAMAudit.GlobalOmega
+Exit status: 0
+Elapsed wall (s): 660.06
+Elapsed wall (h:mm:ss): 0:11:00.06
+User CPU (s): 647.58
+System CPU (s): 12.08
+Peak RSS of largest waited descendant (KiB): 3012916
+Output bytes: 0
+Host: node866  Job: NA

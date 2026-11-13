@@ -1,0 +1,9 @@
+Command: timeout -k 30s 14400s lake env leanchecker --fresh StratonovichHAMAudit.DimensionalMatrix
+Exit status: 0
+Elapsed wall (s): 643.58
+Elapsed wall (h:mm:ss): 0:10:43.58
+User CPU (s): 632.74
+System CPU (s): 10.55
+Peak RSS of largest waited descendant (KiB): 3016468
+Output bytes: 0
+Host: node862  Job: NA

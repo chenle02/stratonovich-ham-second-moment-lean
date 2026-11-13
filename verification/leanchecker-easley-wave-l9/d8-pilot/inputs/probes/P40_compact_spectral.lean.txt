@@ -1,0 +1,35 @@
+import Mathlib
+/-! Compact self-adjoint operators: spectral theorem pieces and the top eigenvalue. -/
+open scoped InnerProductSpace NNReal
+variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H] [Nontrivial H]
+
+#check @IsCompactOperator
+#check @isCompactOperator_of_tendsto
+#check @IsCompactOperator.comp_clm
+#check @IsCompactOperator.clm_comp
+#check @ContinuousLinearMap.orthogonalComplement_iSup_eigenspaces_eq_bot
+#check @ContinuousLinearMap.finite_dimensional_eigenspace
+#check @IsCompactOperator.hasEigenvalue_iff_mem_spectrum
+#check @IsCompactOperator.hasEigenvalue_or_mem_resolventSet
+#check @ContinuousLinearMap.rayleighQuotient
+#check @IsSelfAdjoint.hasEigenvector_of_isMaxOn
+#check @ContinuousLinearMap.iSup_rayleigh_eq_iSup_rayleigh_sphere
+#check @ContinuousLinearMap.norm_eq_iSup_rayleighQuotient
+#check @IsSelfAdjoint.spectralRadius_eq_nnnorm
+#check @LinearMap.IsSymmetric.hasEigenvalue_iSup_of_finiteDimensional
+
+-- Top eigenvalue of a nonzero compact self-adjoint operator: some μ in the spectrum has
+-- ‖μ‖ = ‖T‖, and μ ≠ 0 is then an eigenvalue (the Birman–Schwinger / Rayleigh-max step).
+example (T : H →L[ℂ] H) (hT : IsCompactOperator T) (hsa : IsSelfAdjoint T) (h0 : T ≠ 0) :
+    ∃ μ : ℂ, ‖μ‖ = ‖T‖ ∧ Module.End.HasEigenvalue (T : Module.End ℂ H) μ := by
+  obtain ⟨μ, hμ, hμn⟩ := spectrum.exists_nnnorm_eq_spectralRadius T
+  have hr := hsa.spectralRadius_eq_nnnorm
+  refine ⟨μ, ?_, ?_⟩
+  · have : (‖μ‖₊ : ENNReal) = ‖T‖₊ := by rw [hμn, hr]
+    have h2 : ‖μ‖₊ = ‖T‖₊ := ENNReal.coe_injective this
+    exact congrArg NNReal.toReal h2
+  · have hne : μ ≠ 0 := by
+      intro h; subst h
+      have : (‖(0:ℂ)‖₊ : ENNReal) = ‖T‖₊ := by rw [hμn, hr]
+      simp at this; exact h0 (by simpa using this.symm)
+    exact (hT.hasEigenvalue_iff_mem_spectrum hne).mpr hμ

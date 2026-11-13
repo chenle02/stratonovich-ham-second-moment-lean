@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.IntervalScalarCompleted.inventoryProduct_holds_paper

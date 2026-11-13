@@ -1,0 +1,19 @@
+field | local systemd | Easley slurm | equal
+commit: | 6eb79c7b2ec4ca52f02121224484aa4865e43ac8 | 6eb79c7b2ec4ca52f02121224484aa4865e43ac8 | True
+lean-toolchain: | leanprover/lean4:v4.35.0 | leanprover/lean4:v4.35.0 | True
+checker: | verify.sh (lake build StratonovichHAMSecondMoment StratonovichHAMSecondMoment.Axioms; #print axioms) | verify.sbatch (lake build StratonovichHAMSecondMoment StratonovichHAMSecondMoment.Axioms; #print axioms) | False
+sorry-count: | 0 | 0 | True
+axioms: | Classical.choice,Quot.sound,propext | Classical.choice,Quot.sound,propext | True
+claim-axioms-done: | 2468 | 2468 | True
+lean-path-shadow: | None | none (11 entries, roots Challenge,ChallengeDefs,Solution,StratonovichHAMAudit,StratonovichHAMSecondMoment) | False
+build line | Build completed successfully (9150 jobs). | Build completed successfully (9150 jobs). | True
+#print axioms results in log | 2688 | 2688 | True
+claims (claim-axioms lines) | 2468 | 2468 | True
+claims with differing axiom sets | 0 []
+axiom-set distribution local: {'Classical.choice,Quot.sound,propext': 2448, 'none': 4, 'Quot.sound,propext': 3, 'propext': 13}
+axiom-set distribution slurm: {'Classical.choice,Quot.sound,propext': 2448, 'none': 4, 'Quot.sound,propext': 3, 'propext': 13}
+hyp lines | 2469 | 2469 | True
+hyp-done local: ['hyp-done: {"v":1,"decls":2468,"challenge":0,"configs":[]}']
+hyp-done slurm: ['hyp-done: {"v":1,"decls":2468,"challenge":0,"configs":[]}']
+first differing hyp line indices: []
+hyp kinds local: {'hyp-decl': 2468, 'hyp-done': 1} slurm: {'hyp-decl': 2468, 'hyp-done': 1}

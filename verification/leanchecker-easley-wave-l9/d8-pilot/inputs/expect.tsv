@@ -1,0 +1,16 @@
+# probe	expected_rc	office_wall_s	office_maxrss_kb	what
+P00_import_full	0	4.71	6930020	import Mathlib (the companion's import style: 77 of 81 modules)
+P01_import_bessel	0	2.87	3479688	BesselPotentialSpace slice only
+P02_import_operator	0	2.88	3477696	LaxMilgram, Rayleigh, Spectrum, LinearPMap, Fredholm, CFC rpow slice only
+P10_bessel_api	0	4.83	6961148	H^{s,p} API, H^1(R^3) Hilbert instance
+P11_bessel_real_fails	1	4.71	6936184	negative control: real-valued H^1 has no instance (NormedSpace C R)
+P12_names_absent	1	4.81	6939212	negative control: Sobolev W^{1,p}, closed forms, Rellich, HS, min-max absent
+P13_bridge_names	0	5.70	6959980	distributional derivative / Lp embedding names for the K5 bridge
+P20_laxmilgram	0	5.15	6950228	real Lax-Milgram; complex Riesz map of a sesquilinear form
+P30_cfc_bounded	0	6.72	6969628	CFC.sqrt, Ring.inverse, uniqueness of positive roots
+P31_cfc_real_fails	1	5.36	6937668	negative control: no CFC on real-Hilbert operators (StarOrderedRing)
+P32_cfc_multiplication	0	6.88	6974384	CFC.sqrt of a multiplication model; PiLp/lp packaging is Hilbert
+P40_compact_spectral	0	5.66	6957372	compact self-adjoint: top eigenvalue attained
+P41_unbounded	0	4.87	6934916	LinearPMap adjoint/self-adjoint/closed
+P42_operator_monotone	0	6.98	6981288	Loewner-Heinz p in [0,1], inverse antitone
+P50_workload	0	8.03	6994788	workload: H^1 embedding, Riesz, coercive shift + Lax-Milgram, CFC scalar root

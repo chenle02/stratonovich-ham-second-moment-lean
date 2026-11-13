@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.MaskedSpectralGrowth.spectralHomogeneous_of_homog

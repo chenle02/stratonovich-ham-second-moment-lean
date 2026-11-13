@@ -1,0 +1,124 @@
+node=node819 job=5685763 mode=pilot par=1 cpus=4 start=2026-11-10T14:08:31-0600 commit=837778a7ce25b2c082025a8231c9c9b5c3828856 tree=0cd15e0ebb9409b76a94e5ff29e83c05eab29a1d
+replay.py: OK
+modules-all.txt: OK
+modules-pilot.txt: OK
+gate.sbatch: OK
+/scratch/<user>/<runtime-dir>/lean-4.35.0-runtime.tar.gz: OK
+WARNING: Overriding HOME environment variable with SINGULARITYENV_HOME is not permitted
+VERIFIED_COMMIT=837778a7ce25b2c082025a8231c9c9b5c3828856 TREE=0cd15e0ebb9409b76a94e5ff29e83c05eab29a1d CLEAN_NO_IGNORED
+WARNING: Overriding HOME environment variable with SINGULARITYENV_HOME is not permitted
+MANIFEST_OK modules=35
+WARNING: Overriding HOME environment variable with SINGULARITYENV_HOME is not permitted
+leanprover/lean4:v4.35.0
+Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+/usr/bin/git
+/tmp/stratham-lchk-5685763.NeLuKm/tc/leanprover--lean4---v4.35.0/bin/lake
+/tmp/stratham-lchk-5685763.NeLuKm/tc/leanprover--lean4---v4.35.0/bin/lean
+/tmp/stratham-lchk-5685763.NeLuKm/tc/leanprover--lean4---v4.35.0/bin/leanchecker
+/usr/bin/python3
+/usr/bin/timeout
+/usr/bin/curl
+WARNING: Overriding HOME environment variable with SINGULARITYENV_HOME is not permitted
+bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38  /tmp/stratham-lchk-5685763.NeLuKm/tc/leanprover--lean4---v4.35.0/bin/lean
+8ba83c98f76562d03b8dbc33f1057151ba6cbb121679dde76b2260ccc90495e1  /tmp/stratham-lchk-5685763.NeLuKm/tc/leanprover--lean4---v4.35.0/bin/lake
+12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6  /tmp/stratham-lchk-5685763.NeLuKm/tc/leanprover--lean4---v4.35.0/bin/leanchecker
+ulimit_n=262144 file_max=262144
+Downloaded: 1 file(s) [attempted 1/9031 = 0%, 357 KB/s]Downloaded: 79 file(s) [attempted 79/9031 = 0%, 869 KB/s]Downloaded: 178 file(s) [attempted 178/9031 = 1%, 934 KB/s]Downloaded: 256 file(s) [attempted 256/9031 = 2%, 3337 KB/s]Downloaded: 345 file(s) [attempted 345/9031 = 3%, 420 KB/s]Downloaded: 416 file(s) [attempted 416/9031 = 4%, 1313 KB/s]Downloaded: 512 file(s) [attempted 512/9031 = 5%, 342 KB/s]Downloaded: 602 file(s) [attempted 602/9031 = 6%, 354 KB/s]Downloaded: 682 file(s) [attempted 682/9031 = 7%, 2150 KB/s]Downloaded: 749 file(s) [attempted 749/9031 = 8%, 450 KB/s]Downloaded: 829 file(s) [attempted 829/9031 = 9%, 595 KB/s]Downloaded: 895 file(s) [attempted 895/9031 = 9%, 658 KB/s]Downloaded: 975 file(s) [attempted 975/9031 = 10%, 1015 KB/s]Downloaded: 976 file(s) [attempted 976/9031 = 10%, 761 KB/s]Downloaded: 1091 file(s) [attempted 1091/9031 = 12%, 1339 KB/s]Downloaded: 1123 file(s) [attempted 1123/9031 = 12%, 711 KB/s]Downloaded: 1235 file(s) [attempted 1235/9031 = 13%, 397 KB/s]Downloaded: 1308 file(s) [attempted 1308/9031 = 14%, 973 KB/s]Downloaded: 1408 file(s) [attempted 1408/9031 = 15%, 5004 KB/s]Downloaded: 1493 file(s) [attempted 1493/9031 = 16%, 288 KB/s]Downloaded: 1592 file(s) [attempted 1592/9031 = 17%, 4063 KB/s]Downloaded: 1593 file(s) [attempted 1593/9031 = 17%, 286 KB/s]Downloaded: 1749 file(s) [attempted 1749/9031 = 19%, 1626 KB/s]Downloaded: 1873 file(s) [attempted 1873/9031 = 20%, 1828 KB/s]Downloaded: 1994 file(s) [attempted 1994/9031 = 22%, 412 KB/s]Downloaded: 2116 file(s) [attempted 2116/9031 = 23%, 167 KB/s]Downloaded: 2227 file(s) [attempted 2227/9031 = 24%, 265 KB/s]Downloaded: 2343 file(s) [attempted 2343/9031 = 25%, 268 KB/s]Downloaded: 2431 file(s) [attempted 2431/9031 = 26%, 3793 KB/s]Downloaded: 2558 file(s) [attempted 2558/9031 = 28%, 1284 KB/s]Downloaded: 2656 file(s) [attempted 2656/9031 = 29%, 991 KB/s]Downloaded: 2731 file(s) [attempted 2731/9031 = 30%, 107 KB/s]Downloaded: 2798 file(s) [attempted 2798/9031 = 30%, 378 KB/s]Downloaded: 2926 file(s) [attempted 2926/9031 = 32%, 1751 KB/s]Downloaded: 3028 file(s) [attempted 3028/9031 = 33%, 347 KB/s]Downloaded: 3137 file(s) [attempted 3137/9031 = 34%, 3051 KB/s]Downloaded: 3260 file(s) [attempted 3260/9031 = 36%, 502 KB/s]Downloaded: 3412 file(s) [attempted 3412/9031 = 37%, 863 KB/s]Downloaded: 3514 file(s) [attempted 3514/9031 = 38%, 945 KB/s]Downloaded: 3630 file(s) [attempted 3630/9031 = 40%, 550 KB/s]Downloaded: 3682 file(s) [attempted 3682/9031 = 40%, 793 KB/s]Downloaded: 3789 file(s) [attempted 3789/9031 = 41%, 2824 KB/s]Downloaded: 3933 file(s) [attempted 3933/9031 = 43%, 258 KB/s]Downloaded: 4085 file(s) [attempted 4085/9031 = 45%, 459 KB/s]Downloaded: 4224 file(s) [attempted 4224/9031 = 46%, 2318 KB/s]Downloaded: 4342 file(s) [attempted 4342/9031 = 48%, 1122 KB/s]Downloaded: 4480 file(s) [attempted 4480/9031 = 49%, 2253 KB/s]Downloaded: 4596 file(s) [attempted 4596/9031 = 50%, 4228 KB/s]Downloaded: 4730 file(s) [attempted 4730/9031 = 52%, 1257 KB/s]Downloaded: 4875 file(s) [attempted 4875/9031 = 53%, 418 KB/s]Downloaded: 4993 file(s) [attempted 4993/9031 = 55%, 267 KB/s]Downloaded: 5094 file(s) [attempted 5094/9031 = 56%, 531 KB/s]Downloaded: 5230 file(s) [attempted 5230/9031 = 57%, 425 KB/s]Downloaded: 5369 file(s) [attempted 5369/9031 = 59%, 336 KB/s]Downloaded: 5459 file(s) [attempted 5459/9031 = 60%, 814 KB/s]Downloaded: 5546 file(s) [attempted 5546/9031 = 61%, 1336 KB/s]Downloaded: 5661 file(s) [attempted 5661/9031 = 62%, 5606 KB/s]Downloaded: 5786 file(s) [attempted 5786/9031 = 64%, 1301 KB/s]Downloaded: 5869 file(s) [attempted 5869/9031 = 64%, 2007 KB/s]Downloaded: 5980 file(s) [attempted 5980/9031 = 66%, 161 KB/s]Downloaded: 6092 file(s) [attempted 6092/9031 = 67%, 1232 KB/s]Downloaded: 6177 file(s) [attempted 6177/9031 = 68%, 161 KB/s]Downloaded: 6178 file(s) [attempted 6178/9031 = 68%, 330 KB/s]Downloaded: 6319 file(s) [attempted 6319/9031 = 69%, 44 KB/s]Downloaded: 6465 file(s) [attempted 6465/9031 = 71%, 1196 KB/s]Downloaded: 6531 file(s) [attempted 6531/9031 = 72%, 257 KB/s]Downloaded: 6563 file(s) [attempted 6563/9031 = 72%, 1110 KB/s]Downloaded: 6600 file(s) [attempted 6600/9031 = 73%, 256 KB/s]Downloaded: 6642 file(s) [attempted 6642/9031 = 73%, 359 KB/s]Downloaded: 6720 file(s) [attempted 6720/9031 = 74%, 302 KB/s]Downloaded: 6726 file(s) [attempted 6726/9031 = 74%, 1705 KB/s]Downloaded: 6781 file(s) [attempted 6781/9031 = 75%, 105 KB/s]Downloaded: 6928 file(s) [attempted 6928/9031 = 76%, 3509 KB/s]Downloaded: 6979 file(s) [attempted 6979/9031 = 77%, 502 KB/s]Downloaded: 7079 file(s) [attempted 7079/9031 = 78%, 4161 KB/s]Downloaded: 7150 file(s) [attempted 7150/9031 = 79%, 276 KB/s]Downloaded: 7258 file(s) [attempted 7258/9031 = 80%, 1173 KB/s]Downloaded: 7331 file(s) [attempted 7331/9031 = 81%, 292 KB/s]Downloaded: 7438 file(s) [attempted 7438/9031 = 82%, 1952 KB/s]Downloaded: 7587 file(s) [attempted 7587/9031 = 84%, 2559 KB/s]Downloaded: 7689 file(s) [attempted 7689/9031 = 85%, 2183 KB/s]Downloaded: 7784 file(s) [attempted 7784/9031 = 86%, 823 KB/s]Downloaded: 7929 file(s) [attempted 7929/9031 = 87%, 1505 KB/s]Downloaded: 8073 file(s) [attempted 8073/9031 = 89%, 574 KB/s]Downloaded: 8215 file(s) [attempted 8215/9031 = 90%, 4214 KB/s]Downloaded: 8216 file(s) [attempted 8216/9031 = 90%, 620 KB/s]Downloaded: 8359 file(s) [attempted 8359/9031 = 92%, 372 KB/s]Downloaded: 8431 file(s) [attempted 8431/9031 = 93%, 425 KB/s]Downloaded: 8509 file(s) [attempted 8509/9031 = 94%, 1025 KB/s]Downloaded: 8557 file(s) [attempted 8557/9031 = 94%, 156 KB/s]Downloaded: 8639 file(s) [attempted 8639/9031 = 95%, 374 KB/s]Downloaded: 8677 file(s) [attempted 8677/9031 = 96%, 792 KB/s]Downloaded: 8724 file(s) [attempted 8724/9031 = 96%, 1034 KB/s]Downloaded: 8812 file(s) [attempted 8812/9031 = 97%, 1604 KB/s]Downloaded: 8898 file(s) [attempted 8898/9031 = 98%, 1525 KB/s]Downloaded: 8983 file(s) [attempted 8983/9031 = 99%, 873 KB/s]Downloaded: 9031 file(s) [attempted 9031/9031 = 100%, 873 KB/s]
+Still decompressing downloaded files...
+Decompressed 9031 file(s)
+Already decompressed 9031 file(s)
+CACHE attempt=1 rc=0
+PHASE cache_get_s=83
+WARNING: Overriding HOME environment variable with SINGULARITYENV_HOME is not permitted
+MATHLIB_PIN_OK=56a005855ea17e0b0958f73ec801ae140b0a1679
+NO_PROJECT_OLEANS_BEFORE_BUILD
+ Classical.choice,
+ Quot.sound]
+Build completed successfully (9082 jobs).
+PHASE build_s=151
+FRESH_BUILD=PASS
+WARNING: Overriding HOME environment variable with SINGULARITYENV_HOME is not permitted
+ALL_OLEANS_PRESENT=35
+WARNING: Overriding HOME environment variable with SINGULARITYENV_HOME is not permitted
+BEGIN default StratonovichHAMAudit.ActualEvent 14:14:37
+END default StratonovichHAMAudit.ActualEvent	0	0:00:06.71	1411244	0
+BEGIN default StratonovichHAMAudit.AllAlphaMoment 14:14:44
+END default StratonovichHAMAudit.AllAlphaMoment	0	0:00:06.65	1412648	0
+BEGIN default StratonovichHAMAudit.ClockFilter 14:14:52
+END default StratonovichHAMAudit.ClockFilter	0	0:00:06.63	1462488	0
+BEGIN default StratonovichHAMAudit.DampedLower 14:14:59
+END default StratonovichHAMAudit.DampedLower	0	0:00:06.82	1445236	0
+BEGIN default StratonovichHAMAudit.DimensionalMatrix 14:15:07
+END default StratonovichHAMAudit.DimensionalMatrix	0	0:00:06.60	1413784	0
+BEGIN default StratonovichHAMAudit.DirectEvent 14:15:15
+END default StratonovichHAMAudit.DirectEvent	0	0:00:07.11	1414740	0
+BEGIN default StratonovichHAMAudit.FiniteYoung 14:15:24
+END default StratonovichHAMAudit.FiniteYoung	0	0:00:06.95	1411728	0
+BEGIN default StratonovichHAMAudit.GaussianTail 14:15:32
+END default StratonovichHAMAudit.GaussianTail	0	0:00:06.51	1411940	0
+BEGIN default StratonovichHAMAudit.GlobalOmega 14:15:39
+END default StratonovichHAMAudit.GlobalOmega	0	0:00:07.50	1455304	0
+BEGIN default StratonovichHAMAudit.HermiteWord 14:15:48
+END default StratonovichHAMAudit.HermiteWord	0	0:00:04.99	444068	0
+BEGIN default StratonovichHAMAudit.HermiteWordConsumer 14:15:53
+END default StratonovichHAMAudit.HermiteWordConsumer	0	0:00:05.12	444084	0
+BEGIN default StratonovichHAMAudit.InteractionDriver 14:15:59
+END default StratonovichHAMAudit.InteractionDriver	0	0:00:06.74	1413896	0
+BEGIN default StratonovichHAMAudit.JointTilt 14:16:07
+END default StratonovichHAMAudit.JointTilt	0	0:00:06.55	1411916	0
+BEGIN default StratonovichHAMAudit.LocalFlow 14:16:15
+END default StratonovichHAMAudit.LocalFlow	0	0:00:07.09	1411796	0
+BEGIN default StratonovichHAMAudit.MiddleCross 14:16:23
+END default StratonovichHAMAudit.MiddleCross	0	0:00:21.38	2358920	0
+BEGIN default StratonovichHAMAudit.MovingCone 14:16:45
+END default StratonovichHAMAudit.MovingCone	0	0:00:06.75	1412608	0
+BEGIN default StratonovichHAMAudit.OccupationForm 14:16:53
+END default StratonovichHAMAudit.OccupationForm	0	0:00:06.72	1413996	0
+BEGIN default StratonovichHAMAudit.PhaseResponse 14:17:00
+END default StratonovichHAMAudit.PhaseResponse	0	0:00:06.71	1413528	0
+BEGIN default StratonovichHAMAudit.PositiveGram 14:17:09
+END default StratonovichHAMAudit.PositiveGram	0	0:00:06.63	1413712	0
+BEGIN default StratonovichHAMAudit.ProjectionResidual 14:17:16
+END default StratonovichHAMAudit.ProjectionResidual	0	0:00:06.72	1412620	0
+BEGIN default StratonovichHAMAudit.RawValueCeiling 14:17:24
+END default StratonovichHAMAudit.RawValueCeiling	0	0:00:06.49	1441364	0
+BEGIN default StratonovichHAMAudit.RawVariational 14:17:31
+END default StratonovichHAMAudit.RawVariational	0	0:00:06.52	1413192	0
+BEGIN default StratonovichHAMAudit.TerminalCross 14:17:38
+END default StratonovichHAMAudit.TerminalCross	0	0:00:07.76	1438340	0
+BEGIN default StratonovichHAMAudit.WhiteCDF 14:17:47
+END default StratonovichHAMAudit.WhiteCDF	0	0:00:06.81	1412092	0
+BEGIN default StratonovichHAMSecondMoment.Axioms 14:17:54
+END default StratonovichHAMSecondMoment.Axioms	0	0:00:08.51	2696012	0
+BEGIN default StratonovichHAMSecondMoment.DriverParameters 14:18:03
+END default StratonovichHAMSecondMoment.DriverParameters	0	0:00:06.77	1412128	0
+BEGIN default StratonovichHAMSecondMoment.GaussianScalarPowers 14:18:11
+END default StratonovichHAMSecondMoment.GaussianScalarPowers	0	0:00:08.51	2698504	0
+BEGIN default StratonovichHAMSecondMoment.GramScalarAlgebra 14:18:20
+END default StratonovichHAMSecondMoment.GramScalarAlgebra	0	0:00:06.57	1412340	0
+BEGIN default StratonovichHAMSecondMoment.HomogHypothesis 14:18:28
+END default StratonovichHAMSecondMoment.HomogHypothesis	0	0:00:08.63	2696852	0
+BEGIN default StratonovichHAMSecondMoment.KappaRange 14:18:37
+END default StratonovichHAMSecondMoment.KappaRange	0	0:00:06.44	1411068	0
+BEGIN default StratonovichHAMSecondMoment.MaskedTrigProducts 14:18:44
+END default StratonovichHAMSecondMoment.MaskedTrigProducts	0	0:00:08.82	2699092	0
+BEGIN default StratonovichHAMSecondMoment.RadiusMeanAnchor 14:18:53
+END default StratonovichHAMSecondMoment.RadiusMeanAnchor	0	0:00:08.73	2704620	0
+BEGIN default StratonovichHAMSecondMoment.RayleighTail 14:19:02
+END default StratonovichHAMSecondMoment.RayleighTail	0	0:00:08.53	2701300	0
+BEGIN default StratonovichHAMSecondMoment.TemporalEquilibrium 14:19:11
+END default StratonovichHAMSecondMoment.TemporalEquilibrium	0	0:00:08.87	2703752	0
+BEGIN default StratonovichHAMSecondMoment 14:19:21
+END default StratonovichHAMSecondMoment	0	0:00:37.44	13948300	0
+REPLAY_DEFAULT pass=35 fail=0 total=35
+PHASE replay_default_s=332 rc=0
+WARNING: Overriding HOME environment variable with SINGULARITYENV_HOME is not permitted
+BEGIN fresh StratonovichHAMAudit.WhiteCDF 14:20:02
+END fresh StratonovichHAMAudit.WhiteCDF	0	0:10:27.41	3007680	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=631 rc=0
+WARNING: Overriding HOME environment variable with SINGULARITYENV_HOME is not permitted
+SOURCE_UNCHANGED_AFTER_GATE
+GATE_PROCESS_PASS mode=pilot: fresh build + default replay (35) + --fresh replay (1); terminal Slurm accounting still required
+PROCESS_EXIT=0 end=2026-11-10T14:30:30-0600

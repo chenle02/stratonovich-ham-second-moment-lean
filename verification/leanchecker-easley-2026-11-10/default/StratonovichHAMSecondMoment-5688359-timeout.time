@@ -1,0 +1,9 @@
+Command: timeout -k 30s 1800s lake env leanchecker StratonovichHAMSecondMoment
+Exit status: 124
+Elapsed wall (s): 1800.11
+Elapsed wall (h:mm:ss): 0:30:00.11
+User CPU (s): 0.80
+System CPU (s): 0.38
+Peak RSS of largest waited descendant (KiB): 444088
+Output bytes: 0
+Host: node841  Job: NA

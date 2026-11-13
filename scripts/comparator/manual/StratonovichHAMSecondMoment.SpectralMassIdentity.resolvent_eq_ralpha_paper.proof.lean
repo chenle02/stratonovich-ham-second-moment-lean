@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.SpectralMassIdentity.resolvent_eq_ralpha_paper

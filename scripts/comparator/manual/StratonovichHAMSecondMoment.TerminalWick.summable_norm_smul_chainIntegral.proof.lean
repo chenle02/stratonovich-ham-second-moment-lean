@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.TerminalWick.summable_norm_smul_chainIntegral

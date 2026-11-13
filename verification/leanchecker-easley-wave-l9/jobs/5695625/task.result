@@ -1,0 +1,14 @@
+index=11
+mode=fresh
+target=StratonovichHAMAudit.HermiteWordConsumer
+rc=0
+commit=6eb79c7b2ec4ca52f02121224484aa4865e43ac8
+tree=de6f79a14664bfad0e9c60dff29dc2f0ed37711e
+inputs_sha256=5f2345f70b3fdccb16ed92c3c57cac1f3361b2a7d0906e5823867d55799310fe
+ws_tar_sha256=bc9a633468e4fe90f090fec6a2f22bcd2f26429ed3d4bdc3491b32a5a4983256
+leanchecker_sha256=12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6
+node=node868
+job=5695625
+array_job=5695614
+start=2026-11-12T16:10:10-0600
+end=2026-11-12T16:18:11-0600

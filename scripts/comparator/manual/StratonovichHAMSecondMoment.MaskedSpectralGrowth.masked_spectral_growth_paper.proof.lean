@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.MaskedSpectralGrowth.masked_spectral_growth_paper

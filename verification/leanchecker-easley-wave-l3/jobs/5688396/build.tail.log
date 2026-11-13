@@ -1,0 +1,5 @@
+info: StratonovichHAMSecondMoment/Axioms.lean:686:0: 'StratonovichHAMSecondMoment.FiniteGaussianMatrix.word_growth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:687:0: 'StratonovichHAMSecondMoment.FiniteGaussianMatrix.word_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (9092 jobs).

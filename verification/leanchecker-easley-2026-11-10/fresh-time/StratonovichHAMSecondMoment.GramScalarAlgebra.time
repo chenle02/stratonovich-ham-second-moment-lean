@@ -1,0 +1,9 @@
+Command: timeout -k 30s 14400s lake env leanchecker --fresh StratonovichHAMSecondMoment.GramScalarAlgebra
+Exit status: 0
+Elapsed wall (s): 704.96
+Elapsed wall (h:mm:ss): 0:11:44.96
+User CPU (s): 694.12
+System CPU (s): 10.77
+Peak RSS of largest waited descendant (KiB): 3007700
+Output bytes: 0
+Host: node807  Job: NA

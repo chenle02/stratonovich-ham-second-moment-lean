@@ -1,0 +1,10 @@
+BesselPotentialSpace : (E : Type u_1) →
+  (F : Type u_2) →
+    [inst : NormedAddCommGroup E] →
+      [inst_1 : NormedAddCommGroup F] →
+        [inst_2 : InnerProductSpace ℝ E] →
+          [FiniteDimensional ℝ E] →
+            [inst_4 : MeasurableSpace E] →
+              [BorelSpace E] →
+                [CompleteSpace F] → [NormedSpace ℂ F] → ℝ → (p : ENNReal) → [hp : Fact (1 ≤ p)] → Type (max u_1 u_2)
+MEASURE P01_import_bessel.cold rc=0 wall_s=3.82 maxrss_kb=1776048

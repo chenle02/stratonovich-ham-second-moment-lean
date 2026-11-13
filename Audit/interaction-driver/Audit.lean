@@ -1,0 +1,19 @@
+module
+import StratonovichHAMAudit.InteractionDriver
+set_option pp.all true
+#check @StratonovichHAMAudit.InteractionDriver.temporal_range
+#check @StratonovichHAMAudit.InteractionDriver.variance_norm
+#check @StratonovichHAMAudit.InteractionDriver.gaussian_prefactor
+#check @StratonovichHAMAudit.InteractionDriver.gaussian_exponent
+#check @StratonovichHAMAudit.InteractionDriver.holder_parameters
+#check @StratonovichHAMAudit.InteractionDriver.dyadic_ratio
+#check @StratonovichHAMAudit.InteractionDriver.box_margin
+#check @StratonovichHAMAudit.InteractionDriver.box_scale
+#print axioms StratonovichHAMAudit.InteractionDriver.temporal_range
+#print axioms StratonovichHAMAudit.InteractionDriver.variance_norm
+#print axioms StratonovichHAMAudit.InteractionDriver.gaussian_prefactor
+#print axioms StratonovichHAMAudit.InteractionDriver.gaussian_exponent
+#print axioms StratonovichHAMAudit.InteractionDriver.holder_parameters
+#print axioms StratonovichHAMAudit.InteractionDriver.dyadic_ratio
+#print axioms StratonovichHAMAudit.InteractionDriver.box_margin
+#print axioms StratonovichHAMAudit.InteractionDriver.box_scale

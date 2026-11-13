@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.SymplecticFree.FreeWaveData.norm_le_norm_add_compact

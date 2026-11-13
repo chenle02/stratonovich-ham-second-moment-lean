@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.SpatialSmoothRatio.ratio_le_of_S1Bdd

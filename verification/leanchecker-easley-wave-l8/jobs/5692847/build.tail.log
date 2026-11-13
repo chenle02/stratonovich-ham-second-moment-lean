@@ -1,0 +1,13 @@
+info: StratonovichHAMSecondMoment/Axioms.lean:2314:0: 'StratonovichHAMSecondMoment.L8Completed.spatial_static_energy_score_sSup_st_paper_completed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2315:0: 'StratonovichHAMSecondMoment.L8Completed.spatial_static_score_sSup_st_paper_completed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2316:0: 'StratonovichHAMSecondMoment.L8Completed.uniform_series_tail_terminal_wick_paper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2317:0: 'StratonovichHAMSecondMoment.L8Completed.variational_positive_scores_sSup_st_paper_completed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Build completed successfully (9139 jobs).

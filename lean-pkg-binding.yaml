@@ -1,0 +1,8 @@
+# lean-pkg-binding.yaml: this package's docs-only opt-in (lean-pkg docs/receipts.md, "Docs-only descendants").
+# docs_descendants: true lets a receipt bound to commit X also bind a later commit that changes only files
+# the build does not read (README.md, coverage.yaml, notes). A change to a build input (*.lean, lakefile.*,
+# lake-manifest.json, lean-toolchain, a build_inputs glob, claims.yaml, this file) still needs a new receipt.
+# lean-pkg reads this file at X only, never in the working tree: commit it before the verify run.
+# Say false (or delete the file) to keep the strict evidence-only rule.
+schema: lean-pkg-binding/1
+docs_descendants: true

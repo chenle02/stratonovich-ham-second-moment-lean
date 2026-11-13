@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.TerminalWick.norm_prodL2_le

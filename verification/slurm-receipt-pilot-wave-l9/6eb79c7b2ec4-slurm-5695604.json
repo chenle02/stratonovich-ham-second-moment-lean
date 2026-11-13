@@ -1,0 +1,42 @@
+{
+  "schema": "lower-receipt/1",
+  "commit": "6eb79c7b2ec4ca52f02121224484aa4865e43ac8",
+  "lean_toolchain": "leanprover/lean4:v4.35.0",
+  "mathlib_rev": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "sorry_count": 0,
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "report_sha256": "3be3cd4d0c0e001d4527ed50a4d39de1e05122ec703999233c63c68be6686d0e",
+  "job_id": "slurm-5695604",
+  "checker": "verify.sbatch (lake build StratonovichHAMSecondMoment StratonovichHAMSecondMoment.Axioms; #print axioms)",
+  "generated_at": "2026-11-12T23:07:07Z",
+  "job_stdout_sha256": "ce70c2c646601fdd779c46083e31806a221a701357955fe80d3b2d6c555e3922",
+  "manifest_sha256": "9b7a4fffce481cf565a90ecbcd125a9c4ac345736fb168b3b00fcba6969d3b2a",
+  "log_commit_bound": true,
+  "container": {
+    "engine": "singularity",
+    "image_sha256": "0639ce71c13d479d456499b53f1efd887055123fe67573873170b7d1d9bba36a",
+    "ref": "/tmp/<USER>-job-5695604/image.sif"
+  },
+  "claim_axioms": {
+    "checked": 2468,
+    "nonstandard": [],
+    "missing": []
+  },
+  "producer": {
+    "lean_pkg": "0.29.0",
+    "install": "installed",
+    "commit": null,
+    "dirty": null,
+    "sources_sha256": "5363e09a087a522c76f0b085d5bec52a60734169e5049637518ead6ca35f5f47",
+    "source_files": 99,
+    "python": "3.12.3",
+    "bytecode_tag": "cpython-312",
+    "bytecode_files": 84,
+    "bytecode_sha256": "80dbab539861b5dd6baf0bf065e47d920b5547d2aad603ed7eed0e92c3d80df9",
+    "other_bytecode_files": 0
+  }
+}

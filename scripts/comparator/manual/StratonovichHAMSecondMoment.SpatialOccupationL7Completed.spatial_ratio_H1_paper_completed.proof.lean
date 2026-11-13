@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.SpatialOccupationL7Completed.spatial_ratio_H1_paper_completed

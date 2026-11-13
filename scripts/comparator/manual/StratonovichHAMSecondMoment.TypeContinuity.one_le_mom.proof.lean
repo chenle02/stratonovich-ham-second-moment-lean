@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.TypeContinuity.one_le_mom

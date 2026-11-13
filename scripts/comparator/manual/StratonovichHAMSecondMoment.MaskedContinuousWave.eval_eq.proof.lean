@@ -1,0 +1,5 @@
+  intro W r t
+  rw [StratonovichHamSecondMomentLeanAuditBridge.MaskedContinuousWave.weval_eq, StratonovichHamSecondMomentLeanAuditBridge.MaskedContinuousWave.amp_eq,
+    StratonovichHamSecondMomentLeanAuditBridge.MaskedContinuousWave.fr_eq, StratonovichHamSecondMomentLeanAuditBridge.MaskedTrigProducts.eval_eq,
+    StratonovichHamSecondMomentLeanAuditBridge.MaskedContinuousWave.trig_eq]
+  exact _root_.StratonovichHAMSecondMoment.MaskedContinuousWave.eval_eq (StratonovichHamSecondMomentLeanAuditBridge.MaskedContinuousWave.toP W) r t

@@ -1,0 +1,22 @@
+import Mathlib
+/-! CFC.sqrt of a multiplication operator on L^2 is the multiplication by the pointwise sqrt:
+only the uniqueness lemma is needed once the multiplication operator, its positivity and the
+product rule exist (they are hand-rolled in the companion: FockColumnBound.mulOp).  This probe
+abstracts the multiplication operators by their algebraic properties. -/
+open scoped InnerProductSpace
+variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
+
+theorem sqrt_of_mul_model (M : (ℝ → ℝ) → H →L[ℂ] H) (g : ℝ → ℝ)
+    (hmul : M (fun x => Real.sqrt (g x)) * M (fun x => Real.sqrt (g x)) = M g)
+    (hpos : 0 ≤ M (fun x => Real.sqrt (g x))) (hg : 0 ≤ M g) :
+    CFC.sqrt (M g) = M (fun x => Real.sqrt (g x)) :=
+  (CFC.sqrt_eq_iff _ _ hg hpos).mpr hmul
+
+-- the finite ℓ² (PiLp) packaging of a Fock coefficient space with L² entries is a Hilbert space
+noncomputable example (ι : Type) [Fintype ι] : CompleteSpace (PiLp 2 (fun _ : ι => MeasureTheory.Lp ℂ 2 (MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3))))) := inferInstance
+noncomputable example (ι : Type) [Fintype ι] : InnerProductSpace ℂ (PiLp 2 (fun _ : ι => MeasureTheory.Lp ℂ 2 (MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3))))) := inferInstance
+-- infinite ℓ²(ι; X) as a Hilbert space (needed only if the Hermite degree is not truncated)
+noncomputable example (ι : Type) : CompleteSpace (lp (fun _ : ι => MeasureTheory.Lp ℂ 2 (MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3)))) 2) := inferInstance
+noncomputable example (ι : Type) : InnerProductSpace ℂ (lp (fun _ : ι => MeasureTheory.Lp ℂ 2 (MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3)))) 2) := inferInstance
+#check @PiLp.continuousLinearEquiv
+#check @ContinuousLinearMap.pi

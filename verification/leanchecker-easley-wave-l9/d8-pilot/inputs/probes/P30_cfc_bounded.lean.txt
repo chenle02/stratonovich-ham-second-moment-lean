@@ -1,0 +1,32 @@
+import Mathlib
+/-! CFC on bounded operators of a complex Hilbert space: sqrt, rpow, Ring.inverse,
+the uniqueness lemma that identifies a CFC square root with a given positive root. -/
+open scoped InnerProductSpace
+variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
+
+noncomputable example : CStarAlgebra (H →L[ℂ] H) := inferInstance
+#check @CFC.sqrt
+#check @CFC.sqrt_eq_iff
+#check @CFC.sqrt_mul_sqrt_self
+#check @CFC.sqrt_nonneg
+#check @CFC.nnrpow
+#check @CFC.rpow
+#check @Ring.inverse
+#check @Ring.inverse_mul_cancel
+#check @ContinuousLinearMap.nonneg_iff_isPositive
+#check @ContinuousLinearMap.IsPositive
+#check @spectrum.exists_nnnorm_eq_spectralRadius_of_nonempty
+#check @ContinuousLinearMap.spectralRadius_eq_nnnorm
+
+-- the invSqrtShift of ComplexPhaseScalar (companion, wave L9-H3) typechecks:
+noncomputable def invSqrtShift' (A0 : H →L[ℂ] H) (ρ : ℝ) : H →L[ℂ] H :=
+  Ring.inverse (CFC.sqrt (A0 + algebraMap ℝ (H →L[ℂ] H) (ρ ^ 2)))
+
+-- uniqueness route: if b ≥ 0 and b*b = a (a ≥ 0) then CFC.sqrt a = b
+example (a b : H →L[ℂ] H) (ha : 0 ≤ a) (hb : 0 ≤ b) (h : b * b = a) : CFC.sqrt a = b :=
+  (CFC.sqrt_eq_iff a b ha hb).mpr h
+-- Ring.inverse of a unit given by an explicit two-sided inverse
+example (a c : H →L[ℂ] H) (h1 : a * c = 1) (h2 : c * a = 1) : Ring.inverse a = c := by
+  have hu : IsUnit a := ⟨⟨a, c, h1, h2⟩, rfl⟩
+  calc Ring.inverse a = Ring.inverse a * (a * c) := by rw [h1, mul_one]
+    _ = c := by rw [← mul_assoc, Ring.inverse_mul_cancel a hu, one_mul]

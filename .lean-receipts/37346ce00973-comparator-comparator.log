@@ -1,0 +1,542 @@
+Current branch: HEAD
+Using cache from origin: (some leanprover-community/mathlib4)
+No files to download
+Already decompressed 9031 file(s)
+lean-path-shadow: none (11 entries, roots Challenge,ChallengeDefs,Solution,StratonovichHAMAudit,StratonovichHAMSecondMoment)
+== lake comparator (toolchain) comparator.json
+Resolving dependencies
+Building Challenge
+⚠ [9063/9064] Replayed Challenge
+warning: Challenge.lean:39:8: declaration uses `sorry`
+warning: Challenge.lean:48:8: declaration uses `sorry`
+warning: Challenge.lean:53:8: declaration uses `sorry`
+warning: Challenge.lean:61:8: declaration uses `sorry`
+warning: Challenge.lean:71:8: declaration uses `sorry`
+warning: Challenge.lean:82:8: declaration uses `sorry`
+warning: Challenge.lean:90:8: declaration uses `sorry`
+warning: Challenge.lean:106:8: declaration uses `sorry`
+warning: Challenge.lean:111:8: declaration uses `sorry`
+warning: Challenge.lean:116:8: declaration uses `sorry`
+warning: Challenge.lean:122:8: declaration uses `sorry`
+warning: Challenge.lean:131:8: declaration uses `sorry`
+warning: Challenge.lean:137:8: declaration uses `sorry`
+warning: Challenge.lean:145:8: declaration uses `sorry`
+warning: Challenge.lean:155:8: declaration uses `sorry`
+warning: Challenge.lean:165:8: declaration uses `sorry`
+warning: Challenge.lean:172:8: declaration uses `sorry`
+warning: Challenge.lean:180:8: declaration uses `sorry`
+warning: Challenge.lean:193:8: declaration uses `sorry`
+warning: Challenge.lean:203:8: declaration uses `sorry`
+warning: Challenge.lean:214:8: declaration uses `sorry`
+warning: Challenge.lean:223:8: declaration uses `sorry`
+warning: Challenge.lean:233:8: declaration uses `sorry`
+warning: Challenge.lean:239:8: declaration uses `sorry`
+warning: Challenge.lean:245:8: declaration uses `sorry`
+warning: Challenge.lean:258:8: declaration uses `sorry`
+warning: Challenge.lean:273:8: declaration uses `sorry`
+warning: Challenge.lean:282:8: declaration uses `sorry`
+warning: Challenge.lean:290:8: declaration uses `sorry`
+warning: Challenge.lean:301:8: declaration uses `sorry`
+warning: Challenge.lean:310:8: declaration uses `sorry`
+warning: Challenge.lean:326:8: declaration uses `sorry`
+warning: Challenge.lean:334:8: declaration uses `sorry`
+warning: Challenge.lean:341:8: declaration uses `sorry`
+warning: Challenge.lean:349:8: declaration uses `sorry`
+warning: Challenge.lean:357:8: declaration uses `sorry`
+warning: Challenge.lean:366:8: declaration uses `sorry`
+warning: Challenge.lean:375:8: declaration uses `sorry`
+warning: Challenge.lean:381:8: declaration uses `sorry`
+warning: Challenge.lean:391:8: declaration uses `sorry`
+warning: Challenge.lean:396:8: declaration uses `sorry`
+warning: Challenge.lean:401:8: declaration uses `sorry`
+warning: Challenge.lean:407:8: declaration uses `sorry`
+warning: Challenge.lean:414:8: declaration uses `sorry`
+warning: Challenge.lean:419:8: declaration uses `sorry`
+warning: Challenge.lean:425:8: declaration uses `sorry`
+warning: Challenge.lean:430:8: declaration uses `sorry`
+warning: Challenge.lean:443:8: declaration uses `sorry`
+warning: Challenge.lean:454:8: declaration uses `sorry`
+warning: Challenge.lean:467:8: declaration uses `sorry`
+warning: Challenge.lean:481:8: declaration uses `sorry`
+warning: Challenge.lean:491:8: declaration uses `sorry`
+warning: Challenge.lean:501:8: declaration uses `sorry`
+warning: Challenge.lean:509:8: declaration uses `sorry`
+warning: Challenge.lean:518:8: declaration uses `sorry`
+warning: Challenge.lean:527:8: declaration uses `sorry`
+warning: Challenge.lean:535:8: declaration uses `sorry`
+warning: Challenge.lean:542:8: declaration uses `sorry`
+warning: Challenge.lean:555:8: declaration uses `sorry`
+warning: Challenge.lean:561:8: declaration uses `sorry`
+warning: Challenge.lean:566:8: declaration uses `sorry`
+warning: Challenge.lean:576:8: declaration uses `sorry`
+warning: Challenge.lean:581:8: declaration uses `sorry`
+warning: Challenge.lean:594:8: declaration uses `sorry`
+warning: Challenge.lean:599:8: declaration uses `sorry`
+warning: Challenge.lean:607:8: declaration uses `sorry`
+warning: Challenge.lean:618:8: declaration uses `sorry`
+warning: Challenge.lean:627:8: declaration uses `sorry`
+warning: Challenge.lean:633:8: declaration uses `sorry`
+warning: Challenge.lean:641:8: declaration uses `sorry`
+warning: Challenge.lean:646:8: declaration uses `sorry`
+warning: Challenge.lean:656:8: declaration uses `sorry`
+warning: Challenge.lean:664:8: declaration uses `sorry`
+warning: Challenge.lean:674:8: declaration uses `sorry`
+warning: Challenge.lean:685:8: declaration uses `sorry`
+warning: Challenge.lean:690:8: declaration uses `sorry`
+warning: Challenge.lean:697:8: declaration uses `sorry`
+warning: Challenge.lean:702:8: declaration uses `sorry`
+warning: Challenge.lean:708:8: declaration uses `sorry`
+warning: Challenge.lean:717:8: declaration uses `sorry`
+warning: Challenge.lean:729:8: declaration uses `sorry`
+warning: Challenge.lean:735:8: declaration uses `sorry`
+warning: Challenge.lean:740:8: declaration uses `sorry`
+warning: Challenge.lean:747:8: declaration uses `sorry`
+warning: Challenge.lean:757:8: declaration uses `sorry`
+warning: Challenge.lean:768:8: declaration uses `sorry`
+warning: Challenge.lean:781:8: declaration uses `sorry`
+warning: Challenge.lean:786:8: declaration uses `sorry`
+warning: Challenge.lean:793:8: declaration uses `sorry`
+warning: Challenge.lean:799:8: declaration uses `sorry`
+warning: Challenge.lean:807:8: declaration uses `sorry`
+warning: Challenge.lean:816:8: declaration uses `sorry`
+warning: Challenge.lean:827:8: declaration uses `sorry`
+warning: Challenge.lean:834:8: declaration uses `sorry`
+warning: Challenge.lean:843:8: declaration uses `sorry`
+warning: Challenge.lean:853:8: declaration uses `sorry`
+warning: Challenge.lean:865:8: declaration uses `sorry`
+warning: Challenge.lean:879:8: declaration uses `sorry`
+warning: Challenge.lean:895:8: declaration uses `sorry`
+warning: Challenge.lean:918:8: declaration uses `sorry`
+warning: Challenge.lean:935:8: declaration uses `sorry`
+warning: Challenge.lean:964:8: declaration uses `sorry`
+warning: Challenge.lean:972:8: declaration uses `sorry`
+warning: Challenge.lean:980:8: declaration uses `sorry`
+warning: Challenge.lean:991:8: declaration uses `sorry`
+warning: Challenge.lean:999:8: declaration uses `sorry`
+warning: Challenge.lean:1009:8: declaration uses `sorry`
+warning: Challenge.lean:1018:8: declaration uses `sorry`
+warning: Challenge.lean:1025:8: declaration uses `sorry`
+warning: Challenge.lean:1035:8: declaration uses `sorry`
+warning: Challenge.lean:1041:8: declaration uses `sorry`
+warning: Challenge.lean:1053:8: declaration uses `sorry`
+warning: Challenge.lean:1060:8: declaration uses `sorry`
+warning: Challenge.lean:1068:8: declaration uses `sorry`
+warning: Challenge.lean:1081:8: declaration uses `sorry`
+warning: Challenge.lean:1088:8: declaration uses `sorry`
+warning: Challenge.lean:1103:8: declaration uses `sorry`
+warning: Challenge.lean:1120:8: declaration uses `sorry`
+warning: Challenge.lean:1127:8: declaration uses `sorry`
+warning: Challenge.lean:1142:8: declaration uses `sorry`
+warning: Challenge.lean:1153:8: declaration uses `sorry`
+warning: Challenge.lean:1167:8: declaration uses `sorry`
+warning: Challenge.lean:1177:8: declaration uses `sorry`
+warning: Challenge.lean:1183:8: declaration uses `sorry`
+warning: Challenge.lean:1188:8: declaration uses `sorry`
+warning: Challenge.lean:1197:8: declaration uses `sorry`
+warning: Challenge.lean:1204:8: declaration uses `sorry`
+warning: Challenge.lean:1212:8: declaration uses `sorry`
+warning: Challenge.lean:1222:8: declaration uses `sorry`
+warning: Challenge.lean:1235:8: declaration uses `sorry`
+warning: Challenge.lean:1244:8: declaration uses `sorry`
+warning: Challenge.lean:1249:8: declaration uses `sorry`
+warning: Challenge.lean:1258:8: declaration uses `sorry`
+warning: Challenge.lean:1266:8: declaration uses `sorry`
+warning: Challenge.lean:1276:8: declaration uses `sorry`
+warning: Challenge.lean:1286:8: declaration uses `sorry`
+warning: Challenge.lean:1296:8: declaration uses `sorry`
+warning: Challenge.lean:1306:8: declaration uses `sorry`
+warning: Challenge.lean:1323:8: declaration uses `sorry`
+warning: Challenge.lean:1341:8: declaration uses `sorry`
+warning: Challenge.lean:1354:8: declaration uses `sorry`
+warning: Challenge.lean:1360:8: declaration uses `sorry`
+warning: Challenge.lean:1367:8: declaration uses `sorry`
+warning: Challenge.lean:1410:8: declaration uses `sorry`
+warning: Challenge.lean:1415:8: declaration uses `sorry`
+warning: Challenge.lean:1422:8: declaration uses `sorry`
+warning: Challenge.lean:1428:8: declaration uses `sorry`
+warning: Challenge.lean:1434:8: declaration uses `sorry`
+warning: Challenge.lean:1440:8: declaration uses `sorry`
+warning: Challenge.lean:1445:8: declaration uses `sorry`
+warning: Challenge.lean:1457:8: declaration uses `sorry`
+warning: Challenge.lean:1470:8: declaration uses `sorry`
+warning: Challenge.lean:1480:8: declaration uses `sorry`
+warning: Challenge.lean:1490:8: declaration uses `sorry`
+warning: Challenge.lean:1501:8: declaration uses `sorry`
+warning: Challenge.lean:1512:8: declaration uses `sorry`
+warning: Challenge.lean:1519:8: declaration uses `sorry`
+warning: Challenge.lean:1531:8: declaration uses `sorry`
+warning: Challenge.lean:1543:8: declaration uses `sorry`
+warning: Challenge.lean:1552:8: declaration uses `sorry`
+warning: Challenge.lean:1558:8: declaration uses `sorry`
+warning: Challenge.lean:1568:8: declaration uses `sorry`
+warning: Challenge.lean:1580:8: declaration uses `sorry`
+warning: Challenge.lean:1598:8: declaration uses `sorry`
+warning: Challenge.lean:1650:8: declaration uses `sorry`
+warning: Challenge.lean:1655:8: declaration uses `sorry`
+warning: Challenge.lean:1665:8: declaration uses `sorry`
+warning: Challenge.lean:1676:8: declaration uses `sorry`
+warning: Challenge.lean:1687:8: declaration uses `sorry`
+warning: Challenge.lean:1736:8: declaration uses `sorry`
+warning: Challenge.lean:1802:8: declaration uses `sorry`
+warning: Challenge.lean:1823:8: declaration uses `sorry`
+warning: Challenge.lean:1845:8: declaration uses `sorry`
+warning: Challenge.lean:1853:8: declaration uses `sorry`
+warning: Challenge.lean:1861:8: declaration uses `sorry`
+warning: Challenge.lean:1869:8: declaration uses `sorry`
+warning: Challenge.lean:1878:8: declaration uses `sorry`
+warning: Challenge.lean:1888:8: declaration uses `sorry`
+warning: Challenge.lean:1898:8: declaration uses `sorry`
+warning: Challenge.lean:1908:8: declaration uses `sorry`
+warning: Challenge.lean:1918:8: declaration uses `sorry`
+warning: Challenge.lean:1924:8: declaration uses `sorry`
+warning: Challenge.lean:1930:8: declaration uses `sorry`
+warning: Challenge.lean:1940:8: declaration uses `sorry`
+warning: Challenge.lean:1950:8: declaration uses `sorry`
+warning: Challenge.lean:1959:8: declaration uses `sorry`
+warning: Challenge.lean:1966:8: declaration uses `sorry`
+warning: Challenge.lean:1972:8: declaration uses `sorry`
+Build completed successfully (9064 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.ActualEvent.finite_error_accumulation, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.ActualEvent.moderate_penalty, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.AllAlphaMoment.moment_lower, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.AllAlphaMoment.rational_gap, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.ClockFilter.resolvent_partial_fraction, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.ClockFilter.clock_filter_bounds, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.ClockFilter.strict_filter_integral, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DampedLower.exact_margin, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DampedLower.pi_cube_certificate, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DampedLower.rational_pi_gain, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DimensionalMatrix.full_interaction, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DirectEvent.kappa_gt_one, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DirectEvent.physical_scale, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DirectEvent.noise_scale, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DirectEvent.vertex_scale, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DirectEvent.gauge_inverse, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DirectEvent.gauge_drift, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DirectEvent.monodromy, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.FiniteYoung.weighted_natural_powers, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.GaussianTail.cutoff_density_split, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.GlobalOmega.left_certificate, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.GlobalOmega.right_certificate, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.GlobalOmega.polynomial_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.GlobalOmega.rational_lt_one, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.HermiteWord.raw_support, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.HermiteWord.cut_eq_raw, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.InteractionDriver.temporal_range, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.InteractionDriver.variance_norm, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.InteractionDriver.gaussian_prefactor, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.InteractionDriver.gaussian_exponent, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.InteractionDriver.holder_parameters, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.InteractionDriver.dyadic_ratio, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.InteractionDriver.box_margin, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.InteractionDriver.box_scale, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.JointTilt.tilt_exponent, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.JointTilt.wrong_sign_error, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.JointTilt.wrong_cost_error, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.JointTilt.shifted_amplitude, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.LocalFlow.noise_order, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.LocalFlow.schur_row, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.LocalFlow.schur_column, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.LocalFlow.schur_rescale, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.LocalFlow.source_overlap, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.LocalFlow.source_white_obstruction, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.LocalFlow.source_tail_obstruction, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MiddleCross.certificate_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MiddleCross.parameter_identity, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MiddleCross.parameter_numerator_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MiddleCross.difference_identity, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MiddleCross.resolvent_difference, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MiddleCross.root_numerator_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MiddleCross.middle_bound, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MovingCone.residual_budget, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MovingCone.cone_conversion, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MovingCone.terminal_margin, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.OccupationForm.potential_budget, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.OccupationForm.shifted_coercivity, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PhaseResponse.rough_phase_choice, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PhaseResponse.balanced_phase, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PhaseResponse.energy_boundary, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PhaseResponse.four_component_gram, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PhaseResponse.two_frequency_average, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PhaseResponse.frequency_window, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PositiveGram.scalar_sqrt_dual, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PositiveGram.gram_norm_square, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PositiveGram.active_upper_bound, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PositiveGram.half_weighted_entrywise_mono, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.ProjectionResidual.projection_gap, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.ProjectionResidual.tilted_gap, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.RawValueCeiling.exact_gap, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.RawValueCeiling.strict_log_gap, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.RawVariational.dilation_factors, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.RawVariational.label_score, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.RawVariational.positive_score, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.RawVariational.strict_label_factor, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.TerminalCross.polynomial_identity, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.TerminalCross.polynomial_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.TerminalCross.rate_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.TerminalCross.exponential_difference, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.TerminalCross.terminal_bound, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.WhiteCDF.cdf_square_bound, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.WhiteCDF.energy_upper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GaussianScalarPowers.weighted_power, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GaussianScalarPowers.integer_power, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GaussianScalarPowers.finite_holder, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GaussianScalarPowers.expectation_rpow_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GramScalarAlgebra.sqrt_dual, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GramScalarAlgebra.hilbert_square_eq, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GramScalarAlgebra.hilbert_square_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GramScalarAlgebra.hilbert_square, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GramScalarAlgebra.gram_identity, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.KappaRange.kappa_mem_Ioo, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.DriverParameters.gamma_interval_nonempty, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.DriverParameters.theta_beta_interval_nonempty, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.DriverParameters.parameters_nonempty, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RayleighTail.cutoff_split, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RayleighTail.gaussian_weight_tail, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RayleighTail.rayleigh_head_integrable, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RayleighTail.rayleigh_tail, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GramScalarAlgebra.gram_scalar_algebra_paper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RayleighTail.rayleigh_tail_paper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.HomogHypothesis.homog_params, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.HomogHypothesis.kappa_mem_Ioo_paper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.HomogHypothesis.parameters_nonempty_paper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.cplx_kernel_eq, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.betaKernel_integrableOn, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.Beta_eq_Gamma, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.betaKernel_nonneg, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.lintegral_betaKernel, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.Beta_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.lintegral_affine_beta, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.lintegral_reflect, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.lintegral_split, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.mobius_pointwise, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.mobius_image, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.lintegral_mobius, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.lintegral_left, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.betaKernel_symm, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.lintegral_potential, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.Beta_combo, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.gammaE_integral, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.Beta_integrableOn, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.Beta_eq_betaIntegral, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.gamma_beta_recurrence, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.gamma_beta_beta_gamma, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.gamma_beta_duplication_general, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.gamma_beta_duplication, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.gamma_beta_proof_steps, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.gamma_beta_paper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.normalizer_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.measurable_density, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.density_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.rpow_prod_eq_betaKernel, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.density_integrableOn, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.density_memLp_one, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.density_sq_integrableOn, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.density_memLp_two, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.integrableOn_and_integral_of_lintegral, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.potential_eq_one, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.mass_eq, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.mass_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.normalizer_eq_pi_div_sin, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.temporal_equilibrium_paper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.anchor_Q_iff, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.anchor_margin_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.supNorm_nonneg, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.holderSemi_nonneg, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.holderNorm_nonneg, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.min_mem_Icc, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.stop_supSet_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.stop_quotSet_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.stopped_isCHolder, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.stopped_path_sup_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.stopped_path_holder_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.stopped_holderNorm_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.stop_zero_path, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.smul_isCHolder_and_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.blockPath_norm_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.block_count_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.block_mass_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.ell_mem, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.lyapunov_mean_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.mean_anchor_bound_general, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.mean_anchor_bound_blocks, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.radius_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.radius_substitution, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.mean_anchor_decay, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.decay_tendsto, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.radius_mean_anchor_paper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.masked_trig_products_paper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.trig_product_bound, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.trig_product_bound_half, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.prodFn_mem, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.norm_sq_sum_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.norm_sq_sum_le_inner, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.four_mode, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.cos_cos_expand, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.sin_sin_expand, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.sin_cos_expand, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.cos_sin_expand, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.norm_coef, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.sum_norm_coef, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.prodFn_eq, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.sum_bracket_freq, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.Trig.eval_expand, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.exp_sgn, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.norm_coef1, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.bracket_neg, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Challenge
+Building Solution
+⚠ [9097/9098] Replayed Solution
+warning: Solution.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: Solution.lean:58:0: automatically included section variable(s) unused in theorem `StratonovichHamSecondMomentLeanAuditBridge.HermiteWord.raw_eq`:
+  [DecidableEq C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: Solution.lean:68:0: automatically included section variable(s) unused in theorem `StratonovichHamSecondMomentLeanAuditBridge.HermiteWord.cut_eq`:
+  [DecidableEq C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: Solution.lean:318:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:320:17: Variable name `x` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _x
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:332:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:334:17: Variable name `x` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _x
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:637:33: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:637:52: Variable name `inst_1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:638:7: Variable name `inst_2` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_2
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:644:33: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:644:52: Variable name `inst_1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:645:7: Variable name `inst_2` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_2
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:654:20: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:785:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:801:20: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:801:50: Variable name `inst_1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:807:20: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:807:50: Variable name `inst_1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:812:20: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:812:50: Variable name `inst_1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:819:33: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:819:52: Variable name `inst_1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:820:7: Variable name `inst_2` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_2
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:921:33: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:921:52: Variable name `inst_1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:922:7: Variable name `inst_2` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_2
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1382:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1387:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1392:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1401:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1412:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1424:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1433:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1442:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1452:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1462:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1468:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1468:52: Variable name `inst_1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1479:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1479:52: Variable name `inst_1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1512:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1523:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1540:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1540:52: Variable name `inst_1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1541:7: Variable name `inst_2` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_2
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1674:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1674:52: Variable name `inst_1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1742:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1742:56: Variable name `inst_1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1764:22: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1764:56: Variable name `inst_1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1796:37: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1796:71: Variable name `inst_1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1803:37: Variable name `inst` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Solution.lean:1803:67: Variable name `inst_1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _inst_1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Build completed successfully (9098 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.ActualEvent.finite_error_accumulation, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.ActualEvent.moderate_penalty, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.AllAlphaMoment.moment_lower, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.AllAlphaMoment.rational_gap, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.ClockFilter.resolvent_partial_fraction, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.ClockFilter.clock_filter_bounds, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.ClockFilter.strict_filter_integral, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DampedLower.exact_margin, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DampedLower.pi_cube_certificate, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DampedLower.rational_pi_gain, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DimensionalMatrix.full_interaction, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DirectEvent.kappa_gt_one, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DirectEvent.physical_scale, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DirectEvent.noise_scale, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DirectEvent.vertex_scale, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DirectEvent.gauge_inverse, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DirectEvent.gauge_drift, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.DirectEvent.monodromy, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.FiniteYoung.weighted_natural_powers, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.GaussianTail.cutoff_density_split, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.GlobalOmega.left_certificate, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.GlobalOmega.right_certificate, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.GlobalOmega.polynomial_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.GlobalOmega.rational_lt_one, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.HermiteWord.raw_support, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.HermiteWord.cut_eq_raw, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.InteractionDriver.temporal_range, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.InteractionDriver.variance_norm, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.InteractionDriver.gaussian_prefactor, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.InteractionDriver.gaussian_exponent, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.InteractionDriver.holder_parameters, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.InteractionDriver.dyadic_ratio, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.InteractionDriver.box_margin, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.InteractionDriver.box_scale, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.JointTilt.tilt_exponent, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.JointTilt.wrong_sign_error, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.JointTilt.wrong_cost_error, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.JointTilt.shifted_amplitude, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.LocalFlow.noise_order, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.LocalFlow.schur_row, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.LocalFlow.schur_column, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.LocalFlow.schur_rescale, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.LocalFlow.source_overlap, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.LocalFlow.source_white_obstruction, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.LocalFlow.source_tail_obstruction, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MiddleCross.certificate_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MiddleCross.parameter_identity, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MiddleCross.parameter_numerator_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MiddleCross.difference_identity, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MiddleCross.resolvent_difference, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MiddleCross.root_numerator_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MiddleCross.middle_bound, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MovingCone.residual_budget, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MovingCone.cone_conversion, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.MovingCone.terminal_margin, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.OccupationForm.potential_budget, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.OccupationForm.shifted_coercivity, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PhaseResponse.rough_phase_choice, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PhaseResponse.balanced_phase, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PhaseResponse.energy_boundary, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PhaseResponse.four_component_gram, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PhaseResponse.two_frequency_average, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PhaseResponse.frequency_window, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PositiveGram.scalar_sqrt_dual, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PositiveGram.gram_norm_square, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PositiveGram.active_upper_bound, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.PositiveGram.half_weighted_entrywise_mono, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.ProjectionResidual.projection_gap, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.ProjectionResidual.tilted_gap, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.RawValueCeiling.exact_gap, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.RawValueCeiling.strict_log_gap, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.RawVariational.dilation_factors, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.RawVariational.label_score, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.RawVariational.positive_score, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.RawVariational.strict_label_factor, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.TerminalCross.polynomial_identity, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.TerminalCross.polynomial_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.TerminalCross.rate_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.TerminalCross.exponential_difference, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.TerminalCross.terminal_bound, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.WhiteCDF.cdf_square_bound, StratonovichHamSecondMomentLeanAudit.StratonovichHAMAudit.WhiteCDF.energy_upper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GaussianScalarPowers.weighted_power, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GaussianScalarPowers.integer_power, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GaussianScalarPowers.finite_holder, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GaussianScalarPowers.expectation_rpow_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GramScalarAlgebra.sqrt_dual, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GramScalarAlgebra.hilbert_square_eq, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GramScalarAlgebra.hilbert_square_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GramScalarAlgebra.hilbert_square, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GramScalarAlgebra.gram_identity, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.KappaRange.kappa_mem_Ioo, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.DriverParameters.gamma_interval_nonempty, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.DriverParameters.theta_beta_interval_nonempty, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.DriverParameters.parameters_nonempty, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RayleighTail.cutoff_split, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RayleighTail.gaussian_weight_tail, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RayleighTail.rayleigh_head_integrable, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RayleighTail.rayleigh_tail, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.GramScalarAlgebra.gram_scalar_algebra_paper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RayleighTail.rayleigh_tail_paper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.HomogHypothesis.homog_params, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.HomogHypothesis.kappa_mem_Ioo_paper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.HomogHypothesis.parameters_nonempty_paper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.cplx_kernel_eq, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.betaKernel_integrableOn, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.Beta_eq_Gamma, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.betaKernel_nonneg, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.lintegral_betaKernel, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.Beta_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.lintegral_affine_beta, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.lintegral_reflect, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.lintegral_split, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.mobius_pointwise, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.mobius_image, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.lintegral_mobius, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.lintegral_left, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.betaKernel_symm, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.lintegral_potential, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.Beta_combo, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.gammaE_integral, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.Beta_integrableOn, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.Beta_eq_betaIntegral, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.gamma_beta_recurrence, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.gamma_beta_beta_gamma, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.gamma_beta_duplication_general, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.gamma_beta_duplication, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.gamma_beta_proof_steps, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.gamma_beta_paper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.normalizer_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.measurable_density, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.density_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.rpow_prod_eq_betaKernel, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.density_integrableOn, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.density_memLp_one, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.density_sq_integrableOn, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.density_memLp_two, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.integrableOn_and_integral_of_lintegral, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.potential_eq_one, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.mass_eq, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.mass_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.normalizer_eq_pi_div_sin, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.TemporalEquilibrium.temporal_equilibrium_paper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.anchor_Q_iff, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.anchor_margin_pos, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.supNorm_nonneg, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.holderSemi_nonneg, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.holderNorm_nonneg, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.min_mem_Icc, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.stop_supSet_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.stop_quotSet_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.stopped_isCHolder, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.stopped_path_sup_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.stopped_path_holder_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.stopped_holderNorm_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.stop_zero_path, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.smul_isCHolder_and_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.blockPath_norm_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.block_count_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.block_mass_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.ell_mem, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.lyapunov_mean_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.mean_anchor_bound_general, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.mean_anchor_bound_blocks, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.radius_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.radius_substitution, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.mean_anchor_decay, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.decay_tendsto, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.RadiusMeanAnchor.radius_mean_anchor_paper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.masked_trig_products_paper, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.trig_product_bound, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.trig_product_bound_half, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.prodFn_mem, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.norm_sq_sum_le, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.norm_sq_sum_le_inner, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.four_mode, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.cos_cos_expand, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.sin_sin_expand, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.sin_cos_expand, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.cos_sin_expand, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.norm_coef, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.sum_norm_coef, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.prodFn_eq, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.sum_bracket_freq, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.Trig.eval_expand, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.exp_sgn, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.norm_coef1, StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.MaskedTrigProducts.bracket_neg, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Solution
+Running con-ron kernel on solution
+con-ron: accepted 52090 declarations (--verified)
+con-ron kernel accepts the solution
+Running nanoda kernel on solution
+nanoda kernel accepts the solution
+Running Lean default kernel on solution
+Lean default kernel accepts the solution
+Your solution is okay!

@@ -1,0 +1,13 @@
+node=node973 job=5693017 array=5692933_84 mode=fresh target=StratonovichHAMSecondMoment.VariationalMean start=2026-11-12T09:38:24-0600
+tmp_avail_G=891
+VERIFIED_COMMIT=aff740933af2ffa57d33bb8294dd0b6fa5680105 TREE=488dea9b68d368b60b7c07c35a4208354e470e55 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1280 waited_s=0
+REPLAY_STARTED 2026-11-12T09:43:09-0600
+BEGIN fresh StratonovichHAMSecondMoment.VariationalMean 09:43:10
+END fresh StratonovichHAMSecondMoment.VariationalMean	0	0:42:12.81	7576768	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2534 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.VariationalMean
+PROCESS_EXIT=0 end=2026-11-12T10:25:24-0600

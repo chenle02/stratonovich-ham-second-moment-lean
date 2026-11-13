@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.L9Completed.phase_contractions_paper_completed

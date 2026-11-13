@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.SpatialBracket.spatial_bracket_lower_sSup_paper

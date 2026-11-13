@@ -1,0 +1,13 @@
+node=node957 job=5693001 array=5692933_68 mode=fresh target=StratonovichHAMSecondMoment.SpatialOccupationL7Completed start=2026-11-12T09:38:24-0600
+tmp_avail_G=891
+VERIFIED_COMMIT=aff740933af2ffa57d33bb8294dd0b6fa5680105 TREE=488dea9b68d368b60b7c07c35a4208354e470e55 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1440 waited_s=0
+REPLAY_STARTED 2026-11-12T09:46:14-0600
+BEGIN fresh StratonovichHAMSecondMoment.SpatialOccupationL7Completed 09:46:15
+END fresh StratonovichHAMSecondMoment.SpatialOccupationL7Completed	0	0:42:14.67	7591156	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2536 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.SpatialOccupationL7Completed
+PROCESS_EXIT=0 end=2026-11-12T10:28:30-0600

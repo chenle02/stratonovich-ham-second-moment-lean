@@ -1,0 +1,38 @@
+name = "stratonovich-ham-second-moment-lean"
+version = "0.1.0"
+description = "Partial Lean companion: finite and scalar steps of the second-moment analysis of the Stratonovich hyperbolic Anderson model"
+license = "Apache-2.0"
+keywords = ["stochastic-wave-equation", "hyperbolic-anderson-model", "moment-asymptotics"]
+defaultTargets = ["StratonovichHAMSecondMoment"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "56a005855ea17e0b0958f73ec801ae140b0a1679"
+
+# Paper-specific seams. Module and declaration names are kept from the
+# development record so source hashes match the earlier local receipts.
+[[lean_lib]]
+name = "StratonovichHAMAudit"
+globs = ["StratonovichHAMAudit.+"]
+
+# Umbrella entry point and the axiom report.
+[[lean_lib]]
+name = "StratonovichHAMSecondMoment"
+globs = ["StratonovichHAMSecondMoment", "StratonovichHAMSecondMoment.+"]
+
+# Comparator tier (Palomar layout). `ChallengeDefs` holds verbatim copies of the
+# project definitions the claimed statements use, under the namespace prefix
+# StratonovichHamSecondMomentLeanAudit; it imports Mathlib only and is part of
+# the trusted statement. `Challenge` states every configured theorem (proof
+# `sorry`); `Solution` proves each from the project. None of the three is
+# imported by the umbrella, so verify.sh and its sorry count are unchanged.
+[[lean_lib]]
+name = "ChallengeDefs"
+globs = ["ChallengeDefs.+"]
+
+[[lean_lib]]
+name = "Challenge"
+
+[[lean_lib]]
+name = "Solution"

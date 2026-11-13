@@ -1,0 +1,13 @@
+node=node835 job=5692937 array=5692933_4 mode=fresh target=StratonovichHAMAudit.DampedLower start=2026-11-12T09:37:41-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=aff740933af2ffa57d33bb8294dd0b6fa5680105 TREE=488dea9b68d368b60b7c07c35a4208354e470e55 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1400 waited_s=0
+REPLAY_STARTED 2026-11-12T09:42:44-0600
+BEGIN fresh StratonovichHAMAudit.DampedLower 09:42:45
+END fresh StratonovichHAMAudit.DampedLower	0	0:11:32.42	3110136	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=694 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMAudit.DampedLower
+PROCESS_EXIT=0 end=2026-11-12T09:54:18-0600

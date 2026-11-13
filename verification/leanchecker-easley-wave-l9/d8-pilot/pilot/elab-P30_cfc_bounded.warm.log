@@ -1,0 +1,57 @@
+@CFC.sqrt : {A : Type u_2} →
+  [inst : PartialOrder A] →
+    [inst_1 : NonUnitalRing A] →
+      [inst_2 : TopologicalSpace A] →
+        [inst_3 : StarRing A] →
+          [inst_4 : Module ℝ A] →
+            [inst_5 : SMulCommClass ℝ A A] →
+              [inst_6 : IsScalarTower ℝ A A] →
+                [StarOrderedRing A] →
+                  [NonUnitalContinuousFunctionalCalculus ℝ A IsSelfAdjoint] → [NonnegSpectrumClass ℝ A] → A → A
+@CFC.sqrt_eq_iff : ∀ {A : Type u_2} [inst : PartialOrder A] [inst_1 : NonUnitalRing A] [inst_2 : TopologicalSpace A]
+  [inst_3 : StarRing A] [inst_4 : Module ℝ A] [inst_5 : SMulCommClass ℝ A A] [inst_6 : IsScalarTower ℝ A A]
+  [inst_7 : StarOrderedRing A] [inst_8 : NonUnitalContinuousFunctionalCalculus ℝ A IsSelfAdjoint]
+  [inst_9 : NonnegSpectrumClass ℝ A] [IsSemitopologicalRing A] [T2Space A] (a b : A),
+  autoParam (0 ≤ a) CFC.sqrt_eq_iff._auto_1 → autoParam (0 ≤ b) CFC.sqrt_eq_iff._auto_3 → (CFC.sqrt a = b ↔ b * b = a)
+@CFC.sqrt_mul_sqrt_self : ∀ {A : Type u_2} [inst : PartialOrder A] [inst_1 : NonUnitalRing A]
+  [inst_2 : TopologicalSpace A] [inst_3 : StarRing A] [inst_4 : Module ℝ A] [inst_5 : SMulCommClass ℝ A A]
+  [inst_6 : IsScalarTower ℝ A A] [inst_7 : StarOrderedRing A]
+  [inst_8 : NonUnitalContinuousFunctionalCalculus ℝ A IsSelfAdjoint] [inst_9 : NonnegSpectrumClass ℝ A]
+  [IsSemitopologicalRing A] [T2Space A] (a : A),
+  autoParam (0 ≤ a) CFC.sqrt_mul_sqrt_self._auto_1 → CFC.sqrt a * CFC.sqrt a = a
+@CFC.sqrt_nonneg : ∀ {A : Type u_2} [inst : PartialOrder A] [inst_1 : NonUnitalRing A] [inst_2 : TopologicalSpace A]
+  [inst_3 : StarRing A] [inst_4 : Module ℝ A] [inst_5 : SMulCommClass ℝ A A] [inst_6 : IsScalarTower ℝ A A]
+  [inst_7 : StarOrderedRing A] [inst_8 : NonUnitalContinuousFunctionalCalculus ℝ A IsSelfAdjoint]
+  [inst_9 : NonnegSpectrumClass ℝ A] (a : A), 0 ≤ CFC.sqrt a
+@CFC.nnrpow : {A : Type u_2} →
+  [inst : PartialOrder A] →
+    [inst_1 : NonUnitalRing A] →
+      [inst_2 : TopologicalSpace A] →
+        [inst_3 : StarRing A] →
+          [inst_4 : Module ℝ A] →
+            [inst_5 : SMulCommClass ℝ A A] →
+              [inst_6 : IsScalarTower ℝ A A] →
+                [StarOrderedRing A] →
+                  [NonUnitalContinuousFunctionalCalculus ℝ A IsSelfAdjoint] → [NonnegSpectrumClass ℝ A] → A → NNReal → A
+@CFC.rpow : {A : Type u_2} →
+  [inst : PartialOrder A] →
+    [inst_1 : Ring A] →
+      [inst_2 : StarRing A] →
+        [inst_3 : TopologicalSpace A] →
+          [StarOrderedRing A] →
+            [inst_5 : Algebra ℝ A] →
+              [ContinuousFunctionalCalculus ℝ A IsSelfAdjoint] → [NonnegSpectrumClass ℝ A] → A → ℝ → A
+@Ring.inverse : {M₀ : Type u_2} → [MonoidWithZero M₀] → M₀ → M₀
+@Ring.inverse_mul_cancel : ∀ {M₀ : Type u_2} [inst : MonoidWithZero M₀] (x : M₀), IsUnit x → Ring.inverse x * x = 1
+@ContinuousLinearMap.nonneg_iff_isPositive : ∀ {𝕜 : Type u_2} {E : Type u_3} [inst : RCLike 𝕜]
+  [inst_1 : NormedAddCommGroup E] [inst_2 : InnerProductSpace 𝕜 E] {f : E →L[𝕜] E}, 0 ≤ f ↔ f.IsPositive
+@ContinuousLinearMap.IsPositive : {𝕜 : Type u_2} →
+  {E : Type u_3} →
+    [inst : RCLike 𝕜] → [inst_1 : NormedAddCommGroup E] → [inst_2 : InnerProductSpace 𝕜 E] → (E →L[𝕜] E) → Prop
+@spectrum.exists_nnnorm_eq_spectralRadius_of_nonempty : ∀ {𝕜 : Type u_2} {A : Type u_3} [inst : NormedField 𝕜]
+  [inst_1 : NormedRing A] [inst_2 : NormedAlgebra 𝕜 A] [CompleteSpace A] [ProperSpace 𝕜] {a : A},
+  (spectrum 𝕜 a).Nonempty → ∃ k ∈ spectrum 𝕜 a, ↑‖k‖₊ = spectralRadius 𝕜 a
+@ContinuousLinearMap.spectralRadius_eq_nnnorm : ∀ {𝕜 : Type u_2} [inst : RCLike 𝕜] {E : Type u_3}
+  [inst_1 : NormedAddCommGroup E] [inst_2 : InnerProductSpace 𝕜 E] (T : E →L[𝕜] E) [inst_3 : CompleteSpace E],
+  IsSelfAdjoint T → spectralRadius 𝕜 T = ↑‖T‖₊
+MEASURE P30_cfc_bounded.warm rc=0 wall_s=9.52 maxrss_kb=3322976

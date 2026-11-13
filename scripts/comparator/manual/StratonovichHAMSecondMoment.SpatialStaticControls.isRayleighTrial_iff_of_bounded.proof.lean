@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.SpatialStaticControls.isRayleighTrial_iff_of_bounded

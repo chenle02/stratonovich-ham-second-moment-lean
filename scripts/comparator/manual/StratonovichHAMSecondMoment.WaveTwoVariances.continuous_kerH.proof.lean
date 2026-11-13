@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.WaveTwoVariances.continuous_kerH

@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.SpatialStaticControls.rayleighSet_nonempty_of_bounded

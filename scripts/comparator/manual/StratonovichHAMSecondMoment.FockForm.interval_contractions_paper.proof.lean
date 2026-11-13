@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.FockForm.interval_contractions_paper

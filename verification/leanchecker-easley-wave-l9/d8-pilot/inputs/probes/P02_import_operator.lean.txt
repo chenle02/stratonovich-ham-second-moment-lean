@@ -1,0 +1,9 @@
+import Mathlib.Analysis.InnerProductSpace.LaxMilgram
+import Mathlib.Analysis.InnerProductSpace.Rayleigh
+import Mathlib.Analysis.InnerProductSpace.Spectrum
+import Mathlib.Analysis.InnerProductSpace.LinearPMap
+import Mathlib.Analysis.Normed.Operator.Compact.FredholmAlternative
+import Mathlib.Analysis.SpecialFunctions.ContinuousFunctionalCalculus.Rpow.Basic
+import Mathlib.Analysis.CStarAlgebra.ContinuousLinearMap
+import Mathlib.Analysis.Fourier.LpSpace
+#check @IsCoercive.continuousLinearEquivOfBilin

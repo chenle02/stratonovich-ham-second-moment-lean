@@ -1,0 +1,18 @@
+import Mathlib
+/-! Names a K5 bridge (hand-rolled weak-gradient H^1 ↔ Mathlib's H^{1}) would use. -/
+open scoped SchwartzMap
+open TemperedDistribution MeasureTheory
+open scoped LineDeriv
+abbrev R3 := EuclideanSpace ℝ (Fin 3)
+#check @MeasureTheory.Lp.toTemperedDistributionCLM
+#check @MeasureTheory.Lp.ker_toTemperedDistributionCLM_eq_bot
+#check @TemperedDistribution.lineDerivOp_apply_apply
+#check @TemperedDistribution.lineDeriv_eq_fourierMultiplierCLM
+#check @TemperedDistribution.memSobolev_zero_iff_exists_fourier
+#check @MeasureTheory.Lp.fourier_toTemperedDistribution_eq
+#check @SchwartzMap.toLp_fourier_eq
+-- distributional derivative of an L^2 function tested against a Schwartz test function
+example (f : Lp ℂ 2 (volume : Measure R3)) (m : R3) (φ : 𝓢(R3, ℂ)) :
+    (∂_{m} (Lp.toTemperedDistributionCLM ℂ volume 2 f : 𝓢'(R3, ℂ))) φ =
+      -(Lp.toTemperedDistributionCLM ℂ volume 2 f : 𝓢'(R3, ℂ)) (∂_{m} φ) := by
+  rw [lineDerivOp_apply_apply, map_neg]

@@ -1,0 +1,60 @@
+info: StratonovichHAMSecondMoment/Axioms.lean:2676:0: 'StratonovichHAMSecondMoment.OccupationCeilingExact.integratedRate_sq_le_Cocc' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2677:0: 'StratonovichHAMSecondMoment.OccupationCeilingExact.intrinsic_occupation_ceiling_paper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2678:0: 'StratonovichHAMSecondMoment.OccupationCeilingExact.intrinsic_spatial_comparison_paper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2679:0: 'StratonovichHAMSecondMoment.OccupationCeilingExact.mean_pair_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2680:0: 'StratonovichHAMSecondMoment.OccupationCeilingExact.occupation_rayleigh_selection_paper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2681:0: 'StratonovichHAMSecondMoment.OccupationCeilingExact.score_le_ceiling_Cocc' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2682:0: 'StratonovichHAMSecondMoment.OccupationCeilingExact.stepField_isOcc' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2683:0: 'StratonovichHAMSecondMoment.OccupationCeilingExact.step_mean_le_sqrt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2684:0: 'StratonovichHAMSecondMoment.OccupationCeilingExact.sum_cellInd' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2685:0: 'StratonovichHAMSecondMoment.OccupationCeilingExact.trap_continuous' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2686:0: 'StratonovichHAMSecondMoment.OccupationCeilingExact.trap_eq_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2687:0: 'StratonovichHAMSecondMoment.OccupationCeilingExact.trap_hasCompactSupport' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2688:0: 'StratonovichHAMSecondMoment.OccupationCeilingExact.trap_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2689:0: 'StratonovichHAMSecondMoment.OccupationCeilingExact.trap_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2690:0: 'StratonovichHAMSecondMoment.L9Completed.archimedesLaw_holds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2691:0: 'StratonovichHAMSecondMoment.L9Completed.low_alpha_convolution_paper_completed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2692:0: 'StratonovichHAMSecondMoment.L9Completed.phase_contractions_homog_completed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2693:0: 'StratonovichHAMSecondMoment.L9Completed.phase_contractions_paper_completed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2694:0: 'StratonovichHAMSecondMoment.L9Completed.phase_trace_completed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2695:0: 'StratonovichHAMSecondMoment.L9Completed.traceT_fourier_completed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:2696:0: 'StratonovichHAMSecondMoment.L9Completed.waveFourierThree_holds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Build completed successfully (9150 jobs).

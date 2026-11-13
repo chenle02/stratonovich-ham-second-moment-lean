@@ -1,0 +1,52 @@
+@IsCompactOperator : {M₁ : Type u_2} →
+  {M₂ : Type u_3} → [Zero M₁] → [TopologicalSpace M₁] → [TopologicalSpace M₂] → (M₁ → M₂) → Prop
+@isCompactOperator_of_tendsto : ∀ {ι : Type u_2} {𝕜₁ : Type u_3} {𝕜₂ : Type u_4} [inst : NontriviallyNormedField 𝕜₁]
+  [inst_1 : NormedField 𝕜₂] {σ₁₂ : 𝕜₁ →+* 𝕜₂} {M₁ : Type u_5} {M₂ : Type u_6} [inst_2 : SeminormedAddCommGroup M₁]
+  [inst_3 : AddCommGroup M₂] [inst_4 : NormedSpace 𝕜₁ M₁] [inst_5 : Module 𝕜₂ M₂] [inst_6 : UniformSpace M₂]
+  [inst_7 : IsUniformAddGroup M₂] [ContinuousConstSMul 𝕜₂ M₂] [T2Space M₂] [CompleteSpace M₂] {l : Filter ι} [l.NeBot]
+  {F : ι → M₁ →SL[σ₁₂] M₂} {f : M₁ →SL[σ₁₂] M₂},
+  Filter.Tendsto F l (nhds f) → (∀ᶠ (i : ι) in l, IsCompactOperator ⇑(F i)) → IsCompactOperator ⇑f
+@IsCompactOperator.comp_clm : ∀ {R₁ : Type u_2} {R₂ : Type u_3} [inst : Semiring R₁] [inst_1 : Semiring R₂]
+  {σ₁₂ : R₁ →+* R₂} {M₁ : Type u_4} {M₂ : Type u_5} {M₃ : Type u_6} [inst_2 : TopologicalSpace M₁]
+  [inst_3 : TopologicalSpace M₂] [inst_4 : TopologicalSpace M₃] [inst_5 : AddCommMonoid M₁] [inst_6 : Module R₁ M₁]
+  [inst_7 : AddCommMonoid M₂] [inst_8 : Module R₂ M₂] {f : M₂ → M₃},
+  IsCompactOperator f → ∀ (g : M₁ →SL[σ₁₂] M₂), IsCompactOperator (f ∘ ⇑g)
+@IsCompactOperator.clm_comp : ∀ {R₂ : Type u_2} {R₃ : Type u_3} [inst : Semiring R₂] [inst_1 : Semiring R₃]
+  {σ₂₃ : R₂ →+* R₃} {M₁ : Type u_4} {M₂ : Type u_5} {M₃ : Type u_6} [inst_2 : TopologicalSpace M₁]
+  [inst_3 : TopologicalSpace M₂] [inst_4 : TopologicalSpace M₃] [inst_5 : AddCommMonoid M₁] [inst_6 : AddCommMonoid M₂]
+  [inst_7 : Module R₂ M₂] [inst_8 : AddCommMonoid M₃] [inst_9 : Module R₃ M₃] {f : M₁ → M₂},
+  IsCompactOperator f → ∀ (g : M₂ →SL[σ₂₃] M₃), IsCompactOperator (⇑g ∘ f)
+@ContinuousLinearMap.orthogonalComplement_iSup_eigenspaces_eq_bot : ∀ {𝕜 : Type u_2} [inst : RCLike 𝕜] {E : Type u_3}
+  [inst_1 : NormedAddCommGroup E] [inst_2 : InnerProductSpace 𝕜 E] [CompleteSpace E] {T : E →L[𝕜] E},
+  IsCompactOperator ⇑T → (↑T).IsSymmetric → (⨆ μ, Module.End.eigenspace (↑T) μ)ᗮ = ⊥
+@ContinuousLinearMap.finite_dimensional_eigenspace : ∀ {𝕜 : Type u_2} [inst : RCLike 𝕜] {E : Type u_3}
+  [inst_1 : NormedAddCommGroup E] [inst_2 : InnerProductSpace 𝕜 E] [CompleteSpace E] {T : E →L[𝕜] E},
+  IsCompactOperator ⇑T → ∀ (μ : 𝕜), μ ≠ 0 → FiniteDimensional 𝕜 ↥(Module.End.eigenspace (↑T) μ)
+@IsCompactOperator.hasEigenvalue_iff_mem_spectrum : ∀ {𝕜 : Type u_2} {X : Type u_3} [inst : NontriviallyNormedField 𝕜]
+  [inst_1 : NormedAddCommGroup X] [inst_2 : NormedSpace 𝕜 X] {T : X →L[𝕜] X} {μ : 𝕜} [CompleteSpace X],
+  IsCompactOperator ⇑T → μ ≠ 0 → (Module.End.HasEigenvalue (↑T) μ ↔ μ ∈ spectrum 𝕜 T)
+@IsCompactOperator.hasEigenvalue_or_mem_resolventSet : ∀ {𝕜 : Type u_2} {X : Type u_3}
+  [inst : NontriviallyNormedField 𝕜] [inst_1 : NormedAddCommGroup X] [inst_2 : NormedSpace 𝕜 X] {T : X →L[𝕜] X} {μ : 𝕜}
+  [CompleteSpace X], IsCompactOperator ⇑T → μ ≠ 0 → Module.End.HasEigenvalue (↑T) μ ∨ μ ∈ resolventSet 𝕜 T
+@ContinuousLinearMap.rayleighQuotient : {𝕜 : Type u_2} →
+  [inst : RCLike 𝕜] →
+    {E : Type u_3} → [inst_1 : NormedAddCommGroup E] → [inst_2 : InnerProductSpace 𝕜 E] → (E →L[𝕜] E) → E → ℝ
+@IsSelfAdjoint.hasEigenvector_of_isMaxOn : ∀ {𝕜 : Type u_2} [inst : RCLike 𝕜] {E : Type u_3}
+  [inst_1 : NormedAddCommGroup E] [inst_2 : InnerProductSpace 𝕜 E] [inst_3 : CompleteSpace E] {T : E →L[𝕜] E},
+  IsSelfAdjoint T →
+    ∀ {x₀ : E},
+      x₀ ≠ 0 →
+        IsMaxOn T.reApplyInnerSelf (Metric.sphere 0 ‖x₀‖) x₀ →
+          Module.End.HasEigenvector (↑T) (↑(⨆ x, T.rayleighQuotient ↑x)) x₀
+@ContinuousLinearMap.iSup_rayleigh_eq_iSup_rayleigh_sphere : ∀ {𝕜 : Type u_2} [inst : RCLike 𝕜] {E : Type u_3}
+  [inst_1 : NormedAddCommGroup E] [inst_2 : InnerProductSpace 𝕜 E] (T : E →L[𝕜] E) {r : ℝ},
+  0 < r → ⨆ x, T.rayleighQuotient ↑x = ⨆ x, T.rayleighQuotient ↑x
+@ContinuousLinearMap.norm_eq_iSup_rayleighQuotient : ∀ {𝕜 : Type u_2} [inst : RCLike 𝕜] {E : Type u_3}
+  [inst_1 : NormedAddCommGroup E] [inst_2 : InnerProductSpace 𝕜 E] (T : E →L[𝕜] E),
+  (↑T).IsSymmetric → ‖T‖ = ⨆ x, |T.rayleighQuotient x|
+@IsSelfAdjoint.spectralRadius_eq_nnnorm : ∀ {A : Type u_2} [inst : CStarAlgebra A] {a : A},
+  IsSelfAdjoint a → spectralRadius ℂ a = ↑‖a‖₊
+@LinearMap.IsSymmetric.hasEigenvalue_iSup_of_finiteDimensional : ∀ {𝕜 : Type u_2} [inst : RCLike 𝕜] {E : Type u_3}
+  [inst_1 : NormedAddCommGroup E] [inst_2 : InnerProductSpace 𝕜 E] [FiniteDimensional 𝕜 E] {T : E →ₗ[𝕜] E}
+  [Nontrivial E], T.IsSymmetric → Module.End.HasEigenvalue T ↑(⨆ x, RCLike.re ⟪T ↑x, ↑x⟫_𝕜 / ‖↑x‖ ^ 2)
+MEASURE P40_compact_spectral.cold rc=0 wall_s=7.04 maxrss_kb=3308672

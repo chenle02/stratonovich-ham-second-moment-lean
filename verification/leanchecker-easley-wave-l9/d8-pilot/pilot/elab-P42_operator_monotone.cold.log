@@ -1,0 +1,11 @@
+@CFC.sqrt_le_sqrt : ∀ {A : Type u_2} [inst : NonUnitalCStarAlgebra A] [inst_1 : PartialOrder A]
+  [inst_2 : StarOrderedRing A] (a b : A), a ≤ b → CFC.sqrt a ≤ CFC.sqrt b
+@CFC.nnrpow_le_nnrpow : ∀ {A : Type u_2} [inst : NonUnitalCStarAlgebra A] [inst_1 : PartialOrder A]
+  [inst_2 : StarOrderedRing A] {p : ℝ≥0}, p ∈ Set.Icc 0 1 → ∀ {a b : A}, a ≤ b → a ^ p ≤ b ^ p
+@CFC.rpow_le_rpow : ∀ {A : Type u_2} [inst : CStarAlgebra A] [inst_1 : PartialOrder A] [inst_2 : StarOrderedRing A]
+  {p : ℝ}, p ∈ Set.Icc 0 1 → ∀ {a b : A}, a ≤ b → a ^ p ≤ b ^ p
+@CStarAlgebra.inv_le_inv_iff : ∀ {A : Type u_2} [inst : CStarAlgebra A] [inst_1 : PartialOrder A] [StarOrderedRing A]
+  {a b : Aˣ}, 0 ≤ ↑a → 0 ≤ ↑b → (↑a⁻¹ ≤ ↑b⁻¹ ↔ ↑b ≤ ↑a)
+@CStarAlgebra.inv_le_inv : ∀ {A : Type u_2} [inst : CStarAlgebra A] [inst_1 : PartialOrder A] [StarOrderedRing A]
+  {a b : Aˣ}, 0 ≤ ↑a → ↑a ≤ ↑b → ↑b⁻¹ ≤ ↑a⁻¹
+MEASURE P42_operator_monotone.cold rc=0 wall_s=9.33 maxrss_kb=3333328

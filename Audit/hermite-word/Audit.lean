@@ -1,0 +1,5 @@
+import StratonovichHAMAudit.HermiteWord
+#print StratonovichHAMAudit.HermiteWord.raw_support
+#print StratonovichHAMAudit.HermiteWord.cut_eq_raw
+#print axioms StratonovichHAMAudit.HermiteWord.raw_support
+#print axioms StratonovichHAMAudit.HermiteWord.cut_eq_raw

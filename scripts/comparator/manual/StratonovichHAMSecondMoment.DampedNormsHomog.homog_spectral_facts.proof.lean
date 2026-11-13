@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.DampedNormsHomog.homog_spectral_facts

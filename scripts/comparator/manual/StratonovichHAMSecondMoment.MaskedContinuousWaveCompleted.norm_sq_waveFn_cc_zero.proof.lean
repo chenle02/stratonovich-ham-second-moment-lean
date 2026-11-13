@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.MaskedContinuousWaveCompleted.norm_sq_waveFn_cc_zero

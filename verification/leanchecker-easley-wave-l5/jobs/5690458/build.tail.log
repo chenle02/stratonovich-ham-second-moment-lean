@@ -1,0 +1,5 @@
+info: StratonovichHAMSecondMoment/Axioms.lean:1120:0: 'StratonovichHAMSecondMoment.PhaseBessel.phase_bessel' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:1121:0: 'StratonovichHAMSecondMoment.PhaseBessel.phase_bessel_conj' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:1122:0: 'StratonovichHAMSecondMoment.PhaseBessel.phase_bessel_paper' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:1123:0: 'StratonovichHAMSecondMoment.PhaseBessel.residual_expand' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (9106 jobs).

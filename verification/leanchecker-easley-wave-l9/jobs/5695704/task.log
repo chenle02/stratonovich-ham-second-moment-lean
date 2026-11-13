@@ -1,0 +1,13 @@
+node=node981 job=5695704 array=5695614_90 mode=fresh target=StratonovichHAMSecondMoment.TypeContinuity start=2026-11-12T16:10:10-0600
+tmp_avail_G=891
+VERIFIED_COMMIT=6eb79c7b2ec4ca52f02121224484aa4865e43ac8 TREE=de6f79a14664bfad0e9c60dff29dc2f0ed37711e MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1400 waited_s=0
+REPLAY_STARTED 2026-11-12T16:15:48-0600
+BEGIN fresh StratonovichHAMSecondMoment.TypeContinuity 16:15:50
+END fresh StratonovichHAMSecondMoment.TypeContinuity	0	0:41:31.86	7591572	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2494 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.TypeContinuity
+PROCESS_EXIT=0 end=2026-11-12T16:57:22-0600

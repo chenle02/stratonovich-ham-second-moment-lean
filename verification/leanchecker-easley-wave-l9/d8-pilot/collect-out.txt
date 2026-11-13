@@ -1,0 +1,37 @@
+sacct: ['COMPLETED|0:0|00:49:20||00:00:00']
+label                               rc    wall_s  rss_GB | office wall/rss
+P00_import_full.cold                 0       6.8    3.28 | 4.71 s / 6.9 GB
+P01_import_bessel.cold               0       3.8    1.78 | 2.87 s / 3.5 GB
+P02_import_operator.cold             0       3.8    1.78 | 2.88 s / 3.5 GB
+P10_bessel_api.cold                  0       6.5    3.30 | 4.83 s / 7.0 GB
+P11_bessel_real_fails.cold           1       6.3    3.29 | 4.71 s / 6.9 GB
+P12_names_absent.cold                1       6.3    3.29 | 4.81 s / 6.9 GB
+P13_bridge_names.cold                0       7.6    3.31 | 5.70 s / 7.0 GB
+P20_laxmilgram.cold                  0       6.6    3.30 | 5.15 s / 7.0 GB
+P30_cfc_bounded.cold                 0       9.6    3.32 | 6.72 s / 7.0 GB
+P31_cfc_real_fails.cold              1       7.2    3.29 | 5.36 s / 6.9 GB
+P32_cfc_multiplication.cold          0       9.2    3.32 | 6.88 s / 7.0 GB
+P40_compact_spectral.cold            0       7.0    3.31 | 5.66 s / 7.0 GB
+P41_unbounded.cold                   0       6.3    3.29 | 4.87 s / 6.9 GB
+P42_operator_monotone.cold           0       9.3    3.33 | 6.98 s / 7.0 GB
+P50_workload.cold                    0      11.3    3.35 | 8.03 s / 7.0 GB
+P00_import_full.warm                 0       6.3    3.28 | 4.71 s / 6.9 GB
+P01_import_bessel.warm               0       3.8    1.78 | 2.87 s / 3.5 GB
+P02_import_operator.warm             0       3.8    1.78 | 2.88 s / 3.5 GB
+P10_bessel_api.warm                  0       6.4    3.30 | 4.83 s / 7.0 GB
+P11_bessel_real_fails.warm           1       6.3    3.29 | 4.71 s / 6.9 GB
+P12_names_absent.warm                1       6.3    3.29 | 4.81 s / 6.9 GB
+P13_bridge_names.warm                0       7.6    3.31 | 5.70 s / 7.0 GB
+P20_laxmilgram.warm                  0       6.5    3.30 | 5.15 s / 7.0 GB
+P30_cfc_bounded.warm                 0       9.5    3.32 | 6.72 s / 7.0 GB
+P31_cfc_real_fails.warm              1       7.2    3.29 | 5.36 s / 6.9 GB
+P32_cfc_multiplication.warm          0       9.2    3.32 | 6.88 s / 7.0 GB
+P40_compact_spectral.warm            0       7.0    3.31 | 5.66 s / 7.0 GB
+P41_unbounded.warm                   0       6.3    3.29 | 4.87 s / 6.9 GB
+P42_operator_monotone.warm           0       9.3    3.33 | 6.98 s / 7.0 GB
+P50_workload.warm                    0      11.2    3.35 | 8.03 s / 7.0 GB
+olean.P50_workload                   0      11.3    3.35 | 
+check.P50_workload                   0       9.2    2.72 | 
+fresh.P50_workload                   0    2504.8    7.57 | 
+peak RSS over all runs: 7.57 GB
+DECISION: PASS (K5/K6 may start on <MACHINE>; Easley replays them in the normal array gate)

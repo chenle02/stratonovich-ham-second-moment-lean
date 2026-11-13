@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.OccupationCeilingFinite.s1Bdd_paper

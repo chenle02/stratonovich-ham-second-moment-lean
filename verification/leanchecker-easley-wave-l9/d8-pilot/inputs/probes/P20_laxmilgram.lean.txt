@@ -1,0 +1,20 @@
+import Mathlib
+/-! Lax–Milgram (real Hilbert spaces) and Riesz (complex). -/
+open scoped InnerProductSpace
+#check @IsCoercive
+#check @IsCoercive.continuousLinearEquivOfBilin
+#check @IsCoercive.continuousLinearEquivOfBilin_apply
+#check @IsCoercive.unique_continuousLinearEquivOfBilin
+#check @InnerProductSpace.toDual
+#check @InnerProductSpace.continuousLinearMapOfBilin
+variable {V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V] [CompleteSpace V]
+-- coercive bounded bilinear form gives a continuous linear equivalence V ≃L V
+noncomputable example (B : V →L[ℝ] V →L[ℝ] ℝ) (hB : IsCoercive B) : V ≃L[ℝ] V :=
+  hB.continuousLinearEquivOfBilin
+-- the inner product itself is coercive
+example : IsCoercive (innerSL ℝ : V →L[ℝ] V →L[ℝ] ℝ) :=
+  ⟨1, one_pos, fun u => by rw [innerSL_apply_apply, real_inner_self_eq_norm_mul_norm, one_mul]⟩
+-- complex (sesquilinear) Riesz map B♯ exists over any RCLike field; coercivity/Lax–Milgram are real-only
+open InnerProductSpace in
+noncomputable example {W : Type*} [NormedAddCommGroup W] [InnerProductSpace ℂ W] [CompleteSpace W]
+    (B : W →L⋆[ℂ] W →L[ℂ] ℂ) : W →L[ℂ] W := continuousLinearMapOfBilin B

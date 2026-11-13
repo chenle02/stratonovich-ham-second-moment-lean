@@ -1,0 +1,7 @@
+import StratonovichHAMAudit.OccupationForm
+set_option pp.universes true
+set_option pp.all true
+#check StratonovichHAMAudit.OccupationForm.potential_budget
+#print axioms StratonovichHAMAudit.OccupationForm.potential_budget
+#check StratonovichHAMAudit.OccupationForm.shifted_coercivity
+#print axioms StratonovichHAMAudit.OccupationForm.shifted_coercivity

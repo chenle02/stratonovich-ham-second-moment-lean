@@ -1,0 +1,7 @@
+commit=6eb79c7b2ec4ca52f02121224484aa4865e43ac8
+tree=de6f79a14664bfad0e9c60dff29dc2f0ed37711e
+build_job=5695590
+fresh_targets=103 counted_fresh=103 default_ok=True
+redo=-
+problems=-
+VERDICT=COMPLETE

@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.SymplecticFree.symplectic_compact_young_baseline_paper

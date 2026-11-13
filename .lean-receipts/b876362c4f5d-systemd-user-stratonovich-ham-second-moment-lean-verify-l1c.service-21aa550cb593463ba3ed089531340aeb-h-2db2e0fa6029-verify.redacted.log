@@ -1,0 +1,468 @@
+commit: b876362c4f5d33c1b4c79166ce055ef6685747c2
+lean-toolchain: leanprover/lean4:v4.35.0
+checker: verify.sh (lake build StratonovichHAMSecondMoment StratonovichHAMSecondMoment.Axioms; #print axioms)
+lean-pkg-build: begin
+✔ [9045/9075] Built StratonovichHAMAudit.HermiteWord (4.5s)
+✔ [9046/9075] Built StratonovichHAMAudit.FiniteYoung (20s)
+✔ [9049/9079] Built StratonovichHAMAudit.ClockFilter (25s)
+✔ [9050/9079] Built StratonovichHAMAudit.HermiteWordConsumer (9.3s)
+✔ [9051/9079] Built StratonovichHAMAudit.RawValueCeiling (28s)
+✔ [9052/9079] Built StratonovichHAMAudit.MovingCone (31s)
+✔ [9053/9079] Built StratonovichHAMAudit.DimensionalMatrix (31s)
+✔ [9054/9079] Built StratonovichHAMAudit.PositiveGram (32s)
+✔ [9055/9079] Built StratonovichHAMAudit.LocalFlow (32s)
+✔ [9056/9079] Built StratonovichHAMAudit.OccupationForm (33s)
+✔ [9057/9079] Built StratonovichHAMAudit.ProjectionResidual (33s)
+✔ [9058/9079] Built StratonovichHAMAudit.JointTilt (34s)
+✔ [9059/9079] Built StratonovichHAMSecondMoment.KappaRange (34s)
+✔ [9060/9079] Built StratonovichHAMSecondMoment.GramScalarAlgebra (35s)
+✔ [9061/9079] Built StratonovichHAMAudit.RawVariational (31s)
+✔ [9062/9079] Built StratonovichHAMAudit.GaussianTail (36s)
+✔ [9063/9079] Built StratonovichHAMAudit.ActualEvent (36s)
+✔ [9064/9079] Built StratonovichHAMAudit.PhaseResponse (36s)
+✔ [9065/9079] Built StratonovichHAMAudit.AllAlphaMoment (36s)
+✔ [9066/9079] Built StratonovichHAMAudit.DirectEvent (38s)
+✔ [9067/9079] Built StratonovichHAMSecondMoment.DriverParameters (38s)
+✔ [9068/9079] Built StratonovichHAMAudit.DampedLower (39s)
+✔ [9069/9079] Built StratonovichHAMAudit.InteractionDriver (41s)
+✔ [9070/9079] Built StratonovichHAMAudit.WhiteCDF (16s)
+✔ [9071/9079] Built StratonovichHAMAudit.GlobalOmega (46s)
+✔ [9072/9079] Built StratonovichHAMSecondMoment.GaussianScalarPowers (18s)
+✔ [9073/9079] Built StratonovichHAMAudit.TerminalCross (26s)
+✔ [9074/9079] Built StratonovichHAMSecondMoment.RayleighTail (19s)
+✔ [9075/9079] Built StratonovichHAMSecondMoment.HomogHypothesis (9.0s)
+✔ [9076/9079] Built StratonovichHAMAudit.MiddleCross (83s)
+✔ [9077/9079] Built StratonovichHAMSecondMoment (2.9s)
+ℹ [9078/9079] Built StratonovichHAMSecondMoment.Axioms (3.6s)
+info: StratonovichHAMSecondMoment/Axioms.lean:9:0: 'StratonovichHAMAudit.ActualEvent.finite_error_accumulation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:10:0: 'StratonovichHAMAudit.ActualEvent.moderate_penalty' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:11:0: 'StratonovichHAMAudit.AllAlphaMoment.moment_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:12:0: 'StratonovichHAMAudit.AllAlphaMoment.rational_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:13:0: 'StratonovichHAMAudit.ClockFilter.clock_filter_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:14:0: 'StratonovichHAMAudit.ClockFilter.resolvent_partial_fraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:15:0: 'StratonovichHAMAudit.ClockFilter.strict_filter_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:16:0: 'StratonovichHAMAudit.DampedLower.exact_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:17:0: 'StratonovichHAMAudit.DampedLower.pi_cube_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:18:0: 'StratonovichHAMAudit.DampedLower.rational_pi_gain' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:19:0: 'StratonovichHAMAudit.DimensionalMatrix.backward' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:20:0: 'StratonovichHAMAudit.DimensionalMatrix.coupling' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:21:0: 'StratonovichHAMAudit.DimensionalMatrix.forward' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:22:0: 'StratonovichHAMAudit.DimensionalMatrix.full_interaction' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:23:0: 'StratonovichHAMAudit.DirectEvent.delta' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:24:0: 'StratonovichHAMAudit.DirectEvent.drift' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:25:0: 'StratonovichHAMAudit.DirectEvent.gauge' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:26:0: 'StratonovichHAMAudit.DirectEvent.kappa' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:27:0: 'StratonovichHAMAudit.DirectEvent.pulseTwo' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:28:0: 'StratonovichHAMAudit.DirectEvent.pulseZero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:29:0: 'StratonovichHAMAudit.DirectEvent.radius' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:30:0: 'StratonovichHAMAudit.DirectEvent.gauge_drift' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:31:0: 'StratonovichHAMAudit.DirectEvent.gauge_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:32:0: 'StratonovichHAMAudit.DirectEvent.kappa_gt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:33:0: 'StratonovichHAMAudit.DirectEvent.monodromy' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:34:0: 'StratonovichHAMAudit.DirectEvent.noise_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:35:0: 'StratonovichHAMAudit.DirectEvent.physical_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:36:0: 'StratonovichHAMAudit.DirectEvent.vertex_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:37:0: 'StratonovichHAMAudit.FiniteYoung.weighted_natural_powers' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:38:0: 'StratonovichHAMAudit.GaussianTail.cutoff_density_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:39:0: 'StratonovichHAMAudit.GlobalOmega.envelopeDenom' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:40:0: 'StratonovichHAMAudit.GlobalOmega.envelopePolynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:41:0: 'StratonovichHAMAudit.GlobalOmega.envelopeRational' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:42:0: 'StratonovichHAMAudit.GlobalOmega.left_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:43:0: 'StratonovichHAMAudit.GlobalOmega.polynomial_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:44:0: 'StratonovichHAMAudit.GlobalOmega.rational_lt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:45:0: 'StratonovichHAMAudit.GlobalOmega.right_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:46:0: 'StratonovichHAMAudit.HermiteWord.bump' does not depend on any axioms
+info: StratonovichHAMSecondMoment/Axioms.lean:47:0: 'StratonovichHAMAudit.HermiteWord.counts' does not depend on any axioms
+info: StratonovichHAMSecondMoment/Axioms.lean:48:0: 'StratonovichHAMAudit.HermiteWord.cut' does not depend on any axioms
+info: StratonovichHAMSecondMoment/Axioms.lean:49:0: 'StratonovichHAMAudit.HermiteWord.raw' does not depend on any axioms
+info: StratonovichHAMSecondMoment/Axioms.lean:50:0: 'StratonovichHAMAudit.HermiteWord.cut_eq_raw' depends on axioms: [propext, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:51:0: 'StratonovichHAMAudit.HermiteWord.raw_support' does not depend on any axioms
+info: StratonovichHAMSecondMoment/Axioms.lean:52:0: 'StratonovichHAMAudit.InteractionDriver.dyadicFactor' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:53:0: 'StratonovichHAMAudit.InteractionDriver.midpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:54:0: 'StratonovichHAMAudit.InteractionDriver.mixC' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:55:0: 'StratonovichHAMAudit.InteractionDriver.temporalH' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:56:0: 'StratonovichHAMAudit.InteractionDriver.box_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:57:0: 'StratonovichHAMAudit.InteractionDriver.box_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:58:0: 'StratonovichHAMAudit.InteractionDriver.dyadic_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:59:0: 'StratonovichHAMAudit.InteractionDriver.gaussian_exponent' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:60:0: 'StratonovichHAMAudit.InteractionDriver.gaussian_prefactor' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:61:0: 'StratonovichHAMAudit.InteractionDriver.holder_parameters' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:62:0: 'StratonovichHAMAudit.InteractionDriver.temporal_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:63:0: 'StratonovichHAMAudit.InteractionDriver.variance_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:64:0: 'StratonovichHAMAudit.JointTilt.shifted_amplitude' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:65:0: 'StratonovichHAMAudit.JointTilt.tilt_exponent' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:66:0: 'StratonovichHAMAudit.JointTilt.wrong_cost_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:67:0: 'StratonovichHAMAudit.JointTilt.wrong_sign_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:68:0: 'StratonovichHAMAudit.LocalFlow.noiseOrder' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:69:0: 'StratonovichHAMAudit.LocalFlow.sourceSigma' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:70:0: 'StratonovichHAMAudit.LocalFlow.noise_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:71:0: 'StratonovichHAMAudit.LocalFlow.schur_column' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:72:0: 'StratonovichHAMAudit.LocalFlow.schur_rescale' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:73:0: 'StratonovichHAMAudit.LocalFlow.schur_row' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:74:0: 'StratonovichHAMAudit.LocalFlow.source_overlap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:75:0: 'StratonovichHAMAudit.LocalFlow.source_tail_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:76:0: 'StratonovichHAMAudit.LocalFlow.source_white_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:77:0: 'StratonovichHAMAudit.MiddleCross.actual' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:78:0: 'StratonovichHAMAudit.MiddleCross.certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:79:0: 'StratonovichHAMAudit.MiddleCross.denominator' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:80:0: 'StratonovichHAMAudit.MiddleCross.massK' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:81:0: 'StratonovichHAMAudit.MiddleCross.numerator' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:82:0: 'StratonovichHAMAudit.MiddleCross.paramB' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:83:0: 'StratonovichHAMAudit.MiddleCross.paramC' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:84:0: 'StratonovichHAMAudit.MiddleCross.paramD' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:85:0: 'StratonovichHAMAudit.MiddleCross.paramE' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:86:0: 'StratonovichHAMAudit.MiddleCross.part1' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:87:0: 'StratonovichHAMAudit.MiddleCross.part2' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:88:0: 'StratonovichHAMAudit.MiddleCross.resolvent' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:89:0: 'StratonovichHAMAudit.MiddleCross.upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:90:0: 'StratonovichHAMAudit.MiddleCross.certificate_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:91:0: 'StratonovichHAMAudit.MiddleCross.difference_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:92:0: 'StratonovichHAMAudit.MiddleCross.middle_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:93:0: 'StratonovichHAMAudit.MiddleCross.parameter_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:94:0: 'StratonovichHAMAudit.MiddleCross.parameter_numerator_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:95:0: 'StratonovichHAMAudit.MiddleCross.resolvent_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:96:0: 'StratonovichHAMAudit.MiddleCross.root_numerator_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:97:0: 'StratonovichHAMAudit.MovingCone.cone_conversion' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:98:0: 'StratonovichHAMAudit.MovingCone.residual_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:99:0: 'StratonovichHAMAudit.MovingCone.terminal_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:100:0: 'StratonovichHAMAudit.OccupationForm.potential_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:101:0: 'StratonovichHAMAudit.OccupationForm.shifted_coercivity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:102:0: 'StratonovichHAMAudit.PhaseResponse.phaseIndex' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:103:0: 'StratonovichHAMAudit.PhaseResponse.balanced_phase' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:104:0: 'StratonovichHAMAudit.PhaseResponse.energy_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:105:0: 'StratonovichHAMAudit.PhaseResponse.four_component_gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:106:0: 'StratonovichHAMAudit.PhaseResponse.frequency_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:107:0: 'StratonovichHAMAudit.PhaseResponse.rough_phase_choice' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:108:0: 'StratonovichHAMAudit.PhaseResponse.two_frequency_average' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:109:0: 'StratonovichHAMAudit.PositiveGram.active_upper_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:110:0: 'StratonovichHAMAudit.PositiveGram.gram_norm_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:111:0: 'StratonovichHAMAudit.PositiveGram.half_weighted_entrywise_mono' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:112:0: 'StratonovichHAMAudit.PositiveGram.scalar_sqrt_dual' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:113:0: 'StratonovichHAMAudit.ProjectionResidual.actualMeanCoeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:114:0: 'StratonovichHAMAudit.ProjectionResidual.projectedLower' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:115:0: 'StratonovichHAMAudit.ProjectionResidual.projection_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:116:0: 'StratonovichHAMAudit.ProjectionResidual.tilted_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:117:0: 'StratonovichHAMAudit.RawValueCeiling.exact_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:118:0: 'StratonovichHAMAudit.RawValueCeiling.strict_log_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:119:0: 'StratonovichHAMAudit.RawVariational.dilation_factors' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:120:0: 'StratonovichHAMAudit.RawVariational.label_score' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:121:0: 'StratonovichHAMAudit.RawVariational.positive_score' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:122:0: 'StratonovichHAMAudit.RawVariational.strict_label_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:123:0: 'StratonovichHAMAudit.TerminalCross.certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:124:0: 'StratonovichHAMAudit.TerminalCross.numN' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:125:0: 'StratonovichHAMAudit.TerminalCross.numP' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:126:0: 'StratonovichHAMAudit.TerminalCross.polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:127:0: 'StratonovichHAMAudit.TerminalCross.exponential_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:128:0: 'StratonovichHAMAudit.TerminalCross.polynomial_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:129:0: 'StratonovichHAMAudit.TerminalCross.polynomial_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:130:0: 'StratonovichHAMAudit.TerminalCross.rate_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:131:0: 'StratonovichHAMAudit.TerminalCross.terminal_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:132:0: 'StratonovichHAMAudit.WhiteCDF.cdf_square_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:133:0: 'StratonovichHAMAudit.WhiteCDF.energy_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:134:0: 'StratonovichHAMSecondMoment.DriverParameters.Homog' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:135:0: 'StratonovichHAMSecondMoment.DriverParameters.gamma_interval_nonempty' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:136:0: 'StratonovichHAMSecondMoment.DriverParameters.parameters_nonempty' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:137:0: 'StratonovichHAMSecondMoment.DriverParameters.theta_beta_interval_nonempty' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:138:0: 'StratonovichHAMSecondMoment.GaussianScalarPowers.expectation_rpow_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:139:0: 'StratonovichHAMSecondMoment.GaussianScalarPowers.finite_holder' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:140:0: 'StratonovichHAMSecondMoment.GaussianScalarPowers.integer_power' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:141:0: 'StratonovichHAMSecondMoment.GaussianScalarPowers.weighted_power' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:142:0: 'StratonovichHAMSecondMoment.GramScalarAlgebra.gram_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:143:0: 'StratonovichHAMSecondMoment.GramScalarAlgebra.hilbert_square' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:144:0: 'StratonovichHAMSecondMoment.GramScalarAlgebra.hilbert_square_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:145:0: 'StratonovichHAMSecondMoment.GramScalarAlgebra.hilbert_square_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:146:0: 'StratonovichHAMSecondMoment.GramScalarAlgebra.sqrt_dual' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:147:0: 'StratonovichHAMSecondMoment.KappaRange.kappa' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:148:0: 'StratonovichHAMSecondMoment.KappaRange.kappa_mem_Ioo' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:149:0: 'StratonovichHAMSecondMoment.RayleighTail.cutoff_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:150:0: 'StratonovichHAMSecondMoment.RayleighTail.gaussian_weight_tail' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:151:0: 'StratonovichHAMSecondMoment.RayleighTail.rayleigh_head_integrable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:152:0: 'StratonovichHAMSecondMoment.RayleighTail.rayleigh_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:153:0: 'StratonovichHAMSecondMoment.GramScalarAlgebra.gram_scalar_algebra_paper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:154:0: 'StratonovichHAMSecondMoment.RayleighTail.rayleigh_tail_paper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:155:0: 'StratonovichHAMSecondMoment.HomogHypothesis.IsTempered' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:156:0: 'StratonovichHAMSecondMoment.HomogHypothesis.IsEven' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:157:0: 'StratonovichHAMSecondMoment.HomogHypothesis.IsPosDefDistr' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:158:0: 'StratonovichHAMSecondMoment.HomogHypothesis.IsSpectralMeasure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:159:0: 'StratonovichHAMSecondMoment.HomogHypothesis.HomogCovariance' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:160:0: 'StratonovichHAMSecondMoment.HomogHypothesis.homog_params' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:161:0: 'StratonovichHAMSecondMoment.HomogHypothesis.kappa_mem_Ioo_paper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:162:0: 'StratonovichHAMSecondMoment.HomogHypothesis.parameters_nonempty_paper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Build completed successfully (9079 jobs).
+lean-pkg-build: end
+claim-axioms: StratonovichHAMAudit.ActualEvent.finite_error_accumulation Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.ActualEvent.moderate_penalty Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.AllAlphaMoment.moment_lower Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.AllAlphaMoment.rational_gap Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.ClockFilter.resolvent_partial_fraction Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.ClockFilter.clock_filter_bounds Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.ClockFilter.strict_filter_integral Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.DampedLower.exact_margin Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.DampedLower.pi_cube_certificate Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.DampedLower.rational_pi_gain Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.DimensionalMatrix.backward Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.DimensionalMatrix.coupling Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.DimensionalMatrix.forward Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.DimensionalMatrix.full_interaction Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.DirectEvent.kappa_gt_one Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.DirectEvent.physical_scale Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.DirectEvent.noise_scale Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.DirectEvent.vertex_scale Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.DirectEvent.gauge_inverse Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.DirectEvent.gauge_drift Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.DirectEvent.monodromy Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.FiniteYoung.weighted_natural_powers Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.GaussianTail.cutoff_density_split Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.GlobalOmega.envelopePolynomial Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.GlobalOmega.envelopeDenom Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.GlobalOmega.envelopeRational Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.GlobalOmega.left_certificate Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.GlobalOmega.right_certificate Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.GlobalOmega.polynomial_pos Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.GlobalOmega.rational_lt_one Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.HermiteWord.raw_support none
+claim-axioms: StratonovichHAMAudit.HermiteWord.cut_eq_raw Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.InteractionDriver.temporal_range Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.InteractionDriver.variance_norm Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.InteractionDriver.gaussian_prefactor Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.InteractionDriver.gaussian_exponent Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.InteractionDriver.holder_parameters Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.InteractionDriver.dyadic_ratio Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.InteractionDriver.box_margin Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.InteractionDriver.box_scale Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.JointTilt.tilt_exponent Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.JointTilt.wrong_sign_error Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.JointTilt.wrong_cost_error Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.JointTilt.shifted_amplitude Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.LocalFlow.noise_order Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.LocalFlow.schur_row Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.LocalFlow.schur_column Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.LocalFlow.schur_rescale Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.LocalFlow.source_overlap Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.LocalFlow.source_white_obstruction Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.LocalFlow.source_tail_obstruction Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.MiddleCross.certificate_pos Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.MiddleCross.parameter_identity Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.MiddleCross.parameter_numerator_pos Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.MiddleCross.difference_identity Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.MiddleCross.resolvent_difference Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.MiddleCross.root_numerator_pos Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.MiddleCross.middle_bound Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.MovingCone.residual_budget Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.MovingCone.cone_conversion Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.MovingCone.terminal_margin Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.OccupationForm.potential_budget Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.OccupationForm.shifted_coercivity Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.PhaseResponse.rough_phase_choice Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.PhaseResponse.balanced_phase Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.PhaseResponse.energy_boundary Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.PhaseResponse.four_component_gram Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.PhaseResponse.two_frequency_average Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.PhaseResponse.frequency_window Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.PositiveGram.scalar_sqrt_dual Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.PositiveGram.gram_norm_square Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.PositiveGram.active_upper_bound Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.PositiveGram.half_weighted_entrywise_mono Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.ProjectionResidual.projection_gap Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.ProjectionResidual.tilted_gap Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.RawValueCeiling.exact_gap Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.RawValueCeiling.strict_log_gap Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.RawVariational.dilation_factors Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.RawVariational.label_score Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.RawVariational.positive_score Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.RawVariational.strict_label_factor Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.TerminalCross.polynomial_identity Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.TerminalCross.polynomial_pos Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.TerminalCross.rate_le Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.TerminalCross.exponential_difference Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.TerminalCross.terminal_bound Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.WhiteCDF.cdf_square_bound Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMAudit.WhiteCDF.energy_upper Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.GaussianScalarPowers.weighted_power Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.GaussianScalarPowers.integer_power Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.GaussianScalarPowers.finite_holder Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.GaussianScalarPowers.expectation_rpow_le Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.GramScalarAlgebra.sqrt_dual Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.GramScalarAlgebra.hilbert_square_eq Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.GramScalarAlgebra.hilbert_square_le Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.GramScalarAlgebra.hilbert_square Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.GramScalarAlgebra.gram_identity Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.KappaRange.kappa Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.KappaRange.kappa_mem_Ioo Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.DriverParameters.Homog Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.DriverParameters.gamma_interval_nonempty Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.DriverParameters.theta_beta_interval_nonempty Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.DriverParameters.parameters_nonempty Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.RayleighTail.cutoff_split Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.RayleighTail.gaussian_weight_tail Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.RayleighTail.rayleigh_head_integrable Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.RayleighTail.rayleigh_tail Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.GramScalarAlgebra.gram_scalar_algebra_paper Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.RayleighTail.rayleigh_tail_paper Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.HomogHypothesis.IsTempered Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.HomogHypothesis.IsEven Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.HomogHypothesis.IsPosDefDistr Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.HomogHypothesis.IsSpectralMeasure Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.HomogHypothesis.HomogCovariance Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.HomogHypothesis.homog_params Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.HomogHypothesis.kappa_mem_Ioo_paper Classical.choice,Quot.sound,propext
+claim-axioms: StratonovichHAMSecondMoment.HomogHypothesis.parameters_nonempty_paper Classical.choice,Quot.sound,propext
+claim-axioms-done: 117
+== lean-pkg hypotheses (hyp-probe/1) ==
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.ActualEvent.finite_error_accumulation","binders":[{"i":3,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":4,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":5,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":4}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.ActualEvent.moderate_penalty","binders":[{"i":1,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":1}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.AllAlphaMoment.moment_lower","binders":[{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":5,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":6,"head":"Eq","kind":"inductive","module":"Init.Prelude","explicit":true},{"i":7,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":4}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.AllAlphaMoment.rational_gap","binders":[{"i":2,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.ClockFilter.resolvent_partial_fraction","binders":[{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.ClockFilter.clock_filter_bounds","binders":[{"i":2,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.ClockFilter.strict_filter_integral","binders":[{"i":1,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"Ne","kind":"def","module":"Init.Core","explicit":true},{"i":4,"head":"Filter.Eventually","kind":"def","module":"Mathlib.Order.Filter.Defs","explicit":true},{"i":6,"head":"MeasureTheory.Integrable","kind":"def","module":"Mathlib.MeasureTheory.Function.L1Space.Integrable","explicit":true},{"i":7,"head":"Filter.Eventually","kind":"def","module":"Mathlib.Order.Filter.Defs","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.DampedLower.exact_margin","binders":[],"data_binders":0}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.DampedLower.pi_cube_certificate","binders":[],"data_binders":0}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.DampedLower.rational_pi_gain","binders":[],"data_binders":0}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.DimensionalMatrix.backward","binders":[],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.DimensionalMatrix.coupling","binders":[],"data_binders":1}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.DimensionalMatrix.forward","binders":[],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.DimensionalMatrix.full_interaction","binders":[],"data_binders":7}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.DirectEvent.kappa_gt_one","binders":[{"i":2,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.DirectEvent.physical_scale","binders":[{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.DirectEvent.noise_scale","binders":[{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.DirectEvent.vertex_scale","binders":[{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.DirectEvent.gauge_inverse","binders":[],"data_binders":1}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.DirectEvent.gauge_drift","binders":[],"data_binders":1}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.DirectEvent.monodromy","binders":[],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.FiniteYoung.weighted_natural_powers","binders":[{"i":2,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":4}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.GaussianTail.cutoff_density_split","binders":[{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":5,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":6,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":7,"head":"And","kind":"inductive","module":"Init.Prelude","explicit":true},{"i":8,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":4}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.GlobalOmega.envelopePolynomial","binders":[],"data_binders":1}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.GlobalOmega.envelopeDenom","binders":[],"data_binders":1}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.GlobalOmega.envelopeRational","binders":[],"data_binders":1}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.GlobalOmega.left_certificate","binders":[{"i":1,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":2,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":1}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.GlobalOmega.right_certificate","binders":[{"i":1,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":2,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":1}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.GlobalOmega.polynomial_pos","binders":[{"i":1,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":2,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":1}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.GlobalOmega.rational_lt_one","binders":[{"i":1,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":2,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":1}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.HermiteWord.raw_support","binders":[],"data_binders":9}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.HermiteWord.cut_eq_raw","binders":[],"data_binders":11}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.InteractionDriver.temporal_range","binders":[{"i":1,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":2,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":1}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.InteractionDriver.variance_norm","binders":[{"i":4,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":5,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":6,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":4}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.InteractionDriver.gaussian_prefactor","binders":[{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":5,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.InteractionDriver.gaussian_exponent","binders":[{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.InteractionDriver.holder_parameters","binders":[{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":5,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":6,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":7,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.InteractionDriver.dyadic_ratio","binders":[{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.InteractionDriver.box_margin","binders":[{"i":2,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.InteractionDriver.box_scale","binders":[{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.JointTilt.tilt_exponent","binders":[],"data_binders":5}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.JointTilt.wrong_sign_error","binders":[],"data_binders":5}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.JointTilt.wrong_cost_error","binders":[],"data_binders":5}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.JointTilt.shifted_amplitude","binders":[{"i":2,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.LocalFlow.noise_order","binders":[{"i":1,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":2,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":1}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.LocalFlow.schur_row","binders":[{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.LocalFlow.schur_column","binders":[{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.LocalFlow.schur_rescale","binders":[{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.LocalFlow.source_overlap","binders":[{"i":1,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":1}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.LocalFlow.source_white_obstruction","binders":[{"i":2,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.LocalFlow.source_tail_obstruction","binders":[{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":5,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.MiddleCross.certificate_pos","binders":[{"i":2,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.MiddleCross.parameter_identity","binders":[{"i":2,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.MiddleCross.parameter_numerator_pos","binders":[{"i":2,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.MiddleCross.difference_identity","binders":[{"i":4,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":5,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":6,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":7,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":4}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.MiddleCross.resolvent_difference","binders":[{"i":4,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":5,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":6,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":7,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":4}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.MiddleCross.root_numerator_pos","binders":[{"i":2,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.MiddleCross.middle_bound","binders":[{"i":2,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.MovingCone.residual_budget","binders":[{"i":4,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":5,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":6,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":7,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":8,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":4}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.MovingCone.cone_conversion","binders":[{"i":5,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":6,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":7,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":8,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":9,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":5}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.MovingCone.terminal_margin","binders":[{"i":5,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":6,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":7,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":8,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":5}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.OccupationForm.potential_budget","binders":[{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":4}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.OccupationForm.shifted_coercivity","binders":[{"i":4,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":4}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.PhaseResponse.rough_phase_choice","binders":[{"i":2,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.PhaseResponse.balanced_phase","binders":[{"i":2,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.PhaseResponse.energy_boundary","binders":[],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.PhaseResponse.four_component_gram","binders":[],"data_binders":4}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.PhaseResponse.two_frequency_average","binders":[],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.PhaseResponse.frequency_window","binders":[{"i":6,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":7,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":8,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":9,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":10,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":11,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":6}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.PositiveGram.scalar_sqrt_dual","binders":[{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":4,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.PositiveGram.gram_norm_square","binders":[],"data_binders":7}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.PositiveGram.active_upper_bound","binders":[],"data_binders":10}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.PositiveGram.half_weighted_entrywise_mono","binders":[],"data_binders":5}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.ProjectionResidual.projection_gap","binders":[],"data_binders":0}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.ProjectionResidual.tilted_gap","binders":[{"i":2,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.RawValueCeiling.exact_gap","binders":[],"data_binders":0}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.RawValueCeiling.strict_log_gap","binders":[{"i":2,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.RawVariational.dilation_factors","binders":[{"i":2,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.RawVariational.label_score","binders":[{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":5,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":4}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.RawVariational.positive_score","binders":[{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":5,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.RawVariational.strict_label_factor","binders":[{"i":1,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":1}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.TerminalCross.polynomial_identity","binders":[],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.TerminalCross.polynomial_pos","binders":[{"i":2,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.TerminalCross.rate_le","binders":[{"i":2,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.TerminalCross.exponential_difference","binders":[{"i":6,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":7,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":8,"head":"Eq","kind":"inductive","module":"Init.Prelude","explicit":true}],"data_binders":6}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.TerminalCross.terminal_bound","binders":[{"i":2,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.WhiteCDF.cdf_square_bound","binders":[],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMAudit.WhiteCDF.energy_upper","binders":[{"i":3,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.GaussianScalarPowers.weighted_power","binders":[{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":5,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":6,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.GaussianScalarPowers.integer_power","binders":[{"i":2,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":4}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.GaussianScalarPowers.finite_holder","binders":[{"i":5,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":5}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.GaussianScalarPowers.expectation_rpow_le","binders":[{"i":3,"head":"MeasureTheory.IsProbabilityMeasure","kind":"inductive","module":"Mathlib.MeasureTheory.Measure.Typeclasses.Probability","explicit":false},{"i":5,"head":"MeasureTheory.Integrable","kind":"def","module":"Mathlib.MeasureTheory.Function.L1Space.Integrable","explicit":true},{"i":6,"head":"Filter.EventuallyLE","kind":"def","module":"Mathlib.Order.Filter.Defs","explicit":true},{"i":8,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":9,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":5}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.GramScalarAlgebra.sqrt_dual","binders":[{"i":3,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":4,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.GramScalarAlgebra.hilbert_square_eq","binders":[],"data_binders":5}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.GramScalarAlgebra.hilbert_square_le","binders":[],"data_binders":5}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.GramScalarAlgebra.hilbert_square","binders":[],"data_binders":5}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.GramScalarAlgebra.gram_identity","binders":[],"data_binders":8}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.KappaRange.kappa","binders":[],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.KappaRange.kappa_mem_Ioo","binders":[{"i":3,"head":"Or","kind":"inductive","module":"Init.Prelude","explicit":true},{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":5,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":6,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":7,"head":"Or","kind":"inductive","module":"Init.Prelude","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.DriverParameters.Homog","binders":[],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.DriverParameters.gamma_interval_nonempty","binders":[{"i":3,"head":"StratonovichHAMSecondMoment.DriverParameters.Homog","kind":"def","module":"StratonovichHAMSecondMoment.DriverParameters","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.DriverParameters.theta_beta_interval_nonempty","binders":[{"i":3,"head":"StratonovichHAMSecondMoment.DriverParameters.Homog","kind":"def","module":"StratonovichHAMSecondMoment.DriverParameters","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.DriverParameters.parameters_nonempty","binders":[{"i":3,"head":"StratonovichHAMSecondMoment.DriverParameters.Homog","kind":"def","module":"StratonovichHAMSecondMoment.DriverParameters","explicit":true}],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.RayleighTail.cutoff_split","binders":[{"i":4,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":5,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":6,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":7,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":8,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":9,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":4}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.RayleighTail.gaussian_weight_tail","binders":[{"i":2,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":3,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.RayleighTail.rayleigh_head_integrable","binders":[{"i":1,"head":"Measurable","kind":"def","module":"Mathlib.MeasureTheory.MeasurableSpace.Defs","explicit":true},{"i":8,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":9,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":10,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":11,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":6}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.RayleighTail.rayleigh_tail","binders":[{"i":1,"head":"Measurable","kind":"def","module":"Mathlib.MeasureTheory.MeasurableSpace.Defs","explicit":true},{"i":8,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":9,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":10,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":11,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":12,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":13,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":6}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.GramScalarAlgebra.gram_scalar_algebra_paper","binders":[{"i":5,"head":"CompleteSpace","kind":"inductive","module":"Mathlib.Topology.UniformSpace.Cauchy","explicit":false}],"data_binders":7}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.RayleighTail.rayleigh_tail_paper","binders":[{"i":1,"head":"Measurable","kind":"def","module":"Mathlib.MeasureTheory.MeasurableSpace.Defs","explicit":true},{"i":8,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true},{"i":9,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":10,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":11,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":12,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":13,"head":"LT.lt","kind":"def","module":"Init.Prelude","explicit":true},{"i":14,"head":"LE.le","kind":"def","module":"Init.Prelude","explicit":true}],"data_binders":6}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.HomogHypothesis.IsTempered","binders":[],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.HomogHypothesis.IsEven","binders":[],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.HomogHypothesis.IsPosDefDistr","binders":[],"data_binders":2}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.HomogHypothesis.IsSpectralMeasure","binders":[],"data_binders":3}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.HomogHypothesis.HomogCovariance","binders":[],"data_binders":5}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.HomogHypothesis.homog_params","binders":[{"i":5,"head":"StratonovichHAMSecondMoment.HomogHypothesis.HomogCovariance","kind":"inductive","module":"StratonovichHAMSecondMoment.HomogHypothesis","explicit":true}],"data_binders":5}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.HomogHypothesis.kappa_mem_Ioo_paper","binders":[{"i":5,"head":"StratonovichHAMSecondMoment.HomogHypothesis.HomogCovariance","kind":"inductive","module":"StratonovichHAMSecondMoment.HomogHypothesis","explicit":true}],"data_binders":5}
+hyp-decl: {"v":1,"theorem":"StratonovichHAMSecondMoment.HomogHypothesis.parameters_nonempty_paper","binders":[{"i":5,"head":"StratonovichHAMSecondMoment.HomogHypothesis.HomogCovariance","kind":"inductive","module":"StratonovichHAMSecondMoment.HomogHypothesis","explicit":true}],"data_binders":5}
+hyp-done: {"v":1,"decls":117,"challenge":0,"configs":[]}
+sorry-count: 0
+axioms: Classical.choice,Quot.sound,propext
+generated-at: 2026-11-10T15:56:39Z

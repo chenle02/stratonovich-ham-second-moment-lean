@@ -1,0 +1,4 @@
+import Mathlib
+/-! Expected to FAIL: BesselPotentialSpace needs `[NormedSpace ℂ F]`, so real-valued H^1 is not available. -/
+abbrev R3 := EuclideanSpace ℝ (Fin 3)
+#check BesselPotentialSpace R3 ℝ 1 2

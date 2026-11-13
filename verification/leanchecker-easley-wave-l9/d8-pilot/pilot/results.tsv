@@ -1,0 +1,33 @@
+P00_import_full.cold	0	6.81	3284424	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P00_import_full.lean
+P01_import_bessel.cold	0	3.82	1776048	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P01_import_bessel.lean
+P02_import_operator.cold	0	3.81	1775064	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P02_import_operator.lean
+P10_bessel_api.cold	0	6.47	3297984	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P10_bessel_api.lean
+P11_bessel_real_fails.cold	1	6.29	3288616	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P11_bessel_real_fails.lean
+P12_names_absent.cold	1	6.29	3286352	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P12_names_absent.lean
+P13_bridge_names.cold	0	7.58	3307392	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P13_bridge_names.lean
+P20_laxmilgram.cold	0	6.58	3299124	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P20_laxmilgram.lean
+P30_cfc_bounded.cold	0	9.55	3323256	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P30_cfc_bounded.lean
+P31_cfc_real_fails.cold	1	7.18	3294356	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P31_cfc_real_fails.lean
+P32_cfc_multiplication.cold	0	9.25	3321384	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P32_cfc_multiplication.lean
+P40_compact_spectral.cold	0	7.04	3308672	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P40_compact_spectral.lean
+P41_unbounded.cold	0	6.34	3286572	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P41_unbounded.lean
+P42_operator_monotone.cold	0	9.33	3333328	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P42_operator_monotone.lean
+P50_workload.cold	0	11.26	3349184	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P50_workload.lean
+P00_import_full.warm	0	6.32	3284432	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P00_import_full.lean
+P01_import_bessel.warm	0	3.79	1776080	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P01_import_bessel.lean
+P02_import_operator.warm	0	3.84	1775104	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P02_import_operator.lean
+P10_bessel_api.warm	0	6.38	3296764	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P10_bessel_api.lean
+P11_bessel_real_fails.warm	1	6.33	3288576	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P11_bessel_real_fails.lean
+P12_names_absent.warm	1	6.26	3285612	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P12_names_absent.lean
+P13_bridge_names.warm	0	7.56	3306500	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P13_bridge_names.lean
+P20_laxmilgram.warm	0	6.55	3298872	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P20_laxmilgram.lean
+P30_cfc_bounded.warm	0	9.52	3322976	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P30_cfc_bounded.lean
+P31_cfc_real_fails.warm	1	7.22	3294340	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P31_cfc_real_fails.lean
+P32_cfc_multiplication.warm	0	9.19	3324592	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P32_cfc_multiplication.lean
+P40_compact_spectral.warm	0	7.03	3308548	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P40_compact_spectral.lean
+P41_unbounded.warm	0	6.29	3286508	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P41_unbounded.lean
+P42_operator_monotone.warm	0	9.32	3332556	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P42_operator_monotone.lean
+P50_workload.warm	0	11.24	3349828	timeout -k 30s 1800s lake env lean /tmp/stratham-d8-5695592.BQeNrc/probes/P50_workload.lean
+olean.P50_workload	0	11.26	3354392	lake env lean --root=/tmp/stratham-d8-5695592.BQeNrc/srcroot -o /tmp/stratham-d8-5695592.BQeNrc/olean/D8Probe/P50_workload.olean /tmp/stratham-d8-5695592.BQeNrc/srcroot/D8Probe/P50_workload.lean
+check.P50_workload	0	9.24	2718940	lake env bash -c LEAN_PATH=/tmp/stratham-d8-5695592.BQeNrc/olean:$LEAN_PATH exec timeout -k 60s 3600s leanchecker D8Probe.P50_workload
+fresh.P50_workload	0	2504.85	7569564	lake env bash -c LEAN_PATH=/tmp/stratham-d8-5695592.BQeNrc/olean:$LEAN_PATH exec timeout -k 60s 14400s leanchecker --fresh D8Probe.P50_workload

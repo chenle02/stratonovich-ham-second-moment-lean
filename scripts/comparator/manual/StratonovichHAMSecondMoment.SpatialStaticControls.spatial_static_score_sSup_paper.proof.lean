@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.SpatialStaticControls.spatial_static_score_sSup_paper

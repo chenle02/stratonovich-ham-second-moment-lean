@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.SpatialOccupationL7Completed.spatial_static_energy_score_sSup_paper_completed

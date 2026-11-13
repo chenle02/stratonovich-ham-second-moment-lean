@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.TypeContinuity.moment_growth_logconvex_paper

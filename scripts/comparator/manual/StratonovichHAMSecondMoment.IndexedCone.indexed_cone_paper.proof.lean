@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.IndexedCone.indexed_cone_paper

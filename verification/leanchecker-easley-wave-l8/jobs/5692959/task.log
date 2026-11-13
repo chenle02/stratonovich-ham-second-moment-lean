@@ -1,0 +1,13 @@
+node=node871 job=5692959 array=5692933_26 mode=fresh target=StratonovichHAMSecondMoment.ClockCopy start=2026-11-12T09:37:41-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=aff740933af2ffa57d33bb8294dd0b6fa5680105 TREE=488dea9b68d368b60b7c07c35a4208354e470e55 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1320 waited_s=0
+REPLAY_STARTED 2026-11-12T09:46:36-0600
+BEGIN fresh StratonovichHAMSecondMoment.ClockCopy 09:46:36
+END fresh StratonovichHAMSecondMoment.ClockCopy	0	0:42:28.44	7580360	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2549 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.ClockCopy
+PROCESS_EXIT=0 end=2026-11-12T10:29:05-0600

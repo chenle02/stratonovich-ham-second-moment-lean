@@ -1,0 +1,65 @@
+node=node856 job=5695592 cpus=4 start=2026-11-12T15:53:34-0600 commit=6eb79c7b2ec4ca52f02121224484aa4865e43ac8 mathlib=56a005855ea17e0b0958f73ec801ae140b0a1679
+tmp_avail_G=890
+/scratch/<user>/<runtime-dir>/lean-4.35.0-runtime.tar.gz: OK
+VERIFIED_COMMIT
+Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+/usr/bin/git
+/tmp/stratham-d8-5695592.BQeNrc/tc/leanprover--lean4---v4.35.0/bin/lake
+/tmp/stratham-d8-5695592.BQeNrc/tc/leanprover--lean4---v4.35.0/bin/lean
+/tmp/stratham-d8-5695592.BQeNrc/tc/leanprover--lean4---v4.35.0/bin/leanchecker
+/usr/bin/python3
+/usr/bin/timeout
+CACHE attempt=1 rc=0
+MATHLIB_PIN_OK
+PHASE cache_get_s=88
+MEASURE P00_import_full.cold rc=0 wall_s=6.81 maxrss_kb=3284424
+MEASURE P01_import_bessel.cold rc=0 wall_s=3.82 maxrss_kb=1776048
+MEASURE P02_import_operator.cold rc=0 wall_s=3.81 maxrss_kb=1775064
+MEASURE P10_bessel_api.cold rc=0 wall_s=6.47 maxrss_kb=3297984
+MEASURE P11_bessel_real_fails.cold rc=1 wall_s=6.29 maxrss_kb=3288616
+MEASURE P12_names_absent.cold rc=1 wall_s=6.29 maxrss_kb=3286352
+MEASURE P13_bridge_names.cold rc=0 wall_s=7.58 maxrss_kb=3307392
+MEASURE P20_laxmilgram.cold rc=0 wall_s=6.58 maxrss_kb=3299124
+MEASURE P30_cfc_bounded.cold rc=0 wall_s=9.55 maxrss_kb=3323256
+MEASURE P31_cfc_real_fails.cold rc=1 wall_s=7.18 maxrss_kb=3294356
+MEASURE P32_cfc_multiplication.cold rc=0 wall_s=9.25 maxrss_kb=3321384
+MEASURE P40_compact_spectral.cold rc=0 wall_s=7.04 maxrss_kb=3308672
+MEASURE P41_unbounded.cold rc=0 wall_s=6.34 maxrss_kb=3286572
+MEASURE P42_operator_monotone.cold rc=0 wall_s=9.33 maxrss_kb=3333328
+MEASURE P50_workload.cold rc=0 wall_s=11.26 maxrss_kb=3349184
+MEASURE P00_import_full.warm rc=0 wall_s=6.32 maxrss_kb=3284432
+MEASURE P01_import_bessel.warm rc=0 wall_s=3.79 maxrss_kb=1776080
+MEASURE P02_import_operator.warm rc=0 wall_s=3.84 maxrss_kb=1775104
+MEASURE P10_bessel_api.warm rc=0 wall_s=6.38 maxrss_kb=3296764
+MEASURE P11_bessel_real_fails.warm rc=1 wall_s=6.33 maxrss_kb=3288576
+MEASURE P12_names_absent.warm rc=1 wall_s=6.26 maxrss_kb=3285612
+MEASURE P13_bridge_names.warm rc=0 wall_s=7.56 maxrss_kb=3306500
+MEASURE P20_laxmilgram.warm rc=0 wall_s=6.55 maxrss_kb=3298872
+MEASURE P30_cfc_bounded.warm rc=0 wall_s=9.52 maxrss_kb=3322976
+MEASURE P31_cfc_real_fails.warm rc=1 wall_s=7.22 maxrss_kb=3294340
+MEASURE P32_cfc_multiplication.warm rc=0 wall_s=9.19 maxrss_kb=3324592
+MEASURE P40_compact_spectral.warm rc=0 wall_s=7.03 maxrss_kb=3308548
+MEASURE P41_unbounded.warm rc=0 wall_s=6.29 maxrss_kb=3286508
+MEASURE P42_operator_monotone.warm rc=0 wall_s=9.32 maxrss_kb=3332556
+MEASURE P50_workload.warm rc=0 wall_s=11.24 maxrss_kb=3349828
+/tmp/stratham-d8-5695592.BQeNrc/srcroot/D8Probe/P50_workload.lean:33:13: warning: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+
+Hint: Replace the deprecated name:
+  C̵o̵n̵t̵i̵n̵u̵o̵u̵s̵L̵i̵n̵e̵a̵r̵M̵a̵p̵.̵a̵d̵d̵_̵a̵p̵p̵l̵y̵a̲d̲d̲_̲a̲p̲p̲l̲y̲
+/tmp/stratham-d8-5695592.BQeNrc/srcroot/D8Probe/P50_workload.lean:33:65: warning: `ContinuousLinearMap.coe_comp'` has been deprecated: Use `ContinuousLinearMap.coe_comp` instead
+
+Hint: Replace the deprecated name:
+  ContinuousLinearMap.coe_comp'̵
+/tmp/stratham-d8-5695592.BQeNrc/srcroot/D8Probe/P50_workload.lean:27:0: warning: automatically included section variable(s) unused in theorem `coercive_shift`:
+  [CompleteSpace V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+MEASURE olean.P50_workload rc=0 wall_s=11.26 maxrss_kb=3354392
+MEASURE check.P50_workload rc=0 wall_s=9.24 maxrss_kb=2718940
+MEASURE fresh.P50_workload rc=0 wall_s=2504.85 maxrss_kb=7569564
+PILOT_PASS
+PROCESS_EXIT=0 end=2026-11-12T16:42:33-0600

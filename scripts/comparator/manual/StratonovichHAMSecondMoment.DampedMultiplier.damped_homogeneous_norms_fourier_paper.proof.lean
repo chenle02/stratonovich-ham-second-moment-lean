@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.DampedMultiplier.damped_homogeneous_norms_fourier_paper
