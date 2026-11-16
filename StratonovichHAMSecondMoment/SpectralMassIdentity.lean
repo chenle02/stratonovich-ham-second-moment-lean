@@ -4,8 +4,8 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The spectral-mass constant `R_α` of `E:intro-spectral-mass` (main TeX
-`notes/notes_stratonovich_ham_second_moment.tex`, revision a284420, lines
-526-532: `B_1` the unit ball of `ℝ^d` and
+`notes/notes_stratonovich_ham_second_moment.tex`, revision 39f2597a, lines
+691-697: `B_1` the unit ball of `ℝ^d` and
 `R_α = απ μ(B_1)/(2 sin(πα/2))`) is the resolvent at `1`:
 
   `R_Γ(1) = ∫ μ(dξ)/(1+|ξ|²) = R_α`,  and  `R_Γ(q) = q^{α-2} R_α`  for `q > 0`,
@@ -13,9 +13,9 @@ The spectral-mass constant `R_α` of `E:intro-spectral-mass` (main TeX
 for a locally finite spectral measure `μ` with `μ(cA) = c^α μ(A)` and
 `0 < α < 2` (`resolvent_one_eq_ralpha`, `resolvent_eq_ralpha`).  The second
 identity is the display of the proof of `L:spatial-fourier-bound`
-(`notes/integrated_spatial_occupation.tex`, lines 149-155 at a284420), which
+(`notes/integrated_spatial_occupation.tex`, lines 200-206 at 39f2597a), which
 cites "the deterministic resolvent calculation in the proof of
-`L:damped-homogeneous-norms`" (main TeX lines 850-860:
+`L:damped-homogeneous-norms`" (main TeX lines 1057-1076:
 `∫ μ(dξ)/(a²+|ξ|²) = αV a^{α-2} ∫_0^∞ u^{α-1}/(1+u²) du`, `V = μ(B_1)`)
 together with `E:intro-spectral-mass`.  The value
 `∫_0^∞ u^{α-1}/(1+u²) du = π/(2 sin(πα/2))` is not written in the TeX; it is
@@ -33,7 +33,7 @@ formula), at `a = α/2`.  The TeX uses polar coordinates instead.
 Consequences:
 * `spatial_fourier_bound_ralpha_paper`: `L:spatial-fourier-bound` with the
   manuscript's constant `R_α` (display `E:spatial-fourier-bound`,
-  `integrated_spatial_occupation.tex` lines 101-111), under the lemma's own
+  `integrated_spatial_occupation.tex` lines 121-131), under the lemma's own
   hypotheses (`H:homog`, allowing `Γ = 0`).  The general form with
   `R_Γ(1)` stays `SpatialFourierBound.spatial_fourier_bound(_paper)`.
 * `hRdef_iff_resolvent(_paper)`: the hypothesis
@@ -42,7 +42,7 @@ Consequences:
 
 Supplied inputs: none.  The general theorems take `SpectralHomogeneous μ α`
 (the supplied input of `SpectralHomog`, no stronger than the sentence of main
-TeX lines 851-852); the `_paper` wrappers take `H:homog`
+TeX lines 1067-1068); the `_paper` wrappers take `H:homog`
 (`HomogHypothesis.HomogCovariance`) and discharge it by
 `MaskedSpectralGrowth.spectralHomogeneous_of_homog`.  The integrability of
 `(1+|ξ|²)^{-1}` (and of `(q²+|ξ|²)^{-1}`) against `μ` is part of each
@@ -75,13 +75,13 @@ open SpectralHomog (SpectralHomogeneous resolvent)
 variable {d : ℕ}
 
 /-- `R_α = απ μ(B_1)/(2 sin(πα/2))` with `B_1` the open unit ball
-(`E:intro-spectral-mass`, main TeX lines 526-532; the same expression as the
+(`E:intro-spectral-mass`, main TeX lines 691-697; the same expression as the
 hypothesis `hRdef` in `IntervalScalar`). -/
 def ralpha (μ : Measure (Rd d)) (alpha : ℝ) : ℝ :=
   alpha * π * (μ (ball (0 : Rd d) 1)).toReal / (2 * Real.sin (π * alpha / 2))
 
 /-- Auxiliary to the Lean proof route (the value of the radial integral of main TeX
-lines 857-860, which the TeX does not compute): the real Beta integral
+lines 1073-1076, which the TeX does not compute): the real Beta integral
 `∫_0^1 t^{-a} (1-t)^a dt = aπ/sin(πa)` for `0 < a < 1`. -/
 theorem beta_real (a : ℝ) (ha0 : 0 < a) (ha1 : a < 1) :
     ∫ t in (0 : ℝ)..1, t ^ (-a) * (1 - t) ^ a = a * π / Real.sin (π * a) := by
@@ -122,8 +122,8 @@ theorem levelset_eq_ball (t : ℝ) (ht0 : 0 < t) :
 
 /-- `R_Γ(1) = ∫ μ(dξ)/(1+|ξ|²) = R_α` for a locally finite `α`-homogeneous `μ`
 with `0 < α < 2`, together with the integrability of `(1+|ξ|²)^{-1}`
-(the resolvent calculation of main TeX lines 850-860 at `a = 1`, with the
-radial integral evaluated, and `E:intro-spectral-mass`, lines 526-532).
+(the resolvent calculation of main TeX lines 1057-1076 at `a = 1`, with the
+radial integral evaluated, and `E:intro-spectral-mass`, lines 691-697).
 Proof route: layer cake and the real Beta integral (module doc). -/
 theorem resolvent_one_eq_ralpha {μ : Measure (Rd d)} {alpha : ℝ}
     (hI : SpectralHomogeneous μ alpha) [IsLocallyFiniteMeasure μ]
@@ -195,8 +195,8 @@ theorem resolvent_one_eq_ralpha {μ : Measure (Rd d)} {alpha : ℝ}
 
 /-- `R_Γ(q) = ∫ μ(dξ)/(q²+|ξ|²) = q^{α-2} R_α < ∞` for `q > 0`, a locally finite
 `α`-homogeneous `μ` and `0 < α < 2` (the display of the proof of
-`L:spatial-fourier-bound`, `integrated_spatial_occupation.tex` lines 149-155;
-main TeX lines 850-860 with `E:intro-spectral-mass`).  The finiteness is the
+`L:spatial-fourier-bound`, `integrated_spatial_occupation.tex` lines 200-206;
+main TeX lines 1057-1076 with `E:intro-spectral-mass`).  The finiteness is the
 integrability conjunct. -/
 theorem resolvent_eq_ralpha {μ : Measure (Rd d)} {alpha : ℝ}
     (hI : SpectralHomogeneous μ alpha) [IsLocallyFiniteMeasure μ]
@@ -217,8 +217,8 @@ theorem alpha_mem_Ioo_of_homog {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   · rw [h, hd]; norm_num
 
 /-- **`R_Γ(q) = q^{α-2} R_α` under `H:homog`** (the display of the proof of
-`L:spatial-fourier-bound`, `integrated_spatial_occupation.tex` lines 149-155,
-with `R_α` of `E:intro-spectral-mass`, main TeX lines 526-532), for the
+`L:spatial-fourier-bound`, `integrated_spatial_occupation.tex` lines 200-206,
+with `R_α` of `E:intro-spectral-mass`, main TeX lines 691-697), for the
 spectral measure `μ` of any covariance allowed by `H:homog`, including
 `Γ = 0` (then `μ = 0` and both sides vanish): for every `q > 0`,
 `(q²+|ξ|²)^{-1}` is `μ`-integrable and `R_Γ(q) = q^{α-2} R_α`; in particular
@@ -257,9 +257,9 @@ theorem hRdef_iff_resolvent_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   rw [(resolvent_eq_ralpha_paper hH).1, ralpha]
 
 /-- **`L:spatial-fourier-bound` with the manuscript's constant `R_α`**
-(`integrated_spatial_occupation.tex` lines 101-111 at a284420, display
-`E:spatial-fourier-bound` at lines 106-109; `R_α` of `E:intro-spectral-mass`,
-main TeX lines 526-532), under the lemma's hypothesis `H:homog`
+(`integrated_spatial_occupation.tex` lines 121-131 at 39f2597a, display
+`E:spatial-fourier-bound` at lines 126-129; `R_α` of `E:intro-spectral-mass`,
+main TeX lines 691-697), under the lemma's hypothesis `H:homog`
 (`HomogCovariance`, allowing `Γ = 0`; no `Γ ≠ 0` assumed), for every real unit
 `g ∈ C_c^∞(ℝ^d)` (`IsUnitTest`): `b(g) > 0`, the autocorrelation of `g²` is
 `Γ`-integrable, `|ĝ²|²` and `(1+|ξ|²)^{-1}` are `μ`-integrable,

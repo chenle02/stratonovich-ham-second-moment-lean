@@ -1,6 +1,6 @@
 /-
 Refutation for the endpoint of `E:variance-beta-range` in `C:frequency-time`
-(TeX lines 143-145 and 163: "No endpoint value of `β` is used"), package theorem
+(TeX lines 174-176 and 197: "No endpoint value of `β` is used"), package theorem
 `StratonovichHAMSecondMoment.FrequencyRow.scale_time_le` and package definition
 `StratonovichHAMSecondMoment.FrequencyRow.scaleProfile`.
 

@@ -1,6 +1,6 @@
 /-
 Refutation for `P:masked-quotient-obstruction`
-(`notes/integrated_covariance_foundation.tex` lines 266-267 at a284420:
+(`notes/integrated_covariance_foundation.tex` lines 353-354 at 39f2597a:
 `μ = (2π)^{-1} dξ₁ δ₀(dξ₂)`), package theorem
 `StratonovichHAMSecondMoment.QuotientObstruction.spectral_Gamma0`.
 

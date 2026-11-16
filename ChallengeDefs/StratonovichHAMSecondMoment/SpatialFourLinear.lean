@@ -37,6 +37,68 @@ open VariationalFloor (grad)
 
 variable {d : ℕ}
 
+/-! ### The real pairing on continuous compactly supported profiles -/
+
+/-- Auxiliary to the Lean proof route: the cross-correlation `y ↦ ∫ F(x) G(x-y) dx` (the inner
+integral of `B_Γ(F,G)`) is the convolution `F ⋆ G(-·)`. -/
+theorem cross_eq_convolution (F G : Rd d → ℝ) :
+    (fun y => ∫ x, F x * G (x - y)) =
+      convolution F (fun x => G (-x)) (ContinuousLinearMap.lsmul ℝ ℝ) volume := by
+  funext y
+  simp only [convolution, ContinuousLinearMap.lsmul_apply, smul_eq_mul, neg_sub]
+
+/-- Auxiliary to the Lean proof route: for continuous compactly supported `F, G` and locally finite
+`Γ`, the cross-correlation is `Γ`-integrable (it is continuous with compact support). -/
+theorem cross_integrable (Γ : Measure (Rd d)) [IsLocallyFiniteMeasure Γ] {F G : Rd d → ℝ}
+    (hF : Continuous F) (hFs : HasCompactSupport F) (hG : Continuous G)
+    (hGs : HasCompactSupport G) : Integrable (fun y => ∫ x, F x * G (x - y)) Γ := by
+  rw [cross_eq_convolution]
+  refine Continuous.integrable_of_hasCompactSupport ?_ ?_
+  · exact (hGs.comp_homeomorph (Homeomorph.neg _)).continuous_convolution_right
+      (ContinuousLinearMap.lsmul ℝ ℝ) hF.locallyIntegrable (hG.comp continuous_neg)
+  · exact hFs.convolution (ContinuousLinearMap.lsmul ℝ ℝ) (hGs.comp_homeomorph (Homeomorph.neg _))
+
+/-- Auxiliary to the Lean proof route: for continuous `F` with compact support and continuous `G`,
+`x ↦ F(x) G(x-y)` is integrable for every `y`. -/
+theorem inner_integrable {F G : Rd d → ℝ} (hF : Continuous F) (hFs : HasCompactSupport F)
+    (hG : Continuous G) (y : Rd d) : Integrable (fun x => F x * G (x - y)) volume :=
+  (hF.mul (hG.comp (continuous_id.sub continuous_const))).integrable_of_hasCompactSupport
+    hFs.mul_right
+
+/-- Auxiliary to the Lean proof route: symmetry `B_Γ(Q,P) = B_Γ(P,Q)` for an even `Γ`
+(`HomogHypothesis.IsEven`), continuous `P, Q` and compactly supported `Q` (TeX lines 339-340:
+evenness of `Γ` and `(x,y) ↦ (x-y,-y)`; Lean route: translation `x ↦ x + y` and the pushforward
+under `y ↦ -y`). -/
+theorem spatialPair_comm {Γ : Measure (Rd d)} (hE : IsEven Γ) {Q P : Rd d → ℝ}
+    (hP : Continuous P) (hQ : Continuous Q) (hQs : HasCompactSupport Q) :
+    spatialPair Γ Q P = spatialPair Γ P Q := by
+  have hin : ∀ y, ∫ x, Q x * P (x - y) = (fun z => ∫ x, P x * Q (x - z)) (-y) := by
+    intro y
+    rw [← integral_add_right_eq_self (fun x => Q x * P (x - y)) y]
+    simp only [add_sub_cancel_right, sub_neg_eq_add]
+    congr 1; funext x; ring
+  have hc : Continuous fun z => ∫ x, P x * Q (x - z) := by
+    rw [cross_eq_convolution]
+    exact (hQs.comp_homeomorph (Homeomorph.neg _)).continuous_convolution_right
+      (ContinuousLinearMap.lsmul ℝ ℝ) hP.locallyIntegrable (hQ.comp continuous_neg)
+  unfold spatialPair
+  simp_rw [hin]
+  have hm := integral_map (μ := Γ) (φ := fun x : Rd d => -x) measurable_neg.aemeasurable
+    (f := fun z => ∫ x, P x * Q (x - z)) hc.aestronglyMeasurable
+  have hE' : Γ.map (fun x : Rd d => -x) = Γ := hE
+  rw [hE'] at hm
+  exact hm.symm
+
+/-- Smooth signed covariance is positive (TeX lines 331-337): for real `Q ∈ C_c^∞` and a spectral
+measure `μ` of `Γ` in the manuscript's convention, `B_Γ(Q,Q) = ∫ |Q̂|² dμ ≥ 0`
+(`SpatialFourierBound.integral_autocorr_eq_spectral`).  As a Bochner-integral statement; for
+locally finite `Γ` the integrand is integrable (`SpatialFourierBound.integrable_autocorr`). -/
+theorem spatialPair_self_nonneg {Γ μ : Measure (Rd d)} (hsp : IsSpectralMeasure Γ μ)
+    {Q : Rd d → ℝ} (hQ : IsTestFunction Q) : 0 ≤ spatialPair Γ Q Q := by
+  show 0 ≤ ∫ y, autocorr Q y ∂Γ
+  rw [SpatialFourierBound.integral_autocorr_eq_spectral hsp hQ.1 hQ.2]
+  exact integral_nonneg fun _ => by positivity
+
 /-! ### `L²` norms and the scale `N(f)` -/
 
 /-- `‖f‖₂ = (eLpNorm f 2).toReal`, the `L²` norm as a real number (`0` if `f ∉ L²`; it is used only
@@ -44,10 +106,27 @@ on `L²` functions). -/
 def l2 {E : Type*} [NormedAddCommGroup E] (f : Rd d → E) : ℝ :=
   (eLpNorm f 2 volume).toReal
 
-/-- `N(f) = ‖f‖₂^{1-α/4} ‖∇f‖₂^{α/4}` (TeX line 221), with `∇f` given as an `L²` weak gradient `g`
+/-- `N(f) = ‖f‖₂^{1-α/4} ‖∇f‖₂^{α/4}` (TeX line 299), with `∇f` given as an `L²` weak gradient `g`
 of `f` (a.e. unique, `WeakSobolev.weakGradient_ae_unique`). -/
 def Nnorm (alpha : ℝ) (f : Rd d → ℝ) (g : Rd d → Rd d) : ℝ :=
   l2 f ^ (1 - alpha / 4) * l2 g ^ (alpha / 4)
+
+/-- Auxiliary to the Lean proof route: for `f ∈ L²`, `‖f‖₂² = ∫ ‖f‖²`. -/
+theorem l2_sq {E : Type*} [NormedAddCommGroup E] {f : Rd d → E} (hf : MemLp f 2 volume) :
+    l2 f ^ 2 = ∫ x, ‖f x‖ ^ 2 := by
+  unfold l2
+  rw [hf.eLpNorm_eq_integral_rpow_norm (by norm_num) (by norm_num)]
+  simp only [ENNReal.toReal_ofNat, rpow_two]
+  have h0 : 0 ≤ ∫ x, ‖f x‖ ^ 2 := integral_nonneg fun _ => by positivity
+  rw [ENNReal.toReal_ofReal (rpow_nonneg h0 _), ← rpow_natCast, ← rpow_mul h0]
+  norm_num
+
+/-! ### The smooth homogeneous and square bounds -/
+
+/-- Auxiliary to the Lean proof route: for real `f ∈ L²`, `∫ f² = ‖f‖₂²`. -/
+theorem integral_sq_eq_l2_sq {f : Rd d → ℝ} (hf : MemLp f 2 volume) :
+    ∫ x, f x ^ 2 = l2 f ^ 2 := by
+  rw [l2_sq hf]; congr 1; funext x; rw [Real.norm_eq_abs, sq_abs]
 
 /-! ### The Fatou step -/
 
@@ -56,7 +135,7 @@ def Nnorm (alpha : ℝ) (f : Rd d → ℝ) (g : Rd d → Rd d) : ℝ :=
 def IsH1Pair (f : Rd d → ℝ) (g : Rd d → Rd d) : Prop :=
   MemLp f 2 volume ∧ MemLp g 2 volume ∧ HasWeakGradient f g
 
-/-- Auxiliary to the Lean proof route (the conclusion of the Fatou step, TeX lines 270-275):
+/-- Auxiliary to the Lean proof route (the conclusion of the Fatou step, TeX lines 360-365):
 `B_Γ(f², h²) ≤ R N(f)² N(h)²` in `[0,∞]` for all `H¹` pairs, with `B_Γ` the extended pairing
 `OccupationKernelRow.pairing` of `L:spatial-physical-pair`. -/
 def SquareBound (Γ : Measure (Rd d)) (alpha R : ℝ) : Prop :=
@@ -67,7 +146,7 @@ def SquareBound (Γ : Measure (Rd d)) (alpha R : ℝ) : Prop :=
 /-! ### The four-linear bound -/
 
 /-- The signed four-linear pairing `C₄(f₁,f₂,f₃,f₄) = B_Γ(f₁f₂, f₃f₄) = ∫ f₁(x) f₂(x) f₃(x-y)
-f₄(x-y) ν(dx,dy)` (TeX line 229), `ν = dx Γ(dy)`, as a Bochner integral; it is a genuine
+f₄(x-y) ν(dx,dy)` (TeX line 307), `ν = dx Γ(dy)`, as a Bochner integral; it is a genuine
 integral where `four_integrable` applies. -/
 def C4 (Γ : Measure (Rd d)) (f₁ f₂ f₃ f₄ : Rd d → ℝ) : ℝ :=
   ∫ p, f₁ p.1 * f₂ p.1 * f₃ (p.1 - p.2) * f₄ (p.1 - p.2) ∂(pairMeasure Γ)
@@ -82,7 +161,7 @@ def H1Tendsto (u : ℕ → Rd d → ℝ) (v : ℕ → Rd d → Rd d) (f : Rd d �
 
 /-! ### The `H¹` ratio supremum -/
 
-/-- The `H¹` ratio set `{A_sp(g)/b(g)^{α/2}}` over real unit `H¹` pairs (TeX line 235), with `A_sp`
+/-- The `H¹` ratio set `{A_sp(g)/b(g)^{α/2}}` over real unit `H¹` pairs (TeX line 313), with `A_sp`
 the real value of the extended pairing (finite by `E:spatial-homogeneous-bound`) and `b(g) = ∫
 ‖∇g‖²`. -/
 def ratioSetH1 (Γ : Measure (Rd d)) (alpha : ℝ) : Set ℝ :=
@@ -90,17 +169,17 @@ def ratioSetH1 (Γ : Measure (Rd d)) (alpha : ℝ) : Set ℝ :=
     (pairing Γ (zE fun x => f x ^ 2) (zE fun x => f x ^ 2)).toReal /
       (∫ x, ‖g x‖ ^ 2) ^ (alpha / 2) = r}
 
-/-- `R_sp = sup ratioSetH1` (TeX line 235); a genuine supremum where `Rsp_eq_R0` applies. -/
+/-- `R_sp = sup ratioSetH1` (TeX line 313); a genuine supremum where `Rsp_eq_R0` applies. -/
 def Rsp (Γ : Measure (Rd d)) (alpha : ℝ) : ℝ := sSup (ratioSetH1 Γ alpha)
 
 /-! ### The spatial energy -/
 
-/-- The value set `{A_sp(g) - b(g)/2}` over real unit `H¹` profiles (TeX lines 302-306). -/
+/-- The value set `{A_sp(g) - b(g)/2}` over real unit `H¹` profiles (TeX lines 407-411). -/
 def energySet (Γ : Measure (Rd d)) : Set ℝ :=
   {e | ∃ (f : Rd d → ℝ) (g : Rd d → Rd d), IsUnitH1 f g ∧
     (pairing Γ (zE fun x => f x ^ 2) (zE fun x => f x ^ 2)).toReal - (∫ x, ‖g x‖ ^ 2) / 2 = e}
 
-/-- `𝓔_sp = sup energySet` (TeX lines 304-306); a genuine supremum where `energy_map` applies. -/
+/-- `𝓔_sp = sup energySet` (TeX lines 409-411); a genuine supremum where `energy_map` applies. -/
 def Esp (Γ : Measure (Rd d)) : ℝ := sSup (energySet Γ)
 
 /-- `(2-α)/2 · α^{α/(2-α)} · R^{2/(2-α)}`, the right side of `E:spatial-energy-map` at `R_sp = R`
@@ -111,7 +190,7 @@ def energyValue (alpha R : ℝ) : ℝ :=
 /-! ### The static energy score -/
 
 /-- `F₀(z) = k [(2z/(2-α))^{(2-α)/2}/(8 q^{q/2})]^{1/k}`, `k = 3-α`, `q = 4-α` (TeX lines
-319-321). -/
+424-426). -/
 def F0 (alpha z : ℝ) : ℝ :=
   (3 - alpha) * ((2 * z / (2 - alpha)) ^ ((2 - alpha) / 2) /
     (8 * (4 - alpha) ^ ((4 - alpha) / 2))) ^ (1 / (3 - alpha))

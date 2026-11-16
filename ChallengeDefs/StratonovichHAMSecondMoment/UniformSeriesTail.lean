@@ -34,13 +34,13 @@ section L2
 
 variable {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω}
 
-/-- Supplied input from `L:terminal-wick` (TeX lines 3600-3645 at a284420; the two facts at 3638-3644), for
+/-- Supplied input from `L:terminal-wick` (TeX lines 4291-4336 at 39f2597a; the two facts at 4329-4335), for
 one regularized family of terms `Y_n ∈ L²(Ω)` and the given real `r`: absolute
 `L²` convergence of `Σ r^n Y_n` (the lemma's last sentence, which gives it for
 every real or complex `r`) and nonnegativity of every mixed moment
 `E[Y_m Y_n]` (the lemma's Wick formula with nonnegative pairing integrals when
 the covariance is nonnegative; zero when `m + n` is odd).  These are exactly the
-two facts the proof of `L:uniform-series-tail` cites (TeX lines 3730-3731). -/
+two facts the proof of `L:uniform-series-tail` cites (TeX lines 4446-4447). -/
 structure TerminalWickInput (μ : Measure Ω) (Y : ℕ → Lp ℝ 2 μ) (r : ℝ) : Prop where
   abs_summable : Summable fun n => ‖r ^ n • Y n‖
   mixed_moment_nonneg : ∀ m n, 0 ≤ ∫ ω, Y m ω * Y n ω ∂μ

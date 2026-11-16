@@ -1,7 +1,7 @@
 /-
 Refutation for the limit statement of `L:uniform-series-tail`
-(`notes/notes_stratonovich_ham_second_moment.tex` lines 3707-3717 and 3738-3745
-at a284420), package theorem
+(`notes/notes_stratonovich_ham_second_moment.tex` lines 4423-4433 and 4454-4461
+at 39f2597a), package theorem
 `StratonovichHAMSecondMoment.UniformSeriesTail.uniform_series_tail`.
 
 Wrong variant: `u^i(1) → Σ X_n` from termwise convergence `Y^i_n → X_n`,

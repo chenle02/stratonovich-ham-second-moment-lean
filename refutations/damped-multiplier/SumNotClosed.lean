@@ -1,7 +1,7 @@
 /-
 Refutation for `L:damped-homogeneous-norms` (main TeX
-`notes/notes_stratonovich_ham_second_moment.tex`, revision a284420, lines
-826 and 915-916: multipliers with values in `[0,1]`, closed under PRODUCTS),
+`notes/notes_stratonovich_ham_second_moment.tex`, revision 39f2597a, lines
+1033 and 1150-1151: multipliers with values in `[0,1]`, closed under PRODUCTS),
 package theorem `StratonovichHAMSecondMoment.DampedMultiplier.IsMultiplier.mul`.
 
 Wrong variant: the class is closed under sums.  Counterexample: `d = 1`,

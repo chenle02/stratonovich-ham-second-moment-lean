@@ -45,7 +45,7 @@ theorem continuous_bracket : Continuous bracket := by
 def scaleProfile (α h : ℝ) : ℝ :=
   if α < 1 then 1 else if α = 1 then 1 + Real.log (1 / h) else h ^ (1 - α)
 
-/-- The dyadic series `S(h) = ∑_j 2^{j(α-1)} ⟨h 2^j⟩^{a-1}` of TeX l. 117-120, term `j`. -/
+/-- The dyadic series `S(h) = ∑_j 2^{j(α-1)} ⟨h 2^j⟩^{a-1}` of TeX l. 136-139, term `j`. -/
 def rowSeries (α a h : ℝ) (n : ℕ) : ℝ :=
   ((2 : ℝ) ^ (α - 1)) ^ n * bracket (h * 2 ^ n) ^ (a - 1)
 

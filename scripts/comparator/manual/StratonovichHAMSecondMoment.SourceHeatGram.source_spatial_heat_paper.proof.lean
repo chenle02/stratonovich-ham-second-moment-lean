@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.SourceHeatGram.source_spatial_heat_paper

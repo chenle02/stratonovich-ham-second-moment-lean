@@ -38,14 +38,14 @@ variable {d : ℕ}
 /-! ### Definitions -/
 
 /-- The supplied input for `N₀`: the mass identity `G_s(ℝ^d) = s` for `s > 0`
-(proof of `L:damped-homogeneous-norms`, line 881), stated for a family `G` of
+(proof of `L:damped-homogeneous-norms`, line 1104), stated for a family `G` of
 measures on `ℝ^d` standing for the wave Green measures, which are not defined
 in this module; `WaveGreen` defines them and `WaveGreen.waveGreen_greenMass`
 discharges this input for `d ∈ {1,2,3}`. -/
 structure GreenMass (G : ℝ → Measure (Rd d)) : Prop where
   mass : ∀ s : ℝ, 0 < s → G s univ = ENNReal.ofReal s
 
-/-- `N₀(θ) = ∫_0^∞ e^{-θs} G_s(ℝ^d) ds` (`E:damped-norm-definitions`, line 784),
+/-- `N₀(θ) = ∫_0^∞ e^{-θs} G_s(ℝ^d) ds` (`E:damped-norm-definitions`, line 990),
 for a family `G` of measures on `ℝ^d`. -/
 def N0 (G : ℝ → Measure (Rd d)) (θ : ℝ) : ℝ :=
   ∫ s in Ioi (0 : ℝ), Real.exp (-(θ * s)) * (G s univ).toReal
@@ -55,7 +55,7 @@ def N0 (G : ℝ → Measure (Rd d)) (θ : ℝ) : ℝ :=
 def N1on (a θ : ℝ) (S : Set ℝ) (μ : Measure (Rd d)) : ℝ :=
   (Real.Gamma a)⁻¹ * ∫ l in S, l ^ (a - 1) * resolvent μ (θ + l) ∂L0
 
-/-- `N₁^{(M)}(1)`, the first norm at `θ = 1` with `λ > M` (lines 819-821). -/
+/-- `N₁^{(M)}(1)`, the first norm at `θ = 1` with `λ > M` (lines 1026-1028). -/
 def N1tail (a M : ℝ) (μ : Measure (Rd d)) : ℝ := N1on a 1 (Ioi M) μ
 
 /-- The temporal kernel with the Laplace variable restricted to `S`:
@@ -66,7 +66,7 @@ value is the junk value `0`; this happens only on the diagonal `s = t`, a
 def KS (a : ℝ) (S : Set ℝ) (r : ℝ) : ℝ :=
   (Real.Gamma a)⁻¹ * ∫ l in S, subKernel a |r| l ∂L0
 
-/-- `K_M(r) = Γ(a)⁻¹ ∫_M^∞ e^{-λ|r|} λ^{a-1} dλ` (lines 815-818), the
+/-- `K_M(r) = Γ(a)⁻¹ ∫_M^∞ e^{-λ|r|} λ^{a-1} dλ` (lines 1022-1025), the
 `λ`-integral taken over `(M,∞) ∩ (0,∞)`. -/
 def KM (a M r : ℝ) : ℝ := KS a (Ioi M) r
 
@@ -85,14 +85,14 @@ def N2onSq (a θ : ℝ) (S : Set ℝ) (μ : Measure (Rd d)) : ℝ :=
   ∫ p, N2onOuter a θ S μ p ∂P2
 
 /-- `N₂^{(M)}(1)²`: the squared second norm at `θ = 1` with `K_M(s-t)` in place
-of `|s-t|^{-a}` (lines 820-821). -/
+of `|s-t|^{-a}` (lines 1027-1028). -/
 def N2tailSq (a M : ℝ) (μ : Measure (Rd d)) : ℝ := N2onSq a 1 (Ioi M) μ
 
 /-- `N₂^{(M)}(1) = (N₂^{(M)}(1)²)^{1/2}` (the printed form of `E:damped-tail-norms`). -/
 def N2tail (a M : ℝ) (μ : Measure (Rd d)) : ℝ := Real.sqrt (N2tailSq a M μ)
 
 /-- The spectral measure multiplied by `g`, `g(ξ) μ(dξ)`: the measure `mμ` of
-`E:damped-multiplier-comparison` (TeX lines 826-829; that `g` is measurable
+`E:damped-multiplier-comparison` (TeX lines 1033-1036; that `g` is measurable
 with values in `[0,1]` is imposed separately). -/
 def smoothed (μ : Measure (Rd d)) (g : Rd d → ℝ≥0) : Measure (Rd d) :=
   μ.withDensity fun ξ => (g ξ : ℝ≥0∞)

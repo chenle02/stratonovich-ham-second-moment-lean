@@ -1,7 +1,7 @@
 /-
 Refutation for the integer check of `C:intrinsic-spatial-bracket`, package theorem
 `StratonovichHAMSecondMoment.SpatialBracket.counterexample_integers`
-(`integrated_occupation_ceiling.tex` lines 294-298 at a284420:
+(`integrated_occupation_ceiling.tex` lines 365-369 at 39f2597a:
 `11^11 7^7 = 234966429149994773 < 4803028329503971872 = 2^5 9^18`).
 
 Wrong variant: the factor `2^5` (from `-(α/2) log 2` with `α = 5/4`, times 8) is dropped, i.e.

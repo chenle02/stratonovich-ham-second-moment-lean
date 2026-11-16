@@ -24,47 +24,47 @@ open scoped Nat
 
 namespace StratonovichHAMSecondMoment.IntervalScalar
 
-/-! ## `C:static-interaction` (main TeX lines 2685-2796) -/
+/-! ## `C:static-interaction` (main TeX lines 3216-3341) -/
 
 /-- `L_α(h, λ) = 4e R_α h² λ^{α-2} + 4√e D_Γ/((2-α)(3-α)) · h^{3-α}/λ`
-(`C:static-interaction`, main TeX lines 2696-2699). -/
+(`C:static-interaction`, main TeX lines 3227-3230). -/
 def staticL (alpha R D h lam : ℝ) : ℝ :=
   4 * Real.exp 1 * R * h ^ 2 * lam ^ (alpha - 2) +
     4 * √(Real.exp 1) * D / ((2 - alpha) * (3 - alpha)) * (h ^ (3 - alpha) / lam)
 
-/-- `B_α = 3e A_α²` (`C:static-interaction`, main TeX line 2693). -/
+/-- `B_α = 3e A_α²` (`C:static-interaction`, main TeX line 3224). -/
 def staticB (A : ℝ) : ℝ := 3 * Real.exp 1 * A ^ 2
 
-/-- `x = B_α σ² R_α h^{4-α}` (`C:static-interaction`, main TeX line 2700). -/
+/-- `x = B_α σ² R_α h^{4-α}` (`C:static-interaction`, main TeX line 3231). -/
 def staticX (alpha A R h σ : ℝ) : ℝ := staticB A * σ ^ 2 * R * h ^ (4 - alpha)
 
 /-- `𝓔(h, σ, λ) = σ² L_α(h, λ) + (λh)^{-2} x² e^{γ x^{1/γ}}` with
-`γ = 3 - α` (`C:static-interaction`, main TeX lines 2693, 2701-2703). -/
+`γ = 3 - α` (`C:static-interaction`, main TeX lines 3224, 3232-3234). -/
 def staticE (alpha A R D h σ lam : ℝ) : ℝ :=
   σ ^ 2 * staticL alpha R D h lam +
     (lam * h)⁻¹ ^ 2 * (staticX alpha A R h σ ^ 2 *
       Real.exp ((3 - alpha) * staticX alpha A R h σ ^ (1 / (3 - alpha))))
 
-/-! ## `P:interval-coefficients` (main TeX lines 3402-3581) -/
+/-! ## `P:interval-coefficients` (main TeX lines 4054-4271) -/
 
 /-- `v_i = i^{-β} + k^{-1} i^{-(β-1)} + k^{α-2} i^{-p}` with `β = 4-α-α₀`,
-`p = 2-α₀` (`L:inventory-product`, main TeX lines 2989-2990). -/
+`p = 2-α₀` (`L:inventory-product`, main TeX lines 3584-3585). -/
 def invV (alpha alpha0 : ℝ) (k i : ℕ) : ℝ :=
   (i : ℝ) ^ (-(4 - alpha - alpha0)) + (k : ℝ)⁻¹ * (i : ℝ) ^ (-(4 - alpha - alpha0 - 1)) +
     (k : ℝ) ^ (alpha - 2) * (i : ℝ) ^ (-(2 - alpha0))
 
 /-- `b_{i,l} = i^{-βl}(1 + l i/k)²/(l!)^ν`, `ν = 3-α` (`L:inventory-product`,
-main TeX line 2991). -/
+main TeX line 3586). -/
 def invB (alpha alpha0 : ℝ) (k i l : ℕ) : ℝ :=
   (i : ℝ) ^ (-((4 - alpha - alpha0) * l)) * (1 + l * i / k) ^ 2 / (l ! : ℝ) ^ (3 - alpha)
 
 /-- The coefficients of `1 + v_i z + ∑_{l ≥ 2} b_{i,l} z^l`
-(`E:inventory-product`, main TeX lines 2994-2997). -/
+(`E:inventory-product`, main TeX lines 3589-3592). -/
 def invCoeff (alpha alpha0 : ℝ) (k i l : ℕ) : ℝ :=
   if l = 0 then 1 else if l = 1 then invV alpha alpha0 k i else invB alpha alpha0 k i l
 
 /-- The statement `E:inventory-product` of `L:inventory-product` (main TeX
-lines 2986-2997) with constant `C`: for every `M` and `k ≥ 1`,
+lines 3581-3592) with constant `C`: for every `M` and `k ≥ 1`,
 `[z^k] ∏_{i=1}^M (1 + v_i z + ∑_{l≥2} b_{i,l} z^l) ≤ C^k/(k!)^ν`, the product
 written over `j : Fin M` with `i = j + 1`.  Formalized by wave item L7-a; used
 here only as a hypothesis. -/
@@ -73,11 +73,11 @@ def InventoryProduct (alpha alpha0 C : ℝ) : Prop :=
     PowerSeries.coeff k (∏ j : Fin M, PowerSeries.mk (invCoeff alpha alpha0 k ((j : ℕ) + 1))) ≤
       C ^ k / (k ! : ℝ) ^ (3 - alpha)
 
-/-- `ℓ_i = 1_{r_i > 0} + 1_{q_i > 0}` (`L:fixed-split`, main TeX line 3075)
+/-- `ℓ_i = 1_{r_i > 0} + 1_{q_i > 0}` (`L:fixed-split`, main TeX line 3697)
 for a split `p = (r_i, q_i)`. -/
 def splitEll (p : ℕ × ℕ) : ℕ := (if 0 < p.1 then 1 else 0) + (if 0 < p.2 then 1 else 0)
 
-/-- The per-color factor of `E:fixed-split-bound` (main TeX lines 3080-3091)
+/-- The per-color factor of `E:fixed-split-bound` (main TeX lines 3702-3713)
 at `λ`: `1` if `k_i = 0` (inactive color); `σ_i² h_i² λ^{α-2}` for a cross
 singleton `k_i = 1`, `(r_i, q_i) = (1,1)` (the set `𝒞`); otherwise
 `(σ_i² h_i^{4-α})^{k_i}/(k_i!)^ν (1 + k_i/(λh_i))^{ℓ_i}` (the set `ℬ`).  The

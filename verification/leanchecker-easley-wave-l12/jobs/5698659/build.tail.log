@@ -1,0 +1,60 @@
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3358:0: 'StratonovichHAMSecondMoment.FockSandwichModel.measurable_symI' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3359:0: 'StratonovichHAMSecondMoment.FockSandwichModel.measurable_symR' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3360:0: 'StratonovichHAMSecondMoment.FockSandwichModel.measurable_symS' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3361:0: 'StratonovichHAMSecondMoment.FockSandwichModel.mulI.congr_simp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3362:0: 'StratonovichHAMSecondMoment.FockSandwichModel.mulI_comp_band' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3363:0: 'StratonovichHAMSecondMoment.FockSandwichModel.mulOp_add_smul_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3364:0: 'StratonovichHAMSecondMoment.FockSandwichModel.mulOp_comp_comm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3365:0: 'StratonovichHAMSecondMoment.FockSandwichModel.mulOp_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3366:0: 'StratonovichHAMSecondMoment.FockSandwichModel.mulOp_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3367:0: 'StratonovichHAMSecondMoment.FockSandwichModel.mulR_mulI' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3368:0: 'StratonovichHAMSecondMoment.FockSandwichModel.norm_sq_fock' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3369:0: 'StratonovichHAMSecondMoment.FockSandwichModel.norm_sq_fockOp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3370:0: 'StratonovichHAMSecondMoment.FockSandwichModel.norm_toH' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3371:0: 'StratonovichHAMSecondMoment.FockSandwichModel.opA0_isPositive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3372:0: 'StratonovichHAMSecondMoment.FockSandwichModel.opA0_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3373:0: 'StratonovichHAMSecondMoment.FockSandwichModel.piL_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3374:0: 'StratonovichHAMSecondMoment.FockSandwichModel.sandwich_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3375:0: 'StratonovichHAMSecondMoment.FockSandwichModel.shiftOp_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3376:0: 'StratonovichHAMSecondMoment.FockSandwichModel.sq_le_symS' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3377:0: 'StratonovichHAMSecondMoment.FockSandwichModel.sqrt_shiftOp_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3378:0: 'StratonovichHAMSecondMoment.FockSandwichModel.static_interaction_model_paper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3379:0: 'StratonovichHAMSecondMoment.FockSandwichModel.static_phase_all_orders_model' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3380:0: 'StratonovichHAMSecondMoment.FockSandwichModel.sub_mem_degLE' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3381:0: 'StratonovichHAMSecondMoment.FockSandwichModel.symA_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3382:0: 'StratonovichHAMSecondMoment.FockSandwichModel.symI_mul_band' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3383:0: 'StratonovichHAMSecondMoment.FockSandwichModel.toH_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3384:0: 'StratonovichHAMSecondMoment.FockSandwichModel.toH_isSelfAdjoint' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3385:0: 'StratonovichHAMSecondMoment.FockSandwichModel.toH_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3386:0: 'StratonovichHAMSecondMoment.FockSandwichModel.toH_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3387:0: 'StratonovichHAMSecondMoment.FockSandwichModel.toH_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3388:0: 'StratonovichHAMSecondMoment.FockSandwichModel.toH_smul' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (9167 jobs).

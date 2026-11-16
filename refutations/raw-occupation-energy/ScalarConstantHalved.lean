@@ -1,6 +1,6 @@
 /-
 Refutation for the scalar maximum of `P:raw-occupation-energy`
-(`notes/integrated_occupation_ceiling.tex` lines 137-141 at a284420), package theorem
+(`notes/integrated_occupation_ceiling.tex` lines 167-171 at 39f2597a), package theorem
 `StratonovichHAMSecondMoment.RawOccupationEnergy.scalar_max_zeta`
 (`C X^{α/2} - ζ X ≤ D_ζ C^{2/(2-α)}`).
 

@@ -6,8 +6,8 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 Scalar steps of `L:complex-phase` (A complex phase bound) and of
 `L:interval-complex` (Complex sums and changing phase weights) of
 `notes/notes_stratonovich_ham_second_moment.tex` (main TeX file; line numbers
-at revision a284420).  `L:complex-phase`: statement lines 2288-2310, proof
-2312-2465.  `L:interval-complex`: statement lines 2899-2917, proof 2919-2982.
+at revision 39f2597a).  `L:complex-phase`: statement lines 2751-2773, proof
+2775-2952.  `L:interval-complex`: statement lines 3473-3491, proof 3493-3572.
 
 Class: inputs supplied, conclusion weaker than the labelled statements.  Both
 lemmas are statements about the phase propagator `M_z(h)` of `u'' + L u = 0` on
@@ -19,39 +19,39 @@ functional calculus are not formalized.
 Formalized (nothing supplied):
 * the constants: `1 - δ_a ≥ 3/4`, `δ_a I_a ≤ π/8`, `4δ²/(1-δ) ≤ 1/3`,
   `1 + (1-δ)⁻¹ ≤ 7/3`, and the prefactor bound
-  `c λ^{a-2} I_a/(π(1-δ_a)) ≤ 1/6` (lines 2355-2359, 2389-2393, 2424-2426);
+  `c λ^{a-2} I_a/(π(1-δ_a)) ≤ 1/6` (lines 2827-2831, 2865-2869, 2907-2909);
 * the scalar resolvent integral
   `∫_0^∞ t^{-1/2}(λ²+t)^{(a-3)/2} dt = λ^{a-2} I_a`, with integrability, and the
   resulting operator-norm bound for any integrand dominated as at lines
-  2349-2354 (`kappa_integral`, `resolvent_integral_le`, `q_sub_one_le`);
+  2821-2826 (`kappa_integral`, `resolvent_integral_le`, `q_sub_one_le`);
 * the Neumann bounds: `‖K‖ ≤ δ < 1` gives `‖(1-K)⁻¹‖ ≤ (1-δ)⁻¹`, and
   `‖Q - 1‖ ≤ 1/6` gives `‖Q‖ ≤ 7/6`, `Q` invertible, `‖Q⁻¹‖ ≤ 6/5`
-  (lines 2320-2325, 2361, 2939-2940), in any complete normed ring with
-  `‖1‖ ≤ 1`; the resolvent-difference identity of lines 2341-2348 and
-  2930-2934 in any ring (`resolvent_difference`), and the four-factor norm
-  product of lines 2349-2354 (`integrand_factor_le`);
+  (lines 2792-2797, 2833, 3521-3522), in any complete normed ring with
+  `‖1‖ ≤ 1`; the resolvent-difference identity of lines 2813-2820 and
+  3512-3516 in any ring (`resolvent_difference`), and the four-factor norm
+  product of lines 2821-2826 (`integrand_factor_le`);
 * the form consequence of `E:abstract-sandwich`,
   `|⟨Bu,u⟩| ≤ c(ρ²‖u‖² + ⟨A_0u,u⟩)` when
-  `‖A_ρ^{-1/2} B A_ρ^{-1/2}‖ ≤ c` (used without comment at lines 2374-2381 and
-  2948-2954), for bounded operators on a complex Hilbert space, with
+  `‖A_ρ^{-1/2} B A_ρ^{-1/2}‖ ≤ c` (used without comment at lines 2850-2857 and
+  3534-3540), for bounded operators on a complex Hilbert space, with
   `A_ρ^{-1/2}` the inverse of the continuous-functional-calculus square root
   `CFC.sqrt (A_0 + ρ²)` (`form_of_sandwich`); the adjoint sandwich identity of
-  lines 2920-2924 (`sandwich_adjoint_norm`);
-* the numerical-range parabola (lines 2373-2396 and 2948-2958): the
+  lines 3502-3506 (`sandwich_adjoint_norm`);
+* the numerical-range parabola (lines 2849-2875 and 3534-3544): the
   optimization at `ρ = s` including `s = 0` by `ρ ↓ 0` (`form_opt_le`), the two
   inequalities `x + λ² ≥ (1-δ)(s²+λ²)`, `|y| ≤ 2δλ^{2-a}s^a`, the parabola
   `y² ≤ (4δ²/(1-δ)) λ²(x+λ²) ≤ λ²(x+λ²)/3`, `x ≥ -λ²/4`, `|w| ≤ x + 2λ²`, and
   `|Im r| ≤ λ` for EVERY square root `r` of `w` (`parabola`,
   `norm_le_of_parabola`, `im_root_le`);
-* the scalar bounds of lines 2398-2429 on the numerical range:
+* the scalar bounds of lines 2881-2912 on the numerical range:
   `|C_h| ≤ e^{λh}`, `|F_h| ≤ 2(1+λh)e^{λh}` (through the two cases
   `√(3/2) λh e^{λh}` and `√3 e^{λh}`), `|H_h| ≤ 2e^{λh}` (through
   `|w|/|w+λ²| ≤ 7/3`), with the removable values at `w = 0`;
-* the constants of the assembly (lines 2430-2460): `(1+√2) ≤ 3`, the four block
+* the constants of the assembly (lines 2913-2947): `(1+√2) ≤ 3`, the four block
   norms `3, 12(1+λh), 12, 12` (times `e^{λh}`) and
   `(39+12λh)e^{λh} ≤ 39(1+λh)e^{λh} ≤ 100e^{2λh}`, and the bound of a 2×2 block
   operator on `H ⊕ H` (ℓ² norm) by the sum of its four block norms;
-* the `L:interval-complex` INSTANCE of `E:interval-metric` (lines 2966-2981):
+* the `L:interval-complex` INSTANCE of `E:interval-metric` (lines 3556-3571):
   the multiplier form of `‖z‖_{ρ_new} ≤ max{1, ρ_old/ρ_new}‖z‖_{ρ_old}`, the
   jump ratio `≤ 1 + Σ_E ω_i/λ ≤ ∏_E (1+ω_i/λ)`, and the product over jumps
   whose ending sets are pairwise disjoint (each connected interval ends once).
@@ -60,23 +60,23 @@ Formalized (nothing supplied):
   wave L10-FS0).
 
 Supplied (named hypotheses of the wrappers, not formalized):
-* Crouzeix-Palencia `E:cp-input` (lines 2277-2286), imported in the TeX: for
+* Crouzeix-Palencia `E:cp-input` (lines 2739-2748), imported in the TeX: for
   each of `C_h, F_h, H_h` an operator `Cop, Fop, Hop` (the functional-calculus
   value at `L`) with `‖Op‖ ≤ (1+√2) M` whenever the scalar function is bounded
   by `M` on the numerical range `W(L)` (`hCPC`, `hCPF`, `hCPH`).  This is
-  `E:cp-input` with its holomorphy precondition (lines 2405-2407) discharged by
+  `E:cp-input` with its holomorphy precondition (lines 2888-2890) discharged by
   the supplier.
-* The inverse-root integral representation of lines 2329-2348 (for the operator
+* The inverse-root integral representation of lines 2801-2820 (for the operator
   `L^* = A_0 - \bar z B`, resp. `A_0 - V^*`, whose adjoint gives the
   comparisons used in the blocks): an operator `Q'` with
   `Q' - 1 = π⁻¹ ∫_0^∞ J(t) dt`, `J` strongly measurable and
   `‖J(t)‖ ≤ (c/(1-δ_a)) t^{-1/2} κ^{a-3}`, `κ = (λ²+t)^{1/2}`, with
   `c = |z| d` (resp. `D`) (`hJm`, `hJ`, `hQ'`): the four-factor bound of lines
-  2349-2354 and the bounded holomorphic calculus.
+  2821-2826 and the bounded holomorphic calculus.
 * The identification of the propagator `M_z(h)` in `X_λ` with the weighted
-  block map of lines 2433-2444 (and 2959-2962); the wrappers conclude the bound
+  block map of lines 2920-2931 (and 3545-3548); the wrappers conclude the bound
   for that block map, built from `Cop, Fop, Hop` and the comparisons
-  `P1 = Q'^*`, `P2 = (Q'^{-1})^*` (lines 2361-2369, 2940-2946).
+  `P1 = Q'^*`, `P2 = (Q'^{-1})^*` (lines 2833-2841, 3522-3528).
 
 Narrower than the TeX: the propagator bound `E:complex-phase-bound` is concluded
 for the supplied block map, not for `M_z(h)`; the comparisons with `L` itself
@@ -110,12 +110,12 @@ open StratonovichHAMSecondMoment.StaticPhaseCauchy
 
 /-! ## Constants -/
 
-/-- `1 - δ_a ≥ 3/4` (from `δ_a ≤ 1/4`, the definition at main TeX line 2299). -/
+/-- `1 - δ_a ≥ 3/4` (from `δ_a ≤ 1/4`, the definition at main TeX line 2762). -/
 theorem one_sub_deltaA_ge (a : ℝ) : 3 / 4 ≤ 1 - deltaA a := by
   have := deltaA_le_quarter a
   linarith
 
-/-- `δ_a I_a ≤ π/8` (from `δ_a ≤ π/(8 I_a)`, main TeX line 2299). -/
+/-- `δ_a I_a ≤ π/8` (from `δ_a ≤ π/(8 I_a)`, main TeX line 2762). -/
 theorem deltaA_mul_phaseI_le {a : ℝ} (ha : a < 2) : deltaA a * phaseI a ≤ π / 8 := by
   have hI := phaseI_pos ha
   have h : deltaA a ≤ π / (8 * phaseI a) := min_le_right _ _
@@ -129,22 +129,22 @@ theorem rpow_two_sub_mul {a lam : ℝ} (hlam : 0 < lam) : lam ^ (2 - a) * lam ^ 
 
 /-- The coupling condition in the form used by the prefactor: if
 `c ≤ δ λ^{2-a}` then `c λ^{a-2} ≤ δ`.  With `c = |z| d` this is
-`|z| ≤ δ_a λ^{2-a}/d` (main TeX line 2301); with `c = D` it is
-`D ≤ δ_a Λ^{2-a}` (line 2907). -/
+`|z| ≤ δ_a λ^{2-a}/d` (main TeX line 2764); with `c = D` it is
+`D ≤ δ_a Λ^{2-a}` (line 3481). -/
 theorem coeff_le_of_le {a lam c δ : ℝ} (hlam : 0 < lam) (hc : c ≤ δ * lam ^ (2 - a)) :
     c * lam ^ (a - 2) ≤ δ := by
   have hp : 0 < lam ^ (a - 2) := Real.rpow_pos_of_pos hlam _
   calc c * lam ^ (a - 2) ≤ δ * lam ^ (2 - a) * lam ^ (a - 2) := by gcongr
     _ = δ := by rw [mul_assoc, rpow_two_sub_mul hlam, mul_one]
 
-/-- `‖z K_κ‖ ≤ δ` "since `a - 2 < 0`" (main TeX line 2320): for `κ ≥ λ > 0`,
+/-- `‖z K_κ‖ ≤ δ` "since `a - 2 < 0`" (main TeX line 2792): for `κ ≥ λ > 0`,
 `c κ^{a-2} ≤ c λ^{a-2}`. -/
 theorem kappa_coeff_le {a lam κ c : ℝ} (ha : a ≤ 2) (hlam : 0 < lam) (hκ : lam ≤ κ) (hc : 0 ≤ c) :
     c * κ ^ (a - 2) ≤ c * lam ^ (a - 2) :=
   mul_le_mul_of_nonneg_left (Real.rpow_le_rpow_of_nonpos hlam hκ (by linarith)) hc
 
 /-- The prefactor bound `|z| d λ^{a-2} I_a/(π(1-δ)) ≤ 1/6` of main TeX lines
-2357-2359 (and its use at lines 2936-2937), for any `c` with
+2829-2831 (and its use at lines 3518-3519), for any `c` with
 `c λ^{a-2} ≤ δ_a`. -/
 theorem neumann_prefactor_le {a lam c : ℝ} (ha : a < 2)
     (hcδ : c * lam ^ (a - 2) ≤ deltaA a) :
@@ -158,14 +158,14 @@ theorem neumann_prefactor_le {a lam c : ℝ} (ha : a < 2)
     _ ≤ π / 8 := h2
     _ ≤ 1 / 6 * (π * (1 - deltaA a)) := by nlinarith [pi_pos]
 
-/-- `4δ²/(1-δ) ≤ 1/3` for `0 ≤ δ ≤ 1/4` (main TeX lines 2391-2392). -/
+/-- `4δ²/(1-δ) ≤ 1/3` for `0 ≤ δ ≤ 1/4` (main TeX lines 2867-2868). -/
 theorem parabola_coeff_le {δ : ℝ} (hδ0 : 0 ≤ δ) (hδ : δ ≤ 1 / 4) :
     4 * δ ^ 2 / (1 - δ) ≤ 1 / 3 := by
   have hpos : 0 < 1 - δ := by linarith
   rw [div_le_iff₀ hpos]
   nlinarith [mul_le_mul_of_nonneg_left hδ hδ0]
 
-/-- `1 + (1-δ)⁻¹ ≤ 7/3` for `δ ≤ 1/4` (main TeX line 2426). -/
+/-- `1 + (1-δ)⁻¹ ≤ 7/3` for `δ ≤ 1/4` (main TeX line 2909). -/
 theorem range_ratio_const_le {δ : ℝ} (hδ : δ ≤ 1 / 4) : 1 + (1 - δ)⁻¹ ≤ 7 / 3 := by
   have hpos : 0 < 1 - δ := by linarith
   have : (1 - δ)⁻¹ ≤ 4 / 3 := by
@@ -173,7 +173,7 @@ theorem range_ratio_const_le {δ : ℝ} (hδ : δ ≤ 1 / 4) : 1 + (1 - δ)⁻¹
     linarith
   linarith
 
-/-! ## The scalar resolvent integral (main TeX lines 2329-2359) -/
+/-! ## The scalar resolvent integral (main TeX lines 2801-2831) -/
 
 /-- Auxiliary (Lean route): the scaling `t = λ² s` of the integrand,
 `g(λ²s) = λ^{a-4} s^{-1/2}(1+s)^{(a-3)/2}` for `s > 0`. -/
@@ -197,7 +197,7 @@ theorem kappa_integrand_scale {a lam s : ℝ} (hlam : 0 < lam) (hs : 0 < s) :
           (s ^ (-(1 / 2 : ℝ)) * (1 + s) ^ ((a - 3) / 2)) := by ring
     _ = _ := by rw [e2]
 
-/-- The scalar resolvent integral of main TeX lines 2355-2358: with
+/-- The scalar resolvent integral of main TeX lines 2827-2830: with
 `κ = (λ²+t)^{1/2}`, so that `κ^{a-3} = (λ²+t)^{(a-3)/2}` (`kappa_rpow_eq`),
 `∫_0^∞ t^{-1/2} κ^{a-3} dt = λ^{a-2} I_a`, with integrability (for `a < 2`,
 `λ > 0`). -/
@@ -237,7 +237,7 @@ theorem kappa_integral {a lam : ℝ} (ha : a < 2) (hlam : 0 < lam) :
   rw [key, ← mul_assoc, hpow]
 
 /-- `κ^{a-3} = (λ²+t)^{(a-3)/2}` for `κ = (λ²+t)^{1/2}` (the form of the
-integrand at main TeX line 2353). -/
+integrand at main TeX line 2825). -/
 theorem kappa_rpow_eq {a lam t : ℝ} (ht : 0 ≤ t) :
     ((lam ^ 2 + t) ^ (1 / 2 : ℝ)) ^ (a - 3) = (lam ^ 2 + t) ^ ((a - 3) / 2) := by
   rw [← Real.rpow_mul (by positivity)]
@@ -245,7 +245,7 @@ theorem kappa_rpow_eq {a lam t : ℝ} (ht : 0 ≤ t) :
   ring
 
 /-- Norm convergence and the bound of the inverse-root integral (main TeX lines
-2338-2359): if `‖J(t)‖ ≤ c t^{-1/2}(λ²+t)^{(a-3)/2}` on `(0,∞)` and `J` is
+2810-2831): if `‖J(t)‖ ≤ c t^{-1/2}(λ²+t)^{(a-3)/2}` on `(0,∞)` and `J` is
 strongly measurable, then `J` is integrable and
 `‖π⁻¹ ∫_0^∞ J‖ ≤ c λ^{a-2} I_a / π`. -/
 theorem resolvent_integral_le {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
@@ -267,7 +267,7 @@ theorem resolvent_integral_le {E : Type*} [NormedAddCommGroup E] [NormedSpace �
         gcongr
     _ = c * lam ^ (a - 2) * phaseI a / π := by ring
 
-/-- `‖Q - 1‖ ≤ 1/6` (main TeX lines 2355-2360 and 2936-2939): if
+/-- `‖Q - 1‖ ≤ 1/6` (main TeX lines 2827-2832 and 3518-3521): if
 `Q - 1 = π⁻¹ ∫_0^∞ J(t) dt` with `J` strongly measurable and
 `‖J(t)‖ ≤ (c/(1-δ_a)) t^{-1/2}(λ²+t)^{(a-3)/2}`, where
 `c λ^{a-2} ≤ δ_a`.  (`c = |z| d` in `L:complex-phase`, `c = D` in
@@ -288,7 +288,7 @@ theorem q_sub_one_le {E : Type*} [NormedRing E] [NormedSpace ℝ E] {a lam c : �
 
 /-! ## Neumann bounds and the resolvent algebra -/
 
-/-- Neumann series (main TeX lines 2320-2325): in a complete normed ring with
+/-- Neumann series (main TeX lines 2792-2797): in a complete normed ring with
 `‖1‖ ≤ 1`, `‖K‖ ≤ δ < 1` gives that `1 - K` is invertible with
 `‖(1-K)⁻¹‖ ≤ (1-δ)⁻¹`. -/
 theorem neumann_inverse_le {R : Type*} [NormedRing R] [HasSummableGeomSeries R]
@@ -304,8 +304,8 @@ theorem neumann_inverse_le {R : Type*} [NormedRing R] [HasSummableGeomSeries R]
     _ ≤ (1 - ‖K‖)⁻¹ := by linarith
     _ ≤ (1 - δ)⁻¹ := inv_anti₀ hpos (by linarith)
 
-/-- The Neumann bounds `7/6` and `6/5` (main TeX lines 2939-2940; "norm at most
-two", line 2361): in a complete normed ring with `‖1‖ ≤ 1`, `‖Q - 1‖ ≤ 1/6`
+/-- The Neumann bounds `7/6` and `6/5` (main TeX lines 3521-3522; "norm at most
+two", line 2833): in a complete normed ring with `‖1‖ ≤ 1`, `‖Q - 1‖ ≤ 1/6`
 gives `‖Q‖ ≤ 7/6`, `Q` invertible and `‖Q⁻¹‖ ≤ 6/5`. -/
 theorem neumann_root_comparison {R : Type*} [NormedRing R] [HasSummableGeomSeries R]
     (h1 : ‖(1 : R)‖ ≤ 1) {Q : R} (hQ : ‖Q - 1‖ ≤ 1 / 6) :
@@ -322,7 +322,7 @@ theorem neumann_root_comparison {R : Type*} [NormedRing R] [HasSummableGeomSerie
     calc ‖Ring.inverse (1 - (1 - Q))‖ ≤ (1 - 1 / 6)⁻¹ := hinv
       _ = 6 / 5 := by norm_num
 
-/-- The resolvent difference (main TeX lines 2341-2348 and 2930-2934), as a ring
+/-- The resolvent difference (main TeX lines 2813-2820 and 3512-3516), as a ring
 identity: if `L_λ + t = S U S` and `A_κ = S S` with `S, U` invertible, then
 `(SUS)⁻¹ - (SS)⁻¹ = S⁻¹ U⁻¹ (1 - U) S⁻¹`; with `S = A_κ^{1/2}`,
 `U = 1 - zK_κ` this is `A_κ^{-1/2}(1-zK_κ)^{-1} zK_κ A_κ^{-1/2}`. -/
@@ -334,7 +334,7 @@ theorem resolvent_difference {R : Type*} [Ring R] (S U : Rˣ) :
     sub_mul]
   noncomm_ring
 
-/-- The four-factor bound (main TeX lines 2349-2354): if the factors have norms
+/-- The four-factor bound (main TeX lines 2821-2826): if the factors have norms
 at most `1`, `(1-δ)⁻¹`, `c κ^{a-2}` and `κ⁻¹`, their product has norm at most
 `(c/(1-δ)) κ^{a-3}`. -/
 theorem integrand_factor_le {R : Type*} [NormedRing R] {P U K S : R} {a c δ κ : ℝ}
@@ -358,14 +358,14 @@ theorem integrand_factor_le {R : Type*} [NormedRing R] {P U K S : R} {a c δ κ 
         rw [← hk]
         field_simp
 
-/-! ## The numerical-range parabola (main TeX lines 2373-2396, 2948-2958) -/
+/-! ## The numerical-range parabola (main TeX lines 2849-2875, 3534-3544) -/
 
 /-- Auxiliary (Lean route): `ρ^{a-2} ρ² = ρ^a` for `ρ > 0`. -/
 theorem rpow_sub_two_mul_sq {a ρ : ℝ} (hρ : 0 < ρ) : ρ ^ (a - 2) * ρ ^ 2 = ρ ^ a := by
   rw [← Real.rpow_natCast, ← Real.rpow_add hρ]
   norm_num
 
-/-- Optimizing the form bound at `ρ = s` (main TeX lines 2374-2376 and 2953-2955):
+/-- Optimizing the form bound at `ρ = s` (main TeX lines 2850-2852 and 3539-3541):
 if `β ≤ d ρ^{a-2}(ρ² + s²)` for every `ρ > 0`, then `β ≤ 2 d s^a`; at `s = 0`
 by letting `ρ ↓ 0`. -/
 theorem form_opt_le {a d s β : ℝ} (ha : 0 < a) (hs : 0 ≤ s)
@@ -390,7 +390,7 @@ theorem form_opt_le {a d s β : ℝ} (ha : 0 < a) (hs : 0 ≤ s)
       _ = d * (ρ ^ (a - 2) * ρ ^ 2) := by ring
       _ = d * ρ ^ a := by rw [rpow_sub_two_mul_sq hρ]
 
-/-- The coupled form bounds of `L:complex-phase` (main TeX lines 2377-2381):
+/-- The coupled form bounds of `L:complex-phase` (main TeX lines 2853-2857):
 from `|b| ≤ d λ^{a-2}(λ²+s²)`, `|b| ≤ 2 d s^a` and `|z| ≤ δ λ^{2-a}/d`,
 `|zb| ≤ δ(s²+λ²)` and `|zb| ≤ 2δλ^{2-a}s^a`. -/
 theorem coupled_form_bounds {a d lam s δ : ℝ} {z b : ℂ} (hd : 0 < d) (hlam : 0 < lam)
@@ -410,7 +410,7 @@ theorem coupled_form_bounds {a d lam s δ : ℝ} {z b : ℂ} (hd : 0 < d) (hlam 
   · calc ‖z‖ * ‖b‖ ≤ δ * lam ^ (2 - a) / d * (2 * d * s ^ a) := by gcongr
       _ = 2 * δ * lam ^ (2 - a) * s ^ a := by field_simp
 
-/-- The form bounds of `L:interval-complex` (main TeX lines 2948-2956): from
+/-- The form bounds of `L:interval-complex` (main TeX lines 3534-3542): from
 `|v| ≤ D Λ^{a-2}(s²+Λ²)`, `|v| ≤ 2 D s^a` and `D ≤ δ Λ^{2-a}`,
 `|v| ≤ δ(s²+Λ²)` and `|v| ≤ 2δΛ^{2-a}s^a`. -/
 theorem interval_form_bounds {a D lam s δ : ℝ} {v : ℂ} (hlam : 0 < lam) (hs : 0 ≤ s)
@@ -427,7 +427,7 @@ theorem interval_form_bounds {a D lam s δ : ℝ} {v : ℂ} (hlam : 0 < lam) (hs
       _ ≤ 2 * (δ * lam ^ (2 - a)) * s ^ a := by gcongr
       _ = 2 * δ * lam ^ (2 - a) * s ^ a := by ring
 
-/-- `s^{2a} λ^{2-2a} ≤ s² + λ²` (main TeX line 2389), in the form
+/-- `s^{2a} λ^{2-2a} ≤ s² + λ²` (main TeX line 2865), in the form
 `(λ^{2-a} s^a)² ≤ λ²(s²+λ²)`, for `0 < a < 1` (weighted AM-GM). -/
 theorem young_parabola {a lam s : ℝ} (ha0 : 0 < a) (ha1 : a < 1) (hlam : 0 < lam) (hs : 0 ≤ s) :
     (lam ^ (2 - a) * s ^ a) ^ 2 ≤ lam ^ 2 * (s ^ 2 + lam ^ 2) := by
@@ -453,8 +453,8 @@ theorem young_parabola {a lam s : ℝ} (ha0 : 0 < a) (ha1 : a < 1) (hlam : 0 < l
     _ ≤ lam ^ 2 * (a * s ^ 2 + (1 - a) * lam ^ 2) := by gcongr
     _ ≤ lam ^ 2 * (s ^ 2 + lam ^ 2) := by gcongr
 
-/-- The numerical-range parabola (main TeX lines 2384-2394; reused at lines
-2955-2958): for `w = s² - c` with `|c| ≤ δ(s²+λ²)` and `|c| ≤ 2δλ^{2-a}s^a`,
+/-- The numerical-range parabola (main TeX lines 2860-2870; reused at lines
+3541-3544): for `w = s² - c` with `|c| ≤ δ(s²+λ²)` and `|c| ≤ 2δλ^{2-a}s^a`,
 `0 ≤ δ ≤ 1/4`, `0 < a < 1`, writing `w = x + iy`:
 `x + λ² ≥ (1-δ)(s²+λ²)`, `|y| ≤ 2δλ^{2-a}s^a`,
 `y² ≤ (4δ²/(1-δ)) λ²(x+λ²) ≤ λ²(x+λ²)/3` and `x ≥ -λ²/4`. -/
@@ -498,7 +498,7 @@ theorem parabola {a lam s δ : ℝ} {c w : ℂ} (ha0 : 0 < a) (ha1 : a < 1) (hla
             (mul_le_mul_of_nonneg_right (parabola_coeff_le hδ0 hδ) (sq_nonneg _)) hxl
   · nlinarith [sq_nonneg s, sq_nonneg lam]
 
-/-- `|w| ≤ x + 2λ²` on the parabola (main TeX line 2395). -/
+/-- `|w| ≤ x + 2λ²` on the parabola (main TeX line 2874). -/
 theorem norm_le_of_parabola {lam : ℝ} {w : ℂ} (hpar : w.im ^ 2 ≤ 1 / 3 * lam ^ 2 * (w.re + lam ^ 2))
     (hx : -(lam ^ 2 / 4) ≤ w.re) : ‖w‖ ≤ w.re + 2 * lam ^ 2 := by
   have hn : ‖w‖ ^ 2 = w.re ^ 2 + w.im ^ 2 := by
@@ -511,7 +511,7 @@ theorem norm_le_of_parabola {lam : ℝ} {w : ℂ} (hpar : w.im ^ 2 ≤ 1 / 3 * l
   nlinarith [norm_nonneg w]
 
 /-- Every square root `r` of `w` has `|Im r| ≤ λ` when `|w| ≤ Re w + 2λ²`
-(main TeX lines 2395-2396). -/
+(main TeX lines 2874-2875). -/
 theorem im_root_le {lam : ℝ} (hlam : 0 ≤ lam) {r w : ℂ} (hr : r ^ 2 = w)
     (hw : ‖w‖ ≤ w.re + 2 * lam ^ 2) : |r.im| ≤ lam := by
   have hre : w.re = r.re ^ 2 - r.im ^ 2 := by rw [← hr]; simp [sq]
@@ -523,7 +523,7 @@ theorem im_root_le {lam : ℝ} (hlam : 0 ≤ lam) {r w : ℂ} (hr : r ^ 2 = w)
   replace hcon := lt_of_not_ge hcon
   nlinarith [abs_nonneg r.im, sq_abs r.im]
 
-/-! ## The scalar functions `C_h`, `F_h`, `H_h` (main TeX lines 2398-2429) -/
+/-! ## The scalar functions `C_h`, `F_h`, `H_h` (main TeX lines 2881-2912) -/
 
 /-- The principal square root `w^{1/2}` (`cpow` with exponent `1/2`). -/
 def csqrt (w : ℂ) : ℂ := w ^ (((2 : ℕ) : ℂ)⁻¹)
@@ -543,20 +543,20 @@ theorem csqrt_ne_zero {w : ℂ} (hw : w ≠ 0) : csqrt w ≠ 0 := by
   rw [← csqrt_sq w, h]
   ring
 
-/-- `G_h(w) = sin(h√w)/√w` (main TeX line 2444), with its removable value
+/-- `G_h(w) = sin(h√w)/√w` (main TeX line 2931), with its removable value
 `G_h(0) = h`.  Since `sin(hr)/r` is even in `r`, the branch of `√w` is
 irrelevant. -/
 def phaseG (h : ℝ) (w : ℂ) : ℂ :=
   if w = 0 then (h : ℂ) else Complex.sin (h * csqrt w) / csqrt w
 
-/-- `C_h(w) = cos(h√w)` (main TeX line 2400); even in the root. -/
+/-- `C_h(w) = cos(h√w)` (main TeX line 2883); even in the root. -/
 def phaseC (h : ℝ) (w : ℂ) : ℂ := Complex.cos (h * csqrt w)
 
-/-- `F_h(w) = √(w+λ²) sin(h√w)/√w` (main TeX line 2401), with the principal
+/-- `F_h(w) = √(w+λ²) sin(h√w)/√w` (main TeX line 2884), with the principal
 branch of `√(w+λ²)`. -/
 def phaseF (h lam : ℝ) (w : ℂ) : ℂ := csqrt (w + ((lam ^ 2 : ℝ) : ℂ)) * phaseG h w
 
-/-- `H_h(w) = (w/√(w+λ²)) sin(h√w)/√w` (main TeX lines 2402-2403); its value at
+/-- `H_h(w) = (w/√(w+λ²)) sin(h√w)/√w` (main TeX lines 2885-2886); its value at
 `w = 0` is `0`. -/
 def phaseH (h lam : ℝ) (w : ℂ) : ℂ := w / csqrt (w + ((lam ^ 2 : ℝ) : ℂ)) * phaseG h w
 
@@ -599,7 +599,7 @@ theorem im_scale_le {r : ℂ} {lam h t : ℝ} (hr : |r.im| ≤ lam) (ht0 : 0 ≤
     _ = lam * h := by ring
 
 /-- `|sin(h r)| ≤ h |r| e^{λh}` for `|Im r| ≤ λ`, `h ≥ 0`: the bound
-`|sin(h√w)/√w| ≤ h e^{λh}` of main TeX lines 2414-2416.  Lean route: the mean
+`|sin(h√w)/√w| ≤ h e^{λh}` of main TeX lines 2897-2899.  Lean route: the mean
 value inequality for `t ↦ sin(tr)` on `[0,h]` instead of the integral identity
 `sin(h√w)/√w = ∫_0^h cos(r√w) dr`. -/
 theorem norm_sin_le_mul {r : ℂ} {lam h : ℝ} (hr : |r.im| ≤ lam) (hh : 0 ≤ h) :
@@ -621,12 +621,12 @@ theorem norm_sin_le_mul {r : ℂ} {lam h : ℝ} (hr : |r.im| ≤ lam) (hh : 0 �
   calc ‖Complex.sin (h * r)‖ ≤ Real.exp (lam * h) * ‖r‖ * h := this
     _ = h * ‖r‖ * Real.exp (lam * h) := by ring
 
-/-- `|C_h(w)| ≤ e^{λh}` when `|Im √w| ≤ λ`, `h ≥ 0` (main TeX lines 2409, 2413-2414). -/
+/-- `|C_h(w)| ≤ e^{λh}` when `|Im √w| ≤ λ`, `h ≥ 0` (main TeX lines 2892, 2896-2897). -/
 theorem norm_phaseC_le {lam h : ℝ} {w : ℂ} (hr : |(csqrt w).im| ≤ lam) (hh : 0 ≤ h) :
     ‖phaseC h w‖ ≤ Real.exp (lam * h) :=
   (norm_cos_sin_le (im_scale_le hr hh le_rfl)).1
 
-/-- `|G_h(w)| ≤ h e^{λh}`, including `w = 0` (main TeX lines 2414-2416). -/
+/-- `|G_h(w)| ≤ h e^{λh}`, including `w = 0` (main TeX lines 2897-2899). -/
 theorem norm_phaseG_le {lam h : ℝ} {w : ℂ} (hr : |(csqrt w).im| ≤ lam) (hh : 0 ≤ h) :
     ‖phaseG h w‖ ≤ h * Real.exp (lam * h) := by
   have hl : 0 ≤ lam := (abs_nonneg _).trans hr
@@ -642,7 +642,7 @@ theorem norm_phaseG_le {lam h : ℝ} {w : ℂ} (hr : |(csqrt w).im| ≤ lam) (hh
           norm_sin_le_mul hr hh
       _ = h * Real.exp (lam * h) * ‖csqrt w‖ := by ring
 
-/-- `|G_h(w)| ≤ e^{λh}/|√w|` for `w ≠ 0` (main TeX lines 2413-2414, 2420). -/
+/-- `|G_h(w)| ≤ e^{λh}/|√w|` for `w ≠ 0` (main TeX lines 2896-2897, 2903). -/
 theorem norm_phaseG_le' {lam h : ℝ} {w : ℂ} (hw : w ≠ 0) (hr : |(csqrt w).im| ≤ lam) (hh : 0 ≤ h) :
     ‖phaseG h w‖ ≤ Real.exp (lam * h) / ‖csqrt w‖ := by
   simp only [phaseG, hw, ↓reduceIte]
@@ -650,7 +650,7 @@ theorem norm_phaseG_le' {lam h : ℝ} {w : ℂ} (hw : w ≠ 0) (hr : |(csqrt w).
   gcongr
   exact (norm_cos_sin_le (im_scale_le hr hh le_rfl)).2
 
-/-- The case `|w| ≤ λ²/2` of the `F_h` bound (main TeX lines 2416-2419):
+/-- The case `|w| ≤ λ²/2` of the `F_h` bound (main TeX lines 2899-2902):
 `|F_h(w)| ≤ √(3/2) λ h e^{λh}`. -/
 theorem phaseF_small {lam h : ℝ} {w : ℂ} (hlam : 0 < lam) (hr : |(csqrt w).im| ≤ lam)
     (hh : 0 ≤ h) (hw : ‖w‖ ≤ lam ^ 2 / 2) :
@@ -673,7 +673,7 @@ theorem phaseF_small {lam h : ℝ} {w : ℂ} (hlam : 0 < lam) (hr : |(csqrt w).i
         mul_le_mul hz (norm_phaseG_le hr hh) (norm_nonneg _) (by positivity)
     _ = √(3 / 2) * lam * h * Real.exp (lam * h) := by ring
 
-/-- The case `|w| > λ²/2` of the `F_h` bound (main TeX lines 2420-2421):
+/-- The case `|w| > λ²/2` of the `F_h` bound (main TeX lines 2903-2904):
 `|w+λ²|/|w| ≤ 3`, so `|F_h(w)| ≤ √3 e^{λh}`. -/
 theorem phaseF_large {lam h : ℝ} {w : ℂ} (hr : |(csqrt w).im| ≤ lam)
     (hh : 0 ≤ h) (hw : lam ^ 2 / 2 < ‖w‖) :
@@ -702,8 +702,8 @@ theorem phaseF_large {lam h : ℝ} {w : ℂ} (hr : |(csqrt w).im| ≤ lam)
         mul_le_mul hratio (norm_phaseG_le' hw0 hr hh) (norm_nonneg _) (by positivity)
     _ = √3 * Real.exp (lam * h) := by field_simp
 
-/-- `|F_h(w)| ≤ 2(1+λh) e^{λh}` when `|Im √w| ≤ λ` (main TeX lines 2410,
-2416-2421). -/
+/-- `|F_h(w)| ≤ 2(1+λh) e^{λh}` when `|Im √w| ≤ λ` (main TeX lines 2893,
+2899-2904). -/
 theorem norm_phaseF_le {lam h : ℝ} {w : ℂ} (hlam : 0 < lam) (hr : |(csqrt w).im| ≤ lam)
     (hh : 0 ≤ h) : ‖phaseF h lam w‖ ≤ 2 * (1 + lam * h) * Real.exp (lam * h) := by
   have he : 0 < Real.exp (lam * h) := Real.exp_pos _
@@ -722,7 +722,7 @@ theorem norm_phaseF_le {lam h : ℝ} {w : ℂ} (hlam : 0 < lam) (hr : |(csqrt w)
     exact mul_le_mul_of_nonneg_right (by nlinarith) he.le
 
 /-- `|w|/|w+λ²| ≤ 1 + λ²/|w+λ²| ≤ 1 + (1-δ)⁻¹ ≤ 7/3` when
-`Re(w+λ²) ≥ (1-δ)λ²` and `δ ≤ 1/4` (main TeX lines 2424-2426), in the
+`Re(w+λ²) ≥ (1-δ)λ²` and `δ ≤ 1/4` (main TeX lines 2907-2909), in the
 multiplied form `|w| ≤ (7/3)|w+λ²|`. -/
 theorem range_ratio_le {lam δ : ℝ} {w : ℂ} (hlam : 0 < lam) (hδ : δ ≤ 1 / 4)
     (hre : (1 - δ) * lam ^ 2 ≤ w.re + lam ^ 2) :
@@ -751,7 +751,7 @@ theorem range_ratio_le {lam δ : ℝ} {w : ℂ} (hlam : 0 < lam) (hδ : δ ≤ 1
   exact range_ratio_const_le hδ
 
 /-- `|H_h(w)| ≤ 2 e^{λh}` when `|Im √w| ≤ λ`, `Re(w+λ²) ≥ (1-δ)λ²`,
-`δ ≤ 1/4` (main TeX lines 2411, 2422-2429), via
+`δ ≤ 1/4` (main TeX lines 2894, 2905-2912), via
 `H_h(w) = √w sin(h√w)/√(w+λ²)`. -/
 theorem norm_phaseH_le {lam h δ : ℝ} {w : ℂ} (hlam : 0 < lam) (hδ : δ ≤ 1 / 4)
     (hr : |(csqrt w).im| ≤ lam) (hh : 0 ≤ h) (hre : (1 - δ) * lam ^ 2 ≤ w.re + lam ^ 2) :
@@ -794,7 +794,7 @@ theorem norm_phaseH_le {lam h δ : ℝ} {w : ℂ} (hlam : 0 < lam) (hδ : δ ≤
     _ = 2 * Real.exp (lam * h) * ‖ζ‖ := by ring
 
 /-- The scalar layer of `L:complex-phase` on one point of the numerical range
-(main TeX lines 2384-2429; reused for `L:interval-complex` at lines 2955-2959):
+(main TeX lines 2860-2912; reused for `L:interval-complex` at lines 3541-3545):
 for `w = s² - c` with `|c| ≤ δ(s²+λ²)`, `|c| ≤ 2δλ^{2-a}s^a`, `0 ≤ δ ≤ 1/4`,
 `0 < a < 1`, `λ > 0`, `h ≥ 0`: `|w| ≤ Re w + 2λ²`, every square root of `w` has
 imaginary part at most `λ` in absolute value, and `|C_h(w)| ≤ e^{λh}`,
@@ -819,16 +819,16 @@ theorem phase_scalar_bounds {a lam s δ h : ℝ} {c w : ℂ} (ha0 : 0 < a) (ha1 
   exact ⟨hn, hroot, norm_phaseC_le hr hh, norm_phaseF_le hlam hr hh,
     norm_phaseH_le hlam hδ hr hh hre⟩
 
-/-! ## Assembly constants and the block bound (main TeX lines 2430-2460) -/
+/-! ## Assembly constants and the block bound (main TeX lines 2913-2947) -/
 
 /-- `1 + √2 ≤ 3`: Crouzeix-Palencia turns the scalar bounds `1, 2(1+λh), 2`
-(times `e^{λh}`) into `3, 6(1+λh), 6` (main TeX lines 2430-2431). -/
+(times `e^{λh}`) into `3, 6(1+λh), 6` (main TeX lines 2913-2914). -/
 theorem one_add_sqrt_two_le : 1 + √2 ≤ 3 := by
   have : √2 ≤ 2 := by rw [Real.sqrt_le_left (by norm_num)]; norm_num
   linarith
 
 /-- `(39 + 12λh) e^{λh} ≤ 39(1+λh) e^{λh} ≤ 100 e^{2λh}` for `λh ≥ 0` (main TeX
-lines 2457-2459). -/
+lines 2944-2946). -/
 theorem block_constant_le {x : ℝ} (hx : 0 ≤ x) :
     (39 + 12 * x) * Real.exp x ≤ 39 * (1 + x) * Real.exp x ∧
       39 * (1 + x) * Real.exp x ≤ 100 * Real.exp (2 * x) := by
@@ -841,7 +841,7 @@ theorem block_constant_le {x : ℝ} (hx : 0 ≤ x) :
     nlinarith
 
 /-- A 2×2 block operator on `E ⊕ E` with the ℓ² norm has norm at most the sum of
-its four block norms (main TeX lines 2453-2455), stated pointwise. -/
+its four block norms (main TeX lines 2940-2942), stated pointwise. -/
 theorem block_norm_le {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]
     (T11 T12 T21 T22 : E →L[ℂ] E) (u v : E) :
     √(‖T11 u + T12 v‖ ^ 2 + ‖T21 u + T22 v‖ ^ 2) ≤
@@ -871,7 +871,7 @@ theorem block_norm_le {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]
     _ ≤ (‖T11‖ + ‖T12‖) * N + (‖T21‖ + ‖T22‖) * N := add_le_add h1 h2
     _ = (‖T11‖ + ‖T12‖ + ‖T21‖ + ‖T22‖) * N := by ring
 
-/-- The assembly of main TeX lines 2433-2460 (and 2959-2963): with weighted blocks
+/-- The assembly of main TeX lines 2920-2947 (and 3545-3549): with weighted blocks
 `C_h(L)`, `F_h(L) P1`, `-P2 H_h(L)`, `P2 C_h(L) P1`, where `‖P1‖, ‖P2‖ ≤ 2` and
 `‖C_h(L)‖ ≤ 3e^{λh}`, `‖F_h(L)‖ ≤ 6(1+λh)e^{λh}`, `‖H_h(L)‖ ≤ 6e^{λh}`, the block
 norms are at most `3, 12(1+λh), 12, 12` times `e^{λh}`, and the block map has
@@ -910,9 +910,9 @@ theorem complex_phase_assembly {E : Type*} [NormedAddCommGroup E] [NormedSpace �
         √(‖u‖ ^ 2 + ‖v‖ ^ 2) := block_norm_le _ _ _ _ u v
     _ ≤ _ := by gcongr
 
-/-! ## The interval metric: the `L:interval-complex` instance (main TeX lines 2966-2981) -/
+/-! ## The interval metric: the `L:interval-complex` instance (main TeX lines 3556-3571) -/
 
-/-- The phase-weight change in multiplier form (main TeX lines 2966-2970): for a
+/-- The phase-weight change in multiplier form (main TeX lines 3556-3560): for a
 spectral value `x ≥ 0` of `A_0`, `(ρ_new² + x)⁻¹ ≤ max{1, ρ_old/ρ_new}² (ρ_old² + x)⁻¹`;
 this is the multiplier inequality behind
 `‖z‖_{ρ_new} ≤ max{1, ρ_old/ρ_new} ‖z‖_{ρ_old}`. -/
@@ -951,7 +951,7 @@ theorem one_le_prod_one_add {ι : Type*} (E : Finset ι) (x : ι → ℝ) (hx : 
   have hS : 0 ≤ ∑ i ∈ E, x i := Finset.sum_nonneg hx
   linarith
 
-/-- The jump ratio (main TeX lines 2971-2978): with `E` the ending, `S` the
+/-- The jump ratio (main TeX lines 3561-3568): with `E` the ending, `S` the
 starting and `R` the remaining fields at a jump, and weights `ω_i ≥ 0`,
 `max{1, (λ+Σ_R ω+Σ_E ω)/(λ+Σ_R ω+Σ_S ω)} ≤ 1 + Σ_E ω_i/λ ≤ ∏_E (1+ω_i/λ)`. -/
 theorem jump_ratio_le {ι : Type*} {lam : ℝ} (hlam : 0 < lam) (ω : ι → ℝ) (R E S : Finset ι)
@@ -975,7 +975,7 @@ theorem jump_ratio_le {ι : Type*} {lam : ℝ} (hlam : 0 < lam) (ω : ι → ℝ
     exact one_add_sum_le_prod E (fun i => ω i / lam) (fun i _ => div_nonneg (hω i) hlam.le)
 
 /-- The `L:interval-complex` instance of `E:interval-metric` (main TeX lines
-2914-2916, 2979-2981): over finitely many jumps `j ∈ J` whose ending sets `E_j`
+3488-3490, 3569-3571): over finitely many jumps `j ∈ J` whose ending sets `E_j`
 are pairwise disjoint and contained in the set `I` of fields present (each
 connected interval ends once; a final return to `X_λ` counts as an ending jump),
 the product of the per-jump losses
@@ -1009,7 +1009,7 @@ theorem interval_metric_instance {ι κ : Type*} [DecidableEq ι] {lam : ℝ} (h
 /-! ## The phase-range conclusion -/
 
 /-- The conclusion of the numerical-range and scalar steps at one point `w`
-(main TeX lines 2384-2429): the two inequalities for some `s ≥ 0`, the parabola,
+(main TeX lines 2860-2912): the two inequalities for some `s ≥ 0`, the parabola,
 `x ≥ -λ²/4`, `|w| ≤ x + 2λ²`, `|Im r| ≤ λ` for every square root `r` of `w`, and
 the three scalar bounds. -/
 def PhaseRangeBounds (a δ lam h : ℝ) (w : ℂ) : Prop :=
@@ -1022,7 +1022,7 @@ def PhaseRangeBounds (a δ lam h : ℝ) (w : ℂ) : Prop :=
     ‖phaseH h lam w‖ ≤ 2 * Real.exp (lam * h)
 
 /-- `PhaseRangeBounds` at `w = s² - c` from the two bounds on `c` (main TeX lines
-2384-2429): `parabola` and `phase_scalar_bounds` combined. -/
+2860-2912): `parabola` and `phase_scalar_bounds` combined. -/
 theorem phaseRangeBounds_of {a lam s δ h : ℝ} {c w : ℂ} (ha0 : 0 < a) (ha1 : a < 1)
     (hlam : 0 < lam) (hs : 0 ≤ s) (hδ0 : 0 ≤ δ) (hδ : δ ≤ 1 / 4) (hh : 0 ≤ h)
     (hw : w = ((s ^ 2 : ℝ) : ℂ) - c)
@@ -1040,12 +1040,12 @@ open scoped ComplexOrder
 
 variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
 
-/-- The numerical range `W(T) = {⟨Tu,u⟩ : ‖u‖ = 1}` (main TeX line 2283).
+/-- The numerical range `W(T) = {⟨Tu,u⟩ : ‖u‖ = 1}` (main TeX line 2745).
 Mathlib's inner product is conjugate-linear in the FIRST slot, so the TeX's
 `⟨Tu,u⟩` is `⟪u, T u⟫`. -/
 def numRange (T : H →L[ℂ] H) : Set ℂ := {w | ∃ u : H, ‖u‖ = 1 ∧ w = inner ℂ u (T u)}
 
-/-- `A_ρ = ρ² + A_0` (main TeX line 2290). -/
+/-- `A_ρ = ρ² + A_0` (main TeX line 2753). -/
 def shiftOp (A0 : H →L[ℂ] H) (ρ : ℝ) : H →L[ℂ] H := A0 + algebraMap ℝ (H →L[ℂ] H) (ρ ^ 2)
 
 /-- `A_ρ^{-1/2}`: the inverse of the continuous-functional-calculus square root
@@ -1105,7 +1105,7 @@ theorem invSqrtShift_selfAdjoint {A0 : H →L[ℂ] H} (hA : A0.IsPositive) {ρ :
     _ = invSqrtShift A0 ρ := by rw [← mul_assoc, h1, one_mul]
 
 /-- The form consequence of `E:abstract-sandwich` (used at main TeX lines
-2374-2381 and 2948-2954 without comment): if
+2850-2857 and 3534-3540 without comment): if
 `‖A_ρ^{-1/2} B A_ρ^{-1/2}‖ ≤ c`, then `|⟨Bu,u⟩| ≤ c (ρ²‖u‖² + ⟨A_0u,u⟩)`, i.e.
 `c ⟨A_ρ u, u⟩`.  `B` is an arbitrary bounded operator. -/
 theorem form_of_sandwich {A0 B : H →L[ℂ] H} (hA0 : A0.IsPositive) {ρ c : ℝ} (hρ : 0 < ρ)
@@ -1144,7 +1144,7 @@ theorem form_of_sandwich {A0 B : H →L[ℂ] H} (hA0 : A0.IsPositive) {ρ c : �
     _ = c * ‖S u‖ ^ 2 := by ring
     _ = c * (ρ ^ 2 * ‖u‖ ^ 2 + (inner ℂ u (A0 u)).re) := by rw [hnorm]
 
-/-- The adjoint has the identical sandwich norm (main TeX lines 2920-2924):
+/-- The adjoint has the identical sandwich norm (main TeX lines 3502-3506):
 `‖A_ρ^{-1/2} V^* A_ρ^{-1/2}‖ = ‖A_ρ^{-1/2} V A_ρ^{-1/2}‖`. -/
 theorem sandwich_adjoint_norm {A0 : H →L[ℂ] H} (hA0 : A0.IsPositive) {ρ : ℝ} (hρ : 0 < ρ)
     (V : H →L[ℂ] H) :
@@ -1170,7 +1170,7 @@ theorem numRange_sub_point {A0 : H →L[ℂ] H} (hA0 : A0.IsPositive) (T : H →
   exact Complex.ext (by simp) (by simp [him])
 
 /-- `L:complex-phase`, numerical-range and scalar layer, with the manuscript's
-hypotheses (main TeX lines 2288-2301, proof 2373-2429): `A_0` bounded,
+hypotheses (main TeX lines 2751-2764, proof 2849-2912): `A_0` bounded,
 nonnegative and selfadjoint (`IsPositive`), `B` bounded selfadjoint,
 `0 < a < 1`, `d > 0`, `E:abstract-sandwich` with `A_ρ^{-1/2}` the inverse CFC
 square root, `λ > 0`, `|z| ≤ δ_a λ^{2-a}/d`, `h ≥ 0`.  Conclusion: every point
@@ -1206,8 +1206,8 @@ theorem complex_phase_range_paper (A0 B : H →L[ℂ] H) (hA0 : A0.IsPositive)
   exact phaseRangeBounds_of ha0 ha1 hlam hs hδ0 (deltaA_le_quarter a) hh hw hc1 hc2
 
 /-- `L:interval-complex`, numerical-range and scalar layer, with the
-manuscript's hypotheses (main TeX lines 2899-2908, proof 2919-2924 and
-2948-2959): `A_0` bounded nonnegative selfadjoint, `V` bounded (not necessarily
+manuscript's hypotheses (main TeX lines 3473-3482, proof 3493-3506 and
+3534-3545): `A_0` bounded nonnegative selfadjoint, `V` bounded (not necessarily
 selfadjoint), `‖A_ρ^{-1/2}VA_ρ^{-1/2}‖ ≤ Dρ^{a-2}`, `0 < a < 1`,
 `D ≤ δ_a Λ^{2-a}`, `Λ > 0`, `h ≥ 0`.  Conclusions: the adjoint `V^*` has the
 same sandwich bound, and every point of `W(A_0 - V)` satisfies
@@ -1292,18 +1292,18 @@ theorem phase_block_of_inputs {a lam h c : ℝ} (ha0 : 0 < a) (ha1 : a < 1) (hla
   refine ⟨hC, hF, hH, hQ1, hQu, hP1, hP2, fun u v => ?_⟩
   exact complex_phase_assembly hlam.le hh Cop Fop Hop _ _ (by linarith) (by linarith) hC hF hH u v
 
-/-- `L:complex-phase` (main TeX lines 2288-2310, proof 2312-2465), propagator
+/-- `L:complex-phase` (main TeX lines 2751-2773, proof 2775-2952), propagator
 layer, with the manuscript's hypotheses and the SUPPLIED inputs named in the
 module doc: Crouzeix-Palencia for `C_h, F_h, H_h` at `L = A_0 - zB` (`hCPC`,
-`hCPF`, `hCPH`; `E:cp-input`, lines 2277-2286, 2430-2431) and the inverse-root
+`hCPF`, `hCPH`; `E:cp-input`, lines 2739-2748, 2913-2914) and the inverse-root
 integral representation of `Q' = A_λ^{1/2}(L^*_λ)^{-1/2}` with its integrand
-bound (`Q'`, `J`, `hJm`, `hJ`, `hQ'`; lines 2329-2354, 2361-2362).
+bound (`Q'`, `J`, `hJm`, `hJ`, `hQ'`; lines 2801-2826, 2833-2834).
 Conclusions: the phase-range bounds on `W(L)`; `‖C_h(L)‖ ≤ 3e^{λh}`,
 `‖F_h(L)‖ ≤ 6(1+λh)e^{λh}`, `‖H_h(L)‖ ≤ 6e^{λh}`; `‖Q' - 1‖ ≤ 1/6`,
 `‖Q'^*‖ ≤ 7/6`, `‖(Q'^{-1})^*‖ ≤ 6/5`; and the bound `100e^{2λh}` for the
-weighted block map of lines 2433-2444 built from these operators.  Narrower:
-the identification of that block map with `M_z(h)` (lines 2433-2444,
-2461-2464) is not formalized. `_hB` is carried but unused. -/
+weighted block map of lines 2920-2931 built from these operators.  Narrower:
+the identification of that block map with `M_z(h)` (lines 2920-2931,
+2948-2951) is not formalized. `_hB` is carried but unused. -/
 theorem complex_phase_paper (A0 B : H →L[ℂ] H) (hA0 : A0.IsPositive) (_hB : IsSelfAdjoint B)
     {a d : ℝ} (ha0 : 0 < a) (ha1 : a < 1) (hd : 0 < d)
     (hsand : ∀ ρ > 0, ‖invSqrtShift A0 ρ * B * invSqrtShift A0 ρ‖ ≤ d * ρ ^ (a - 2))
@@ -1337,15 +1337,15 @@ theorem complex_phase_paper (A0 B : H →L[ℂ] H) (hA0 : A0.IsPositive) (_hB : 
   exact ⟨hrange, phase_block_of_inputs ha0 ha1 hlam hh hcδ _ hrange Cop Fop Hop hCPC hCPF hCPH
     Q' J hJm hJ hQ'⟩
 
-/-- `L:interval-complex` (main TeX lines 2899-2917, proof 2919-2964), propagator
+/-- `L:interval-complex` (main TeX lines 3473-3491, proof 3493-3550), propagator
 layer, with the manuscript's hypotheses and the same SUPPLIED inputs as
 `complex_phase_paper` for `L = A_0 - V` at weight `Λ` (Crouzeix-Palencia for
 the three functions on `W(L)`; the inverse-root representation of
 `Q' = A_Λ^{1/2}(L^*_Λ)^{-1/2}` with integrand constant `D/(1-δ_a)`, lines
-2929-2937, 2941-2944).  Conclusions: the adjoint sandwich bound, the phase-range
+3511-3519, 3523-3526).  Conclusions: the adjoint sandwich bound, the phase-range
 bounds on `W(L)`, the three operator bounds, `‖Q' - 1‖ ≤ 1/6`, the Neumann bounds
-`‖Q'^*‖ ≤ 7/6` and `‖(Q'^{-1})^*‖ ≤ 6/5` (lines 2939-2944), and the bound
-`100e^{2Λh}` for the weighted block map (lines 2959-2963).  Narrower: the block
+`‖Q'^*‖ ≤ 7/6` and `‖(Q'^{-1})^*‖ ≤ 6/5` (lines 3521-3526), and the bound
+`100e^{2Λh}` for the weighted block map (lines 3545-3549).  Narrower: the block
 map is not identified with the propagator in `X_Λ`; `E:interval-metric` is
 `interval_metric_paper`. -/
 theorem interval_complex_paper (A0 V : H →L[ℂ] H) (hA0 : A0.IsPositive) {a D : ℝ}
@@ -1380,7 +1380,7 @@ theorem interval_complex_paper (A0 V : H →L[ℂ] H) (hA0 : A0.IsPositive) {a D
 end Operators
 
 /-- `E:interval-metric` in the `L:interval-complex` instance, with the
-manuscript's hypotheses (main TeX lines 2909-2916, proof 2966-2981): `λ > 0` and
+manuscript's hypotheses (main TeX lines 3483-3490, proof 3556-3571): `λ > 0` and
 a positive weight `ω_i` for each field present.  The jump data (remaining,
 ending and starting sets) are given as subsets of the field set; each field
 ends at exactly one jump, so the ending sets are pairwise disjoint (a final

@@ -54,7 +54,7 @@ end bounded
 /-! ### The squared rate `λ_U(c)²` and the rate `λ_U(c)` -/
 
 /-- `λ_U(c)² = sup{c ∫ U g² - ‖∇g‖₂² : g ∈ H^1(ℝ^d;ℝ), ‖g‖₂ = 1}` (the
-displayed definition of `L:spatial-static-controls`, TeX lines 42-46, with a
+displayed definition of `L:spatial-static-controls`, TeX lines 44-48, with a
 general potential `U`; the manuscript's case is `U = U_z = Γ * z`). -/
 def lamSq (U : Rd d → ℝ) (c : ℝ) : ℝ := sSup (rayleighSet (fun x => c * U x))
 
@@ -81,14 +81,14 @@ def RayleighFloor (Γ : Measure (Rd d)) : Prop :=
   ∀ z : Rd d → ℝ, IsTestFunction z → (∀ x, 0 ≤ z x) → z ≠ 0 →
     ∃ q ∈ rayleighSet (conv Γ z), 0 < q
 
-/-- `λ_z(c) = λ_{U_z}(c)` with `U_z = Γ * z` (TeX lines 42-46). -/
+/-- `λ_z(c) = λ_{U_z}(c)` with `U_z = Γ * z` (TeX lines 44-48). -/
 def lamZ (Γ : Measure (Rd d)) (z : Rd d → ℝ) (c : ℝ) : ℝ := lam (conv Γ z) c
 
 /-! ### The temporal cutoffs `f_n` -/
 
 /-- The smooth cutoff `cut_n(t) = χ̃((n+4)t - 1) χ̃((n+4)(1-t) - 1)` with
 `χ̃ = Real.smoothTransition` (`0` on `(-∞,0]`, `1` on `[1,∞)`).  Lean route: it
-replaces the manuscript's `χ(1/(nt)) χ(1/(n(1-t)))` (TeX lines 66-72; `χ` from
+replaces the manuscript's `χ(1/(nt)) χ(1/(n(1-t)))` (TeX lines 81-87; `χ` from
 `P:variational-remove-mask`); both are smooth, in `[0,1]`, vanish near the
 endpoints and equal `1` on compact subsets of `(0,1)` for large `n`, which is
 all the proof uses. -/
@@ -96,7 +96,7 @@ def cut (n : ℕ) (t : ℝ) : ℝ :=
   Real.smoothTransition (((n : ℝ) + 4) * t - 1) *
     Real.smoothTransition (((n : ℝ) + 4) * (1 - t) - 1)
 
-/-- `f_n = f_a · cut_n` (TeX lines 70-72, with the cutoff `cut_n`); `f_a` is
+/-- `f_n = f_a · cut_n` (TeX lines 85-87, with the cutoff `cut_n`); `f_a` is
 `TemporalEquilibrium.density a`. -/
 def fn (a : ℝ) (n : ℕ) (t : ℝ) : ℝ := TemporalEquilibrium.density a t * cut n t
 
@@ -108,12 +108,12 @@ end cutoff
 
 /-! ### The controls `Ψ_n = f_n ⊗ z` -/
 
-/-- `Ψ_n(t,x) = f_n(t) z(x)` (TeX line 74). -/
+/-- `Ψ_n(t,x) = f_n(t) z(x)` (TeX line 89). -/
 def ctrl (a : ℝ) (n : ℕ) (z : Rd d → ℝ) : ℝ × Rd d → ℝ := fun p => fn a n p.1 * z p.2
 
 /-! ### Mean, rate and cost of `Ψ_n` -/
 
-/-- `k_n(s) = ∫_0^1 |s-t|^{-a} f_n(t) dt` (TeX line 71). -/
+/-- `k_n(s) = ∫_0^1 |s-t|^{-a} f_n(t) dt` (TeX line 86). -/
 def kn (a : ℝ) (n : ℕ) (s : ℝ) : ℝ := ∫ t in Ioo (0 : ℝ) 1, |s - t| ^ (-a) * fn a n t
 
 /-! ### The weights `k_n` -/

@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.TimeFractional
 /-!
 Refutation for `StratonovichHAMSecondMoment.TimeFractional.twoTimeR_integral`
 (the real two-time Laplace lemma behind the cone integration in the proof of
-`P:clock-copy-obstruction`, main TeX lines 7784-7800):
+`P:clock-copy-obstruction`, main TeX lines 9072-9088):
 `∫∫_{(0,∞)²} e^{-c(s+t)-λ|s-t|} ds dt = 1/(c(c+λ))`.
 
 Wrong variant: the value `1/(2c(c+λ))` (only one of the two cones `s < t`,

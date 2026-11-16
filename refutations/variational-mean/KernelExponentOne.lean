@@ -1,7 +1,7 @@
 /-
 Refutation for the time-kernel integrability used in
 `L:variational-global-mean` (`notes/integrated_unmasked_variational.tex`
-lines 89-91 at a284420: "integrable since `a < 1`"), package theorem
+lines 111-113 at 39f2597a: "integrable since `a < 1`"), package theorem
 `StratonovichHAMSecondMoment.VariationalMean.abs_rpow_integrableOn`.
 
 Wrong variant: the hypothesis `a < 1` (from `α₀ < 1` in `H:homog`) relaxed

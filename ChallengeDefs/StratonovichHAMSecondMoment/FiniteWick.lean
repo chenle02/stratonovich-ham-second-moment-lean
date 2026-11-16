@@ -29,7 +29,7 @@ variable {ι : Type*} [Fintype ι] [LinearOrder ι]
 fixed-point-free involutions of `S`: maps `p : ι → ι` with `p x ∈ S`, `p x ≠ x`,
 `p (p x) = x` for `x ∈ S`, normalized by `p x = x` off `S` (so that each pairing
 of `S` is one function).  For `S` all of `Fin (2k)` these are the pair partitions
-`D ∈ Π_k` of the TeX (main TeX lines 3619-3622, 3670-3673). -/
+`D ∈ Π_k` of the TeX (main TeX lines 4310-4313, 4373-4376). -/
 def pairings (S : Finset ι) : Finset (ι → ι) :=
   univ.filter fun p => (∀ x ∈ S, p x ∈ S ∧ p x ≠ x ∧ p (p x) = x) ∧ ∀ x, x ∉ S → p x = x
 
@@ -354,7 +354,7 @@ real `N × N` matrix `A`: for indices `j : ι → Fin N` and a finite set `S`,
 route, the Stein recursion): integration by parts `E[g_e F(g)] = E[∂_e F(g)]`
 (`GaussianIBP.integral_coord_mul_eq_of_growth`) in every coordinate `e` for the
 least index `a`, then `wickSum_eq_sum_erase`.  The TeX instead differentiates
-the moment generating function (main TeX lines 3664-3673); the conclusion is
+the moment generating function (main TeX lines 4367-4376); the conclusion is
 the same. -/
 theorem wick_stdPi (A : Matrix (Fin N) (Fin N) ℝ) (j : ι → Fin N) (n : ℕ) :
     ∀ S : Finset ι, S.card = n →
@@ -477,7 +477,7 @@ theorem wick_hasLaw (K : Matrix (Fin N) (Fin N) ℝ) (hK : K.PosSemidef)
 end Law
 
 /-- A centered real Gaussian field `W` on a point set `X` with covariance `K`
-(the hypothesis of `L:terminal-wick`, main TeX lines 3601-3602): for every finite
+(the hypothesis of `L:terminal-wick`, main TeX lines 4292-4293): for every finite
 family of points `p : Fin n → X`, the covariance matrix `(K(p_a, p_b))` is
 positive semidefinite and the vector `(W(p_a))_a` has law
 `multivariateGaussian 0 (K(p_a, p_b))`.  The positive semidefiniteness is part
@@ -508,7 +508,7 @@ theorem CenteredGaussianField.wick_univ (hW : CenteredGaussianField W K P) {n : 
       ∫ ω, ∏ a, W (p a) ω ∂P = wickSum (fun a b => K (p a) (p b)) Finset.univ :=
   CenteredGaussianField.wick hW p (id : Fin n → Fin n) Finset.univ
 
-/-- The concatenated mixed moment (main TeX lines 3616-3618, 3662-3673): for
+/-- The concatenated mixed moment (main TeX lines 4307-4309, 4365-4376): for
 `p : Fin m → X`, `q : Fin n → X`,
 `E[∏_a W(p_a) ∏_b W(q_b)] = Σ_{D ∈ Π(m+n)} ∏_{{a,b} ∈ D} K(τ_a, τ_b)` with
 `τ = Fin.append p q`, and the product is integrable. -/

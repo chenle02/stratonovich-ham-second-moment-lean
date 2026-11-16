@@ -4,20 +4,20 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:uniform-series-tail` (Uniform series tails from scaled moments) of
-`notes/notes_stratonovich_ham_second_moment.tex`, statement lines 3703-3727 and
-proof lines 3729-3748 at manuscript revision a284420.
+`notes/notes_stratonovich_ham_second_moment.tex`, statement lines 4419-4443 and
+proof lines 4445-4464 at manuscript revision 39f2597a.
 
-How the proof obtains `‖Y_n‖₂ ≤ B_r^{1/2} r^{-n}` (TeX lines 3730-3733): neither
+How the proof obtains `‖Y_n‖₂ ≤ B_r^{1/2} r^{-n}` (TeX lines 4446-4449): neither
 orthogonality, nor coefficient extraction in `r`, nor scaling of the field.  It
 expands `E|u(r)|² = Σ_{m,n} r^{m+n} E[Y_m Y_n]`; all mixed moments
-`E[Y_m Y_n]` are nonnegative (`L:terminal-wick`, TeX lines 3600-3645, for a
+`E[Y_m Y_n]` are nonnegative (`L:terminal-wick`, TeX lines 4291-4336, for a
 field with nonnegative covariance), and `r > 0`, so the double sum dominates its
 diagonal term `r^{2n} E|Y_n|²`.
 
 Supplied input (the only one), from `L:terminal-wick`: the structure
 `TerminalWickInput`, i.e. for the given `r`, absolute `L²` convergence of
 `Σ r^n Y_n` and nonnegativity of every mixed moment `E[Y_m Y_n]`.  These are
-exactly the two facts the TeX proof cites from `L:terminal-wick` (lines 3730-3731:
+exactly the two facts the TeX proof cites from `L:terminal-wick` (lines 4446-4447:
 "absolute `L²` convergence of every regularized series and nonnegative mixed
 moments").  `L:terminal-wick` gives the absolute convergence for every real `r`;
 only the given `r` is assumed here.  Nothing about the Gaussian field, the
@@ -45,7 +45,7 @@ Differences from the TeX: the terms are real-valued (`Lp ℝ 2 μ`) and `r` is
 real, as in the lemma; the fixed point `(T,x)` is implicit in the family `Y`.
 The limit `u^{ε,δ}(1) → u` is proved by dominated convergence for series with
 the majorant `B^{1/2} r^{-n}` instead of the explicit head/tail split of TeX
-lines 3738-3745 (same majorant).  No conclusion is narrower than the TeX.
+lines 4454-4461 (same majorant).  No conclusion is narrower than the TeX.
 -/
 public import Mathlib
 
@@ -64,7 +64,7 @@ section Hilbert
 variable {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
 
 /-- The step "the scaled second moment contains the nonnegative term
-`r^{2n} E|Y_n|²`" (TeX lines 3731-3733), abstractly: if `Σ v_m` converges to `S`
+`r^{2n} E|Y_n|²`" (TeX lines 4447-4449), abstractly: if `Σ v_m` converges to `S`
 and all inner products `⟪v_m, v_n⟫` are nonnegative, then `‖v_n‖² ≤ ‖S‖²`. -/
 theorem norm_sq_le_of_inner_nonneg (v : ℕ → E) (S : E) (hS : HasSum v S)
     (hpos : ∀ m n, 0 ≤ inner ℝ (v m) (v n)) (n : ℕ) :
@@ -89,7 +89,7 @@ theorem norm_sq_le_of_inner_nonneg (v : ℕ → E) (S : E) (hS : HasSum v S)
 variable [CompleteSpace E]
 
 /-- The term bound `‖Y_n‖ ≤ B^{1/2} r^{-n}` of `(E:uniform-series-tail)` for one
-sequence (TeX lines 3730-3733), from absolute convergence of `Σ r^n Y_n`,
+sequence (TeX lines 4446-4449), from absolute convergence of `Σ r^n Y_n`,
 nonnegative mixed inner products and `‖Σ r^n Y_n‖² ≤ B`, for `r > 0`. -/
 theorem term_bound (Y : ℕ → E) (r B : ℝ) (hr : 0 < r)
     (hsum : Summable fun n => ‖r ^ n • Y n‖)
@@ -136,7 +136,7 @@ theorem summable_geometric_mul {c r : ℝ} (hr : 1 < r) :
 
 omit [InnerProductSpace ℝ E] [CompleteSpace E] in
 /-- The tail bounds of `(E:uniform-series-tail)` and absolute convergence from a
-geometric term bound (TeX lines 3734-3736, "the geometric series and the
+geometric term bound (TeX lines 4450-4452, "the geometric series and the
 triangle inequality"): if `‖Z_n‖ ≤ c r^{-n}` with `r > 1`, then `Σ ‖Z_n‖ < ∞`
 and `‖Σ_{n>N} Z_n‖ ≤ c r^{-(N+1)}/(1 - r^{-1})`. -/
 theorem tail_bound (Z : ℕ → E) (c r : ℝ) (hr : 1 < r)
@@ -148,7 +148,7 @@ theorem tail_bound (Z : ℕ → E) (c r : ℝ) (hr : 1 < r)
   refine ⟨Summable.of_nonneg_of_le (fun n => norm_nonneg _) hZ hsum0, fun N => ?_⟩
   exact tsum_of_norm_bounded (hasSum_geometric_tail c r hr N) (fun n => hZ _)
 
-/-- The general form of `L:uniform-series-tail` (TeX lines 3703-3748) in a real
+/-- The general form of `L:uniform-series-tail` (TeX lines 4419-4464) in a real
 Hilbert space `E`, for an arbitrary index type `ι` of regularizations and a
 nontrivial filter `F` on it (the manuscript: `(ε,δ) ∈ (0,∞)²`, `ε,δ ↓ 0`).
 Hypotheses, required eventually along `F`: absolute convergence of
@@ -159,7 +159,7 @@ Hypotheses, required eventually along `F`: absolute convergence of
 `Σ Y^i_n → Σ X_n` along `F`.  Route difference: the final limit is taken by
 Mathlib's dominated convergence for series (`tendsto_tsum_of_dominated_convergence`)
 with the summable majorant `B^{1/2} r^{-n}`, instead of the TeX's explicit
-head/tail split at level `N` (lines 3738-3745); the majorant is the one the TeX
+head/tail split at level `N` (lines 4454-4461); the majorant is the one the TeX
 split uses. -/
 theorem uniform_series_tail {ι : Type*} (F : Filter ι) [F.NeBot]
     (Y : ι → ℕ → E) (X : ℕ → E) (r B : ℝ) (hr : 1 < r)
@@ -188,8 +188,8 @@ theorem uniform_series_tail {ι : Type*} (F : Filter ι) [F.NeBot]
     exact ⟨hi, tail_bound (Y i) _ r hr hi⟩
   · exact tendsto_tsum_of_dominated_convergence (summable_geometric_mul hr) hX hYb
 
-/-- The last sentence of `L:uniform-series-tail` (TeX lines 3725-3726 and
-3746) in the general setting of `uniform_series_tail`: if moreover
+/-- The last sentence of `L:uniform-series-tail` (TeX lines 4441-4442 and
+4462) in the general setting of `uniform_series_tail`: if moreover
 `‖Σ Y^i_n‖² ≤ B₁` eventually along `F`, then `‖Σ X_n‖² ≤ B₁` ("continuity of the
 `L²` norm"). -/
 theorem uniform_series_tail_second_moment {ι : Type*} (F : Filter ι) [F.NeBot]
@@ -226,13 +226,13 @@ theorem integral_sq_eq_norm_sq (f : Lp ℝ 2 μ) :
   ext ω
   simp [sq]
 
-/-- Supplied input from `L:terminal-wick` (TeX lines 3600-3645 at a284420; the two facts at 3638-3644), for
+/-- Supplied input from `L:terminal-wick` (TeX lines 4291-4336 at 39f2597a; the two facts at 4329-4335), for
 one regularized family of terms `Y_n ∈ L²(Ω)` and the given real `r`: absolute
 `L²` convergence of `Σ r^n Y_n` (the lemma's last sentence, which gives it for
 every real or complex `r`) and nonnegativity of every mixed moment
 `E[Y_m Y_n]` (the lemma's Wick formula with nonnegative pairing integrals when
 the covariance is nonnegative; zero when `m + n` is odd).  These are exactly the
-two facts the proof of `L:uniform-series-tail` cites (TeX lines 3730-3731). -/
+two facts the proof of `L:uniform-series-tail` cites (TeX lines 4446-4447). -/
 structure TerminalWickInput (μ : Measure Ω) (Y : ℕ → Lp ℝ 2 μ) (r : ℝ) : Prop where
   abs_summable : Summable fun n => ‖r ^ n • Y n‖
   mixed_moment_nonneg : ∀ m n, 0 ≤ ∫ ω, Y m ω * Y n ω ∂μ
@@ -245,7 +245,7 @@ theorem eventually_pos_pair :
   filter_upwards [h] with p hp
   exact ⟨hp.1, hp.2⟩
 
-/-- `L:uniform-series-tail` (TeX lines 3703-3727, proof 3729-3748 at a284420),
+/-- `L:uniform-series-tail` (TeX lines 4419-4443, proof 4445-4464 at 39f2597a),
 exact-hypothesis wrapper in `L²(Ω, μ)` for a probability measure `μ`.
 Regularized terms `Y ε δ n` for `ε, δ > 0`; `u^{ε,δ}(r) = Σ r^n Y^{ε,δ}_n`.
 Hypotheses: `r > 1`; for every `ε, δ > 0` the `L:terminal-wick` input
@@ -294,8 +294,8 @@ theorem uniform_series_tail_paper [IsProbabilityMeasure μ]
     fun ε δ hε hδ => (tail_bound (Y ε δ) _ r hr (hYb ε δ hε hδ)).2, hXt,
     fun ε δ hε hδ => (tail_bound (Y ε δ) _ r hr (hYb ε δ hε hδ)).1⟩
 
-/-- The last sentence of `L:uniform-series-tail` (TeX lines 3725-3726; proof
-line 3746 at a284420), exact-hypothesis wrapper: under the hypotheses of
+/-- The last sentence of `L:uniform-series-tail` (TeX lines 4441-4442; proof
+line 4462 at 39f2597a), exact-hypothesis wrapper: under the hypotheses of
 `uniform_series_tail_paper`, if also `E|u^{ε,δ}(1)|² ≤ B₁` for all `ε, δ > 0`,
 then `E|u|² ≤ B₁` for `u = Σ X_n`.  `IsProbabilityMeasure μ` is not used. -/
 theorem uniform_series_tail_second_moment_paper [IsProbabilityMeasure μ]

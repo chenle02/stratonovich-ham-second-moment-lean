@@ -31,6 +31,39 @@ open HomogHypothesis SpectralHomog GaussianTest
 
 variable {d : ℕ}
 
+/-! ### Integrability of Gaussians against tempered measures -/
+
+/-- Auxiliary to the Lean proof route. A tempered measure integrates every
+translated Gaussian `e^{-b‖x-w‖²}`, `b > 0` (the Schwartz integrability noted
+at lines 25-32, for this test). -/
+theorem integrable_gauss_of_tempered {ν : Measure (Rd d)} (hν : IsTempered ν) {b : ℝ}
+    (hb : 0 < b) (w : Rd d) : Integrable (fun x : Rd d => Real.exp (-(b * ‖x - w‖ ^ 2))) ν := by
+  obtain ⟨k, hk⟩ := hν
+  have hg : Integrable (fun x : Rd d => (1 + ‖x‖) ^ (-(k : ℝ))) ν := by
+    refine ⟨(by fun_prop : Measurable fun x : Rd d => (1 + ‖x‖) ^ (-(k : ℝ))).aestronglyMeasurable,
+      (hasFiniteIntegral_iff_ofReal (Filter.Eventually.of_forall fun x => ?_)).2 hk⟩
+    exact Real.rpow_nonneg (by positivity) _
+  set K := (1 + ‖w‖) ^ k * Real.exp ((k : ℝ) ^ 2 / (4 * b))
+  refine Integrable.mono' (hg.const_mul K)
+    (by fun_prop : Measurable fun x : Rd d => Real.exp (-(b * ‖x - w‖ ^ 2))).aestronglyMeasurable
+    (Filter.Eventually.of_forall fun x => ?_)
+  have hp : 0 < (1 + ‖x‖) ^ k := by positivity
+  rw [Real.norm_of_nonneg (Real.exp_pos _).le, Real.rpow_neg (by positivity), Real.rpow_natCast,
+    ← div_eq_mul_inv, le_div_iff₀ hp]
+  have h1 : 1 + ‖x‖ ≤ (1 + ‖w‖) * (1 + ‖x - w‖) := by
+    have : ‖x‖ ≤ ‖x - w‖ + ‖w‖ := by
+      calc ‖x‖ = ‖(x - w) + w‖ := by rw [sub_add_cancel]
+        _ ≤ ‖x - w‖ + ‖w‖ := norm_add_le _ _
+    nlinarith [norm_nonneg w, norm_nonneg (x - w)]
+  have h2 : (1 + ‖x‖) ^ k ≤ (1 + ‖w‖) ^ k * (1 + ‖x - w‖) ^ k := by
+    rw [← mul_pow]; exact pow_le_pow_left₀ (by positivity) h1 k
+  have h3 := poly_mul_exp_neg_sq_le k hb (norm_nonneg (x - w))
+  calc Real.exp (-(b * ‖x - w‖ ^ 2)) * (1 + ‖x‖) ^ k
+      ≤ Real.exp (-(b * ‖x - w‖ ^ 2)) * ((1 + ‖w‖) ^ k * (1 + ‖x - w‖) ^ k) :=
+        mul_le_mul_of_nonneg_left h2 (Real.exp_pos _).le
+    _ = (1 + ‖w‖) ^ k * ((1 + ‖x - w‖) ^ k * Real.exp (-(b * ‖x - w‖ ^ 2))) := by ring
+    _ ≤ K := mul_le_mul_of_nonneg_left h3 (by positivity)
+
 /-! ### Spectral homogeneity from the scaling of `Γ` -/
 
 /-- Auxiliary to the Lean proof route. The Gaussian density `e^{-‖ξ‖²}` as an
@@ -39,10 +72,10 @@ def gdens (ξ : Rd d) : ℝ≥0 := Real.toNNReal (Real.exp (-‖ξ‖ ^ 2))
 
 /-! ### `P:masked-spectral-growth` -/
 
-/-- `M_Γ = ∫ e^{-|x|²/4} Γ(dx)` (line 37). -/
+/-- `M_Γ = ∫ e^{-|x|²/4} Γ(dx)` (line 40). -/
 def MGamma (Γ : Measure (Rd d)) : ℝ := ∫ x, Real.exp (-(‖x‖ ^ 2 / 4)) ∂Γ
 
-/-- `C_Γ = e M_Γ/(2√π)^d` (line 38). -/
+/-- `C_Γ = e M_Γ/(2√π)^d` (line 41). -/
 def CGamma (Γ : Measure (Rd d)) : ℝ := Real.exp 1 * MGamma Γ / (2 * Real.sqrt Real.pi) ^ d
 
 end StratonovichHAMSecondMoment.MaskedSpectralGrowth

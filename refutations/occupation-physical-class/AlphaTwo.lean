@@ -1,6 +1,6 @@
 /-
 Refutation for the scalar maximum in the proof of `P:occupation-physical-class`
-(`notes/integrated_spatial_occupation.tex` lines 431-433 at a284420), package theorem
+(`notes/integrated_spatial_occupation.tex` lines 564-566 at 39f2597a), package theorem
 `StratonovichHAMSecondMoment.OccupationPhysicalClass.scalar_max`, with the hypothesis
 `α < 2` dropped (the manuscript's strict inequality, lines 7-8).
 

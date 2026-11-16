@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.DampedSmoothing.damped_homogeneous_norms_whole_paper

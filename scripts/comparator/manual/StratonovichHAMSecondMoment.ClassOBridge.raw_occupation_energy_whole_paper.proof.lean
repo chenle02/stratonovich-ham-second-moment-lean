@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.ClassOBridge.raw_occupation_energy_whole_paper

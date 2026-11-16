@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.ClassOBridge.occupation_physical_class_whole_paper

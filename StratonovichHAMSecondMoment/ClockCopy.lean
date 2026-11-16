@@ -5,8 +5,8 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `P:clock-copy-obstruction` (Obstruction to unweighted constant-correlation
 clock copying), main TeX file `notes/notes_stratonovich_ham_second_moment.tex`
-(revision a284420), lines 7754-7905, with its objects defined at lines
-7699-7762: `Ψ_a` (`E:averaged-clock-kernel`, in `TimeFractional`),
+(revision 39f2597a), lines 9033-9208, with its objects defined at lines
+8977-9041: `Ψ_a` (`E:averaged-clock-kernel`, in `TimeFractional`),
 `h_Γ` and `R_Γ` (in `SpectralHomog`), `K_Γ(θ) = N₂(θ)²` (in `DampedNorms`),
 `v_ρ` and the candidate `J_{Γ,ρ}` (`E:naive-clock-candidate`), and the weight
 `w_θ` (`E:cross-clock-lambda-weight`).
@@ -86,7 +86,7 @@ variable {d : ℕ}
 /-! ### Definitions -/
 
 /-- `w_θ(λ) = λ^{a-2}/(2θΓ(a)) (R_Γ(θ) - R_Γ(θ+λ))`
-(`E:cross-clock-lambda-weight`, lines 7756-7762). -/
+(`E:cross-clock-lambda-weight`, lines 9035-9041). -/
 def weight (a θ : ℝ) (μ : Measure (Rd d)) (l : ℝ) : ℝ :=
   l ^ (a - 2) / (2 * θ * Real.Gamma a) * (𝓡 μ θ - 𝓡 μ (θ + l))
 
@@ -94,7 +94,7 @@ def weight (a θ : ℝ) (μ : Measure (Rd d)) (l : ℝ) : ℝ :=
 def filteredWeight (a θ : ℝ) (μ : Measure (Rd d)) (l : ℝ) : ℝ :=
   2 * θ / (2 * θ + l) * weight a θ μ l
 
-/-- `v_ρ(u,v) = u + v - 2ρ min(u,v)` (line 7737). -/
+/-- `v_ρ(u,v) = u + v - 2ρ min(u,v)` (line 9015). -/
 def vRho (ρ u v : ℝ) : ℝ := u + v - 2 * ρ * min u v
 
 /-- The integrand of `E:naive-clock-candidate`:
@@ -103,7 +103,7 @@ def Jintegrand (a θ : ℝ) (μ : Measure (Rd d)) (ρ : ℝ) (p : ℝ × ℝ) : 
   Real.exp (-(θ ^ 2 * (p.1 + p.2) / 2)) * heat μ (p.1 + p.2) *
     Psi a (θ * |p.1 - p.2|) (vRho ρ p.1 p.2)
 
-/-- `J_{Γ,ρ}(θ)` of `E:naive-clock-candidate` (lines 7741-7746). -/
+/-- `J_{Γ,ρ}(θ)` of `E:naive-clock-candidate` (lines 9019-9024). -/
 def J (a θ : ℝ) (μ : Measure (Rd d)) (ρ : ℝ) : ℝ :=
   1 / 4 * ∫ p, Jintegrand a θ μ ρ p ∂P2
 
@@ -115,14 +115,14 @@ def FJ (a θ : ℝ) (z : ℝ × (Rd d × (ℝ × ℝ))) : ℝ :=
 
 /-! ### Elementary facts -/
 
-/-- `v_1(u,v) = |u-v|` (line 7844). -/
+/-- `v_1(u,v) = |u-v|` (line 9140). -/
 theorem vRho_one (u v : ℝ) : vRho 1 u v = |u - v| := by
   unfold vRho
   rcases le_total u v with h | h
   · rw [min_eq_left h, abs_of_nonpos (by linarith)]; ring
   · rw [min_eq_right h, abs_of_nonneg (by linarith)]; ring
 
-/-- `v_ρ(u,v) ≥ |u-v|` for `ρ ≤ 1`, `u, v ≥ 0` (line 7844). -/
+/-- `v_ρ(u,v) ≥ |u-v|` for `ρ ≤ 1`, `u, v ≥ 0` (line 9140). -/
 theorem abs_le_vRho (ρ u v : ℝ) (hρ : ρ ≤ 1) (hu : 0 ≤ u) (hv : 0 ≤ v) :
     |u - v| ≤ vRho ρ u v := by
   rw [← vRho_one]
@@ -347,7 +347,7 @@ theorem xi_integral_K (μ : Measure (Rd d))
 /-! ### The cross transform at fixed `(λ, ξ)` -/
 
 /-- The first display of the proof of `P:clock-copy-obstruction` (lines
-7787-7793): for
+9075-9081): for
 `ξ ≠ 0`, `λ ≥ 0`, `θ > 0`,
 `∫∫ e^{-θ(s+t)-λ|s-t|} Ĝ_s(ξ) Ĝ_t(ξ) ds dt
   = (2θ+λ)/(2θ(θ²+|ξ|²)((θ+λ)²+|ξ|²))`. -/
@@ -428,7 +428,7 @@ theorem cross_transform (θ l : ℝ) (hθ : 0 < θ) (hl : 0 ≤ l) (ξ : Rd d) (
 
 /-! ### The `K` side: `N₂(θ)² = ∫ w_θ` -/
 
-/-- `K_Γ(θ) = N₂(θ)² = ∫_0^∞ w_θ(λ) dλ` (lines 7766 and 7806-7819), for a spectral
+/-- `K_Γ(θ) = N₂(θ)² = ∫_0^∞ w_θ(λ) dλ` (lines 9045 and 9098-9111), for a spectral
 measure with
 `∫(1+|ξ|²)⁻¹ dμ < ∞` and `μ{0} = 0`. -/
 theorem K_eq_integral_weight (μ : Measure (Rd d)) [SFinite μ]
@@ -551,7 +551,7 @@ theorem integral_FJ_eq (μ : Measure (Rd d)) (a θ : ℝ) (p : ℝ × ℝ) :
   unfold heat
   ring
 
-/-- `J_{Γ,1}(θ) = ∫_0^∞ 2θ/(2θ+λ) w_θ(λ) dλ` (lines 7847-7870), with the integrand of
+/-- `J_{Γ,1}(θ) = ∫_0^∞ 2θ/(2θ+λ) w_θ(λ) dλ` (lines 9147-9170), with the integrand of
 `J_{Γ,1}` integrable. -/
 theorem J_one_eq (μ : Measure (Rd d)) [SFinite μ]
     (hR : Integrable (fun ξ : Rd d => 1 / (1 + ‖ξ‖ ^ 2)) μ)
@@ -597,7 +597,7 @@ theorem Jintegrand_measurable (μ : Measure (Rd d)) [SFinite μ] (a θ ρ : ℝ)
   unfold Jintegrand
   fun_prop
 
-/-- `0 < J_{Γ,ρ}(θ) ≤ J_{Γ,1}(θ)` (lines 7827-7845) for `ρ ≤ 1` and `μ ≠ 0`, with the
+/-- `0 < J_{Γ,ρ}(θ) ≤ J_{Γ,1}(θ)` (lines 9119-9141) for `ρ ≤ 1` and `μ ≠ 0`, with the
 integrand of
 `J_{Γ,ρ}` integrable. -/
 theorem J_rho_props (μ : Measure (Rd d)) [SFinite μ]
@@ -664,7 +664,7 @@ theorem integral_rpow_div_add_scaling (a c : ℝ) (hc : 0 < c) :
   rw [hc2, mul_assoc, h]
   field_simp
 
-/-- `E:degree-one-clock-loss` (proof at lines 7877-7904): if `α = 1`,
+/-- `E:degree-one-clock-loss` (proof at lines 9180-9207): if `α = 1`,
 `J_{Γ,1}(θ) = (2-2^a) K_Γ(θ)`. -/
 theorem degree_one (μ : Measure (Rd d)) [SFinite μ]
     (hR : Integrable (fun ξ : Rd d => 1 / (1 + ‖ξ‖ ^ 2)) μ) (hμ0 : μ {0} = 0)
@@ -710,7 +710,7 @@ theorem degree_one (μ : Measure (Rd d)) [SFinite μ]
 
 /-! ### The proposition with the manuscript's hypotheses -/
 
-/-- `P:clock-copy-obstruction` (lines 7754-7781) with the manuscript's
+/-- `P:clock-copy-obstruction` (lines 9033-9060) with the manuscript's
 hypotheses: `H:homog` with temporal exponent `a = α₀`, a nonzero covariance
 `Γ`, `θ > 0`, `-1 ≤ ρ ≤ 1`, and the supplied spectral homogeneity of `μ`
 (derived in the TeX proof of `L:damped-homogeneous-norms`).  Conclusions:

@@ -38,9 +38,9 @@ variable {X : Type*} [NormedAddCommGroup X] [InnerProductSpace ℂ X] {m : ℕ}
 /-- **Named input `FockColumn`** (the spatial column bound): the family
 `H_1, …, H_m` satisfies `∑_i ‖H_i u‖² ≤ c ‖u‖²` for all `u`.  In `L:fock-form`
 it stands for `∑_i H_i² ≤ R_α ρ^{α-4}` for `H_i = A_ρ^{-1/2} M_{e_i} A_ρ^{-1/2}`
-(main TeX lines 2496-2511: Gaussian isometry, spatial Plancherel and
+(main TeX lines 2991-3006: Gaussian isometry, spatial Plancherel and
 `E:phase-resolvent` of `L:phase-contractions`); in `L:interval-contractions`
-it stands for `E:interval-column` (lines 2832-2835) with the operators
+it stands for `E:interval-column` (lines 3388-3391) with the operators
 `A_ρ^{-1/2} M_{e_m}` and `c = R_α ρ^{α-2}`.  The manuscript states these for
 the full mode family; a finite family is a sub-sum, so the input is no
 stronger. -/

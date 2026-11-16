@@ -24,38 +24,38 @@ namespace StratonovichHAMSecondMoment.WhiteClockLaplace
 
 /-! ### The cross-pair transform `E:white-cross-clock-transform` -/
 
-/-- The integrand of `E:white-cross-clock-transform` (TeX line 7652) at
+/-- The integrand of `E:white-cross-clock-transform` (TeX line 8921) at
 `p = (s, t)`: `e^{-θ₁ s - θ₂ t} |s-t|^{-a} min(s,t)/2`. -/
 def crossIntegrand (a θ₁ θ₂ : ℝ) (p : ℝ × ℝ) : ℝ :=
   exp (-θ₁ * p.1 - θ₂ * p.2) * |p.1 - p.2| ^ (-a) * (min p.1 p.2 / 2)
 
-/-- The right side of `E:white-cross-clock-transform` (TeX lines 7654--7656):
+/-- The right side of `E:white-cross-clock-transform` (TeX lines 8923--8925):
 `Γ_E(1-a)/(2(θ₁+θ₂)²) (θ₁^{a-1} + θ₂^{a-1})`. -/
 def crossValue (a θ₁ θ₂ : ℝ) : ℝ :=
   Gamma (1 - a) / (2 * (θ₁ + θ₂) ^ 2) * (θ₁ ^ (a - 1) + θ₂ ^ (a - 1))
 
 /-- Auxiliary (Lean route): the half `{0 < t < s}` of the quadrant (the TeX part
-`s = t + v`, `v > 0`, line 7680). -/
+`s = t + v`, `v > 0`, line 8955). -/
 def upperHalf : Set (ℝ × ℝ) := {p | 0 < p.2 ∧ p.2 < p.1}
 
 /-- Auxiliary (Lean route): the half `{0 < s < t}` of the quadrant (the TeX part
-`t = s + v`, `v > 0`, line 7680). -/
+`t = s + v`, `v > 0`, line 8955). -/
 def lowerHalf : Set (ℝ × ℝ) := {p | 0 < p.1 ∧ p.1 < p.2}
 
 /-! ### The self-pair transform `E:white-self-clock-transform` -/
 
-/-- The integrand of `E:white-self-clock-transform` (TeX line 7666) at
+/-- The integrand of `E:white-self-clock-transform` (TeX line 8935) at
 `p = (r₁, r₂)`: `e^{-η₁ r₁ - η₂ r₂} r₂^{-a} r₁/2`. -/
 def selfIntegrand (a η₁ η₂ : ℝ) (p : ℝ × ℝ) : ℝ :=
   exp (-η₁ * p.1 - η₂ * p.2) * p.2 ^ (-a) * (p.1 / 2)
 
-/-- The right side of `E:white-self-clock-transform` (TeX lines 7668--7669):
+/-- The right side of `E:white-self-clock-transform` (TeX lines 8937--8938):
 `Γ_E(1-a)/(2 η₁² η₂^{1-a})`. -/
 def selfValue (a η₁ η₂ : ℝ) : ℝ := Gamma (1 - a) / (2 * η₁ ^ 2 * η₂ ^ (1 - a))
 
-/-! ### The Green-factor steps of the proof (TeX lines 7674--7679, 7691--7693) -/
+/-! ### The Green-factor steps of the proof (TeX lines 8949--8954, 8969--8971) -/
 
-/-- The one-dimensional wave Green function of the section (TeX line 7642):
+/-- The one-dimensional wave Green function of the section (TeX line 8910):
 `G_s(y) = (1/2) 1_{|y| < s}`. -/
 def green (s y : ℝ) : ℝ := if |y| < s then 1 / 2 else 0
 

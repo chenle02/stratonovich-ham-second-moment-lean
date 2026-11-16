@@ -4,13 +4,13 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:terminal-wick` (The finite terminal-chain Wick formula) of the main TeX
-file `notes/notes_stratonovich_ham_second_moment.tex` at revision a284420:
-the terminal-chain measure `E:terminal-chain-measure` (lines 3585-3598), the
-statement (lines 3600-3645) and the proof (lines 3647-3699).  Built on the
+file `notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a:
+the terminal-chain measure `E:terminal-chain-measure` (lines 4275-4288), the
+statement (lines 4291-4336) and the proof (lines 4338-4410).  Built on the
 finite Wick foundation `FiniteWick`.
 
 Formalized:
-* The masses (lines 3648-3651): `chainMass d n T = ∫ 1_{[0,T]^n_<} ∏ G_{s_{j+1}-s_j}(ℝ^d) ds`
+* The masses (lines 4348-4351): `chainMass d n T = ∫ 1_{[0,T]^n_<} ∏ G_{s_{j+1}-s_j}(ℝ^d) ds`
   equals `T^{2n}/(2n)!` for `T ≥ 0`, `d ∈ {1,2,3}` (`chainMass_eq`; recursion at
   the last vertex `chainMassReal_succ`, wave Green masses from
   `WaveGreen.waveGreen_mass`).
@@ -41,7 +41,7 @@ The wrappers take `X = [0,T] × ℝ^d` (`Pt d T`), `V = sup_p K(p,p)` with
 measures `ν n` with total mass `chainMass d n T`.
 
 Supplied inputs (named hypotheses; no conclusion is assumed):
-* `hmeas` (TeX lines 3657-3659, "the product is strongly measurable in `L²` on
+* `hmeas` (TeX lines 4357-4359, "the product is strongly measurable in `L²` on
   the stated pieces"): `z ↦ prodL2 hW z` is a.e. strongly measurable for
   `ν n`.  In the TeX this follows from the mean-square continuity on cells;
   here it is assumed, a.e. only, so it is no stronger than the TeX claim.
@@ -78,9 +78,9 @@ Differences from the TeX:
   is used here (for complex `r` the scalar series `Σ |r|^n ‖Y_n‖₂`, which is
   what absolute convergence means, is the case `r := |r|` of the real statement,
   but a complexified `L²` is not set up).
-* Not formalized: the symmetrization paragraph (lines 3677-3683, identification
+* Not formalized: the symmetrization paragraph (lines 4384-4390, identification
   with the symmetrized convention of `E:expansion`) and the `d = 3`
-  Green-regularization paragraph (lines 3685-3691, agreement with the source's
+  Green-regularization paragraph (lines 4392-4398, agreement with the source's
   fixed-noise convention).  Neither is used by any conclusion here; the chain
   measures enter only through their masses, and `G` in `d = 3` is
   `WaveGreen.waveGreen 3`, whose definition is a documented choice of that
@@ -106,7 +106,7 @@ namespace StratonovichHAMSecondMoment.TerminalWick
 open WaveGreen
 
 /-- The integrand of the total mass of the terminal-chain measure
-`g_n^{T,x}` (`E:terminal-chain-measure`, main TeX lines 3585-3598), written by
+`g_n^{T,x}` (`E:terminal-chain-measure`, main TeX lines 4275-4288), written by
 recursion on the last vertex: `chainWeight d 0 T () = 1` and
 `chainWeight d (n+1) T s = 1_{0 < s_{n+1} < T} G_{T - s_{n+1}}(ℝ^d) ·
 chainWeight d n s_{n+1} (s_1, …, s_n)`, i.e. `1_{[0,T]^n_<}(s) ∏_j G_{s_{j+1}-s_j}(ℝ^d)`
@@ -160,7 +160,7 @@ theorem measurable_chainWeightReal (n : ℕ) :
 /-- Auxiliary (Lean proof route): `∫ chainWeightReal n T`. -/
 def chainMassReal (n : ℕ) (T : ℝ) : ℝ≥0∞ := ∫⁻ s, chainWeightReal n T s
 
-/-- Integration at the last vertex (TeX lines 3648-3650):
+/-- Integration at the last vertex (TeX lines 4348-4350):
 `M_{n+1}(T) = ∫_0^T (T - s) M_n(s) ds`. -/
 theorem chainMassReal_succ (n : ℕ) (T : ℝ) :
     chainMassReal (n + 1) T = ∫⁻ t in Ioo 0 T, ENNReal.ofReal (T - t) * chainMassReal n t := by
@@ -195,7 +195,7 @@ theorem chainMassReal_succ (n : ℕ) (T : ℝ) :
     exact (measurableSet_lt measurable_const measurable_fst).inter
       (measurableSet_lt measurable_fst measurable_const)
 
-/-- `M_n(T) = T^{2n}/(2n)!` for `T ≥ 0` (TeX lines 3650-3651), by induction. -/
+/-- `M_n(T) = T^{2n}/(2n)!` for `T ≥ 0` (TeX lines 4350-4351), by induction. -/
 theorem chainMassReal_eq (n : ℕ) : ∀ T : ℝ, 0 ≤ T →
     chainMassReal n T = ENNReal.ofReal (T ^ (2 * n) / (2 * n).factorial) := by
   induction n with
@@ -245,7 +245,7 @@ theorem memLp_prod (hW : CenteredGaussianField W K P) {n : ℕ} (z : Fin n → X
   simpa [sq] using (hW.wick_append z z).1
 
 /-- The `L²(Ω)` class of `∏_{j} W(z_j)` for a tuple of points `z : Fin n → X`
-(the integrand of `Y_n`, TeX line 3607). -/
+(the integrand of `Y_n`, TeX line 4298). -/
 def prodL2 (hW : CenteredGaussianField W K P) {n : ℕ} (z : Fin n → X) : Lp ℝ 2 P :=
   (memLp_prod hW z).toLp _
 
@@ -255,7 +255,7 @@ theorem coeFn_prodL2 (hW : CenteredGaussianField W K P) {n : ℕ} (z : Fin n →
   MemLp.coeFn_toLp _
 
 /-- `E[∏_a W(z_a) ∏_b W(z'_b)] = Σ_{D ∈ Π(m+n)} ∏_{{a,b} ∈ D} K(τ_a, τ_b)`,
-`τ = Fin.append z z'` (TeX lines 3662-3673, pointwise in the chain variables). -/
+`τ = Fin.append z z'` (TeX lines 4365-4376, pointwise in the chain variables). -/
 theorem inner_prodL2 (hW : CenteredGaussianField W K P) {m n : ℕ} (z : Fin m → X)
     (z' : Fin n → X) :
     inner ℝ (prodL2 hW z) (prodL2 hW z') =
@@ -266,7 +266,7 @@ theorem inner_prodL2 (hW : CenteredGaussianField W K P) {m n : ℕ} (z : Fin m �
   rw [h1, h2]
 
 /-- `‖∏_j W(z_j)‖₂ ≤ √((2n-1)!!) (√V)^n` when `K(x,x) ≤ V` for all `x` (TeX
-lines 3651-3656; Lean route via `FiniteWick.wickSum_abs_le`, not Hölder). -/
+lines 4351-4356; Lean route via `FiniteWick.wickSum_abs_le`, not Hölder). -/
 theorem norm_prodL2_le (hW : CenteredGaussianField W K P) (V : ℝ) (hV0 : 0 ≤ V)
     (hV : ∀ x, K x x ≤ V) {n : ℕ} (z : Fin n → X) :
     ‖prodL2 hW z‖ ≤ Real.sqrt ((2 * n - 1).doubleFactorial) * Real.sqrt V ^ n := by
@@ -285,16 +285,16 @@ theorem norm_prodL2_le (hW : CenteredGaussianField W K P) (V : ℝ) (hV0 : 0 ≤
 variable [MeasurableSpace X] (ν : ∀ n : ℕ, Measure (Fin n → X)) [∀ n, IsFiniteMeasure (ν n)]
 
 /-- `Y_n = ∫ ∏_j W(s_j, y_j) g_n(ds, dy)` as an `L²(Ω)`-valued Bochner integral
-(TeX lines 3605-3608) against a measure `ν n` on `n`-tuples of points.  It is a
+(TeX lines 4296-4299) against a measure `ν n` on `n`-tuples of points.  It is a
 genuine integral (not the junk value `0`) exactly when `prodL2 hW` is
 `ν n`-integrable, which `integrable_prodL2` proves from the supplied strong
 measurability. -/
 def chainIntegral (hW : CenteredGaussianField W K P) (n : ℕ) : Lp ℝ 2 P :=
   ∫ z, prodL2 hW z ∂ν n
 
-/-- The Bochner integrals `Y_n` exist (TeX lines 3610, 3657-3660): from the
+/-- The Bochner integrals `Y_n` exist (TeX lines 4301, 4357-4360): from the
 supplied a.e. strong measurability `hmeas` (the input standing for "the product
-is strongly measurable in `L²`", lines 3657-3659), the bound `norm_prodL2_le`
+is strongly measurable in `L²`", lines 4357-4359), the bound `norm_prodL2_le`
 and finiteness of `ν n`. -/
 theorem integrable_prodL2 (hW : CenteredGaussianField W K P) (V : ℝ) (hV0 : 0 ≤ V)
     (hV : ∀ x, K x x ≤ V)
@@ -303,7 +303,7 @@ theorem integrable_prodL2 (hW : CenteredGaussianField W K P) (V : ℝ) (hV0 : 0 
   Integrable.of_bound (hmeas n) _ (ae_of_all _ fun z => norm_prodL2_le hW V hV0 hV z)
 
 /-- The majorant: `‖Y_n‖₂ ≤ √((2n-1)!!) (√V)^n ν_n(total)` (with the mass
-`T^{2n}/(2n)!` this is `E:terminal-term-majorant`, TeX lines 3611-3615).  No
+`T^{2n}/(2n)!` this is `E:terminal-term-majorant`, TeX lines 4302-4306).  No
 integrability hypothesis is needed for the inequality itself. -/
 theorem norm_chainIntegral_le (hW : CenteredGaussianField W K P) (V : ℝ) (hV0 : 0 ≤ V)
     (hV : ∀ x, K x x ≤ V) (n : ℕ) :
@@ -324,7 +324,7 @@ theorem integrable_inner_prod (hW : CenteredGaussianField W K P) (V : ℝ) (hV0 
   exact mul_le_mul (norm_prodL2_le hW V hV0 hV _) (norm_prodL2_le hW V hV0 hV _)
     (norm_nonneg _) (by positivity)
 
-/-- Fubini through the two chain measures (TeX lines 3662-3675):
+/-- Fubini through the two chain measures (TeX lines 4365-4378):
 `⟪Y_m, Y_n⟫ = ∫∫ Σ_{D ∈ Π(m+n)} ∏_{{a,b} ∈ D} K(τ_a, τ_b) d(ν_m ⊗ ν_n)`, via
 `integral_inner` twice and `integral_prod_symm`. -/
 theorem inner_chainIntegral (hW : CenteredGaussianField W K P) (V : ℝ) (hV0 : 0 ≤ V)
@@ -388,7 +388,7 @@ theorem mixed_moment_eq_inner (hW : CenteredGaussianField W K P) (m n : ℕ) :
       inner ℝ (chainIntegral ν hW m) (chainIntegral ν hW n) :=
   UniformSeriesTail.integral_mul_eq_inner _ _
 
-/-- `E:terminal-wick-formula` (TeX lines 3616-3637) in general form:
+/-- `E:terminal-wick-formula` (TeX lines 4307-4328) in general form:
 `E[Y_m Y_n] = Σ_{D ∈ Π(m+n)} ∫ ∏_{{a,b} ∈ D} K(τ_a, τ_b) d(ν_m ⊗ ν_n)`, one
 term per pairing with coefficient one.  `hK` (measurability of `K`) is used
 only to split the integral of the pairing sum into the individual pairing
@@ -406,7 +406,7 @@ theorem mixed_moment_eq_sum_pairings (hW : CenteredGaussianField W K P) (V : ℝ
   exact integral_finsetSum _ fun D _ =>
     integrable_pairWeight ν hK V (fun x y => hW.abs_le V hV x y) m n D
 
-/-- If `m + n` is odd, `E[Y_m Y_n] = 0` (TeX line 3638). -/
+/-- If `m + n` is odd, `E[Y_m Y_n] = 0` (TeX line 4329). -/
 theorem mixed_moment_odd (hW : CenteredGaussianField W K P) (V : ℝ) (hV0 : 0 ≤ V)
     (hV : ∀ x, K x x ≤ V)
     (hmeas : ∀ n, AEStronglyMeasurable (fun z : Fin n → X => prodL2 hW z) (ν n)) (m n : ℕ)
@@ -427,7 +427,7 @@ theorem integrable_wickSum_append (hW : CenteredGaussianField W K P) (V : ℝ) (
   (integrable_inner_prod ν hW V hV0 hV hmeas m n).congr
     (ae_of_all _ fun q => inner_prodL2 hW q.1 q.2)
 
-/-- If `K ≥ 0` then `E[Y_m Y_n] ≥ 0` (TeX lines 3639-3640, 3693-3694). -/
+/-- If `K ≥ 0` then `E[Y_m Y_n] ≥ 0` (TeX lines 4330-4331, 4404-4405). -/
 theorem mixed_moment_nonneg (hW : CenteredGaussianField W K P) (V : ℝ) (hV0 : 0 ≤ V)
     (hV : ∀ x, K x x ≤ V)
     (hmeas : ∀ n, AEStronglyMeasurable (fun z : Fin n → X => prodL2 hW z) (ν n))
@@ -437,7 +437,7 @@ theorem mixed_moment_nonneg (hW : CenteredGaussianField W K P) (V : ℝ) (hV0 : 
   exact integral_nonneg fun q => wickSum_nonneg _ (fun a b => hKpos _ _) _
 
 omit [∀ n, IsFiniteMeasure (ν n)] in
-/-- If `K ≥ 0`, every pairing integral is nonnegative (TeX lines 3639-3640). -/
+/-- If `K ≥ 0`, every pairing integral is nonnegative (TeX lines 4330-4331). -/
 theorem pairing_integral_nonneg (hKpos : ∀ x y, 0 ≤ K x y) (m n : ℕ)
     (D : Fin (m + n) → Fin (m + n)) :
     0 ≤ ∫ q, pairWeight (fun a b => K (Fin.append q.1 q.2 a) (Fin.append q.1 q.2 b)) univ D
@@ -469,7 +469,7 @@ theorem sqrt_doubleFactorial_div_le (n : ℕ) :
     _ = (2 * n).factorial := Real.mul_self_sqrt hb.le
 
 /-- Auxiliary: `Σ_n c^n √((2n-1)!!)/(2n)!` converges for `c ≥ 0` (comparison
-with `Σ c^n/n!`; the TeX uses the ratio test, lines 3695-3697). -/
+with `Σ c^n/n!`; the TeX uses the ratio test, lines 4406-4408). -/
 theorem summable_majorant (c : ℝ) (hc : 0 ≤ c) :
     Summable fun n : ℕ => c ^ n * (Real.sqrt ((2 * n - 1).doubleFactorial) / (2 * n).factorial) := by
   refine Summable.of_nonneg_of_le (fun n => by positivity) (fun n => ?_)
@@ -478,7 +478,7 @@ theorem summable_majorant (c : ℝ) (hc : 0 ≤ c) :
   exact mul_le_mul_of_nonneg_left (sqrt_doubleFactorial_div_le n) (pow_nonneg hc n)
 
 /-- Absolute convergence of `Σ_n r^n Y_n` in `L²` for every real `r` (TeX lines
-3642-3644, 3695-3698), given the masses `ν_n(total) = T^{2n}/(2n)!`; the
+4333-4335, 4406-4409), given the masses `ν_n(total) = T^{2n}/(2n)!`; the
 zero-variance case `V = 0` is included. -/
 theorem summable_norm_smul_chainIntegral (hW : CenteredGaussianField W K P) (V : ℝ)
     (hV0 : 0 ≤ V) (hV : ∀ x, K x x ≤ V) (T : ℝ)
@@ -517,7 +517,7 @@ variable {X Ω₁ Ω₂ : Type*} [MeasurableSpace X] [MeasurableSpace Ω₁] [Me
   {P₁ : Measure Ω₁} {P₂ : Measure Ω₂} {W₁ : X → Ω₁ → ℝ} {W₂ : X → Ω₂ → ℝ} {K₁ K₂ : X → X → ℝ}
   (ν : ∀ n : ℕ, Measure (Fin n → X)) [∀ n, IsFiniteMeasure (ν n)]
 
-/-- Entrywise comparison (TeX lines 3640-3642, 3694-3695): for two centered
+/-- Entrywise comparison (TeX lines 4331-4333, 4405-4406): for two centered
 Gaussian fields with `0 ≤ K₁ ≤ K₂` and the same chain measures,
 `E[Y¹_m Y¹_n] ≤ E[Y²_m Y²_n]`. -/
 theorem mixed_moment_mono (hW₁ : CenteredGaussianField W₁ K₁ P₁)
@@ -538,14 +538,14 @@ end Mono
 section Paper
 open FiniteWick Finset Filter Topology HomogHypothesis
 
-/-- The point set `[0,T] × ℝ^d` of the field in `L:terminal-wick` (TeX line 3601). -/
+/-- The point set `[0,T] × ℝ^d` of the field in `L:terminal-wick` (TeX line 4292). -/
 abbrev Pt (d : ℕ) (T : ℝ) := ↥(Set.Icc (0 : ℝ) T) × Rd d
 
-/-- `M_n(T)`, the total mass of `g_n^{T,x}` (TeX lines 3648-3651), as the integral
+/-- `M_n(T)`, the total mass of `g_n^{T,x}` (TeX lines 4348-4351), as the integral
 of `chainWeight` (product of the wave Green masses over the ordered simplex). -/
 def chainMass (d n : ℕ) (T : ℝ) : ℝ≥0∞ := ∫⁻ s, chainWeight d n T s
 
-/-- `M_n(T) = T^{2n}/(2n)!` for `T ≥ 0`, `d ∈ {1,2,3}` (TeX lines 3648-3651),
+/-- `M_n(T) = T^{2n}/(2n)!` for `T ≥ 0`, `d ∈ {1,2,3}` (TeX lines 4348-4351),
 from `G_h(ℝ^d) = h` (`WaveGreen.waveGreen_mass`). -/
 theorem chainMass_eq (d : ℕ) (hd : d = 1 ∨ d = 2 ∨ d = 3) (n : ℕ) (T : ℝ) (hT : 0 ≤ T) :
     chainMass d n T = ENNReal.ofReal (T ^ (2 * n) / (2 * n).factorial) := by
@@ -554,7 +554,7 @@ theorem chainMass_eq (d : ℕ) (hd : d = 1 ∨ d = 2 ∨ d = 3) (n : ℕ) (T : �
   exact chainMassReal_eq n T hT
 
 /-- Joint mean-square continuity on each open cell of a finite partition of
-`[0,T]`, times `ℝ^d` (TeX lines 3603-3605): there is a finite set `Z` of cut
+`[0,T]`, times `ℝ^d` (TeX lines 4294-4296): there is a finite set `Z` of cut
 times such that at every point `p` whose time is not in `Z`,
 `E|W(q) - W(p)|² = K(q,q) - 2K(p,q) + K(p,p) → 0` as `q → p` (the open cells
 are open, so continuity on them is continuity at their points; `Z` contains the
@@ -564,14 +564,14 @@ def MeanSquareCellContinuous {d : ℕ} {T : ℝ} (K : Pt d T → Pt d T → ℝ)
     Tendsto (fun q => K q q - 2 * K p q + K p p) (𝓝 p) (𝓝 0)
 
 /-- The pairing integral `T^K_{m,n,D}` of `E:terminal-pairing-integral` (TeX
-lines 3624-3637): the integral against `ν_m ⊗ ν_n` (the two chain measures)
+lines 4315-4328): the integral against `ν_m ⊗ ν_n` (the two chain measures)
 of `∏_{{a,b} ∈ D} K(τ_a, τ_b)`, `τ = Fin.append` of the two tuples. -/
 def pairingIntegral {X : Type*} [MeasurableSpace X] (ν : ∀ n : ℕ, Measure (Fin n → X))
     (K : X → X → ℝ) (m n : ℕ) (D : Fin (m + n) → Fin (m + n)) : ℝ :=
   ∫ q, pairWeight (fun a b => K (Fin.append q.1 q.2 a) (Fin.append q.1 q.2 b)) univ D
     ∂((ν m).prod (ν n))
 
-/-- `Y_0 = 1` (TeX lines 3597-3598, 3605): if `ν 0` has mass one (the unit mass on
+/-- `Y_0 = 1` (TeX lines 4287-4288, 4296): if `ν 0` has mass one (the unit mass on
 the empty tuple), then `Y_0 = 1` almost surely. -/
 theorem chainIntegral_zero {X Ω : Type*} [MeasurableSpace X] [MeasurableSpace Ω]
     {P : Measure Ω} {W : X → Ω → ℝ} {K : X → X → ℝ} (hW : CenteredGaussianField W K P)
@@ -598,7 +598,7 @@ theorem supVar_nonneg {Ω : Type*} [MeasurableSpace Ω] {P : Measure Ω} {d : �
   simp at h1
   exact h1.trans (le_ciSup hVfin _)
 
-/-- `L:terminal-wick` (main TeX lines 3600-3645, proof 3647-3699 at a284420),
+/-- `L:terminal-wick` (main TeX lines 4291-4336, proof 4338-4410 at 39f2597a),
 wrapper.  Hypotheses: `d ∈ {1,2,3}`, `T > 0`; a centered real
 Gaussian field `W` on `[0,T] × ℝ^d` with covariance `K`; `V = sup_p K(p,p) < ∞`
 (`BddAbove`); mean-square continuity on the open cells of a finite partition
@@ -660,8 +660,8 @@ theorem terminal_wick_paper {Ω : Type*} [MeasurableSpace Ω] (P : Measure Ω)
   · exact summable_norm_smul_chainIntegral ν hW V hV0 hV T hmassR
   · exact fun hpos r => terminalWickInput_of_nonneg ν hW V hV0 hV hmeas T hmassR hpos r
 
-/-- The comparison sentence of `L:terminal-wick` (main TeX lines 3640-3642,
-proof 3693-3695 at a284420), exact-hypothesis wrapper: two centered real
+/-- The comparison sentence of `L:terminal-wick` (main TeX lines 4331-4333,
+proof 4404-4406 at 39f2597a), exact-hypothesis wrapper: two centered real
 Gaussian fields on `[0,T] × ℝ^d` with covariances `0 ≤ K₁ ≤ K₂` (entrywise),
 each under the hypotheses of `terminal_wick_paper`, and the same chain measures;
 then `E[Y¹_m Y¹_n] ≤ E[Y²_m Y²_n]` for all `m, n`.  Carried, unused: `d ∈ {1,2,3}`,

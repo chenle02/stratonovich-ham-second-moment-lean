@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.DampedSmoothing.smoothedCov_spectral_unique_paper

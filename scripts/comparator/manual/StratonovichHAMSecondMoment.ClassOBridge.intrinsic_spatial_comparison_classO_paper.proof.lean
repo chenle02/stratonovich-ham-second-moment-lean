@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.ClassOBridge.intrinsic_spatial_comparison_classO_paper

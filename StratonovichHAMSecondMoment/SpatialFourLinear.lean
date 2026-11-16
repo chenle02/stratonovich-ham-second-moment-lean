@@ -3,9 +3,9 @@ module
 /-
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
-Propositions `P:spatial-four-linear` (The physical four-linear extension, lines 219-298) and
+Propositions `P:spatial-four-linear` (The physical four-linear extension, lines 297-398) and
 `P:spatial-energy-map` (The spatial energy and static lower variational expression, lines
-300-348) of `notes/integrated_spatial_occupation.tex` (revision a284420), on real `H¹`
+405-461) of `notes/integrated_spatial_occupation.tex` (revision 39f2597a), on real `H¹`
 profiles, under the section's standing assumptions (lines 4-10: a nonzero covariance satisfying
 `H:homog`, `a = α₀`).
 
@@ -17,27 +17,27 @@ Objects reused, not redefined: `B_Γ` is the extended pairing `OccupationKernelR
 `SpatialSmoothRatio.R0`; `H¹` is the weak-gradient space of `WeakSobolev`, a profile being an
 `H¹` pair `(f, g)` (`IsH1Pair`: `f, g ∈ L²`, `g` a weak gradient of `f`); unit profiles are
 `SpatialStaticControls.IsUnitH1`; `b(g) = ∫ ‖∇g‖²` is written with the named weak gradient.
-New definitions: `l2`, `Nnorm` (`N(f)`, line 221), `IsH1Pair`, `H1Tendsto` (`H¹` convergence),
-`C4` (line 229), `ratioSetH1` and `Rsp` (`R_sp`, line 235), `energySet` and `Esp` (`𝓔_sp`,
-lines 302-306), `energyValue` (right side of `E:spatial-energy-map`), `F0` (`F₀`, lines
-319-321), and the auxiliary `SquareBound` (the conclusion of the Fatou step).
+New definitions: `l2`, `Nnorm` (`N(f)`, line 299), `IsH1Pair`, `H1Tendsto` (`H¹` convergence),
+`C4` (line 307), `ratioSetH1` and `Rsp` (`R_sp`, line 313), `energySet` and `Esp` (`𝓔_sp`,
+lines 407-411), `energyValue` (right side of `E:spatial-energy-map`), `F0` (`F₀`, lines
+424-426), and the auxiliary `SquareBound` (the conclusion of the Fatou step).
 
 Formalized (`*_paper` wrappers with the hypotheses `HomogHypothesis.HomogCovariance d α α₀ Γ μ`,
 `Γ ≠ 0` and the named input `hdense`):
 * `spatial_four_linear_paper`: `E:spatial-homogeneous-bound` `A_sp(f) ≤ R_0 N(f)⁴` in `[0,∞]`
-  (line 224); finiteness of every square pairing and `E:spatial-square-CS` (lines 225-227);
-  `E:spatial-four-linear` and absolute convergence of `C₄` (lines 229-234); joint continuity of
-  `C₄` on `(H¹)⁴` (sequential form); `R_sp = R_0` (line 235); `A_sp(f) > 0` for every nonzero
-  profile (line 236).  Component wrappers: `spatial_homogeneous_bound_paper`,
+  (line 302); finiteness of every square pairing and `E:spatial-square-CS` (lines 303-305);
+  `E:spatial-four-linear` and absolute convergence of `C₄` (lines 307-312); joint continuity of
+  `C₄` on `(H¹)⁴` (sequential form); `R_sp = R_0` (line 313); `A_sp(f) > 0` for every nonzero
+  profile (line 314).  Component wrappers: `spatial_homogeneous_bound_paper`,
   `spatial_square_CS_paper`, `spatial_four_linear_bound_paper` (also `|C₄| ≤ R_0 ∏ N`),
-  `spatial_four_linear_multilinear_paper` (multilinearity, line 280),
+  `spatial_four_linear_multilinear_paper` (multilinearity, line 373),
   `spatial_four_linear_continuous_paper`, `spatial_ratio_H1_paper` (also `b > 0` for unit
-  profiles, lines 288-289), `spatial_Asp_pos_paper` (no density input needed).
+  profiles, lines 388-389), `spatial_Asp_pos_paper` (no density input needed).
 * `squarePairingBounds_paper`: the two fields of `OccupationPhysicalClass.SquarePairingBounds`
   (wave item L7-e) at `R = R_0`, in that structure's spelling, for integration.
-* `spatial_energy_value_paper`: `E:spatial-energy-map` (lines 309-314): the energy set is
+* `spatial_energy_value_paper`: `E:spatial-energy-map` (lines 414-419): the energy set is
   nonempty and bounded above, `𝓔_sp = (2-α)/2 α^{α/(2-α)} R_sp^{2/(2-α)} ∈ (0,∞)`, `R_sp = R_0`.
-* `spatial_static_energy_score_paper`: `E:spatial-static-energy-score` (lines 316-322) in the
+* `spatial_static_energy_score_paper`: `E:spatial-static-energy-score` (lines 421-427) in the
   existential form of Le's decision 2 (as for `E:spatial-smooth-score` in `SpatialSmoothRatio`):
   every `y < M_a^{-1/k} F₀(𝓔_sp)` is exceeded by `I_Ψ - v_Ψ/2` for some `Ψ ∈ C_pos`;
   `spatial_static_energy_score_sSup_paper`: the TeX's `S_1^pos ≥ M_a^{-1/k} F₀(𝓔_sp)` on the
@@ -46,7 +46,7 @@ Formalized (`*_paper` wrappers with the hypotheses `HomogHypothesis.HomogCovaria
 Supplied input (named hypothesis `hdense`, in exactly the form agreed for wave item L7-c, which
 proves it): density of test functions in `H¹`: every `f ∈ L²` with an `L²` weak gradient `g` is
 the `L²` limit of test functions `φ_n` whose gradient fields `VariationalFloor.grad (φ n)`
-converge to `g` in `L²`.  It stands for TeX lines 262-268 ("Smooth compact functions are dense
+converge to `g` in `L²`.  It stands for TeX lines 352-358 ("Smooth compact functions are dense
 in `H¹`", by cutoff and mollification) and is no stronger.  It is used by every statement
 except positivity; `S1Bdd` is used only by the `sSup` score form.
 
@@ -142,7 +142,7 @@ theorem inner_integrable {F G : Rd d → ℝ} (hF : Continuous F) (hFs : HasComp
     hFs.mul_right
 
 /-- Auxiliary to the Lean proof route: bilinear expansion of the real pairing `B_Γ(Q+tP, Q+tP)` for
-continuous compactly supported `Q, P` and locally finite `Γ` (TeX lines 254-255, "the quadratic
+continuous compactly supported `Q, P` and locally finite `Γ` (TeX lines 340-341, "the quadratic
 polynomial for `Q+tP`"). -/
 theorem spatialPair_quad (Γ : Measure (Rd d)) [IsLocallyFiniteMeasure Γ] {Q P : Rd d → ℝ}
     (hQ : Continuous Q) (hQs : HasCompactSupport Q) (hP : Continuous P)
@@ -185,7 +185,7 @@ theorem spatialPair_quad (Γ : Measure (Rd d)) [IsLocallyFiniteMeasure Γ] {Q P 
   ring
 
 /-- Auxiliary to the Lean proof route: symmetry `B_Γ(Q,P) = B_Γ(P,Q)` for an even `Γ`
-(`HomogHypothesis.IsEven`), continuous `P, Q` and compactly supported `Q` (TeX lines 253-254:
+(`HomogHypothesis.IsEven`), continuous `P, Q` and compactly supported `Q` (TeX lines 339-340:
 evenness of `Γ` and `(x,y) ↦ (x-y,-y)`; Lean route: translation `x ↦ x + y` and the pushforward
 under `y ↦ -y`). -/
 theorem spatialPair_comm {Γ : Measure (Rd d)} (hE : IsEven Γ) {Q P : Rd d → ℝ}
@@ -208,7 +208,7 @@ theorem spatialPair_comm {Γ : Measure (Rd d)} (hE : IsEven Γ) {Q P : Rd d → 
   rw [hE'] at hm
   exact hm.symm
 
-/-- Smooth signed covariance is positive (TeX lines 245-251): for real `Q ∈ C_c^∞` and a spectral
+/-- Smooth signed covariance is positive (TeX lines 331-337): for real `Q ∈ C_c^∞` and a spectral
 measure `μ` of `Γ` in the manuscript's convention, `B_Γ(Q,Q) = ∫ |Q̂|² dμ ≥ 0`
 (`SpatialFourierBound.integral_autocorr_eq_spectral`).  As a Bochner-integral statement; for
 locally finite `Γ` the integrand is integrable (`SpatialFourierBound.integrable_autocorr`). -/
@@ -218,7 +218,7 @@ theorem spatialPair_self_nonneg {Γ μ : Measure (Rd d)} (hsp : IsSpectralMeasur
   rw [SpatialFourierBound.integral_autocorr_eq_spectral hsp hQ.1 hQ.2]
   exact integral_nonneg fun _ => by positivity
 
-/-- Covariance Cauchy-Schwarz on smooth profiles (TeX lines 254-256): for real `Q, P ∈ C_c^∞`, a
+/-- Covariance Cauchy-Schwarz on smooth profiles (TeX lines 340-342): for real `Q, P ∈ C_c^∞`, a
 locally finite even `Γ` with spectral measure `μ`, `B_Γ(Q,P)² ≤ B_Γ(Q,Q) B_Γ(P,P)` (discriminant
 of `t ↦ B_Γ(Q+tP,Q+tP) ≥ 0`). -/
 theorem spatialPair_sq_le {Γ μ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] (hE : IsEven Γ)
@@ -245,7 +245,7 @@ on `L²` functions). -/
 def l2 {E : Type*} [NormedAddCommGroup E] (f : Rd d → E) : ℝ :=
   (eLpNorm f 2 volume).toReal
 
-/-- `N(f) = ‖f‖₂^{1-α/4} ‖∇f‖₂^{α/4}` (TeX line 221), with `∇f` given as an `L²` weak gradient `g`
+/-- `N(f) = ‖f‖₂^{1-α/4} ‖∇f‖₂^{α/4}` (TeX line 299), with `∇f` given as an `L²` weak gradient `g`
 of `f` (a.e. unique, `WeakSobolev.weakGradient_ae_unique`). -/
 def Nnorm (alpha : ℝ) (f : Rd d → ℝ) (g : Rd d → Rd d) : ℝ :=
   l2 f ^ (1 - alpha / 4) * l2 g ^ (alpha / 4)
@@ -320,7 +320,7 @@ theorem spatialEnergy_const_mul (Γ : Measure (Rd d)) (g : Rd d → ℝ) (c : �
 theorem isTest_sq {φ : Rd d → ℝ} (hφ : IsTestFunction φ) : IsTestFunction fun x => φ x ^ 2 :=
   ⟨hφ.1.pow 2, hφ.2.comp_left (g := fun r : ℝ => r ^ 2) (by norm_num)⟩
 
-/-- `E:spatial-homogeneous-bound` for smooth compact profiles (TeX lines 240-241, "normalization in
+/-- `E:spatial-homogeneous-bound` for smooth compact profiles (TeX lines 326-327, "normalization in
 `R_0`", including `f = 0`): if every real unit test `g` has `A_sp(g) ≤ R b(g)^{α/2}`, then every
 `φ ∈ C_c^∞` has `A_sp(φ) ≤ R N(φ)⁴`, with `N` computed from the classical gradient.  Hypothesis
 `α < 4`. -/
@@ -373,7 +373,7 @@ theorem smooth_homog_bound {Γ : Measure (Rd d)} {alpha R : ℝ} (ha4 : alpha < 
       _ = R * (m ^ 2 / m ^ (alpha / 2) * gradEnergy φ ^ (alpha / 2)) := by
           field_simp
 
-/-- The smooth square bound (TeX lines 256-259): for real `φ, ψ ∈ C_c^∞`, a locally finite even `Γ`
+/-- The smooth square bound (TeX lines 342-345): for real `φ, ψ ∈ C_c^∞`, a locally finite even `Γ`
 with spectral measure `μ`, `R ≥ 0` and the smooth homogeneous bound with constant `R`, `0 ≤
 B_Γ(φ², ψ²) ≤ R N(φ)² N(ψ)²` (real pairing). -/
 theorem smooth_square_bound {Γ μ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] (hE : IsEven Γ)
@@ -455,7 +455,7 @@ theorem Nnorm_tendsto {alpha : ℝ} (ha0 : 0 ≤ alpha) (ha4 : alpha ≤ 4) {u :
 def IsH1Pair (f : Rd d → ℝ) (g : Rd d → Rd d) : Prop :=
   MemLp f 2 volume ∧ MemLp g 2 volume ∧ HasWeakGradient f g
 
-/-- Auxiliary to the Lean proof route (the conclusion of the Fatou step, TeX lines 270-275):
+/-- Auxiliary to the Lean proof route (the conclusion of the Fatou step, TeX lines 360-365):
 `B_Γ(f², h²) ≤ R N(f)² N(h)²` in `[0,∞]` for all `H¹` pairs, with `B_Γ` the extended pairing
 `OccupationKernelRow.pairing` of `L:spatial-physical-pair`. -/
 def SquareBound (Γ : Measure (Rd d)) (alpha R : ℝ) : Prop :=
@@ -463,10 +463,10 @@ def SquareBound (Γ : Measure (Rd d)) (alpha R : ℝ) : Prop :=
     pairing Γ (zE fun x => f x ^ 2) (zE fun x => h x ^ 2) ≤
       ENNReal.ofReal (R * Nnorm alpha f g ^ 2 * Nnorm alpha h k ^ 2)
 
-/-- The Fatou step of `P:spatial-four-linear` (TeX lines 270-275): for a locally finite `Γ` and `0 ≤
+/-- The Fatou step of `P:spatial-four-linear` (TeX lines 360-365): for a locally finite `Γ` and `0 ≤
 α ≤ 4`, the smooth square bound with constant `R` (hypothesis `hsm`) and the density of test
 functions in `H¹` (named input `hdense`, the statement proved by wave item L7-c; TeX lines
-262-268) give `SquareBound Γ α R`: `B_Γ(f², h²) ≤ R N(f)² N(h)²` in `[0,∞]` for all `H¹` pairs.
+352-358) give `SquareBound Γ α R`: `B_Γ(f², h²) ≤ R N(f)² N(h)²` in `[0,∞]` for all `H¹` pairs.
 Route as in the TeX: approximants converging in `H¹`, subsequences converging a.e. (separately
 for `f` and `h`), transfer to `ν`-a.e. convergence (`OccupationKernelRow.ae_pair_of_ae`), Fatou,
 continuity of `N`. -/
@@ -558,7 +558,7 @@ theorem lintegral_sq_prod {Γ : Measure (Rd d)} (f h : Rd d → ℝ) :
   rw [Real.enorm_eq_ofReal_abs, ENNReal.ofReal_rpow_of_nonneg (abs_nonneg _) (by norm_num),
     ← ENNReal.ofReal_mul (sq_nonneg _), rpow_two, sq_abs, mul_pow]
 
-/-- `E:spatial-four-linear` (TeX lines 231-234, proof lines 277-280): under `SquareBound Γ α R` with
+/-- `E:spatial-four-linear` (TeX lines 309-312, proof lines 370-373): under `SquareBound Γ α R` with
 `R ≥ 0` and locally finite `Γ`, for four `H¹` pairs `∫ |f₁(x) f₂(x) f₃(x-y) f₄(x-y)| dν ≤ R ∏
 N(f_j)` (Cauchy-Schwarz under `ν` applied to `f₁(x)f₃(x-y)` and `f₂(x)f₄(x-y)`). -/
 theorem four_lintegral_le {Γ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] {alpha R : ℝ}
@@ -612,12 +612,12 @@ theorem four_lintegral_le {Γ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] {alp
           _ = _ := by rw [Real.mul_self_sqrt hR0]
 
 /-- The signed four-linear pairing `C₄(f₁,f₂,f₃,f₄) = B_Γ(f₁f₂, f₃f₄) = ∫ f₁(x) f₂(x) f₃(x-y)
-f₄(x-y) ν(dx,dy)` (TeX line 229), `ν = dx Γ(dy)`, as a Bochner integral; it is a genuine
+f₄(x-y) ν(dx,dy)` (TeX line 307), `ν = dx Γ(dy)`, as a Bochner integral; it is a genuine
 integral where `four_integrable` applies. -/
 def C4 (Γ : Measure (Rd d)) (f₁ f₂ f₃ f₄ : Rd d → ℝ) : ℝ :=
   ∫ p, f₁ p.1 * f₂ p.1 * f₃ (p.1 - p.2) * f₄ (p.1 - p.2) ∂(pairMeasure Γ)
 
-/-- Absolute convergence of `C₄` (TeX lines 229-230, 279-280): under the hypotheses of
+/-- Absolute convergence of `C₄` (TeX lines 307-308, 372-373): under the hypotheses of
 `four_lintegral_le` the integrand of `C₄` is `ν`-integrable. -/
 theorem four_integrable {Γ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] {alpha R : ℝ}
     (hB : SquareBound Γ alpha R) (hR0 : 0 ≤ R) {f₁ f₂ f₃ f₄ : Rd d → ℝ}
@@ -703,7 +703,7 @@ theorem isH1Pair_test {φ : Rd d → ℝ} (hφ : IsTestFunction φ) : IsH1Pair �
 /-! ### Joint continuity of `C₄` -/
 
 /-- Auxiliary to the Lean proof route: telescoping identity `C₄(a) - C₄(b) = Σ_j C₄(b₁,…,a_j -
-b_j,…,a₄)` (TeX line 281), under `SquareBound` (for integrability). -/
+b_j,…,a₄)` (TeX line 374), under `SquareBound` (for integrability). -/
 theorem C4_sub_eq {Γ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] {alpha R : ℝ}
     (hB : SquareBound Γ alpha R) (hR0 : 0 ≤ R) {a₁ a₂ a₃ a₄ b₁ b₂ b₃ b₄ : Rd d → ℝ}
     {e₁ e₂ e₃ e₄ k₁ k₂ k₃ k₄ : Rd d → Rd d} (ha₁ : IsH1Pair a₁ e₁) (ha₂ : IsH1Pair a₂ e₂)
@@ -745,7 +745,7 @@ theorem C4_sub_eq {Γ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] {alpha R : �
   ring
 
 /-- Auxiliary to the Lean proof route: the telescoped difference bound for `C₄` (TeX lines
-281-282). -/
+374-375). -/
 theorem C4_sub_le {Γ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] {alpha R : ℝ}
     (hB : SquareBound Γ alpha R) (hR0 : 0 ≤ R) {a₁ a₂ a₃ a₄ b₁ b₂ b₃ b₄ : Rd d → ℝ}
     {e₁ e₂ e₃ e₄ k₁ k₂ k₃ k₄ : Rd d → Rd d} (ha₁ : IsH1Pair a₁ e₁) (ha₂ : IsH1Pair a₂ e₂)
@@ -791,7 +791,7 @@ theorem Nnorm_sub_tendsto_of_H1 {alpha : ℝ} (ha0 : 0 < alpha) (ha4 : alpha < 4
   have := Nnorm_tendsto ha0.le ha4.le (l2_sub_tendsto hc.1) (l2_sub_tendsto hc.2)
   rwa [zero_rpow (by linarith), zero_mul] at this
 
-/-- Joint continuity of `C₄` on `(H¹)⁴` (TeX lines 229-230, 281-283), in sequential form: under
+/-- Joint continuity of `C₄` on `(H¹)⁴` (TeX lines 307-308, 374-376), in sequential form: under
 `SquareBound Γ α R`, `R ≥ 0`, `0 < α < 4`, locally finite `Γ`, if `u_j n → f_j` in `H¹`
 (functions and weak gradients in `L²`) then `C₄(u n) → C₄(f)`.  (Sequential continuity is
 continuity for the `H¹` seminorm topology.) -/
@@ -873,7 +873,7 @@ theorem C4_test_eq {Γ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] {φ ψ : Rd
 
 /-! ### Cauchy-Schwarz for square pairings on `H¹` -/
 
-/-- The squared form of `E:spatial-square-CS` on `H¹` (TeX lines 225-227, 283-285): `C₄(f,f,h,h)² ≤
+/-- The squared form of `E:spatial-square-CS` on `H¹` (TeX lines 303-305, 376-378): `C₄(f,f,h,h)² ≤
 C₄(f,f,f,f) C₄(h,h,h,h)`.  Hypotheses: locally finite even `Γ` with spectral measure `μ`,
 `SquareBound Γ α R`, `R ≥ 0`, `0 < α < 4`, and the density input `hdense`.  Lean route: the
 smooth inequality `spatialPair_sq_le` is passed to the limit by the continuity of `C₄`; the TeX
@@ -903,7 +903,7 @@ theorem C4_square_CS {Γ μ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] (hE : 
   rw [C4_test_eq (hφt n) (hψt n), C4_test_eq (hφt n) (hφt n), C4_test_eq (hψt n) (hψt n)]
   exact spatialPair_sq_le hE hsp (isTest_sq (hφt n)) (isTest_sq (hψt n))
 
-/-- `E:spatial-square-CS` (TeX lines 225-227) on `H¹` pairs, under the hypotheses of `C4_square_CS`:
+/-- `E:spatial-square-CS` (TeX lines 303-305) on `H¹` pairs, under the hypotheses of `C4_square_CS`:
 `B_Γ(f², h²)` is finite and `0 ≤ B_Γ(f²,h²) ≤ √(A_sp(f) A_sp(h))` for the real values (all three
 pairings finite). -/
 theorem square_pairing_CS {Γ μ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] (hE : IsEven Γ)
@@ -930,7 +930,7 @@ theorem square_pairing_CS {Γ μ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] (
 
 /-! ### Multilinearity of `C₄` -/
 
-/-- Multilinearity of `C₄` (TeX line 280), first argument: `C₄(a f + b f', f₂, f₃, f₄) = a C₄(f, …)
+/-- Multilinearity of `C₄` (TeX line 373), first argument: `C₄(a f + b f', f₂, f₃, f₄) = a C₄(f, …)
 + b C₄(f', …)` for `H¹` pairs under `SquareBound`, `R ≥ 0`. -/
 theorem C4_linear_one {Γ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] {alpha R : ℝ}
     (hB : SquareBound Γ alpha R) (hR0 : 0 ≤ R) {f f' f₂ f₃ f₄ : Rd d → ℝ}
@@ -949,7 +949,7 @@ theorem C4_linear_one {Γ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] {alpha R
   simp only
   ring
 
-/-- Multilinearity of `C₄` (TeX line 280), third argument, under the hypotheses of
+/-- Multilinearity of `C₄` (TeX line 373), third argument, under the hypotheses of
 `C4_linear_one`. -/
 theorem C4_linear_three {Γ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] {alpha R : ℝ}
     (hB : SquareBound Γ alpha R) (hR0 : 0 ≤ R) {f f' f₁ f₂ f₄ : Rd d → ℝ}
@@ -980,7 +980,7 @@ theorem C4_comm_three_four (Γ : Measure (Rd d)) (f₁ f₂ f₃ f₄ : Rd d →
 
 /-! ### Positivity of `A_sp` on nonzero profiles -/
 
-/-- Last claim of `P:spatial-four-linear` (TeX line 236, proof lines 291-296): for a nonzero locally
+/-- Last claim of `P:spatial-four-linear` (TeX line 314, proof lines 391-396): for a nonzero locally
 finite `Γ` with the set scaling of `H:homog` and an a.e.-strongly measurable `f` that is not
 a.e. zero, `A_sp(f) = B_Γ(f², f²) > 0`.  Route: a compact `K` of positive measure on which `|f|
 ≥ c > 0`; for `y` near `0`, `|K ∩ (y + K)| > 0` (Mathlib's continuity of the measure of
@@ -1102,10 +1102,10 @@ theorem Nnorm_eq_sqrt (alpha : ℝ) {f : Rd d → ℝ} {g : Rd d → Rd d} (hf :
       Real.sqrt (∫ x, ‖g x‖ ^ 2) ^ (alpha / 4) := by
   rw [Nnorm, l2_eq_sqrt hf, l2_eq_sqrt' hg]
 
-/-- Every real unit `H¹` profile has positive gradient energy (TeX lines 288-289): for `d ≥ 1` and a
+/-- Every real unit `H¹` profile has positive gradient energy (TeX lines 388-389): for `d ≥ 1` and a
 unit `H¹` pair `(f, g)`, `∫ ‖g‖² > 0`.  Lean route: `g = 0` a.e. would make `0` a weak gradient
 of `f`, so `f = 0` a.e. (`VariationalFloor.ae_eq_zero_of_hasWeakGradient_zero`, mollification),
-contradicting `∫ f² = 1`; the TeX uses the Fourier support argument of lines 180-182. -/
+contradicting `∫ f² = 1`; the TeX uses the Fourier support argument of lines 245-247. -/
 theorem gradL2_pos (hd : 0 < d) {f : Rd d → ℝ} {g : Rd d → Rd d} (h : IsUnitH1 f g) :
     0 < ∫ x, ‖g x‖ ^ 2 := by
   obtain ⟨hf, hg, hw, h1⟩ := h
@@ -1131,7 +1131,7 @@ theorem gradL2_pos (hd : 0 < d) {f : Rd d → ℝ} {g : Rd d → Rd d} (h : IsUn
   rw [h1] at h2
   exact one_ne_zero h2
 
-/-- The `H¹` ratio set `{A_sp(g)/b(g)^{α/2}}` over real unit `H¹` pairs (TeX line 235), with `A_sp`
+/-- The `H¹` ratio set `{A_sp(g)/b(g)^{α/2}}` over real unit `H¹` pairs (TeX line 313), with `A_sp`
 the real value of the extended pairing (finite by `E:spatial-homogeneous-bound`) and `b(g) = ∫
 ‖∇g‖²`. -/
 def ratioSetH1 (Γ : Measure (Rd d)) (alpha : ℝ) : Set ℝ :=
@@ -1139,7 +1139,7 @@ def ratioSetH1 (Γ : Measure (Rd d)) (alpha : ℝ) : Set ℝ :=
     (pairing Γ (zE fun x => f x ^ 2) (zE fun x => f x ^ 2)).toReal /
       (∫ x, ‖g x‖ ^ 2) ^ (alpha / 2) = r}
 
-/-- `R_sp = sup ratioSetH1` (TeX line 235); a genuine supremum where `Rsp_eq_R0` applies. -/
+/-- `R_sp = sup ratioSetH1` (TeX line 313); a genuine supremum where `Rsp_eq_R0` applies. -/
 def Rsp (Γ : Measure (Rd d)) (alpha : ℝ) : ℝ := sSup (ratioSetH1 Γ alpha)
 
 /-- Auxiliary to the Lean proof route: under `SquareBound Γ α R`, `R ≥ 0`, a unit `H¹` pair has
@@ -1170,7 +1170,7 @@ theorem unitTest_bridge {Γ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] {g : R
     (fun _ => sq_nonneg _)).2.2, ?_⟩
   rw [gradEnergy_eq_l2_sq ht, l2_sq (VariationalFloor.memLp_grad ht)]
 
-/-- `R_sp = R_0` (TeX lines 235-236, 288-291): for `d ≥ 1`, locally finite `Γ`, `SquareBound Γ α
+/-- `R_sp = R_0` (TeX lines 313-314, 388-391): for `d ≥ 1`, locally finite `Γ`, `SquareBound Γ α
 R_0`, a nonempty smooth ratio set and `R_0 ≥ 0`: every unit `H¹` pair has `b > 0` and ratio at
 most `R_0`; the `H¹` ratio set is nonempty and bounded above; and its supremum is `R_0` (the
 homogeneous bound gives `≤`, smooth inclusion `≥`). -/
@@ -1204,12 +1204,12 @@ theorem Rsp_eq_R0 {Γ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] {alpha : ℝ
 
 /-! ### The spatial energy -/
 
-/-- The value set `{A_sp(g) - b(g)/2}` over real unit `H¹` profiles (TeX lines 302-306). -/
+/-- The value set `{A_sp(g) - b(g)/2}` over real unit `H¹` profiles (TeX lines 407-411). -/
 def energySet (Γ : Measure (Rd d)) : Set ℝ :=
   {e | ∃ (f : Rd d → ℝ) (g : Rd d → Rd d), IsUnitH1 f g ∧
     (pairing Γ (zE fun x => f x ^ 2) (zE fun x => f x ^ 2)).toReal - (∫ x, ‖g x‖ ^ 2) / 2 = e}
 
-/-- `𝓔_sp = sup energySet` (TeX lines 304-306); a genuine supremum where `energy_map` applies. -/
+/-- `𝓔_sp = sup energySet` (TeX lines 409-411); a genuine supremum where `energy_map` applies. -/
 def Esp (Γ : Measure (Rd d)) : ℝ := sSup (energySet Γ)
 
 /-- `(2-α)/2 · α^{α/(2-α)} · R^{2/(2-α)}`, the right side of `E:spatial-energy-map` at `R_sp = R`
@@ -1217,7 +1217,7 @@ def Esp (Γ : Measure (Rd d)) : ℝ := sSup (energySet Γ)
 def energyValue (alpha R : ℝ) : ℝ :=
   (2 - alpha) / 2 * alpha ^ (alpha / (2 - alpha)) * R ^ (2 / (2 - alpha))
 
-/-- Auxiliary to the Lean proof route: the scalar maximum (TeX lines 330-335, upper half): for `0 <
+/-- Auxiliary to the Lean proof route: the scalar maximum (TeX lines 439-444, upper half): for `0 <
 α < 2`, `R ≥ 0`, `β ≥ 0`, `R β^{α/2} - β/2 ≤ (2-α)/2 α^{α/(2-α)} R^{2/(2-α)}` (weighted AM-GM). -/
 theorem young_bound {alpha R β : ℝ} (ha0 : 0 < alpha) (ha2 : alpha < 2) (hR : 0 ≤ R)
     (hβ : 0 ≤ β) : R * β ^ (alpha / 2) - β / 2 ≤ energyValue alpha R := by
@@ -1247,7 +1247,7 @@ theorem young_bound {alpha R β : ℝ} (ha0 : 0 < alpha) (ha2 : alpha < 2) (hR :
   rw [e5] at key
   linarith
 
-/-- Auxiliary to the Lean proof route: the scalar maximum is attained (TeX lines 330-335): for `0 <
+/-- Auxiliary to the Lean proof route: the scalar maximum is attained (TeX lines 439-444): for `0 <
 α < 2`, `R > 0`, at `β = (αR)^{2/(2-α)}`. -/
 theorem energy_attain {alpha R : ℝ} (ha0 : 0 < alpha) (ha2 : alpha < 2) (hR : 0 < R) :
     R * ((alpha * R) ^ (2 / (2 - alpha))) ^ (alpha / 2) - (alpha * R) ^ (2 / (2 - alpha)) / 2 =
@@ -1273,7 +1273,7 @@ theorem energyValue_continuous {alpha : ℝ} (ha2 : alpha < 2) :
   continuous_const.mul (Real.continuous_rpow_const (div_nonneg zero_le_two (by linarith)))
 
 /-- Auxiliary to the Lean proof route: for a real unit test `g` (`d ≥ 1`, `Γ ≠ 0` locally finite
-with the set scaling, `0 < α < 2`), the dilation `U_ℓ g` with the optimal `ℓ` (TeX line 331,
+with the set scaling, `0 < α < 2`), the dilation `U_ℓ g` with the optimal `ℓ` (TeX line 440,
 `ℓ^{2-α} = α A/b`) is a unit `H¹` profile with energy `energyValue α (R(g))`; uses the smooth
 `E:spatial-dilation` (`SpatialSmoothRatio.spatialEnergy_dilL2`, `gradEnergy_dilL2`). -/
 theorem energyValue_mem {alpha : ℝ} {Γ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ]
@@ -1307,7 +1307,7 @@ theorem energyValue_mem {alpha : ℝ} {Γ : Measure (Rd d)} [IsLocallyFiniteMeas
   rw [← hβ]
   ring
 
-/-- `E:spatial-energy-map` with `R_0` (TeX lines 309-314, proof 327-338), general form: for `d ≥ 1`,
+/-- `E:spatial-energy-map` with `R_0` (TeX lines 414-419, proof 432-451), general form: for `d ≥ 1`,
 `Γ ≠ 0` locally finite with the set scaling, `0 < α < 2`, `SquareBound Γ α R_0`, nonempty
 bounded smooth ratio set and `R_0 > 0`: the energy set is nonempty and bounded above, `𝓔_sp =
 (2-α)/2 α^{α/(2-α)} R_0^{2/(2-α)}` and `𝓔_sp > 0`.  Lean route (differs from the TeX): the upper
@@ -1350,12 +1350,12 @@ theorem energy_map {Γ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] {alpha : �
 /-! ### The static energy score -/
 
 /-- `F₀(z) = k [(2z/(2-α))^{(2-α)/2}/(8 q^{q/2})]^{1/k}`, `k = 3-α`, `q = 4-α` (TeX lines
-319-321). -/
+424-426). -/
 def F0 (alpha z : ℝ) : ℝ :=
   (3 - alpha) * ((2 * z / (2 - alpha)) ^ ((2 - alpha) / 2) /
     (8 * (4 - alpha) ^ ((4 - alpha) / 2))) ^ (1 / (3 - alpha))
 
-/-- Auxiliary to the Lean proof route: the substitution of TeX lines 341-346: for `0 < α < 2`, `M_a
+/-- Auxiliary to the Lean proof route: the substitution of TeX lines 454-459: for `0 < α < 2`, `M_a
 > 0`, `R ≥ 0`, `k [R α^{α/2}/(8 M_a q^{q/2})]^{1/k} = M_a^{-1/k} F₀((2-α)/2 α^{α/(2-α)}
 R^{2/(2-α)})`. -/
 theorem score_identity {alpha a R : ℝ} (ha0 : 0 < alpha) (ha2 : alpha < 2)
@@ -1419,7 +1419,7 @@ theorem squareBound_R0 {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   refine ⟨hd, ha0, ha2, hne, hbdd, hR0, squareBound_of_smooth ha0.le (by linarith) hdense
     fun φ ψ hφ hψ => smooth_pairing_bound hH.Γ_even hH.spectral hR0.le hbd hφ hψ⟩
 
-/-- **`E:spatial-homogeneous-bound`** (TeX line 224) under the standing assumptions of Section
+/-- **`E:spatial-homogeneous-bound`** (TeX line 302) under the standing assumptions of Section
 `S:spatial-occupation-foundation` (lines 4-10: `H:homog` with `a = α₀`, `Γ ≠ 0`) and the named
 density input `hdense`: for every real `f ∈ H¹` (an `H¹` pair `(f, g)`), `A_sp(f) ≤ R_0 N(f)⁴`
 in `[0,∞]`; in particular `A_sp(f) < ∞`. -/
@@ -1438,7 +1438,7 @@ theorem spatial_homogeneous_bound_paper {alpha alpha0 : ℝ} {Γ μ : Measure (R
   have h := hB f f g g hfg hfg
   rwa [mul_assoc, ← pow_add] at h
 
-/-- **`E:spatial-square-CS`** (TeX lines 225-227) under the standing assumptions and `hdense`: for
+/-- **`E:spatial-square-CS`** (TeX lines 303-305) under the standing assumptions and `hdense`: for
 real `f, h ∈ H¹`, `B_Γ(f², h²)` is finite and `0 ≤ B_Γ(f²,h²) ≤ √(A_sp(f) A_sp(h))` (real
 values; all three are finite). -/
 theorem spatial_square_CS_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
@@ -1459,7 +1459,7 @@ theorem spatial_square_CS_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   have := hH.Γ_radon
   exact square_pairing_CS hH.Γ_even hH.spectral hB hR0.le ha0 (by linarith) hdense hfg hhk
 
-/-- **`E:spatial-four-linear`** and absolute convergence of `C₄` (TeX lines 229-234) under the
+/-- **`E:spatial-four-linear`** and absolute convergence of `C₄` (TeX lines 307-312) under the
 standing assumptions and `hdense`: for four real `H¹` profiles, `∫ |f₁ f₂ f₃(·-y) f₄(·-y)| dν ≤
 R_0 ∏ N(f_j)`, the integrand is `ν`-integrable, and `|C₄| ≤ R_0 ∏ N(f_j)`. -/
 theorem spatial_four_linear_bound_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
@@ -1484,7 +1484,7 @@ theorem spatial_four_linear_bound_paper {alpha alpha0 : ℝ} {Γ μ : Measure (R
   exact ⟨four_lintegral_le hB hR0.le h₁ h₂ h₃ h₄, four_integrable hB hR0.le h₁ h₂ h₃ h₄,
     abs_C4_le hB hR0.le h₁ h₂ h₃ h₄⟩
 
-/-- Multilinearity of `C₄` (TeX line 280) under the standing assumptions and `hdense`: `C₄` is
+/-- Multilinearity of `C₄` (TeX line 373) under the standing assumptions and `hdense`: `C₄` is
 linear in each of its four `H¹` arguments. -/
 theorem spatial_four_linear_multilinear_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (hH : HomogCovariance d alpha alpha0 Γ μ) (hΓ : Γ ≠ 0)
@@ -1514,11 +1514,11 @@ theorem spatial_four_linear_multilinear_paper {alpha alpha0 : ℝ} {Γ μ : Meas
       C4_comm_three_four Γ f₁ f₂ f,
       C4_comm_three_four Γ f₁ f₂ f']
 
-/-- Joint continuity of `C₄` on `(H¹)⁴` (TeX lines 229-230, 281-283) under the standing assumptions
+/-- Joint continuity of `C₄` on `(H¹)⁴` (TeX lines 307-308, 374-376) under the standing assumptions
 and `hdense`, in sequential form (`H¹` convergence of functions and weak gradients in `L²`).
 Since `A_sp(f) = C₄(f,f,f,f)` and `B_Γ(f²,h²) = C₄(f,f,h,h)` as real values
 (`pairing_toReal_eq_C4`), this gives the continuity of `A_sp` and of the square pairings (TeX
-lines 282-283). -/
+lines 375-376). -/
 theorem spatial_four_linear_continuous_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (hH : HomogCovariance d alpha alpha0 Γ μ) (hΓ : Γ ≠ 0)
     (hdense : ∀ (f : Rd d → ℝ) (g : Rd d → Rd d), MemLp f 2 volume → MemLp g 2 volume →
@@ -1540,7 +1540,7 @@ theorem spatial_four_linear_continuous_paper {alpha alpha0 : ℝ} {Γ μ : Measu
   have := hH.Γ_radon
   exact C4_tendsto hB hR0.le ha0 (by linarith) hu₁ hu₂ hu₃ hu₄ hf₁ hf₂ hf₃ hf₄ hc₁ hc₂ hc₃ hc₄
 
-/-- **`R_sp = R_0`** (TeX lines 235-236, 288-291) under the standing assumptions and `hdense`: every
+/-- **`R_sp = R_0`** (TeX lines 313-314, 388-391) under the standing assumptions and `hdense`: every
 real unit `H¹` profile has positive gradient energy and ratio at most `R_0`; the `H¹` ratio set
 is nonempty and bounded above; `R_sp = R_0`. -/
 theorem spatial_ratio_H1_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
@@ -1560,7 +1560,7 @@ theorem spatial_ratio_H1_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   have := hH.Γ_radon
   exact Rsp_eq_R0 hd hB hne hR0.le
 
-/-- **Positivity** (TeX line 236, proof lines 291-296) under the standing assumptions: every nonzero
+/-- **Positivity** (TeX line 314, proof lines 391-396) under the standing assumptions: every nonzero
 real `H¹` profile has `A_sp(f) > 0`.  The density input is not needed. -/
 theorem spatial_Asp_pos_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (hH : HomogCovariance d alpha alpha0 Γ μ) (hΓ : Γ ≠ 0) {f : Rd d → ℝ} {g : Rd d → Rd d}
@@ -1569,9 +1569,9 @@ theorem spatial_Asp_pos_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   have := hH.Γ_radon
   exact pairing_sq_pos hH.scaling hΓ hfg.1.aestronglyMeasurable hne
 
-/-- **`P:spatial-four-linear`** (`integrated_spatial_occupation.tex` lines 219-298) under the
+/-- **`P:spatial-four-linear`** (`integrated_spatial_occupation.tex` lines 297-398) under the
 section's standing assumptions (lines 4-10: `H:homog`, `a = α₀`, `Γ ≠ 0`) and the named density
-input `hdense` (TeX lines 262-268; the statement of wave item L7-c), for real `H¹` profiles
+input `hdense` (TeX lines 352-358; the statement of wave item L7-c), for real `H¹` profiles
 given as `H¹` pairs `(f, g)` (`g` an `L²` weak gradient): `E:spatial-homogeneous-bound`;
 finiteness of every square pairing and `E:spatial-square-CS`; `E:spatial-four-linear` with
 absolute convergence; joint continuity of `C₄` (sequential form); `R_sp = R_0`; positivity of
@@ -1626,8 +1626,8 @@ theorem spatial_four_linear_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
 /-- Interface for wave item L7-e (`OccupationPhysicalClass.SquarePairingBounds Γ α R_0`): the two
 fields `homogeneous` and `squareCS` with exactly that structure's spelling of `sqPair` and
 `Nnorm` unfolded, under the standing assumptions and `hdense`.  The first is
-`E:spatial-homogeneous-bound` (TeX line 224), the second the squared `[0,∞]` form of
-`E:spatial-square-CS` (lines 225-227). -/
+`E:spatial-homogeneous-bound` (TeX line 302), the second the squared `[0,∞]` form of
+`E:spatial-square-CS` (lines 303-305). -/
 theorem squarePairingBounds_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (hH : HomogCovariance d alpha alpha0 Γ μ) (hΓ : Γ ≠ 0)
     (hdense : ∀ (f : Rd d → ℝ) (g : Rd d → Rd d), MemLp f 2 volume → MemLp g 2 volume →
@@ -1670,8 +1670,8 @@ theorem squarePairingBounds_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
       ← ENNReal.ofReal_pow ENNReal.toReal_nonneg, ← ENNReal.ofReal_mul ENNReal.toReal_nonneg]
     exact ENNReal.ofReal_le_ofReal hcs
 
-/-- **`P:spatial-energy-map`, `E:spatial-energy-map`** (TeX lines 300-325, display 309-314; proof
-327-348, 327-338 for the display) under the standing assumptions and `hdense`: the energy set over
+/-- **`P:spatial-energy-map`, `E:spatial-energy-map`** (TeX lines 405-430, display 414-419; proof
+432-461, 432-451 for the display) under the standing assumptions and `hdense`: the energy set over
 real unit `H¹` profiles is nonempty and bounded above,
 `𝓔_sp = (2-α)/2 α^{α/(2-α)} R_sp^{2/(2-α)} ∈ (0,∞)`, and `R_sp = R_0`.  Proof route: see `energy_map`. -/
 theorem spatial_energy_value_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
@@ -1690,7 +1690,7 @@ theorem spatial_energy_value_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   obtain ⟨h1, h2, h3, h4⟩ := energy_map hH.scaling hΓ hd ha0 ha2 hB hne hbdd hR0
   exact ⟨h1, h2, by rw [hRsp]; exact h3, h4, hRsp⟩
 
-/-- **`E:spatial-static-energy-score`** (TeX lines 316-322, proof 338-346) under the standing
+/-- **`E:spatial-static-energy-score`** (TeX lines 421-427, proof 451-459) under the standing
 assumptions and `hdense`, in the existential form used for `E:spatial-smooth-score` (Le's
 decision 2): every `y < M_a^{-1/k} F₀(𝓔_sp)` (`k = 3-α`, `a = α₀`) is exceeded by `I_Ψ - v_Ψ/2`
 for some `Ψ ∈ C_pos`.  This form is implied by the TeX's `S_1^pos ≥ …` and equivalent to it when
@@ -1721,7 +1721,7 @@ theorem spatial_static_energy_score_paper {alpha alpha0 : ℝ} {Γ μ : Measure 
     rw [hgu]; exact hn
   exact SpatialOccupationCompleted.spatial_smooth_score_completed_paper hH hΓ hg y hn'
 
-/-- **`E:spatial-static-energy-score`** in the TeX's `sSup` form (lines 316-322) under the standing
+/-- **`E:spatial-static-energy-score`** in the TeX's `sSup` form (lines 421-427) under the standing
 assumptions, `hdense` and the named input `S1Bdd α₀ Γ` (as in
 `SpatialOccupationCompleted.spatial_smooth_score_sSup_completed_paper`): `S_1^pos ≥ M_a^{-1/k}
 F₀(𝓔_sp)`. -/

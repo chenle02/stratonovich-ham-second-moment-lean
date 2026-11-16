@@ -4,8 +4,8 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:raw-block-indexed-cone` (Indexed cone and terminal displacement) of
-`notes/integrated_raw_block_lower.tex` (TeX lines 232--335 at revision
-a284420), with its display `E:raw-block-positive-product`.
+`notes/integrated_raw_block_lower.tex` (TeX lines 316--455 at revision
+39f2597a), with its display `E:raw-block-positive-product`.
 
 Class: inputs-supplied.  The lemma uses only the outputs of Section
 `S:compact-mean-family` (`notes/integrated_compact_mean_family.tex`) for the
@@ -15,20 +15,20 @@ doc comment):
 * `P_σ(t)` bounded operators on a real normed space `F` (the physical flow of
   `S:compact-mean-family`, line 17; `E:compact-F-block`);
 * vectors `e_σ`, functionals `ℓ_σ`, rank-one projections `Π_σ = e_σ ℓ_σ` and
-  `Q_σ = I - Π_σ` (`E:compact-F-projection`, lines 270--272);
+  `Q_σ = I - Π_σ` (`E:compact-F-projection`, lines 343--345);
 * rates `λ_σ > 0` (`E:compact-rate-gap` gives `√ε ≤ λ_σ`, line 51; only
   positivity is kept);
 * `ℓ_σ(e_σ) = 1`, `P_σ(t)Π_σ = Π_σP_σ(t) = e^{λ_σ t}Π_σ`
-  (`E:compact-F-eigen`, lines 277--281);
+  (`E:compact-F-eigen`, lines 350--354);
 * the normalized complement `‖e^{-λ_σ t}P_σ(t)Q_σ‖ ≤ C_η e^{-ηt}` for every
-  `0 < η < d_0` (`E:compact-normalized-complement`, lines 344--348), with
+  `0 < η < d_0` (`E:compact-normalized-complement`, lines 443--447), with
   `d_0 > 0` (`E:compact-rate-gap`); the identification
   `d_0 = inf_I(λ_σ - μ_σ)` is not needed and is not formalized;
 * norm continuity of `σ ↦ e_σ` and `σ ↦ ℓ_σ` on `I = [0,1]` (lines
-  280--281); continuity and uniform boundedness of `Π_σ`, and uniform
+  348--349); continuity and uniform boundedness of `Π_σ`, and uniform
   boundedness of `e_σ, ℓ_σ`, are DERIVED here (compactness), not assumed;
 * the margins `inf_I ℓ_σ(e_0) > 0`, `inf_I O_φ(e_σ) > 0`
-  (`E:compact-positive-margins`, lines 283--286), with the data `e_0` and the
+  (`E:compact-positive-margins`, lines 356--359), with the data `e_0` and the
   bounded observable `O_φ` as fields.
 
 The structure is no stronger than Propositions `P:compact-F-projection` and
@@ -42,7 +42,7 @@ Side conditions made explicit:
   chosen with `max 1 ‖e_0‖`), a generalization;
 * the operator families are `D : ℕ → ℝ → F →L[ℝ] F` with the closeness
   hypothesis only for `m ≤ N` and `u ∈ [0,B]` (no measurability, positivity or
-  composition property, as the TeX says, line 249);
+  composition property, as the TeX says, line 333);
 * the product `D_N(u)D_{N-1}(B)⋯D_0(B)e_0` is `D N u (chainState D B e0 N)`,
   with `chainState` the recursively defined state after `N` full blocks.
 
@@ -135,10 +135,10 @@ def Pi (σ : ℝ) : F →L[ℝ] F := (G.ell σ).smulRight (G.e σ)
 /-- The complementary projection `Q_σ = I - Π_σ` (`E:compact-F-projection`). -/
 def Q (σ : ℝ) : F →L[ℝ] F := ContinuousLinearMap.id ℝ F - G.Pi σ
 
-/-- The margin `a_* = inf_I ℓ_σ(e_0)` (TeX line 259). -/
+/-- The margin `a_* = inf_I ℓ_σ(e_0)` (TeX line 355). -/
 def aStar : ℝ := ⨅ σ : paramI, G.ell σ G.e0
 
-/-- The margin `j_* = inf_I O_φ(e_σ)` (TeX line 259). -/
+/-- The margin `j_* = inf_I O_φ(e_σ)` (TeX line 355). -/
 def jStar : ℝ := ⨅ σ : paramI, G.obs (G.e σ)
 
 /-- `Π_σ x = ℓ_σ(x) e_σ` (auxiliary to the Lean proof route). -/
@@ -159,15 +159,15 @@ theorem P_e {σ : ℝ} (hσ : σ ∈ paramI) {t : ℝ} (ht : 0 ≤ t) :
   have h := congrArg (fun T : F →L[ℝ] F => T (G.e σ)) (G.P_Pi σ hσ t ht)
   simpa [ContinuousLinearMap.smulRight_apply, G.ell_e σ hσ] using h
 
-/-- `ℓ_σ Q_σ = 0` (TeX line 285, `ℓ_s(r) = 0`). -/
+/-- `ℓ_σ Q_σ = 0` (TeX line 388, `ℓ_s(r) = 0`). -/
 theorem ell_Q {σ : ℝ} (hσ : σ ∈ paramI) (x : F) : G.ell σ (G.Q σ x) = 0 := by
   simp [Q_apply, G.ell_e σ hσ]
 
-/-- `Q_σ² = Q_σ` (TeX line 286, `r = Q_s z`). -/
+/-- `Q_σ² = Q_σ` (TeX line 389, `r = Q_s z`). -/
 theorem Q_Q {σ : ℝ} (hσ : σ ∈ paramI) (x : F) : G.Q σ (G.Q σ x) = G.Q σ x := by
   rw [Q_apply (x := G.Q σ x), G.ell_Q hσ, zero_smul, sub_zero]
 
-/-- `z = ℓ_σ(z)e_σ + Q_σ z` (TeX line 285, `z = Ae_s + r`). -/
+/-- `z = ℓ_σ(z)e_σ + Q_σ z` (TeX line 388, `z = Ae_s + r`). -/
 theorem decomp (σ : ℝ) (x : F) : x = G.ell σ x • G.e σ + G.Q σ x := by
   simp [Q_apply]
 
@@ -177,7 +177,7 @@ theorem P_Q {σ : ℝ} (hσ : σ ∈ paramI) {t : ℝ} (ht : 0 ≤ t) (x : F) :
   rw [Q_apply, Q_apply, map_sub, map_smul, G.P_e hσ ht, G.ell_P hσ ht, smul_smul,
     mul_comm]
 
-/-- `‖Q_σ‖ ≤ 1 + ‖Π_σ‖` (TeX line 263, `M_Q = 1 + M_P`). -/
+/-- `‖Q_σ‖ ≤ 1 + ‖Π_σ‖` (TeX line 359, `M_Q = 1 + M_P`). -/
 theorem norm_Q_le (σ : ℝ) : ‖G.Q σ‖ ≤ 1 + ‖G.Pi σ‖ :=
   (norm_sub_le _ _).trans (by gcongr; exact ContinuousLinearMap.norm_id_le)
 
@@ -205,7 +205,7 @@ theorem norm_Pi_sub_le (b c : ℝ) :
         · exact ContinuousLinearMap.le_opNorm _ _
     _ = _ := by ring
 
-/-- `e^{λ_σ t} ≥ 1` for `t ≥ 0` (TeX line 302, "since `λ_c > 0`"). -/
+/-- `e^{λ_σ t} ≥ 1` for `t ≥ 0` (TeX line 413, "since `λ_c > 0`"). -/
 theorem exp_ge_one {σ : ℝ} (hσ : σ ∈ paramI) {t : ℝ} (ht : 0 ≤ t) :
     1 ≤ Real.exp (G.lam σ * t) :=
   Real.one_le_exp (mul_nonneg (G.lam_pos σ hσ).le ht)
@@ -229,7 +229,7 @@ def chainState (D : ℕ → ℝ → F →L[ℝ] F) (B : ℝ) (e0 : F) : ℕ → 
     chainState D B e0 (m + 1) = D m B (chainState D B e0 m) := rfl
 
 /-- Constants satisfying relaxed, sufficient versions of the inequalities chosen
-in the TeX proof (lines 254--281): any positive margins `a ≤ a_*`, `j ≤ j_*`,
+in the TeX proof (lines 350--377): any positive margins `a ≤ a_*`, `j ≤ j_*`,
 nonnegative `C_gap, η_gap, ν` and bounds (the TeX fixes `C_gap ≥ 1`,
 `η_gap, ν > 0`, `max(1, sup)` bounds; `exists_coneConstants` supplies them), bounds `M_e, M_ℓ, M_P,
 H_obs`, the gap constants `C_gap, η_gap`, aperture `ϑ`, the block length `B`
@@ -289,7 +289,7 @@ namespace ConeConstants
 
 variable {G : GroundFamily F} {ϱ : ℝ} (K : ConeConstants G ϱ)
 
-/-- `‖Q_σ‖ ≤ M_Q` on `I` (TeX line 263). -/
+/-- `‖Q_σ‖ ≤ M_Q` on `I` (TeX line 359). -/
 theorem norm_Q_le {σ : ℝ} (hσ : σ ∈ paramI) : ‖G.Q σ‖ ≤ 1 + K.MP :=
   (G.norm_Q_le σ).trans (by linarith [K.MP_bd σ hσ])
 
@@ -313,7 +313,7 @@ theorem norm_PQ_le {σ : ℝ} (hσ : σ ∈ paramI) {t : ℝ} (ht : 0 ≤ t) (y 
     _ = _ := by ring
 
 /-- Perturbation of the amplitude: `ℓ_c(Dz) ≥ e^{λ_c t}ℓ_c(z) - M_ℓ ε ‖z‖`
-(TeX lines 288, 304). -/
+(TeX lines 391, 415). -/
 theorem step_ell {c : ℝ} (hc : c ∈ paramI) {t : ℝ} (ht : 0 ≤ t) {D : F →L[ℝ] F}
     (hD : ‖D - G.P c t‖ ≤ K.ε) (z : F) :
     Real.exp (G.lam c * t) * G.ell c z - K.Mell * K.ε * ‖z‖ ≤ G.ell c (D z) := by
@@ -331,7 +331,7 @@ theorem step_ell {c : ℝ} (hc : c ∈ paramI) {t : ℝ} (ht : 0 ≤ t) {D : F �
   linarith [neg_abs_le (G.ell c ((D - G.P c t) z))]
 
 /-- Perturbation of the residual:
-`‖Q_c(Dz)‖ ≤ e^{λ_c t} g ‖Q_c z‖ + M_Q ε ‖z‖` (TeX lines 289, 310). -/
+`‖Q_c(Dz)‖ ≤ e^{λ_c t} g ‖Q_c z‖ + M_Q ε ‖z‖` (TeX lines 392, 421). -/
 theorem step_Q {c : ℝ} (hc : c ∈ paramI) {t : ℝ} (ht : 0 ≤ t) {D : F →L[ℝ] F}
     (hD : ‖D - G.P c t‖ ≤ K.ε) (z : F) :
     ‖G.Q c (D z)‖ ≤ Real.exp (G.lam c * t) * (K.Cg * Real.exp (-(K.ηg * t))) * ‖G.Q c z‖ +
@@ -349,7 +349,7 @@ theorem step_Q {c : ℝ} (hc : c ∈ paramI) {t : ℝ} (ht : 0 ≤ t) {D : F →
           (by positivity) (by linarith [K.MP_nonneg])
     _ = _ := by ring
 
-/-- Perturbation of the observable (TeX lines 324--328):
+/-- Perturbation of the observable (TeX lines 439--448):
 `O(Dz) ≥ e^{λ_c t}ℓ_c(z)O(e_c) - H e^{λ_c t} g ‖Q_c z‖ - H ε ‖z‖`. -/
 theorem step_obs {c : ℝ} (hc : c ∈ paramI) {t : ℝ} (ht : 0 ≤ t) {D : F →L[ℝ] F}
     (hD : ‖D - G.P c t‖ ≤ K.ε) (z : F) :
@@ -386,7 +386,7 @@ theorem step_obs {c : ℝ} (hc : c ∈ paramI) {t : ℝ} (ht : 0 ≤ t) {D : F �
   rw [hsplit]
   linarith [neg_abs_le (G.obs (G.P c t (G.Q c (G.Q c z)))), neg_abs_le (G.obs ((D - G.P c t) z))]
 
-/-- Rebase (TeX lines 293--299): an old-cone state `z` at `b` (amplitude
+/-- Rebase (TeX lines 400--406): an old-cone state `z` at `b` (amplitude
 `A = ℓ_b(z) ≥ 0`, `‖Q_b z‖ ≤ ϑA`) and an adjacent `c` give `‖z‖ ≤ M_z A`,
 `ℓ_c(z) ≥ (1 - νM_z)A` and `‖Q_c z‖ ≤ (ϑ + νM_z)A`. -/
 theorem rebase {b c : ℝ} (hb : b ∈ paramI) (hc : c ∈ paramI) (hbc : |b - c| ≤ K.ω)
@@ -426,7 +426,7 @@ theorem rebase {b c : ℝ} (hb : b ∈ paramI) (hc : c ∈ paramI) (hbc : |b - c
 theorem qB_nonneg : 0 ≤ K.Cg * Real.exp (-(K.ηg * K.B)) :=
   mul_nonneg K.Cg_nonneg (Real.exp_pos _).le
 
-/-- Entrance (TeX lines 287--291): `z_1 = D_0(B)e_0` lies in the cone at
+/-- Entrance (TeX lines 390--394): `z_1 = D_0(B)e_0` lies in the cone at
 `b = σ_0`, with amplitude at least `e^{λ_b B}a/2` (margin `a = K.a`; the TeX's
 `a_*/2` is the case `a = a_*` from `exists_coneConstants`) and residual ratio at
 most `ϑ/2`. -/
@@ -474,7 +474,7 @@ theorem entrance {b : ℝ} (hb : b ∈ paramI) {D : F →L[ℝ] F}
   rw [h7] at h6
   exact h6.trans (mul_le_mul_of_nonneg_left hamp (by linarith [K.ϑ_pos]))
 
-/-- One full block (TeX lines 300--318): from an old-cone state at `b`
+/-- One full block (TeX lines 411--429): from an old-cone state at `b`
 (amplitude `A`) and an adjacent index `c`, the state `D z`, `D` close to
 `P_c(B)`, lies in the cone at `c` with amplitude at least
 `e^{λ_c B}(1 - ϱ)A`. -/
@@ -556,7 +556,7 @@ theorem block (hϱ : ϱ < 1 / 2) {b c : ℝ} (hb : b ∈ paramI) (hc : c ∈ par
     _ ≤ K.ϑ * (E * ((1 - ϱ) * A)) := hhalf
     _ ≤ K.ϑ * G.ell c (D z) := mul_le_mul_of_nonneg_left hamp hϑ.le
 
-/-- Terminal step (TeX lines 320--330): for `0 ≤ u`, an old-cone state at `b`
+/-- Terminal step (TeX lines 435--450): for `0 ≤ u`, an old-cone state at `b`
 (amplitude `A`), an adjacent `c`, and `D` close to `P_c(u)`,
 `O_φ(Dz) ≥ e^{λ_c u}(j/2)A` (margin `j = K.j`; the TeX's `j_*/2` is the case
 `j = j_*` from `exists_coneConstants`). -/
@@ -615,7 +615,7 @@ theorem terminal {b c : ℝ} (hb : b ∈ paramI) (hc : c ∈ paramI) (hbc : |b -
   rw [this]
   linarith
 
-/-- The cone induction (TeX lines 285--318, 330--332): for `m + 1 ≤ N` the
+/-- The cone induction (TeX lines 388--429, 450--452): for `m + 1 ≤ N` the
 state after `m + 1` full blocks lies in the cone at `σ_m`, with amplitude at
 least `(a/2)(1-ϱ)^m exp(B Σ_{k ≤ m} λ_{σ_k})`. -/
 theorem chain_cone (hϱ : ϱ < 1 / 2) {N : ℕ} {σ : ℕ → ℝ} (hσ : ∀ m ≤ N, σ m ∈ paramI)
@@ -717,7 +717,7 @@ theorem positive_product_of_constants (hϱ : ϱ < 1 / 2) {N : ℕ} (hN : 1 ≤ N
 
 end ConeConstants
 
-/-! ### Existence of the constants (TeX lines 254--282) -/
+/-! ### Existence of the constants (TeX lines 350--378) -/
 
 namespace GroundFamily
 
@@ -785,7 +785,7 @@ theorem Pi_bounded_continuous :
 end GroundFamily
 
 /-- Existence of constants satisfying the TeX's inequalities, in the TeX's order
-(lines 254--282): `a = a_*`, `j = j_*`, `M_e = max(1, sup‖e_σ‖)`-type bounds,
+(lines 350--378): `a = a_*`, `j = j_*`, `M_e = max(1, sup‖e_σ‖)`-type bounds,
 `C_gap ≥ 1`, `η_gap = d_0/2`, the aperture
 `ϑ = min(1, j_*/(16 H_obs C_gap))` first, then the integer `B ≥ 1`, then `ν`,
 `ω` (uniform continuity on compact `I`) and `ε_op`. -/
@@ -956,7 +956,7 @@ theorem exists_coneConstants (G : GroundFamily F) {ϱ : ℝ} (hϱ : 0 < ϱ) :
       linarith
     ε_5 := by linarith }, rfl, rfl⟩
 
-/-- **`L:raw-block-indexed-cone`** (TeX lines 232--251, display
+/-- **`L:raw-block-indexed-cone`** (TeX lines 316--335, display
 `E:raw-block-positive-product`), for a supplied ground family: for
 `0 < ϱ < 1/2` there are an integer `B ≥ 1` and positive `ω, ε_op, c_*`, with
 `c_* = a_* j_*/4`, such that for every `N ≥ 1`, every chain
@@ -992,7 +992,7 @@ covariance `Γ` from `H:homog` (`HomogCovariance`, `Γ ≠ 0`; both carried and
 unused, since the lemma depends on `Γ` only through the ground family), the
 ground family `G` of `S:compact-mean-family` for `V_s = m_R h_s` (supplied:
 its construction is C16 and is not formalized, so the link of `G` to `Γ` is by
-documentation), and `0 < ϱ < 1/2` (TeX line 234). -/
+documentation), and `0 < ϱ < 1/2` (TeX line 318). -/
 theorem indexed_cone_paper {d : ℕ} {alpha alpha0 : ℝ}
     {Γ μ : MeasureTheory.Measure (HomogHypothesis.Rd d)}
     (_hH : HomogHypothesis.HomogCovariance d alpha alpha0 Γ μ) (_hΓ : Γ ≠ 0)

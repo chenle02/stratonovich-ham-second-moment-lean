@@ -1,6 +1,6 @@
 /-
 Refutation for the order-count step of `C:static-interaction` (main TeX line
-2762 at revision a284420), package theorem
+3303 at revision 39f2597a), package theorem
 `StratonovichHAMSecondMoment.IntervalScalar.exp_mul_two_k_add_one_le`
 (`e(2k+1) ≤ (3e)^k` for `k ≥ 1`).
 

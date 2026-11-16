@@ -1,6 +1,6 @@
 /-
 Refutation for `P:masked-quotient-obstruction`
-(`notes/integrated_covariance_foundation.tex` lines 268-270 at a284420:
+(`notes/integrated_covariance_foundation.tex` lines 355-357 at 39f2597a:
 `Γ(cA) = cΓ(A)`, hence `α = 1` in `H:homog`), package theorem
 `StratonovichHAMSecondMoment.QuotientObstruction.lineMeasure_smul_set` (used for
 the `scaling` field of `homogCovariance_Gamma0`).

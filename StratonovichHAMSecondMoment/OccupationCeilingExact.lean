@@ -4,12 +4,12 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Wave item L9-A2: Lemma `L:occupation-rayleigh-selection` (Countable Rayleigh
-near-occupations; `notes/integrated_occupation_ceiling.tex` at revision a284420, statement
-lines 149-157, proof lines 159-193) and Theorem `T:intrinsic-occupation-ceiling` (The computed
-occupation ceiling; statement lines 205-220, proof lines 222-250) with the EXACT constant
+near-occupations; `notes/integrated_occupation_ceiling.tex` at revision 39f2597a, statement
+lines 180-188, proof lines 190-236) and Theorem `T:intrinsic-occupation-ceiling` (The computed
+occupation ceiling; statement lines 249-264, proof lines 266-316) with the EXACT constant
 `C_occ` of `P:raw-occupation-energy` (module `RawOccupationEnergy`, item L9-A1), in both forms,
 for the variational values `S_c^pos`; with them the comparison of
-`C:intrinsic-spatial-bracket` (lines 261-265, proof 275-290) for `S_2^pos`.  Standing
+`C:intrinsic-spatial-bracket` (lines 328-332, proof 346-361) for `S_2^pos`.  Standing
 assumptions (lines 4-21): `H:homog` (`HomogHypothesis.HomogCovariance d α α₀ Γ μ`), `a = α₀`,
 `Γ ≠ 0` (line 20); `q = 4-α`, `k = 3-α`, `m = q/k`.
 
@@ -18,25 +18,25 @@ Objects reused, not redefined: `𝒪 = OccupationPhysicalClass.IsOccField`, `T(g
 `𝓔_ζ^𝒪 = RawOccupationEnergy.EO`, `C_pos = VariationalDilation.CPos`,
 `h_{Ψ,s} = VariationalDilation.mean`, `v_Ψ = VariationalDilation.rawCost`,
 `I_Ψ = VariationalDilation.integratedRate`, `S_c^pos = sSup (VariationalRate.scoreSet α₀ Γ c)`,
-`U_c = SpatialBracket.ceilingValue α c C_occ` (`E:occupation-score-ceiling`, lines 209-212),
+`U_c = SpatialBracket.ceilingValue α c C_occ` (`E:occupation-score-ceiling`, lines 253-256),
 `F_0 = SpatialFourLinear.F0`, `F_b = SpatialBracket.Fb` (`E:occupation-scalar-map`, lines
-195-201).  Lean route objects (auxiliary): the trapezoids `trap`, the cell index `idx`, the
+238-244).  Lean route objects (auxiliary): the trapezoids `trap`, the cell index `idx`, the
 cell indicators `cellInd`, and the finite-cell field `stepG`/`stepDG`.
 
 Formalized (exact-hypothesis wrappers over `H:homog` with `a = α₀` and `Γ ≠ 0`):
 * `occupation_rayleigh_selection_paper` (`E:occupation-rayleigh-selection`): for `Ψ ∈ C_pos`
   and `ε > 0` there is `g_ε ∈ 𝒪` with `I_Ψ² + T(g_ε) ≤ √(v_Ψ A(g_ε)) + ε`.
 * `intrinsic_occupation_ceiling_paper`: for every `c > 0` (the coefficient range of
-  `P:variational-positive-scores`, `integrated_unmasked_variational.tex` line 272) the value set
+  `P:variational-positive-scores`, `integrated_unmasked_variational.tex` line 372) the value set
   is nonempty and bounded above, `c I_Ψ - v_Ψ/2 ≤ U_c` for every `Ψ ∈ C_pos`,
   `S_c^pos ≤ U_c = c^m k[α^{α/2} C_occ/(8q^{q/2})]^{1/k}`, and
   `U_c = c^m (2ζ)^{α/(2k)} F_0(𝓔_ζ^𝒪)` for every `ζ > 0`.
 * `intrinsic_spatial_comparison_paper` (B13): `S_2^pos ≤ 2^m F_0(𝓔_{1/2}^𝒪) <
   2^m F_a(𝓔_{1/2}^𝒪)`, the value set at `c = 2` being nonempty and bounded above.
 * Route steps: `step_mean_le_sqrt` (`∫_0^1 ∫ h_{Ψ,s} g_s² ≤ √(v_Ψ A(g))` for the finite-cell
-  field, the final display of `L:occupation-raw-square`, lines 38-41, for that field),
-  `stepField_isOcc`, `integratedRate_sq_le_Cocc` (lines 223-234), `score_le_ceiling_Cocc`
-  (lines 235-243), `A_le_Cocc`.
+  field, the final display of `L:occupation-raw-square`, lines 39-42, for that field),
+  `stepField_isOcc`, `integratedRate_sq_le_Cocc` (lines 276-293), `score_le_ceiling_Cocc`
+  (lines 301-309), `A_le_Cocc`.
 
 Supplied inputs: none.  `S1Bdd` is never assumed; the named input `SpaceTimePosDef` is not
 used.  The space-time Cauchy-Schwarz bound is wave item L8-c1's
@@ -45,21 +45,21 @@ fields; the finite-cell field is not continuous in time, so `step_mean_le_sqrt` 
 cell indicators by continuous trapezoids and passes to the limit by dominated convergence on both
 sides (no extension of L8-c1's positivity proof is needed).
 
-Narrower than the TeX (recorded): the moment sentence `C_2(Γ,a) ≤ U_2` (line 217) and the
-`C_2` form of the comparison (lines 263-264) are not formalized (they need
+Narrower than the TeX (recorded): the moment sentence `C_2(Γ,a) ≤ U_2` (line 261) and the
+`C_2` form of the comparison (lines 330-331) are not formalized (they need
 `T:intrinsic-second-moment`, `C_2 = S_2^pos`, foundation D1): the statements are for `S_c^pos`
 and `S_2^pos`; the class `𝒪` is modelled by joint representatives (`IsOccField`), as in
-`P:raw-occupation-energy`; the direct zero case `Γ = 0` (lines 302-308) is not formalized.
+`P:raw-occupation-energy`; the direct zero case `Γ = 0` (lines 379-385) is not formalized.
 
 Route differences (decision 2 of wave L9): in `L:occupation-rayleigh-selection` the TeX's
-countable dense family with a first-index Borel selection (lines 160-173) is replaced by `N+1`
+countable dense family with a first-index Borel selection (lines 199-212) is replaced by `N+1`
 equal time cells with near-optimal real unit tests at the left nodes
 (`OccupationCeilingFinite.exists_unitTest_gt`) and the uniform Lipschitz bounds in `s` of
 `∫ h_s f²` (`L:variational-global-mean`) and of `λ_s²` (`P:variational-unmasked-rate`); the
 field `g_s = f_j` on cell `j` is a finite simple field of unit tests, hence in `𝒪`.  The bound
 `⟨Ψ,ρ_g⟩ ≤ √(v_Ψ A(g))` is `step_mean_le_sqrt` (above) instead of the map `Q` and `ρ_g ∈ H_I` of
 `L:occupation-raw-square`, which are not formalized.  The rest follows the TeX: `I_Ψ² ≤ ∫_0^1 λ_s²`
-(by Jensen; the TeX's time Cauchy-Schwarz, lines 188-189), the two scalar maxima by weighted AM-GM
+(by Jensen; the TeX's time Cauchy-Schwarz, lines 231-232), the two scalar maxima by weighted AM-GM
 (`OccupationCeilingFinite.young_quarter`, `young_q`), the positive-power algebra
 (`OccupationCeilingFinite.ceilingValue_eq`), the second form by `E:raw-occupation-energy`
 and `SpatialBracket.ceilingValue_eq_zeta`, and `F_0 < F_a` (`SpatialBracket.F0_lt_Fa`, `Δ > 0`).
@@ -241,7 +241,7 @@ theorem sum_cellInd {N : ℕ} {s : ℝ} (hs : s ∈ Ioo (0 : ℝ) 1)
 /-! ### The step field (auxiliary) -/
 
 /-- The finite-cell field `g_s = f_j` for `s` in cell `j` (TeX: the selected field `g_ε` of
-`L:occupation-rayleigh-selection`, lines 159-173, built here from finitely many equal cells
+`L:occupation-rayleigh-selection`, lines 190-212, built here from finitely many equal cells
 instead of a countable first-index selection). -/
 def stepG (N : ℕ) (f : Fin (N + 1) → Rd d → ℝ) : ℝ → Rd d → ℝ := fun s => f (idx N s)
 
@@ -260,7 +260,7 @@ theorem gradSqE_grad {g : Rd d → ℝ} (hg : IsUnitTest g) :
   congr 1; funext x
   rw [LinearIsometryEquiv.norm_map]
 
-/-- The finite-cell field lies in `𝒪` (TeX lines 170-181: it is strongly measurable and has
+/-- The finite-cell field lies in `𝒪` (TeX lines 209-224: it is strongly measurable and has
 finite gradient budget; here it is a finite simple field of unit tests) and
 `T(g) = ∫_0^1 b(f_{j(s)}) ds`. -/
 theorem stepField_isOcc {N : ℕ} {f : Fin (N + 1) → Rd d → ℝ} (hf : ∀ j, IsUnitTest (f j)) :
@@ -312,7 +312,7 @@ theorem mean_pair_bound {V : Rd d → ℝ} {M : ℝ} (hV : ∀ x, 0 ≤ V x ∧ 
     _ = M := by rw [integral_const_mul, hg.2.2, mul_one]
 
 /-- **The Cauchy-Schwarz bound for the finite-cell field** (auxiliary to the Lean route; the
-final display of `L:occupation-raw-square`, `integrated_occupation_ceiling.tex` lines 38-41,
+final display of `L:occupation-raw-square`, `integrated_occupation_ceiling.tex` lines 39-42,
 `⟨Ψ,ρ_g⟩ ≤ √(v_Ψ A(g))` in its integral form, for the step field `g`).  Under `H:homog` with
 `a = α₀` and `Γ ≠ 0`, for `Ψ ∈ C_pos` and real unit tests `f_j`:
 `∫_0^1 ∫ h_{Ψ,s} g_s² dx ds ≤ √(v_Ψ A(g))`.  Route (not the TeX's map `Q` and `ρ_g ∈ H_I`):
@@ -500,8 +500,8 @@ theorem step_mean_le_sqrt {alpha a : ℝ} {Γ μ : Measure (Rd d)}
 
 /-! ### `L:occupation-rayleigh-selection` -/
 
-/-- **`L:occupation-rayleigh-selection`** (`integrated_occupation_ceiling.tex` lines 149-157,
-proof 159-193, at a284420), under the section's standing assumptions (lines 4-21: `H:homog`
+/-- **`L:occupation-rayleigh-selection`** (`integrated_occupation_ceiling.tex` lines 180-188,
+proof 190-236, at 39f2597a), under the section's standing assumptions (lines 4-21: `H:homog`
 with `a = α₀`, `Γ ≠ 0`): for `Ψ ∈ C_pos` and `ε > 0` there is a field `g_ε` of `𝒪`
 (`IsOccField`) with `I_Ψ² + T(g_ε) ≤ √(v_Ψ A(g_ε)) + ε` (`E:occupation-rayleigh-selection`),
 `A` the ORIGINAL-kernel form of `RawOccupationEnergy`.  The field is a finite-cell field
@@ -512,7 +512,7 @@ Lipschitz bounds in `s` of `∫ h_s f²` (`L:variational-global-mean`) and of `�
 (`P:variational-unmasked-rate`), instead of the TeX's countable first-index Borel selection
 over a dense sequence; the bound `∫∫ h g² ≤ √(v_Ψ A(g))` is `step_mean_le_sqrt` instead of
 `L:occupation-raw-square`; `I_Ψ² ≤ ∫_0^1 λ_s² ds` is proved by Jensen (the TeX's time
-Cauchy-Schwarz, lines 188-189).  Narrower as recorded in the module doc: `𝒪` is modelled by
+Cauchy-Schwarz, lines 231-232).  Narrower as recorded in the module doc: `𝒪` is modelled by
 `IsOccField` (the selected finite-cell field is a finite simple field of unit tests). -/
 theorem occupation_rayleigh_selection_paper {alpha a : ℝ} {Γ μ : Measure (Rd d)}
     (hH : HomogCovariance d alpha a Γ μ) (hΓ0 : Γ ≠ 0) {Ψ : ℝ × Rd d → ℝ} (hΨ : Ψ ∈ CPos d)
@@ -658,7 +658,7 @@ theorem A_le_Cocc {a alpha : ℝ} {Γ : Measure (Rd d)} (hd : 0 < d)
   rwa [div_le_iff₀ hTp] at this
 
 /-- The first scalar maximum of the proof of `T:intrinsic-occupation-ceiling` (TeX lines
-223-234) with the exact `C_occ`: under the standing assumptions, every `Ψ ∈ C_pos` satisfies
+276-293) with the exact `C_occ`: under the standing assumptions, every `Ψ ∈ C_pos` satisfies
 `I_Ψ² ≤ (q/4)(α/4)^{α/q} (v_Ψ C_occ)^{2/q}`, `q = 4 - α`, i.e. `I_Ψ ≤ D v_Ψ^{1/q}` with
 `D = √(q/4)(α/4)^{α/(2q)} C_occ^{1/q}`.  Route as in the TeX: the selection lemma, the ratio
 bound `A(g) ≤ C_occ T(g)^{α/2}`, the scalar maximum over `T ≥ 0`
@@ -690,7 +690,7 @@ theorem integratedRate_sq_le_Cocc {alpha a : ℝ} {Γ μ : Measure (Rd d)}
   have hY := OccupationCeilingFinite.young_quarter ha0 (by linarith) hX hT0
   linarith
 
-/-- The ceiling for one control (TeX lines 235-243) with the exact `C_occ`: under the standing
+/-- The ceiling for one control (TeX lines 301-309) with the exact `C_occ`: under the standing
 assumptions, for `c > 0` and `Ψ ∈ C_pos`, `c I_Ψ - v_Ψ/2 ≤ U_c` with
 `U_c = c^m k [α^{α/2} C_occ/(8 q^{q/2})]^{1/k}` (`SpatialBracket.ceilingValue α c C_occ`).
 Route: `integratedRate_sq_le_Cocc`, the second scalar maximum
@@ -728,8 +728,8 @@ theorem score_le_ceiling_Cocc {alpha a : ℝ} {Γ μ : Measure (Rd d)}
   rw [← e]
   nlinarith [mul_le_mul_of_nonneg_left hIle hc.le]
 
-/-- **`T:intrinsic-occupation-ceiling`** (`integrated_occupation_ceiling.tex` lines 205-220,
-proof 222-250, at a284420) with the EXACT constant `C_occ` (`RawOccupationEnergy.Cocc`), both
+/-- **`T:intrinsic-occupation-ceiling`** (`integrated_occupation_ceiling.tex` lines 249-264,
+proof 266-316, at 39f2597a) with the EXACT constant `C_occ` (`RawOccupationEnergy.Cocc`), both
 forms, for the variational values `S_c^pos = sSup (VariationalRate.scoreSet α₀ Γ c)`, under the
 section's standing assumptions (lines 4-21: `H:homog` with `a = α₀`, `Γ ≠ 0`).  For every
 `c > 0`: the value set is nonempty and bounded above, every `Ψ ∈ C_pos` has
@@ -737,11 +737,11 @@ section's standing assumptions (lines 4-21: `H:homog` with `a = α₀`, `Γ ≠ 
 (`E:occupation-score-ceiling`), and for every `ζ > 0`,
 `U_c = c^m (2ζ)^{α/(2k)} F_0(𝓔_ζ^𝒪)` (`q = 4-α`, `k = 3-α`, `m = q/k`; `F_0` is
 `SpatialFourLinear.F0`, `𝓔_ζ^𝒪` is `RawOccupationEnergy.EO`).
-Narrower than the TeX (recorded): the moment sentence `C_2(Γ,a) ≤ U_2` (line 217) is not
+Narrower than the TeX (recorded): the moment sentence `C_2(Γ,a) ≤ U_2` (line 261) is not
 formalized (it needs `T:intrinsic-second-moment`, foundation D1); the class `𝒪` is modelled by
 joint representatives (`IsOccField`), as in `P:raw-occupation-energy`.  The coefficient range
 `c > 0` is that of `P:variational-positive-scores` (`integrated_unmasked_variational.tex`
-line 272), where `S_c^pos` is defined.  Route difference: the selection lemma by finite cells
+line 372), where `S_c^pos` is defined.  Route difference: the selection lemma by finite cells
 (`occupation_rayleigh_selection_paper`); the second form from `E:raw-occupation-energy`
 (`RawOccupationEnergy.raw_occupation_energy_paper`) and
 `SpatialBracket.ceilingValue_eq_zeta`.  No input is supplied (`S1Bdd` is not assumed). -/
@@ -768,7 +768,7 @@ theorem intrinsic_occupation_ceiling_paper {alpha a : ℝ} {Γ μ : Measure (Rd 
   exact SpatialBracket.ceilingValue_eq_zeta ha0 ha2 hC.le hζ
 
 /-- **The comparison of `C:intrinsic-spatial-bracket`** (`integrated_occupation_ceiling.tex`
-lines 261-265, proof 275-290, at a284420), for the variational value `S_2^pos`, with the exact
+lines 328-332, proof 346-361, at 39f2597a), for the variational value `S_2^pos`, with the exact
 `𝓔_{1/2}^𝒪`: under the section's standing assumptions (`H:homog` with `a = α₀`, `Γ ≠ 0`),
 the value set at `c = 2` is nonempty and bounded above, and
 `S_2^pos ≤ 2^m F_0(𝓔_{1/2}^𝒪) < 2^m F_a(𝓔_{1/2}^𝒪)` (`F_a = SpatialBracket.Fb α a`).

@@ -1,0 +1,5 @@
+3.10.0-1160.156.1.el7.tuxcare.els3.x86_64
+no lsm file
+no bwrap
+unshare: unshare failed: Invalid argument
+USERNS_FAIL

@@ -4,16 +4,16 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `P:masked-spectral-growth` (Translated spectral mass) of
-`notes/integrated_covariance_foundation.tex` (revision a284420, lines 34-77),
+`notes/integrated_covariance_foundation.tex` (revision 39f2597a, lines 37-94),
 and the derivation of the spectral homogeneity `μ(cA) = c^α μ(A)` from the
 scaling of `Γ` (main TeX file `notes/notes_stratonovich_ham_second_moment.tex`,
-lines 851-852, proof of `L:damped-homogeneous-norms`), which discharges the one
+lines 1067-1068, proof of `L:damped-homogeneous-norms`), which discharges the one
 supplied input of `SpectralHomog`, `DampedNorms` and `ClockCopy` (see
 `ClockCopyHomog`).
 
 Formalized:
 * `masked_spectral_growth_paper`, under the section's standing assumptions
-  (lines 5-6): `H:homog` (`HomogHypothesis.HomogCovariance`) and `Γ ≠ 0`.
+  (lines 7-8): `H:homog` (`HomogHypothesis.HomogCovariance`) and `Γ ≠ 0`.
   With `M_Γ = ∫ e^{-|x|²/4} Γ(dx)` (`MGamma`) and `C_Γ = e M_Γ/(2√π)^d`
   (`CGamma`): `e^{-|x|²/4}` is `Γ`-integrable (the manuscript's `M_Γ < ∞`)
   and `M_Γ > 0`; for every `y ∈ ℝ^d` and `r > 0` both integrands of
@@ -48,12 +48,12 @@ integral of a non-integrable function is `0`.  The balls are
 `Metric.ball y r` and `Metric.closedBall y r`.
 
 Proof route.  As in the TeX for the proposition, except that the Gaussian
-Fourier integral (lines 56-64, computed there via `J'(b) = -bJ(b)/(2A)`) is
+Fourier integral (lines 68-76, computed there via `J'(b) = -bJ(b)/(2A)`) is
 Mathlib's `GaussianFourier.integral_cexp_neg_mul_sq_norm_add`, and the
 integrability of the Gaussian against a tempered measure is proved directly
 from the package's integral form of temperedness (`IsTempered`:
 `∫(1+|x|)^{-k} < ∞`), not from the polynomial mass growth argument of lines
-23-30.  For the homogeneity the manuscript only says "Fourier uniqueness"; the
+25-32.  For the homogeneity the manuscript only says "Fourier uniqueness"; the
 Lean route weights both `μ ∘ (c·)⁻¹` and `c^{-α} μ` by `e^{-|ξ|²}` (finite
 measures because `μ` is tempered), shows that their characteristic functions
 agree (each is a translated Gaussian integral against `Γ`, by the spectral
@@ -88,7 +88,7 @@ variable {d : ℕ}
 
 /-- Auxiliary to the Lean proof route. A tempered measure integrates every
 translated Gaussian `e^{-b‖x-w‖²}`, `b > 0` (the Schwartz integrability noted
-at lines 23-30, for this test). -/
+at lines 25-32, for this test). -/
 theorem integrable_gauss_of_tempered {ν : Measure (Rd d)} (hν : IsTempered ν) {b : ℝ}
     (hb : 0 < b) (w : Rd d) : Integrable (fun x : Rd d => Real.exp (-(b * ‖x - w‖ ^ 2))) ν := by
   obtain ⟨k, hk⟩ := hν
@@ -119,7 +119,7 @@ theorem integrable_gauss_of_tempered {ν : Measure (Rd d)} (hν : IsTempered ν)
 
 /-! ### The spectral convention applied to Gaussian tests -/
 
-/-- `E:masked-spectral-convention` (lines 15-19) applied to the Schwartz test
+/-- `E:masked-spectral-convention` (lines 17-21) applied to the Schwartz test
 `e^{-i⟨y,x⟩} e^{-s‖x-w‖²}`, with the inner Gaussian Fourier integral computed:
 `∫ test dΓ = ∫ (π/s)^{d/2} e^{i⟨ξ-y,w⟩} e^{-‖ξ-y‖²/(4s)} μ(dξ)`. Only the
 spectral convention is assumed. -/
@@ -223,7 +223,7 @@ if `μ` is tempered and is the spectral measure of `Γ` in the sense of
 `E:masked-spectral-convention`, and `Γ(cA) = c^{d-α} Γ(A)` (the scaling clause
 of `H:homog`), then `μ ∘ (c·)⁻¹ = c^{-α} μ` for `c > 0`.  This is the step
 "Scaling the Fourier representation of `Γ` and using Fourier uniqueness gives
-`μ(cA) = c^α μ(A)`" (main TeX lines 851-852).  Route: both sides weighted by
+`μ(cA) = c^α μ(A)`" (main TeX lines 1067-1068).  Route: both sides weighted by
 `e^{-‖ξ‖²}` are finite measures with equal characteristic functions (each is a
 translated Gaussian integral against `Γ`, compared through the scaling of
 `Γ`); `Measure.ext_of_charFun` identifies them and the weight is removed. -/
@@ -295,8 +295,8 @@ theorem map_smul_of_scaling {Γ μ : Measure (Rd d)} {alpha : ℝ} (hμt : IsTem
 
 /-- **Discharge of the supplied input of `SpectralHomog`.** Under the
 tempered spectral convention and the scaling `Γ(cA) = c^{d-α} Γ(A)`,
-`μ(cA) = c^α μ(A)` for Borel `A` and `c > 0` (main TeX lines 851-852; the
-same derivation is used at lines 4718-4722).  Hypotheses: `μ` tempered,
+`μ(cA) = c^α μ(A)` for Borel `A` and `c > 0` (main TeX lines 1067-1068; the
+same derivation is used at lines 5582-5593).  Hypotheses: `μ` tempered,
 `IsSpectralMeasure Γ μ`, and the scaling of `Γ`. -/
 theorem spectralHomogeneous_of_scaling {Γ μ : Measure (Rd d)} {alpha : ℝ}
     (hμt : IsTempered μ) (hsp : IsSpectralMeasure Γ μ)
@@ -318,10 +318,10 @@ theorem spectralHomogeneous_of_homog {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d
 
 /-! ### `P:masked-spectral-growth` -/
 
-/-- `M_Γ = ∫ e^{-|x|²/4} Γ(dx)` (line 37). -/
+/-- `M_Γ = ∫ e^{-|x|²/4} Γ(dx)` (line 40). -/
 def MGamma (Γ : Measure (Rd d)) : ℝ := ∫ x, Real.exp (-(‖x‖ ^ 2 / 4)) ∂Γ
 
-/-- `C_Γ = e M_Γ/(2√π)^d` (line 38). -/
+/-- `C_Γ = e M_Γ/(2√π)^d` (line 41). -/
 def CGamma (Γ : Measure (Rd d)) : ℝ := Real.exp 1 * MGamma Γ / (2 * Real.sqrt Real.pi) ^ d
 
 /-- Auxiliary to the Lean proof route. Integrability of the centred Gaussian
@@ -330,7 +330,7 @@ theorem integrable_gauss_zero {ν : Measure (Rd d)} (hν : IsTempered ν) {c : �
     Integrable (fun x : Rd d => Real.exp (-(c * ‖x‖ ^ 2))) ν := by
   simpa using integrable_gauss_of_tempered hν hc 0
 
-/-- `0 < M_Γ < ∞` (line 40): `e^{-|x|²/4}` is `Γ`-integrable for a tempered
+/-- `0 < M_Γ < ∞` (line 43): `e^{-|x|²/4}` is `Γ`-integrable for a tempered
 `Γ`, and `M_Γ > 0` when moreover `Γ ≠ 0`. -/
 theorem MGamma_pos {Γ : Measure (Rd d)} (hΓt : IsTempered Γ) (hΓ : Γ ≠ 0) :
     Integrable (fun x : Rd d => Real.exp (-(‖x‖ ^ 2 / 4))) Γ ∧ 0 < MGamma Γ := by
@@ -351,7 +351,7 @@ theorem gauss_const_cancel (r : ℝ) (hr : 0 < r) :
   rw [h1, sq_rpow_half _ (by positivity), ← mul_pow]
   rw [show 2 * Real.sqrt Real.pi / r * (r / (2 * Real.sqrt Real.pi)) = 1 by field_simp, one_pow]
 
-/-- `E:masked-gaussian-transform` (lines 42-45): for `y ∈ ℝ^d`, `r > 0`,
+/-- `E:masked-gaussian-transform` (lines 45-48): for `y ∈ ℝ^d`, `r > 0`,
 `∫ e^{-|ξ-y|²/r²} μ(dξ) = (r/(2√π))^d ∫ e^{-r²|x|²/4} e^{-iy·x} Γ(dx)`.
 Only the spectral convention is assumed (as an identity of Lean integrals;
 integrability of both integrands is `masked_spectral_growth`). -/
@@ -377,7 +377,7 @@ theorem masked_gaussian_transform {Γ μ : Measure (Rd d)} (hsp : IsSpectralMeas
     mul_comm ((r / (2 * Real.sqrt Real.pi)) ^ d), gauss_const_cancel (d := d) r hr,
     Complex.ofReal_one, one_mul]
 
-/-- `E:masked-translated-ball`, Gaussian part (lines 46-47):
+/-- `E:masked-translated-ball`, Gaussian part (lines 49-50):
 `∫ e^{-|ξ-y|²/r²} μ(dξ) ≤ r^α M_Γ/(2√π)^d`, from the transform, the
 nonnegativity of `Γ` and the scaling `Γ(cA) = c^{d-α}Γ(A)`. -/
 theorem translated_gauss_le {Γ μ : Measure (Rd d)} {alpha : ℝ} (hsp : IsSpectralMeasure Γ μ)
@@ -415,7 +415,7 @@ theorem translated_gauss_le {Γ μ : Measure (Rd d)} {alpha : ℝ} (hsp : IsSpec
         rw [div_pow, ← hrr]
         field_simp
 
-/-- `E:masked-translated-ball`, mass part (line 48): `μ(B̄(y,r)) ≤ C_Γ r^α`
+/-- `E:masked-translated-ball`, mass part (line 51): `μ(B̄(y,r)) ≤ C_Γ r^α`
 for the closed ball, given the integrability of `e^{-|ξ-y|²/r²}` (which holds
 for tempered `μ`). -/
 theorem closedBall_le {Γ μ : Measure (Rd d)} {alpha : ℝ} (hsp : IsSpectralMeasure Γ μ)
@@ -450,7 +450,7 @@ theorem closedBall_le {Γ μ : Measure (Rd d)} {alpha : ℝ} (hsp : IsSpectralMe
         rw [← ENNReal.ofReal_mul (Real.exp_pos _).le, CGamma]
         congr 1; ring
 
-/-- **`P:masked-spectral-growth`** (lines 34-52), general form: for a tempered
+/-- **`P:masked-spectral-growth`** (lines 37-55), general form: for a tempered
 `Γ ≠ 0` with tempered spectral measure `μ` (`E:masked-spectral-convention`)
 and the scaling `Γ(cA) = c^{d-α}Γ(A)`:
 `e^{-|x|²/4}` is `Γ`-integrable and `M_Γ > 0`; for every `y` and `r > 0` the
@@ -496,7 +496,7 @@ theorem masked_spectral_growth {Γ μ : Measure (Rd d)} {alpha : ℝ} (hΓt : Is
 
 /-- **`P:masked-spectral-growth` with the manuscript's hypotheses**: the
 section's standing assumptions `H:homog` (`HomogCovariance`) and `Γ ≠ 0`
-(lines 5-6).  Uses the fields `Γ_tempered`, `μ_tempered`, `spectral` and
+(lines 7-8).  Uses the fields `Γ_tempered`, `μ_tempered`, `spectral` and
 `scaling`. -/
 theorem masked_spectral_growth_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (h : HomogCovariance d alpha alpha0 Γ μ) (hΓ : Γ ≠ 0) :

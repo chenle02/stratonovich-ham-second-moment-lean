@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.RieszPositiveDefinite.three_product_riesz_paper_proved

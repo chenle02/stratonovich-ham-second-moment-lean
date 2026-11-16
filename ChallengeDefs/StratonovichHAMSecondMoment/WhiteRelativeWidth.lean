@@ -24,21 +24,21 @@ open Real
 namespace StratonovichHAMSecondMoment.WhiteRelativeWidth
 
 /-- The upper-bound factor `K_0(a) = 2^a/(1-a)` of `E:white-moment-bounds`
-(TeX line 106). -/
+(TeX line 145). -/
 def boundK0 (a : ℝ) : ℝ := 2 ^ a / (1 - a)
 
 /-- The lower-bound mass `M_a = Γ_E((1+a)/2)/(Γ_E(1+a) Γ_E((1-a)/2))` of
-`E:white-moment-bounds` (TeX lines 107--108). -/
+`E:white-moment-bounds` (TeX lines 146--147). -/
 def boundMass (a : ℝ) : ℝ := Gamma ((1 + a) / 2) / (Gamma (1 + a) * Gamma ((1 - a) / 2))
 
-/-- The lower formula `(2/3) sqrt(c/M_a)` of `E:white-moment-bounds` (TeX line 104). -/
+/-- The lower formula `(2/3) sqrt(c/M_a)` of `E:white-moment-bounds` (TeX line 143). -/
 def lowerFormula (c a : ℝ) : ℝ := 2 / 3 * sqrt (c / boundMass a)
 
-/-- The upper formula `(2/3) sqrt(c K_0(a))` of `E:white-moment-bounds` (TeX line 105). -/
+/-- The upper formula `(2/3) sqrt(c K_0(a))` of `E:white-moment-bounds` (TeX line 144). -/
 def upperFormula (c a : ℝ) : ℝ := 2 / 3 * sqrt (c * boundK0 a)
 
 /-- The constant `sqrt π / (2 Γ_E(5/4)²)` of `C:white-relative-width` (TeX
-line 134), before the square root. -/
+line 177), before the square root. -/
 def widthConst : ℝ := sqrt π / (2 * Gamma (5 / 4) ^ 2)
 
 end StratonovichHAMSecondMoment.WhiteRelativeWidth

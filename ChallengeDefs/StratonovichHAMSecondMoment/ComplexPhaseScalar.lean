@@ -25,32 +25,32 @@ namespace StratonovichHAMSecondMoment.ComplexPhaseScalar
 
 open StratonovichHAMSecondMoment.StaticPhaseCauchy
 
-/-! ## The scalar functions `C_h`, `F_h`, `H_h` (main TeX lines 2398-2429) -/
+/-! ## The scalar functions `C_h`, `F_h`, `H_h` (main TeX lines 2881-2912) -/
 
 /-- The principal square root `w^{1/2}` (`cpow` with exponent `1/2`). -/
 def csqrt (w : ℂ) : ℂ := w ^ (((2 : ℕ) : ℂ)⁻¹)
 
-/-- `G_h(w) = sin(h√w)/√w` (main TeX line 2444), with its removable value
+/-- `G_h(w) = sin(h√w)/√w` (main TeX line 2931), with its removable value
 `G_h(0) = h`.  Since `sin(hr)/r` is even in `r`, the branch of `√w` is
 irrelevant. -/
 def phaseG (h : ℝ) (w : ℂ) : ℂ :=
   if w = 0 then (h : ℂ) else Complex.sin (h * csqrt w) / csqrt w
 
-/-- `C_h(w) = cos(h√w)` (main TeX line 2400); even in the root. -/
+/-- `C_h(w) = cos(h√w)` (main TeX line 2883); even in the root. -/
 def phaseC (h : ℝ) (w : ℂ) : ℂ := Complex.cos (h * csqrt w)
 
-/-- `F_h(w) = √(w+λ²) sin(h√w)/√w` (main TeX line 2401), with the principal
+/-- `F_h(w) = √(w+λ²) sin(h√w)/√w` (main TeX line 2884), with the principal
 branch of `√(w+λ²)`. -/
 def phaseF (h lam : ℝ) (w : ℂ) : ℂ := csqrt (w + ((lam ^ 2 : ℝ) : ℂ)) * phaseG h w
 
-/-- `H_h(w) = (w/√(w+λ²)) sin(h√w)/√w` (main TeX lines 2402-2403); its value at
+/-- `H_h(w) = (w/√(w+λ²)) sin(h√w)/√w` (main TeX lines 2885-2886); its value at
 `w = 0` is `0`. -/
 def phaseH (h lam : ℝ) (w : ℂ) : ℂ := w / csqrt (w + ((lam ^ 2 : ℝ) : ℂ)) * phaseG h w
 
 /-! ## The phase-range conclusion -/
 
 /-- The conclusion of the numerical-range and scalar steps at one point `w`
-(main TeX lines 2384-2429): the two inequalities for some `s ≥ 0`, the parabola,
+(main TeX lines 2860-2912): the two inequalities for some `s ≥ 0`, the parabola,
 `x ≥ -λ²/4`, `|w| ≤ x + 2λ²`, `|Im r| ≤ λ` for every square root `r` of `w`, and
 the three scalar bounds. -/
 def PhaseRangeBounds (a δ lam h : ℝ) (w : ℂ) : Prop :=
@@ -70,12 +70,12 @@ open scoped ComplexOrder
 
 variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
 
-/-- The numerical range `W(T) = {⟨Tu,u⟩ : ‖u‖ = 1}` (main TeX line 2283).
+/-- The numerical range `W(T) = {⟨Tu,u⟩ : ‖u‖ = 1}` (main TeX line 2745).
 Mathlib's inner product is conjugate-linear in the FIRST slot, so the TeX's
 `⟨Tu,u⟩` is `⟪u, T u⟫`. -/
 def numRange (T : H →L[ℂ] H) : Set ℂ := {w | ∃ u : H, ‖u‖ = 1 ∧ w = inner ℂ u (T u)}
 
-/-- `A_ρ = ρ² + A_0` (main TeX line 2290). -/
+/-- `A_ρ = ρ² + A_0` (main TeX line 2753). -/
 def shiftOp (A0 : H →L[ℂ] H) (ρ : ℝ) : H →L[ℂ] H := A0 + algebraMap ℝ (H →L[ℂ] H) (ρ ^ 2)
 
 /-- `A_ρ^{-1/2}`: the inverse of the continuous-functional-calculus square root

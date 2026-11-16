@@ -5,13 +5,13 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The parts of `L:damped-homogeneous-norms` (Homogeneous damped norms and
 temporal tails) of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` (revision a284420) that
+`notes/notes_stratonovich_ham_second_moment.tex` (revision 39f2597a) that
 `DampedNormsHomog` left out: the lower bounds of
-`E:damped-multiplier-comparison` (display at main TeX lines 836-841, the class
-of multipliers and Laplace domains at 826-834) and the smoothing assertions at
-the end of the lemma (lines 845-847) and of its proof (lines 915-917).  Read
-with the definitions `E:damped-norm-definitions` (lines 782-793) and
-`Ĝ_s(ξ) = sin(s|ξ|)/|ξ|` (lines 777-778).  `DampedNormsHomog` and `WaveGreen`
+`E:damped-multiplier-comparison` (display at main TeX lines 1043-1048, the class
+of multipliers and Laplace domains at 1033-1041) and the smoothing assertions at
+the end of the lemma (lines 1052-1054) and of its proof (lines 1150-1152).  Read
+with the definitions `E:damped-norm-definitions` (lines 988-999) and
+`Ĝ_s(ξ) = sin(s|ξ|)/|ξ|` (lines 983-984).  `DampedNormsHomog` and `WaveGreen`
 are unchanged; the extended wrappers here are new declarations.
 
 Formalized:
@@ -45,7 +45,7 @@ Formalized:
 Wrappers:
 * `damped_homogeneous_norms_full_paper`: under `H:homog` (`HomogCovariance`,
   `a = α₀`, no `Γ ≠ 0`, as in the TeX) and `GreenMass G` (the supplied input of
-  `DampedNormsHomog.damped_homogeneous_norms_paper`, TeX line 881), the
+  `DampedNormsHomog.damped_homogeneous_norms_paper`, TeX line 1104), the
   conclusions of that wrapper with item 4 extended to the whole display
   `E:damped-multiplier-comparison`, plus (i), (ii) and the general form of
   (iii);
@@ -59,28 +59,29 @@ Wrappers:
   supplied.
 
 Named inputs (no new ones for the lemma's own conclusions):
-* `GreenMass G` (TeX line 881) as in `DampedNormsHomog`; discharged for the wave
+* `GreenMass G` (TeX line 1104) as in `DampedNormsHomog`; discharged for the wave
   Green measures by `WaveGreen.waveGreen_greenMass`.
 * `GreenFourier G` (only for the identification with `N2onSq`): `G_s` finite and
   `charFun (G s) = waveHat s` for `s > 0`, i.e. that `Ĝ_s = sin(s|ξ|)/|ξ|` of TeX
-  lines 777-778 is the Fourier transform of `G_s`, which the TeX uses when it
-  pairs `G_θ(s,x)` with `G_θ(t,y)` (lines 794-797).  It is no stronger than
+  lines 983-984 is the Fourier transform of `G_s`, which the TeX uses when it
+  pairs `G_θ(s,x)` with `G_θ(t,y)` (lines 1000-1003).  It is no stronger than
   that identity.  Proved in `d = 1` (`greenFourier_one`); in `d = 2, 3` it is
   not proved in the package (as in `WaveGreen`).
 
 Narrower than the TeX, or not stated:
-* "Spatial Gaussian smoothing ... give[s] multipliers in this class" (lines 845-846)
+* "Spatial Gaussian smoothing ... give[s] multipliers in this class" (lines 1052-1053)
   is formalized as the membership of `e^{-η|ξ|²}` in the class; the spectral
   identity that the spectral measure of `p_ε * Γ` is `e^{-c ε|ξ|²}μ` is not
-  stated (it needs Fubini against the locally finite, infinite `Γ`; Le's
-  decision 2 for wave L8).
+  stated in this module (Le's decision 2 for wave L8); it is proved in
+  `DampedSmoothing` (wave L12) by Fubini against Lebesgue measure times `μ`,
+  not against `Γ`.
 * The Gaussian `p_η` of the source (pp. 13-14) is represented by the centered
   Gaussian `gaussKernel v = N(0, vI)`, the image of Mathlib's `stdGaussian`
   under `x ↦ √v x`; every normalization `p_η = N(0, cηI)` is `gaussKernel (cη)`.
   The TeX does not fix `c` in this lemma.
 * Commentary only (no Lean statement): "the scaling identities above are
-  asserted for the original covariance only" (lines 843-844) and "It is used
-  after time integration, not pointwise" (lines 911-912).
+  asserted for the original covariance only" (lines 1050-1051) and "It is used
+  after time integration, not pointwise" (lines 1146-1147).
 
 Conventions and junk values:
 * `N2GreenSq` is a complex Bochner integral (the TeX's
@@ -102,10 +103,10 @@ Hypotheses of `H:homog` used: through the called lemmas
 `damped_homogeneous_norms_full_wave`, `dim`.  No other field is used directly.
 
 Proof route.  The lower bounds follow the TeX ("nonnegative integrand" for
-`N₁`, line 913; for `N₂` the representation `N_{2,m,S}(θ)² = ∫_S w_θ^{mμ}` of
+`N₁`, line 1148; for `N₂` the representation `N_{2,m,S}(θ)² = ∫_S w_θ^{mμ}` of
 `DampedNormsHomog.N2onSq_eq` with `w_θ ≥ 0`, where the TeX uses
-`B_θ(λ,ξ) ≥ 0` by positive definiteness, lines 900-911).  The smoothing
-assertions have no written TeX proof beyond lines 915-917; the Lean route is
+`B_θ(λ,ξ) ≥ 0` by positive definiteness, lines 1135-1146).  The smoothing
+assertions have no written TeX proof beyond lines 1150-1152; the Lean route is
 Mathlib's convolution and characteristic-function calculus (`Measure.conv`,
 `charFun_conv`, `charFun_map_smul`, `charFun_stdGaussian`).  Lemmas marked
 "Auxiliary to the Lean proof route" have no manuscript label.
@@ -140,7 +141,7 @@ variable {d : ℕ}
 /-! ### Lower bounds of `E:damped-multiplier-comparison` -/
 
 /-- The first lower bound of `E:damped-multiplier-comparison` (main TeX line
-838, proof line 913), for any measure (in particular `mμ`): `0 ≤ N_{1,S}(θ)`
+1045, proof line 1148), for any measure (in particular `mμ`): `0 ≤ N_{1,S}(θ)`
 for every set `S` and `a > 0`, since the integrand `λ^{a-1} R(θ+λ)` is
 nonnegative on `(0,∞)`. -/
 theorem N1on_nonneg (a θ : ℝ) (S : Set ℝ) (μ : Measure (Rd d)) (ha : 0 < a) :
@@ -152,7 +153,7 @@ theorem N1on_nonneg (a θ : ℝ) (S : Set ℝ) (μ : Measure (Rd d)) (ha : 0 < a
   exact mul_nonneg (Real.rpow_nonneg hl.le _) (resolvent_nonneg _ _)
 
 /-- The second lower bound of `E:damped-multiplier-comparison` (main TeX line
-839, proof lines 900-911), for any s-finite measure (in particular `mμ`) with
+1046, proof lines 1135-1146), for any s-finite measure (in particular `mμ`) with
 `∫(1+|ξ|²)⁻¹ dμ < ∞` and `μ{0} = 0`, `0 < a < 1`, `θ > 0`, `S` measurable:
 `0 ≤ N_{2,S}(θ)²`, since `N_{2,S}(θ)² = ∫_{S ∩ (0,∞)} w_θ` (`N2onSq_eq`) and
 `w_θ ≥ 0`. -/
@@ -165,7 +166,7 @@ theorem N2onSq_nonneg (μ : Measure (Rd d)) [SFinite μ]
   filter_upwards [ae_restrict_of_ae ae_L0_pos] with l hl
   exact weight_nonneg μ hR a θ l ha0 hθ hl
 
-/-- `E:damped-multiplier-comparison` (main TeX lines 836-841, proof 894-913)
+/-- `E:damped-multiplier-comparison` (main TeX lines 1043-1048, proof 1129-1148)
 in full, both lower and upper bounds, for a general measure: `μ` s-finite with
 `∫(1+|ξ|²)⁻¹ dμ < ∞` and `μ{0} = 0`, `0 < a < 1`, `θ > 0`, the integrand of
 `N₁(θ)` for `μ` integrable on `(0,∞)`, `g` measurable with values in `[0,1]`,
@@ -191,11 +192,11 @@ theorem damped_multiplier_comparison (μ : Measure (Rd d)) [SFinite μ]
 /-! ### (i) The multiplier class and Gaussian multipliers -/
 
 /-- The multiplier class of `E:damped-multiplier-comparison` (TeX lines
-826-829): `g : ℝ^d → ℝ≥0` measurable with values in `[0,1]`. -/
+1033-1036): `g : ℝ^d → ℝ≥0` measurable with values in `[0,1]`. -/
 def IsMultiplier (g : Rd d → ℝ≥0) : Prop := Measurable g ∧ ∀ ξ, g ξ ≤ 1
 
-/-- The class is closed under pointwise products (TeX lines 845-846 and
-915-916: "products of multipliers in `[0,1]` depending only on `ξ`"). -/
+/-- The class is closed under pointwise products (TeX lines 1052-1053 and
+1150-1151: "products of multipliers in `[0,1]` depending only on `ξ`"). -/
 theorem IsMultiplier.mul {g h : Rd d → ℝ≥0} (hg : IsMultiplier g) (hh : IsMultiplier h) :
     IsMultiplier (g * h) :=
   ⟨hg.1.mul hh.1, fun ξ => by
@@ -219,7 +220,7 @@ theorem coe_gaussMult (η : ℝ) (ξ : Rd d) :
     (gaussMult η ξ : ℝ) = Real.exp (-(η * ‖ξ‖ ^ 2)) := rfl
 
 /-- For `η ≥ 0` the Gaussian multiplier `e^{-η|ξ|²}` is in the class: it is
-measurable with values in `[0,1]` (TeX lines 845-846, 915-916). -/
+measurable with values in `[0,1]` (TeX lines 1052-1053, 1150-1151). -/
 theorem isMultiplier_gaussMult (η : ℝ) (hη : 0 ≤ η) : IsMultiplier (gaussMult (d := d) η) := by
   refine ⟨Measurable.subtype_mk (by fun_prop), fun ξ => ?_⟩
   show Real.exp _ ≤ 1
@@ -231,7 +232,7 @@ theorem isMultiplier_gaussMult (η : ℝ) (hη : 0 ≤ η) : IsMultiplier (gauss
 
 /-- The centered Gaussian law on `ℝ^d` with covariance `v I` (`v ≥ 0`), the
 image of Mathlib's standard Gaussian `stdGaussian` under `x ↦ √v x`.  It stands
-for the heat kernel `p_η` of the TeX (lines 1674, 4698): `p_η = N(0, cη I)` for
+for the heat kernel `p_η` of the TeX (lines 2023, 5561): `p_η = N(0, cη I)` for
 the source's normalization constant `c > 0` is `gaussKernel (c η)`. -/
 def gaussKernel (v : ℝ) : Measure (Rd d) :=
   (stdGaussian (Rd d)).map fun x => Real.sqrt v • x
@@ -258,14 +259,14 @@ theorem isFiniteMeasure_of_greenMass {G : ℝ → Measure (Rd d)} (hG : GreenMas
 
 /-- `GreenMass` is preserved by convolution with a probability measure `ρ`:
 `(ρ * G_s)(ℝ^d) = G_s(ℝ^d) = s` for `s > 0` (for `ρ` the Gaussian `p_η`: TeX
-lines 846-847, 916-917). -/
+lines 1053-1054, 1151-1152). -/
 theorem greenMass_conv (ρ : Measure (Rd d)) [IsProbabilityMeasure ρ]
     {G : ℝ → Measure (Rd d)} (hG : GreenMass G) : GreenMass (fun s => ρ ∗ G s) := by
   refine ⟨fun s hs => ?_⟩
   have := isFiniteMeasure_of_greenMass hG s hs
   rw [conv_univ, hG.mass s hs]
 
-/-- The separate mass assertion for `N₀` (TeX lines 846-847, proof 916-917):
+/-- The separate mass assertion for `N₀` (TeX lines 1053-1054, proof 1151-1152):
 smoothing the Green family by a probability measure `ρ` leaves `N₀` unchanged,
 `N₀^{ρ*G}(θ) = N₀^{G}(θ) = θ^{-2}` for `θ > 0`, with the integrand of `N₀^{ρ*G}`
 integrable on `(0,∞)`; hypothesis `GreenMass G`. -/
@@ -329,7 +330,7 @@ theorem charFun_pair_gaussKernel_conv (v : ℝ) (hv : 0 ≤ v) (G H : Measure (R
   ring
 
 /-- The outer integrand of the second norm of a Green family `G` (TeX
-`E:damped-norm-definitions`, lines 788-791, with kernel `K_S`, `μ` the spectral
+`E:damped-norm-definitions`, lines 994-997, with kernel `K_S`, `μ` the spectral
 measure), with `Ĝ_s` the characteristic function of `G_s`:
 `e^{-θ(s+t)} K_S(s-t) ∫ Ĝ_s(ξ) \overline{Ĝ_t(ξ)} μ(dξ)` (complex valued). -/
 def N2GreenOuter (a θ : ℝ) (S : Set ℝ) (μ : Measure (Rd d)) (G : ℝ → Measure (Rd d))
@@ -364,7 +365,7 @@ theorem N2GreenOuter_gauss_ae (a θ : ℝ) (S : Set ℝ) (μ : Measure (Rd d))
 for a family `G` with `G_s` finite for `s > 0` and `v ≥ 0`, the second norm of
 `p * G` (`p = gaussKernel v`) with spectral measure `μ` equals the second norm
 of `G` with spectral measure `e^{-v|ξ|²} μ(dξ)` (`smoothed μ (gaussMult v)`),
-for every `a`, `θ`, `S` (TeX lines 845-846, 915-916; used at 1664-1676).  The
+for every `a`, `θ`, `S` (TeX lines 1052-1053, 1150-1151; used at 2013-2025).  The
 outer integrands agree almost everywhere on `(0,∞)²`
 (`N2GreenOuter_gauss_ae`), so one is integrable exactly when the other is. -/
 theorem N2GreenSq_gauss (a θ : ℝ) (S : Set ℝ) (μ : Measure (Rd d)) (G : ℝ → Measure (Rd d))
@@ -373,7 +374,7 @@ theorem N2GreenSq_gauss (a θ : ℝ) (S : Set ℝ) (μ : Measure (Rd d)) (G : �
       N2GreenSq a θ S (smoothed μ (gaussMult v)) G :=
   integral_congr_ae (N2GreenOuter_gauss_ae a θ S μ G hfin v hv)
 
-/-- The Fourier identity of `E:damped-norm-definitions` (TeX lines 777-778,
+/-- The Fourier identity of `E:damped-norm-definitions` (TeX lines 983-984,
 `Ĝ_s(ξ) = sin(s|ξ|)/|ξ|`, i.e. `WaveKernel.waveHat`) for a family of measures:
 for `s > 0`, `G_s` is finite and its characteristic function is `waveHat s`.
 Discharged in `d = 1` by `waveGreen_fourier_one` (`greenFourier_one`). -/
@@ -431,9 +432,9 @@ theorem N2GreenSq_gauss_eq (a θ : ℝ) (S : Set ℝ) (μ : Measure (Rd d))
 
 /-! ### The extended lemma -/
 
-/-- **`L:damped-homogeneous-norms`** (main TeX lines 803-848, proof 850-919),
+/-- **`L:damped-homogeneous-norms`** (main TeX lines 1010-1055, proof 1057-1154),
 extended: under `H:homog` (`HomogCovariance`, temporal exponent `a = α₀`; no
-`Γ ≠ 0`) and the supplied mass identity `GreenMass G` (TeX line 881, as in
+`Γ ≠ 0`) and the supplied mass identity `GreenMass G` (TeX line 1104, as in
 `DampedNormsHomog.damped_homogeneous_norms_paper`; used for `N₀` and, through
 the finiteness of `G_s` for `s > 0`, for item 6).  Conclusions:
 1. for every `θ > 0`: finiteness, `N₂(θ)² ≥ 0`, `N₀(θ) = θ^{-2}` with its
@@ -442,15 +443,15 @@ the finiteness of `G_s` for `s > 0`, for item 6).  Conclusions:
 2. for every `M`: the tail integrands are integrable and `N₂^{(M)}(1)² ≥ 0`;
 3. `E:damped-tail-norms`: `N₁^{(M)}(1) → 0`, `N₂^{(M)}(1)² → 0`,
    `N₂^{(M)}(1) → 0`;
-4. `E:damped-multiplier-comparison` (lines 836-841) in full: for `θ > 0`, a
+4. `E:damped-multiplier-comparison` (lines 1043-1048) in full: for `θ > 0`, a
    multiplier `g` in the class (`IsMultiplier`: measurable, values in `[0,1]`)
    and measurable `S ⊆ S'`, `0 ≤ N_{1,g,S}(θ) ≤ N_{1,1,S'}(θ)` and
    `0 ≤ N_{2,g,S}(θ)² ≤ N_{2,1,S'}(θ)²`, with the integrands integrable;
 5. the class contains the Gaussian multipliers `e^{-η|ξ|²}`, `η ≥ 0`, and is
-   closed under products (lines 845-846, 915-916);
+   closed under products (lines 1052-1053, 1150-1151);
 6. Gaussian Green smoothing (`p = gaussKernel v`, `v ≥ 0`): `p * G` satisfies
    the mass identity and `N₀` is unchanged, `N₀^{p*G}(θ) = N₀^{G}(θ) = θ^{-2}`
-   (lines 846-847, 916-917); and the second norm of `p * G` (transforms
+   (lines 1053-1054, 1151-1152); and the second norm of `p * G` (transforms
    `\widehat{p*G_s}`) equals the second norm of `G` with spectral measure
    `e^{-v|ξ|²}μ(dξ)` (`N2GreenSq_gauss`).
 The identification of the second norm of `G` itself with `N2onSq` needs the
@@ -506,12 +507,12 @@ theorem damped_homogeneous_norms_full_paper {alpha alpha0 : ℝ} {Γ μ : Measur
 
 /-- `L:damped-homogeneous-norms`, the second norm of a Green family and its
 Gaussian smoothing, under `H:homog` and the Fourier identity `GreenFourier G`
-(TeX lines 777-778, the transform of `G_s` is `Ĝ_s = sin(s|ξ|)/|ξ|`): for `v ≥ 0`,
+(TeX lines 983-984, the transform of `G_s` is `Ĝ_s = sin(s|ξ|)/|ξ|`): for `v ≥ 0`,
 `θ > 0` and measurable `S ⊆ S'`, the second norm of `G` with kernel `K_S` is
 `N2onSq α₀ θ S μ`; the second norm of the Gaussian-smoothed family `p * G` is
 `N_{2,m,S}(θ)²` with `m = e^{-v|ξ|²}`, which lies in `[0, N_{2,1,S'}(θ)²]`; the
-outer integrands of all four second norms are integrable (TeX lines 845-846, 915-916; used at
-1664-1676). -/
+outer integrands of all four second norms are integrable (TeX lines 1052-1053, 1150-1151; used at
+2013-2025). -/
 theorem damped_homogeneous_norms_fourier_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (h : HomogCovariance d alpha alpha0 Γ μ) {G : ℝ → Measure (Rd d)} (hF : GreenFourier G)
     (v : ℝ) (hv : 0 ≤ v) (θ : ℝ) (hθ : 0 < θ) (S S' : Set ℝ) (hS : MeasurableSet S)

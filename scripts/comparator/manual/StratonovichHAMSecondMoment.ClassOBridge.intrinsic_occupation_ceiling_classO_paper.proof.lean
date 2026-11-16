@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.ClassOBridge.intrinsic_occupation_ceiling_classO_paper

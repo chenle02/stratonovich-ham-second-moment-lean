@@ -1,6 +1,6 @@
 /-
 Refutation for the block count of `P:radius-mean-anchor` (TeX lines
-320-321), package theorem
+383-384), package theorem
 `StratonovichHAMSecondMoment.RadiusMeanAnchor.block_count_le`.
 
 Wrong variant: the bound `N + 1 ≤ 2/(δB)` (N = ⌊1/(δB)⌋, δB < 1) sharpened to

@@ -1,6 +1,6 @@
 /-
 Refutation for the rate Lipschitz constant of `P:variational-unmasked-rate`
-(`notes/integrated_unmasked_variational.tex` line 158 at a284420:
+(`notes/integrated_unmasked_variational.tex` line 211 at 39f2597a:
 `|λ_s - λ_t| ≤ C_Ψ/(2√ε₀) |s - t|`), package theorem
 `StratonovichHAMSecondMoment.VariationalRate.abs_sqrt_sub_le`
 (`|√a - √b| ≤ |a - b|/(2√ε)` for `a, b ≥ ε > 0`).

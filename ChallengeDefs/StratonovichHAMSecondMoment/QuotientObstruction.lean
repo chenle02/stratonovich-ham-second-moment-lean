@@ -64,18 +64,18 @@ def autoInt {𝕜 : Type*} [RCLike 𝕜] (f : Rd 2 → 𝕜) (q : ℝ × (ℝ ×
 
 /-! ### The covariance `Γ = δ₀(dx₁) dx₂` and its spectral measure -/
 
-/-- The manuscript's `Γ = δ₀(dx₁) dx₂` on `ℝ²` (TeX lines 259-260): Lebesgue measure on the
+/-- The manuscript's `Γ = δ₀(dx₁) dx₂` on `ℝ²` (TeX lines 341-342): Lebesgue measure on the
 second coordinate axis. -/
 def Gamma0 : Measure (Rd 2) := lineMeasure e2
 
 /-- The manuscript's spectral measure `μ = (2π)^{-1} dξ₁ δ₀(dξ₂)` (TeX lines
-266-267): `(2π)^{-1}` times Lebesgue measure on the first coordinate axis. -/
+353-354): `(2π)^{-1}` times Lebesgue measure on the first coordinate axis. -/
 def mu0 : Measure (Rd 2) := ENNReal.ofReal (2 * π)⁻¹ • lineMeasure e1
 
 /-! ### The covariance functional and its factorization on tensors -/
 
 /-- The noise covariance functional of `E:cov` (main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex`, a284420, lines 219-222) read as
+`notes/notes_stratonovich_ham_second_moment.tex`, 39f2597a, lines 378-381) read as
 `E W(F)² = ∫∫ |t-s|^{-a} ∫ Γ(dz) ∫ F(t,x) F(s,x-z) dx dt ds` for a real test `F`
 (a definitional D1 reading; `W` itself is not constructed).  Time integrals run over
 `ℝ`; for tests supported in `(0,T)` this is the integral over `[0,T]²`.  An
@@ -93,17 +93,17 @@ def spatialCov {d : ℕ} (Γ : Measure (Rd d)) (f g : Rd d → ℝ) : ℝ :=
 def timeQ (a : ℝ) (τ : ℝ → ℝ) : ℝ :=
   ∫ t, ∫ s, τ t * τ s * |t - s| ^ (-a)
 
-/-- The manuscript's `V(g) = ∫_ℝ (∫_ℝ g(x₁, x₂) dx₂)² dx₁` (TeX lines 272-274). -/
+/-- The manuscript's `V(g) = ∫_ℝ (∫_ℝ g(x₁, x₂) dx₂)² dx₁` (TeX lines 359-361). -/
 def margV (g : Rd 2 → ℝ) : ℝ := ∫ u, (∫ v, g (plane (u, v))) ^ 2
 
 /-! ### The bump `χ` and the integrals `I_χ`, `J_χ` -/
 
 /-- Auxiliary: the smooth bump on `ℝ` equal to one on `[-1,1]` and zero outside
-`(-2,2)` (Mathlib's `ContDiffBump`; the TeX's explicit formula, lines 276-279, is given
+`(-2,2)` (Mathlib's `ContDiffBump`; the TeX's explicit formula, lines 366-369, is given
 "for example"). -/
 def chiBump : ContDiffBump (0 : ℝ) := ⟨1, 2, one_pos, one_lt_two⟩
 
-/-- The manuscript's `χ` (TeX lines 275-279): smooth, compactly supported,
+/-- The manuscript's `χ` (TeX lines 365-369): smooth, compactly supported,
 nonnegative, `χ = 1` on `[-1,1]`. -/
 def chi (x : ℝ) : ℝ := chiBump x
 
@@ -119,17 +119,17 @@ def Jchi : ℝ := ∫ x, chi x ^ 4
 /-! ### The obstruction -/
 
 /-- Real compact smooth space-time tests supported in `(0,T) × ℝ^d`: the
-manuscript's "compact smooth test `F`" (TeX line 262) with time support in the
+manuscript's "compact smooth test `F`" (TeX line 344) with time support in the
 section's interval. -/
 def IsTest {d : ℕ} (T : ℝ) (F : ℝ → Rd d → ℝ) : Prop :=
   ContDiff ℝ ∞ (fun q : ℝ × Rd d => F q.1 q.2) ∧
     HasCompactSupport (fun q : ℝ × Rd d => F q.1 q.2) ∧
     ∀ t x, F t x ≠ 0 → t ∈ Ioo 0 T
 
-/-- The mask `ζ(x) = χ(x₁) χ(x₂)` of TeX line 283. -/
+/-- The mask `ζ(x) = χ(x₁) χ(x₂)` of TeX line 373. -/
 def zeta (x : Rd 2) : ℝ := chi (x 0) * chi (x 1)
 
-/-- The spatial test `g(x) = χ(x₁) χ''(x₂)` of TeX line 283. -/
+/-- The spatial test `g(x) = χ(x₁) χ''(x₂)` of TeX line 373. -/
 def gtest (x : Rd 2) : ℝ := chi (x 0) * chi2 (x 1)
 
 end StratonovichHAMSecondMoment.QuotientObstruction

@@ -1,0 +1,13 @@
+node=node951 job=5700255 array=5700104_137 mode=fresh target=StratonovichHAMSecondMoment.WhiteCollapse start=2026-11-13T15:25:37-0600
+tmp_avail_G=891
+VERIFIED_COMMIT=8f51004c412ac618f4be6a5f4a42c7cc78188638 TREE=79a7f16872b7c49a7055b032451460e2f9af3f0d MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1360 waited_s=0
+REPLAY_STARTED 2026-11-13T15:27:09-0600
+BEGIN fresh StratonovichHAMSecondMoment.WhiteCollapse 15:27:09
+END fresh StratonovichHAMSecondMoment.WhiteCollapse	0	0:42:23.77	7607408	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2544 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.WhiteCollapse
+PROCESS_EXIT=0 end=2026-11-13T16:09:33-0600

@@ -86,10 +86,10 @@ def Pi (σ : ℝ) : F →L[ℝ] F := (G.ell σ).smulRight (G.e σ)
 /-- The complementary projection `Q_σ = I - Π_σ` (`E:compact-F-projection`). -/
 def Q (σ : ℝ) : F →L[ℝ] F := ContinuousLinearMap.id ℝ F - G.Pi σ
 
-/-- The margin `a_* = inf_I ℓ_σ(e_0)` (TeX line 259). -/
+/-- The margin `a_* = inf_I ℓ_σ(e_0)` (TeX line 355). -/
 def aStar : ℝ := ⨅ σ : paramI, G.ell σ G.e0
 
-/-- The margin `j_* = inf_I O_φ(e_σ)` (TeX line 259). -/
+/-- The margin `j_* = inf_I O_φ(e_σ)` (TeX line 355). -/
 def jStar : ℝ := ⨅ σ : paramI, G.obs (G.e σ)
 
 end GroundFamily
@@ -103,7 +103,7 @@ def chainState (D : ℕ → ℝ → F →L[ℝ] F) (B : ℝ) (e0 : F) : ℕ → 
   | m + 1 => D m B (chainState D B e0 m)
 
 /-- Constants satisfying relaxed, sufficient versions of the inequalities chosen
-in the TeX proof (lines 254--281): any positive margins `a ≤ a_*`, `j ≤ j_*`,
+in the TeX proof (lines 350--377): any positive margins `a ≤ a_*`, `j ≤ j_*`,
 nonnegative `C_gap, η_gap, ν` and bounds (the TeX fixes `C_gap ≥ 1`,
 `η_gap, ν > 0`, `max(1, sup)` bounds; `exists_coneConstants` supplies them), bounds `M_e, M_ℓ, M_P,
 H_obs`, the gap constants `C_gap, η_gap`, aperture `ϑ`, the block length `B`
@@ -165,7 +165,7 @@ variable {G : GroundFamily F} {ϱ : ℝ} (K : ConeConstants G ϱ)
 
 end ConeConstants
 
-/-! ### Existence of the constants (TeX lines 254--282) -/
+/-! ### Existence of the constants (TeX lines 350--378) -/
 
 namespace GroundFamily
 

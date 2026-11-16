@@ -230,4 +230,4 @@ file of this folder. Of the hashed inputs only `pins.env` contained them, so
 its hash now differs from the one in `harness/INPUT-SHA256SUMS`;
 `sha256sum -c` reports OK for the other nine files. `make-inputs.sh` is
 redacted the same way and is not in `INPUT-SHA256SUMS`.
-For the public release, the name of a local workstation was further replaced by `<MACHINE>` in `make-inputs.sh` and, in `d8-pilot/`, in `inputs/pilot.sbatch` and `inputs/collect.py` (comments and a printed message) and in `collect-out.txt` (that message); the hashes of `pilot.sbatch` and `collect.py` in `d8-pilot/inputs/INPUT-SHA256SUMS` are those of the originals.
+For the public release, the name of a local workstation was further replaced by `<MACHINE>` in `make-inputs.sh` and, in `d8-pilot/`, in `inputs/pilot.sbatch` and `inputs/collect.py` (comments, a printed message and a printed column heading), in `inputs/expect.tsv` (two column names) and in `collect-out.txt` (that message and heading); the hashes of `pilot.sbatch`, `collect.py` and `expect.tsv` in `d8-pilot/inputs/INPUT-SHA256SUMS` are those of the originals.

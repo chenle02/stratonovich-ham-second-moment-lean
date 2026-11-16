@@ -792,6 +792,525 @@ theorem pc_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment
 
 end PhaseContractions
 
+namespace FixedSplit
+
+/-- The structurally recursive partial words: equal to the project's, by induction. -/
+theorem wordSeq_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FixedSplit.wordSeq = @StratonovichHAMSecondMoment.FixedSplit.wordSeq := by
+  funext E Pr τ op w n
+  induction n with
+  | zero => rfl
+  | succ j ih =>
+    show op (τ (j + 1)) (Pr (τ (j + 1)) (τ j) (StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FixedSplit.wordSeq Pr τ op w j)) =
+      op (τ (j + 1)) (Pr (τ (j + 1)) (τ j) (StratonovichHAMSecondMoment.FixedSplit.wordSeq Pr τ op w j))
+    rw [ih]
+
+/-- The chronological word, through `wordSeq_eq`. -/
+theorem word_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FixedSplit.word = @StratonovichHAMSecondMoment.FixedSplit.word := by
+  funext ι E A C a b T J Pr w z t
+  unfold StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FixedSplit.word StratonovichHAMSecondMoment.FixedSplit.word
+  (rw [wordSeq_eq]) <;> rfl
+
+/-- The Fock-model inputs of the fixed split, through `word_eq`. -/
+theorem SplitInputs_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FixedSplit.SplitInputs = @StratonovichHAMSecondMoment.FixedSplit.SplitInputs := by
+  funext
+  unfold StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FixedSplit.SplitInputs StratonovichHAMSecondMoment.FixedSplit.SplitInputs
+  (rw [word_eq]) <;> rfl
+
+end FixedSplit
+
+namespace FiniteWordCutoff
+
+/-! Wave L11: the structurally recursive `counts`, `raw`, `cut` of `FiniteWordCutoff`
+(native copies of `HermiteWord`'s): equal to the project's, by induction; `cutWordC` and
+`DuhamelWords`, which unfold to them, then equal too. -/
+
+theorem counts_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FiniteWordCutoff.counts = @StratonovichHAMSecondMoment.FiniteWordCutoff.counts := by
+  funext C B _ w
+  induction w with
+  | nil => rfl
+  | cons a w ih =>
+    show StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FiniteWordCutoff.bump a.1 (StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FiniteWordCutoff.counts w) =
+      StratonovichHAMSecondMoment.FiniteWordCutoff.bump a.1 (StratonovichHAMSecondMoment.FiniteWordCutoff.counts w)
+    rw [ih]; rfl
+
+theorem raw_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FiniteWordCutoff.raw = @StratonovichHAMSecondMoment.FiniteWordCutoff.raw := by
+  funext C B V J F v₀ w
+  induction w with
+  | nil => rfl
+  | cons a w ih =>
+    show F a.2 (J a.1 (StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FiniteWordCutoff.raw J F v₀ w)) =
+      F a.2 (J a.1 (StratonovichHAMSecondMoment.FiniteWordCutoff.raw J F v₀ w))
+    rw [ih]
+
+theorem cut_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FiniteWordCutoff.cut = @StratonovichHAMSecondMoment.FiniteWordCutoff.cut := by
+  funext C B V P' J F v₀ w
+  induction w with
+  | nil => rfl
+  | cons a w ih =>
+    show F a.2 (P' (J a.1 (P' (StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FiniteWordCutoff.cut P' J F v₀ w)))) =
+      F a.2 (P' (J a.1 (P' (StratonovichHAMSecondMoment.FiniteWordCutoff.cut P' J F v₀ w))))
+    rw [ih]
+
+theorem cutWordC_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FiniteWordCutoff.cutWordC = @StratonovichHAMSecondMoment.FiniteWordCutoff.cutWordC := by
+  funext
+  unfold StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FiniteWordCutoff.cutWordC StratonovichHAMSecondMoment.FiniteWordCutoff.cutWordC
+  (rw [raw_eq]) <;> rfl
+
+theorem duhamelWords_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FiniteWordCutoff.DuhamelWords = @StratonovichHAMSecondMoment.FiniteWordCutoff.DuhamelWords := by
+  funext
+  unfold StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FiniteWordCutoff.DuhamelWords StratonovichHAMSecondMoment.FiniteWordCutoff.DuhamelWords
+  (rw [counts_eq, raw_eq, cutWordC_eq]) <;> rfl
+
+end FiniteWordCutoff
+
+namespace StaticInteractionCompleted
+
+/-! Wave L11: the copied `Prop`-valued structure `CPInputs`: equivalent, hence equal. -/
+
+theorem cpiToP {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]
+    {A0 B : H →L[ℂ] H} {n : ℕ} {alpha h R : ℝ} {Cop Fop Hop Q' : ℂ → H →L[ℂ] H}
+    {J : ℂ → ℝ → H →L[ℂ] H}
+    (c : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.StaticInteractionCompleted.CPInputs A0 B n alpha h R Cop Fop Hop Q' J) :
+    StratonovichHAMSecondMoment.StaticInteractionCompleted.CPInputs A0 B n alpha h R Cop Fop Hop Q' J :=
+  ⟨c.1, c.2, c.3, c.4, c.5, c.6⟩
+
+theorem cpiOfP {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]
+    {A0 B : H →L[ℂ] H} {n : ℕ} {alpha h R : ℝ} {Cop Fop Hop Q' : ℂ → H →L[ℂ] H}
+    {J : ℂ → ℝ → H →L[ℂ] H}
+    (c : StratonovichHAMSecondMoment.StaticInteractionCompleted.CPInputs A0 B n alpha h R Cop Fop Hop Q' J) :
+    StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.StaticInteractionCompleted.CPInputs A0 B n alpha h R Cop Fop Hop Q' J :=
+  ⟨c.1, c.2, c.3, c.4, c.5, c.6⟩
+
+end StaticInteractionCompleted
+
+namespace FockColumnBound
+
+/-! Wave L11: the copied data structure `L2Map` (a new structure type): converters both ways,
+field by field. -/
+
+def l2ToP {α : Type*} [MeasurableSpace α] {μ : MeasureTheory.Measure α}
+    (T : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FockColumnBound.L2Map μ) : StratonovichHAMSecondMoment.FockColumnBound.L2Map μ :=
+  ⟨T.F, T.C, T.C_ne_top, T.meas, T.bound, T.add, T.smul⟩
+
+def l2OfP {α : Type*} [MeasurableSpace α] {μ : MeasureTheory.Measure α}
+    (T : StratonovichHAMSecondMoment.FockColumnBound.L2Map μ) : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.FockColumnBound.L2Map μ :=
+  ⟨T.F, T.C, T.C_ne_top, T.meas, T.bound, T.add, T.smul⟩
+
+end FockColumnBound
+
+namespace TerminalWickInputs
+
+/-! Wave L11: the measures built on the recursive `chainWeightReal`: equal to the project's,
+through `TerminalWick.chainWeightReal_eq`. -/
+
+theorem timeMeasure_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.TerminalWickInputs.timeMeasure = @StratonovichHAMSecondMoment.TerminalWickInputs.timeMeasure := by
+  funext n T
+  unfold StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.TerminalWickInputs.timeMeasure StratonovichHAMSecondMoment.TerminalWickInputs.timeMeasure
+  rw [StratonovichHamSecondMomentLeanAuditBridge.TerminalWick.chainWeightReal_eq]
+
+theorem chainMeasureRaw_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.TerminalWickInputs.chainMeasureRaw = @StratonovichHAMSecondMoment.TerminalWickInputs.chainMeasureRaw := by
+  funext d n T x
+  unfold StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.TerminalWickInputs.chainMeasureRaw StratonovichHAMSecondMoment.TerminalWickInputs.chainMeasureRaw
+  rw [timeMeasure_eq]; rfl
+
+theorem chainMeasure_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.TerminalWickInputs.chainMeasure = @StratonovichHAMSecondMoment.TerminalWickInputs.chainMeasure := by
+  funext d n T hT x
+  unfold StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.TerminalWickInputs.chainMeasure StratonovichHAMSecondMoment.TerminalWickInputs.chainMeasure
+  rw [chainMeasureRaw_eq]; rfl
+
+end TerminalWickInputs
+
+namespace TerminalWickRegularization
+
+theorem noiseMeasure_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.TerminalWickRegularization.noiseMeasure = @StratonovichHAMSecondMoment.TerminalWickRegularization.noiseMeasure := by
+  funext d n T
+  unfold StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.TerminalWickRegularization.noiseMeasure StratonovichHAMSecondMoment.TerminalWickRegularization.noiseMeasure
+  rw [StratonovichHamSecondMomentLeanAuditBridge.TerminalWickInputs.timeMeasure_eq]; rfl
+
+theorem chainMeasureReg_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.TerminalWickRegularization.chainMeasureReg = @StratonovichHAMSecondMoment.TerminalWickRegularization.chainMeasureReg := by
+  funext d n T hT x η
+  unfold StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.TerminalWickRegularization.chainMeasureReg StratonovichHAMSecondMoment.TerminalWickRegularization.chainMeasureReg
+  rw [noiseMeasure_eq]; rfl
+
+end TerminalWickRegularization
+
+namespace StaticInteractionCompleted
+
+/-- The structurally recursive block product: equal to the project's, by induction. -/
+theorem blockIter_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.StaticInteractionCompleted.blockIter = @StratonovichHAMSecondMoment.StaticInteractionCompleted.blockIter := by
+  funext E _ _ S I k
+  induction k with
+  | zero => rfl
+  | succ k ih =>
+    funext x
+    show S k (I k (StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.StaticInteractionCompleted.blockIter S I k x)) =
+      S k (I k (StratonovichHAMSecondMoment.StaticInteractionCompleted.blockIter S I k x))
+    rw [ih]
+
+theorem cpi_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.StaticInteractionCompleted.CPInputs = @StratonovichHAMSecondMoment.StaticInteractionCompleted.CPInputs := by
+  funext H _ _ A0 B n alpha h R Cop Fop Hop Q' J
+  exact propext ⟨cpiToP, cpiOfP⟩
+
+end StaticInteractionCompleted
+
+/-! ### Wave L13/L14 copies
+
+The Prop structures `Good`, `IsCov`, `EndpointPair`, `ProductParams`, `IsClassO` (field by
+field, then `propext`), the data structures `TParams`, `SpData`, `ThreeMomentModel`, `Cx`
+(field by field, both ways) and the inductive `Component` (constructor by constructor). -/
+
+namespace VariationalMeanDerivatives
+
+variable {E : Type} [NormedAddCommGroup E] [NormedSpace ℝ E] {F : Type} [NormedAddCommGroup F]
+  [NormedSpace ℝ F] {S : Set E} {Φ : E → F}
+
+theorem goodToP (h : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.VariationalMeanDerivatives.Good S Φ) :
+    StratonovichHAMSecondMoment.VariationalMeanDerivatives.Good S Φ :=
+  ⟨h.1, h.2, h.3⟩
+
+theorem goodOfP (h : StratonovichHAMSecondMoment.VariationalMeanDerivatives.Good S Φ) :
+    StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.VariationalMeanDerivatives.Good S Φ :=
+  ⟨h.1, h.2, h.3⟩
+
+/-- The copied predicate is the project's (`propext`), as functions. -/
+theorem good_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.VariationalMeanDerivatives.Good =
+    @StratonovichHAMSecondMoment.VariationalMeanDerivatives.Good := by
+  funext E _ _ F _ _ S Φ
+  exact propext ⟨goodToP, goodOfP⟩
+
+end VariationalMeanDerivatives
+
+namespace EndpointLemmas
+
+theorem icToP {n : ℕ} {Γ : MeasureTheory.Measure (StratonovichHAMSecondMoment.HomogHypothesis.Rd n)}
+    (h : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointLemmas.IsCov Γ) :
+    StratonovichHAMSecondMoment.EndpointLemmas.IsCov Γ :=
+  ⟨h.1, h.2, h.3, h.4⟩
+
+theorem icOfP {n : ℕ} {Γ : MeasureTheory.Measure (StratonovichHAMSecondMoment.HomogHypothesis.Rd n)}
+    (h : StratonovichHAMSecondMoment.EndpointLemmas.IsCov Γ) :
+    StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointLemmas.IsCov Γ :=
+  ⟨h.1, h.2, h.3, h.4⟩
+
+/-- The copied predicate is the project's (`propext`), as functions. -/
+theorem ic_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointLemmas.IsCov =
+    @StratonovichHAMSecondMoment.EndpointLemmas.IsCov := by
+  funext n Γ
+  exact propext ⟨icToP, icOfP⟩
+
+theorem epToP {θ χ : ℝ} {Γ L S : MeasureTheory.Measure (StratonovichHAMSecondMoment.HomogHypothesis.Rd 3)}
+    (h : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointLemmas.EndpointPair θ χ Γ L S) :
+    StratonovichHAMSecondMoment.EndpointLemmas.EndpointPair θ χ Γ L S :=
+  ⟨icToP h.1, icToP h.2, h.3, h.4, h.5⟩
+
+theorem epOfP {θ χ : ℝ} {Γ L S : MeasureTheory.Measure (StratonovichHAMSecondMoment.HomogHypothesis.Rd 3)}
+    (h : StratonovichHAMSecondMoment.EndpointLemmas.EndpointPair θ χ Γ L S) :
+    StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointLemmas.EndpointPair θ χ Γ L S :=
+  ⟨icOfP h.1, icOfP h.2, h.3, h.4, h.5⟩
+
+/-- The copied predicate is the project's (`propext`), as functions. -/
+theorem ep_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointLemmas.EndpointPair =
+    @StratonovichHAMSecondMoment.EndpointLemmas.EndpointPair := by
+  funext θ χ Γ L S
+  exact propext ⟨epToP, epOfP⟩
+
+theorem ppToP {a : Fin 3 → ℝ} {θ : ℝ}
+    (h : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointLemmas.ProductParams a θ) :
+    StratonovichHAMSecondMoment.EndpointLemmas.ProductParams a θ :=
+  ⟨h.1, h.2, h.3, h.4, h.5, h.6⟩
+
+theorem ppOfP {a : Fin 3 → ℝ} {θ : ℝ}
+    (h : StratonovichHAMSecondMoment.EndpointLemmas.ProductParams a θ) :
+    StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointLemmas.ProductParams a θ :=
+  ⟨h.1, h.2, h.3, h.4, h.5, h.6⟩
+
+/-- The copied predicate is the project's (`propext`), as functions. -/
+theorem pp_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointLemmas.ProductParams =
+    @StratonovichHAMSecondMoment.EndpointLemmas.ProductParams := by
+  funext a θ
+  exact propext ⟨ppToP, ppOfP⟩
+
+end EndpointLemmas
+
+namespace ClassOBridge
+
+theorem coToP {d : ℕ} {u : ℝ → StratonovichHAMSecondMoment.ClassOH1.H1R d}
+    (h : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.ClassOBridge.IsClassO u) :
+    StratonovichHAMSecondMoment.ClassOBridge.IsClassO u :=
+  ⟨h.1, h.2, h.3⟩
+
+theorem coOfP {d : ℕ} {u : ℝ → StratonovichHAMSecondMoment.ClassOH1.H1R d}
+    (h : StratonovichHAMSecondMoment.ClassOBridge.IsClassO u) :
+    StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.ClassOBridge.IsClassO u :=
+  ⟨h.1, h.2, h.3⟩
+
+/-- The copied predicate is the project's (`propext`), as functions. -/
+theorem co_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.ClassOBridge.IsClassO =
+    @StratonovichHAMSecondMoment.ClassOBridge.IsClassO := by
+  funext d u
+  exact propext ⟨coToP, coOfP⟩
+
+end ClassOBridge
+
+namespace OccupationCompletion
+
+/-- The copied `TParams` to the project's, field by field. -/
+def tpToP (p : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.OccupationCompletion.TParams) :
+    StratonovichHAMSecondMoment.OccupationCompletion.TParams :=
+  ⟨p.1, p.2, p.3⟩
+
+def tpOfP (p : StratonovichHAMSecondMoment.OccupationCompletion.TParams) :
+    StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.OccupationCompletion.TParams :=
+  ⟨p.1, p.2, p.3⟩
+
+/-- The copied `SpData` to the project's, field by field. -/
+def spToP {d : ℕ} (S : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.OccupationCompletion.SpData d) :
+    StratonovichHAMSecondMoment.OccupationCompletion.SpData d :=
+  ⟨S.1, S.2, S.3, S.4, S.5⟩
+
+def spOfP {d : ℕ} (S : StratonovichHAMSecondMoment.OccupationCompletion.SpData d) :
+    StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.OccupationCompletion.SpData d :=
+  ⟨S.1, S.2, S.3, S.4, S.5⟩
+
+end OccupationCompletion
+
+namespace EndpointCorollaries
+
+/-- The copied `ThreeMomentModel` to the project's, field by field. -/
+def tmToP (M : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointCorollaries.ThreeMomentModel) :
+    StratonovichHAMSecondMoment.EndpointCorollaries.ThreeMomentModel :=
+  ⟨M.1, M.2, M.3⟩
+
+def tmOfP (M : StratonovichHAMSecondMoment.EndpointCorollaries.ThreeMomentModel) :
+    StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointCorollaries.ThreeMomentModel :=
+  ⟨M.1, M.2, M.3⟩
+
+/-- The copied `Component` to the project's, constructor by constructor. -/
+def compToP : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointCorollaries.Component →
+    StratonovichHAMSecondMoment.EndpointCorollaries.Component
+  | .product c a => .product c a
+  | .riesz c => .riesz c
+  | .plane c a => .plane c a
+
+end EndpointCorollaries
+
+namespace MaskedAuxiliaryReal
+
+universe u
+
+/-- The copied complexification to the project's, field by field. -/
+def cxToP {H : Type u} (x : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx H) :
+    StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx H :=
+  ⟨x.re, x.im⟩
+
+def cxOfP {H : Type u} (x : StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx H) :
+    StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx H :=
+  ⟨x.re, x.im⟩
+
+/-- `cxToP` is injective (structure eta). -/
+theorem cx_inj {H : Type u} {x y : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx H}
+    (h : cxToP x = cxToP y) : x = y :=
+  congrArg cxOfP h
+
+/-- `Cx.ext` for the copy, from the project's. -/
+theorem cx_ext {H : Type u} {x y : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx H}
+    (h1 : x.re = y.re) (h2 : x.im = y.im) : x = y :=
+  cx_inj (StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.ext (x := cxToP x) (y := cxToP y) h1 h2)
+
+/-- `Cx.ext_iff` for the copy, from the project's. -/
+theorem cx_ext_iff {H : Type u} {x y : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx H} :
+    x = y ↔ x.re = y.re ∧ x.im = y.im :=
+  ⟨fun h => (StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.ext_iff (x := cxToP x) (y := cxToP y)).1
+      (congrArg cxToP h),
+    fun h => cx_inj ((StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.ext_iff (x := cxToP x) (y := cxToP y)).2 h)⟩
+
+section Inner
+
+variable {H : Type u} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+
+/-- The copied complexification and the project's, as complex inner product spaces: the
+field-by-field map is a complex linear isometric equivalence (each operation unfolds to the
+same componentwise formula). -/
+def cxE : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx H ≃ₗᵢ[ℂ]
+    StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx H where
+  toFun := cxToP
+  invFun := cxOfP
+  left_inv _ := rfl
+  right_inv _ := rfl
+  map_add' _ _ := rfl
+  map_smul' _ _ := rfl
+  norm_map' _ := rfl
+
+theorem cxE_apply (x : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx H) :
+    cxE x = cxToP x := rfl
+
+/-- `Cx.instCompleteSpace` for the copy: transported along the isometry `cxE` from the
+project's instance. -/
+theorem cx_completeSpace [CompleteSpace H] :
+    CompleteSpace (StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx H) :=
+  (cxE (H := H)).toLinearIsometry.isometry.isUniformInducing.completeSpace_congr
+    (cxE (H := H)).surjective |>.2 inferInstance
+
+/-- `Cx.instSeparableSpace` for the copy: the image of the project's separable space under
+the continuous surjection `cxE⁻¹`. -/
+theorem cx_separableSpace [TopologicalSpace.SeparableSpace H] :
+    TopologicalSpace.SeparableSpace (StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx H) :=
+  (cxE (H := H)).symm.surjective.denseRange.separableSpace (cxE (H := H)).symm.continuous
+
+variable {d : ℕ}
+
+theorem cxE_cxS (F : SchwartzMap (StratonovichHAMSecondMoment.HomogHypothesis.Rd d) H)
+    (x : StratonovichHAMSecondMoment.HomogHypothesis.Rd d) :
+    cxE (StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.cxS F x) =
+      StratonovichHAMSecondMoment.MaskedAuxiliaryReal.cxS F x := rfl
+
+/-- `cxS_apply` for the copy, from the project's. -/
+theorem cxS_apply (F : SchwartzMap (StratonovichHAMSecondMoment.HomogHypothesis.Rd d) H)
+    (x : StratonovichHAMSecondMoment.HomogHypothesis.Rd d) :
+    StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.cxS F x =
+      StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.ofRealCLM (F x) :=
+  cx_inj (StratonovichHAMSecondMoment.MaskedAuxiliaryReal.cxS_apply F x)
+
+/-- `mask_cxS` for the copy, from the project's. -/
+theorem mask_cxS (ζ : SchwartzMap (StratonovichHAMSecondMoment.HomogHypothesis.Rd d) ℝ) (R : ℝ)
+    (F : SchwartzMap (StratonovichHAMSecondMoment.HomogHypothesis.Rd d) H) :
+    (fun x => (StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryNorm.zetaR ζ R x : ℂ) •
+        StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.cxS F x) =
+      fun x => StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.ofRealCLM
+        (StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryNorm.zetaR ζ R x • F x) := by
+  funext x
+  exact cx_inj (congrFun (StratonovichHAMSecondMoment.MaskedAuxiliaryReal.mask_cxS ζ R F) x)
+
+/-- The transform of the copied complexified map, carried by `cxE`, is the project's. -/
+theorem cxE_paperHat (F : SchwartzMap (StratonovichHAMSecondMoment.HomogHypothesis.Rd d) H)
+    (ξ : StratonovichHAMSecondMoment.HomogHypothesis.Rd d) :
+    cxE (StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryNorm.paperHat
+        (StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.cxS F :
+          StratonovichHAMSecondMoment.HomogHypothesis.Rd d →
+            StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx H) ξ) =
+      StratonovichHAMSecondMoment.MaskedAuxiliaryNorm.paperHat
+        (StratonovichHAMSecondMoment.MaskedAuxiliaryReal.cxS F :
+          StratonovichHAMSecondMoment.HomogHypothesis.Rd d → StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx H) ξ := by
+  show cxE ((_ : ℂ) • ∫ x, _) = (_ : ℂ) • ∫ x, _
+  rw [LinearIsometryEquiv.map_smul]
+  exact congrArg (fun v => (StratonovichHAMSecondMoment.MaskedAuxiliaryNorm.cd d : ℂ) • v)
+    ((cxE (H := H)).toContinuousLinearEquiv.integral_comp_comm _).symm
+
+/-- `paperHat_cxS_re` for the copy, from the project's. -/
+theorem paperHat_cxS_re [CompleteSpace H] (F : SchwartzMap (StratonovichHAMSecondMoment.HomogHypothesis.Rd d) H)
+    (ξ : StratonovichHAMSecondMoment.HomogHypothesis.Rd d) :
+    (StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryNorm.paperHat
+        (StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.cxS F :
+          StratonovichHAMSecondMoment.HomogHypothesis.Rd d →
+            StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx H) ξ).re =
+      StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryNorm.cd d •
+        ∫ x, Real.cos (inner ℝ ξ x) • F x := by
+  have h := congrArg StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.re (cxE_paperHat F ξ)
+  exact h.trans (StratonovichHAMSecondMoment.MaskedAuxiliaryReal.paperHat_cxS_re F ξ)
+
+/-- `paperHat_cxS_im` for the copy, from the project's. -/
+theorem paperHat_cxS_im [CompleteSpace H] (F : SchwartzMap (StratonovichHAMSecondMoment.HomogHypothesis.Rd d) H)
+    (ξ : StratonovichHAMSecondMoment.HomogHypothesis.Rd d) :
+    (StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryNorm.paperHat
+        (StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.cxS F :
+          StratonovichHAMSecondMoment.HomogHypothesis.Rd d →
+            StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx H) ξ).im =
+      -(StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryNorm.cd d •
+        ∫ x, Real.sin (inner ℝ ξ x) • F x) := by
+  have h := congrArg StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.im (cxE_paperHat F ξ)
+  exact h.trans (StratonovichHAMSecondMoment.MaskedAuxiliaryReal.paperHat_cxS_im F ξ)
+
+/-- `norm_sq_paperHat_cx` for the copy, from the project's (`cxE` is isometric). -/
+theorem norm_sq_paperHat_cx [CompleteSpace H] (F : SchwartzMap (StratonovichHAMSecondMoment.HomogHypothesis.Rd d) H)
+    (ξ : StratonovichHAMSecondMoment.HomogHypothesis.Rd d) :
+    ‖StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryNorm.paperHat
+        (StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.cxS F :
+          StratonovichHAMSecondMoment.HomogHypothesis.Rd d →
+            StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx H) ξ‖ ^ 2 =
+      StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedAuxiliaryNorm.cd d ^ 2 *
+        (‖∫ x, Real.cos (inner ℝ ξ x) • F x‖ ^ 2 + ‖∫ x, Real.sin (inner ℝ ξ x) • F x‖ ^ 2) := by
+  rw [← (cxE (H := H)).norm_map, cxE_paperHat]
+  exact StratonovichHAMSecondMoment.MaskedAuxiliaryReal.norm_sq_paperHat_cx F ξ
+
+end Inner
+
+end MaskedAuxiliaryReal
+
+namespace ClassOBridge
+
+/-! The value sets over the class `𝒪` and their suprema mention the copied `IsClassO`. -/
+
+theorem energySetO_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.ClassOBridge.energySetO = @StratonovichHAMSecondMoment.ClassOBridge.energySetO := by
+  funext d a D Γ
+  delta StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.ClassOBridge.energySetO StratonovichHAMSecondMoment.ClassOBridge.energySetO
+  rw [co_eq]
+  rfl
+
+theorem ratioSetO_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.ClassOBridge.ratioSetO = @StratonovichHAMSecondMoment.ClassOBridge.ratioSetO := by
+  funext d a alpha Γ
+  delta StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.ClassOBridge.ratioSetO StratonovichHAMSecondMoment.ClassOBridge.ratioSetO
+  rw [co_eq]
+  rfl
+
+theorem rawEnergySetO_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.ClassOBridge.rawEnergySetO = @StratonovichHAMSecondMoment.ClassOBridge.rawEnergySetO := by
+  funext d a Γ ζ
+  delta StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.ClassOBridge.rawEnergySetO StratonovichHAMSecondMoment.ClassOBridge.rawEnergySetO
+  rw [co_eq]
+  rfl
+
+theorem EstarClassO_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.ClassOBridge.EstarClassO = @StratonovichHAMSecondMoment.ClassOBridge.EstarClassO := by
+  funext d a D Γ
+  delta StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.ClassOBridge.EstarClassO StratonovichHAMSecondMoment.ClassOBridge.EstarClassO
+  rw [energySetO_eq]
+
+theorem CoccO_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.ClassOBridge.CoccO = @StratonovichHAMSecondMoment.ClassOBridge.CoccO := by
+  funext d a alpha Γ
+  delta StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.ClassOBridge.CoccO StratonovichHAMSecondMoment.ClassOBridge.CoccO
+  rw [ratioSetO_eq]
+
+theorem EOO_eq : @StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.ClassOBridge.EOO = @StratonovichHAMSecondMoment.ClassOBridge.EOO := by
+  funext d a Γ ζ
+  delta StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.ClassOBridge.EOO StratonovichHAMSecondMoment.ClassOBridge.EOO
+  rw [rawEnergySetO_eq]
+
+end ClassOBridge
+
+namespace EndpointCorollaries
+
+/-- The copied named input `ThreeTransfer` (it mentions the copied `IsCov`, `EndpointPair`
+and `ThreeMomentModel`) gives the project's for the converted model. -/
+theorem ttToP {Mdl : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointCorollaries.ThreeMomentModel} {α₀ θ : ℝ}
+    (h : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointCorollaries.ThreeTransfer Mdl α₀ θ) :
+    StratonovichHAMSecondMoment.EndpointCorollaries.ThreeTransfer (tmToP Mdl) α₀ θ :=
+  fun α Γ L S h1 h2 h3 h4 h5 h6 hC hS hne hE =>
+    h α Γ L S h1 h2 h3 h4 h5 h6 (EndpointLemmas.icOfP hC) hS hne (EndpointLemmas.epOfP hE)
+
+theorem ttOfP {Mdl : StratonovichHAMSecondMoment.EndpointCorollaries.ThreeMomentModel} {α₀ θ : ℝ}
+    (h : StratonovichHAMSecondMoment.EndpointCorollaries.ThreeTransfer Mdl α₀ θ) :
+    StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointCorollaries.ThreeTransfer (tmOfP Mdl) α₀ θ :=
+  fun α Γ L S h1 h2 h3 h4 h5 h6 hC hS hne hE =>
+    h α Γ L S h1 h2 h3 h4 h5 h6 (EndpointLemmas.icToP hC) hS hne (EndpointLemmas.epToP hE)
+
+/-- `Component.Valid` of a copied component is the project's of the converted one. -/
+theorem valid_toP {α : ℝ} {c : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointCorollaries.Component} (h : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointCorollaries.Component.Valid α c) :
+    StratonovichHAMSecondMoment.EndpointCorollaries.Component.Valid α (compToP c) := by
+  cases c <;> exact h
+
+/-- The component measures of a copied component are the project's of the converted one. -/
+theorem meas_eq (α : ℝ) (c : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointCorollaries.Component) :
+    StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointCorollaries.Component.meas α c = StratonovichHAMSecondMoment.EndpointCorollaries.Component.meas α (compToP c) := by
+  cases c <;> rfl
+
+theorem low_eq (θ : ℝ) (c : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointCorollaries.Component) :
+    StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointCorollaries.Component.low θ c = StratonovichHAMSecondMoment.EndpointCorollaries.Component.low θ (compToP c) := by
+  cases c <;> rfl
+
+theorem st_eq (α θ : ℝ) (c : StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointCorollaries.Component) :
+    StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointCorollaries.Component.st α θ c = StratonovichHAMSecondMoment.EndpointCorollaries.Component.st α θ (compToP c) := by
+  cases c <;> rfl
+
+end EndpointCorollaries
+
 /-- Rewrite every copy that is not equal to the project's definition by unfolding. -/
 macro "bridge_rw" : tactic =>
   `(tactic| repeat (first
@@ -843,7 +1362,33 @@ macro "bridge_rw" : tactic =>
     | rw [StratonovichHamSecondMomentLeanAuditBridge.RawOccupationEnergy.ratioSet_eq]
     | rw [StratonovichHamSecondMomentLeanAuditBridge.RawOccupationEnergy.Cocc_eq]
     | rw [StratonovichHamSecondMomentLeanAuditBridge.RawOccupationEnergy.energySet_eq]
-    | rw [StratonovichHamSecondMomentLeanAuditBridge.RawOccupationEnergy.EO_eq]))
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.RawOccupationEnergy.EO_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.FixedSplit.SplitInputs_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.FixedSplit.word_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.FixedSplit.wordSeq_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.FiniteWordCutoff.duhamelWords_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.FiniteWordCutoff.cutWordC_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.FiniteWordCutoff.counts_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.FiniteWordCutoff.raw_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.FiniteWordCutoff.cut_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.TerminalWickRegularization.chainMeasureReg_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.TerminalWickRegularization.noiseMeasure_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.TerminalWickInputs.chainMeasure_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.TerminalWickInputs.chainMeasureRaw_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.TerminalWickInputs.timeMeasure_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.StaticInteractionCompleted.blockIter_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.StaticInteractionCompleted.cpi_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.ClassOBridge.EstarClassO_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.ClassOBridge.CoccO_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.ClassOBridge.EOO_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.ClassOBridge.energySetO_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.ClassOBridge.ratioSetO_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.ClassOBridge.rawEnergySetO_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.VariationalMeanDerivatives.good_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.EndpointLemmas.ep_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.EndpointLemmas.ic_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.EndpointLemmas.pp_eq]
+    | rw [StratonovichHamSecondMomentLeanAuditBridge.ClassOBridge.co_eq]))
 
 /-- `bridge_exact d [c₁, …]` introduces every binder of the goal and closes it with the
 constant `d` applied to the introduced variables, in order: each variable is passed as it
@@ -903,7 +1448,19 @@ macro "bridge_auto " d:ident : tactic =>
       StratonovichHamSecondMomentLeanAuditBridge.OccupationCeilingFinite.stcsToP, StratonovichHamSecondMomentLeanAuditBridge.OccupationCeilingFinite.stcsOfP,
       StratonovichHamSecondMomentLeanAuditBridge.FiniteWick.cgfToP, StratonovichHamSecondMomentLeanAuditBridge.FiniteWick.cgfOfP,
       StratonovichHamSecondMomentLeanAuditBridge.SymplecticFree.fwdToP, StratonovichHamSecondMomentLeanAuditBridge.SymplecticFree.fwdOfP,
-      StratonovichHamSecondMomentLeanAuditBridge.PhaseContractions.pcToP, StratonovichHamSecondMomentLeanAuditBridge.PhaseContractions.pcOfP]))
+      StratonovichHamSecondMomentLeanAuditBridge.PhaseContractions.pcToP, StratonovichHamSecondMomentLeanAuditBridge.PhaseContractions.pcOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.StaticInteractionCompleted.cpiToP, StratonovichHamSecondMomentLeanAuditBridge.StaticInteractionCompleted.cpiOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.FockColumnBound.l2ToP, StratonovichHamSecondMomentLeanAuditBridge.FockColumnBound.l2OfP,
+      StratonovichHamSecondMomentLeanAuditBridge.VariationalMeanDerivatives.goodToP, StratonovichHamSecondMomentLeanAuditBridge.VariationalMeanDerivatives.goodOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.EndpointLemmas.icToP, StratonovichHamSecondMomentLeanAuditBridge.EndpointLemmas.icOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.EndpointLemmas.epToP, StratonovichHamSecondMomentLeanAuditBridge.EndpointLemmas.epOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.EndpointLemmas.ppToP, StratonovichHamSecondMomentLeanAuditBridge.EndpointLemmas.ppOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.ClassOBridge.coToP, StratonovichHamSecondMomentLeanAuditBridge.ClassOBridge.coOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.OccupationCompletion.tpToP, StratonovichHamSecondMomentLeanAuditBridge.OccupationCompletion.tpOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.OccupationCompletion.spToP, StratonovichHamSecondMomentLeanAuditBridge.OccupationCompletion.spOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.EndpointCorollaries.tmToP, StratonovichHamSecondMomentLeanAuditBridge.EndpointCorollaries.tmOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.EndpointCorollaries.ttToP, StratonovichHamSecondMomentLeanAuditBridge.EndpointCorollaries.ttOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.MaskedAuxiliaryReal.cxToP, StratonovichHamSecondMomentLeanAuditBridge.MaskedAuxiliaryReal.cxOfP]))
 
 /-- Revert every local hypothesis of the goal (in context order), so that a statement
 written with binders before the colon can be closed by `bridge_auto`. -/
@@ -916,7 +1473,7 @@ elab "bridge_revert_all" : tactic => do
   Lean.Elab.Tactic.replaceMainGoal [g]
 
 /-- `bridge_cases d [c₁, …]`: as `bridge_exact`, but after introducing the binders it
-splits every variable whose type is the copied inductive `Wave` or `Trig` into its
+splits every variable whose type is the copied inductive `Wave`, `Trig` or `Component` into its
 constructors (the copies then unfold to the project's terms), and closes each case with
 `d` applied to the introduced variables, a split variable replaced by its constructor
 passed through the converters. It builds an ordinary proof term, checked by the kernel. -/
@@ -933,6 +1490,7 @@ open Lean Meta Elab Tactic in
     match t.getAppFn with
     | .const n _ => return n == ``StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedContinuousWave.Wave
         || n == ``StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.MaskedTrigProducts.Trig
+        || n == ``StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.EndpointCorollaries.Component
     | _ => return false
   -- the goals with, for each, the expressions standing for `xs`
   let mut work : Array (MVarId × Array Expr) := #[(g, xs.map mkFVar)]
@@ -980,6 +1538,7 @@ open Lean Meta Elab Tactic in
 macro "bridge_cases_auto " d:ident : tactic =>
   `(tactic| (bridge_rw; bridge_cases $d [StratonovichHamSecondMomentLeanAuditBridge.MaskedContinuousWave.toP,
       StratonovichHamSecondMomentLeanAuditBridge.MaskedTrigProducts.toP,
+      StratonovichHamSecondMomentLeanAuditBridge.EndpointCorollaries.compToP,
       StratonovichHamSecondMomentLeanAuditBridge.TimeCompletion.tpToP, StratonovichHamSecondMomentLeanAuditBridge.TimeCompletion.tpOfP,
       StratonovichHamSecondMomentLeanAuditBridge.HomogHypothesis.homog_toP, StratonovichHamSecondMomentLeanAuditBridge.HomogHypothesis.homog_ofP,
       StratonovichHamSecondMomentLeanAuditBridge.DampedNormsHomog.gmToP, StratonovichHamSecondMomentLeanAuditBridge.DampedNormsHomog.gmOfP,
@@ -992,6 +1551,18 @@ macro "bridge_cases_auto " d:ident : tactic =>
       StratonovichHamSecondMomentLeanAuditBridge.OccupationCeilingFinite.stcsToP, StratonovichHamSecondMomentLeanAuditBridge.OccupationCeilingFinite.stcsOfP,
       StratonovichHamSecondMomentLeanAuditBridge.FiniteWick.cgfToP, StratonovichHamSecondMomentLeanAuditBridge.FiniteWick.cgfOfP,
       StratonovichHamSecondMomentLeanAuditBridge.SymplecticFree.fwdToP, StratonovichHamSecondMomentLeanAuditBridge.SymplecticFree.fwdOfP,
-      StratonovichHamSecondMomentLeanAuditBridge.PhaseContractions.pcToP, StratonovichHamSecondMomentLeanAuditBridge.PhaseContractions.pcOfP]))
+      StratonovichHamSecondMomentLeanAuditBridge.PhaseContractions.pcToP, StratonovichHamSecondMomentLeanAuditBridge.PhaseContractions.pcOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.StaticInteractionCompleted.cpiToP, StratonovichHamSecondMomentLeanAuditBridge.StaticInteractionCompleted.cpiOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.FockColumnBound.l2ToP, StratonovichHamSecondMomentLeanAuditBridge.FockColumnBound.l2OfP,
+      StratonovichHamSecondMomentLeanAuditBridge.VariationalMeanDerivatives.goodToP, StratonovichHamSecondMomentLeanAuditBridge.VariationalMeanDerivatives.goodOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.EndpointLemmas.icToP, StratonovichHamSecondMomentLeanAuditBridge.EndpointLemmas.icOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.EndpointLemmas.epToP, StratonovichHamSecondMomentLeanAuditBridge.EndpointLemmas.epOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.EndpointLemmas.ppToP, StratonovichHamSecondMomentLeanAuditBridge.EndpointLemmas.ppOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.ClassOBridge.coToP, StratonovichHamSecondMomentLeanAuditBridge.ClassOBridge.coOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.OccupationCompletion.tpToP, StratonovichHamSecondMomentLeanAuditBridge.OccupationCompletion.tpOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.OccupationCompletion.spToP, StratonovichHamSecondMomentLeanAuditBridge.OccupationCompletion.spOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.EndpointCorollaries.tmToP, StratonovichHamSecondMomentLeanAuditBridge.EndpointCorollaries.tmOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.EndpointCorollaries.ttToP, StratonovichHamSecondMomentLeanAuditBridge.EndpointCorollaries.ttOfP,
+      StratonovichHamSecondMomentLeanAuditBridge.MaskedAuxiliaryReal.cxToP, StratonovichHamSecondMomentLeanAuditBridge.MaskedAuxiliaryReal.cxOfP]))
 
 end StratonovichHamSecondMomentLeanAuditBridge

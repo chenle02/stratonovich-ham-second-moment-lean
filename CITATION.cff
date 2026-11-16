@@ -3,9 +3,9 @@ message: "If you use this software, please cite it by its release version or exa
 title: "stratonovich-ham-second-moment-lean: Lean companion to the second moment of the Stratonovich hyperbolic Anderson model"
 type: software
 license: Apache-2.0
-version: "0.9.0"
+version: "0.10.0"
 date-released: "2026-11-13"
-doi: "10.5281/zenodo.24199105"
+doi: "10.5281/zenodo.24199104"
 identifiers:
   - type: doi
     value: "10.5281/zenodo.24199105"
@@ -35,7 +35,7 @@ keywords:
   - formal verification
 references:
   - type: unpublished
-    title: "The second moment of the hyperbolic Anderson model"
+    title: "Stratonovich Waves Driven by Space-Time Gaussian Noise: Second Moment and Exact Asymptotics"
     authors:
       - family-names: "Chen"
         given-names: "Le"

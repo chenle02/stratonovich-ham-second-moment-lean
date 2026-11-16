@@ -1,6 +1,6 @@
 /-
 Refutation for the positivity clause of `L:masked-time-completion`
-(`notes/integrated_covariance_foundation.tex` lines 143-147 at a284420), package
+(`notes/integrated_covariance_foundation.tex` lines 190-194 at 39f2597a), package
 theorem `StratonovichHAMSecondMoment.TimeCompletion.timeForm_re_nonneg`.
 
 Wrong variant: positivity of the form off the diagonal, i.e. `Re⟨f,g⟩_a ≥ 0` for all

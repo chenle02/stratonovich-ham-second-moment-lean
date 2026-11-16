@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.WhiteMomentBounds.white_moment_lower_of_ge

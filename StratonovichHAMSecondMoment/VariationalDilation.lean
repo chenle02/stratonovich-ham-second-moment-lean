@@ -4,14 +4,14 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:variational-control-dilation` (Radon and Rayleigh dilation) of
-`notes/integrated_unmasked_variational.tex` (TeX lines 225-268), with the
+`notes/integrated_unmasked_variational.tex` (TeX lines 314-367), with the
 definitions it uses: the control class `E:variational-positive-class`
 (lines 5-10, with its nonemptiness, lines 13-17), the original mean
 `h_{Ψ,s}` of `E:compact-raw-mean` and the variance `v_Ψ` of
 `E:compact-raw-cost` in its integral form
-(`notes/integrated_compact_mean_family.tex` lines 402-412), the rate
+(`notes/integrated_compact_mean_family.tex` lines 533-543), the rate
 `λ_{Ψ,s}` through the real Rayleigh supremum `E:variational-real-rayleigh`
-(lines 101-110) and `I_Ψ = ∫_0^1 λ_{Ψ,s} ds` (line 109).  The section's
+(lines 129-138) and `I_Ψ = ∫_0^1 λ_{Ψ,s} ds` (line 137).  The section's
 standing assumption (lines 4-5) is a nonzero covariance satisfying `H:homog`
 with `a = α₀`; the wrapper `variational_control_dilation_paper` carries it
 as `HomogHypothesis.HomogCovariance`, `Γ ≠ 0`, `a = α₀`.
@@ -61,7 +61,7 @@ listed above as not formalized.  The integrability transfers are additional
 Lean-route statements, not steps of the TeX proof, which works with
 nonnegative integrands and Tonelli.
 
-Proof route: as in the TeX (lines 240-268): the Radon pushforward
+Proof route: as in the TeX (lines 329-367): the Radon pushforward
 `Γ ∘ (r·)⁻¹ = r^{α-d} Γ` from the scaling field of `H:homog`, the Lebesgue
 substitution `z = r x` in the variance, and the real Rayleigh bijection via
 `U_r f(x) = r^{d/2} f(r x)` (`WeakSobolev.rayleighSet_dil`).  The TeX's
@@ -189,7 +189,7 @@ def SetScaling (alpha : ℝ) (Γ : Measure (Rd d)) : Prop :=
   ∀ A : Set (Rd d), MeasurableSet A → ∀ c : ℝ, 0 < c →
     Γ (c • A) = ENNReal.ofReal (c ^ ((d : ℝ) - alpha)) * Γ A
 
-/-- The pushforward of `Γ` under `y ↦ r y` is `r^{α-d} Γ` (TeX lines 250-251). -/
+/-- The pushforward of `Γ` under `y ↦ r y` is `r^{α-d} Γ` (TeX lines 346-347). -/
 theorem map_dilation {alpha : ℝ} {Γ : Measure (Rd d)} (hΓ : SetScaling alpha Γ)
     {r : ℝ} (hr : 0 < r) :
     Γ.map (fun y => r • y) = ENNReal.ofReal (r ^ (alpha - d)) • Γ := by
@@ -203,7 +203,7 @@ theorem map_dilation {alpha : ℝ} {Γ : Measure (Rd d)} (hΓ : SetScaling alpha
   rw [Real.inv_rpow hr.le, ← Real.rpow_neg hr.le]
   ring_nf
 
-/-- `∫ G(r y) Γ(dy) = r^{α-d} ∫ G dΓ` (TeX lines 246-248) for continuous `G`
+/-- `∫ G(r y) Γ(dy) = r^{α-d} ∫ G dΓ` (TeX lines 342-344) for continuous `G`
 (unconditional as an identity of Bochner integrals). -/
 theorem integral_dilation {alpha : ℝ} {Γ : Measure (Rd d)} (hΓ : SetScaling alpha Γ)
     {r : ℝ} (hr : 0 < r) (G : Rd d → ℝ) (hG : Continuous G) :
@@ -265,7 +265,7 @@ theorem amp_variance {alpha r : ℝ} (hr : 0 < r) :
   congr 1; push_cast; ring
 
 /-- The convolution of a dilated control:
-`(Γ * D_rΨ(u,·))(x) = r² (Γ * Ψ(u,·))(r x)` (TeX lines 252-253). -/
+`(Γ * D_rΨ(u,·))(x) = r² (Γ * Ψ(u,·))(r x)` (TeX lines 348-349). -/
 theorem conv_dil {alpha : ℝ} {Γ : Measure (Rd d)} (hΓ : SetScaling alpha Γ)
     {r : ℝ} (hr : 0 < r) {Ψ : ℝ × Rd d → ℝ} (hΨ : Continuous Ψ) (u : ℝ) (x : Rd d) :
     conv Γ (fun y => dil alpha r Ψ (u, y)) x = r ^ 2 * conv Γ (fun y => Ψ (u, y)) (r • x) := by
@@ -335,7 +335,7 @@ theorem cost_inner_dil {alpha : ℝ} {Γ : Measure (Rd d)} (hΓ : SetScaling alp
     (fun y => Ψ (σ, y) * mean a Γ Ψ σ y), amp_variance hr]
 
 /-- `v_{D_rΨ} = r^{4-α} v_Ψ` (`E:variational-dilation-values`, TeX lines
-254-258: Radon pushforward `r^{d+2-α}·r²`, Lebesgue volume factor `r^{-d}`). -/
+350-354: Radon pushforward `r^{d+2-α}·r²`, Lebesgue volume factor `r^{-d}`). -/
 theorem rawCost_dil {alpha : ℝ} {Γ : Measure (Rd d)} (hΓ : SetScaling alpha Γ)
     {r : ℝ} (hr : 0 < r) {Ψ : ℝ × Rd d → ℝ} (hΨ : Continuous Ψ) (a : ℝ) :
     rawCost a Γ (dil alpha r Ψ) = r ^ (4 - alpha) * rawCost a Γ Ψ := by
@@ -353,7 +353,7 @@ theorem rawCost_integrable_iff {alpha : ℝ} {Γ : Measure (Rd d)} (hΓ : SetSca
   exact integrable_const_mul_iff (Real.rpow_pos_of_pos hr _).ne'.isUnit _
 
 /-- The Rayleigh value sets scale: `R_{D_rΨ,s} = r² R_{Ψ,s}` (TeX lines
-260-264). -/
+359-363). -/
 theorem rayleighSet_mean_dil {alpha : ℝ} {Γ : Measure (Rd d)} (hΓ : SetScaling alpha Γ)
     {r : ℝ} (hr : 0 < r) {Ψ : ℝ × Rd d → ℝ} (hΨ : Continuous Ψ) (a s : ℝ) :
     WeakSobolev.rayleighSet (mean a Γ (dil alpha r Ψ) s) =
@@ -402,7 +402,7 @@ theorem setScaling_of_homog {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (h : HomogCovariance d alpha alpha0 Γ μ) : SetScaling alpha Γ :=
   h.scaling
 
-/-- Lemma `L:variational-control-dilation` (TeX lines 225-237) with the
+/-- Lemma `L:variational-control-dilation` (TeX lines 314-326) with the
 section's standing hypotheses (lines 4-5: a nonzero covariance satisfying
 `H:homog`, `a = α₀`): for `r > 0`, `D_r` is a bijection of `CPos` with
 inverse `D_{1/r}`, and for every `Ψ ∈ CPos`,

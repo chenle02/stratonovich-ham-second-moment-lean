@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.ClockCopy
 /-!
 Refutation for the strict inequality `J_{Γ,1}(θ) < K_Γ(θ)` of
 `P:clock-copy-obstruction` (`E:clock-copy-obstruction`, main TeX lines
-7764-7773), package wrapper
+9043-9052), package wrapper
 `StratonovichHAMSecondMoment.ClockCopy.clock_copy_obstruction_paper`.
 
 Wrong variant: the hypothesis `Γ ≠ 0` (equivalently `μ ≠ 0`) dropped, with the

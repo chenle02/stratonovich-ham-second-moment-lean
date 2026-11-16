@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Integration of wave items L8-c1 (`SpaceTimePositivity`), L8-c2 (`OccupationCeilingFinite`) and
 L8-d (`SpatialBracket`) for `notes/integrated_occupation_ceiling.tex` and
-`notes/integrated_unmasked_variational.tex` (line numbers at revision a284420).  This module
+`notes/integrated_unmasked_variational.tex` (line numbers at revision 39f2597a).  This module
 discharges three cross-item inputs, combines two L8 lemmas and checks that one supplied structure is
 not vacuous; it modifies no existing module.
 
@@ -26,7 +26,7 @@ not vacuous; it modifies no existing module.
    `OccupationCeilingFinite.integratedRate_sq_le` and `score_le_ceiling` (no manuscript label)
    are not re-issued.
 2. The named input `SpatialBracket.OccupationCeilingK0 α α₀ Γ` (`E:occupation-score-ceiling`,
-   `integrated_occupation_ceiling.tex` lines 205-220, with `C_occ` replaced by `K_0 R_sp`).
+   `integrated_occupation_ceiling.tex` lines 249-264, with `C_occ` replaced by `K_0 R_sp`).
    `occupationCeilingK0_holds` proves it from `occupation_ceiling_K0_paper_completed`:
    `SpatialBracket.K0` and `OccupationCeilingFinite.K0`, and `SpatialBracket.ceilingValue` and
    `OccupationCeilingFinite.ceilingValue`, are separate constants with the same bodies
@@ -34,34 +34,34 @@ not vacuous; it modifies no existing module.
    `intrinsic_spatial_bracket_paper` are re-issued without it.
 3. The named input `VariationalRate.S1Bdd α₀ Γ` of `SpatialBracket.spatial_bracket_lower_sSup_paper`
    (the boundedness claim of `P:variational-positive-scores`,
-   `integrated_unmasked_variational.tex` lines 272-274), discharged by `s1Bdd_paper_completed`.
+   `integrated_unmasked_variational.tex` lines 372-374), discharged by `s1Bdd_paper_completed`.
 
 4. `uniform_series_tail_terminal_wick_paper`: `L:uniform-series-tail` (main TeX
-   `notes/notes_stratonovich_ham_second_moment.tex` lines 3703-3748) with its supplied
+   `notes/notes_stratonovich_ham_second_moment.tex` lines 4419-4464) with its supplied
    input `UniformSeriesTail.TerminalWickInput` discharged by
-   `TerminalWick.terminalWickInput_of_nonneg` (`L:terminal-wick`, lines 3600-3699) for the
+   `TerminalWick.terminalWickInput_of_nonneg` (`L:terminal-wick`, lines 4291-4410) for the
    chain integrals of a nonnegative-covariance field; the remaining hypotheses of both
    lemmas stay hypotheses.
 5. `freeWaveData_nonempty`: the supplied structure `SymplecticFree.FreeWaveData d E`
-   (`notes/integrated_symplectic_phase.tex` lines 103-122) has an instance on
+   (`notes/integrated_symplectic_phase.tex` lines 121-145) has an instance on
    `E = L²(ℝ^d)` with genuine translations and the trivial group `S_E = I`, `𝓡 = I`
    (non-vacuity only; the free wave group is not constructed).
 
 After this module, the chain `S1Bdd` / ceiling / bracket for `S_c^pos` rests on `H:homog` and
 `Γ ≠ 0` alone (no named input).  Every narrowing recorded in the source modules is unchanged:
 * the ceiling constant is `K_0 R_sp` (an upper bound of `C_occ`, `P:raw-occupation-energy`,
-  `integrated_occupation_ceiling.tex` line 96), not `C_occ`; the class `𝒪`, `A(g)`, `C_occ`,
+  `integrated_occupation_ceiling.tex` line 115), not `C_occ`; the class `𝒪`, `A(g)`, `C_occ`,
   `𝓔_ζ^𝒪`, `L:occupation-raw-square`, `P:raw-occupation-energy` and the selection lemma
   `L:occupation-rayleigh-selection` are not formalized;
 * the route is the finite partition of unity in time (`OccupationCeilingFinite.exists_near_field`)
   in place of the TeX's countable measurable selection, and `S1Bdd` is proved deterministically
-  (the TeX's proof, `integrated_unmasked_variational.tex` lines 309-325, is stochastic);
+  (the TeX's proof, `integrated_unmasked_variational.tex` lines 430-446, is stochastic);
 * the bracket `C:intrinsic-spatial-bracket` is stated for `S_2^pos`, not `C_2`
   (`C_2 = S_2^pos` is `T:intrinsic-second-moment`, decision 4 of wave L8), and its comparison
   uses `energyValue α (K_0 R_sp)` in place of `𝓔_{1/2}^𝒪`; the moment statement `C_2 ≤ U_2` and
   the second form `c^m (2ζ)^{α/(2k)} F_0(𝓔_ζ^𝒪)` of `E:occupation-score-ceiling` are not
   formalized here;
-* the direct zero case `Γ = 0` (`integrated_occupation_ceiling.tex` lines 302-307) is not
+* the direct zero case `Γ = 0` (`integrated_occupation_ceiling.tex` lines 379-384) is not
   formalized: every wrapper carries `Γ ≠ 0`, the section's standing assumption (lines 20-21).
 -/
 public import Mathlib
@@ -95,13 +95,13 @@ variable {d : ℕ}
 /-! ### The bridges -/
 
 /-- `SpatialBracket.K0` and `OccupationCeilingFinite.K0` are the same function
-(`K_0 = 2^a/(1-a)`, `integrated_occupation_ceiling.tex` line 94); auxiliary to the
+(`K_0 = 2^a/(1-a)`, `integrated_occupation_ceiling.tex` line 113); auxiliary to the
 integration. -/
 theorem K0_eq : SpatialBracket.K0 = OccupationCeilingFinite.K0 := rfl
 
 /-- `SpatialBracket.ceilingValue` and `OccupationCeilingFinite.ceilingValue` are the same
 function (`U_c` of `E:occupation-score-ceiling` with a real constant in place of `C_occ`,
-`integrated_occupation_ceiling.tex` lines 208-213); auxiliary to the integration. -/
+`integrated_occupation_ceiling.tex` lines 252-257); auxiliary to the integration. -/
 theorem ceilingValue_eq : SpatialBracket.ceilingValue = OccupationCeilingFinite.ceilingValue :=
   rfl
 
@@ -109,8 +109,8 @@ theorem ceilingValue_eq : SpatialBracket.ceilingValue = OccupationCeilingFinite.
 (`Γ ≠ 0` not needed): `SpaceTimePositivity.spaceTimeCS_holds` with its fields, which are
 definitionally those of `OccupationCeilingFinite.SpaceTimeCS` (`stFormIter` and
 `OccupationCeilingFinite.stForm` have the same body).  Provenance of the three facts:
-`L:positive-raw-embedding` (`integrated_intrinsic_constant.tex` lines 22-39) and
-`E:occupation-raw-identities` (`integrated_occupation_ceiling.tex` lines 33-37). -/
+`L:positive-raw-embedding` (`integrated_intrinsic_constant.tex` lines 23-40) and
+`E:occupation-raw-identities` (`integrated_occupation_ceiling.tex` lines 34-38). -/
 theorem spaceTimeCS_completed {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (hH : HomogCovariance d alpha alpha0 Γ μ) : OccupationCeilingFinite.SpaceTimeCS alpha0 Γ :=
   let h := SpaceTimePositivity.spaceTimeCS_holds hH
@@ -119,7 +119,7 @@ theorem spaceTimeCS_completed {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
 /-! ### `OccupationCeilingFinite` without `SpaceTimeCS` -/
 
 /-- **`T:intrinsic-occupation-ceiling`, `E:occupation-score-ceiling` with `C_occ` replaced by
-`K_0 R_sp`** (`integrated_occupation_ceiling.tex` lines 205-220 at a284420), under the
+`K_0 R_sp`** (`integrated_occupation_ceiling.tex` lines 249-264 at 39f2597a), under the
 standing assumptions (lines 4-21: `H:homog`, `a = α₀`, `Γ ≠ 0`) alone:
 `OccupationCeilingFinite.occupation_ceiling_K0_paper` with `SpaceTimeCS` discharged by
 `SpaceTimePositivity` (`spaceTimeCS_completed`).  For every `c > 0` and `Ψ ∈ C_pos`,
@@ -133,16 +133,16 @@ theorem occupation_ceiling_K0_paper_completed {alpha alpha0 : ℝ} {Γ μ : Meas
   OccupationCeilingFinite.occupation_ceiling_K0_paper hH hΓ0 (spaceTimeCS_completed hH)
 
 /-- **`P:variational-positive-scores`, the boundedness claim `S1Bdd`**
-(`integrated_unmasked_variational.tex` lines 272-274 at a284420) under the standing assumptions
+(`integrated_unmasked_variational.tex` lines 372-374 at 39f2597a) under the standing assumptions
 (`H:homog`, `Γ ≠ 0`, `a = α₀`) alone: `OccupationCeilingFinite.s1Bdd_paper` with
 `SpaceTimeCS` discharged by `SpaceTimePositivity`.  Route difference: deterministic (the ceiling
-at `c = 1`), where the TeX's proof (lines 309-325) is stochastic. -/
+at `c = 1`), where the TeX's proof (lines 430-446) is stochastic. -/
 theorem s1Bdd_paper_completed {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (hH : HomogCovariance d alpha alpha0 Γ μ) (hΓ0 : Γ ≠ 0) : S1Bdd alpha0 Γ :=
   OccupationCeilingFinite.s1Bdd_paper hH hΓ0 (spaceTimeCS_completed hH)
 
 /-- **`T:intrinsic-occupation-ceiling` for the suprema** (`integrated_occupation_ceiling.tex`
-lines 209-212 and 245 at a284420) with `C_occ` replaced by `K_0 R_sp`, under the standing
+lines 253-256 and 311 at 39f2597a) with `C_occ` replaced by `K_0 R_sp`, under the standing
 assumptions alone: `OccupationCeilingFinite.occupation_ceiling_sSup_K0_paper` with
 `SpaceTimeCS` discharged.  For every `c > 0` the value set is nonempty, bounded above and
 `S_c^pos ≤ U_c[K_0 R_sp]`.  Narrower as `occupation_ceiling_K0_paper_completed`. -/
@@ -155,7 +155,7 @@ theorem occupation_ceiling_sSup_K0_paper_completed {alpha alpha0 : ℝ} {Γ μ :
   OccupationCeilingFinite.occupation_ceiling_sSup_K0_paper hH hΓ0 (spaceTimeCS_completed hH)
 
 /-- **`P:variational-positive-scores`, supremum part** (`integrated_unmasked_variational.tex`
-lines 272-277 and 327-332 at a284420) under the standing assumptions alone:
+lines 372-377 and 452-457 at 39f2597a) under the standing assumptions alone:
 `OccupationCeilingFinite.variational_positive_scores_sSup_st_paper` with `SpaceTimeCS`
 discharged.  `S_1^pos > 0` and for every `c > 0` the value set is nonempty, bounded above, with
 `S_c^pos = c^{(4-α)/(3-α)} S_1^pos > 0`.  Narrower as the source: `Q_2 ≥ S_2^pos` is not
@@ -170,7 +170,7 @@ theorem variational_positive_scores_sSup_st_paper_completed {alpha alpha0 : ℝ}
     (spaceTimeCS_completed hH)
 
 /-- `E:spatial-static-score` in the `sSup` form (`integrated_spatial_occupation.tex` lines
-50-53 at a284420) under the standing assumptions alone:
+52-55 at 39f2597a) under the standing assumptions alone:
 `OccupationCeilingFinite.spatial_static_score_sSup_st_paper` with `SpaceTimeCS` discharged:
 `S_1^pos ≥ λ_z(1) - (M_a/2) B_Γ(z,z)` for every nonnegative nonzero test function `z`. -/
 theorem spatial_static_score_sSup_st_paper_completed {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
@@ -183,7 +183,7 @@ theorem spatial_static_score_sSup_st_paper_completed {alpha alpha0 : ℝ} {Γ μ
     hz hz0 hzne
 
 /-- `E:spatial-smooth-score` in the `sSup` form (`integrated_spatial_occupation.tex` lines
-171-176 at a284420) under the standing assumptions alone:
+228-233 at 39f2597a) under the standing assumptions alone:
 `OccupationCeilingFinite.spatial_smooth_score_sSup_st_paper` with `SpaceTimeCS` discharged:
 `S_1^pos ≥ k [R(g) α^{α/2}/(8 M_a q^{q/2})]^{1/k}` for every real unit test `g`. -/
 theorem spatial_smooth_score_sSup_st_paper_completed {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
@@ -204,7 +204,7 @@ theorem R0_le_of_st_paper_completed {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)
   OccupationCeilingFinite.R0_le_of_st_paper hH hΓ0 (spaceTimeCS_completed hH)
 
 /-- `E:spatial-static-energy-score` in the `sSup` form (`integrated_spatial_occupation.tex`
-lines 316-322 at a284420) under the standing assumptions alone:
+lines 421-427 at 39f2597a) under the standing assumptions alone:
 `OccupationCeilingFinite.spatial_static_energy_score_sSup_st_paper` with `SpaceTimeCS`
 discharged: `S_1^pos ≥ M_a^{-1/k} F₀(𝓔_sp)`. -/
 theorem spatial_static_energy_score_sSup_st_paper_completed {alpha alpha0 : ℝ}
@@ -225,7 +225,7 @@ theorem occupationCeilingK0_holds {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   occupation_ceiling_K0_paper_completed hH hΓ0
 
 /-- **Lower half of `E:intrinsic-spatial-bracket` for `S_2^pos`, `sSup` form**
-(`integrated_occupation_ceiling.tex` lines 256-260, 271-272 at a284420) under the standing
+(`integrated_occupation_ceiling.tex` lines 323-327, 342-343 at 39f2597a) under the standing
 assumptions alone: `SpatialBracket.spatial_bracket_lower_sSup_paper` with `S1Bdd` discharged by
 `s1Bdd_paper_completed`: `2^m M_a^{-1/k} F₀(𝓔_sp) ≤ S_2^pos`.  Narrower: `S_2^pos`, not
 `C_2`. -/
@@ -237,7 +237,7 @@ theorem spatial_bracket_lower_sSup_paper_completed {alpha alpha0 : ℝ} {Γ μ :
   SpatialBracket.spatial_bracket_lower_sSup_paper hH hΓ (s1Bdd_paper_completed hH hΓ)
 
 /-- **Upper half of `E:intrinsic-spatial-bracket` for `S_2^pos`**
-(`integrated_occupation_ceiling.tex` lines 256-260, 269-271 at a284420) under the standing
+(`integrated_occupation_ceiling.tex` lines 323-327, 340-342 at 39f2597a) under the standing
 assumptions alone: `SpatialBracket.spatial_bracket_upper_paper` with `OccupationCeilingK0`
 discharged by `occupationCeilingK0_holds`: the coefficient-two value set is bounded above and
 `S_2^pos ≤ 2^m K_0^{1/k} F₀(𝓔_sp)`.  Narrower: `S_2^pos`, not `C_2`; the bound comes from the
@@ -251,7 +251,7 @@ theorem spatial_bracket_upper_paper_completed {alpha alpha0 : ℝ} {Γ μ : Meas
   SpatialBracket.spatial_bracket_upper_paper hH hΓ (occupationCeilingK0_holds hH hΓ)
 
 /-- **`C:intrinsic-spatial-bracket` for `S_2^pos`** (`integrated_occupation_ceiling.tex` lines
-252-300 at a284420) under the section's standing assumptions alone (lines 4-21: `H:homog`,
+319-371 at 39f2597a) under the section's standing assumptions alone (lines 4-21: `H:homog`,
 `a = α₀`, `Γ ≠ 0`): `SpatialBracket.intrinsic_spatial_bracket_paper` with
 `OccupationCeilingK0` discharged by `occupationCeilingK0_holds`.  `S1Bdd α₀ Γ`, the
 coefficient-two value set is bounded above,
@@ -283,9 +283,9 @@ theorem intrinsic_spatial_bracket_paper_completed {alpha alpha0 : ℝ} {Γ μ : 
 /-! ### `L:uniform-series-tail` with the `L:terminal-wick` input discharged -/
 
 /-- **`L:uniform-series-tail` with its `L:terminal-wick` input discharged**
-(`notes/notes_stratonovich_ham_second_moment.tex` at revision a284420:
-`L:uniform-series-tail`, statement lines 3703-3727, proof lines 3729-3748;
-`L:terminal-wick`, statement lines 3600-3645, proof lines 3647-3699).
+(`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a:
+`L:uniform-series-tail`, statement lines 4419-4443, proof lines 4445-4464;
+`L:terminal-wick`, statement lines 4291-4336, proof lines 4338-4410).
 
 The regularized terms are the terminal-chain integrals of `L:terminal-wick`,
 `Y^{ε,δ}_n = chainIntegral (ν ε δ) (hW ε δ) n`, for a centered real Gaussian field
@@ -476,14 +476,14 @@ compactly supported functions vanish for large `|y|`; general `z, w` by density 
 continuous compactly supported functions, `transL2_weak`).
 
 What this shows: the fields of `FreeWaveData` (the structure that stands for the
-objects of `notes/integrated_symplectic_phase.tex` lines 103-122 at revision a284420,
-used by `L:symplectic-free`, lines 30-133) are jointly satisfiable on a nonzero space
+objects of `notes/integrated_symplectic_phase.tex` lines 121-145 at revision 39f2597a,
+used by `L:symplectic-free`, lines 31-160) are jointly satisfiable on a nonzero space
 with translations that are genuinely weakly null, so the theorems taking a
 `FreeWaveData` (for example `SymplecticFree.compact_young_baseline`) do not hold
 vacuously.  What it does not show: the witness's `S_E` is the trivial group, not the
 free wave group on `H^{1/2} × H^{-1/2}`, and `𝓡` is not the velocity reversal; the
 concrete instance of the TeX (free wave group, Bessel-norm space, Riemann-Lebesgue
-argument of lines 105-110) is not constructed. -/
+argument of lines 123-128) is not constructed. -/
 theorem freeWaveData_nonempty (d : ℕ) :
     Nonempty (SymplecticFree.FreeWaveData d
       (Lp ℝ 2 (volume : Measure (EuclideanSpace ℝ (Fin d))))) :=

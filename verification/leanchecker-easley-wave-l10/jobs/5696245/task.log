@@ -1,0 +1,13 @@
+node=node859 job=5696245 array=5696230_15 mode=fresh target=StratonovichHAMAudit.LocalFlow start=2026-11-12T20:30:29-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=b2bf7a921fb8cbae1dcd58fb5c6331019989c4c0 TREE=50c3c6e777301316f3daf058456ce257590898c6 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1400 waited_s=0
+REPLAY_STARTED 2026-11-12T20:34:46-0600
+BEGIN fresh StratonovichHAMAudit.LocalFlow 20:34:46
+END fresh StratonovichHAMAudit.LocalFlow	0	0:10:19.70	3007728	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=620 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMAudit.LocalFlow
+PROCESS_EXIT=0 end=2026-11-12T20:45:06-0600

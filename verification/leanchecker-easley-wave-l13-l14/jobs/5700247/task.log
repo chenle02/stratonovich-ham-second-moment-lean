@@ -1,0 +1,13 @@
+node=node888 job=5700247 array=5700104_129 mode=fresh target=StratonovichHAMSecondMoment.VariationalMeanDerivatives start=2026-11-13T15:24:36-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=8f51004c412ac618f4be6a5f4a42c7cc78188638 TREE=79a7f16872b7c49a7055b032451460e2f9af3f0d MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1320 waited_s=0
+REPLAY_STARTED 2026-11-13T15:29:41-0600
+BEGIN fresh StratonovichHAMSecondMoment.VariationalMeanDerivatives 15:29:42
+END fresh StratonovichHAMSecondMoment.VariationalMeanDerivatives	0	0:41:25.12	7594776	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2486 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.VariationalMeanDerivatives
+PROCESS_EXIT=0 end=2026-11-13T16:11:07-0600

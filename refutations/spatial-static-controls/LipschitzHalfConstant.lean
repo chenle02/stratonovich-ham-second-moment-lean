@@ -1,7 +1,7 @@
 /-
 Refutation for the Lipschitz bound of `λ_z²` in part (i) of
 `L:spatial-static-controls` (`notes/integrated_spatial_occupation.tex` lines
-62-63 at a284420: "Lipschitz with constant `‖U_z‖_∞`"), package theorem
+73-74 at 39f2597a: "Lipschitz with constant `‖U_z‖_∞`"), package theorem
 `StratonovichHAMSecondMoment.SpatialStaticControls.lamSq_lip`.
 
 Wrong variant: the constant `‖U‖_∞ / 2` instead of `‖U‖_∞`, i.e.

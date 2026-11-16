@@ -1,6 +1,6 @@
 /-
 Refutation for the critical case `α = 1` of the far series bound in
-`P:frequency-row` (TeX lines 117-135), package theorem
+`P:frequency-row` (TeX lines 136-161), package theorem
 `StratonovichHAMSecondMoment.FrequencyRow.rowSeries_tsum_le` and package
 definitions `StratonovichHAMSecondMoment.FrequencyRow.rowSeries`,
 `StratonovichHAMSecondMoment.FrequencyRow.scaleProfile`.

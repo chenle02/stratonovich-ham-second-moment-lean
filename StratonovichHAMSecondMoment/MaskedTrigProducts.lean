@@ -6,29 +6,29 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 Lemma `L:masked-trig-products` (Correlated trigonometric products) of
 `notes/integrated_covariance_foundation.tex`.
 
-Statement (TeX lines 347-360).  Let `r, ρ ≥ 0`, `P_r ∈ {cos(rt), sin(rt)}`,
+Statement (TeX lines 459-472).  Let `r, ρ ≥ 0`, `P_r ∈ {cos(rt), sin(rt)}`,
 `Q_ρ ∈ {cos(ρt), sin(ρt)}`.  With `I = [s, s+h] ⊂ [0, T]`, `0 < h ≤ 1`,
 `A ∈ C¹(I; ℂ)`, `M = sup_I |A|`, `D = sup_I |A'|`, `C₀(a) = 16/(1-a)`,
 `‖1_I A P_r Q_ρ‖_a² ≤ C₀(a) h^{2-a} (M+hD)² 𝒬_h(r,ρ)`, where
-`𝒬_h(r,ρ) = ⟨h(r-ρ)⟩^{a-1} + ⟨h(r+ρ)⟩^{a-1}` and `⟨x⟩ = √(1+x²)` (TeX l. 296).
+`𝒬_h(r,ρ) = ⟨h(r-ρ)⟩^{a-1} + ⟨h(r+ρ)⟩^{a-1}` and `⟨x⟩ = √(1+x²)` (TeX l. 391).
 
 Abstraction (the norm `‖·‖_a`).  The manuscript's norm is that of the
 complexified temporal completion `H_a^ℂ` of Lemma `L:masked-time-completion`;
 functions enter it through the continuous linear inclusion of `L²(0,T)`
-(TeX l. 148-155), and "bounded measurable amplitudes on a subinterval,
-extended by zero, belong to this completion" (l. 154-155).  We model exactly
+(TeX l. 195-203), and "bounded measurable amplitudes on a subinterval,
+extended by zero, belong to this completion" (l. 202-203).  We model exactly
 this and nothing more:
 * `E` is the target space of the norm (a complex normed space in the general
   theorem; a complex inner product space in the `_paper` wrapper, as in TeX);
 * `V : Submodule ℂ (ℝ → ℂ)` is the class of functions accepted into the
   completion, and `emb : V →ₗ[ℂ] E` is the (linear) inclusion; `‖emb f‖` is
-  `‖f‖_a`.  Only linearity of `emb` is used (TeX l. 365-368 combines modes
+  `‖f‖_a`.  Only linearity of `emb` is used (TeX l. 477-480 combines modes
   linearly; nothing about the completion beyond linearity enters the proof);
 * membership of the four modes `1_I A e^{iωt}` in `V` is the supplied input
   from `L:masked-time-completion` (`hmem`);
 * the modulation bound `‖1_I A e^{iωt}‖_a² ≤ C₀ h^{2-a}(M+hD)²⟨hω⟩^{a-1}` for
   every real `ω` is the supplied input from `L:masked-temporal-modulation`
-  (`hmod`), stated in exactly the manuscript's form (TeX l. 303-307).
+  (`hmod`), stated in exactly the manuscript's form (TeX l. 399-403).
 The product `1_I A P_r Q_ρ` is *not* assumed to be in `V` or to satisfy any
 bound: its membership and its bound are derived from the four-mode expansion.
 
@@ -44,7 +44,7 @@ Manuscript hypotheses made explicit / implicit side conditions:
   set `I`: the four-mode reduction needs no sign conditions, because `⟨·⟩` is
   even.  The general theorem also proves the sharper bound with an extra
   factor `1/2` (the manuscript's "one half of the asserted right side",
-  TeX l. 373).
+  TeX l. 488).
 -/
 public import Mathlib
 
@@ -58,7 +58,7 @@ open Complex Finset
 
 namespace StratonovichHAMSecondMoment.MaskedTrigProducts
 
-/-! ### (1) The Hilbert-space inequality (TeX l. 365-368) -/
+/-! ### (1) The Hilbert-space inequality (TeX l. 477-480) -/
 
 /-- `‖Σ c_j v_j‖² ≤ (Σ |c_j|) Σ |c_j| ‖v_j‖²` for a finite family in a complex
 seminormed space (in particular in any complex inner product space). -/
@@ -96,13 +96,13 @@ theorem norm_sq_sum_le_inner {ι E : Type*} [NormedAddCommGroup E] [InnerProduct
 
 /-! ### Definitions -/
 
-/-- Japanese bracket `⟨x⟩ = √(1+x²)` (TeX l. 296). -/
+/-- Japanese bracket `⟨x⟩ = √(1+x²)` (TeX l. 391). -/
 def bracket (x : ℝ) : ℝ := Real.sqrt (1 + x ^ 2)
 
 theorem bracket_neg (x : ℝ) : bracket (-x) = bracket x := by
   simp [bracket]
 
-/-- `𝒬_h(r,ρ) = ⟨h(r-ρ)⟩^{a-1} + ⟨h(r+ρ)⟩^{a-1}` (TeX l. 355-358). -/
+/-- `𝒬_h(r,ρ) = ⟨h(r-ρ)⟩^{a-1} + ⟨h(r+ρ)⟩^{a-1}` (TeX l. 467-470). -/
 def frequencyPair (a h r ρ : ℝ) : ℝ :=
   bracket (h * (r - ρ)) ^ (a - 1) + bracket (h * (r + ρ)) ^ (a - 1)
 
@@ -143,7 +143,7 @@ def coef (P Q : Trig) (j : Bool × Bool) : ℂ := coef1 P j.1 * coef1 Q j.2
 /-- Frequency `σr + τρ` of the mode indexed by `j = (σ, τ)`. -/
 def freq (r ρ : ℝ) (j : Bool × Bool) : ℝ := sgn j.1 * r + sgn j.2 * ρ
 
-/-! ### (2) The four-mode expansions (TeX l. 363-365) -/
+/-! ### (2) The four-mode expansions (TeX l. 475-477) -/
 
 theorem norm_coef1 (k : Trig) (σ : Bool) : ‖coef1 k σ‖ = 1 / 2 := by
   cases k <;> cases σ <;> simp [coef1]
@@ -152,7 +152,7 @@ theorem norm_coef1 (k : Trig) (σ : Bool) : ‖coef1 k σ‖ = 1 / 2 := by
 theorem norm_coef (P Q : Trig) (j : Bool × Bool) : ‖coef P Q j‖ = 1 / 4 := by
   rw [coef, norm_mul, norm_coef1, norm_coef1]; norm_num
 
-/-- The coefficient sum `Σ|c_j|` is one (TeX l. 370). -/
+/-- The coefficient sum `Σ|c_j|` is one (TeX l. 485). -/
 theorem sum_norm_coef (P Q : Trig) : ∑ j : Bool × Bool, ‖coef P Q j‖ = 1 := by
   simp only [norm_coef, Finset.sum_const, Finset.card_univ, Fintype.card_prod,
     Fintype.card_bool, nsmul_eq_mul]
@@ -273,7 +273,7 @@ theorem sum_bracket_freq (a h r ρ : ℝ) :
   ring
 
 /-- Main abstract bound, with the factor `1/2` the proof actually yields
-(TeX l. 373: "one half of the asserted right side").  No sign conditions:
+(TeX l. 488: "one half of the asserted right side").  No sign conditions:
 `C, a, h, M, D, r, ρ` arbitrary reals, `I` any set. -/
 theorem trig_product_bound_half {E : Type*} [SeminormedAddCommGroup E] [NormedSpace ℂ E]
     (V : Submodule ℂ (ℝ → ℂ)) (emb : V →ₗ[ℂ] E) (I : Set ℝ) (A : ℝ → ℂ)
@@ -321,16 +321,16 @@ theorem trig_product_bound {E : Type*} [SeminormedAddCommGroup E] [NormedSpace �
 
 /-! ### (4) The paper wrapper -/
 
-/-- `C₀(a) = 16/(1-a)` (TeX l. 306). -/
+/-- `C₀(a) = 16/(1-a)` (TeX l. 402). -/
 def C₀ (a : ℝ) : ℝ := 16 / (1 - a)
 
 /-- Lemma `L:masked-trig-products`, with the manuscript's hypotheses.
 
 Supplied inputs (named hypotheses):
-* `hmem` — from `L:masked-time-completion` (TeX l. 148-155): the modulated
+* `hmem` — from `L:masked-time-completion` (TeX l. 195-203): the modulated
   amplitudes `1_I A e^{iωt}` lie in the accepted class `V`, whose inclusion
   `emb` into the complexified completion `E = H_a^ℂ` is linear;
-* `hmod` — `L:masked-temporal-modulation` (TeX l. 300-309), in exactly its
+* `hmod` — `L:masked-temporal-modulation` (TeX l. 396-405), in exactly its
   manuscript form, for every real `ω`.
 
 The hypotheses `ha0 ha1 hT hh0 hh1 hs hsT hA hM hD hr hρ` are the

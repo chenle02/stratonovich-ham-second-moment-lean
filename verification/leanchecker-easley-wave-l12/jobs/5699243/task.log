@@ -1,0 +1,13 @@
+node=node847 job=5699243 array=5698959_114 mode=fresh target=StratonovichHAMSecondMoment.WaveTwoVariances start=2026-11-13T09:00:51-0600
+tmp_avail_G=878
+VERIFIED_COMMIT=56fc59ec31b8ede85ac5ab7a2283237b091029a7 TREE=df0322362d43b18a73c060519d72955b328900c5 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=62440 waited_s=0
+REPLAY_STARTED 2026-11-13T09:03:14-0600
+BEGIN fresh StratonovichHAMSecondMoment.WaveTwoVariances 09:03:14
+END fresh StratonovichHAMSecondMoment.WaveTwoVariances	0	0:44:09.92	7590232	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2650 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.WaveTwoVariances
+PROCESS_EXIT=0 end=2026-11-13T09:47:25-0600

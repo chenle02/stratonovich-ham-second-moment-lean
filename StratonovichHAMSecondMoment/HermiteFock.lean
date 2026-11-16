@@ -7,11 +7,11 @@ The finite Gaussian Fock layer (a reusable foundation; no manuscript label of
 its own).
 
 Source: `notes/notes_stratonovich_ham_second_moment.tex` (main TeX) at commit
-`a284420`: the Fock half of the proof of `L:fock-form` (lines 2515-2526), the
-Fock sentences of the proof of `L:interval-contractions` (lines 2887-2891), the
-phase insertion on a vacuum color (lines 2838-2841, 2878-2880) and the Hermite
-step of `E:occupied-multiplication` (lines 1805-1810).  The TeX cites Janson
-(lines 2467-2468) for the creation and annihilation algebra; this module proves
+`39f2597a`: the Fock half of the proof of `L:fock-form` (lines 3016-3027), the
+Fock sentences of the proof of `L:interval-contractions` (lines 3460-3464), the
+phase insertion on a vacuum color (lines 3394-3397, 3447-3449) and the Hermite
+step of `E:occupied-multiplication` (lines 2192-2197).  The TeX cites Janson
+(lines 2954-2955) for the creation and annihilation algebra; this module proves
 what is used.
 
 Model (decision 5 of wave L9): the Gaussian `L²` space with values in a complex

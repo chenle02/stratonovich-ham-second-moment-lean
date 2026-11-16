@@ -5,27 +5,27 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The finite Gaussian comparison used in the proof of
 `P:masked-noise-completion` (Completion on the same noise) of
-`notes/integrated_covariance_foundation.tex` (revision a284420; statement
-lines 188-206, the comparison sentence lines 201-205; proof lines 208-247, the
-comparison argument lines 239-246).
+`notes/integrated_covariance_foundation.tex` (revision 39f2597a; statement
+lines 249-267, the comparison sentence lines 262-266; proof lines 269-328, the
+comparison argument lines 320-327).
 
 Formalized (a standalone finite result supporting the label, not the label):
 * `gaussian_seminorm_moment_le` (and `gaussian_seminorm_moment_le_paper`): for
   a finite index type `ι`, real `ι × ι` matrices `A`, `B` with `A` positive
   semidefinite and `B - A` positive semidefinite (`A ≤ B` in the Loewner
-  order, TeX lines 240-241: `bᵀAb ≤ bᵀBb` for every real `b`), every seminorm `N`
+  order, TeX lines 321-322: `bᵀAb ≤ bᵀBb` for every real `b`), every seminorm `N`
   on `ℝ^ι` (`EuclideanSpace ℝ ι`) and every real `p ≥ 1`, the functions
   `x ↦ N(x)^p` are integrable against the centered Gaussian laws
   `N(0,A)` and `N(0,B)` (`ProbabilityTheory.multivariateGaussian`), and
-  `∫ N(x)^p dN(0,A) ≤ ∫ N(x)^p dN(0,B)` (TeX line 244:
-  `E‖X‖^p ≤ E‖X+Z‖^p`, with finiteness of both sides, lines 245-246).
+  `∫ N(x)^p dN(0,A) ≤ ∫ N(x)^p dN(0,B)` (TeX line 325:
+  `E‖X‖^p ≤ E‖X+Z‖^p`, with finiteness of both sides, lines 326-327).
 
 Outside this module (a D1 boundary, stated here and in the wrapper): the
 identification of `A` with the covariance matrix of the masked noise
 evaluations `W(ζ_R F_i)` and of `B` with the auxiliary Gram matrix of
-`N_R` (TeX lines 201-203 and 239-240), the noise identity
+`N_R` (TeX lines 262-264 and 320-321), the noise identity
 `E:masked-actual-noise-norm`, the contraction extension and its joint
-Gaussianity (lines 199-201, 230-237).  None of these is formalized; the
+Gaussianity (lines 260-262, 304-311).  None of these is formalized; the
 theorem below is the finite comparison those steps feed into.
 
 Supplied inputs: none.
@@ -35,7 +35,7 @@ integrability statements are conclusions; `N` is an arbitrary seminorm (its
 continuity in finite dimension is proved, `seminorm_continuous`), which
 contains every norm of the TeX.
 
-Proof route.  As in the TeX (lines 241-246), with the coupling expressed by
+Proof route.  As in the TeX (lines 322-327), with the coupling expressed by
 measures: `N(0,B) = N(0,A) ∗ N(0,B-A)` (`multivariateGaussian_conv`, by
 characteristic functions, `Measure.ext_of_charFun`) replaces "diagonalizing
 `B - A` constructs `Z` ... on a product space", and the integral against the
@@ -60,7 +60,7 @@ namespace StratonovichHAMSecondMoment.GaussianComparison
 
 variable {ι : Type*} [Fintype ι] [DecidableEq ι]
 
-/-- Auxiliary to the Lean proof route (the coupling of TeX lines 242-244 as an
+/-- Auxiliary to the Lean proof route (the coupling of TeX lines 323-325 as an
 identity of laws): for `A` and `B - A` positive semidefinite,
 `N(0,B) = N(0,A) ∗ N(0,B-A)`. -/
 theorem multivariateGaussian_conv {A B : Matrix ι ι ℝ} (hA : A.PosSemidef)
@@ -141,8 +141,8 @@ theorem convexOn_seminorm_rpow (N : Seminorm ℝ (EuclideanSpace ℝ ι))
   exact (Real.rpow_le_rpow (apply_nonneg N _) h1 (by linarith)).trans h2
 
 /-- The finite Gaussian comparison in the proof of `P:masked-noise-completion`
-(`notes/integrated_covariance_foundation.tex`, a284420, lines 239-246; stated in
-lines 201-205).  For real `ι × ι` matrices with `A` and `B - A` positive
+(`notes/integrated_covariance_foundation.tex`, 39f2597a, lines 320-327; stated in
+lines 262-266).  For real `ι × ι` matrices with `A` and `B - A` positive
 semidefinite, every seminorm `N` on `ℝ^ι` and every real `p ≥ 1`: `N(x)^p` is
 integrable against `N(0,A)` and `N(0,B)`, and
 `∫ N(x)^p dN(0,A) ≤ ∫ N(x)^p dN(0,B)`. -/
@@ -181,10 +181,10 @@ theorem gaussian_seminorm_moment_le {A B : Matrix ι ι ℝ} (hA : A.PosSemidef)
   exact hJ
 
 /-- `P:masked-noise-completion`, finite comparison step
-(`notes/integrated_covariance_foundation.tex`, a284420, statement lines 201-205,
-proof lines 239-246), with the hypotheses of that step: `A` is a covariance
+(`notes/integrated_covariance_foundation.tex`, 39f2597a, statement lines 262-266,
+proof lines 320-327), with the hypotheses of that step: `A` is a covariance
 matrix (positive semidefinite) and `A ≤ B` in positive semidefinite order
-(`(B - A).PosSemidef`, i.e. `bᵀAb ≤ bᵀBb` for every real `b`, lines 240-241).  For
+(`(B - A).PosSemidef`, i.e. `bᵀAb ≤ bᵀBb` for every real `b`, lines 321-322).  For
 `X ~ N(0,A)`, `X + Z ~ N(0,B)`, every seminorm (in particular every norm) `N`
 and `p ≥ 1`, both moments `E N(X)^p`, `E N(X+Z)^p` are finite and
 `E N(X)^p ≤ E N(X+Z)^p`.  Narrower than the label: the identification of `A`

@@ -1,7 +1,7 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.SymplecticFree.one_le_norm_of_reversal`
 (`‖S_E(h)‖ ≥ 1` from the group law and the isometric reversal; `L:symplectic-free`,
-`notes/integrated_symplectic_phase.tex` lines 120-122 at a284420).
+`notes/integrated_symplectic_phase.tex` lines 143-145 at 39f2597a).
 
 Wrong variant: the bound without `Nontrivial E`.  Counterexample: the zero space
 `EuclideanSpace ℝ (Fin 0)`, where `A = B = R = 0` satisfy `B A = 1`, `R` isometric and

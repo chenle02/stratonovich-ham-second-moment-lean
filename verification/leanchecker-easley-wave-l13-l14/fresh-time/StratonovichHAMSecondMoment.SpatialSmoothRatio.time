@@ -1,0 +1,9 @@
+Command: timeout -k 30s 14400s lake env leanchecker --fresh StratonovichHAMSecondMoment.SpatialSmoothRatio
+Exit status: 0
+Elapsed wall (s): 2627.85
+Elapsed wall (h:mm:ss): 0:43:47.85
+User CPU (s): 2571.86
+System CPU (s): 55.75
+Peak RSS of largest waited descendant (KiB): 7583756
+Output bytes: 0
+Host: node859  Job: NA

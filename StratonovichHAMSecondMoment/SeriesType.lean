@@ -5,33 +5,33 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Scalar series and factorial foundation used by the coefficient-type arguments
 of `notes/notes_stratonovich_ham_second_moment.tex` (main TeX file; line
-numbers at revision a284420). The manuscript uses each of these elementary
+numbers at revision 39f2597a). The manuscript uses each of these elementary
 facts inline, inside the proofs of labelled results, except `gamma_mid_sq_le`,
 a standalone tool for which no manuscript line is claimed; none is a labelled
 result itself. Formalized here, each in full and with nothing supplied:
 
 * `sum_rpow_le_rpow_sum`: the finite `ℓ^ν` versus `ℓ^1` inequality
-  `∑ a_k^ν ≤ (∑ a_k)^ν` for `ν ≥ 1` and `a_k ≥ 0` (used at lines 2001-2002,
-  2676, 4678-4682, 5155-5159, 6054-6058, 6740-6743, 7258-7259).
+  `∑ a_k^ν ≤ (∑ a_k)^ν` for `ν ≥ 1` and `a_k ≥ 0` (used at lines 2427-2428,
+  3204, 5541-5545, 6090-6094, 7117-7121, 7884-7887, 8465-8466).
 * `seriesNu_summable_le`: for `ν ≥ 1` and `x ≥ 0`, the series
   `S_ν(x) = ∑_{k ≥ 0} x^k/(k!)^ν` converges and `S_ν(x) ≤ exp(ν x^{1/ν})`
-  (lines 2001, 2768-2769, 3571-3572, 4678-4682, 5155-5159, 5617, 6054-6058,
-  6740-6743, 7255-7256).
+  (lines 2427, 3309-3310, 4261-4262, 5541-5545, 6090-6094, 6621, 7117-7121,
+  7884-7887, 8462-8463).
   Summability is part of the conclusion, since a Lean `tsum` of a
   non-summable family is `0`.
 * `seriesNu_holder_le` and `seriesNu_le_two_exp_three`: the `β < 1` Hölder
-  variant of lines 2670-2679 (inside the proof of
+  variant of lines 3198-3207 (inside the proof of
   `P:static-phase-all-orders`): for `1/2 ≤ β < 1`,
   `∑ x^n/(n!)^β ≤ 2^{1-β} exp(2β x^{1/β})`, by Hölder's inequality applied to
   `((2x^{1/β})^n/n!)^β · (2^{-βn/(1-β)})^{1-β}` exactly as in the TeX; and the
   displayed consequence `∑ x^n/(n!)^β ≤ 2 exp(3 x^{1/β})`, here for every
   `1/2 ≤ β ≤ 3` (the TeX uses `β = (3-α)/2 ∈ (1/2, 3/2)`).
 * `factorial_sq_le_mul_factorial`: `r! s! ≥ (k!)^2` when `r + s = 2k`
-  (lines 2754, 5119). Proof route (auxiliary to Lean, the TeX gives no proof):
+  (lines 3295, 6048). Proof route (auxiliary to Lean, the TeX gives no proof):
   the central binomial coefficient is the largest, `Nat.choose_le_middle`.
 * `factorial_ge_exp`, `factorial_le_exp`, `log_factorial_bounds`: the
   two-sided bounds `k log k - k + 1 ≤ log k! ≤ k log k - k + 1 + log k` for
-  `k ≥ 1` (lines 7246-7247, inside the proof of `L:positive-series-type`).
+  `k ≥ 1` (lines 8450-8451, inside the proof of `L:positive-series-type`).
   Proof route differs from the TeX (which integrates `log x` on `[1,k]`): an
   induction on `k` using `1 + x ≤ e^x`.
 * `gamma_mid_sq_le`: `Γ((x+y)/2)^2 ≤ Γ(x)Γ(y)` for `x, y > 0`
@@ -58,7 +58,7 @@ namespace StratonovichHAMSecondMoment.SeriesType
 
 /-- The finite `ℓ^ν` versus `ℓ^1` inequality: for `ν ≥ 1` and nonnegative
 `a_k`, `∑_{k<n} a_k^ν ≤ (∑_{k<n} a_k)^ν` (used inline at main TeX lines
-2001-2002, 2676, 4678-4682, 5155-5159, 6054-6058, 6740-6743, 7258-7259). -/
+2427-2428, 3204, 5541-5545, 6090-6094, 7117-7121, 7884-7887, 8465-8466). -/
 theorem sum_rpow_le_rpow_sum {ν : ℝ} (hν : 1 ≤ ν) (a : ℕ → ℝ) (ha : ∀ k, 0 ≤ a k)
     (n : ℕ) : ∑ k ∈ range n, a k ^ ν ≤ (∑ k ∈ range n, a k) ^ ν := by
   induction n with
@@ -80,9 +80,9 @@ theorem term_eq_rpow {ν x : ℝ} (hν : ν ≠ 0) (hx : 0 ≤ x) (k : ℕ) :
 
 /-! ### The series `S_ν(x) = ∑ x^k/(k!)^ν` -/
 
-/-- **The series bound `S_ν(x) ≤ exp(ν x^{1/ν})`** (main TeX lines 4678-4682,
-5155-5159, 6054-6058, 6740-6743, 7255-7256, and inline at 2001, 2768-2769,
-3571-3572, 5617): for `ν ≥ 1` and `x ≥ 0` the series
+/-- **The series bound `S_ν(x) ≤ exp(ν x^{1/ν})`** (main TeX lines 5541-5545,
+6090-6094, 7117-7121, 7884-7887, 8462-8463, and inline at 2427, 3309-3310,
+4261-4262, 6621): for `ν ≥ 1` and `x ≥ 0` the series
 `∑_{k ≥ 0} x^k/(k!)^ν` converges and its sum is at most `exp(ν x^{1/ν})`.
 Proof as in the TeX: write each term as `a_k^ν` with `a_k = (x^{1/ν})^k/k!`
 and apply the `ℓ^ν` inequality to the exponential series. -/
@@ -104,7 +104,7 @@ theorem seriesNu_summable_le {ν x : ℝ} (hν : 1 ≤ ν) (hx : 0 ≤ x) :
       _ = Real.exp (ν * y) := by rw [← Real.exp_mul]; ring_nf
   exact ⟨summable_of_sum_range_le hnn hpart, Real.tsum_le_of_sum_range_le hnn hpart⟩
 
-/-- **The `β < 1` Hölder variant** (main TeX lines 2670-2679, inside the proof
+/-- **The `β < 1` Hölder variant** (main TeX lines 3198-3207, inside the proof
 of `P:static-phase-all-orders`): for `1/2 ≤ β < 1` and `x ≥ 0`, the series
 `∑ x^n/(n!)^β` converges and is at most `2^{1-β} exp(2β x^{1/β})`.
 Proof as in the TeX: Hölder's inequality with exponents `1/β`, `1/(1-β)`
@@ -184,7 +184,7 @@ theorem seriesNu_holder_le {β x : ℝ} (hβ1 : 1 / 2 ≤ β) (hβ2 : β < 1) (h
   exact ⟨summable_of_sum_range_le hnn hpart, Real.tsum_le_of_sum_range_le hnn hpart⟩
 
 /-- **The displayed elementary series bound of the proof of
-`P:static-phase-all-orders`** (main TeX lines 2670-2679):
+`P:static-phase-all-orders`** (main TeX lines 3198-3207):
 `∑_{n ≥ 0} x^n/(n!)^β ≤ 2 e^{3 x^{1/β}}`, with summability, for every
 `1/2 ≤ β ≤ 3` and `x ≥ 0` (the TeX applies it at `β = (3-α)/2 ∈ (1/2,3/2)`).
 For `β ≥ 1` it follows from `seriesNu_summable_le`, for `β < 1` from the
@@ -212,7 +212,7 @@ theorem seriesNu_le_two_exp_three {β x : ℝ} (hβ1 : 1 / 2 ≤ β) (hβ3 : β 
 
 /-! ### Factorial inequalities -/
 
-/-- **`r! s! ≥ (k!)^2` when `r + s = 2k`** (main TeX lines 2754 and 5119,
+/-- **`r! s! ≥ (k!)^2` when `r + s = 2k`** (main TeX lines 3295 and 6048,
 "the elementary factorial inequality"). Proof route (auxiliary, the TeX gives
 none): `r! s! · C(2k,r) = (2k)! = (k!)^2 · C(2k,k)` and the central binomial
 coefficient is the largest. -/
@@ -233,7 +233,7 @@ theorem factorial_sq_le_mul_factorial {r s k : ℕ} (h : r + s = 2 * k) :
     _ = (2 * k).choose k * (r ! * s !) := by ring
 
 /-- Lower factorial bound `k^k e^{1-k} ≤ k!` for `k ≥ 1` (the exponential
-form of the left inequality at main TeX line 7246). Proof route (auxiliary,
+form of the left inequality at main TeX line 8450). Proof route (auxiliary,
 differs from the TeX's integral comparison): induction using
 `(1 + 1/k)^k ≤ e`. -/
 theorem factorial_ge_exp (k : ℕ) (hk : 1 ≤ k) :
@@ -262,7 +262,7 @@ theorem factorial_ge_exp (k : ℕ) (hk : 1 ≤ k) :
       _ ≤ ((k : ℝ) + 1) * (k ! : ℝ) := by gcongr
 
 /-- Upper factorial bound `k! ≤ k^{k+1} e^{1-k}` for `k ≥ 1` (the exponential
-form of the right inequality at main TeX line 7247). Proof route (auxiliary,
+form of the right inequality at main TeX line 8451). Proof route (auxiliary,
 differs from the TeX's integral comparison): induction using
 `k e^{1/(k+1)} ≤ k + 1`. -/
 theorem factorial_le_exp (k : ℕ) (hk : 1 ≤ k) :
@@ -300,7 +300,7 @@ theorem factorial_le_exp (k : ℕ) (hk : 1 ≤ k) :
           gcongr
       _ = ((k : ℝ) + 1) ^ (k + 1 + 1) * Real.exp (1 - ((k : ℝ) + 1)) := by ring
 
-/-- **The two-sided logarithmic factorial bounds** (main TeX lines 7246-7247,
+/-- **The two-sided logarithmic factorial bounds** (main TeX lines 8450-8451,
 inside the proof of `L:positive-series-type`): for `k ≥ 1`,
 `k log k - k + 1 ≤ log(k!) ≤ k log k - k + 1 + log k`. -/
 theorem log_factorial_bounds (k : ℕ) (hk : 1 ≤ k) :

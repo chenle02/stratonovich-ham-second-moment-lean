@@ -4,28 +4,28 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `L:spatial-fourier-bound` (Deterministic Fourier bound for the spatial
-energy) of `notes/integrated_spatial_occupation.tex` (revision a284420;
-statement lines 101-111, display `E:spatial-fourier-bound` at lines 106-109,
-proof lines 113-164), for the quantities `A_sp(g) = B_Γ(g², g²)` and
-`b(g) = ‖∇g‖₂²` of lines 35-38 (with `B_Γ` of `E:spatial-physical-pair`,
-lines 12-17).  This module proves `b(g) > 0` and the bound
+energy) of `notes/integrated_spatial_occupation.tex` (revision 39f2597a;
+statement lines 121-131, display `E:spatial-fourier-bound` at lines 126-129,
+proof lines 133-215), for the quantities `A_sp(g) = B_Γ(g², g²)` and
+`b(g) = ‖∇g‖₂²` of lines 36-39 (with `B_Γ` of `E:spatial-physical-pair`,
+lines 13-18).  This module proves `b(g) > 0` and the bound
 
   `0 ≤ A_sp(g) ≤ 2^{1+α} R_Γ(1) b(g)^{α/2}`  for every real unit `g ∈ C_c^∞(ℝ^d)`,
 
 with `R_Γ(1) = ∫ μ(dξ)/(1+|ξ|²)` (`SpectralHomog.resolvent μ 1`; main TeX
-lines 7714-7723 at a284420), under `H:homog` for every covariance it allows,
+lines 8992-9001 at 39f2597a), under `H:homog` for every covariance it allows,
 including `Γ = 0` and singular ones, as in the lemma
 (`spatial_fourier_bound_paper`).  The lemma writes the constant as `R_α` of
-`E:intro-spectral-mass` (main TeX line 531) and uses `R_Γ(q) = q^{α-2} R_α`
-(this file, lines 149-155); the identity `R_Γ(1) = R_α` is not formalized here, so the
+`E:intro-spectral-mass` (main TeX line 696) and uses `R_Γ(q) = q^{α-2} R_α`
+(this file, lines 200-206); the identity `R_Γ(1) = R_α` is not formalized here, so the
 Lean constant is `R_Γ(1)`.
 
 The manuscript uses this lemma for the first claim of `P:spatial-smooth-ratio`
-(lines 166-170, proof lines 185-188): `R_0 = sup A_sp(g)/b(g)^{α/2}` is finite
+(lines 223-227, proof lines 250-253): `R_0 = sup A_sp(g)/b(g)^{α/2}` is finite
 without the finiteness of `S_1^pos`, hence without `T:full-upper`.  The
 consequence for `R_0` itself is drawn in `SpatialSmoothRatio`.
 
-Proof route (the TeX proof, lines 113-164, takes the same steps; lemmas with
+Proof route (the TeX proof, lines 133-215, takes the same steps; lemmas with
 no sentence in it are marked "Auxiliary to the Lean proof route"):
 * `A_sp(g) = ∫ c_Q dΓ` with `Q = g²` and the autocorrelation
   `c_Q(y) = ∫ Q(x) Q(x-y) dx`; `c_Q = Q ⋆ Q(-·)` is smooth with compact support,
@@ -43,8 +43,8 @@ no sentence in it are marked "Auxiliary to the Lean proof route"):
   `(1+|ξ|²)^{-1}` from `SpectralHomog.integrable_inv_one_add_sq` (`α < 2`).
 
 Also proved: `b(g) > 0` for a real unit `g ∈ C_c^∞(ℝ^d)` when `d ≥ 1`
-(`gradEnergy_pos`; the statement of the lemma, line 105, proof lines
-114-115; TeX lines 180-182 state it again for `P:spatial-smooth-ratio`).
+(`gradEnergy_pos`; the statement of the lemma, line 125, proof lines
+143-144; TeX lines 245-247 state it again for `P:spatial-smooth-ratio`).
 `b = 0` forces `∇g ≡ 0`, so `g` is constant and, having compact support in
 the noncompact `ℝ^d`, zero, as in the proof of the lemma; the proof of
 `P:spatial-smooth-ratio` argues instead through the Fourier support of a
@@ -59,7 +59,7 @@ functions and locally finite `Γ` it is `SpatialStaticControls.pairing_eq_spatia
 `spatialEnergy` (`A_sp`),
 `gradEnergy` (`b`, through the operator norm of `fderiv`, which equals the
 Euclidean norm of the gradient), `fourierQ` (`Q̂(ξ) = ∫ Q(x) e^{iξ·x} dx`, the
-convention of `IsSpectralMeasure`; the TeX proof's `F_0 Q` of lines 116-118
+convention of `IsSpectralMeasure`; the TeX proof's `F_0 Q` of lines 145-147
 has the exponent `e^{-iξ·x}`, so `Q̂ = conj(F_0 Q)` for real `Q`, with the
 same modulus), `IsUnitTest` (smooth, compact support, `∫ g² = 1`).
 
@@ -96,29 +96,29 @@ variable {d : ℕ}
 
 /-! ### Definitions -/
 
-/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 122-125): the autocorrelation
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 151-154): the autocorrelation
 `c_Q(y) = ∫ Q(x) Q(x - y) dx` (the inner integral of `B_Γ(Q,Q)` in
 `E:spatial-physical-pair`).  This is the package's one autocorrelation
 (`VariationalFloor` F3 is stated for it). -/
 def autocorr (Q : Rd d → ℝ) (y : Rd d) : ℝ := ∫ x, Q x * Q (x - y)
 
 /-- The real form of the physical pairing `E:spatial-physical-pair`
-(`integrated_spatial_occupation.tex` lines 15-17):
+(`integrated_spatial_occupation.tex` lines 16-18):
 `B_Γ(F,G) = ∫ (∫ F(x) G(x - y) dx) Γ(dy)`, as an iterated Bochner integral.
 For the continuous compactly supported functions used here it is an absolutely
 convergent integral (see `integrable_autocorr` and `SpatialSmoothRatio`). -/
 def spatialPair (Γ : Measure (Rd d)) (F G : Rd d → ℝ) : ℝ :=
   ∫ y, (∫ x, F x * G (x - y)) ∂Γ
 
-/-- `A_sp(g) = B_Γ(g², g²)` (line 35). -/
+/-- `A_sp(g) = B_Γ(g², g²)` (line 36). -/
 def spatialEnergy (Γ : Measure (Rd d)) (g : Rd d → ℝ) : ℝ :=
   spatialPair Γ (fun x => g x ^ 2) (fun x => g x ^ 2)
 
-/-- `b(g) = ‖∇g‖₂²` (line 35), for a differentiable `g`, through the operator
+/-- `b(g) = ‖∇g‖₂²` (line 36), for a differentiable `g`, through the operator
 norm of the Fréchet derivative (equal to the Euclidean norm of the gradient). -/
 def gradEnergy (g : Rd d → ℝ) : ℝ := ∫ x, ‖fderiv ℝ g x‖ ^ 2
 
-/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 116-118, up to complex conjugation): the Fourier transform in the manuscript's
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 145-147, up to complex conjugation): the Fourier transform in the manuscript's
 convention (the one of `HomogHypothesis.IsSpectralMeasure`):
 `Q̂(ξ) = ∫ Q(x) e^{i ξ·x} dx`. -/
 def fourierQ (Q : Rd d → ℝ) (ξ : Rd d) : ℂ :=
@@ -137,7 +137,7 @@ theorem autocorr_eq_convolution (Q : Rd d → ℝ) :
   funext y
   simp only [autocorr, convolution, ContinuousLinearMap.lsmul_apply, smul_eq_mul, neg_sub]
 
-/-- A step of the proof of `L:spatial-fourier-bound` (TeX line 126). -/
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX line 155). -/
 theorem autocorr_contDiff {Q : Rd d → ℝ} (hQ : ContDiff ℝ ∞ Q) (hc : HasCompactSupport Q) :
     ContDiff ℝ ∞ (autocorr Q) := by
   rw [autocorr_eq_convolution]
@@ -145,7 +145,7 @@ theorem autocorr_contDiff {Q : Rd d → ℝ} (hQ : ContDiff ℝ ∞ Q) (hc : Has
     (hQ.continuous.comp continuous_neg).locallyIntegrable
   exact hc.contDiff_convolution_left (ContinuousLinearMap.lsmul ℝ ℝ) hQ hl
 
-/-- A step of the proof of `L:spatial-fourier-bound` (TeX line 126). -/
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX line 155). -/
 theorem autocorr_hasCompactSupport {Q : Rd d → ℝ} (hc : HasCompactSupport Q) :
     HasCompactSupport (autocorr Q) := by
   rw [autocorr_eq_convolution]
@@ -162,7 +162,7 @@ theorem autocorr_continuous {Q : Rd d → ℝ} (hQ : Continuous Q) (hc : HasComp
 theorem autocorr_nonneg {Q : Rd d → ℝ} (h0 : ∀ x, 0 ≤ Q x) (y : Rd d) : 0 ≤ autocorr Q y :=
   integral_nonneg fun x => mul_nonneg (h0 x) (h0 (x - y))
 
-/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 134-135): integrability of a continuous compactly
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 163-164): integrability of a continuous compactly
 supported function against a locally finite measure. -/
 theorem integrable_autocorr {Q : Rd d → ℝ} (hQ : Continuous Q) (hc : HasCompactSupport Q)
     (Γ : Measure (Rd d)) [IsLocallyFiniteMeasure Γ] : Integrable (autocorr Q) Γ :=
@@ -208,7 +208,7 @@ theorem prod_hasCompactSupport {Q : Rd d → ℝ} (hc : HasCompactSupport Q) (ξ
     · rw [image_eq_zero_of_notMem_tsupport hzx]; simp
   · rw [image_eq_zero_of_notMem_tsupport hz]; simp
 
-/-- A step of the proof of `L:spatial-fourier-bound` (TeX line 128): the Fourier transform of the autocorrelation is `|Q̂|²`:
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX line 157): the Fourier transform of the autocorrelation is `|Q̂|²`:
 `∫ c_Q(x) e^{i ξ·x} dx = |Q̂(ξ)|²` for continuous compactly supported real `Q`
 (hand Fubini on `ℝ^d × ℝ^d` and the substitution `x ↦ z - x`). -/
 theorem fourier_autocorr {Q : Rd d → ℝ} (hQ : Continuous Q) (hc : HasCompactSupport Q)
@@ -249,7 +249,7 @@ theorem fourier_autocorr {Q : Rd d → ℝ} (hQ : Continuous Q) (hc : HasCompact
   have h3 : ∫ z, (Q z : ℂ) * ex ξ z = fourierQ Q ξ := rfl
   rw [h3, Complex.mul_conj, Complex.normSq_eq_norm_sq]
 
-/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 126-133): the spectral form of `A`: for smooth compactly supported real `Q` and a
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 155-162): the spectral form of `A`: for smooth compactly supported real `Q` and a
 spectral measure `μ` of `Γ` (`IsSpectralMeasure`, the manuscript's convention),
 `∫ c_Q dΓ = ∫ |Q̂|² dμ` as Bochner integrals.  (No integrability is asserted
 here; see `spatial_fourier_bound` for the integrability of both sides.) -/
@@ -269,7 +269,7 @@ theorem integral_autocorr_eq_spectral {Γ μ : Measure (Rd d)} (hsp : IsSpectral
 
 /-! ### Pointwise bounds on `Q̂` -/
 
-/-- A step of the proof of `L:spatial-fourier-bound` (TeX line 138): `|Q̂(ξ)| ≤ ‖Q‖₁`. -/
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX line 171): `|Q̂(ξ)| ≤ ‖Q‖₁`. -/
 theorem norm_fourierQ_le (Q : Rd d → ℝ) (ξ : Rd d) :
     ‖fourierQ Q ξ‖ ≤ ∫ x, |Q x| := by
   refine (norm_integral_le_integral_norm _).trans (le_of_eq ?_)
@@ -296,7 +296,7 @@ theorem fderiv_ofReal {Q : Rd d → ℝ} {x : Rd d} (hQ : DifferentiableAt ℝ Q
   rw [h.fderiv]
   rfl
 
-/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 138-142): integration by parts (`integral_mul_fderiv_eq_neg_fderiv_mul_of_integrable`
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 171-175): integration by parts (`integral_mul_fderiv_eq_neg_fderiv_mul_of_integrable`
 with `𝕜 = ℂ`): for `Q ∈ C_c^1(ℝ^d; ℝ)`, `|ξ·v| |Q̂(ξ)| ≤ ∫ |∂_v Q|`. -/
 theorem inner_mul_norm_fourierQ_le {Q : Rd d → ℝ} (hQ : ContDiff ℝ 1 Q)
     (hc : HasCompactSupport Q) (ξ v : Rd d) :
@@ -361,7 +361,7 @@ theorem integrable_sq_and_grad {g : Rd d → ℝ} (hs : ContDiff ℝ ∞ g) (hc 
 theorem gradEnergy_nonneg (g : Rd d → ℝ) : 0 ≤ gradEnergy g :=
   integral_nonneg fun _ => by positivity
 
-/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 138-144): `|ξ| |Q̂(ξ)| ≤ 2 √b` for `Q = g²`, `g` a unit test with `b = ‖∇g‖₂² > 0`
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 171-177): `|ξ| |Q̂(ξ)| ≤ 2 √b` for `Q = g²`, `g` a unit test with `b = ‖∇g‖₂² > 0`
 (the derivative bound `|ξ·v||Q̂| ≤ ‖∂_v Q‖₁` with `v = ξ`, `∂_ξ(g²) = 2g∂_ξ g`,
 and `2|g||∇g| ≤ √b g² + |∇g|²/√b`). -/
 theorem norm_mul_norm_fourierQ_le {g : Rd d → ℝ} (hg : IsUnitTest g) (hb : 0 < gradEnergy g)
@@ -418,7 +418,7 @@ theorem norm_mul_norm_fourierQ_le {g : Rd d → ℝ} (hg : IsUnitTest g) (hb : 0
   · rw [← h0, zero_mul]; positivity
   · exact le_of_mul_le_mul_left h4 h0
 
-/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 145-148): `|Q̂(ξ)|² (4b + |ξ|²) ≤ 8b` for `Q = g²`, `g` a unit test, `b > 0`; hence
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 178-181): `|Q̂(ξ)|² (4b + |ξ|²) ≤ 8b` for `Q = g²`, `g` a unit test, `b > 0`; hence
 `|Q̂|² ≤ min(1, 4b/|ξ|²)` up to the factor `2`. -/
 theorem norm_fourierQ_sq_mul_le {g : Rd d → ℝ} (hg : IsUnitTest g) (hb : 0 < gradEnergy g)
     (ξ : Rd d) :
@@ -451,7 +451,7 @@ theorem fourierQ_continuous {Q : Rd d → ℝ} (hQ : Integrable Q volume) :
     rw [norm_mul, norm_ex, mul_one, Complex.norm_real, Real.norm_eq_abs]
   · exact continuous_const.mul (by fun_prop)
 
-/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 156-160): the scalar identity
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 207-211): the scalar identity
 `8 b (2√b)^{α-2} = 2^{1+α} b^{α/2}` for `b > 0`. -/
 theorem scalar_identity (alpha b : ℝ) (hb : 0 < b) :
     8 * b * (2 * Real.sqrt b) ^ (alpha - 2) = 2 ^ (1 + alpha) * b ^ (alpha / 2) := by
@@ -469,7 +469,7 @@ theorem scalar_identity (alpha b : ℝ) (hb : 0 < b) :
   ring
 
 /-- **The deterministic Fourier bound** (general form of
-`E:spatial-fourier-bound`, TeX lines 106-109; see the module doc).  Let `Γ, μ`
+`E:spatial-fourier-bound`, TeX lines 126-129; see the module doc).  Let `Γ, μ`
 be locally
 finite measures on `ℝ^d` with `μ` a spectral measure of `Γ` in the
 manuscript's convention (`IsSpectralMeasure`), `μ` homogeneous of degree `α`
@@ -529,8 +529,8 @@ theorem spatial_fourier_bound {Γ μ : Measure (Rd d)} [IsLocallyFiniteMeasure �
 /-! ### Positivity of the gradient energy -/
 
 /-- `b(g) > 0` for a real unit `g ∈ C_c^∞(ℝ^d)`, `d ≥ 1` (the `b > 0` of
-`L:spatial-fourier-bound`, TeX line 105, proof lines 114-115; stated again in
-the proof of `P:spatial-smooth-ratio`, lines 180-182, which argues by Fourier
+`L:spatial-fourier-bound`, TeX line 125, proof lines 143-144; stated again in
+the proof of `P:spatial-smooth-ratio`, lines 245-247, which argues by Fourier
 support).  As in the proof of the lemma:
 `b = 0` forces `∇g ≡ 0` by continuity, hence `g` constant, hence `g = 0` by
 compact support in the noncompact `ℝ^d`, contradicting `‖g‖₂ = 1`.  For `d = 0`
@@ -560,7 +560,7 @@ theorem gradEnergy_pos (hd : 0 < d) {g : Rd d → ℝ} (hg : IsUnitTest g) :
     simp [hg0] at hu
   · exact h0
 
-/-- **`L:spatial-fourier-bound`** (TeX lines 101-111), the deterministic Fourier
+/-- **`L:spatial-fourier-bound`** (TeX lines 121-131), the deterministic Fourier
 bound under `H:homog`: for every covariance
 satisfying `H:homog` (`HomogHypothesis.HomogCovariance`, including `Γ = 0` and
 singular covariances; no `Γ ≠ 0` is needed or assumed) and every real unit
@@ -568,10 +568,10 @@ singular covariances; no `Γ ≠ 0` is needed or assumed) and every real unit
 `|ĝ²|²` and `(1+|ξ|²)^{-1}` are `μ`-integrable,
 `A_sp(g) = ∫ |ĝ²|² dμ ≥ 0`, and `A_sp(g) ≤ 2^{1+α} R_Γ(1) b(g)^{α/2}`.
 The constant is `R_Γ(1)`; the lemma's `R_α` of `E:intro-spectral-mass`
-equals it by TeX lines 149-155, an identity not formalized here.
+equals it by TeX lines 200-206, an identity not formalized here.
 Hence `R(g) = A_sp(g)/b(g)^{α/2} ≤ 2^{1+α} R_Γ(1)` (see
 `SpatialSmoothRatio.R0_pos_finite`), which is how the manuscript proves
-"`R_0` finite" of `P:spatial-smooth-ratio` (lines 185-188), independently of
+"`R_0` finite" of `P:spatial-smooth-ratio` (lines 250-253), independently of
 `T:full-upper`. -/
 theorem spatial_fourier_bound_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (hH : HomogCovariance d alpha alpha0 Γ μ) {g : Rd d → ℝ} (hg : IsUnitTest g) :

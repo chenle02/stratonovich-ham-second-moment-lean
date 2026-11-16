@@ -1,13 +1,13 @@
 /-
 Refutation for
 `StratonovichHAMSecondMoment.MaskedContinuousWave.frequencyPair_shift_le`
-(`L:masked-continuous-wave`, TeX lines 417-419 at a284420: "the changes in
+(`L:masked-continuous-wave`, TeX lines 552-554 at 39f2597a: "the changes in
 `h(r±ρ)` have magnitude at most two, since `h ≤ 1`").
 
 Wrong variant: `frequencyPair_shift_le` with the hypothesis `h ≤ 1` dropped.
 Witness `a = 0`, `h = 3`, `r = 1`, `ρ = 0`, `r' = ρ' = 0`:
 `𝒬_3(0,0) = 2`, while `3^{1-0} 𝒬_3(1,0) = 6/√10 < 2`. So the standing
-assumption `h ≤ 1` (TeX line 297) is used. No junk value is involved. The
+assumption `h ≤ 1` (TeX line 392) is used. No junk value is involved. The
 contrast theorem applies `frequencyPair_shift_le` at `h = 1` with the same
 frequencies.
 

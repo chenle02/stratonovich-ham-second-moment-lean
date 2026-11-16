@@ -6,7 +6,7 @@ Wrong variant: the orthogonal-modes form, with `Σ|c_j|²` in place of the
 package factor `Σ|c_j|`, stated in the exact binder shape of `norm_sq_sum_le`
 (index type `ι`, complex seminormed space `E`, `s : Finset ι`, `c`, `v`; both
 types quantified in universe `0`). It is false when modes coincide (TeX
-l. 373-375: "Repeated or zero frequencies are permitted; no orthogonality ...
+l. 488-490: "Repeated or zero frequencies are permitted; no orthogonality ...
 is used"). Witness `ι = Fin 4`, `E = ℂ`, `s = univ`, four equal modes
 `v_j = 1`, `c_j = 1/4`: `1 ≤ 1/4` fails. The contrast theorem applies
 `norm_sq_sum_le` itself at the same point, where its right side is `1 * 1`.

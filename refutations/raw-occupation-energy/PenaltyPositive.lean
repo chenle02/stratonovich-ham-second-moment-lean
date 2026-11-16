@@ -1,6 +1,6 @@
 /-
 Refutation for a dropped hypothesis of the scalar maximum of `P:raw-occupation-energy`
-(`notes/integrated_occupation_ceiling.tex` lines 99-104 and 137-141 at a284420, `ζ > 0`),
+(`notes/integrated_occupation_ceiling.tex` lines 118-123 and 167-171 at 39f2597a, `ζ > 0`),
 package theorem `StratonovichHAMSecondMoment.RawOccupationEnergy.scalar_max_zeta`.
 
 Wrong variant: `ζ ≥ 0` in place of `ζ > 0`.  Counterexample: `ζ = 0`, `α = 1`, `C = X = 1`:

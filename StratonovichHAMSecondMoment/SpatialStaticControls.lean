@@ -4,12 +4,12 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:spatial-static-controls` (Smooth temporal controls) of
-`notes/integrated_spatial_occupation.tex` at revision a284420: statement TeX
-lines 40-54 (the definition of `λ_z(c)²`, lines 42-46; display
-`E:spatial-static-score`, lines 50-53), proof lines 56-96.  Standing
+`notes/integrated_spatial_occupation.tex` at revision 39f2597a: statement TeX
+lines 42-56 (the definition of `λ_z(c)²`, lines 44-48; display
+`E:spatial-static-score`, lines 52-55), proof lines 58-115.  Standing
 assumptions of the section (lines 4-10): a nonzero original covariance from
 `H:homog`, `a = α₀`; for smooth compact `z`, `U_z = Γ * z` pointwise (lines
-37-38).  The wrappers carry `HomogHypothesis.HomogCovariance d α α₀ Γ μ`,
+38-39).  The wrappers carry `HomogHypothesis.HomogCovariance d α α₀ Γ μ`,
 `Γ ≠ 0` and use the exponent `α₀`.
 
 Definitions reused: `VariationalDilation.conv` (`(Γ * φ)(x) = ∫ φ(x-y) Γ(dy)`),
@@ -36,7 +36,7 @@ Formalized:
   `c U_z` is nonempty and bounded above, `λ_z(c)² > 0`, `λ_z(c) > 0`; `λ_z` is
   Lipschitz on every `[c₁, c₂]`, `c₁ > 0`.  General form `static_rate`, which
   also gives the global bound `|λ_z(c)² - λ_z(c')²| ≤ M |c - c'|` for every
-  upper bound `M` of `U_z` (the TeX's constant `‖U_z‖_∞`, lines 62-63), without the
+  upper bound `M` of `U_z` (the TeX's constant `‖U_z‖_∞`, lines 73-74), without the
   floor.
 * `spatial_static_score_paper` (part (ii), `E:spatial-static-score` in the
   existential form of Le's decision 2): `B_Γ(z,z) < ∞`, and every
@@ -48,7 +48,7 @@ Formalized:
 * `spatial_static_score_sSup_paper`: the sSup form `S_1^pos ≥ λ_z(1) -
   (M_a/2) B_Γ(z,z)` on the named input `S1Bdd`.
 * `pairing_bridge`: `B_Γ(z,z) = ofReal (∫ z U_z)`, finite, with real value
-  `∫ z U_z ≥ 0` (TeX line 88: "the spatial factor is finite").
+  `∫ z U_z ≥ 0` (TeX line 107: "the spatial factor is finite").
 
 Supplied inputs (named hypotheses):
 * `RayleighFloor Γ` (part (i) only, for positivity): for every nonnegative
@@ -61,7 +61,7 @@ Supplied inputs (named hypotheses):
   positivity of `λ_z(1)²` for every `z`, i.e. to the positivity claim of part
   (i) itself; the Lean content of part (i) beyond this input is the finiteness,
   the transfer to every `c > 0` and the Lipschitz bounds.  The TeX derives
-  positivity differently (lines 57-62: a positive rate of a smooth test through
+  positivity differently (lines 68-73: a positive rate of a smooth test through
   `P:variational-unmasked-rate` and `P:compact-original-common-trial`).
   `rayleighFloor_volume` checks that the input is satisfiable (`Γ` = Lebesgue
   measure, an unrestricted covariance outside `H:homog`: it scales like `c^d`,
@@ -69,7 +69,7 @@ Supplied inputs (named hypotheses):
   for `Γ = 0`.
 * `S1Bdd α₀ Γ` (sSup corollary only): boundedness above of
   `{I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}`, word for word the boundedness claim of
-  `P:variational-positive-scores` at `c = 1` (TeX lines 272-274 of
+  `P:variational-positive-scores` at `c = 1` (TeX lines 372-374 of
   `integrated_unmasked_variational.tex`), recorded as a named input.
 
 Implicit hypotheses made explicit: `Γ` locally finite (`H:homog`'s
@@ -89,14 +89,14 @@ real-Rayleigh and integral-form quantities (`VariationalDilation`), not
 form (equivalent to the TeX whenever `S_1^pos` is a finite supremum), plus the
 sSup form on `S1Bdd`.  Proof route: (1) the cutoff is
 `cut_n(t) = χ̃((n+4)t - 1) χ̃((n+4)(1-t) - 1)` with `χ̃ = Real.smoothTransition`
-instead of the TeX's `χ(1/(nt)) χ(1/(n(1-t)))` (lines 66-72); (2) dominated
+instead of the TeX's `χ(1/(nt)) χ(1/(n(1-t)))` (lines 81-87); (2) dominated
 convergence (dominated by `f_a` and by the potential integrand) replaces the
-monotone convergence of lines 75-77 and 87-88; (3) the TeX's positive floor
-`c₀ ≤ k_n(s)` (line 78) is not needed: `λ_z` is continuous on all of `ℝ`
+monotone convergence of lines 90-92 and 106-107; (3) the TeX's positive floor
+`c₀ ≤ k_n(s)` (line 93) is not needed: `λ_z` is continuous on all of `ℝ`
 because `λ_z²` is globally Lipschitz; (4) the mean and cost of `f_n ⊗ z` are
 computed as unconditional identities of Bochner integrals (`mean_ctrl`,
 `rawCost_ctrl`), and `B_Γ(z,z)` is bridged to the real integral `∫ z U_z` by
-Tonelli (`pairing_bridge`); (5) positivity of `B_Γ(z,z)` (lines 88-91) is not
+Tonelli (`pairing_bridge`); (5) positivity of `B_Γ(z,z)` (lines 107-110) is not
 needed for the stated bound and is not formalized.  Lemmas marked "Auxiliary
 to the Lean proof route" have no manuscript label.
 -/
@@ -225,7 +225,7 @@ theorem rayleighSet_bddAbove {V : Rd d → ℝ} {M : ℝ} (hVM : ∀ x, V x ≤ 
 /-! ### The squared rate `λ_U(c)²` and the rate `λ_U(c)` -/
 
 /-- `λ_U(c)² = sup{c ∫ U g² - ‖∇g‖₂² : g ∈ H^1(ℝ^d;ℝ), ‖g‖₂ = 1}` (the
-displayed definition of `L:spatial-static-controls`, TeX lines 42-46, with a
+displayed definition of `L:spatial-static-controls`, TeX lines 44-48, with a
 general potential `U`; the manuscript's case is `U = U_z = Γ * z`). -/
 def lamSq (U : Rd d → ℝ) (c : ℝ) : ℝ := sSup (rayleighSet (fun x => c * U x))
 
@@ -282,14 +282,14 @@ omit hUc in
 theorem cU_bddAbove (c : ℝ) : BddAbove (rayleighSet (fun x => c * U x)) :=
   rayleighSet_bddAbove (M := |c| * M) fun x => (le_abs_self _).trans (abs_cU_le hU0 hUM c x)
 
-/-- `λ_U(c)² ≤ |c| M` (finiteness, TeX line 47). -/
+/-- `λ_U(c)² ≤ |c| M` (finiteness, TeX line 49). -/
 theorem lamSq_le (c : ℝ) : lamSq U c ≤ |c| * M := by
   refine csSup_le (cU_nonempty hUc hU0 hUM c) ?_
   rintro q ⟨f, g, h, rfl⟩
   exact rayleighValue_le (fun x => (le_abs_self _).trans (abs_cU_le hU0 hUM c x)) h
 
 /-- Auxiliary to the Lean proof route.  Comparing identical unit tests:
-`λ_U(c)² ≤ λ_U(c')² + |c - c'| M` (TeX lines 62-63). -/
+`λ_U(c)² ≤ λ_U(c')² + |c - c'| M` (TeX lines 73-74). -/
 theorem lamSq_le_add (c c' : ℝ) : lamSq U c ≤ lamSq U c' + |c - c'| * M := by
   refine csSup_le (cU_nonempty hUc hU0 hUM c) ?_
   rintro q ⟨f, g, h, rfl⟩
@@ -306,7 +306,7 @@ theorem lamSq_le_add (c c' : ℝ) : lamSq U c ≤ lamSq U c' + |c - c'| * M := b
   nlinarith
 
 /-- `c ↦ λ_U(c)²` is Lipschitz with constant `M = sup U` on all of `ℝ`
-(TeX lines 62-63: "comparing identical unit tests makes `λ_z(c)²` Lipschitz
+(TeX lines 73-74: "comparing identical unit tests makes `λ_z(c)²` Lipschitz
 with constant `‖U_z‖_∞`"). -/
 theorem lamSq_lip (c c' : ℝ) : |lamSq U c - lamSq U c'| ≤ M * |c - c'| := by
   rw [abs_sub_le_iff]
@@ -340,7 +340,7 @@ theorem lam_continuous : Continuous (lam U) := by
   exact Real.continuous_sqrt.comp hL.continuous
 
 /-- Lipschitz bound of `λ_U` on `[c₁, c₂]` from a positive floor
-`λ_U(c₁)² > 0` (TeX lines 63-64: "on a positive compact interval its rate has a
+`λ_U(c₁)² > 0` (TeX lines 74-75: "on a positive compact interval its rate has a
 positive floor by monotonicity, giving the square-root Lipschitz bound"). -/
 theorem lam_lipschitzOn {c₁ c₂ : ℝ} (hpos : 0 < lamSq U c₁) :
     ∃ K : NNReal, LipschitzOnWith K (lam U) (Icc c₁ c₂) := by
@@ -382,7 +382,7 @@ theorem conv_const_mul (Γ : Measure (Rd d)) (z : Rd d → ℝ) (c : ℝ) :
 /-- For a nonnegative test function `z`, a tempered `Γ`, `μ` with the spectral
 convention: `y ↦ z(x-y)` is `Γ`-integrable for every `x` (so `U_z(x)` is a
 genuine integral), `U_z = Γ * z` is continuous, nonnegative and bounded above
-(TeX lines 60-61 use this boundedness, through `P:variational-unmasked-rate`,
+(TeX lines 71-72 use this boundedness, through `P:variational-unmasked-rate`,
 which the TeX quotes for "boundedness of this potential"; here it comes from
 `VariationalMean.conv_le`, the Gaussian envelope). -/
 theorem convZ_props {Γ μ : Measure (Rd d)} (hΓt : IsTempered Γ) (hμt : IsTempered μ)
@@ -421,10 +421,10 @@ def RayleighFloor (Γ : Measure (Rd d)) : Prop :=
   ∀ z : Rd d → ℝ, IsTestFunction z → (∀ x, 0 ≤ z x) → z ≠ 0 →
     ∃ q ∈ rayleighSet (conv Γ z), 0 < q
 
-/-- `λ_z(c) = λ_{U_z}(c)` with `U_z = Γ * z` (TeX lines 42-46). -/
+/-- `λ_z(c) = λ_{U_z}(c)` with `U_z = Γ * z` (TeX lines 44-48). -/
 def lamZ (Γ : Measure (Rd d)) (z : Rd d → ℝ) (c : ℝ) : ℝ := lam (conv Γ z) c
 
-/-- Part (i) of `L:spatial-static-controls` (TeX lines 41-49), general form
+/-- Part (i) of `L:spatial-static-controls` (TeX lines 43-51), general form
 (tempered `Γ`, `μ`, spectral convention, the floor `RayleighFloor Γ`), for a
 nonnegative nonzero test function `z`: (a) for every real `c` the Rayleigh set
 of `c U_z` is nonempty and bounded above; (b) for `c > 0`, `λ_z(c)² > 0`,
@@ -464,7 +464,7 @@ theorem static_rate {Γ μ : Measure (Rd d)} (hΓt : IsTempered Γ) (hμt : IsTe
 
 /-- The smooth cutoff `cut_n(t) = χ̃((n+4)t - 1) χ̃((n+4)(1-t) - 1)` with
 `χ̃ = Real.smoothTransition` (`0` on `(-∞,0]`, `1` on `[1,∞)`).  Lean route: it
-replaces the manuscript's `χ(1/(nt)) χ(1/(n(1-t)))` (TeX lines 66-72; `χ` from
+replaces the manuscript's `χ(1/(nt)) χ(1/(n(1-t)))` (TeX lines 81-87; `χ` from
 `P:variational-remove-mask`); both are smooth, in `[0,1]`, vanish near the
 endpoints and equal `1` on compact subsets of `(0,1)` for large `n`, which is
 all the proof uses. -/
@@ -472,7 +472,7 @@ def cut (n : ℕ) (t : ℝ) : ℝ :=
   Real.smoothTransition (((n : ℝ) + 4) * t - 1) *
     Real.smoothTransition (((n : ℝ) + 4) * (1 - t) - 1)
 
-/-- `f_n = f_a · cut_n` (TeX lines 70-72, with the cutoff `cut_n`); `f_a` is
+/-- `f_n = f_a · cut_n` (TeX lines 85-87, with the cutoff `cut_n`); `f_a` is
 `TemporalEquilibrium.density a`. -/
 def fn (a : ℝ) (n : ℕ) (t : ℝ) : ℝ := TemporalEquilibrium.density a t * cut n t
 
@@ -543,7 +543,7 @@ variable {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1)
 include ha0 ha1
 
 omit ha0 ha1 in
-/-- `f_n` is smooth on `ℝ` (it vanishes near both endpoints; TeX line 73). -/
+/-- `f_n` is smooth on `ℝ` (it vanishes near both endpoints; TeX line 88). -/
 theorem fn_contDiff (n : ℕ) : ContDiff ℝ ∞ (fn a n) := by
   have hN : (0 : ℝ) < (n : ℝ) + 4 := by positivity
   have hN1 : (0 : ℝ) < 1 / ((n : ℝ) + 4) := by positivity
@@ -609,10 +609,10 @@ end cutoff
 
 /-! ### The controls `Ψ_n = f_n ⊗ z` -/
 
-/-- `Ψ_n(t,x) = f_n(t) z(x)` (TeX line 74). -/
+/-- `Ψ_n(t,x) = f_n(t) z(x)` (TeX line 89). -/
 def ctrl (a : ℝ) (n : ℕ) (z : Rd d → ℝ) : ℝ × Rd d → ℝ := fun p => fn a n p.1 * z p.2
 
-/-- `Ψ_n ∈ C_pos` for a nonnegative nonzero test function `z` (TeX lines 73-75). -/
+/-- `Ψ_n ∈ C_pos` for a nonnegative nonzero test function `z` (TeX lines 88-90). -/
 theorem ctrl_mem {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) (n : ℕ) {z : Rd d → ℝ}
     (hz : IsTestFunction z) (hz0 : ∀ x, 0 ≤ z x) (hzne : z ≠ 0) : ctrl a n z ∈ CPos d := by
   set N : ℝ := (n : ℝ) + 4 with hNdef
@@ -648,10 +648,10 @@ theorem ctrl_mem {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) (n : ℕ) {z : Rd d → �
 
 /-! ### Mean, rate and cost of `Ψ_n` -/
 
-/-- `k_n(s) = ∫_0^1 |s-t|^{-a} f_n(t) dt` (TeX line 71). -/
+/-- `k_n(s) = ∫_0^1 |s-t|^{-a} f_n(t) dt` (TeX line 86). -/
 def kn (a : ℝ) (n : ℕ) (s : ℝ) : ℝ := ∫ t in Ioo (0 : ℝ) 1, |s - t| ^ (-a) * fn a n t
 
-/-- The mean of `Ψ_n` is `k_n(s) U_z` (TeX lines 78-79; an unconditional identity
+/-- The mean of `Ψ_n` is `k_n(s) U_z` (TeX lines 93-94; an unconditional identity
 of Bochner integrals, for every `Γ`, `a`, `n`, `z`, `s`). -/
 theorem mean_ctrl (a : ℝ) (Γ : Measure (Rd d)) (n : ℕ) (z : Rd d → ℝ) (s : ℝ) :
     mean a Γ (ctrl a n z) s = fun x => kn a n s * conv Γ z x := by
@@ -664,12 +664,12 @@ theorem mean_ctrl (a : ℝ) (Γ : Measure (Rd d)) (n : ℕ) (z : Rd d → ℝ) (
   rw [← integral_mul_const]
   congr 1; funext u; ring
 
-/-- The rate of `Ψ_n` at `s` is `λ_z(k_n(s))` (TeX lines 79-81). -/
+/-- The rate of `Ψ_n` at `s` is `λ_z(k_n(s))` (TeX lines 94-96). -/
 theorem rate_ctrl (a : ℝ) (Γ : Measure (Rd d)) (n : ℕ) (z : Rd d → ℝ) (s : ℝ) :
     rate a Γ (ctrl a n z) s = lamZ Γ z (kn a n s) := by
   rw [rate, mean_ctrl]; rfl
 
-/-- The Gaussian cost of `Ψ_n` in its integral form (TeX lines 83-86):
+/-- The Gaussian cost of `Ψ_n` in its integral form (TeX lines 102-105):
 `v_{Ψ_n} = (∫_0^1 f_n k_n) · ∫ z U_z` (unconditional identity). -/
 theorem rawCost_ctrl (a : ℝ) (Γ : Measure (Rd d)) (n : ℕ) (z : Rd d → ℝ) :
     rawCost a Γ (ctrl a n z) =
@@ -708,14 +708,14 @@ theorem kn_nonneg (n : ℕ) (s : ℝ) : 0 ≤ kn a n s :=
     mul_nonneg (Real.rpow_nonneg (abs_nonneg _) _) (fn_nonneg ha0 ha1 n t)
 
 /-- `k_n(s) ≤ 1` on `[0,1]` (`f_n ≤ f_a` and
-`E:temporal-equilibrium-potential`, TeX lines 77-78). -/
+`E:temporal-equilibrium-potential`, TeX lines 92-93). -/
 theorem kn_le_one (n : ℕ) {s : ℝ} (hs : s ∈ Icc (0 : ℝ) 1) : kn a n s ≤ 1 := by
   have hP := TemporalEquilibrium.potential_eq_one ha0 ha1 s hs
   rw [← hP.2]
   exact setIntegral_mono_on (kn_integrableOn ha0 ha1 n hs) hP.1 measurableSet_Ioo fun t ht =>
     mul_le_mul_of_nonneg_left (fn_le_density ha0 ha1 n ht) (Real.rpow_nonneg (abs_nonneg _) _)
 
-/-- `k_n(s) → 1` for `s ∈ [0,1]` (TeX lines 75-77; Lean route: dominated
+/-- `k_n(s) → 1` for `s ∈ [0,1]` (TeX lines 90-92; Lean route: dominated
 convergence with the integrand of `E:temporal-equilibrium-potential` as
 dominating function, instead of monotone convergence). -/
 theorem kn_tendsto {s : ℝ} (hs : s ∈ Icc (0 : ℝ) 1) :
@@ -755,7 +755,7 @@ theorem fnkn_integrableOn (n : ℕ) :
           (fn_nonneg ha0 ha1 n σ)
     _ ≤ _ := by rw [mul_one]; exact fn_le_density ha0 ha1 n hσ
 
-/-- `∫_0^1 f_n k_n → M_a` (TeX lines 87-88: "its time integrand increases to
+/-- `∫_0^1 f_n k_n → M_a` (TeX lines 106-107: "its time integrand increases to
 `f_a`"; Lean route: dominated convergence by `f_a`). -/
 theorem fnkn_tendsto :
     Tendsto (fun n => ∫ σ in Ioo (0 : ℝ) 1, fn a n σ * kn a n σ) atTop
@@ -787,7 +787,7 @@ def zE (z : Rd d → ℝ) : Rd d → ℝ≥0∞ := fun x => ENNReal.ofReal (z x)
 `∫ z U_z` that appears in the cost: for a locally finite tempered `Γ` (with a
 tempered `μ` and the spectral convention) and a nonnegative test function `z`,
 `x ↦ z(x) U_z(x)` is integrable, `B_Γ(z,z) = ofReal (∫ z U_z)`, so
-`B_Γ(z,z) < ∞` and `B_Γ(z,z).toReal = ∫ z U_z ≥ 0` (TeX line 88: "the spatial
+`B_Γ(z,z) < ∞` and `B_Γ(z,z).toReal = ∫ z U_z ≥ 0` (TeX line 107: "the spatial
 factor is finite"). -/
 theorem pairing_bridge {Γ μ : Measure (Rd d)} (hΓt : IsTempered Γ) (hμt : IsTempered μ)
     (hsp : IsSpectralMeasure Γ μ) (hΓloc : IsLocallyFiniteMeasure Γ) {z : Rd d → ℝ}
@@ -900,7 +900,7 @@ variable {Γ μ : Measure (Rd d)} (hΓt : IsTempered Γ) (hμt : IsTempered μ)
   (hz : IsTestFunction z) (hz0 : ∀ x, 0 ≤ z x)
 include hΓt hμt hsp ha0 ha1 hz hz0
 
-/-- `I_{Ψ_n} → λ_z(1)` (TeX lines 78-81: the rate at `s` is `λ_z(k_n(s))`,
+/-- `I_{Ψ_n} → λ_z(1)` (TeX lines 93-96: the rate at `s` is `λ_z(k_n(s))`,
 converging to `λ_z(1)` and bounded by it; dominated convergence).  Lean
 route: continuity of `λ_z` on `ℝ` (from the global Lipschitz bound of `λ_z²`)
 replaces the TeX's positive floor `c₀ ≤ k_n`; no floor is needed here. -/
@@ -981,7 +981,7 @@ theorem score_tendsto (hΓloc : IsLocallyFiniteMeasure Γ) :
   convert this using 2
   ring
 
-/-- `E:spatial-static-score` (TeX lines 50-53) in the existential form (Le's
+/-- `E:spatial-static-score` (TeX lines 52-55) in the existential form (Le's
 decision 2 of wave L6): for every `y < λ_z(1) - (M_a/2) B_Γ(z,z)` there is a
 control `Ψ ∈ C_pos` with `y < I_Ψ - v_Ψ/2`, whose rate and cost integrands are
 integrable (so its score is not a junk value).  `B_Γ(z,z)` is finite.  General
@@ -1080,7 +1080,7 @@ theorem rayleighFloor_volume : RayleighFloor (volume : Measure (Rd d)) := by
 
 /-! ### The manuscript's statements -/
 
-/-- **`L:spatial-static-controls`, part (i)** (TeX lines 40-49, proof 56-64),
+/-- **`L:spatial-static-controls`, part (i)** (TeX lines 42-51, proof 58-75),
 with the section's standing hypotheses (TeX lines 4-5: a nonzero covariance
 satisfying `H:homog`, `a = α₀`; the potential `U_z = Γ * z` does not depend on
 `a`) and the named input `RayleighFloor Γ` (the dilation floor lemma of wave
@@ -1092,7 +1092,7 @@ every `[c₁, c₂]` with `c₁ > 0`.  Proof route: finiteness and the Lipschitz
 bound as in the TeX (comparison of identical unit tests, the bound of `U_z`
 from `VariationalMean.conv_le` instead of `P:variational-unmasked-rate`);
 positivity from the named floor input, not through
-`P:compact-original-common-trial` as in the TeX (lines 57-62).  `Γ ≠ 0` and the
+`P:compact-original-common-trial` as in the TeX (lines 68-73).  `Γ ≠ 0` and the
 fields of `H:homog` other than `Γ_tempered`, `μ_tempered`, `spectral` are
 carried, unused (they enter through the floor input). -/
 theorem spatial_static_controls_rate_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
@@ -1109,7 +1109,7 @@ theorem spatial_static_controls_rate_paper {alpha alpha0 : ℝ} {Γ μ : Measure
     fun c hc => ⟨(h1 c).1, (h1 c).2, h2 c hc⟩, h5⟩
 
 /-- **`L:spatial-static-controls`, part (ii)**, `E:spatial-static-score` (TeX
-lines 50-53, proof 66-95) in the existential form (Le's decision 2 of wave L6),
+lines 52-55, proof 81-114) in the existential form (Le's decision 2 of wave L6),
 with the section's standing hypotheses (`H:homog`, `Γ ≠ 0`, `a = α₀`): for every
 nonnegative nonzero `z ∈ C_c^∞(ℝ^d)`, `B_Γ(z,z)` (`OccupationKernelRow.pairing`,
 `E:spatial-physical-pair`) is finite, the Rayleigh set defining `λ_z(1)` is
@@ -1141,8 +1141,8 @@ theorem spatial_static_score_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   exact ⟨h1, cU_nonempty hUc hU0 hUM 1, cU_bddAbove hU0 hUM 1, h2⟩
 
 /-- The sSup form of `E:spatial-static-score` on the named input `S1Bdd`
-(TeX lines 50-53 read with `S_1^pos` the finite supremum of
-`P:variational-positive-scores`, TeX lines 272-274 of
+(TeX lines 52-55 read with `S_1^pos` the finite supremum of
+`P:variational-positive-scores`, TeX lines 372-374 of
 `integrated_unmasked_variational.tex`): under the same hypotheses as
 `spatial_static_score_paper` and `S1Bdd α₀ Γ`,
 `S_1^pos ≥ λ_z(1) - (M_a/2) B_Γ(z,z)`.  Narrower than the TeX only in that the

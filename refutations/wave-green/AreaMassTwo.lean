@@ -1,7 +1,7 @@
 /-
 Refutation for the `d = 2` wave Green mass, package theorem
 `StratonovichHAMSecondMoment.WaveGreen.mass_two` (`G_s(ℝ²) = s`, main TeX lines
-5182-5187, Chen (2.5)).
+6127-6132, Chen (2.5)).
 
 Wrong variant: a mass growing like the area of the support, `G_s(ℝ²) = s²` for
 all `s > 0`.  Counterexample: `s = 2`, where the package mass is `2 ≠ 4`.

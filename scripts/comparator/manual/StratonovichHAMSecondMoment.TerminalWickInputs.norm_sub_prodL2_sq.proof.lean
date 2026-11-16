@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.TerminalWickInputs.norm_sub_prodL2_sq

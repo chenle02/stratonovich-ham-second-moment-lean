@@ -1,7 +1,7 @@
 /-
 Refutation for the assembly step of `E:variational-unmasked-point-lower`
-(`notes/integrated_unmasked_variational.tex` lines 175-178 and 214-218 at
-a284420), package theorem
+(`notes/integrated_unmasked_variational.tex` lines 234-237 and 295-299 at
+39f2597a), package theorem
 `StratonovichHAMSecondMoment.RemoveMask.le_liminf_of_tendsto`
 (`J R → I` and `2 J R - v/2 ≤ liminf L` for large `R` give
 `2 I - v/2 ≤ liminf L`).

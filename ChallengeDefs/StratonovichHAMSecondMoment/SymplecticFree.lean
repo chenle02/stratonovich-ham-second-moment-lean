@@ -27,7 +27,7 @@ open scoped NNReal
 
 /-! ### Per-frequency free matrix -/
 
-/-- The symplectic matrix `J_symp`, `J_symp(q,p) = (p,-q)` (TeX line 64). -/
+/-- The symplectic matrix `J_symp`, `J_symp(q,p) = (p,-q)` (TeX line 74). -/
 def Jsymp : Matrix (Fin 2) (Fin 2) ℝ := !![0, 1; -1, 0]
 
 /-- The per-frequency symplectic form `ω₂(z,w) = z ⬝ J_symp w = z₀w₁ - z₁w₀`
@@ -38,7 +38,7 @@ def omega2 (z w : Fin 2 → ℝ) : ℝ := z ⬝ᵥ (Jsymp *ᵥ w)
 `sineQuotient t k = t · sinc(tk)`. -/
 def sineQuotient (t k : ℝ) : ℝ := t * Real.sinc (t * k)
 
-/-- The free matrix in balanced Fourier coordinates (TeX lines 70-77), with
+/-- The free matrix in balanced Fourier coordinates (TeX lines 80-87), with
 frequency modulus `k = |ξ|` and weight `br = ⟨ξ⟩`; the `(0,1)` entry uses
 the continuous sine quotient, so the matrix at `k = 0` is the TeX's limit. -/
 def freeMatrix (t k br : ℝ) : Matrix (Fin 2) (Fin 2) ℝ :=
@@ -58,10 +58,10 @@ section Force
 variable {U V : Type*} [AddCommGroup U] [Module ℝ U] [AddCommGroup V] [Module ℝ V]
 
 /-- The symplectic form `ω((u,v),(f,g)) = P(u,g) - P(f,v)` for a pairing
-`P : U × V → ℝ` (TeX line 36, with `P` the `H^{1/2}`-`H^{-1/2}` duality). -/
+`P : U × V → ℝ` (TeX line 37, with `P` the `H^{1/2}`-`H^{-1/2}` duality). -/
 def omega (P : U →ₗ[ℝ] V →ₗ[ℝ] ℝ) (z w : U × V) : ℝ := P z.1 w.2 - P w.1 z.2
 
-/-- The force `B(b)(u,v) = (0, M u)` for a map `M : U → V` (TeX line 41 with
+/-- The force `B(b)(u,v) = (0, M u)` for a map `M : U → V` (TeX line 42 with
 `M u = b u`). -/
 def force (M : U → V) (z : U × V) : U × V := (0, M z.1)
 
@@ -72,7 +72,7 @@ section ForceL2
 variable {X : Type*} [MeasurableSpace X] (μ : MeasureTheory.Measure X)
 
 /-- The `L²` form `ω((u,v),(f,g)) = ∫ u g - ∫ f v` on pairs of real functions
-(the balanced `L²` pairing of TeX lines 67 and 89-90). -/
+(the balanced `L²` pairing of TeX lines 77 and 103-104). -/
 def omegaL2 (z w : (X → ℝ) × (X → ℝ)) : ℝ :=
   (∫ x, z.1 x * w.2 x ∂μ) - ∫ x, w.1 x * z.2 x ∂μ
 
@@ -88,7 +88,7 @@ section Compact
 
 variable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
 
-/-- The left Young sum `∑_{j<n} (X(p_{j+1}) - X(p_j)) U(p_j, s)` (TeX lines 95-97). -/
+/-- The left Young sum `∑_{j<n} (X(p_{j+1}) - X(p_j)) U(p_j, s)` (TeX lines 109-111). -/
 def youngSum (X : ℝ → E →L[ℝ] E) (U : ℝ → ℝ → E →L[ℝ] E) (s : ℝ) (p : ℕ → ℝ) (n : ℕ) :
     E →L[ℝ] E :=
   ∑ j ∈ Finset.range n, (X (p (j + 1)) - X (p j)) * U (p j) s
@@ -122,7 +122,7 @@ end NormOne
 
 /-! ### Supplied inputs and the wrappers -/
 
-/-- Supplied input (D8; TeX lines 103-122): the free wave group `S_E` on
+/-- Supplied input (D8; TeX lines 121-145): the free wave group `S_E` on
 `E = H^{1/2} × H^{-1/2}`, the velocity reversal `𝓡(u,v) = (u,-v)` and the spatial
 translations `τ_y`, `y ∈ ℝ^d`, with the properties the proof of `L:symplectic-free`
 states for them: the group law, `S_E(-h) = 𝓡 S_E(h) 𝓡` with `𝓡` isometric,
@@ -143,7 +143,7 @@ structure FreeWaveData (d : ℕ) (E : Type*) [NormedAddCommGroup E] [InnerProduc
   τ_comm : ∀ y h, S h * τ y = τ y * S h
   τ_weak : ∀ z w, Tendsto (fun y => inner ℝ (τ y z) w) (cocompact (EuclideanSpace ℝ (Fin d))) (𝓝 0)
 
-/-- Supplied input (D7; `P:constant-young-linear` on `𝓛(E)`, TeX lines 91-98): the left
+/-- Supplied input (D7; `P:constant-young-linear` on `𝓛(E)`, TeX lines 105-112): the left
 Young sums of `X` over partitions of `[s,t]` converge in operator norm to
 `U(t,s) - I` along some nontrivial filter of partitions.  A partition is a pair
 `(n, p)` with points `p 0, …, p n`; only the points `p j`, `j ≤ n`, enter, and they lie

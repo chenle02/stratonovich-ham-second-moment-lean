@@ -1,6 +1,6 @@
 /-
-Refutation for the constant of `L:raw-block-indexed-cone` (TeX lines 232--248
-and 330--332, `c_* = a_* j_*/4`), package theorem
+Refutation for the constant of `L:raw-block-indexed-cone` (TeX lines 316--332
+and 450--452, `c_* = a_* j_*/4`), package theorem
 `StratonovichHAMSecondMoment.IndexedCone.indexed_cone`.
 
 Wrong variant: `c_* = a_* j_*` (no loss factor; the "exact first-mode

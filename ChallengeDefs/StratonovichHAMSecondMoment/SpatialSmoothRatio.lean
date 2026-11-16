@@ -41,7 +41,7 @@ variable {d : ℕ}
 
 /-! ### The smooth ratio `R(g)` and its supremum `R_0` -/
 
-/-- `R(g) = A_sp(g)/b(g)^{α/2}` (TeX lines 168-169).  On real unit tests in
+/-- `R(g) = A_sp(g)/b(g)^{α/2}` (TeX lines 225-226).  On real unit tests in
 `d ≥ 1`, `b(g) > 0` (`SpatialFourierBound.gradEnergy_pos`), so no division
 by zero occurs there. -/
 def ratio (Γ : Measure (Rd d)) (alpha : ℝ) (g : Rd d → ℝ) : ℝ :=
@@ -51,7 +51,7 @@ def ratio (Γ : Measure (Rd d)) (alpha : ℝ) (g : Rd d → ℝ) : ℝ :=
 def ratioSet (Γ : Measure (Rd d)) (alpha : ℝ) : Set ℝ :=
   {r | ∃ g, IsUnitTest g ∧ ratio Γ alpha g = r}
 
-/-- `R_0 = sup R(g)` over real unit `g ∈ C_c^∞(ℝ^d)` (TeX line 169).  The
+/-- `R_0 = sup R(g)` over real unit `g ∈ C_c^∞(ℝ^d)` (TeX line 226).  The
 statements below establish nonemptiness and boundedness of `ratioSet` (the
 positivity statements assert both; `R0_finite_of_S1Bdd` and its `_paper`
 wrapper assert boundedness and their proofs establish nonemptiness), so they
@@ -60,11 +60,11 @@ def R0 (Γ : Measure (Rd d)) (alpha : ℝ) : ℝ := sSup (ratioSet Γ alpha)
 
 /-! ### The static-control input and the score set -/
 
-/-- **Supplied input: `L:spatial-static-controls`** (TeX lines 40-96; wave item
+/-- **Supplied input: `L:spatial-static-controls`** (TeX lines 42-115; wave item
 L6-f), in the existential form of Le's decision 2.  For every nonnegative
 nonzero `z ∈ C_c^∞(ℝ^d)`: `λ_z(1)² = sup R(Γ*z)` is finite (the Rayleigh set
 of the potential `U_z = Γ*z` is bounded above; part of "positive and finite",
-lines 47-48), and `E:spatial-static-score` (lines 50-53) in the form "every
+lines 49-50), and `E:spatial-static-score` (lines 52-55) in the form "every
 `y < λ_z(1) - (M_a/2) B_Γ(z,z)` is exceeded by `I_Ψ - v_Ψ/2` for some
 `Ψ ∈ C_pos`", with `λ_z(1) = rayleighRate (Γ*z)`, `M_a = mass a` and
 `B_Γ(z,z) = spatialPair Γ z z`.  This is that lemma's conclusion: the TeX's
@@ -79,7 +79,7 @@ def StaticControls (a : ℝ) (Γ : Measure (Rd d)) : Prop :=
           TemporalEquilibrium.mass a / 2 * spatialPair Γ z z →
         ∃ Ψ ∈ CPos d, y < integratedRate a Γ Ψ - rawCost a Γ Ψ / 2
 
-/-- The right side of `E:spatial-smooth-score` (TeX lines 172-176):
+/-- The right side of `E:spatial-smooth-score` (TeX lines 229-233):
 `k [R α^{α/2} / (8 M_a q^{q/2})]^{1/k}` with `k = 3 - α`, `q = 4 - α`. -/
 def smoothScoreBound (alpha a R : ℝ) : ℝ :=
   (3 - alpha) * (R * alpha ^ (alpha / 2) /

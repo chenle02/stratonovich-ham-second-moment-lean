@@ -1,0 +1,14 @@
+index=61
+mode=fresh
+target=StratonovichHAMSecondMoment.L9Completed
+rc=0
+commit=b780f10c932e10709415939221e10c6a2a704363
+tree=b12af9bc140a05736c079087408dcdc0dcbb54e0
+inputs_sha256=bd90a1636596fa0a315aa9ec20c8ce75bb9c25f9964d73296beae3c8a051a9f6
+ws_tar_sha256=2ba9aba10368eaad4dcb4cc399b15f235dd9e68d802e3a70df4e6166a4a99b09
+leanchecker_sha256=12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6
+node=node962
+job=5697821
+array_job=5697760
+start=2026-11-13T01:25:14-0600
+end=2026-11-13T02:10:08-0600

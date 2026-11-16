@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Integration of wave L6 for Section `S:spatial-occupation-foundation` of
-`notes/integrated_spatial_occupation.tex` (revision a284420): the named
+`notes/integrated_spatial_occupation.tex` (revision 39f2597a): the named
 inputs `SpatialStaticControls.RayleighFloor` and
 `SpatialSmoothRatio.StaticControls` are discharged under the section's
 standing assumptions (lines 4-10: a nonzero covariance satisfying `H:homog`,
@@ -17,7 +17,7 @@ without them.
   integrability and the bound of `U_z` from
   `SpatialStaticControls.convZ_props`.
 * `spatial_static_controls_completed_paper`: `L:spatial-static-controls`,
-  part (i) (TeX lines 40-49), with exactly the manuscript's hypotheses;
+  part (i) (TeX lines 42-51), with exactly the manuscript's hypotheses;
   `SpatialStaticControls.spatial_static_controls_rate_paper` without
   `RayleighFloor`.
 * `staticControls_of_homog`: under `H:homog` and `Γ ≠ 0`,
@@ -80,7 +80,7 @@ theorem rayleighFloor_of_homog {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (fun f hf => VariationalMean.integrable_pot_of_bounded hUc (M := M) (fun x => by
       rw [abs_of_nonneg (hU0 x)]; exact hUM x) hf)).1
 
-/-- **`L:spatial-static-controls`, part (i)** (TeX lines 40-49, proof 56-64),
+/-- **`L:spatial-static-controls`, part (i)** (TeX lines 42-51, proof 58-75),
 with exactly the section's standing hypotheses (`H:homog`, `Γ ≠ 0`, `a = α₀`;
 the potential does not depend on `a`): for every nonnegative nonzero
 `z ∈ C_c^∞(ℝ^d)`, each `U_z(x)` is a genuine integral; for `c > 0` the set of
@@ -89,7 +89,7 @@ values `c ∫ U_z g² - ‖∇g‖₂²` over unit `g ∈ H^1` is nonempty and b
 `c₁ > 0`.  This is `SpatialStaticControls.spatial_static_controls_rate_paper`
 with its input `RayleighFloor Γ` discharged by `rayleighFloor_of_homog`
 (positivity by the dilation floor, a different route from the TeX's lines
-57-62). -/
+68-73). -/
 theorem spatial_static_controls_completed_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (hH : HomogCovariance d alpha alpha0 Γ μ) (hΓ0 : Γ ≠ 0)
     {z : Rd d → ℝ} (hz : IsTestFunction z) (hz0 : ∀ x, 0 ≤ z x) (hzne : z ≠ 0) :
@@ -123,8 +123,8 @@ theorem staticControls_of_homog {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   obtain ⟨Ψ, hΨ, hlt, -⟩ := h y (by rw [hlam, hP]; exact hy)
   exact ⟨Ψ, hΨ, hlt⟩
 
-/-- **`P:spatial-smooth-ratio`, `E:spatial-smooth-score`** (TeX lines 171-176,
-proof 197-213), existential form (Le's decision 2), with exactly the
+/-- **`P:spatial-smooth-ratio`, `E:spatial-smooth-score`** (TeX lines 228-233,
+proof 266-286), existential form (Le's decision 2), with exactly the
 section's standing hypotheses (`H:homog`, `Γ ≠ 0`, `a = α₀`): for every real
 unit `g ∈ C_c^∞(ℝ^d)` and every
 `y < k [R(g) α^{α/2}/(8 M_a q^{q/2})]^{1/k}` there is `Ψ ∈ C_pos` with
@@ -161,7 +161,7 @@ theorem R0_finite_of_S1Bdd_completed_paper {alpha alpha0 : ℝ} {Γ μ : Measure
         (S1pos alpha0 Γ / (3 - alpha)) ^ (3 - alpha) / alpha ^ (alpha / 2) :=
   SpatialSmoothRatio.R0_finite_of_S1Bdd_paper hH hΓ (staticControls_of_homog hH hΓ) hB
 
-/-- **`P:spatial-smooth-ratio`** (TeX lines 166-176), both claims, with exactly
+/-- **`P:spatial-smooth-ratio`** (TeX lines 223-233), both claims, with exactly
 the section's standing hypotheses (`H:homog`, `Γ ≠ 0`, `a = α₀`): `R_0` is a
 positive finite real number, and `E:spatial-smooth-score` holds for every real
 unit `g` in the existential form.

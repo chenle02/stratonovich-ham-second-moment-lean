@@ -1,6 +1,6 @@
 /-
 Refutation for the positivity `γ_ε ≥ 0` used in the lower bound of
-`E:low-alpha-convolution` (main TeX lines 4752-4755 at a284420), package
+`E:low-alpha-convolution` (main TeX lines 5626-5629 at 39f2597a), package
 theorem `StratonovichHAMSecondMoment.LowAlphaConvolution.heatDens_nonneg`
 (the Gaussian density `p_ε ≥ 0`, hypothesis `ε ≥ 0`).
 

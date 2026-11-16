@@ -1,0 +1,13 @@
+node=node865 job=5696251 array=5696230_21 mode=fresh target=StratonovichHAMAudit.ProjectionResidual start=2026-11-12T20:30:49-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=b2bf7a921fb8cbae1dcd58fb5c6331019989c4c0 TREE=50c3c6e777301316f3daf058456ce257590898c6 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1400 waited_s=0
+REPLAY_STARTED 2026-11-12T20:36:11-0600
+BEGIN fresh StratonovichHAMAudit.ProjectionResidual 20:36:11
+END fresh StratonovichHAMAudit.ProjectionResidual	0	0:10:21.25	3007724	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=622 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMAudit.ProjectionResidual
+PROCESS_EXIT=0 end=2026-11-12T20:46:33-0600

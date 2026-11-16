@@ -1,0 +1,13 @@
+node=node872 job=5700120 array=5700104_16 mode=fresh target=StratonovichHAMAudit.MiddleCross start=2026-11-13T14:40:38-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=8f51004c412ac618f4be6a5f4a42c7cc78188638 TREE=79a7f16872b7c49a7055b032451460e2f9af3f0d MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1440 waited_s=0
+REPLAY_STARTED 2026-11-13T14:45:30-0600
+BEGIN fresh StratonovichHAMAudit.MiddleCross 14:45:36
+END fresh StratonovichHAMAudit.MiddleCross	0	0:10:41.06	3092076	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=647 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMAudit.MiddleCross
+PROCESS_EXIT=0 end=2026-11-13T14:56:18-0600

@@ -1,8 +1,8 @@
 /-
 Refutation for the `d = 2` Fourier identity of `WaveGreenFourier`, package
 theorem `StratonovichHAMSecondMoment.WaveGreenFourier.waveGreen_fourier_two`
-(`∫ e^{iξ·x} G_s(dx) = s sinc(s|ξ|) = sin(s|ξ|)/|ξ|`, main TeX lines 777-778,
-4741).
+(`∫ e^{iξ·x} G_s(dx) = s sinc(s|ξ|) = sin(s|ξ|)/|ξ|`, main TeX lines 983-984,
+5615).
 
 Wrong variant: `Ĝ_s(ξ) = s cos(s|ξ|)` (the transform of the time derivative of
 the `d = 1` kernel, a plausible confusion).  Counterexample: `s = 1`, `ξ = π e₀`,

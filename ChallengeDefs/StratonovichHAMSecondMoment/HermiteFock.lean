@@ -36,6 +36,13 @@ def deg (k : Fin m → ℕ) : ℕ := ∑ i, k i
 def degLE (m N : ℕ) : Finset (Fin m → ℕ) :=
   (Fintype.piFinset fun _ => range (N + 1)).filter fun k => ∑ i, k i ≤ N
 
+/-- Membership in `degLE m N` is `|k| ≤ N`. -/
+theorem mem_degLE {N : ℕ} {k : Fin m → ℕ} : k ∈ degLE m N ↔ deg k ≤ N := by
+  simp only [degLE, mem_filter, Fintype.mem_piFinset, mem_range, deg]
+  refine ⟨fun h => h.2, fun h => ⟨fun i => ?_, h⟩⟩
+  have := Finset.single_le_sum (fun j _ => Nat.zero_le (k j)) (mem_univ i)
+  omega
+
 /-! ### Coefficient operators -/
 
 variable {X : Type*} [NormedAddCommGroup X] [InnerProductSpace ℂ X]

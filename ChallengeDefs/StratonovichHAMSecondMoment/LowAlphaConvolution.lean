@@ -31,7 +31,7 @@ namespace StratonovichHAMSecondMoment.LowAlphaConvolution
 
 open HomogHypothesis (Rd HomogCovariance IsTempered IsSpectralMeasure)
 open SpectralHomog (SpectralHomogeneous)
-
+open MaskedSpectralGrowth (integrable_gauss_of_tempered)
 open WaveKernel (waveHat)
 open WaveGreen (waveGreen)
 open DampedMultiplier (gaussKernel GreenFourier)
@@ -62,6 +62,18 @@ def lowKernel (h : ℝ) (ξ : Rd d) : ℝ := if ξ = 0 then h else min h ‖ξ�
 
 /-- The Gaussian spectral multiplier `e^{-ε|ξ|²/2}` of `p_ε`. -/
 def gaussFactor (ε : ℝ) (ξ : Rd d) : ℝ := Real.exp (-(ε * ‖ξ‖ ^ 2 / 2))
+
+/-! ### Elementary facts -/
+
+/-- Auxiliary to the Lean proof route. -/
+theorem gaussFactor_pos (ε : ℝ) (ξ : Rd d) : 0 < gaussFactor ε ξ := Real.exp_pos _
+
+/-- Auxiliary to the Lean proof route. -/
+theorem gaussFactor_le_one {ε : ℝ} (hε : 0 ≤ ε) (ξ : Rd d) : gaussFactor ε ξ ≤ 1 := by
+  unfold gaussFactor
+  rw [Real.exp_le_one_iff]
+  have : 0 ≤ ε * ‖ξ‖ ^ 2 / 2 := by positivity
+  linarith
 
 end StratonovichHAMSecondMoment.LowAlphaConvolution
 

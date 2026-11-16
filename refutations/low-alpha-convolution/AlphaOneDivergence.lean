@@ -1,6 +1,6 @@
 /-
 Refutation for the layer-cake step of `L:low-alpha-convolution` (main TeX
-lines 4723-4732 at a284420), package theorem
+lines 5594-5603 at 39f2597a), package theorem
 `StratonovichHAMSecondMoment.LowAlphaConvolution.lintegral_rpow_Ioc`.
 
 Wrong variant: dropping the hypothesis `α < 1`.  The layer-cake integral

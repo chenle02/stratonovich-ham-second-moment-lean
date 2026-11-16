@@ -1,6 +1,6 @@
 /-
 Refutation for the Gaussian Fourier pairing step of `L:phase-contractions`
-(main TeX lines 2090-2098 at a284420), package theorem
+(main TeX lines 2534-2542 at 39f2597a), package theorem
 `StratonovichHAMSecondMoment.PhaseContractions.gauss_shift_le`.
 
 Wrong variant: the comparison is an equality (shift invariance of the

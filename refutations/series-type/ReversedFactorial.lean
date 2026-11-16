@@ -1,7 +1,7 @@
 /-
 Refutation for the factorial inequality of `SeriesType`, package theorem
 `StratonovichHAMSecondMoment.SeriesType.factorial_sq_le_mul_factorial`
-(`(k!)^2 ≤ r! s!` when `r + s = 2k`; main TeX lines 2754, 5119).
+(`(k!)^2 ≤ r! s!` when `r + s = 2k`; main TeX lines 3295, 6048).
 
 Wrong variant: the reversed inequality `r! s! ≤ (k!)^2` when `r + s = 2k`
 (the central split would maximize the product). Counterexample: `r = 0`,

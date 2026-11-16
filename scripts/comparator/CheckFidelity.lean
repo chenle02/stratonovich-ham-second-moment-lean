@@ -14,9 +14,13 @@ project umbrella `StratonovichHAMSecondMoment`, and checks, with `Expr` equality
    (definitions, opaque; for a theorem the type only, proofs being irrelevant) or constructor/recursor data (inductives), once
    every constant name `StratonovichHamSecondMomentLeanDefs.M` inside it is read as `M`
    (a private auxiliary of a copy, such as a match splitter, is read as the project's
-   private constant of the same user-facing name);
-2. every theorem of `comparator.json`'s `theorem_names` is declared by `Challenge`,
-   is `StratonovichHamSecondMomentLeanAudit.D` for a project theorem `D`, and its type
+   private constant of the same user-facing name; a theorem `C.congr_simp` that `simp`
+   realizes for a non-project constant `C` while elaborating a copied proof is skipped);
+2. every theorem of the `theorem_names` of the two comparator configurations,
+   `comparator.json` (the theorems credited to a paper result) and
+   `comparator-helpers.json` (the helper theorems, a smoke check in `lean-pkg-signoff.json`),
+   is listed once, is declared by `Challenge`, is
+   `StratonovichHamSecondMomentLeanAudit.D` for a project theorem `D`, and its type
    equals the type of `D` under the same renaming.
 
 So each Challenge statement is the claimed declaration's elaborated type verbatim, with
@@ -120,6 +124,9 @@ def syntaxOnly (c : ConstantInfo) : Bool :=
       || n == ``Lean.Macro || n == ``Lean.PrettyPrinter.Unexpander
   | _ => false
 
+/-- The comparator configurations: the credited theorems and the helper (smoke) theorems. -/
+def configs : Array String := #["comparator.json", "comparator-helpers.json"]
+
 def main : IO UInt32 := do
   initSearchPath (← findSysroot)
   let env ← importModules #[{ module := `Challenge }, { module := `StratonovichHAMSecondMoment }] {}
@@ -127,6 +134,7 @@ def main : IO UInt32 := do
   let mut nDefs := 0
   let mut nSyntax := 0
   let mut nPriv := 0
+  let mut nCongr := 0
   -- the project's private constants by their user-facing name
   let mut pm : NameMap Name := {}
   for (n, _) in env.constants.toList do
@@ -146,6 +154,14 @@ def main : IO UInt32 := do
       if syntaxOnly c then nSyntax := nSyntax + 1; continue
       -- a private proof auxiliary of a copied theorem (its name carries the module)
       if isPrivateName n && c.isTheorem then nPriv := nPriv + 1; continue
+      -- a congruence lemma `C.congr_simp` that `simp` realizes on demand for a constant `C`
+      -- outside the project (e.g. Mathlib's `SchwartzMap.compCLM`) while elaborating a copied
+      -- proof: a theorem, so it never enters a statement; skipped only when `C` is neither a
+      -- copy nor a project constant
+      if c.isTheorem && n.isStr && n.getString! == "congr_simp" && !(pfx.isPrefixOf n)
+          && !(`StratonovichHAMSecondMoment).isPrefixOf n && !(`StratonovichHAMAudit).isPrefixOf n
+          && (env.find? n.getPrefix).isSome then
+        nCongr := nCongr + 1; continue
       let s := strip pm n
       if s == n && isPrivateName n then
         IO.println s!"PROBLEM {n} ({m}): a private copy with no project counterpart"; problems := problems + 1; continue
@@ -161,10 +177,19 @@ def main : IO UInt32 := do
             | _, _ => ""
           IO.println s!"PROBLEM {n}: {f} differs from {s}{detail}"; problems := problems + 1
         | none => nDefs := nDefs + 1
-  -- 2. the Challenge theorems
-  let cfg ← IO.ofExcept <| Json.parse (← IO.FS.readFile "comparator.json")
-  let names ← IO.ofExcept <| (cfg.getObjValAs? (Array String) "theorem_names")
+  -- 2. the Challenge theorems of every comparator configuration (each name once)
   let some chIdx := env.getModuleIdx? `Challenge | throw <| IO.userError "Challenge not loaded"
+  let mut names : Array String := #[]
+  let mut seen : Std.HashSet String := {}
+  for path in configs do
+    let cfg ← IO.ofExcept <| Json.parse (← IO.FS.readFile path)
+    let ns ← IO.ofExcept <| (cfg.getObjValAs? (Array String) "theorem_names")
+    IO.println s!"{path}: {ns.size} theorem name(s)"
+    for s in ns do
+      if seen.contains s then
+        IO.println s!"PROBLEM {s}: listed twice (a theorem belongs to one configuration)"; problems := problems + 1
+      seen := seen.insert s
+    names := names ++ ns
   let mut nThms := 0
   for s in names do
     let n := s.toName
@@ -181,5 +206,5 @@ def main : IO UInt32 := do
       else if ren pm c.type != p.type then
         IO.println s!"PROBLEM {n}: type differs from {d}{showDiff (ren pm c.type) p.type}"; problems := problems + 1
       else nThms := nThms + 1
-  IO.println s!"fidelity: {nDefs} copied constant(s) equal to the project's ({nSyntax} notation syntax constant(s) and {nPriv} private proof auxiliary(ies) skipped), {nThms} of {names.size} Challenge theorem type(s) equal to the claimed declaration's; {problems} problem(s)"
+  IO.println s!"fidelity: {nDefs} copied constant(s) equal to the project's ({nSyntax} notation syntax constant(s), {nPriv} private proof auxiliary(ies) and {nCongr} realized congruence lemma(s) of non-project constants skipped), {nThms} of {names.size} Challenge theorem type(s) equal to the claimed declaration's; {problems} problem(s)"
   return if problems == 0 then 0 else 1

@@ -1,0 +1,13 @@
+node=node927 job=5697871 array=5697760_111 mode=fresh target=StratonovichHAMSecondMoment.WeakSobolev start=2026-11-13T01:39:42-0600
+tmp_avail_G=891
+VERIFIED_COMMIT=b780f10c932e10709415939221e10c6a2a704363 TREE=b12af9bc140a05736c079087408dcdc0dcbb54e0 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1680 waited_s=0
+REPLAY_STARTED 2026-11-13T01:41:37-0600
+BEGIN fresh StratonovichHAMSecondMoment.WeakSobolev 01:41:38
+END fresh StratonovichHAMSecondMoment.WeakSobolev	0	0:41:59.00	7571704	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2520 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.WeakSobolev
+PROCESS_EXIT=0 end=2026-11-13T02:23:37-0600

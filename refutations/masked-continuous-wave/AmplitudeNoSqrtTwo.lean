@@ -1,7 +1,7 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.MaskedContinuousWave.amp_bound`
-(auxiliary to the Lean proof route of `L:masked-continuous-wave`; TeX line 393
-at a284420: for `r ≥ 1`, `b_r` is a sine times "a coefficient at most `√2`").
+(auxiliary to the Lean proof route of `L:masked-continuous-wave`; TeX line 516
+at 39f2597a: for `r ≥ 1`, `b_r` is a sine times "a coefficient at most `√2`").
 
 Wrong variant: the per-factor envelope with the factor `√2` dropped, i.e. the
 amplitude of `b_r` bounded by `1 + T` on `[0, T]`. Witness `r = 1`, `T = 0`,

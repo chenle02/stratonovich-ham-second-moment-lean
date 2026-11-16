@@ -4,31 +4,31 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Wave item L9-A1: Proposition `P:raw-occupation-energy` (Original occupation energy and
-dilation) of `notes/integrated_occupation_ceiling.tex` at revision a284420 (statement lines
-92-112, proof lines 114-147), with the objects of `E:raw-occupation-definitions` (lines 4-18).
+dilation) of `notes/integrated_occupation_ceiling.tex` at revision 39f2597a (statement lines
+111-131, proof lines 133-177), with the objects of `E:raw-occupation-definitions` (lines 4-18).
 Standing assumptions of the section (lines 4-21): the original covariance under `H:homog`
 (`HomogHypothesis.HomogCovariance d α α₀ Γ μ`), `a = α₀`, the ORIGINAL kernel
 `K(s,t) = |s-t|^{-a}` on `I = (0,1)` (`TimeSchur.kern a (s - t)`; its diagonal value is Lean's
 `0 ^ (-a)`, on a null set), and `Γ ≠ 0` (line 20).
 
 Objects (reused, not redefined): the class `𝒪` is `OccupationPhysicalClass.IsOccField`
-(`integrated_spatial_occupation.tex` lines 381-384), `B_Γ(f²,h²)` is
+(`integrated_spatial_occupation.tex` lines 497-500), `B_Γ(f²,h²)` is
 `OccupationPhysicalClass.sqPair`, `T(g)` is `OccupationPhysicalClass.T`/`Tlin`, `K_0 = 2^a/(1-a)`
 is `OccupationCeilingFinite.K0` (the same body as `SpatialBracket.K0`), `D_ζ` is
 `SpatialBracket.Dzeta`, `R_sp` is `SpatialFourLinear.Rsp`.  New: `Araw`/`A` (`A(g)`, the
 extended and the real value), `ratioSet`, `Cocc` (`C_occ`), `energySet`, `EO` (`𝓔_ζ^𝒪`), the
-dilation `dilField`/`dilGrad` (`U_ℓ`, line 127).
+dilation `dilField`/`dilGrad` (`U_ℓ`, line 157).
 
 Formalized:
 * `raw_occupation_energy_paper` (the `_paper` wrapper; hypotheses `H:homog` with `a = α₀` and
   `Γ ≠ 0`, exactly the section's): `0 < C_occ ≤ K_0 R_sp` with the ratio set nonempty and bounded
   above; for every field of `𝒪`: `0 < T(g) < ∞`, `A(g) < ∞` and
-  `0 ≤ A(g) ≤ K_0 R_sp T(g)^{α/2}` (`E:raw-occupation-bound`, lines 120-122), `U_ℓ g ∈ 𝒪`,
-  `A(U_ℓ g) = ℓ^α A(g)`, `T(U_ℓ g) = ℓ² T(g)` and `U_{1/ℓ} U_ℓ = id` (lines 127-136); for every
+  `0 ≤ A(g) ≤ K_0 R_sp T(g)^{α/2}` (`E:raw-occupation-bound`, lines 146-148), `U_ℓ g ∈ 𝒪`,
+  `A(U_ℓ g) = ℓ^α A(g)`, `T(U_ℓ g) = ℓ² T(g)` and `U_{1/ℓ} U_ℓ = id` (lines 157-166); for every
   `ζ > 0`: the energy value set is nonempty and bounded above, `𝓔_ζ^𝒪 = D_ζ C_occ^{2/(2-α)}`
-  (`E:raw-occupation-energy`, lines 100-104), `C_occ = (2𝓔_ζ^𝒪/(2-α))^{(2-α)/2}(2ζ/α)^{α/2}`
-  (`E:raw-occupation-ratio`, lines 105-108), `𝓔_ζ^𝒪 > 0` and `𝓔_ζ^𝒪 = ζ^{-α/(2-α)} 𝓔_1^𝒪`
-  (lines 110-111).
+  (`E:raw-occupation-energy`, lines 119-123), `C_occ = (2𝓔_ζ^𝒪/(2-α))^{(2-α)/2}(2ζ/α)^{α/2}`
+  (`E:raw-occupation-ratio`, lines 124-127), `𝓔_ζ^𝒪 > 0` and `𝓔_ζ^𝒪 = ζ^{-α/(2-α)} 𝓔_1^𝒪`
+  (lines 129-130).
 * General forms: `raw_occupation_energy` (`d ≥ 1`, `0 ≤ a < 1`, `0 < α < 2`, a locally finite
   `Γ ≠ 0` with `VariationalDilation.SetScaling α Γ`, the bounds `SquarePairingBounds Γ α R` with
   `R ≥ 0`, giving `C_occ ≤ K_0 R`), `raw_occupation_bound`, `Araw_le`, `T_pos`,
@@ -50,7 +50,7 @@ a conclusion; `C_occ` and `𝓔_ζ^𝒪` are `sSup`s whose sets are proved nonem
 `T(g) > 0` (needs `d ≥ 1`, from `H:homog`) so no ratio is Lean's `x/0 = 0`; the dilation lemmas
 take an s-finite `Γ` (`SFinite`, automatic for the locally finite `Γ` of `H:homog`).
 
-Proof route.  As in the TeX (lines 115-145), with these differences: the spatial bound
+Proof route.  As in the TeX (lines 141-175), with these differences: the spatial bound
 `B_Γ(g_s²,g_t²) ≤ R b_s^{α/4} b_t^{α/4}` enters as `≤ (R/2)(b_s^{α/2} + b_t^{α/2})`
 (`OccupationPhysicalClass.sqPair_le_half`), followed by the sharp row bound
 `∫_0^1 |s-t|^{-a} dt ≤ K_0` in both variables and Hölder for the concavity step (same constant
@@ -127,7 +127,7 @@ def EO (a : ℝ) (Γ : Measure (Rd d)) (ζ : ℝ) : ℝ := sSup (energySet a Γ 
 theorem kern_meas (a : ℝ) : Measurable fun q : ℝ × ℝ => ENNReal.ofReal (kern a (q.1 - q.2)) :=
   ENNReal.measurable_ofReal.comp ((measurable_kern a).comp (measurable_fst.sub measurable_snd))
 
-/-- `E:raw-occupation-bound`, upper half, for the extended integral (TeX lines 117-122): for
+/-- `E:raw-occupation-bound`, upper half, for the extended integral (TeX lines 143-148): for
 `0 ≤ a < 1`, `0 < α < 2`, the supplied bounds `SquarePairingBounds Γ α R` with `R ≥ 0` and a
 field of `𝒪`, `A(g) ≤ K_0 R T(g)^{α/2}`, `K_0 = 2^a/(1-a)`.  Route: the TeX's spatial
 Cauchy-Schwarz bound `B_Γ(g_s², g_t²) ≤ R b_s^{α/4} b_t^{α/4}` is used in the form
@@ -214,7 +214,7 @@ theorem Araw_le {a alpha R : ℝ} (ha0 : 0 ≤ a) (ha1 : a < 1) (hal : 0 < alpha
       rw [hT, hRs, ← ENNReal.ofReal_mul hR, ← ENNReal.ofReal_mul (by positivity)]
       congr 1; ring
 
-/-- `E:raw-occupation-bound` (TeX lines 117-122): under the hypotheses of `Araw_le`, for every
+/-- `E:raw-occupation-bound` (TeX lines 143-148): under the hypotheses of `Araw_le`, for every
 field of `𝒪`: `A(g) < ∞` as an extended integral (so `A` is its genuine real value) and
 `0 ≤ A(g) ≤ K_0 R T(g)^{α/2}`. -/
 theorem raw_occupation_bound {a alpha R : ℝ} (ha0 : 0 ≤ a) (ha1 : a < 1) (hal : 0 < alpha)
@@ -229,7 +229,7 @@ theorem raw_occupation_bound {a alpha R : ℝ} (ha0 : 0 ≤ a) (ha1 : a < 1) (ha
     have : 0 ≤ (Tlin DG).toReal ^ (alpha / 2) := Real.rpow_nonneg ENNReal.toReal_nonneg _
     positivity)] at this
 
-/-- Every field of `𝒪` has positive gradient budget (TeX lines 115-117): for `d ≥ 1`,
+/-- Every field of `𝒪` has positive gradient budget (TeX lines 141-143): for `d ≥ 1`,
 `0 < T(g) < ∞` (a unit `H¹` profile has `b > 0`, `SpatialFourLinear.gradL2_pos`). -/
 theorem T_pos (hd : 0 < d) {G : ℝ → Rd d → ℝ} {DG : ℝ → Rd d → Rd d} (hO : IsOccField G DG) :
     0 < T DG := by
@@ -258,7 +258,7 @@ theorem one_le_kern {a : ℝ} (ha0 : 0 ≤ a) {s t : ℝ} (hs : s ∈ Ioo (0 : �
     ?_ (by linarith)
   rw [abs_le]; constructor <;> linarith [hs.1, hs.2, ht.1, ht.2]
 
-/-- Positivity witness (TeX lines 123-125): for `0 ≤ a < 1`, `0 < α < 2`, a locally finite
+/-- Positivity witness (TeX lines 149-151): for `0 ≤ a < 1`, `0 < α < 2`, a locally finite
 `Γ ≠ 0` with the scaling `Γ(cA) = c^{d-α}Γ(A)` (`SetScaling`) and the supplied bounds with
 `R ≥ 0` (for finiteness), a fixed compact smooth unit profile, constant in time, lies in `𝒪` and
 has `A(g) > 0`.  Route: the kernel is `≥ 1` on `(0,1)²` off the diagonal, so the proof bounds
@@ -311,11 +311,11 @@ theorem exists_pos_member {a alpha R : ℝ} (ha0 : 0 ≤ a) (ha1 : a < 1) (hal :
 
 /-! ### Dilation of `𝒪` -/
 
-/-- The dilated field `(U_ℓ g)_s = ℓ^{d/2} g_s(ℓ ·)` (TeX line 127), with
+/-- The dilated field `(U_ℓ g)_s = ℓ^{d/2} g_s(ℓ ·)` (TeX line 157), with
 `WeakSobolev.dilL2`. -/
 def dilField (ℓ : ℝ) (G : ℝ → Rd d → ℝ) : ℝ → Rd d → ℝ := fun s => WeakSobolev.dilL2 ℓ (G s)
 
-/-- The gradient of the dilated field, `∇(U_ℓ g)_s = ℓ U_ℓ(∇g_s)` (TeX line 127;
+/-- The gradient of the dilated field, `∇(U_ℓ g)_s = ℓ U_ℓ(∇g_s)` (TeX line 157;
 `WeakSobolev.hasWeakGradient_dilL2`). -/
 def dilGrad (ℓ : ℝ) (DG : ℝ → Rd d → Rd d) : ℝ → Rd d → Rd d :=
   fun s x => ℓ • WeakSobolev.dilL2 ℓ (DG s) x
@@ -348,7 +348,7 @@ theorem map_pairMeasure {alpha : ℝ} {Γ : Measure (Rd d)} [SFinite Γ]
   rw [finrank_euclideanSpace_fin, abs_of_pos (by positivity)] at e
   rw [e, Measure.prod_smul_left, Measure.prod_smul_right, smul_smul]
 
-/-- **The dilation of the pairing** (TeX lines 130-135, "the two densities contribute `ℓ^{2d}`,
+/-- **The dilation of the pairing** (TeX lines 160-165, "the two densities contribute `ℓ^{2d}`,
 `dx` contributes `ℓ^{-d}`, and the pushforward of `Γ` contributes `ℓ^{α-d}`"): for `ℓ > 0` and an
 s-finite `Γ` with `SetScaling α Γ`, `B_Γ((U_ℓ f)², (U_ℓ h)²) = ℓ^α B_Γ(f², h²)` for ALL real
 functions `f, h` (an identity of extended integrals; no approximation is needed). -/
@@ -423,7 +423,7 @@ theorem qmp_dil {ℓ : ℝ} (hℓ : 0 < ℓ) :
   rw [e]
   exact Measure.smul_absolutelyContinuous
 
-/-- **`U_ℓ` maps `𝒪` into `𝒪`** (TeX lines 127-129): for `ℓ > 0` and a field of `𝒪`, the dilated
+/-- **`U_ℓ` maps `𝒪` into `𝒪`** (TeX lines 157-159): for `ℓ > 0` and a field of `𝒪`, the dilated
 field `U_ℓ g` with gradient field `ℓ U_ℓ ∇g` lies in `𝒪` (joint measurability is preserved, the
 unit `H¹` condition by `SpatialStaticControls.isUnitH1_dil`), and `T(U_ℓ g) = ℓ² T(g)`
 (as extended integrals). -/
@@ -448,7 +448,7 @@ theorem isOccField_dil {ℓ : ℝ} (hℓ : 0 < ℓ) {G : ℝ → Rd d → ℝ} {
     exact (SpatialStaticControls.isUnitH1_dil hs hℓ).1
   · rw [hT]; exact ENNReal.mul_lt_top ENNReal.ofReal_lt_top hO.energy_lt_top
 
-/-- **The dilation identities** (TeX lines 130-133): for `ℓ > 0`, an s-finite `Γ` with
+/-- **The dilation identities** (TeX lines 160-163): for `ℓ > 0`, an s-finite `Γ` with
 `SetScaling α Γ` and any field `G`, `A(U_ℓ g) = ℓ^α A(g)` (for the extended and the real
 values). -/
 theorem Araw_dil {alpha : ℝ} {Γ : Measure (Rd d)} [SFinite Γ]
@@ -466,7 +466,7 @@ theorem Araw_dil {alpha : ℝ} {Γ : Measure (Rd d)} [SFinite Γ]
   unfold A
   rw [h, ENNReal.toReal_mul, ENNReal.toReal_ofReal (Real.rpow_nonneg hℓ.le _)]
 
-/-- `U_{1/ℓ}` inverts `U_ℓ` on fields and gradient fields (TeX line 128: "It has inverse
+/-- `U_{1/ℓ}` inverts `U_ℓ` on fields and gradient fields (TeX line 158: "It has inverse
 `U_{1/ℓ}` and is a bijection on `𝒪`", with `isOccField_dil`). -/
 theorem dil_inv {ℓ : ℝ} (hℓ : 0 < ℓ) (G : ℝ → Rd d → ℝ) (DG : ℝ → Rd d → Rd d) :
     dilField ℓ⁻¹ (dilField ℓ G) = G ∧ dilGrad ℓ⁻¹ (dilGrad ℓ DG) = DG := by
@@ -487,7 +487,7 @@ theorem dil_inv {ℓ : ℝ} (hℓ : 0 < ℓ) (G : ℝ → Rd d → ℝ) (DG : �
 
 /-! ### The scalar maximum with penalty `ζ` -/
 
-/-- The scalar maximum (TeX lines 137-141, upper half), by weighted AM-GM: for `0 < α < 2`,
+/-- The scalar maximum (TeX lines 167-171, upper half), by weighted AM-GM: for `0 < α < 2`,
 `ζ > 0`, `C ≥ 0`, `X ≥ 0`, `C X^{α/2} - ζ X ≤ D_ζ C^{2/(2-α)}`,
 `D_ζ = (2-α)/2 (α/(2ζ))^{α/(2-α)}` (`SpatialBracket.Dzeta`). -/
 theorem scalar_max_zeta {alpha ζ C X : ℝ} (hal : 0 < alpha) (hal2 : alpha < 2) (hζ : 0 < ζ)
@@ -526,7 +526,7 @@ theorem scalar_max_zeta {alpha ζ C X : ℝ} (hal : 0 < alpha) (hal2 : alpha < 2
   rw [e6]
   linarith
 
-/-- The scalar maximum is attained (TeX lines 139-140): for `0 < α < 2`, `ζ > 0`, `r > 0`, at
+/-- The scalar maximum is attained (TeX lines 169-170): for `0 < α < 2`, `ζ > 0`, `r > 0`, at
 `X = (α r/(2ζ))^{2/(2-α)}`, `r X^{α/2} - ζ X = D_ζ r^{2/(2-α)}`. -/
 theorem scalar_attain_zeta {alpha ζ r : ℝ} (hal : 0 < alpha) (hal2 : alpha < 2) (hζ : 0 < ζ)
     (hr : 0 < r) :
@@ -553,7 +553,7 @@ theorem scalar_attain_zeta {alpha ζ r : ℝ} (hal : 0 < alpha) (hal2 : alpha < 
 
 /-! ### `P:raw-occupation-energy`, general form -/
 
-/-- **`P:raw-occupation-energy`, general form** (TeX lines 92-147): for `d ≥ 1`, `0 ≤ a < 1`,
+/-- **`P:raw-occupation-energy`, general form** (TeX lines 111-177): for `d ≥ 1`, `0 ≤ a < 1`,
 `0 < α < 2`, a locally finite `Γ ≠ 0` with `SetScaling α Γ`, and the supplied bounds
 `SquarePairingBounds Γ α R` with `R ≥ 0`:
 * the ratio set is nonempty and bounded above and `0 < C_occ ≤ K_0 R`;
@@ -561,7 +561,7 @@ theorem scalar_attain_zeta {alpha ζ r : ℝ} (hal : 0 < alpha) (hal2 : alpha < 
   `𝓔_ζ^𝒪 = D_ζ C_occ^{2/(2-α)}` (`E:raw-occupation-energy`),
   `C_occ = (2𝓔_ζ^𝒪/(2-α))^{(2-α)/2} (2ζ/α)^{α/2}` (`E:raw-occupation-ratio`),
   `𝓔_ζ^𝒪 > 0`, and `𝓔_ζ^𝒪 = ζ^{-α/(2-α)} 𝓔_1^𝒪`.
-Route as in the TeX (lines 137-145): every member is bounded through its ratio and the scalar
+Route as in the TeX (lines 167-175): every member is bounded through its ratio and the scalar
 maximum; the lower bound dilates members whose ratios approach `C_occ` (`isOccField_dil`,
 `Araw_dil`) to the scalar optimizer and uses continuity of the positive power. -/
 theorem raw_occupation_energy {a alpha R : ℝ} (hd : 0 < d) (ha0 : 0 ≤ a) (ha1 : a < 1)
@@ -683,8 +683,8 @@ theorem raw_occupation_energy {a alpha R : ℝ} (hd : 0 < d) (ha0 : 0 ≤ a) (ha
 
 /-! ### The manuscript's statement -/
 
-/-- **`P:raw-occupation-energy`** (`integrated_occupation_ceiling.tex` lines 92-112, proof
-114-147, at a284420), under the section's standing assumptions (lines 4-21: the original
+/-- **`P:raw-occupation-energy`** (`integrated_occupation_ceiling.tex` lines 111-131, proof
+133-177, at 39f2597a), under the section's standing assumptions (lines 4-21: the original
 covariance under `H:homog` with `a = α₀`, `Γ ≠ 0`), with `K_0 = 2^a/(1-a)` and
 `R_sp = SpatialFourLinear.Rsp`:
 * `0 < C_occ ≤ K_0 R_sp`, the ratio set being nonempty and bounded above (a real number,

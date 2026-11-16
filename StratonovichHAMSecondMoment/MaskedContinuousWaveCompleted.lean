@@ -4,8 +4,8 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:masked-continuous-wave` (Continuous sine factors) of
-`notes/integrated_covariance_foundation.tex` at revision a284420 (statement TeX
-lines 378-390, display `E:masked-continuous-wave` 385-389, proof 392-423), re-issued
+`notes/integrated_covariance_foundation.tex` at revision 39f2597a (statement TeX
+lines 494-506, display `E:masked-continuous-wave` 501-505, proof 508-558), re-issued
 with NOTHING supplied, in the concrete temporal completion `H_a` of
 `L:masked-time-completion` (`TimeCompletion`).
 
@@ -14,7 +14,7 @@ exactly those of `MaskedContinuousWave.masked_continuous_wave_paper` without its
 abstract data `E`, `V`, `emb` and its two supplied inputs `hmem`, `hnorm`:
 `0 < a < 1`, `T > 0`, `I = [s, s+h] ⊆ [0, T]` (`0 ≤ s`, `s + h ≤ T`), `0 < h ≤ 1`,
 `r, ρ ≥ 0`, `F, G ∈ {c, b}`.  No `Γ ≠ 0` (the TeX states none; the section's purely
-temporal estimates hold for any `Γ`, TeX lines 5-7).  Conclusion: `1_I F_r G_ρ`
+temporal estimates hold for any `Γ`, TeX lines 7-9).  Conclusion: `1_I F_r G_ρ`
 (`MaskedContinuousWave.waveFn`) lies in `L²(0,T)` and its norm in `H_a` satisfies
 `‖1_I F_r G_ρ‖_a² ≤ C₁(a) (1+T)⁴ h^{2-a} 𝒬_h(r,ρ)`, `C₁(a) = 4·3^{1-a}·C₀(a)`.
 
@@ -49,9 +49,9 @@ namespace StratonovichHAMSecondMoment.MaskedContinuousWaveCompleted
 open StratonovichHAMSecondMoment.TimeSchur StratonovichHAMSecondMoment.MaskedTrigProducts
   StratonovichHAMSecondMoment.MaskedContinuousWave StratonovichHAMSecondMoment.TimeCompletion
 
-/-- `L:masked-continuous-wave` (TeX lines 378-423, display `E:masked-continuous-wave`
-385-389) with NO supplied input, in the concrete `H_a` of `L:masked-time-completion`.
-Hypotheses: exactly the manuscript's (TeX lines 296-298, 378-384, with `T > 0`,
+/-- `L:masked-continuous-wave` (TeX lines 494-558, display `E:masked-continuous-wave`
+501-505) with NO supplied input, in the concrete `H_a` of `L:masked-time-completion`.
+Hypotheses: exactly the manuscript's (TeX lines 391-393, 494-500, with `T > 0`,
 `0 < a < 1` from `L:masked-time-completion`), i.e. those of
 `MaskedContinuousWave.masked_continuous_wave_paper` minus `E`, `V`, `emb`, `hmem`,
 `hnorm`.  Conclusion: `1_I F_r G_ρ ∈ L²(0,T)` and, in `H_a`,

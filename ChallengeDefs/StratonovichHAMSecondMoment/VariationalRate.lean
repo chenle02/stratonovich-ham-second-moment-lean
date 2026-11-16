@@ -58,26 +58,26 @@ def costIntegrand (a : ℝ) (Γ : Measure (Rd d)) (Ψ : ℝ × Rd d → ℝ) (p 
 /-! ### `P:variational-positive-scores` -/
 
 /-- The coefficient-`c` variational value set
-`{c I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` (TeX lines 272-273). -/
+`{c I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` (TeX lines 372-373). -/
 def scoreSet (a : ℝ) (Γ : Measure (Rd d)) (c : ℝ) : Set ℝ :=
   (fun Ψ => c * integratedRate a Γ Ψ - rawCost a Γ Ψ / 2) '' CPos d
 
-/-- The coefficient-one set `{I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` (TeX lines 272-273 at
+/-- The coefficient-one set `{I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` (TeX lines 372-373 at
 `c = 1`), whose supremum is `S_1^pos`.  This is the one coefficient-one set of
 the package (`SpatialSmoothRatio` and `SpatialStaticControls` use it). -/
 def score1Set (a : ℝ) (Γ : Measure (Rd d)) : Set ℝ :=
   (fun Ψ => integratedRate a Γ Ψ - rawCost a Γ Ψ / 2) '' CPos d
 
 /-- The radius `r_0 = (I_0/v_0)^{1/k}`, `k = 3 - α`, of the positive test
-(TeX line 290). -/
+(TeX line 397). -/
 def testRadius (alpha a : ℝ) (Γ : Measure (Rd d)) (Ψ₀ : ℝ × Rd d → ℝ) : ℝ :=
   (integratedRate a Γ Ψ₀ / rawCost a Γ Ψ₀) ^ (3 - alpha)⁻¹
 
 /-- The named input `S1Bdd`: the coefficient-one variational value set
 `{I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` is bounded above.  This is word for word the
 boundedness claim of `P:variational-positive-scores` for `c = 1`
-(`notes/integrated_unmasked_variational.tex` lines 272-274 at a284420).  Its
-manuscript proof (lines 309-325) is stochastic: it combines the moment upper
+(`notes/integrated_unmasked_variational.tex` lines 372-374 at 39f2597a).  Its
+manuscript proof (lines 430-446) is stochastic: it combines the moment upper
 bound of `T:full-upper` (`E|u(T,0)|² ≤ e(T+2)^d e^{C_up T^κ}`) with the point
 lower bound `E:variational-unmasked-point-lower` of
 `P:variational-remove-mask` for the same canonical solution, so that every
@@ -91,7 +91,7 @@ manuscript claim it stands for. -/
 def S1Bdd (a : ℝ) (Γ : Measure (Rd d)) : Prop :=
   BddAbove (score1Set a Γ)
 
-/-- `S_1^pos = sup {I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` (TeX line 274 at `c = 1`).  It is
+/-- `S_1^pos = sup {I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` (TeX line 374 at `c = 1`).  It is
 a genuine supremum exactly under `S1Bdd` (the set is nonempty,
 `positive_scores`); every statement about it assumes `S1Bdd`. -/
 def S1pos (a : ℝ) (Γ : Measure (Rd d)) : ℝ :=

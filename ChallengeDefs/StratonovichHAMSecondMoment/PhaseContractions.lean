@@ -34,7 +34,7 @@ open HomogHypothesis SpectralHomog MaskedSpectralGrowth SpectralMassIdentity Wav
 /-! ### The section's covariance class and constants -/
 
 /-- The standing assumptions of Section `S:static-phase` (main TeX lines
-2054-2057 at a284420): `0 < α < 2`; `Γ` a nonnegative, even,
+2490-2493 at 39f2597a): `0 < α < 2`; `Γ` a nonnegative, even,
 positive-definite, tempered Radon measure on `ℝ³` with `Γ(rA) = r^{3-α}Γ(A)`
 (Borel `A`, `r > 0`); `μ` its spectral measure in the convention
 `Γ = ∫ e^{iξ·x} μ(dξ)` (`HomogHypothesis.IsSpectralMeasure`), a positive even
@@ -55,17 +55,17 @@ structure PhaseCovariance (alpha : ℝ) (Γ μ : Measure (Rd 3)) : Prop where
   scaling : ∀ A : Set (Rd 3), MeasurableSet A → ∀ c : ℝ, 0 < c →
     Γ (c • A) = ENNReal.ofReal (c ^ ((3 : ℝ) - alpha)) * Γ A
 
-/-- `M = Γ(B_1)` (`E:phase-constants`, main TeX line 2060; `B_1` the open unit
-ball, line 2067), as a real number (finite for locally finite `Γ`). -/
+/-- `M = Γ(B_1)` (`E:phase-constants`, main TeX line 2496; `B_1` the open unit
+ball, line 2503), as a real number (finite for locally finite `Γ`). -/
 def massM (Γ : Measure (Rd 3)) : ℝ := (Γ (ball (0 : Rd 3) 1)).toReal
 
-/-- `c_Γ = (3-α)M/(4π)` (`E:phase-constants`, main TeX line 2062). -/
+/-- `c_Γ = (3-α)M/(4π)` (`E:phase-constants`, main TeX line 2498). -/
 def cGam (Γ : Measure (Rd 3)) (alpha : ℝ) : ℝ := (3 - alpha) * massM Γ / (4 * π)
 
-/-- `b_α = 2^α + 3^{2-α}/(2-α)` (`E:phase-constants`, main TeX line 2063). -/
+/-- `b_α = 2^α + 3^{2-α}/(2-α)` (`E:phase-constants`, main TeX line 2499). -/
 def bAlpha (alpha : ℝ) : ℝ := 2 ^ alpha + 3 ^ (2 - alpha) / (2 - alpha)
 
-/-- `D_Γ = c_Γ b_α` (`E:phase-constants`, main TeX line 2064). -/
+/-- `D_Γ = c_Γ b_α` (`E:phase-constants`, main TeX line 2500). -/
 def dGam (Γ : Measure (Rd 3)) (alpha : ℝ) : ℝ := cGam Γ alpha * bAlpha alpha
 
 /-! ### The Gaussian density -/
@@ -75,7 +75,7 @@ def dGam (Γ : Measure (Rd 3)) (alpha : ℝ) : ℝ := cGam Γ alpha * bAlpha alp
 def pprof (d : ℕ) (v u : ℝ) : ℝ := (2 * π * v) ^ (-((d : ℝ) / 2)) * Real.exp (-(u / (2 * v)))
 
 /-- The Brownian Gaussian density `p_v(x) = (2πv)^{-d/2} e^{-|x|²/(2v)}` with
-covariance `v I` (main TeX lines 2068-2069); `p_{2ε}` is `pdens (2ε)`. -/
+covariance `v I` (main TeX lines 2504-2505); `p_{2ε}` is `pdens (2ε)`. -/
 def pdens {d : ℕ} (v : ℝ) (x : Rd d) : ℝ := pprof d v (‖x‖ ^ 2)
 
 /-! ### Supplied inputs from wave item L9-G and the sphere formula -/
@@ -84,8 +84,8 @@ def pdens {d : ℕ} (v : ℝ) (x : Rd d) : ℝ := pprof d v (‖x‖ ^ 2)
 wave item L9-G): for `s > 0` and `ξ ∈ ℝ³`,
 `∫ e^{iξ·x} G_s(dx) = sin(s|ξ|)/|ξ|` (value `s` at `ξ = 0`), i.e.
 `WaveKernel.waveHat s ξ`, for `G_s = WaveGreen.waveGreen 3 s`.  The TeX uses it
-in the Fourier form of `T_ε` (main TeX lines 2081-2084 and 2107-2108, "`Ĝ_a`"); its source is the
-Fourier formula `Ĝ_s(ξ) = sin(s|ξ|)/|ξ|` of main TeX lines 777-778. -/
+in the Fourier form of `T_ε` (main TeX lines 2518-2521 and 2555-2556, "`Ĝ_a`"); its source is the
+Fourier formula `Ĝ_s(ξ) = sin(s|ξ|)/|ξ|` of main TeX lines 983-984. -/
 def WaveFourierThree : Prop :=
   ∀ s : ℝ, 0 < s → ∀ ξ : Rd 3,
     ∫ x, Complex.exp (Complex.I * ((inner ℝ ξ x : ℝ) : ℂ)) ∂(waveGreen 3 s) = (waveHat s ξ : ℂ)
@@ -94,7 +94,7 @@ def WaveFourierThree : Prop :=
 unit vector `e ∈ ℝ³`, the image of the unit-sphere measure
 `volume.toSphere` (the measure used by `WaveGreen.waveGreen 3`) under
 `ω ↦ ⟨e, ω⟩` is `2π` times Lebesgue measure on `[-1, 1]`.  The TeX uses it as
-"direct integration over its normal coordinate" (main TeX lines 2125-2126). -/
+"direct integration over its normal coordinate" (main TeX lines 2573-2574). -/
 def ArchimedesLaw : Prop :=
   ∀ e : Rd 3, ‖e‖ = 1 →
     (volume : Measure (Rd 3)).toSphere.map (fun ω : sphere (0 : Rd 3) 1 => inner ℝ e (ω : Rd 3)) =
@@ -102,11 +102,11 @@ def ArchimedesLaw : Prop :=
 
 /-! ### `Γ_ε`, `T_ε` and `E:phase-trace` -/
 
-/-- `Γ_ε = p_{2ε} * Γ` (main TeX lines 2069-2070): `Γ_ε(x) = ∫ p_{2ε}(x-y) Γ(dy)`. -/
+/-- `Γ_ε = p_{2ε} * Γ` (main TeX lines 2505-2506): `Γ_ε(x) = ∫ p_{2ε}(x-y) Γ(dy)`. -/
 def gammaEps {d : ℕ} (Γ : Measure (Rd d)) (ε : ℝ) (x : Rd d) : ℝ :=
   ∫ y, pdens (2 * ε) (x - y) ∂Γ
 
-/-- `T_ε(a,q) = ∫ e^{iq·x} Γ_ε(x) G_a(dx)` (main TeX lines 2081-2082), with
+/-- `T_ε(a,q) = ∫ e^{iq·x} Γ_ε(x) G_a(dx)` (main TeX lines 2518-2519), with
 `G_a = WaveGreen.waveGreen 3 a`. -/
 def traceT (Γ : Measure (Rd 3)) (ε a : ℝ) (q : Rd 3) : ℂ :=
   ∫ x, Complex.exp (Complex.I * ((inner ℝ q x : ℝ) : ℂ)) * (gammaEps Γ ε x : ℂ) ∂(waveGreen 3 a)

@@ -4,44 +4,44 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `L:symplectic-free` (Free wave form and compact Young baseline) of
-`notes/integrated_symplectic_phase.tex` (revision a284420; statement lines 30-60,
-proof lines 62-133): the abstract core (wave L8, item L8-g).  All line numbers below
-refer to that file at a284420.
+`notes/integrated_symplectic_phase.tex` (revision 39f2597a; statement lines 31-61,
+proof lines 63-160): the abstract core (wave L8, item L8-g).  All line numbers below
+refer to that file at 39f2597a.
 
 Formalized:
-* Per-frequency free matrix (proof lines 70-86).  `freeMatrix t k br` is the TeX's
+* Per-frequency free matrix (proof lines 80-96).  `freeMatrix t k br` is the TeX's
   `W_t(ξ)` with `k = |ξ|`, `br = ⟨ξ⟩`, and the continuous sine quotient
   `sineQuotient t k = t·sinc(tk)` (equal to `sin(tk)/k` for `k ≠ 0` and to `t` at
   `k = 0`); `freeMatrixAt t ξ` sets `k = ‖ξ‖`, `br = √(1+‖ξ‖²)`.  Proved:
   `freeMatrix_eq_forward` (for `k ≠ 0`, `br ≠ 0` it is the B22 matrix
   `StratonovichHAMAudit.DimensionalMatrix.forward (cos tk) (sin tk) (k/br)`),
-  `freeMatrixAt_zero` (the matrix `(1 t; 0 1)` at `ξ = 0`, line 78),
+  `freeMatrixAt_zero` (the matrix `(1 t; 0 1)` at `ξ = 0`, line 88),
   `continuous_freeMatrix` (continuity in `k`), `det_freeMatrix` (determinant one,
-  lines 80-81), `freeMatrix_symplectic`/`freeMatrixAt_symplectic`
+  lines 90-91), `freeMatrix_symplectic`/`freeMatrixAt_symplectic`
   (`W_tᵀ J_symp W_t = J_symp` at every frequency, zero included),
   `freeMatrix_preserves_omega2`, the per-frequency group law `freeMatrix_mul` and the
-  reversal identity `reversal_freeMatrix` (`R W_t R = W_{-t}`, lines 120-121).
-* Force skewness (statement lines 40-41, proof lines 88-91).  Abstract form
+  reversal identity `reversal_freeMatrix` (`R W_t R = W_{-t}`, lines 143-144).
+* Force skewness (statement lines 41-42, proof lines 102-105).  Abstract form
   `omega_force_skew` (for `ω(z,w) = P(z₁,w₂) - P(w₁,z₂)` and `B(u,v) = (0,Mu)` with
   `P(f,Mu) = P(u,Mf)`); `L²` form `omegaL2_force_skew`; integrability of the
   cancellation integrand `integrable_mul_force` (`u, f ∈ L²`, `b` bounded).
 * Compactness: `isCompactOperator_of_tendsto` (closedness of the compact ideal, lines
-  98-99, via Mathlib's `isClosed_setOfPred_isCompactOperator`),
-  `isCompactOperator_youngSum` (each left Young sum is compact, lines 94-98),
-  `isCompactOperator_orderedProd_sub` (telescoping, lines 125-128).
-* Compact perturbations (lines 103-119): `tendsto_compact_of_weaklyNull` (a compact
+  112-113, via Mathlib's `isClosed_setOfPred_isCompactOperator`),
+  `isCompactOperator_youngSum` (each left Young sum is compact, lines 108-112),
+  `isCompactOperator_orderedProd_sub` (telescoping, lines 152-155).
+* Compact perturbations (lines 121-142): `tendsto_compact_of_weaklyNull` (a compact
   operator maps a bounded weakly null family, along any filter, to a norm-null one)
   and `norm_le_norm_add_compact` (`‖S‖ ≤ ‖S + K‖` for compact `K` when `S` commutes
   with isometries `τ_i` that are weakly null on every vector along a nontrivial
   filter); `norm_le_of_sub_compact`.
 * `one_le_norm_of_reversal` and `FreeWaveData.one_le_norm`: `‖S_E(h)‖ ≥ 1` from the
-  group law and the isometric reversal (lines 120-122), for `E ≠ 0`.
+  group law and the isometric reversal (lines 143-145), for `E ≠ 0`.
 * General forms `compact_young_baseline`, `compact_product_baseline`, and the
   exact-hypothesis wrappers `symplectic_compact_young_baseline_paper`
-  (`E:symplectic-compact-young-baseline`, lines 45-49),
+  (`E:symplectic-compact-young-baseline`, lines 46-50),
   `symplectic_compact_product_baseline_paper`
-  (`E:symplectic-compact-product-baseline`, lines 53-58), `symplectic_force_skew_paper`
-  (lines 40-41) and `symplectic_free_paper` (their conjunction with the per-frequency
+  (`E:symplectic-compact-product-baseline`, lines 54-59), `symplectic_force_skew_paper`
+  (lines 41-42) and `symplectic_free_paper` (their conjunction with the per-frequency
   identity).
 
 Supplied inputs (named; not formalized):
@@ -49,13 +49,13 @@ Supplied inputs (named; not formalized):
   Hilbert space; the structure carries the free group `S_E` (`S_E(0) = I`, group
   law), the velocity reversal `𝓡` (isometric, `S_E(-h) = 𝓡 S_E(h) 𝓡`) and the
   translations `τ_y`, `y ∈ ℝ^d` (isometric, commuting with every `S_E(h)`,
-  `⟨τ_y z, w⟩_E → 0` as `|y| → ∞`).  Each field is a property that lines 103-122 state
+  `⟨τ_y z, w⟩_E → 0` as `|y| → ∞`).  Each field is a property that lines 121-145 state
   for the concrete objects (the weak nullity is proved there by a Riemann-Lebesgue
-  argument, lines 105-110; the reversal identity from the free Fourier matrix, whose
+  argument, lines 123-128; the reversal identity from the free Fourier matrix, whose
   per-frequency form is `reversal_freeMatrix`; the group law per frequency is
   `freeMatrix_mul`).
 * `LeftYoungSumsConverge X U s t` (D7; `P:constant-young-linear` on `𝓛(E)`, lines
-  91-98): along some nontrivial filter of partitions of `[s,t]` the left Young sums
+  105-112): along some nontrivial filter of partitions of `[s,t]` the left Young sums
   converge in operator norm to `U(t,s) - I`.  The TeX's convergence as the mesh tends
   to zero implies it, so it is no stronger than its source.
 
@@ -65,18 +65,18 @@ operator has norm `0` and `‖S_E(h)‖ ≥ 1` fails); `d ≥ 1` (from `H:homog`
 points lie in `[s,t]`.
 
 Narrower than the TeX: the operator `J_E`, the identity `ω = ⟨·, J_E ·⟩_E` with its
-duality form (lines 32-39, 63-68) and the preservation of `ω` by `S_E` on all of `E`
-(the Fourier integration of the per-frequency identity, lines 82-86) are not
+duality form (lines 33-40, 73-78) and the preservation of `ω` by `S_E` on all of `E`
+(the Fourier integration of the per-frequency identity, lines 92-96) are not
 formalized; the force claim is at the `L²` level, and the estimate
-`‖bu‖_{H^{-1/2}} ≤ ‖b‖_∞‖u‖_{H^{1/2}}` (line 88) is not formalized.  The Young
+`‖bu‖_{H^{-1/2}} ≤ ‖b‖_∞‖u‖_{H^{1/2}}` (line 102) is not formalized.  The Young
 evolution is not constructed: `U` is any operator family whose left Young sums
 converge (the supplied input).  The wrappers state the norm bounds and compactness
 claims exactly as displayed.
 
-Proof route.  As in the TeX, except: the compact-maps-weakly-null step (lines 110-112)
+Proof route.  As in the TeX, except: the compact-maps-weakly-null step (lines 128-130)
 is proved along an arbitrary filter through cluster points in the compact closure of
 the image of a ball and the adjoint (not by subsequences), and the norm bound
-(lines 114-119) is proved directly for every `z` by a limit along the filter; the
+(lines 132-142) is proved directly for every `z` by a limit along the filter; the
 per-frequency symplecticity is proved through the auxiliary identity
 `Mᵀ J_symp M = (det M) J_symp` for every `2 × 2` matrix.  Helpers labelled auxiliary
 serve only this route.
@@ -99,7 +99,7 @@ open scoped NNReal
 
 /-! ### Per-frequency free matrix -/
 
-/-- The symplectic matrix `J_symp`, `J_symp(q,p) = (p,-q)` (TeX line 64). -/
+/-- The symplectic matrix `J_symp`, `J_symp(q,p) = (p,-q)` (TeX line 74). -/
 def Jsymp : Matrix (Fin 2) (Fin 2) ℝ := !![0, 1; -1, 0]
 
 /-- The per-frequency symplectic form `ω₂(z,w) = z ⬝ J_symp w = z₀w₁ - z₁w₀`
@@ -149,7 +149,7 @@ theorem sineQuotient_mul (t k : ℝ) : sineQuotient t k * k = Real.sin (t * k) :
   · rw [sineQuotient_of_ne_zero t hk]
     field_simp
 
-/-- The sine quotient is continuous in `k` (the "continuous sine quotient", line 79). -/
+/-- The sine quotient is continuous in `k` (the "continuous sine quotient", line 89). -/
 theorem continuous_sineQuotient (t : ℝ) : Continuous (fun k => sineQuotient t k) := by
   unfold sineQuotient
   fun_prop
@@ -158,7 +158,7 @@ theorem continuous_sineQuotient (t : ℝ) : Continuous (fun k => sineQuotient t 
 theorem sineQuotient_neg (t k : ℝ) : sineQuotient (-t) k = -sineQuotient t k := by
   simp [sineQuotient, neg_mul, Real.sinc_neg]
 
-/-- The free matrix in balanced Fourier coordinates (TeX lines 70-77), with
+/-- The free matrix in balanced Fourier coordinates (TeX lines 80-87), with
 frequency modulus `k = |ξ|` and weight `br = ⟨ξ⟩`; the `(0,1)` entry uses
 the continuous sine quotient, so the matrix at `k = 0` is the TeX's limit. -/
 def freeMatrix (t k br : ℝ) : Matrix (Fin 2) (Fin 2) ℝ :=
@@ -183,11 +183,11 @@ theorem freeMatrix_eq_forward (t : ℝ) {k br : ℝ} (hk : k ≠ 0) (hbr : br �
   ext i j
   fin_cases i <;> fin_cases j <;> simp <;> field_simp
 
-/-- At frequency zero the free matrix is `!![1, br t; 0, 1]` (TeX line 78 with `⟨0⟩ = 1`). -/
+/-- At frequency zero the free matrix is `!![1, br t; 0, 1]` (TeX line 88 with `⟨0⟩ = 1`). -/
 theorem freeMatrix_zero_freq (t br : ℝ) : freeMatrix t 0 br = !![1, br * t; 0, 1] := by
   simp [freeMatrix, sineQuotient_zero]
 
-/-- `W_t(0) = (1 t; 0 1)` (TeX line 78). -/
+/-- `W_t(0) = (1 t; 0 1)` (TeX line 88). -/
 theorem freeMatrixAt_zero {d : ℕ} (t : ℝ) :
     freeMatrixAt t (0 : EuclideanSpace ℝ (Fin d)) = !![1, t; 0, 1] := by
   simp [freeMatrixAt, freeMatrix_zero_freq]
@@ -203,7 +203,7 @@ theorem continuous_freeMatrix (t br : ℝ) :
   · fun_prop
   · fun_prop
 
-/-- Determinant one at every frequency, also at zero (TeX lines 80-81). -/
+/-- Determinant one at every frequency, also at zero (TeX lines 90-91). -/
 theorem det_freeMatrix (t k : ℝ) {br : ℝ} (hbr : br ≠ 0) : (freeMatrix t k br).det = 1 := by
   rw [Matrix.det_fin_two]
   simp only [freeMatrix, Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_zero,
@@ -215,7 +215,7 @@ theorem det_freeMatrix (t k : ℝ) {br : ℝ} (hbr : br ≠ 0) : (freeMatrix t k
   rw [h2, h1]
   nlinarith [Real.sin_sq_add_cos_sq (t * k)]
 
-/-- Per-frequency symplecticity `W_tᵀ J_symp W_t = J_symp` (TeX lines 79-81), at
+/-- Per-frequency symplecticity `W_tᵀ J_symp W_t = J_symp` (TeX lines 89-91), at
 every frequency modulus `k`, zero included, for every weight `br ≠ 0`. -/
 theorem freeMatrix_symplectic (t k : ℝ) {br : ℝ} (hbr : br ≠ 0) :
     (freeMatrix t k br)ᵀ * Jsymp * freeMatrix t k br = Jsymp := by
@@ -232,7 +232,7 @@ theorem freeMatrix_preserves_omega2 (t k : ℝ) {br : ℝ} (hbr : br ≠ 0) (z w
   rw [omega2_mulVec, det_freeMatrix t k hbr, one_mul]
 
 /-- Per-frequency group law `W_s W_t = W_{s+t}` (the frequency form of the group law of
-the free group used in TeX lines 101 and 121-122). -/
+the free group used in TeX lines 115 and 144-145). -/
 theorem freeMatrix_mul (s t k : ℝ) {br : ℝ} (hbr : br ≠ 0) :
     freeMatrix s k br * freeMatrix t k br = freeMatrix (s + t) k br := by
   by_cases hk : k = 0
@@ -250,7 +250,7 @@ theorem freeMatrix_mul (s t k : ℝ) {br : ℝ} (hbr : br ≠ 0) :
 /-- The velocity reversal `diag(1,-1)`. -/
 def reversal : Matrix (Fin 2) (Fin 2) ℝ := !![1, 0; 0, -1]
 
-/-- Per-frequency reversal identity `R W_t R = W_{-t}` (TeX lines 120-121). -/
+/-- Per-frequency reversal identity `R W_t R = W_{-t}` (TeX lines 143-144). -/
 theorem reversal_freeMatrix (t k br : ℝ) :
     reversal * freeMatrix t k br * reversal = freeMatrix (-t) k br := by
   ext i j
@@ -265,16 +265,16 @@ section Force
 variable {U V : Type*} [AddCommGroup U] [Module ℝ U] [AddCommGroup V] [Module ℝ V]
 
 /-- The symplectic form `ω((u,v),(f,g)) = P(u,g) - P(f,v)` for a pairing
-`P : U × V → ℝ` (TeX line 36, with `P` the `H^{1/2}`-`H^{-1/2}` duality). -/
+`P : U × V → ℝ` (TeX line 37, with `P` the `H^{1/2}`-`H^{-1/2}` duality). -/
 def omega (P : U →ₗ[ℝ] V →ₗ[ℝ] ℝ) (z w : U × V) : ℝ := P z.1 w.2 - P w.1 z.2
 
-/-- The force `B(b)(u,v) = (0, M u)` for a map `M : U → V` (TeX line 41 with
+/-- The force `B(b)(u,v) = (0, M u)` for a map `M : U → V` (TeX line 42 with
 `M u = b u`). -/
 def force (M : U → V) (z : U × V) : U × V := (0, M z.1)
 
 /-- Skewness of the force for `ω`: if the pairing is symmetric through `M`
-(`P(f, Mu) = P(u, Mf)`), then `ω(B z, w) + ω(z, B w) = 0` (TeX lines 40-41 and
-88-91). -/
+(`P(f, Mu) = P(u, Mf)`), then `ω(B z, w) + ω(z, B w) = 0` (TeX lines 41-42 and
+102-105). -/
 theorem omega_force_skew (P : U →ₗ[ℝ] V →ₗ[ℝ] ℝ) (M : U → V)
     (hsymm : ∀ u f : U, P f (M u) = P u (M f)) (z w : U × V) :
     omega P (force M z) w + omega P z (force M w) = 0 := by
@@ -287,7 +287,7 @@ section ForceL2
 variable {X : Type*} [MeasurableSpace X] (μ : MeasureTheory.Measure X)
 
 /-- The `L²` form `ω((u,v),(f,g)) = ∫ u g - ∫ f v` on pairs of real functions
-(the balanced `L²` pairing of TeX lines 67 and 89-90). -/
+(the balanced `L²` pairing of TeX lines 77 and 103-104). -/
 def omegaL2 (z w : (X → ℝ) × (X → ℝ)) : ℝ :=
   (∫ x, z.1 x * w.2 x ∂μ) - ∫ x, w.1 x * z.2 x ∂μ
 
@@ -296,7 +296,7 @@ def forceL2 (b : X → ℝ) (z : (X → ℝ) × (X → ℝ)) : (X → ℝ) × (X
   (0, fun x => b x * z.1 x)
 
 /-- Skewness at the `L²` level: `ω(B(b)z,w) + ω(z,B(b)w) = -∫ f b u + ∫ u b f = 0`
-(TeX lines 89-91). -/
+(TeX lines 103-105). -/
 theorem omegaL2_force_skew (b : X → ℝ) (z w : (X → ℝ) × (X → ℝ)) :
     omegaL2 μ (forceL2 b z) w + omegaL2 μ z (forceL2 b w) = 0 := by
   simp only [omegaL2, forceL2, Pi.zero_apply, zero_mul, MeasureTheory.integral_zero, sub_zero,
@@ -306,7 +306,7 @@ theorem omegaL2_force_skew (b : X → ℝ) (z w : (X → ℝ) × (X → ℝ)) :
   rw [this]
   ring
 
-/-- The cancellation of TeX lines 89-90 is absolutely integrable: for `u, f ∈ L²`
+/-- The cancellation of TeX lines 103-104 is absolutely integrable: for `u, f ∈ L²`
 and a bounded a.e.-strongly measurable `b`, the integrand `f (b u)` is integrable. -/
 theorem integrable_mul_force (b u f : X → ℝ) (C : ℝ) (hb : MeasureTheory.AEStronglyMeasurable b μ)
     (hbC : ∀ x, |b x| ≤ C) (hu : MeasureTheory.MemLp u 2 μ) (hf : MeasureTheory.MemLp f 2 μ) :
@@ -355,19 +355,19 @@ theorem isCompactOperator_add' {A B : E →L[ℝ] E} (hA : IsCompactOperator A)
   exact hA.add hB
 
 /-- Closedness of the compact ideal: a norm limit, along a nontrivial filter, of
-operators that are eventually compact is compact (TeX lines 98-99). -/
+operators that are eventually compact is compact (TeX lines 112-113). -/
 theorem isCompactOperator_of_tendsto [CompleteSpace E] {ι : Type*} {l : Filter ι} [l.NeBot]
     {A : ι → E →L[ℝ] E} {B : E →L[ℝ] E} (hlim : Tendsto A l (𝓝 B))
     (hA : ∀ᶠ i in l, IsCompactOperator (A i)) : IsCompactOperator B :=
   isClosed_setOfPred_isCompactOperator.mem_of_tendsto hlim hA
 
-/-- The left Young sum `∑_{j<n} (X(p_{j+1}) - X(p_j)) U(p_j, s)` (TeX lines 95-97). -/
+/-- The left Young sum `∑_{j<n} (X(p_{j+1}) - X(p_j)) U(p_j, s)` (TeX lines 109-111). -/
 def youngSum (X : ℝ → E →L[ℝ] E) (U : ℝ → ℝ → E →L[ℝ] E) (s : ℝ) (p : ℕ → ℝ) (n : ℕ) :
     E →L[ℝ] E :=
   ∑ j ∈ Finset.range n, (X (p (j + 1)) - X (p j)) * U (p j) s
 
 /-- Each left Young sum is compact when `X` is compact at the partition points
-(TeX lines 94-98). -/
+(TeX lines 108-112). -/
 theorem isCompactOperator_youngSum (X : ℝ → E →L[ℝ] E) (U : ℝ → ℝ → E →L[ℝ] E) (s : ℝ)
     (p : ℕ → ℝ) (n : ℕ) (hX : ∀ j ≤ n, IsCompactOperator (X (p j))) :
     IsCompactOperator (youngSum X U s p n) := by
@@ -384,7 +384,7 @@ def orderedProd (P : ℕ → E →L[ℝ] E) : ℕ → E →L[ℝ] E
   | 0 => P 0
   | n + 1 => P (n + 1) * orderedProd P n
 
-/-- Telescoping (TeX lines 125-128): if every `P_j - Q_j`, `j ≤ N`, is compact, then
+/-- Telescoping (TeX lines 152-155): if every `P_j - Q_j`, `j ≤ N`, is compact, then
 `P_N ⋯ P_0 - Q_N ⋯ Q_0` is compact. -/
 theorem isCompactOperator_orderedProd_sub (P Q : ℕ → E →L[ℝ] E) (N : ℕ)
     (h : ∀ j ≤ N, IsCompactOperator (P j - Q j)) :
@@ -428,7 +428,7 @@ theorem eq_zero_of_mapClusterPt {ι : Type*} {l : Filter ι} {f : ι → E} {p :
   exact (hc.neBot).ne (le_bot_iff.1 hle)
 
 /-- A compact operator maps a bounded weakly null family (along any filter) to a norm
-null family (TeX lines 110-112; the Lean route uses cluster points in the compact
+null family (TeX lines 128-130; the Lean route uses cluster points in the compact
 closure of the image of a ball, not subsequences). -/
 theorem tendsto_compact_of_weaklyNull {ι : Type*} {l : Filter ι} (K : E →L[ℝ] E)
     (hK : IsCompactOperator K) (x : ι → E) (C : ℝ) (hb : ∀ i, ‖x i‖ ≤ C)
@@ -445,7 +445,7 @@ theorem tendsto_compact_of_weaklyNull {ι : Type*} {l : Filter ι} (K : E →L[�
   have h0 := eq_zero_of_mapClusterPt (continuous_id.inner continuous_const) hp hlim
   simpa using h0
 
-/-- Abstract compact-perturbation bound (TeX lines 103-119): if `S` commutes with
+/-- Abstract compact-perturbation bound (TeX lines 121-142): if `S` commutes with
 isometries `τ_i` such that `τ_i z` is weakly null along a nontrivial filter for every
 `z`, then `‖S‖ ≤ ‖S + K‖` for every compact `K`. -/
 theorem norm_le_norm_add_compact {ι : Type*} (l : Filter ι) [l.NeBot] (S : E →L[ℝ] E)
@@ -491,7 +491,7 @@ section NormOne
 variable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
 
 /-- If `B A = I`, `B = R A R` and `R` is an isometry, then `1 ≤ ‖A‖` (TeX lines
-120-122).  `Nontrivial E` is needed: on the zero space every operator has norm zero. -/
+143-145).  `Nontrivial E` is needed: on the zero space every operator has norm zero. -/
 theorem one_le_norm_of_reversal [Nontrivial E] (A B R : E →L[ℝ] E) (hBA : B * A = 1)
     (hR : ∀ z, ‖R z‖ = ‖z‖) (hB : B = R * A * R) : 1 ≤ ‖A‖ := by
   have hRn : ‖R‖ ≤ 1 :=
@@ -513,7 +513,7 @@ end NormOne
 
 /-! ### Supplied inputs and the wrappers -/
 
-/-- Supplied input (D8; TeX lines 103-122): the free wave group `S_E` on
+/-- Supplied input (D8; TeX lines 121-145): the free wave group `S_E` on
 `E = H^{1/2} × H^{-1/2}`, the velocity reversal `𝓡(u,v) = (u,-v)` and the spatial
 translations `τ_y`, `y ∈ ℝ^d`, with the properties the proof of `L:symplectic-free`
 states for them: the group law, `S_E(-h) = 𝓡 S_E(h) 𝓡` with `𝓡` isometric,
@@ -534,7 +534,7 @@ structure FreeWaveData (d : ℕ) (E : Type*) [NormedAddCommGroup E] [InnerProduc
   τ_comm : ∀ y h, S h * τ y = τ y * S h
   τ_weak : ∀ z w, Tendsto (fun y => inner ℝ (τ y z) w) (cocompact (EuclideanSpace ℝ (Fin d))) (𝓝 0)
 
-/-- Supplied input (D7; `P:constant-young-linear` on `𝓛(E)`, TeX lines 91-98): the left
+/-- Supplied input (D7; `P:constant-young-linear` on `𝓛(E)`, TeX lines 105-112): the left
 Young sums of `X` over partitions of `[s,t]` converge in operator norm to
 `U(t,s) - I` along some nontrivial filter of partitions.  A partition is a pair
 `(n, p)` with points `p 0, …, p n`; only the points `p j`, `j ≤ n`, enter, and they lie
@@ -557,13 +557,13 @@ theorem FreeWaveData.cocompact_neBot (hd : 1 ≤ d) :
   infer_instance
 
 omit [CompleteSpace E] in
-/-- `‖S_E(h)‖ ≥ 1` (TeX lines 120-122), for a nonzero `E`. -/
+/-- `‖S_E(h)‖ ≥ 1` (TeX lines 143-145), for a nonzero `E`. -/
 theorem FreeWaveData.one_le_norm [Nontrivial E] (F : FreeWaveData d E) (h : ℝ) :
     1 ≤ ‖F.S h‖ :=
   one_le_norm_of_reversal (F.S h) (F.S (-h)) F.R
     (by rw [← F.S_add, neg_add_cancel, F.S_zero]) F.R_norm (F.S_neg h)
 
-/-- `‖S_E(h)‖ ≤ ‖S_E(h) + K‖` for every compact `K` (TeX lines 103-119), `d ≥ 1`. -/
+/-- `‖S_E(h)‖ ≤ ‖S_E(h) + K‖` for every compact `K` (TeX lines 121-142), `d ≥ 1`. -/
 theorem FreeWaveData.norm_le_norm_add_compact (F : FreeWaveData d E) (hd : 1 ≤ d) (h : ℝ)
     (K : E →L[ℝ] E) (hK : IsCompactOperator K) : ‖F.S h‖ ≤ ‖F.S h + K‖ := by
   have := FreeWaveData.cocompact_neBot hd
@@ -647,7 +647,7 @@ variable {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E] [CompleteS
 theorem one_le_dim (hH : HomogCovariance d alpha alpha0 Γ μ) : 1 ≤ d := by
   rcases hH.dim with h | h | h <;> omega
 
-/-- `E:symplectic-compact-young-baseline` (TeX lines 43-49), with the lemma's own
+/-- `E:symplectic-compact-young-baseline` (TeX lines 44-50), with the lemma's own
 hypotheses: `1/2 < θ < 1`, `X ∈ C^θ([0,T]; 𝒦(E))` with `X(0) = 0`, `U` the left Young
 evolution of `X` (supplied, D7: `LeftYoungSumsConverge` for `0 ≤ s ≤ t ≤ T`), and the
 section's standing `H:homog` and `T > 0`; the space `E`, its free group, reversal and
@@ -670,7 +670,7 @@ theorem symplectic_compact_young_baseline_paper [Nontrivial E]
     (fun r hr => hXK r ⟨hs.trans hr.1, hr.2.trans htT⟩) (hU s t hs hst htT)
   exact ⟨h.1, h.2.2⟩
 
-/-- `E:symplectic-compact-product-baseline` (TeX lines 50-58), with the lemma's own
+/-- `E:symplectic-compact-product-baseline` (TeX lines 51-59), with the lemma's own
 hypotheses: paths `X_j ∈ C^θ([0,B]; 𝒦(E))`, `1/2 < θ < 1`, `X_j(0) = 0`, with left
 Young evolutions `U_j` (supplied, D7, on `[0, ℓ_j]`), lengths `0 ≤ ℓ_j ≤ B`,
 `P_j = S_E(ℓ_j) U_j(ℓ_j,0)`, `j = 0, …, N`.  Conclusion:
@@ -697,7 +697,7 @@ theorem symplectic_compact_product_baseline_paper [Nontrivial E]
   exact (compact_young_baseline F hd (X j) (U j) 0 (ℓ j)
     (fun r hr => hXK j hj r ⟨hr.1, hr.2.trans (hℓ j hj).2⟩) (hU j hj)).1
 
-/-- The force claim of `L:symplectic-free` (TeX lines 40-41, proof lines 88-91) at the
+/-- The force claim of `L:symplectic-free` (TeX lines 41-42, proof lines 102-105) at the
 `L²` level on `ℝ^d` with Lebesgue measure, for bounded real smooth `b`: the cancellation
 integrand is integrable for `u, f ∈ L²`, and `ω(B(b)z,w) + ω(z,B(b)w) = 0` for the
 `L²` form `omegaL2`.  The identification of the `H^{1/2}`-`H^{-1/2}` duality with the
@@ -715,7 +715,7 @@ theorem symplectic_force_skew_paper (_hH : HomogCovariance d alpha alpha0 Γ μ)
   refine ⟨fun u f hu hf => integrable_mul_force _ b u f C
     hb.continuous.aestronglyMeasurable hbC hu hf, fun z w => omegaL2_force_skew _ b z w⟩
 
-/-- `L:symplectic-free` (TeX lines 30-60), the formalized parts together under the
+/-- `L:symplectic-free` (TeX lines 31-61), the formalized parts together under the
 lemma's hypotheses: (i) the per-frequency identity `W_t(ξ)ᵀ J_symp W_t(ξ) = J_symp` for
 every `t` and every `ξ ∈ ℝ^d`, `ξ = 0` included; (ii) the force skewness of
 `symplectic_force_skew_paper` (its identity half; the integrability half is in

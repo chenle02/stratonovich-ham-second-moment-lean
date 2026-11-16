@@ -1,0 +1,13 @@
+node=node940 job=5699012 array=5698959_51 mode=fresh target=StratonovichHAMSecondMoment.H1Density start=2026-11-13T08:45:36-0600
+tmp_avail_G=891
+VERIFIED_COMMIT=56fc59ec31b8ede85ac5ab7a2283237b091029a7 TREE=df0322362d43b18a73c060519d72955b328900c5 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1400 waited_s=0
+REPLAY_STARTED 2026-11-13T08:51:26-0600
+BEGIN fresh StratonovichHAMSecondMoment.H1Density 08:51:27
+END fresh StratonovichHAMSecondMoment.H1Density	0	0:42:16.61	7578988	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2537 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.H1Density
+PROCESS_EXIT=0 end=2026-11-13T09:33:43-0600

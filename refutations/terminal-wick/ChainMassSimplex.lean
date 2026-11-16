@@ -1,6 +1,6 @@
 /-
 Refutation for the chain-measure mass of `L:terminal-wick` (main TeX lines
-3648-3651 at a284420, `M_n(T) = T^{2n}/(2n)!`), package theorem
+4348-4351 at 39f2597a, `M_n(T) = T^{2n}/(2n)!`), package theorem
 `StratonovichHAMSecondMoment.TerminalWick.chainMass_eq`.
 
 Wrong variant: `M_n(T) = T^n/n!`, the volume of the ordered simplex, i.e.

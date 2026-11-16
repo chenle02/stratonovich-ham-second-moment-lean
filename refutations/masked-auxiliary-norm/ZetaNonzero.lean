@@ -1,10 +1,10 @@
 /-
 Refutation for `L > 0` (`notes/integrated_covariance_foundation.tex`
-lines 79-82 at a284420, part of the setup of `P:masked-auxiliary-norm`),
+lines 96-99 at 39f2597a, part of the setup of `P:masked-auxiliary-norm`),
 package theorem `StratonovichHAMSecondMoment.MaskedAuxiliaryNorm.Lz_pos`.
 
 Wrong variant: the hypothesis `ζ ≠ 0` ("a real nonzero Schwartz function",
-line 79) dropped, i.e. `L = ‖ζ̂‖₁ > 0` for every real Schwartz `ζ`.
+line 96) dropped, i.e. `L = ‖ζ̂‖₁ > 0` for every real Schwartz `ζ`.
 Counterexample: `d = 1`, `ζ = 0`: `ζ̂ = 0` and `L = 0`.
 `zeta_nonzero_contrast` is the package theorem at the nonzero Gaussian
 `e^{-|x|²}`.  No junk-value reliance: `L = 0` here is the genuine value of the

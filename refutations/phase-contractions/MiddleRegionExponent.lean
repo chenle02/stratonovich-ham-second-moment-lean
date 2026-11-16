@@ -1,6 +1,6 @@
 /-
 Refutation for the middle region of the three-region bound of
-`L:phase-contractions` (main TeX lines 2134-2135 at a284420), package theorem
+`L:phase-contractions` (main TeX lines 2582-2583 at 39f2597a), package theorem
 `StratonovichHAMSecondMoment.PhaseContractions.middle_region_le`.
 
 Wrong variant: the power `a^{1-α}` replaced by `a^{2-α}`, i.e. for

@@ -4,9 +4,9 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Corollary `C:white-relative-width` (Uniform relative width of the bound
-formulas) of `notes/integrated_white_evaluation.tex` at revision `a284420`:
-statement lines 130--138, proof lines 140--161.  The two formulas are those
-displayed in `T:white-moment-bounds` (`E:white-moment-bounds`, lines 101--111):
+formulas) of `notes/integrated_white_evaluation.tex` at revision `39f2597a`:
+statement lines 173--181, proof lines 183--204.  The two formulas are those
+displayed in `T:white-moment-bounds` (`E:white-moment-bounds`, lines 140--150):
 `K_0(a) = 2^a/(1-a)` and `M_a = Γ_E((1+a)/2)/(Γ_E(1+a) Γ_E((1-a)/2))`, with
 lower formula `(2/3) sqrt(c/M_a)` and upper formula `(2/3) sqrt(c K_0(a))`.
 The section's standing parameters (lines 4--9) are `c ≥ 0` and `0 < a < 1`;
@@ -16,10 +16,10 @@ What is formalized, in full:
 * for `c > 0` and `0 < a < 1` the ratio of the upper to the lower formula is
   `sqrt(K_0(a) M_a)`;
 * `K_0(a) M_a = sqrt π / (2 Γ_E(1+a/2) Γ_E((3-a)/2))` (the proof's display,
-  lines 148--152);
+  lines 191--195);
 * `sqrt(K_0(a) M_a) ≤ [sqrt π / (2 Γ_E(5/4)²)]^{1/2}`, with equality at
   `a = 1/2`;
-* the closing remark of the proof (lines 158--159): the ratio of the bound
+* the closing remark of the proof (lines 201--202): the ratio of the bound
   formulas is symmetric under `a ↦ 1-a`.
 * `M_a` is also the mass of the temporal equilibrium density of
   `L:temporal-equilibrium`: `boundMass_eq_mass` identifies the displayed
@@ -44,7 +44,7 @@ Proof route.  The duplication and recurrence steps are those of the TeX
 `L:equilibrium-gamma-beta`).  The inequality `Γ_E(5/4)² ≤ Γ_E(x) Γ_E(y)` for
 `x + y = 5/2` is proved here from the log-convexity of `Γ_E` on `(0,∞)`
 (Mathlib's `Real.convexOn_log_Gamma`), not from Cauchy--Schwarz in Euler's
-integral as in the TeX (lines 153--157); the inequality proved is the same.
+integral as in the TeX (lines 196--200); the inequality proved is the same.
 -/
 public import Mathlib
 public import StratonovichHAMSecondMoment.TemporalEquilibrium
@@ -60,28 +60,28 @@ open Real
 namespace StratonovichHAMSecondMoment.WhiteRelativeWidth
 
 /-- The upper-bound factor `K_0(a) = 2^a/(1-a)` of `E:white-moment-bounds`
-(TeX line 106). -/
+(TeX line 145). -/
 def boundK0 (a : ℝ) : ℝ := 2 ^ a / (1 - a)
 
 /-- The lower-bound mass `M_a = Γ_E((1+a)/2)/(Γ_E(1+a) Γ_E((1-a)/2))` of
-`E:white-moment-bounds` (TeX lines 107--108). -/
+`E:white-moment-bounds` (TeX lines 146--147). -/
 def boundMass (a : ℝ) : ℝ := Gamma ((1 + a) / 2) / (Gamma (1 + a) * Gamma ((1 - a) / 2))
 
-/-- The lower formula `(2/3) sqrt(c/M_a)` of `E:white-moment-bounds` (TeX line 104). -/
+/-- The lower formula `(2/3) sqrt(c/M_a)` of `E:white-moment-bounds` (TeX line 143). -/
 def lowerFormula (c a : ℝ) : ℝ := 2 / 3 * sqrt (c / boundMass a)
 
-/-- The upper formula `(2/3) sqrt(c K_0(a))` of `E:white-moment-bounds` (TeX line 105). -/
+/-- The upper formula `(2/3) sqrt(c K_0(a))` of `E:white-moment-bounds` (TeX line 144). -/
 def upperFormula (c a : ℝ) : ℝ := 2 / 3 * sqrt (c * boundK0 a)
 
 /-- The constant `sqrt π / (2 Γ_E(5/4)²)` of `C:white-relative-width` (TeX
-line 134), before the square root. -/
+line 177), before the square root. -/
 def widthConst : ℝ := sqrt π / (2 * Gamma (5 / 4) ^ 2)
 
-/-- `K_0(a) > 0` for `a < 1` (the TeX's sign condition `0 < a < 1`, lines 124--125). -/
+/-- `K_0(a) > 0` for `a < 1` (the TeX's sign condition `0 < a < 1`, lines 163--164). -/
 theorem boundK0_pos {a : ℝ} (ha1 : a < 1) : 0 < boundK0 a :=
   div_pos (rpow_pos_of_pos two_pos a) (by linarith)
 
-/-- `M_a > 0` for `0 < a < 1` (TeX lines 124--125: "All Gamma factors are positive
+/-- `M_a > 0` for `0 < a < 1` (TeX lines 163--164: "All Gamma factors are positive
 finite for `0 < a < 1`"). -/
 theorem boundMass_pos {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) : 0 < boundMass a := by
   have := Gamma_pos_of_pos (by linarith : (0:ℝ) < (1 + a) / 2)
@@ -96,7 +96,7 @@ theorem boundMass_eq_mass {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
     boundMass a = TemporalEquilibrium.mass a :=
   ((TemporalEquilibrium.mass_eq ha0 ha1).2).symm
 
-/-- Proof step (TeX lines 141--147, duplication): for every real `a`,
+/-- Proof step (TeX lines 184--190, duplication): for every real `a`,
 `Γ_E(1+a) = 2^a Γ_E((1+a)/2) Γ_E(1+a/2)/sqrt π`
 (`L:equilibrium-gamma-beta` at `x = (1+a)/2`). -/
 theorem gamma_one_add_dup (a : ℝ) :
@@ -106,7 +106,7 @@ theorem gamma_one_add_dup (a : ℝ) :
     show (1 + a) / 2 + 1 / 2 = 1 + a / 2 by ring] at h
   exact h
 
-/-- Proof step (TeX lines 141--147, recurrence): for `a < 1`,
+/-- Proof step (TeX lines 184--190, recurrence): for `a < 1`,
 `(1-a) Γ_E((1-a)/2) = 2 Γ_E((3-a)/2)`. -/
 theorem gamma_three_sub_rec {a : ℝ} (ha1 : a < 1) :
     (1 - a) * Gamma ((1 - a) / 2) = 2 * Gamma ((3 - a) / 2) := by
@@ -114,7 +114,7 @@ theorem gamma_three_sub_rec {a : ℝ} (ha1 : a < 1) :
   rw [show (1 - a) / 2 + 1 = (3 - a) / 2 by ring] at h
   rw [h]; ring
 
-/-- Proof display (TeX lines 148--152): for `0 < a < 1`,
+/-- Proof display (TeX lines 191--195): for `0 < a < 1`,
 `K_0(a) M_a = sqrt π / (2 Γ_E(1+a/2) Γ_E((3-a)/2))`. -/
 theorem boundK0_mul_boundMass {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
     boundK0 a * boundMass a = sqrt π / (2 * Gamma (1 + a / 2) * Gamma ((3 - a) / 2)) := by
@@ -133,7 +133,7 @@ theorem boundK0_mul_boundMass {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
   linear_combination -hrec
 
 /-- Auxiliary (Lean route; replaces the TeX's Cauchy--Schwarz in Euler's
-integral, lines 153--157): midpoint log-convexity of `Γ_E`,
+integral, lines 196--200): midpoint log-convexity of `Γ_E`,
 `Γ_E((x+y)/2)² ≤ Γ_E(x) Γ_E(y)` for `x, y > 0`, from
 `Real.convexOn_log_Gamma`. -/
 theorem gamma_mid_sq_le {x y : ℝ} (hx : 0 < x) (hy : 0 < y) :
@@ -150,7 +150,7 @@ theorem gamma_mid_sq_le {x y : ℝ} (hx : 0 < x) (hy : 0 < y) :
     ← log_rpow hg, exp_log (by positivity)] at this
   simpa using this
 
-/-- Proof step (TeX lines 153--157): for `0 < a < 1`, with `x = 1+a/2`,
+/-- Proof step (TeX lines 196--200): for `0 < a < 1`, with `x = 1+a/2`,
 `y = (3-a)/2` (so `x + y = 5/2`), `Γ_E(5/4)² ≤ Γ_E(1+a/2) Γ_E((3-a)/2)`.  The
 TeX proves it by Cauchy--Schwarz in Euler's integral; Lean proves it from the
 auxiliary log-convexity lemma `gamma_mid_sq_le`. -/
@@ -169,13 +169,13 @@ theorem boundK0_mul_boundMass_le {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
   exact div_le_div_of_nonneg_left hpi.le (by positivity)
     (by linarith [gamma_five_quarters_sq_le ha0 ha1])
 
-/-- The inequality of `C:white-relative-width` (TeX lines 133--136): for
+/-- The inequality of `C:white-relative-width` (TeX lines 176--179): for
 `0 < a < 1`, `sqrt(K_0(a) M_a) ≤ [sqrt π / (2 Γ_E(5/4)²)]^{1/2}`. -/
 theorem relative_width_le {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
     sqrt (boundK0 a * boundMass a) ≤ sqrt widthConst :=
   sqrt_le_sqrt (boundK0_mul_boundMass_le ha0 ha1)
 
-/-- Equality at `a = 1/2` (TeX lines 137, 157--158):
+/-- Equality at `a = 1/2` (TeX lines 180, 200--201):
 `sqrt(K_0(1/2) M_{1/2}) = [sqrt π / (2 Γ_E(5/4)²)]^{1/2}`. -/
 theorem relative_width_eq_half :
     sqrt (boundK0 (1 / 2) * boundMass (1 / 2)) = sqrt widthConst := by
@@ -184,7 +184,7 @@ theorem relative_width_eq_half :
   rw [show (1:ℝ) + 1 / 2 / 2 = 5 / 4 by norm_num, show ((3:ℝ) - 1 / 2) / 2 = 5 / 4 by norm_num]
   ring
 
-/-- The closing remark of the proof (TeX lines 158--159): the ratio of the bound
+/-- The closing remark of the proof (TeX lines 201--202): the ratio of the bound
 formulas is symmetric under `a ↦ 1-a`, for `0 < a < 1`. -/
 theorem boundK0_mul_boundMass_symm {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
     boundK0 (1 - a) * boundMass (1 - a) = boundK0 a * boundMass a := by
@@ -193,7 +193,7 @@ theorem boundK0_mul_boundMass_symm {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
   ring
 
 /-- For `c > 0` and `0 < a < 1` the ratio of the upper to the lower formula of
-`E:white-moment-bounds` is `sqrt(K_0(a) M_a)` (TeX lines 132--133). -/
+`E:white-moment-bounds` is `sqrt(K_0(a) M_a)` (TeX lines 175--176). -/
 theorem ratio_eq {c a : ℝ} (hc : 0 < c) (ha0 : 0 < a) (ha1 : a < 1) :
     upperFormula c a / lowerFormula c a = sqrt (boundK0 a * boundMass a) := by
   have hK := boundK0_pos ha1
@@ -204,8 +204,8 @@ theorem ratio_eq {c a : ℝ} (hc : 0 < c) (ha0 : 0 < a) (ha1 : a < 1) :
   have hsc : 0 < sqrt c := sqrt_pos.2 hc
   field_simp
 
-/-- Corollary `C:white-relative-width` (TeX lines 130--138) under its exact
-hypotheses (`c > 0`, line 132; the section's `0 < a < 1`, line 5): the ratio of
+/-- Corollary `C:white-relative-width` (TeX lines 173--181) under its exact
+hypotheses (`c > 0`, line 175; the section's `0 < a < 1`, line 5): the ratio of
 the upper formula `(2/3) sqrt(c K_0(a))` to the lower formula
 `(2/3) sqrt(c/M_a)` of `E:white-moment-bounds` is `sqrt(K_0(a) M_a)`, it is at
 most `[sqrt π/(2 Γ_E(5/4)²)]^{1/2}`, and equality holds at `a = 1/2`.  Lean

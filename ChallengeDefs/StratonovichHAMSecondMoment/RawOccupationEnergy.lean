@@ -29,7 +29,7 @@ namespace StratonovichHAMSecondMoment.RawOccupationEnergy
 open HomogHypothesis (Rd HomogCovariance)
 open OccupationPhysicalClass (volI sqPair gradSqE Tlin T IsOccField SquarePairingBounds)
 open TimeSchur (kern kern_nonneg measurable_kern kern_sub_comm)
-open OccupationCeilingFinite (K0)
+open OccupationCeilingFinite (K0 K0_pos)
 open SpatialStaticControls (IsUnitH1)
 open SpatialBracket (Dzeta)
 
@@ -71,11 +71,11 @@ def EO (a : ℝ) (Γ : Measure (Rd d)) (ζ : ℝ) : ℝ := sSup (energySet a Γ 
 
 /-! ### Dilation of `𝒪` -/
 
-/-- The dilated field `(U_ℓ g)_s = ℓ^{d/2} g_s(ℓ ·)` (TeX line 127), with
+/-- The dilated field `(U_ℓ g)_s = ℓ^{d/2} g_s(ℓ ·)` (TeX line 157), with
 `WeakSobolev.dilL2`. -/
 def dilField (ℓ : ℝ) (G : ℝ → Rd d → ℝ) : ℝ → Rd d → ℝ := fun s => WeakSobolev.dilL2 ℓ (G s)
 
-/-- The gradient of the dilated field, `∇(U_ℓ g)_s = ℓ U_ℓ(∇g_s)` (TeX line 127;
+/-- The gradient of the dilated field, `∇(U_ℓ g)_s = ℓ U_ℓ(∇g_s)` (TeX line 157;
 `WeakSobolev.hasWeakGradient_dilL2`). -/
 def dilGrad (ℓ : ℝ) (DG : ℝ → Rd d → Rd d) : ℝ → Rd d → Rd d :=
   fun s x => ℓ • WeakSobolev.dilL2 ℓ (DG s) x

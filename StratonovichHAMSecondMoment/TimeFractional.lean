@@ -4,16 +4,16 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Time-fractional ingredients of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` (revision a284420) used by
-`P:clock-copy-obstruction` (lines 7754-7905) and by the finiteness part of
-`L:damped-homogeneous-norms` (lines 803-919).
+`notes/notes_stratonovich_ham_second_moment.tex` (revision 39f2597a) used by
+`P:clock-copy-obstruction` (lines 9033-9208) and by the finiteness part of
+`L:damped-homogeneous-norms` (lines 1010-1154).
 
 Formalized here (all proved, no supplied input):
 * the Gamma-integral (subordination) representation of the power kernel,
   `r^{-a} = Γ(a)⁻¹ ∫_0^∞ λ^{a-1} e^{-λ r} dλ` for `r > 0`
   (`rpow_neg_eq_subordination`; it is the "Laplace formula for the power
   covariance" invoked in the proof of `P:clock-copy-obstruction`);
-* the averaged clock kernel `Ψ_a` of `E:averaged-clock-kernel` (line 7704)
+* the averaged clock kernel `Ψ_a` of `E:averaged-clock-kernel` (line 8982)
   with the three properties stated after it: nonnegativity (in fact
   positivity), monotone decrease in `v`, and `Ψ_a(r,v) ≤ r^{-a}`;
 * the two-time Laplace lemma, for complex `a, b` with positive real part
@@ -125,7 +125,7 @@ theorem rpow_neg_eq_subordination (a r : ℝ) (ha : 0 < a) (hr : 0 < r) :
 /-- Auxiliary to the Lean proof route. The integrand of `Ψ_a`. -/
 def psiKernel (a r v l : ℝ) : ℝ := l ^ (a - 1) * Real.exp (-(r * l) - v * l ^ 2 / 2)
 
-/-- `E:averaged-clock-kernel` (line 7704):
+/-- `E:averaged-clock-kernel` (line 8982):
 `Ψ_a(r,v) = Γ(a)⁻¹ ∫_0^∞ λ^{a-1} e^{-rλ - vλ²/2} dλ`. -/
 def Psi (a r v : ℝ) : ℝ := (Real.Gamma a)⁻¹ * ∫ l in Ioi (0 : ℝ), psiKernel a r v l
 
@@ -190,7 +190,7 @@ theorem Psi_le_rpow (a r v : ℝ) (ha : 0 < a) (hr : 0 < r) (hv : 0 ≤ v) :
   exact Psi_antitone a r 0 v ha hr le_rfl hv
 
 /-- The three properties of `Ψ_a` stated after `E:averaged-clock-kernel`
-(lines 7708-7713), for `0 < a`, `r > 0`, `0 ≤ v ≤ v'`. -/
+(lines 8986-8991), for `0 < a`, `r > 0`, `0 ≤ v ≤ v'`. -/
 theorem Psi_properties_paper (a r v v' : ℝ) (ha : 0 < a) (hr : 0 < r) (hv : 0 ≤ v)
     (hvv : v ≤ v') :
     Integrable (psiKernel a r v) L0 ∧ 0 ≤ Psi a r v ∧ Psi a r v' ≤ Psi a r v ∧

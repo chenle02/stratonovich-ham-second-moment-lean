@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.PhaseBessel
 /-!
 Refutation for `StratonovichHAMSecondMoment.PhaseBessel.phase_bessel`
 (manuscript `L:phase-bessel`, display `E:phase-bessel`,
-`notes/integrated_wave_variance.tex` 346-355 at a284420): the constant `1` on
+`notes/integrated_wave_variance.tex` 426-435 at 39f2597a): the constant `1` on
 the right-hand side cannot be lowered to `1/2`.
 
 The wrong variant is the package statement (orthonormal `u`, `L²` data `g`)

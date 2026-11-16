@@ -4,15 +4,15 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Proposition `P:wave-two-variances` (Both variance directions) of
-`notes/integrated_wave_variance.tex` at revision a284420: statement TeX lines 368-383
-(displays `E:wave-input-variance` 374-376 and `E:wave-output-variance` 377-379), proof
-lines 385-460 (displays `E:variance-kernel-time-bound` 390-393 and
-`E:variance-actual-row-bound` 398-401). Also used: the section's standing assumptions
+`notes/integrated_wave_variance.tex` at revision 39f2597a: statement TeX lines 452-467
+(displays `E:wave-input-variance` 458-460 and `E:wave-output-variance` 461-463), proof
+lines 469-563 (displays `E:variance-kernel-time-bound` 481-484 and
+`E:variance-actual-row-bound` 489-492). Also used: the section's standing assumptions
 (lines 4-20: `H:homog`, `a = α₀`, `E:variance-gamma-range`, `B_α(h)`), the kernel
-`E:variance-normalized-kernel` (229-238), the right side of
-`E:variance-normalized-covariance` (240-246), the mask `ζ` and the interval `I`
-(185-188), `C_ν` (`E:variance-actual-growth-constant`, 205-208), `J` (171-176) and
-`E:variance-beta-range` (143-146).
+`E:variance-normalized-kernel` (264-273), the right side of
+`E:variance-normalized-covariance` (275-281), the mask `ζ` and the interval `I`
+(219-222), `C_ν` (`E:variance-actual-growth-constant`, 239-242), `J` (205-210) and
+`E:variance-beta-range` (174-177).
 
 What is formalized.
 1. The purely spectral core, with NO supplied input (`wave_two_variances`, general
@@ -28,17 +28,17 @@ What is formalized.
    The `h^{2β}` form is `wave_two_variances_beta`.
 2. The same for the manuscript's `ν_R` (`MaskedAuxiliaryNorm.nu μ ζ R`) under the
    section's hypotheses (`wave_two_variances_core_paper`, `..._core_beta_paper`), with
-   `C_T = 4 A_T K C_ν` (TeX line 432), uniform in `R`, `I` and the family.
+   `C_T = 4 A_T K C_ν` (TeX line 530), uniform in `R`, `I` and the family.
 3. `wave_two_variances_paper`: the proposition itself, with two named inputs (below).
 
 Supplied inputs (named hypotheses of `wave_two_variances_paper` only; the core has none).
-* `hlink`: `E:variance-normalized-covariance` (TeX lines 240-246), the last claim of
+* `hlink`: `E:variance-normalized-covariance` (TeX lines 275-281), the last claim of
   `P:actual-wave-form` (B22). `ℓ_R` needs the noise `W` (D1), which this package does not
   construct; the input bounds the abstract number `var R t₀ h z w` (standing for
   `E|ℓ_R([t₀,t₀+h]; z, w)|²`) by the lower integral `∫ ‖coef p t₀ h (Jz) (Jw) λ‖² ν_R(dλ)`,
   exactly the TeX's display with `U = Jz`, `V = Jw` (the TeX integral is of a nonnegative
-  function, lines 410-411). No stronger than its source.
-* `hJL2`, `hJ`, `hnormSG` (D8, TeX lines 171-176 and 431): `J` maps the Schwartz phases
+  function, lines 503-504). No stronger than its source.
+* `hJL2`, `hJ`, `hnormSG` (D8, TeX lines 205-210 and 529): `J` maps the Schwartz phases
   into `L²(ℝ^d; ℂ²)` preserving inner products (the TeX's `J` is unitary onto
   `L²(ℝ^d; ℂ²)`; only isometry is used), and `‖z‖²_{E_{s-γ}} = ‖⟨ξ⟩^{-γ} J z‖₂²`.
   The phases are an abstract complex inner product space `P`.
@@ -47,13 +47,13 @@ Narrower than the TeX. `wave_two_variances_paper` is about the abstract `var` li
 `ℓ_R` by `hlink`, not about `E|ℓ_R|²` itself; `ℓ_R`, the Sobolev spaces `E_r` and the
 unitarity of `J` are not constructed. The family is orthonormal in `P` (the TeX's
 "`E`-orthonormal Schwartz family"). The core results are not narrower: they are the
-TeX's proof (lines 385-458) with `ν_R` generalized to any measure with the growth bound.
+TeX's proof (lines 469-561) with `ν_R` generalized to any measure with the growth bound.
 
 Implicit hypotheses made explicit. `U, V ∈ L²(ℝ^d; ℂ²)` componentwise (`MemLp 2`); the
 family is orthonormal in the sense of `PhaseBessel.IsOrthonormalL2`; Bochner
 integrability of every spatial `H_a`-valued integrand is part of the conclusion (so the
 inner integral is never Lean's junk `0`); the `λ` integrals are lower integrals of
-nonnegative functions (as in the TeX, lines 410-411), and the right sides are real
+nonnegative functions (as in the TeX, lines 503-504), and the right sides are real
 Bochner integrals whose integrability is part of the conclusion; `γ ≥ 0` in the general
 form (the TeX has `γ > 0`). In the general form `ν` needs no evenness except for the
 output direction, and no local finiteness or density (both follow, or are not needed:
@@ -63,11 +63,11 @@ Hypotheses carried but unused. In the wrappers: the mask properties of `ζ` (eve
 nonnegative, `1` on `B_1`, `0` off `B_2`; growth and evenness of `ν_R` hold for every real
 Schwartz `ζ`), `1/2 < β`, and the fields of `H:homog` other than `μ_radon` (for
 s-finiteness), `μ_tempered`, `μ_even`, `spectral`, `scaling`, `alpha0_lt_one`,
-`threshold`. `Γ ≠ 0` is not assumed (the TeX treats `Γ = 0` separately, line 202; here
+`threshold`. `Γ ≠ 0` is not assumed (the TeX treats `Γ = 0` separately, line 236; here
 `ν_R = 0` is covered by the same argument).
 
 Proof route (differences from the TeX).
-* Strong measurability of `(ξ, η) ↦ 1_I 𝒦_ij(·; ξ, η) ∈ H_a` (TeX lines 404-408) is
+* Strong measurability of `(ξ, η) ↦ 1_I 𝒦_ij(·; ξ, η) ∈ H_a` (TeX lines 497-501) is
   proved by continuity (`continuous_kerH`): the entries are jointly continuous in
   `((ξ,η), t)` (with `b_r(t) = ⟨r⟩ t sinc(rt)`), hence uniformly continuous on compact
   sets (Heine-Cantor), hence continuous into `L²(0,T)`, and `extL2` is continuous. The
@@ -108,7 +108,7 @@ open StratonovichHAMSecondMoment.HomogHypothesis (Rd)
 open StratonovichHAMSecondMoment.FrequencyRow (rowKernel)
 
 /-- Auxiliary (Lean proof route): `b_r(t) = ⟨r⟩ · t · sinc(rt)` for every real `r, t`
-(the continuous sine quotient of TeX lines 185, 250-251, 326-327), used for joint
+(the continuous sine quotient of TeX lines 219, 293-294, 397-398), used for joint
 continuity in `(r, t)`. -/
 theorem bFn_eq_sinc (r t : ℝ) : bFn r t = bracket r * (t * Real.sinc (r * t)) := by
   by_cases hr : r = 0
@@ -126,7 +126,7 @@ theorem continuous_bFn : Continuous fun x : ℝ × ℝ => bFn x.1 x.2 := by
   fun_prop
 
 
-/-- The row factor of `E:variance-normalized-kernel` (TeX lines 231-238): `b_r` in row
+/-- The row factor of `E:variance-normalized-kernel` (TeX lines 266-273): `b_r` in row
 `i = 0` (the TeX's row 1) and `c_r` in row `i = 1` (row 2). -/
 def rowWave : Fin 2 → Wave := ![.b, .c]
 /-- The row sign of `E:variance-normalized-kernel`: `-1` in row `0`, `+1` in row `1`. -/
@@ -135,7 +135,7 @@ def rowSign : Fin 2 → ℝ := ![-1, 1]
 in column `j = 1`. -/
 def colWave : Fin 2 → Wave := ![.c, .b]
 
-/-- The entries `𝒦_ij(t; ξ, η)` of `E:variance-normalized-kernel` (TeX lines 229-238):
+/-- The entries `𝒦_ij(t; ξ, η)` of `E:variance-normalized-kernel` (TeX lines 264-273):
 `𝒦 = (⟨ξ⟩⟨η⟩)^{-1/2} [[-b_r c_ρ, -b_r b_ρ], [c_r c_ρ, c_r b_ρ]](t)` with `r = |ξ|`,
 `ρ = |η|`, and `c_r, b_r` the functions of `L:masked-continuous-wave`
 (`MaskedContinuousWave.cFn`, `bFn`; `b_0(t) = t`). Indices `0, 1` are the TeX's `1, 2`
@@ -144,8 +144,8 @@ def kernelEntry {d : ℕ} (i j : Fin 2) (ξ η : Rd d) (t : ℝ) : ℝ :=
   rowSign i * ((rowWave i).eval ‖ξ‖ t * (colWave j).eval ‖η‖ t) /
     Real.sqrt (bracket ‖ξ‖ * bracket ‖η‖)
 
-/-- The masked kernel `t ↦ 1_I(t) 𝒦_ij(t; ξ, η)` with `I = [s, s+h]` (TeX lines 187-188,
-243, 391), as a complex function. -/
+/-- The masked kernel `t ↦ 1_I(t) 𝒦_ij(t; ξ, η)` with `I = [s, s+h]` (TeX lines 221-222,
+278, 482), as a complex function. -/
 def maskedKernel {d : ℕ} (s h : ℝ) (i j : Fin 2) (ξ η : Rd d) : ℝ → ℂ :=
   (Icc s (s + h)).indicator fun t => ((kernelEntry i j ξ η t : ℝ) : ℂ)
 
@@ -160,7 +160,7 @@ theorem sqrt_bracket_pos {d : ℕ} (ξ η : Rd d) : 0 < Real.sqrt (bracket ‖ξ
   Real.sqrt_pos.2 (mul_pos (FrequencyRow.bracket_pos _) (FrequencyRow.bracket_pos _))
 
 /-- Auxiliary (Lean proof route): `((ξ, η), t) ↦ 𝒦_ij(t; ξ, η)` is jointly continuous
-(TeX lines 404-408: the kernels are continuous in their frequency variables). -/
+(TeX lines 497-501: the kernels are continuous in their frequency variables). -/
 theorem continuous_kernelEntry {d : ℕ} (i j : Fin 2) :
     Continuous fun x : (Rd d × Rd d) × ℝ => kernelEntry i j x.1.1 x.1.2 x.2 := by
   unfold kernelEntry
@@ -233,8 +233,8 @@ theorem continuous_toLp_indicator {d : ℕ}
 
 
 /-- The element `1_I 𝒦_ij(·; ξ, η)` of the temporal completion `H_a = TimeCompletion.Ha p`
-(the TeX's `H_a^ℂ`, TeX lines 243, 391), defined as the image of its `L²(0,T)` class
-under the continuous inclusion `TimeCompletion.extL2` (TeX lines 148-149). -/
+(the TeX's `H_a^ℂ`, TeX lines 278, 482), defined as the image of its `L²(0,T)` class
+under the continuous inclusion `TimeCompletion.extL2` (TeX lines 179-180). -/
 def kerH (p : TimeParams) {d : ℕ} (s h : ℝ) (i j : Fin 2) (ξ η : Rd d) : Ha p :=
   extL2 p (kernelLp p.T s h i j ξ η)
 
@@ -249,9 +249,9 @@ theorem continuous_kernelLp {d : ℕ} (T s h : ℝ) (i j : Fin 2) :
     (fun x => memLp_maskedKernel T s h i j x.1 x.2)
 
 /-- The kernels are continuous into `H_a` in their frequency variables (TeX lines
-407-408: "continuous into `L²(0,T)` in their frequency variables, hence into
+500-501: "continuous into `L²(0,T)` in their frequency variables, hence into
 `H_a^ℂ` by Schur"). Hence `(ξ, η) ↦ 1_I 𝒦_ij(·; ξ, η)` is strongly measurable; this is
-how the "separability gives strong measurability" step (line 408) is carried out
+how the "separability gives strong measurability" step (line 501) is carried out
 here (continuity on a second countable space, no separability argument). -/
 theorem continuous_kerH (p : TimeParams) {d : ℕ} (s h : ℝ) (i j : Fin 2) :
     Continuous fun x : Rd d × Rd d => kerH p s h i j x.1 x.2 :=
@@ -288,7 +288,7 @@ theorem kerH_eq_smul_emb (p : TimeParams) {d : ℕ} (s h : ℝ) (i j : Fin 2) (�
   simp_rw [maskedKernel_eq] at *
   rw [e, map_smul, extL2_toLp]
 
-/-- `E:variance-kernel-time-bound` (TeX lines 386-393): for `I = [s, s+h] ⊆ [0,T]`,
+/-- `E:variance-kernel-time-bound` (TeX lines 477-484): for `I = [s, s+h] ⊆ [0,T]`,
 `0 < h ≤ 1`, `‖1_I 𝒦_ij(·; ξ, η)‖²_{H_a} ≤ A_T h^{2-a} Φ_h(ξ, η)` with
 `A_T = C₁(a)(1+T)⁴` and `Φ_h = FrequencyRow.rowKernel`, from
 `MaskedContinuousWaveCompleted.masked_continuous_wave_completed_paper` divided by
@@ -317,7 +317,7 @@ theorem norm_kerH_sq_le (p : TimeParams) {d : ℕ} {s h : ℝ} (hh0 : 0 < h) (hh
         gcongr
     _ = _ := by ring
 
-/-- The four entries of `E:variance-normalized-kernel` (TeX lines 233-237), written out:
+/-- The four entries of `E:variance-normalized-kernel` (TeX lines 268-272), written out:
 `𝒦_11 = -b_r c_ρ/√(⟨ξ⟩⟨η⟩)`, `𝒦_12 = -b_r b_ρ/√·`, `𝒦_21 = c_r c_ρ/√·`, `𝒦_22 = c_r b_ρ/√·`
 (Lean indices `0, 1`). -/
 theorem kernelEntry_matrix {d : ℕ} (ξ η : Rd d) (t : ℝ) :
@@ -328,7 +328,7 @@ theorem kernelEntry_matrix {d : ℕ} (ξ η : Rd d) (t : ℝ) :
   simp [kernelEntry, rowSign, rowWave, colWave, Wave.eval]
 
 /-- Auxiliary (Lean proof route): Cauchy-Schwarz over two components,
-`‖c₀x₀ + c₁x₁‖² ≤ 2 (|c₀|²‖x₀‖² + |c₁|²‖x₁‖²)` (TeX lines 420-425). -/
+`‖c₀x₀ + c₁x₁‖² ≤ 2 (|c₀|²‖x₀‖² + |c₁|²‖x₁‖²)` (TeX lines 516-521). -/
 theorem norm_sq_two_le {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]
     (c : Fin 2 → ℂ) (x : Fin 2 → H) :
     ‖∑ i, c i • x i‖ ^ 2 ≤ 2 * ∑ i, ‖c i‖ ^ 2 * ‖x i‖ ^ 2 := by
@@ -339,7 +339,7 @@ theorem norm_sq_two_le {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ
   have := pow_le_pow_left₀ h0 h 2
   nlinarith [sq_nonneg (‖c 0‖ * ‖x 0‖ - ‖c 1‖ * ‖x 1‖)]
 
-/-- The pointwise step of TeX lines 420-428 in abstract form: if `‖k_ij‖² ≤ M` for all
+/-- The pointwise step of TeX lines 516-524 in abstract form: if `‖k_ij‖² ≤ M` for all
 `i, j ∈ {0,1}`, then `∑_j ‖∑_i c_i k_ij‖² ≤ 4 M ∑_i |c_i|²` (two-component Cauchy-Schwarz,
 then the sum over the two values of `j`). -/
 theorem sum_norm_sq_le {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H]
@@ -358,7 +358,7 @@ theorem sum_norm_sq_le {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ
     _ = _ := by simp [Fin.sum_univ_two]; ring
 
 /-- Auxiliary (Lean proof route): `Φ_h ≤ 2` for `a < 1` (used only for boundedness of the
-kernels, TeX lines 405-410). -/
+kernels, TeX lines 498-503). -/
 theorem rowKernel_le_two {d : ℕ} {a : ℝ} (ha : a < 1) (h : ℝ) (ξ η : Rd d) :
     rowKernel a h ξ η ≤ 2 := by
   unfold rowKernel
@@ -368,14 +368,14 @@ theorem rowKernel_le_two {d : ℕ} {a : ℝ} (ha : a < 1) (h : ℝ) (ξ η : Rd 
   have := FrequencyRow.frequencyPair_le_two ha h ‖ξ‖ ‖η‖
   nlinarith
 
-/-- Symmetry of `Φ_h` (used at TeX line 448: "then use symmetry of `Φ_h`"). -/
+/-- Symmetry of `Φ_h` (used at TeX line 548: "then use symmetry of `Φ_h`"). -/
 theorem rowKernel_symm {d : ℕ} (a h : ℝ) (ξ η : Rd d) : rowKernel a h ξ η = rowKernel a h η ξ := by
   unfold rowKernel frequencyPair
   rw [show h * (‖ξ‖ - ‖η‖) = -(h * (‖η‖ - ‖ξ‖)) by ring, MaskedTrigProducts.bracket_neg]
   ring_nf
 
 
-/-- `A_T = C₁(a)(1+T)⁴` (TeX line 393), with `a = p.a`, `T = p.T`. -/
+/-- `A_T = C₁(a)(1+T)⁴` (TeX line 484), with `a = p.a`, `T = p.T`. -/
 def AT (p : TimeParams) : ℝ := C₁ p.a * (1 + p.T) ^ 4
 
 /-- Auxiliary (Lean proof route): `A_T ≥ 0`. -/
@@ -386,14 +386,14 @@ theorem AT_nonneg (p : TimeParams) : 0 ≤ AT p := by
   positivity
 
 /-- The `H_a`-valued spatial integral inside `E:variance-normalized-covariance` (TeX lines
-240-246): `∫ ∑_{i,j} 1_I 𝒦_ij(·; η+λ, η) U_j(η) conj(V_i(η+λ)) dη` with `I = [s, s+h]`,
+275-281): `∫ ∑_{i,j} 1_I 𝒦_ij(·; η+λ, η) U_j(η) conj(V_i(η+λ)) dη` with `I = [s, s+h]`,
 a Bochner integral in `H_a` (its integrand's integrability is part of the conclusions
 that use it). -/
 def coef (p : TimeParams) {d : ℕ} (s h : ℝ) (U V : Fin 2 → Rd d → ℂ) (l : Rd d) : Ha p :=
   ∫ η, ∑ i, ∑ j, (U j η * conj (V i (η + l))) • kerH p s h i j (η + l) η
 
 /-- Auxiliary (Lean proof route): along any continuous `η ↦ (ξ(η), η'(η))`, the kernel is
-strongly measurable and essentially bounded (TeX lines 404-410). -/
+strongly measurable and essentially bounded (TeX lines 497-503). -/
 theorem memLp_top_kerH (p : TimeParams) {d : ℕ} {s h : ℝ} (hh0 : 0 < h) (hh1 : h ≤ 1)
     (hs : 0 ≤ s) (hsT : s + h ≤ p.T) (i j : Fin 2) (f : Rd d → Rd d × Rd d) (hf : Continuous f) :
     MemLp (fun η => kerH p s h i j (f η).1 (f η).2) ∞ volume := by
@@ -408,7 +408,7 @@ theorem memLp_top_kerH (p : TimeParams) {d : ℕ} {s h : ℝ} (hh0 : 0 < h) (hh1
   unfold AT at *
   gcongr
 
-/-- The input direction at fixed `λ` (TeX lines 413-432, before the `λ` integral):
+/-- The input direction at fixed `λ` (TeX lines 509-530, before the `λ` integral):
 for a finite `L²(ℝ^d; ℂ²)`-orthonormal family `U_k` and `V ∈ L²`, the integrands are
 Bochner integrable and
 `∑_k ‖∫ ∑_{ij} 1_I 𝒦_ij(·;η+λ,η) U_kj(η) conj V_i(η+λ) dη‖² ≤
@@ -468,7 +468,7 @@ theorem input_fixed (p : TimeParams) {d : ℕ} {s h : ℝ} (hh0 : 0 < h) (hh1 : 
             ∑ i, ‖V i ξ‖ ^ 2)) l
         simpa only [add_sub_cancel_right] using this
 
-/-- The output direction at fixed `λ` (TeX lines 434-446, before the `λ` integral): for
+/-- The output direction at fixed `λ` (TeX lines 534-546, before the `λ` integral): for
 `U ∈ L²` and a finite orthonormal family `V_k`, the integrands are Bochner integrable
 and `∑_k ‖∫ ∑_{ij} 1_I 𝒦_ij(·;η+λ,η) U_j(η) conj V_ki(η+λ) dη‖² ≤
  ∫ 4 A_T h^{2-a} Φ_h(η+λ, η) ∑_j |U_j(η)|² dη` (change of variables `η = ξ - λ`, the
@@ -540,7 +540,7 @@ theorem sum_lintegral_le {α ι : Type*} [MeasurableSpace α] {μ : Measure α} 
     simp_rw [Finset.sum_insert ha]
     exact (add_le_add le_rfl ih).trans (le_lintegral_add _ _)
 
-/-- Auxiliary (Lean proof route): the `λ`-integration of TeX lines 429-432 (and 446-451) in
+/-- Auxiliary (Lean proof route): the `λ`-integration of TeX lines 527-530 (and 546-551) in
 abstract form. If, for every `λ`, `∑_k ‖x_k(λ)‖² ≤ ∫ c Ψ(λ,ξ) S(ξ) dξ` (lower integral),
 `Ψ` is jointly continuous, `S ≥ 0` is a.e.-measurable, the row bound
 `∫ Ψ(λ,ξ) ν(dλ) ≤ R(ξ)` holds and `R S` is integrable, then
@@ -605,7 +605,7 @@ theorem continuous_rowKernel₂ {d : ℕ} (a h : ℝ) :
 
 /-- For `γ ≥ 0` and `V ∈ L²(ℝ^d; ℂ²)`, `ξ ↦ ⟨ξ⟩^{-2γ} ∑_i |V_i(ξ)|²` is integrable; its
 integral is `‖⟨ξ⟩^{-γ} V‖₂²`, the right side of `E:wave-input-variance` after
-`‖z‖_{E_{s-γ}} = ‖⟨ξ⟩^{-γ} J z‖₂` (TeX line 431). -/
+`‖z‖_{E_{s-γ}} = ‖⟨ξ⟩^{-γ} J z‖₂` (TeX line 529). -/
 theorem integrable_weight {d : ℕ} {γ : ℝ} (hγ0 : 0 ≤ γ) (V : Fin 2 → Rd d → ℂ)
     (hV : ∀ i, MemLp (V i) 2 volume) :
     Integrable (fun ξ : Rd d => bracket ‖ξ‖ ^ (-(2 * γ)) * ∑ i, ‖V i ξ‖ ^ 2) := by
@@ -624,7 +624,7 @@ finite `L²(ℝ^d; ℂ²)`-orthonormal family `U_k` (standing for `J e_k`) and e
 in `H_a`, `⟨ξ⟩^{-2γ} ∑|V_i|²` is integrable, and
 `∑_k ∫ ‖∫ ∑_{ij} 1_I 𝒦_ij(·;η+λ,η) U_kj(η) conj V_i(η+λ) dη‖²_{H_a} ν(dλ)
  ≤ M ‖⟨ξ⟩^{-γ} V‖₂²` (the `λ` integral is the lower integral of a nonnegative
-function, TeX lines 410-411). -/
+function, TeX lines 503-504). -/
 def InputBound (p : TimeParams) {d : ℕ} (s h : ℝ) (ν : Measure (Rd d)) (γ M : ℝ) : Prop :=
   ∀ (n : ℕ) (U : Fin n → Fin 2 → Rd d → ℂ), PhaseBessel.IsOrthonormalL2 volume U →
     ∀ V : Fin 2 → Rd d → ℂ, (∀ i, MemLp (V i) 2 volume) →
@@ -647,14 +647,14 @@ def OutputBound (p : TimeParams) {d : ℕ} (s h : ℝ) (ν : Measure (Rd d)) (γ
       ∑ k, ∫⁻ l, ‖coef p s h U (V k) l‖ₑ ^ 2 ∂ν ≤
         ENNReal.ofReal (M * ∫ ξ, bracket ‖ξ‖ ^ (-(2 * γ)) * ∑ j, ‖U j ξ‖ ^ 2)
 
-/-- **The spectral core of `P:wave-two-variances`, no input** (TeX lines 385-451). For
+/-- **The spectral core of `P:wave-two-variances`, no input** (TeX lines 469-551). For
 `a < 1`, `α + a < 2`, `0 ≤ γ`, `2γ ≤ 1`, `α + 2γ < 2` there is `K ≥ 0` (the constant of
 `P:frequency-row`, chosen before `T, d, ν, C, s, h`) such that for every `T > 0` (in
 `p`, with `p.a = a`), every measure `ν` on `ℝ^d` with `ν(B(y,r)) ≤ C r^α` (open balls,
 `C ≥ 0`), every `I = [s, s+h] ⊆ [0,T]` with `0 < h ≤ 1`: the input direction holds with
 `M = 4 A_T K C h^{2-a} B_α(h)`, and, if `ν` is even, so does the output direction.
 This is the TeX proof with `ν_R` replaced by any such `ν`; evenness is used only for the
-output direction (line 447). -/
+output direction (line 547). -/
 theorem wave_two_variances {α a γ : ℝ} (ha : a < 1) (hαa : α + a < 2) (hγ0 : 0 ≤ γ)
     (hγ : 2 * γ ≤ 1) (hαγ : α + 2 * γ < 2) :
     ∃ K : ℝ, 0 ≤ K ∧ ∀ p : TimeParams, p.a = a → ∀ (d : ℕ) (ν : Measure (Rd d)) (C : ℝ),
@@ -760,7 +760,7 @@ theorem OutputBound.mono {p : TimeParams} {d : ℕ} {s h : ℝ} {ν : Measure (R
       (Finset.sum_nonneg fun i _ => sq_nonneg _)
   exact mul_le_mul_of_nonneg_right hM this
 
-/-- The `h^{2β}` form of the spectral core (TeX lines 381-382, 453-455): if moreover
+/-- The `h^{2β}` form of the spectral core (TeX lines 465-466, 556-558): if moreover
 `2β < 2 - a` and `2β < 3 - a - α`, there is `K_β ≥ 0` (chosen before `T, d, ν, C, s, h`)
 with both directions holding for `M = 4 A_T K_β C h^{2β}`. Proof: the time-scale step
 `FrequencyRow.scale_time_le` of `C:frequency-time` (`h^{2-a} B_α(h) ≤ c h^{2β}`) applied to
@@ -788,7 +788,7 @@ theorem wave_two_variances_beta {α a γ β : ℝ} (ha : a < 1) (hαa : α + a <
       _ = _ := by ring
   exact ⟨hin.mono hM, fun hev => (hout hev).mono hM⟩
 
-/-- `C_ν = c_d² L_ζ² C_Γ` of `E:variance-actual-growth-constant` (TeX lines 205-208), with
+/-- `C_ν = c_d² L_ζ² C_Γ` of `E:variance-actual-growth-constant` (TeX lines 239-242), with
 `L_ζ = MaskedAuxiliaryNorm.Lz ζ = ‖ζ̂‖₁` and `C_Γ = MaskedSpectralGrowth.CGamma Γ`. -/
 def Cnu {d : ℕ} (Γ : Measure (Rd d)) (ζ : SchwartzMap (Rd d) ℝ) : ℝ :=
   MaskedAuxiliaryNorm.cd d ^ 2 * MaskedAuxiliaryNorm.Lz ζ ^ 2 * MaskedSpectralGrowth.CGamma Γ
@@ -800,7 +800,7 @@ theorem Cnu_nonneg {d : ℕ} (Γ : Measure (Rd d)) (ζ : SchwartzMap (Rd d) ℝ)
   positivity
 
 /-- Under `H:homog`, `ν_R(B(y,r)) ≤ C_ν r^α` for every real Schwartz `ζ`, `R > 0`, `y`,
-`r > 0` (TeX lines 209-210, from `P:masked-auxiliary-norm`; no `Γ ≠ 0` and no
+`r > 0` (TeX lines 243-244, from `P:masked-auxiliary-norm`; no `Γ ≠ 0` and no
 `ζ ≠ 0` needed). -/
 theorem nu_growth {d : ℕ} {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (hH : HomogHypothesis.HomogCovariance d alpha alpha0 Γ μ) (ζ : SchwartzMap (Rd d) ℝ)
@@ -812,11 +812,11 @@ theorem nu_growth {d : ℕ} {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
 /-- **The spectral core of `P:wave-two-variances` for the manuscript's `ν_R`**, with the
 section's hypotheses: `H:homog` with `a = α₀` (`p.a = alpha0`), `T > 0` (in `p`),
 `0 < γ < min(1/2, (2-α)/2)` (`E:variance-gamma-range`), and the mask `ζ` of TeX lines
-186-187 (real, even, nonnegative Schwartz, `ζ = 1` on `B_1`, `ζ = 0` off `B_2`; smooth
+220-221 (real, even, nonnegative Schwartz, `ζ = 1` on `B_1`, `ζ = 0` off `B_2`; smooth
 with compact support). There is `K ≥ 0` (depending only on `α, α₀, γ`) such that for
 every `R > 0` and `I = [t₀, t₀+h] ⊆ [0,T]`, `0 < h ≤ 1`, both directions hold for
 `ν = ν_R` (`MaskedAuxiliaryNorm.nu μ ζ R`) with `M = C_T h^{2-a} B_α(h)`,
-`C_T = 4 A_T K C_ν` (TeX line 432). `Γ = 0` is allowed (then `ν_R = 0`).
+`C_T = 4 A_T K C_ν` (TeX line 530). `Γ = 0` is allowed (then `ν_R = 0`).
 The hypotheses `_hζe`, `_hζ0`, `_hζ1`, `_hζ2` are carried for fidelity and unused (the
 growth and evenness of `ν_R` hold for every real Schwartz `ζ`). -/
 theorem wave_two_variances_core_paper {d : ℕ} {alpha alpha0 γ : ℝ} {Γ μ : Measure (Rd d)}
@@ -871,7 +871,7 @@ theorem sum_le_of_ofReal {n : ℕ} (x : Fin n → ℝ) {A : ℝ} (hA : 0 ≤ A)
     _ = A := ENNReal.toReal_ofReal hA
 
 /-- Auxiliary (Lean proof route): an inner-product-preserving `J` maps an orthonormal family
-of `P` to an `L²(ℝ^d; ℂ²)`-orthonormal family (TeX line 413: `U_k = J e_k`). -/
+of `P` to an `L²(ℝ^d; ℂ²)`-orthonormal family (TeX line 509: `U_k = J e_k`). -/
 theorem orthonormal_J {d : ℕ} {P : Type*} [NormedAddCommGroup P] [InnerProductSpace ℂ P]
     (J : P → Fin 2 → Rd d → ℂ) (hJL2 : ∀ z i, MemLp (J z i) 2 volume)
     (hJ : ∀ z w, ∫ η, ∑ j, J z j η * conj (J w j η) = inner ℂ w z)
@@ -883,15 +883,15 @@ theorem orthonormal_J {d : ℕ} {P : Type*} [NormedAddCommGroup P] [InnerProduct
   · subst hkl; simp
   · simp [hkl, Ne.symm hkl]
 
-/-- **`P:wave-two-variances`** (TeX lines 368-383) with the manuscript's hypotheses and two
+/-- **`P:wave-two-variances`** (TeX lines 452-467) with the manuscript's hypotheses and two
 named inputs; NARROWER than the TeX (see the module doc). Hypotheses: those of
 `wave_two_variances_core_paper`; `P` a complex inner product space standing for the
 Schwartz phases with the complexified `E` inner product; and:
-* `J`, `hJL2`, `hJ` (D8, TeX lines 171-176): `J : P → L²(ℝ^d; ℂ²)` preserves inner
+* `J`, `hJL2`, `hJ` (D8, TeX lines 205-210): `J : P → L²(ℝ^d; ℂ²)` preserves inner
   products, `∫ ∑_j (Jz)_j conj (Jw)_j = ⟨z, w⟩_E` (Mathlib's `inner ℂ w z`, which is linear
   in `z`);
-* `normSG`, `hnormSG` (D8, TeX line 431): `‖z‖²_{E_{s-γ}} = ∫ ⟨ξ⟩^{-2γ} ∑|(Jz)_i|²`;
-* `var`, `hlink` (`E:variance-normalized-covariance`, TeX lines 240-246, from
+* `normSG`, `hnormSG` (D8, TeX line 529): `‖z‖²_{E_{s-γ}} = ∫ ⟨ξ⟩^{-2γ} ∑|(Jz)_i|²`;
+* `var`, `hlink` (`E:variance-normalized-covariance`, TeX lines 275-281, from
   `P:actual-wave-form`, which needs D1): `var R t₀ h z w` stands for
   `E|ℓ_R([t₀,t₀+h]; z, w)|²` and is bounded by the lower integral
   `∫ ‖coef (Jz) (Jw) λ‖² ν_R(dλ)`.

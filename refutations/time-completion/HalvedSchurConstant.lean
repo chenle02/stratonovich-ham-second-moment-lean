@@ -1,6 +1,6 @@
 /-
 Refutation for `E:masked-time-schur` (`notes/integrated_covariance_foundation.tex`
-lines 150-152 at a284420), package theorem
+lines 197-200 at 39f2597a), package theorem
 `StratonovichHAMSecondMoment.TimeCompletion.emb_norm_sq_le`.
 
 Wrong variant: the Schur constant `2T^{1-a}/(1-a)` halved to `T^{1-a}/(1-a)`, i.e.

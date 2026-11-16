@@ -31,7 +31,7 @@ computed by a Tonelli swap from the Euler-type identity
 `∫_0^t (t-u)^{-2r} u^{r-1}(1-u)^{r-1} du = Beta(r,1-2r) [t(1-t)]^{-r}`
 (Möbius substitution `u = t v / (1 - t + t v)`), which gives
 `Beta(r,1-2r) L(s) = Beta(1-2r,2r) B_s(r,r)`, the same incomplete-Beta
-formula as the TeX display after line 71.  The right part and the endpoints
+formula as the TeX display after line 84.  The right part and the endpoints
 follow by reflection `t ↦ 1-t` and splitting at `s` (no limiting argument).
 -/
 public import Mathlib
@@ -275,7 +275,7 @@ theorem lintegral_mobius {r t : ℝ} (hr0 : 0 < r) (hr1 : r < 1 / 2) (ht : t ∈
   rw [mobius_pointwise ⟨t0, t1⟩ hv]; ring
 
 
-/-- Left part of the potential (manuscript lines 61--75, via a Tonelli swap). -/
+/-- Left part of the potential (manuscript lines 74--88, via a Tonelli swap). -/
 theorem lintegral_left {r s : ℝ} (hr0 : 0 < r) (hr1 : r < 1 / 2) (hs : s ∈ Icc (0:ℝ) 1) :
     ENNReal.ofReal (Beta r (1 - 2 * r)) *
         ∫⁻ t in Ioo 0 s, ENNReal.ofReal ((s - t) ^ (2 * r - 1) * (t * (1 - t)) ^ (-r))
@@ -420,13 +420,13 @@ theorem Beta_eq_betaIntegral (x y : ℝ) : Complex.betaIntegral x y = (Beta x y 
   rw [uIcc_of_le zero_le_one] at ht
   exact cplx_kernel_eq x y t ht
 
-/-! ### Lemma `L:equilibrium-gamma-beta` (TeX lines 13--22) -/
+/-! ### Lemma `L:equilibrium-gamma-beta` (TeX lines 14--23) -/
 
-/-- TeX line 16: `Γ_E(x+1) = x Γ_E(x)` for `x > 0`. -/
+/-- TeX line 17: `Γ_E(x+1) = x Γ_E(x)` for `x > 0`. -/
 theorem gamma_beta_recurrence {x : ℝ} (hx : 0 < x) : Gamma (x + 1) = x * Gamma x :=
   Gamma_add_one hx.ne'
 
-/-- TeX lines 17--18: `Beta(x,y) = Γ_E(x)Γ_E(y)/Γ_E(x+y)` for `x, y > 0`. -/
+/-- TeX lines 18--19: `Beta(x,y) = Γ_E(x)Γ_E(y)/Γ_E(x+y)` for `x, y > 0`. -/
 theorem gamma_beta_beta_gamma {x y : ℝ} (hx : 0 < x) (hy : 0 < y) :
     Beta x y = Gamma x * Gamma y / Gamma (x + y) :=
   Beta_eq_Gamma hx hy
@@ -442,14 +442,14 @@ theorem gamma_beta_duplication_general (x : ℝ) :
   rw [eq_div_iff hpi.ne']
   linear_combination (-(Gamma (2 * x) * √π)) * h2 - (2:ℝ) ^ (2 * x - 1) * h
 
-/-- TeX lines 19--20 (duplication): `Γ_E(2x) = 2^{2x-1} Γ_E(x) Γ_E(x+1/2)/√π`
+/-- TeX lines 20--21 (duplication): `Γ_E(2x) = 2^{2x-1} Γ_E(x) Γ_E(x+1/2)/√π`
 for `x > 0` (the manuscript's hypothesis; the general version above shows it
 is not needed). -/
 theorem gamma_beta_duplication {x : ℝ} (_hx : 0 < x) :
     Gamma (2 * x) = 2 ^ (2 * x - 1) * Gamma x * Gamma (x + 1 / 2) / √π :=
   gamma_beta_duplication_general x
 
-/-- Proof step (TeX lines 28--29): `Beta(x,x) = 2^{1-2x} Beta(1/2,x)`, and
+/-- Proof step (TeX lines 29--30): `Beta(x,x) = 2^{1-2x} Beta(1/2,x)`, and
 `Γ_E(1/2) = √π`. -/
 theorem gamma_beta_proof_steps {x : ℝ} (hx : 0 < x) :
     Beta x x = 2 ^ (1 - 2 * x) * Beta (1 / 2) x ∧ Gamma (1 / 2) = √π := by
@@ -473,14 +473,14 @@ theorem gamma_beta_paper {x y : ℝ} (hx : 0 < x) (hy : 0 < y) :
       Gamma (2 * x) = 2 ^ (2 * x - 1) * Gamma x * Gamma (x + 1 / 2) / √π :=
   ⟨gamma_beta_recurrence hx, gamma_beta_beta_gamma hx hy, gamma_beta_duplication hx⟩
 
-/-! ### Lemma `L:temporal-equilibrium` (TeX lines 37--51) -/
+/-! ### Lemma `L:temporal-equilibrium` (TeX lines 39--53) -/
 
 /-- The density `f_a(t) = [t(1-t)]^{-r}/(Γ_E(r)Γ_E(1-r))`, `r = (1-a)/2`
-(TeX line 40, `E:temporal-equilibrium-density`). -/
+(TeX line 42, `E:temporal-equilibrium-density`). -/
 def density (a t : ℝ) : ℝ :=
   (t * (1 - t)) ^ (-((1 - a) / 2)) / (Gamma ((1 - a) / 2) * Gamma (1 - (1 - a) / 2))
 
-/-- The mass `M_a = ∫_0^1 f_a(t) dt` (TeX line 46). -/
+/-- The mass `M_a = ∫_0^1 f_a(t) dt` (TeX line 48). -/
 def mass (a : ℝ) : ℝ := ∫ t in Ioo (0:ℝ) 1, density a t
 
 lemma normalizer_pos {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
@@ -490,7 +490,7 @@ lemma normalizer_pos {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
 lemma measurable_density (a : ℝ) : Measurable (density a) := by
   unfold density; fun_prop
 
-/-- Positivity (TeX line 42): `f_a(t) > 0` for `0 < t < 1`. -/
+/-- Positivity (TeX line 44): `f_a(t) > 0` for `0 < t < 1`. -/
 theorem density_pos {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
     ∀ t ∈ Ioo (0:ℝ) 1, 0 < density a t := by
   intro t ht
@@ -503,7 +503,7 @@ lemma rpow_prod_eq_betaKernel {t p : ℝ} (ht : t ∈ Ioo (0:ℝ) 1) :
   rw [mul_rpow ht.1.le (by linarith [ht.2])]
   congr 2 <;> ring
 
-/-- `f_a ∈ L^1(0,1)` (TeX line 42), as integrability on `(0,1)`. -/
+/-- `f_a ∈ L^1(0,1)` (TeX line 44), as integrability on `(0,1)`. -/
 theorem density_integrableOn {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
     IntegrableOn (density a) (Ioo 0 1) := by
   have h : IntegrableOn (fun t => betaKernel (1 - (1 - a) / 2) (1 - (1 - a) / 2) t /
@@ -519,8 +519,8 @@ theorem density_memLp_one {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
     MemLp (density a) 1 (volume.restrict (Ioo 0 1)) :=
   memLp_one_iff_integrable.mpr (density_integrableOn ha0 ha1)
 
-/-- `f_a ∈ L^2(0,1)` (TeX line 42): `f_a²` is integrable on `(0,1)`.  Only
-`a > 0` is used (`-2r = a - 1 > -1`, TeX line 85); `a < 1` is the lemma's
+/-- `f_a ∈ L^2(0,1)` (TeX line 44): `f_a²` is integrable on `(0,1)`.  Only
+`a > 0` is used (`-2r = a - 1 > -1`, TeX line 105); `a < 1` is the lemma's
 standing hypothesis and is kept for fidelity. -/
 theorem density_sq_integrableOn {a : ℝ} (ha0 : 0 < a) (_ha1 : a < 1) :
     IntegrableOn (fun t => density a t ^ 2) (Ioo 0 1) := by
@@ -554,7 +554,7 @@ lemma integrableOn_and_integral_of_lintegral {f : ℝ → ℝ} {S : Set ℝ} (hS
   · rw [integral_eq_lintegral_of_nonneg_ae hae hf.aestronglyMeasurable, h,
       ENNReal.toReal_ofReal hc]
 
-/-- The potential identity (TeX lines 44--45,
+/-- The potential identity (TeX lines 46--47,
 `E:temporal-equilibrium-potential`): for `0 < a < 1` and every `s ∈ [0,1]`
 (endpoints included), the integrand is integrable on `(0,1)` and
 `∫_0^1 |s-t|^{-a} f_a(t) dt = 1`. -/
@@ -587,7 +587,7 @@ theorem potential_eq_one {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
     lintegral_mul_const' _ _ ENNReal.ofReal_ne_top, hP, ← ENNReal.ofReal_mul (by
       rw [hr]; exact hC.le), mul_inv_cancel₀ (by rw [hr]; exact hC.ne')]
 
-/-- The mass (TeX lines 46--48, `E:temporal-equilibrium-mass`): `f_a` is
+/-- The mass (TeX lines 48--50, `E:temporal-equilibrium-mass`): `f_a` is
 integrable on `(0,1)` and
 `M_a = Γ_E((1+a)/2) / (Γ_E(1+a) Γ_E((1-a)/2))`. -/
 theorem mass_eq {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
@@ -611,7 +611,7 @@ theorem mass_eq {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
   have := Gamma_pos_of_pos (by linarith : (0:ℝ) < 1 + a)
   field_simp
 
-/-- `M_a > 0` (TeX line 48). -/
+/-- `M_a > 0` (TeX line 50). -/
 theorem mass_pos {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) : 0 < mass a := by
   rw [(mass_eq ha0 ha1).2]
   have := Gamma_pos_of_pos (by linarith : (0:ℝ) < (1 + a) / 2)

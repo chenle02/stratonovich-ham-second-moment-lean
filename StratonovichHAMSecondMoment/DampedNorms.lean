@@ -3,9 +3,9 @@ module
 /-
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
-The damped norms `N₁, N₂` of `E:damped-norm-definitions` (line 782) and the
-finiteness part of `L:damped-homogeneous-norms` (lines 803-919) of the main
-TeX file `notes/notes_stratonovich_ham_second_moment.tex` (revision a284420).
+The damped norms `N₁, N₂` of `E:damped-norm-definitions` (line 988) and the
+finiteness part of `L:damped-homogeneous-norms` (lines 1010-1154) of the main
+TeX file `notes/notes_stratonovich_ham_second_moment.tex` (revision 39f2597a).
 
 Definitions:
 * `N2sq a θ μ` is `N₂(θ)²` with temporal exponent `a`:
@@ -71,12 +71,12 @@ def N2integrand (a θ : ℝ) (z : (ℝ × ℝ) × Rd d) : ℝ :=
   Real.exp (-(θ * (z.1.1 + z.1.2))) * |z.1.1 - z.1.2| ^ (-a) *
     (waveHat z.1.1 z.2 * waveHat z.1.2 z.2)
 
-/-- `N₂(θ)²` of `E:damped-norm-definitions` (lines 788-791), temporal exponent `a`. -/
+/-- `N₂(θ)²` of `E:damped-norm-definitions` (lines 994-997), temporal exponent `a`. -/
 def N2sq (a θ : ℝ) (μ : Measure (Rd d)) : ℝ :=
   ∫ p, Real.exp (-(θ * (p.1 + p.2))) * |p.1 - p.2| ^ (-a) *
     ∫ ξ, waveHat p.1 ξ * waveHat p.2 ξ ∂μ ∂P2
 
-/-- `N₁(θ)` of `E:damped-norm-definitions` (lines 785-787), temporal exponent `a`. -/
+/-- `N₁(θ)` of `E:damped-norm-definitions` (lines 991-993), temporal exponent `a`. -/
 def N1 (a θ : ℝ) (μ : Measure (Rd d)) : ℝ :=
   (Real.Gamma a)⁻¹ * ∫ l in Ioi (0 : ℝ), l ^ (a - 1) * resolvent μ (θ + l)
 
@@ -351,7 +351,7 @@ theorem N1_integrable {alpha : ℝ} (μ : Measure (Rd d)) (hI : SpectralHomogene
     nlinarith [mul_le_mul_of_nonneg_left hq (mul_nonneg hp hR1),
       mul_nonneg (mul_nonneg hR1 hθp) (mul_nonneg hp hlp)]
 
-/-- Finiteness part of `L:damped-homogeneous-norms` (lines 803-919) with the
+/-- Finiteness part of `L:damped-homogeneous-norms` (lines 1010-1154) with the
 manuscript's hypothesis `H:homog` (temporal exponent `a = α₀`) and the supplied
 spectral homogeneity: for every `θ > 0` the spectral formula for `N₂(θ)²` is
 absolutely integrable on `(0,∞)² × ℝ^d`, its outer integrand is integrable on

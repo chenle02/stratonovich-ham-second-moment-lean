@@ -1,10 +1,10 @@
 /-
 Refutation for the finite Gaussian comparison of `P:masked-noise-completion`
-(`notes/integrated_covariance_foundation.tex` lines 201-205 and 239-246 at
-a284420), package theorem
+(`notes/integrated_covariance_foundation.tex` lines 262-266 and 320-327 at
+39f2597a), package theorem
 `StratonovichHAMSecondMoment.GaussianComparison.gaussian_seminorm_moment_le`.
 
-Wrong variant: the positive semidefinite order `A ≤ B` (TeX lines 240-241)
+Wrong variant: the positive semidefinite order `A ≤ B` (TeX lines 321-322)
 weakened to the trace order `tr A ≤ tr B` (with `A`, `B` positive
 semidefinite).
 Counterexample: `ι = Fin 2`, `A = diag(1,0)`, `B = diag(0,2)`, `N(x) = |x₀|`,

@@ -5,18 +5,18 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Wave item L8-c2: the deterministic discharge of the named input `VariationalRate.S1Bdd`
 (the boundedness claim of `P:variational-positive-scores`,
-`notes/integrated_unmasked_variational.tex` lines 272-274 at revision a284420) and the
+`notes/integrated_unmasked_variational.tex` lines 372-374 at revision 39f2597a) and the
 occupation ceiling of `T:intrinsic-occupation-ceiling` (`notes/integrated_occupation_ceiling.tex`
-lines 205-220, proof 222-250) with the constant `K_0 R_sp` in the place of `C_occ`
-(`P:raw-occupation-energy`, line 96: `C_occ ≤ K_0 R_sp`, `K_0 = 2^a/(1-a)`), over one named
+lines 249-264, proof 266-316) with the constant `K_0 R_sp` in the place of `C_occ`
+(`P:raw-occupation-energy`, line 115: `C_occ ≤ K_0 R_sp`, `K_0 = 2^a/(1-a)`), over one named
 input `SpaceTimeCS` (step (c), proved by wave item L8-c1).  Standing assumptions (occupation file
 lines 4-21; unmasked file line 4): a nonzero covariance satisfying `H:homog`
 (`HomogHypothesis.HomogCovariance`), `a = α₀`, `Γ ≠ 0` (the TeX assumes `Γ ≠ 0` at line 20).
 
 Route (not the TeX's; Le's decision 3 of wave L8): the TeX proves `S1Bdd` stochastically
-(unmasked file lines 309-325, through `T:full-upper`), and the ceiling through the countable
-measurable selection `L:occupation-rayleigh-selection` (occupation file lines 149-193), the map
-`Q` and `ρ_g ∈ H_I` of `L:occupation-raw-square` (lines 23-90) and the class `𝒪`.  Here:
+(unmasked file lines 430-446, through `T:full-upper`), and the ceiling through the countable
+measurable selection `L:occupation-rayleigh-selection` (occupation file lines 180-236), the map
+`Q` and `ρ_g ∈ H_I` of `L:occupation-raw-square` (lines 24-108) and the class `𝒪`.  Here:
 (a) `exists_unitTest_gt`: near-optimal real unit TEST functions for the Rayleigh supremum
     `λ_s² = sup R_{h_s}` of the bounded potential `h_s` (`H1Density.h1TestDense`);
 (b) `exists_near_field`: a finite partition of unity `χ_i` in time (finite subcover of `[0,1]`)
@@ -27,13 +27,13 @@ measurable selection `L:occupation-rayleigh-selection` (occupation file lines 14
     `F(Φ,Φ') = ∫_0^1∫_0^1 |s-t|^{-a} B_Γ(Φ_s,Φ'_t)` (`stForm`), Cauchy-Schwarz
     `F(Ψ,Φ)² ≤ F(Ψ,Ψ)F(Φ,Φ)`, `F(Ψ,Ψ) = v_Ψ` and `∫∫ h_s Φ_s = F(Ψ,Φ)` for `Ψ ∈ C_pos` and
     nonnegative continuous compactly supported `Φ` (provenance: `L:positive-raw-embedding`,
-    `integrated_intrinsic_constant.tex` lines 22-39, and `E:occupation-raw-identities`,
-    occupation file lines 33-37);
+    `integrated_intrinsic_constant.tex` lines 23-40, and `E:occupation-raw-identities`,
+    occupation file lines 34-38);
 (d) `field_energy_le`: `F(G,G) ≤ K_0 R_0 T(G)^{α/2}` (smooth square bound with `R_0`, the sharp
-    Schur row `∫_0^1 |s-t|^{-a} dt ≤ K_0` of `integrated_intrinsic_constant.tex` lines 42-46,
+    Schur row `∫_0^1 |s-t|^{-a} dt ≤ K_0` of `integrated_intrinsic_constant.tex` lines 52-56,
     discrete and integral Jensen);
 (e) `integratedRate_sq_le`, `score_le_ceiling`: `I_Ψ² ≤ (q/4)(α/4)^{α/q}(v_Ψ K_0R_0)^{2/q}`
-    (TeX lines 224-234), then `c I_Ψ - v_Ψ/2 ≤ U_c` (lines 235-243), by weighted AM-GM.
+    (TeX lines 293-313), then `c I_Ψ - v_Ψ/2 ≤ U_c` (lines 314-326), by weighted AM-GM.
 
 Formalized (exact-hypothesis wrappers over `hH`, `hΓ0` and `SpaceTimeCS α₀ Γ`):
 * `occupation_ceiling_K0_paper`: `c I_Ψ - v_Ψ/2 ≤ U_c` with `C_occ := K_0 R_sp` for all `c > 0`,
@@ -95,7 +95,7 @@ variable {d : ℕ}
 /-! ### The constant `K_0` and the sharp Schur row -/
 
 /-- `K_0 = 2^a/(1-a)` (`E:positive-bochner-inclusion`, `integrated_intrinsic_constant.tex`
-line 29; `P:raw-occupation-energy`, `integrated_occupation_ceiling.tex` line 94). -/
+line 30; `P:raw-occupation-energy`, `integrated_occupation_ceiling.tex` line 113). -/
 def K0 (a : ℝ) : ℝ := 2 ^ a / (1 - a)
 
 /-- Auxiliary to the Lean proof route: `K_0 > 0` for `a < 1`. -/
@@ -119,7 +119,7 @@ theorem rpow_add_rpow_le {p s : ℝ} (hp0 : 0 ≤ p) (hp1 : p ≤ 1) (hs : s ∈
   rw [e2]
   linarith
 
-/-- The sharp row bound (`integrated_intrinsic_constant.tex` lines 42-46, in the proof of
+/-- The sharp row bound (`integrated_intrinsic_constant.tex` lines 52-56, in the proof of
 `L:positive-raw-embedding`): for `0 ≤ a < 1` and `s ∈ [0,1]`,
 `∫_0^1 |s-t|^{-a} dt = (s^{1-a} + (1-s)^{1-a})/(1-a) ≤ K_0`, in `[0,∞]`. -/
 theorem row_le {a s : ℝ} (ha0 : 0 ≤ a) (ha1 : a < 1) (hs : s ∈ Icc (0 : ℝ) 1) :
@@ -134,7 +134,7 @@ theorem row_le {a s : ℝ} (ha0 : 0 ≤ a) (ha1 : a < 1) (hs : s ∈ Icc (0 : �
   rwa [sub_sub_cancel] at this
 
 /-- The sharp Schur bound on `(0,1)²` in iterated `[0,∞]` form (TeX: `L:positive-raw-embedding`,
-lines 47-49, with row constant `K_0`): for `0 ≤ a < 1` and measurable `g ≥ 0`,
+lines 57-59, with row constant `K_0`): for `0 ≤ a < 1` and measurable `g ≥ 0`,
 `∫∫ g(s) g(t) |s-t|^{-a} ≤ K_0 ∫ g²`. -/
 theorem schur_sharp {a : ℝ} (ha0 : 0 ≤ a) (ha1 : a < 1) {g : ℝ → ℝ≥0∞} (hg : Measurable g) :
     ∫⁻ s in Ioo (0 : ℝ) 1, ∫⁻ t in Ioo (0 : ℝ) 1,
@@ -199,7 +199,7 @@ theorem schur_sharp {a : ℝ} (ha0 : 0 ≤ a) (ha1 : a < 1) {g : ℝ → ℝ≥0
 /-! ### Scalar maxima -/
 
 /-- Auxiliary to the Lean proof route (the first scalar maximum of the proof of
-`T:intrinsic-occupation-ceiling`, TeX lines 224-231, by weighted AM-GM): for `0 < α < 4`,
+`T:intrinsic-occupation-ceiling`, TeX lines 283-290, by weighted AM-GM): for `0 < α < 4`,
 `X ≥ 0`, `T ≥ 0`, `√X T^{α/4} - T ≤ (q/4)(α/4)^{α/q} X^{2/q}` with `q = 4 - α`. -/
 theorem young_quarter {alpha X T : ℝ} (ha0 : 0 < alpha) (ha4 : alpha < 4) (hX : 0 ≤ X)
     (hT : 0 ≤ T) :
@@ -230,7 +230,7 @@ theorem young_quarter {alpha X T : ℝ} (ha0 : 0 < alpha) (ha4 : alpha < 4) (hX 
   rw [e5]
   linarith
 
-/-- Auxiliary to the Lean proof route (the second scalar maximum, TeX lines 235-237, by
+/-- Auxiliary to the Lean proof route (the second scalar maximum, TeX lines 301-303, by
 weighted AM-GM): for `α < 3`, `E ≥ 0`, `v ≥ 0`, with `q = 4 - α`, `k = 3 - α`:
 `E v^{1/q} - v/2 ≤ (k/2)(2E/q)^{q/k}`. -/
 theorem young_q {alpha E v : ℝ} (ha3 : alpha < 3) (hE : 0 ≤ E) (hv : 0 ≤ v) :
@@ -271,7 +271,7 @@ theorem young_q {alpha E v : ℝ} (ha3 : alpha < 3) (hE : 0 ≤ E) (hv : 0 ≤ v
   linarith
 
 /-- The ceiling `U_c = c^m k [α^{α/2} C / (8 q^{q/2})]^{1/k}` of `E:occupation-score-ceiling`
-(`integrated_occupation_ceiling.tex` lines 209-212), `q = 4 - α`, `k = 3 - α`, `m = q/k`,
+(`integrated_occupation_ceiling.tex` lines 253-256), `q = 4 - α`, `k = 3 - α`, `m = q/k`,
 with a real constant `C` in the place of `C_occ` (the definition agreed with wave item L8-d,
 `SpatialBracket.ceilingValue`, verbatim). -/
 def ceilingValue (alpha c C : ℝ) : ℝ :=
@@ -279,7 +279,7 @@ def ceilingValue (alpha c C : ℝ) : ℝ :=
     ((3 - alpha) * (alpha ^ (alpha / 2) * C / (8 * (4 - alpha) ^ ((4 - alpha) / 2))) ^
       (1 / (3 - alpha)))
 
-/-- Auxiliary to the Lean proof route ("direct positive-power algebra", TeX lines 237-243):
+/-- Auxiliary to the Lean proof route ("direct positive-power algebra", TeX lines 303-309):
 for `0 < α < 2`, `C > 0`, `c > 0`, with `D = √(q/4) (α/4)^{α/(2q)} C^{1/q}` written as
 `√((q/4)(α/4)^{α/q}) C^{1/q}`: `(k/2)(2cD/q)^{q/k} = U_c`. -/
 theorem ceilingValue_eq {alpha C c : ℝ} (ha0 : 0 < alpha) (ha2 : alpha < 2) (hC : 0 < C)
@@ -333,7 +333,7 @@ theorem ceilingValue_eq {alpha C c : ℝ} (ha0 : 0 < alpha) (ha2 : alpha < 2) (h
 
 /-! ### Step (a): near-optimal unit tests for a bounded potential -/
 
-/-- Step (a) of the route (TeX: `L:occupation-rayleigh-selection`, lines 159-168, where a
+/-- Step (a) of the route (TeX: `L:occupation-rayleigh-selection`, lines 190-207, where a
 countable dense family is used instead): for a continuous potential `0 ≤ V ≤ M` with a nonempty
 real Rayleigh set and `q < sup R_V`, there is a real unit test `f ∈ C_c^∞` (`IsUnitTest`) with
 `q < ∫ V f² - b(f)`.  Proof: a trial `(f,g)` with value above `q`, test functions `φ_n → f`,
@@ -525,7 +525,7 @@ theorem Nnorm_sq_unit (alpha : ℝ) {f : Rd d → ℝ} (hf : IsUnitTest f) :
   ring_nf
 
 /-- Step (d), the square bound for unit tests (`E:spatial-square-CS` with
-`E:spatial-homogeneous-bound` at `R`, TeX `P:raw-occupation-energy` lines 117-118): for a locally
+`E:spatial-homogeneous-bound` at `R`, TeX `P:raw-occupation-energy` lines 143-144): for a locally
 finite even `Γ` with spectral measure `μ`, `α < 4`, `R ≥ 0` with `A_sp(g) ≤ R b(g)^{α/2}` for
 every real unit test `g`: `B_Γ(f², h²) ≤ R b(f)^{α/4} b(h)^{α/4}` for real unit tests `f, h`. -/
 theorem pair_unit_le {Γ μ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] (hE : IsEven Γ)
@@ -539,7 +539,7 @@ theorem pair_unit_le {Γ μ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ] (hE : 
   have := SpatialFourLinear.smooth_square_bound hE hsp hR0 hbd ⟨hf.1, hf.2.1⟩ ⟨hh.1, hh.2.1⟩
   rwa [Nnorm_sq_unit alpha hf, Nnorm_sq_unit alpha hh] at this
 
-/-- Step (d) (TeX `P:raw-occupation-energy`, lines 117-122, for the finite field; Lean route):
+/-- Step (d) (TeX `P:raw-occupation-energy`, lines 143-148, for the finite field; Lean route):
 under the hypotheses of `pair_unit_le` with `0 < α < 2`, `0 ≤ a < 1`, for continuous compactly
 supported `χ_i ≥ 0` with `∑_i χ_i = 1` on `[0,1]` and real unit tests `f_i`:
 `F(G,G) ≤ K_0 R T(G)^{α/2}` for `G = fieldG χ f`, `T(G) = fieldT χ f`.  Route: bilinear
@@ -666,7 +666,7 @@ theorem continuousOn_of_lip {f : ℝ → ℝ} {C : ℝ} (hC : 0 ≤ C)
   rw [Real.dist_eq, Real.dist_eq, Real.coe_toNNReal _ hC]
   exact h s hs t ht
 
-/-- Step (b) of the route (TeX: `L:occupation-rayleigh-selection`, lines 149-193, whose countable
+/-- Step (b) of the route (TeX: `L:occupation-rayleigh-selection`, lines 180-236, whose countable
 measurable selection is replaced here by a finite partition of unity in time): under the
 section's standing assumptions (`H:homog`, `Γ ≠ 0`, `a = α₀`), for `Ψ ∈ C_pos` and `ε > 0` there
 are a finite index type, continuous compactly supported `χ_i ≥ 0` with `∑_i χ_i = 1` on `[0,1]`
@@ -794,11 +794,11 @@ space-time form `stForm` (`F`) for the section's controls `Ψ ∈ C_pos` and non
 compactly supported space-time fields `Φ` on `ℝ × ℝ^d` (such as `fieldG`):
 * `cs`: Cauchy-Schwarz `F(Ψ,Φ)² ≤ F(Ψ,Ψ) F(Φ,Φ)` (positive semidefiniteness of the form: the
   Hilbert inclusion `J_{H_sp}` of `L:positive-raw-embedding`,
-  `integrated_intrinsic_constant.tex` lines 22-39, `E:positive-bochner-inclusion`);
-* `self`: `F(Ψ,Ψ) = v_Ψ` (the first identity of `E:positive-raw-mean`, line 34, with `v_Ψ` the
+  `integrated_intrinsic_constant.tex` lines 23-40, `E:positive-bochner-inclusion`);
+* `self`: `F(Ψ,Ψ) = v_Ψ` (the first identity of `E:positive-raw-mean`, line 35, with `v_Ψ` the
   integral form `VariationalDilation.rawCost` of `E:compact-raw-cost`);
 * `mean`: `∫_0^1 ∫ h_{Ψ,s} Φ_s dx ds = F(Ψ,Φ)` (the second identity of
-  `E:occupation-raw-identities`, `integrated_occupation_ceiling.tex` lines 34-37, for a squared
+  `E:occupation-raw-identities`, `integrated_occupation_ceiling.tex` lines 35-38, for a squared
   field in the place of `g_s²`).
 All three are deterministic and follow from positive-definiteness of `|s-t|^{-a}` and of `Γ`
 and Fubini; they are no stronger than the manuscript statements named.  The hypothesis is
@@ -826,11 +826,11 @@ theorem R0_bound {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   rwa [SpatialSmoothRatio.ratio, div_le_iff₀ (Real.rpow_pos_of_pos hb _)] at h
 
 /-- **Step (e), first half (TeX `L:occupation-rayleigh-selection` and the proof of
-`T:intrinsic-occupation-ceiling`, lines 175-193 and 222-234, with `C_occ` replaced by
+`T:intrinsic-occupation-ceiling`, lines 218-236 and 266-293, with `C_occ` replaced by
 `K_0 R_0`):** under the standing assumptions (`H:homog`, `Γ ≠ 0`, `a = α₀`) and the named input
 `SpaceTimeCS α₀ Γ`, every `Ψ ∈ C_pos` satisfies
 `I_Ψ² ≤ (q/4)(α/4)^{α/q} (v_Ψ K_0 R_0)^{2/q}`, `q = 4 - α`, i.e. `I_Ψ ≤ D v_Ψ^{1/q}` with
-`D = √(q/4)(α/4)^{α/(2q)} (K_0R_0)^{1/q}` (TeX line 233).  Route: `I_Ψ² ≤ ∫_0^1 λ_s²` (Jensen),
+`D = √(q/4)(α/4)^{α/(2q)} (K_0R_0)^{1/q}` (TeX line 292).  Route: `I_Ψ² ≤ ∫_0^1 λ_s²` (Jensen),
 `exists_near_field`, the named input (`mean`, `cs`, `self`), `field_energy_le`, and
 `young_quarter`, then `ε → 0`. -/
 theorem integratedRate_sq_le {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
@@ -886,7 +886,7 @@ theorem integratedRate_sq_le {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   linarith
 
 /-- **Step (e), second half: the occupation ceiling with `K_0 R_0`** (TeX
-`T:intrinsic-occupation-ceiling`, lines 205-220, proof 222-245, with `C_occ` replaced by
+`T:intrinsic-occupation-ceiling`, lines 249-264, proof 266-311, with `C_occ` replaced by
 `C = K_0 R_0`): under the standing assumptions and `SpaceTimeCS α₀ Γ`, for every `c > 0` and
 `Ψ ∈ C_pos`, `c I_Ψ - v_Ψ/2 ≤ U_c = c^m k [α^{α/2} K_0 R_0/(8 q^{q/2})]^{1/k}`.  Route:
 `integratedRate_sq_le`, `young_q` and `ceilingValue_eq`. -/
@@ -922,8 +922,8 @@ theorem score_le_ceiling {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
 /-! ### The manuscript's statements over the named input `SpaceTimeCS` -/
 
 /-- **`T:intrinsic-occupation-ceiling`, `E:occupation-score-ceiling` with `C_occ` replaced by
-`K_0 R_sp`** (`integrated_occupation_ceiling.tex` lines 205-220 at a284420; `K_0 R_sp` is the
-upper bound of `C_occ` in `P:raw-occupation-energy`, line 96), under the section's standing
+`K_0 R_sp`** (`integrated_occupation_ceiling.tex` lines 249-264 at 39f2597a; `K_0 R_sp` is the
+upper bound of `C_occ` in `P:raw-occupation-energy`, line 115), under the section's standing
 assumptions (lines 4-21: `H:homog`, `a = α₀`, `Γ ≠ 0`) and the named input
 `SpaceTimeCS α₀ Γ`: for every `c > 0` and `Ψ ∈ C_pos`,
 `c I_Ψ - v_Ψ/2 ≤ U_c = c^m k [α^{α/2} K_0 R_sp/(8 q^{q/2})]^{1/k}`.  The conclusion is
@@ -944,10 +944,10 @@ theorem occupation_ceiling_K0_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)
   exact score_le_ceiling hH hΓ0 hST hc hΨ
 
 /-- **`P:variational-positive-scores`, the boundedness claim** (`S1Bdd`,
-`integrated_unmasked_variational.tex` lines 272-274 at a284420), proved deterministically under
+`integrated_unmasked_variational.tex` lines 372-374 at 39f2597a), proved deterministically under
 the standing assumptions (`H:homog`, `Γ ≠ 0`, `a = α₀`) and the named input `SpaceTimeCS α₀ Γ`:
 the coefficient-one set `{I_Ψ - v_Ψ/2}` is bounded above by `U_1` (with `K_0 R_0`).  Route
-difference: the TeX's proof (lines 309-325) is stochastic (`T:full-upper` and
+difference: the TeX's proof (lines 430-446) is stochastic (`T:full-upper` and
 `E:variational-unmasked-point-lower`); here it is the ceiling `score_le_ceiling` at `c = 1`. -/
 theorem s1Bdd_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (hH : HomogCovariance d alpha alpha0 Γ μ) (hΓ0 : Γ ≠ 0) (hST : SpaceTimeCS alpha0 Γ) :
@@ -957,8 +957,8 @@ theorem s1Bdd_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   have := score_le_ceiling hH hΓ0 hST one_pos hΨ
   rwa [one_mul] at this
 
-/-- **`T:intrinsic-occupation-ceiling` for the suprema** (TeX lines 209-212, "take the supremum
-over the smooth positive-control class", line 245), with `C_occ` replaced by `K_0 R_sp`, under the
+/-- **`T:intrinsic-occupation-ceiling` for the suprema** (TeX lines 253-256, "take the supremum
+over the smooth positive-control class", line 311), with `C_occ` replaced by `K_0 R_sp`, under the
 standing assumptions and `SpaceTimeCS α₀ Γ`: for every `c > 0` the set `{c I_Ψ - v_Ψ/2}` is
 nonempty and bounded above and `S_c^pos ≤ U_c`.  Narrower as in
 `occupation_ceiling_K0_paper`. -/
@@ -974,7 +974,7 @@ theorem occupation_ceiling_sSup_K0_paper {alpha alpha0 : ℝ} {Γ μ : Measure (
   exact ⟨hne, ⟨_, hb⟩, csSup_le hne hb⟩
 
 /-- **`P:variational-positive-scores`, supremum part, without `S1Bdd`**
-(`integrated_unmasked_variational.tex` lines 272-277 and 327-332 at a284420):
+(`integrated_unmasked_variational.tex` lines 372-377 and 452-457 at 39f2597a):
 `VariationalRate.variational_positive_scores_sSup_paper` with `S1Bdd` discharged by
 `s1Bdd_paper` over the named input `SpaceTimeCS α₀ Γ`.  `S_1^pos > 0` and for every `c > 0`
 the value set is nonempty, bounded above, with `S_c^pos = c^{(4-α)/(3-α)} S_1^pos > 0`.
@@ -987,8 +987,8 @@ theorem variational_positive_scores_sSup_st_paper {alpha alpha0 : ℝ} {Γ μ : 
       sSup (scoreSet alpha0 Γ c) = c ^ ((4 - alpha) / (3 - alpha)) * S1pos alpha0 Γ :=
   VariationalRate.variational_positive_scores_sSup_paper hH hΓ0 (s1Bdd_paper hH hΓ0 hST)
 
-/-- `E:spatial-static-score` in the `sSup` form (`integrated_spatial_occupation.tex` lines 50-53
-at a284420): `SpatialStaticControls.spatial_static_score_sSup_paper` with `S1Bdd` discharged
+/-- `E:spatial-static-score` in the `sSup` form (`integrated_spatial_occupation.tex` lines 52-55
+at 39f2597a): `SpatialStaticControls.spatial_static_score_sSup_paper` with `S1Bdd` discharged
 over `SpaceTimeCS α₀ Γ`: `S_1^pos ≥ λ_z(1) - (M_a/2) B_Γ(z,z)` for every nonnegative nonzero
 test function `z`. -/
 theorem spatial_static_score_sSup_st_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
@@ -1001,7 +1001,7 @@ theorem spatial_static_score_sSup_st_paper {alpha alpha0 : ℝ} {Γ μ : Measure
     hzne
 
 /-- `E:spatial-smooth-score` in the `sSup` form (`integrated_spatial_occupation.tex` lines
-171-176 at a284420): `SpatialOccupationCompleted.spatial_smooth_score_sSup_completed_paper` with
+228-233 at 39f2597a): `SpatialOccupationCompleted.spatial_smooth_score_sSup_completed_paper` with
 `S1Bdd` discharged over `SpaceTimeCS α₀ Γ`: `S_1^pos ≥ k [R(g) α^{α/2}/(8 M_a q^{q/2})]^{1/k}` for
 every real unit test `g`. -/
 theorem spatial_smooth_score_sSup_st_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
@@ -1024,7 +1024,7 @@ theorem R0_le_of_st_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   SpatialOccupationCompleted.R0_finite_of_S1Bdd_completed_paper hH hΓ0 (s1Bdd_paper hH hΓ0 hST)
 
 /-- `E:spatial-static-energy-score` in the `sSup` form (`integrated_spatial_occupation.tex`
-lines 316-322 at a284420):
+lines 421-427 at 39f2597a):
 `SpatialOccupationL7Completed.spatial_static_energy_score_sSup_paper_completed` with `S1Bdd`
 discharged over `SpaceTimeCS α₀ Γ`: `S_1^pos ≥ M_a^{-1/k} F₀(𝓔_sp)`. -/
 theorem spatial_static_energy_score_sSup_st_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}

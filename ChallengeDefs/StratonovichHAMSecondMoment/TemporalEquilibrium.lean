@@ -31,14 +31,14 @@ def betaKernel (x y : ℝ) (t : ℝ) : ℝ := t ^ (x - 1) * (1 - t) ^ (y - 1)
 /-- The manuscript's `Beta(x,y) = ∫_0^1 t^{x-1}(1-t)^{y-1} dt` (TeX line 10). -/
 def Beta (x y : ℝ) : ℝ := ∫ t in Ioo (0:ℝ) 1, betaKernel x y t
 
-/-! ### Lemma `L:temporal-equilibrium` (TeX lines 37--51) -/
+/-! ### Lemma `L:temporal-equilibrium` (TeX lines 39--53) -/
 
 /-- The density `f_a(t) = [t(1-t)]^{-r}/(Γ_E(r)Γ_E(1-r))`, `r = (1-a)/2`
-(TeX line 40, `E:temporal-equilibrium-density`). -/
+(TeX line 42, `E:temporal-equilibrium-density`). -/
 def density (a t : ℝ) : ℝ :=
   (t * (1 - t)) ^ (-((1 - a) / 2)) / (Gamma ((1 - a) / 2) * Gamma (1 - (1 - a) / 2))
 
-/-- The mass `M_a = ∫_0^1 f_a(t) dt` (TeX line 46). -/
+/-- The mass `M_a = ∫_0^1 f_a(t) dt` (TeX line 48). -/
 def mass (a : ℝ) : ℝ := ∫ t in Ioo (0:ℝ) 1, density a t
 
 end StratonovichHAMSecondMoment.TemporalEquilibrium

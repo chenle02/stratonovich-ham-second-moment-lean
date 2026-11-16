@@ -4,19 +4,19 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The wave Green measures `G_s` of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` (revision a284420), and
-`L:damped-homogeneous-norms` (lines 803-919) with nothing supplied.
+`notes/notes_stratonovich_ham_second_moment.tex` (revision 39f2597a), and
+`L:damped-homogeneous-norms` (lines 1010-1154) with nothing supplied.
 
-Sources at a284420:
-* `d = 1`: `G(s,y) = ½ 1_{|y|<s}` (line 746, proof of `L:white-test`; again at
-  lines 4128 and 7642);
-* `d = 2, 3`: the proof of `L:higher-riesz` (lines 5179-5187), quoting
+Sources at 39f2597a:
+* `d = 1`: `G(s,y) = ½ 1_{|y|<s}` (line 952, proof of `L:white-test`; again at
+  lines 4913 and 8910);
+* `d = 2, 3`: the proof of `L:higher-riesz` (lines 6124-6132), quoting
   Chen (2.5), p. 7: `G_h^{(2)}(dy) = 1_{|y|<h} dy / (2π√(h²-|y|²))` and
   `G_h^{(3)}(dy) = σ_h(dy)/(4πh)`, `σ_h` the surface measure of the radius-`h`
-  sphere; "Both have mass `h` and satisfy `G_h(hA) = hG_1(A)`" (lines 5186-5187);
-* list of notation (`notes/index/list-of-notation.tex`, line 102): "Wave Green
+  sphere; "Both have mass `h` and satisfy `G_h(hA) = hG_1(A)`" (lines 6131-6132);
+* list of notation (`notes/index/list-of-notation.tex`, lines 102-103): "Wave Green
   measure, with mass `t` and support in the closed radius-`t` ball";
-* the mass identity `G_s(ℝ^d) = s` is used at line 881 (proof of
+* the mass identity `G_s(ℝ^d) = s` is used at line 1104 (proof of
   `L:damped-homogeneous-norms`), where `DampedNormsHomog` took it as the
   supplied input `GreenMass G`.
 
@@ -52,7 +52,7 @@ Formalized (all proved, nothing supplied):
   the only hypothesis `H:homog` (`HomogCovariance`), the dimension condition
   coming from `h.dim`; and `N0_waveGreen`;
 * the Fourier identity in `d = 1`: `∫ e^{iξ·x} G_s(dx) = Ĝ_s(ξ)` for `s > 0`
-  (`WaveKernel.waveHat`, lines 777-778), with integrability
+  (`WaveKernel.waveHat`, lines 983-984), with integrability
   (`waveGreen_fourier_one`).
 
 Not formalized: the Fourier identities in `d = 2, 3` (`d = 3` deferred by Le's
@@ -97,7 +97,7 @@ open HomogHypothesis TimeFractional SpectralHomog WaveKernel DampedNorms DampedN
 
 /-! ### Definition -/
 
-/-- The wave Green measure `G_s` on `ℝ^d` (main TeX lines 746, 5182-5186;
+/-- The wave Green measure `G_s` on `ℝ^d` (main TeX lines 952, 6127-6131;
 Chen (2.5)): `d = 1`: `½ 1_{|x|<s} dx`; `d = 2`:
 `1_{|x|<s} dx / (2π√(s²-|x|²))`; `d = 3`: `σ_s/(4πs)`, written as
 `(s/(4π)) · map (ω ↦ sω) volume.toSphere`, which takes Mathlib's
@@ -245,7 +245,7 @@ theorem mass_three (s : ℝ) (hs : 0 < s) : waveGreen 3 s univ = ENNReal.ofReal 
   congr 1
   field_simp
 
-/-- The mass identity `G_s(ℝ^d) = s` (lines 881, 5186-5187; notation list line 102)
+/-- The mass identity `G_s(ℝ^d) = s` (lines 1104, 6131-6132; notation list line 102)
 for `d ∈ {1,2,3}` and every `s ≥ 0`. -/
 theorem waveGreen_mass (d : ℕ) (hd : d = 1 ∨ d = 2 ∨ d = 3) (s : ℝ) (hs : 0 ≤ s) :
     waveGreen d s univ = ENNReal.ofReal s := by
@@ -270,7 +270,7 @@ instance instIsFiniteMeasureWaveGreen (d : ℕ) (s : ℝ) : IsFiniteMeasure (wav
   isFiniteMeasure_waveGreen d s
 
 /-- `GreenMass (waveGreen d)` for `d ∈ {1,2,3}`: the supplied input of
-`DampedNormsHomog` (line 881) is discharged. -/
+`DampedNormsHomog` (line 1104) is discharged. -/
 theorem waveGreen_greenMass (d : ℕ) (hd : d = 1 ∨ d = 2 ∨ d = 3) :
     GreenMass (waveGreen d) :=
   ⟨fun s hs => waveGreen_mass d hd s hs.le⟩
@@ -383,7 +383,7 @@ theorem scaling_three (s : ℝ) (hs : 0 < s) (A : Set (Rd 3)) (hA : MeasurableSe
   congr 2
   ring
 
-/-- The scaling `G_s(sA) = s G_1(A)` (lines 5186-5187) for `d ∈ {1,2,3}`,
+/-- The scaling `G_s(sA) = s G_1(A)` (lines 6131-6132) for `d ∈ {1,2,3}`,
 `s > 0` and measurable `A`. -/
 theorem waveGreen_scaling (d : ℕ) (hd : d = 1 ∨ d = 2 ∨ d = 3) (s : ℝ) (hs : 0 < s)
     (A : Set (Rd d)) (hA : MeasurableSet A) :
@@ -394,7 +394,7 @@ theorem waveGreen_scaling (d : ℕ) (hd : d = 1 ∨ d = 2 ∨ d = 3) (s : ℝ) (
   · exact scaling_three s hs A hA
 
 /-- The four properties of the wave Green measures in one statement, for
-`d ∈ {1,2,3}` (lines 5186-5187 and notation list line 102): mass `s` for
+`d ∈ {1,2,3}` (lines 6131-6132 and notation list line 102): mass `s` for
 `s ≥ 0`, finiteness, support in the closed radius-`s` ball, and the scaling
 `G_s(sA) = s G_1(A)` for `s > 0` and measurable `A`. -/
 theorem waveGreen_paper (d : ℕ) (hd : d = 1 ∨ d = 2 ∨ d = 3) :
@@ -408,14 +408,14 @@ theorem waveGreen_paper (d : ℕ) (hd : d = 1 ∨ d = 2 ∨ d = 3) :
 
 /-! ### `L:damped-homogeneous-norms` with nothing supplied -/
 
-/-- `N₀(θ) = θ^{-2}` (lines 809-810) for the wave Green measures, `θ > 0`,
+/-- `N₀(θ) = θ^{-2}` (lines 1016-1017) for the wave Green measures, `θ > 0`,
 `d ∈ {1,2,3}`, with the integrand integrable on `(0,∞)`. -/
 theorem N0_waveGreen (d : ℕ) (hd : d = 1 ∨ d = 2 ∨ d = 3) (θ : ℝ) (hθ : 0 < θ) :
     IntegrableOn (fun s => Real.exp (-(θ * s)) * (waveGreen d s univ).toReal) (Ioi 0) ∧
       N0 (waveGreen d) θ = θ ^ (-(2 : ℝ)) :=
   N0_eq (waveGreen d) (waveGreen_greenMass d hd) θ hθ
 
-/-- `L:damped-homogeneous-norms` (lines 803-848, proof 849-919) under `H:homog`
+/-- `L:damped-homogeneous-norms` (lines 1010-1055, proof 1056-1154) under `H:homog`
 alone, with `N₀` built from the wave Green measures `waveGreen d`: the
 conclusions of `DampedNormsHomog.damped_homogeneous_norms_paper`, whose one
 supplied input `GreenMass G` is discharged by `waveGreen_greenMass` (the
@@ -517,7 +517,7 @@ theorem single_coord_one (ξ : Rd 1) : ξ = EuclideanSpace.single (0 : Fin 1) (�
 
 /-- The Fourier transform of the `d = 1` wave Green measure:
 `∫ e^{iξ·x} G_s(dx) = Ĝ_s(ξ) = sin(s|ξ|)/|ξ|` (`WaveKernel.waveHat`, lines
-777-778) for `s > 0`, with integrability.  This identifies `waveHat` with the
+983-984) for `s > 0`, with integrability.  This identifies `waveHat` with the
 Fourier transform of `waveGreen 1 s`.  (The `d = 2, 3` identities are not
 formalized.) -/
 theorem waveGreen_fourier_one (s : ℝ) (hs : 0 < s) (ξ : Rd 1) :

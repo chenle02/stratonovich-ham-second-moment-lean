@@ -1,6 +1,6 @@
 /-
 Refutation for the potential identity of `L:temporal-equilibrium` (TeX lines
-38 and 44--45, `E:temporal-equilibrium-potential`), package theorem
+40 and 46--47, `E:temporal-equilibrium-potential`), package theorem
 `StratonovichHAMSecondMoment.TemporalEquilibrium.potential_eq_one` and
 package definition `StratonovichHAMSecondMoment.TemporalEquilibrium.density`.
 

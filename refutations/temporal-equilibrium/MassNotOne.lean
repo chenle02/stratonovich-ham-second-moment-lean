@@ -1,6 +1,6 @@
 /-
-Refutation for the mass part of `L:temporal-equilibrium` (TeX lines 46--48
-and "Its time mass has not been renormalized", line 93), package definition
+Refutation for the mass part of `L:temporal-equilibrium` (TeX lines 48--50
+and "Its time mass has not been renormalized", lines 113-114), package definition
 `StratonovichHAMSecondMoment.TemporalEquilibrium.mass` and package theorem
 `StratonovichHAMSecondMoment.TemporalEquilibrium.mass_eq`.
 

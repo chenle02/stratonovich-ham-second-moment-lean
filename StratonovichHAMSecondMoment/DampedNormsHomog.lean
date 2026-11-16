@@ -5,17 +5,17 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The remaining parts of `L:damped-homogeneous-norms` (Homogeneous damped norms
 and temporal tails) of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` (revision a284420): the
-definitions `E:damped-norm-definitions` (lines 782-792), the lemma (lines
-803-848, tails `E:damped-tail-norms` at lines 822-825, multiplier comparison
-`E:damped-multiplier-comparison` with its definitions at lines 826-847, display
-at 836-841) and its proof (lines 849-919, the comparison at 894-917).  The finiteness part and
+`notes/notes_stratonovich_ham_second_moment.tex` (revision 39f2597a): the
+definitions `E:damped-norm-definitions` (lines 988-998), the lemma (lines
+1010-1055, tails `E:damped-tail-norms` at lines 1029-1032, multiplier comparison
+`E:damped-multiplier-comparison` with its definitions at lines 1033-1054, display
+at 1043-1048) and its proof (lines 1056-1154, the comparison at 1129-1152).  The finiteness part and
 `N₂(θ)² ≥ 0` are already in `ClockCopyHomog`; this module adds the rest and
 bundles everything into `damped_homogeneous_norms_paper`.
 
 Formalized, under `H:homog` (`HomogHypothesis.HomogCovariance`, temporal
 exponent `a = α₀`; no `Γ ≠ 0`, as in the TeX):
-* scaling (lines 809-812): `N₁(θ) = θ^{α+α₀-2} N₁(1)` (`N1_scaling`, from the
+* scaling (lines 1016-1019): `N₁(θ) = θ^{α+α₀-2} N₁(1)` (`N1_scaling`, from the
   spectral homogeneity alone, any `a`) and `N₂(θ)² = θ^{-β} N₂(1)²`,
   `β = 4-α-α₀` (`N2sq_scaling`);
 * `N₀(θ) = θ^{-2}` with its integrand integrable on `(0,∞)` (`N0_eq`), from the
@@ -23,10 +23,10 @@ exponent `a = α₀`; no `Γ ≠ 0`, as in the TeX):
 * the tails `E:damped-tail-norms`: `N₁^{(M)}(1) → 0` (`N1tail_tendsto`),
   `N₂^{(M)}(1)² → 0` and `N₂^{(M)}(1) → 0` (`N2tail_tendsto`); for each `M` the
   tail integrands are integrable and `N₂^{(M)}(1)² ≥ 0`, the "tail form ≥ 0"
-  of lines 891-892 (`N2tail_props`); also `0 ≤ K_M ≤ |r|^{-a}` and `K_M(r) → 0` for
-  `r ≠ 0` (`KS_nonneg`, `KS_le`, `KM_tendsto`, lines 888-889);
-* the multiplier comparison `E:damped-multiplier-comparison` (lines 826-847,
-  display 836-841), in the manuscript's own terms: a measurable multiplier
+  of lines 1123-1124 (`N2tail_props`); also `0 ≤ K_M ≤ |r|^{-a}` and `K_M(r) → 0` for
+  `r ≠ 0` (`KS_nonneg`, `KS_le`, `KM_tendsto`, lines 1120-1121);
+* the multiplier comparison `E:damped-multiplier-comparison` (lines 1033-1054,
+  display 1043-1048), in the manuscript's own terms: a measurable multiplier
   `m : ℝ^d → [0,1]` (`g` here; `μ` is replaced by `g(ξ)μ(dξ)`, `smoothed`) and
   measurable Laplace domains `S ⊆ S' ⊆ (0,∞)` (`N1on`, `KS`, `N2onSq`; Lean
   allows any measurable `S ⊆ S'` in `ℝ` and integrates `λ` over `S ∩ (0,∞)`,
@@ -34,7 +34,7 @@ exponent `a = α₀`; no `Γ ≠ 0`, as in the TeX):
   `N_{1,m,S}(θ) ≤ N_{1,1,S'}(θ)` and `N_{2,m,S}(θ)² ≤ N_{2,1,S'}(θ)²`, with the
   integrands integrable (`N1on_smoothed_mono`, `N2onSq_smoothed_mono`);
   `S' = (0,∞)` gives the full norms (`N1on_univ`, `N2onSq_univ`), `S' = (M,∞)`
-  and `θ = 1` the tails, as the TeX notes at line 914.  Not stated as Lean
+  and `θ = 1` the tails, as the TeX notes at line 1149.  Not stated as Lean
   conclusions: the lower bounds `0 ≤ N_{1,m,S}(θ)` and `0 ≤ N_{2,m,S}(θ)²` of
   the display for a general `m` and `S` (for `m = 1` they are stated with the
   full domain, `N₂(θ)² ≥ 0`, and the tail domains, `N2tail_props`; in general
@@ -45,15 +45,15 @@ exponent `a = α₀`; no `Γ ≠ 0`, as in the TeX):
   Green kernels; Green smoothing `p_η * G_s` multiplies `Ĝ_s(ξ)Ĝ_t(ξ)` by
   `e^{-η|ξ|²}`, a function of `ξ` with values in `(0,1]`).  As the lemma says,
   the scaling identities are asserted only for the original covariance.  The
-  TeX applies the comparison at lines 1145-1155 (the Laplace domains `A_e`,
-  Green smoothing) and 1664-1673 (the Gaussian multipliers "can be removed in
+  TeX applies the comparison at lines 1401-1411 (the Laplace domains `A_e`,
+  Green smoothing) and 2013-2022 (the Gaussian multipliers "can be removed in
   the upper bounds").
 The wrapper `damped_homogeneous_norms_paper` bundles these with the finiteness
 part (`ClockCopyHomog.damped_norms_finite_paper`) and
 `ClockCopyHomog.damped_N2_nonneg_paper`.
 
 Supplied input (one, for `N₀` only): `GreenMass G`, the mass identity
-`G_s(ℝ^d) = s` for `s > 0` that the proof uses at line 881 (imported in the
+`G_s(ℝ^d) = s` for `s > 0` that the proof uses at line 1104 (imported in the
 TeX from the source, Chen (2.5)).  The wave Green measures are not defined in
 this module, so `N₀` is defined for an arbitrary family `G` of measures and
 the input is exactly the identity the TeX uses, no stronger.  The other
@@ -91,14 +91,14 @@ Proof route (differs from the TeX, same statements):
   auxiliary) and Fubini gives `N_S(θ)² = ∫_{S ∩ (0,∞)} w_θ` (`N2onSq_eq`);
   the tail limit is then the tail of the integrable `w_1`, and nonnegativity
   is `w_θ ≥ 0` (the TeX argues by positive definiteness of the tail kernel).
-* Multiplier comparison: the same order as the TeX (lines 894-913): at each
+* Multiplier comparison: the same order as the TeX (lines 1129-1148): at each
   `λ` the time integral is taken first and is nonnegative for every `ξ`, then
   `N_{2,m,S}(θ)² = ∫_S w_θ^{mμ}` and `w_θ^{gμ}(λ) ≤ w_θ^{μ}(λ)`
   (`weight_smoothed_le`).  The TeX gets `B_θ(λ,ξ) ≥ 0` from positive
   definiteness of `e^{-λ|s-t|}`; here the time integral is evaluated in
   closed form, so `w_θ(λ)` is a `μ`-integral of an explicit nonnegative
   function of `ξ`.  For `N₁`, `R_{gμ} ≤ R_μ` (`resolvent_smoothed_le`), as
-  at lines 912-913.
+  at lines 1147-1148.
 Lemmas marked "Auxiliary to the Lean proof route" have no manuscript label.
 General lemmas state their hypotheses (s-finiteness, `∫(1+|ξ|²)⁻¹ dμ < ∞`,
 `μ{0} = 0`, measurability of `g` and `S`) in their signatures and doc comments.
@@ -133,14 +133,14 @@ variable {d : ℕ}
 /-! ### Definitions -/
 
 /-- The supplied input for `N₀`: the mass identity `G_s(ℝ^d) = s` for `s > 0`
-(proof of `L:damped-homogeneous-norms`, line 881), stated for a family `G` of
+(proof of `L:damped-homogeneous-norms`, line 1104), stated for a family `G` of
 measures on `ℝ^d` standing for the wave Green measures, which are not defined
 in this module; `WaveGreen` defines them and `WaveGreen.waveGreen_greenMass`
 discharges this input for `d ∈ {1,2,3}`. -/
 structure GreenMass (G : ℝ → Measure (Rd d)) : Prop where
   mass : ∀ s : ℝ, 0 < s → G s univ = ENNReal.ofReal s
 
-/-- `N₀(θ) = ∫_0^∞ e^{-θs} G_s(ℝ^d) ds` (`E:damped-norm-definitions`, line 784),
+/-- `N₀(θ) = ∫_0^∞ e^{-θs} G_s(ℝ^d) ds` (`E:damped-norm-definitions`, line 990),
 for a family `G` of measures on `ℝ^d`. -/
 def N0 (G : ℝ → Measure (Rd d)) (θ : ℝ) : ℝ :=
   ∫ s in Ioi (0 : ℝ), Real.exp (-(θ * s)) * (G s univ).toReal
@@ -150,7 +150,7 @@ def N0 (G : ℝ → Measure (Rd d)) (θ : ℝ) : ℝ :=
 def N1on (a θ : ℝ) (S : Set ℝ) (μ : Measure (Rd d)) : ℝ :=
   (Real.Gamma a)⁻¹ * ∫ l in S, l ^ (a - 1) * resolvent μ (θ + l) ∂L0
 
-/-- `N₁^{(M)}(1)`, the first norm at `θ = 1` with `λ > M` (lines 819-821). -/
+/-- `N₁^{(M)}(1)`, the first norm at `θ = 1` with `λ > M` (lines 1026-1028). -/
 def N1tail (a M : ℝ) (μ : Measure (Rd d)) : ℝ := N1on a 1 (Ioi M) μ
 
 /-- The temporal kernel with the Laplace variable restricted to `S`:
@@ -161,7 +161,7 @@ value is the junk value `0`; this happens only on the diagonal `s = t`, a
 def KS (a : ℝ) (S : Set ℝ) (r : ℝ) : ℝ :=
   (Real.Gamma a)⁻¹ * ∫ l in S, subKernel a |r| l ∂L0
 
-/-- `K_M(r) = Γ(a)⁻¹ ∫_M^∞ e^{-λ|r|} λ^{a-1} dλ` (lines 815-818), the
+/-- `K_M(r) = Γ(a)⁻¹ ∫_M^∞ e^{-λ|r|} λ^{a-1} dλ` (lines 1022-1025), the
 `λ`-integral taken over `(M,∞) ∩ (0,∞)`. -/
 def KM (a M r : ℝ) : ℝ := KS a (Ioi M) r
 
@@ -180,14 +180,14 @@ def N2onSq (a θ : ℝ) (S : Set ℝ) (μ : Measure (Rd d)) : ℝ :=
   ∫ p, N2onOuter a θ S μ p ∂P2
 
 /-- `N₂^{(M)}(1)²`: the squared second norm at `θ = 1` with `K_M(s-t)` in place
-of `|s-t|^{-a}` (lines 820-821). -/
+of `|s-t|^{-a}` (lines 1027-1028). -/
 def N2tailSq (a M : ℝ) (μ : Measure (Rd d)) : ℝ := N2onSq a 1 (Ioi M) μ
 
 /-- `N₂^{(M)}(1) = (N₂^{(M)}(1)²)^{1/2}` (the printed form of `E:damped-tail-norms`). -/
 def N2tail (a M : ℝ) (μ : Measure (Rd d)) : ℝ := Real.sqrt (N2tailSq a M μ)
 
 /-- The spectral measure multiplied by `g`, `g(ξ) μ(dξ)`: the measure `mμ` of
-`E:damped-multiplier-comparison` (TeX lines 826-829; that `g` is measurable
+`E:damped-multiplier-comparison` (TeX lines 1033-1036; that `g` is measurable
 with values in `[0,1]` is imposed separately). -/
 def smoothed (μ : Measure (Rd d)) (g : Rd d → ℝ≥0) : Measure (Rd d) :=
   μ.withDensity fun ξ => (g ξ : ℝ≥0∞)
@@ -206,14 +206,14 @@ theorem alpha_pos {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   · exact h1.1
   · rw [h1.1, h1.2]; norm_num
 
-/-- `0 ≤ K_S(r)` (line 888 for `S = (M,∞)`). -/
+/-- `0 ≤ K_S(r)` (line 1120 for `S = (M,∞)`). -/
 theorem KS_nonneg (a : ℝ) (S : Set ℝ) (r : ℝ) (ha : 0 < a) : 0 ≤ KS a S r := by
   have := Real.Gamma_pos_of_pos ha
   refine mul_nonneg (by positivity) (integral_nonneg_of_ae ?_)
   filter_upwards [ae_restrict_of_ae ae_L0_pos] with l hl
   exact subKernel_nonneg a |r| l hl.le
 
-/-- `K_S(r) ≤ |r|^{-a}` for `r ≠ 0` (lines 888-889 for `S = (M,∞)`), with the
+/-- `K_S(r) ≤ |r|^{-a}` for `r ≠ 0` (lines 1120-1121 for `S = (M,∞)`), with the
 `λ`-integral integrable. -/
 theorem KS_le (a : ℝ) (S : Set ℝ) (r : ℝ) (ha : 0 < a) (hr : r ≠ 0) :
     IntegrableOn (subKernel a |r|) S L0 ∧ KS a S r ≤ |r| ^ (-a) := by
@@ -242,7 +242,7 @@ theorem tail_tendsto_zero {f : ℝ → ℝ} (hf : Integrable f L0) :
     exact ⟨x, le_rfl⟩
   rwa [he, Measure.restrict_empty, integral_zero_measure] at h
 
-/-- `K_M(r) → 0` as `M → ∞` for `r ≠ 0` (line 889). -/
+/-- `K_M(r) → 0` as `M → ∞` for `r ≠ 0` (line 1121). -/
 theorem KM_tendsto (a r : ℝ) (ha : 0 < a) (hr : r ≠ 0) :
     Tendsto (fun M => KM a M r) atTop (𝓝 0) := by
   have hI := subKernel_integrable a |r| ha (abs_pos.2 hr)
@@ -268,7 +268,7 @@ theorem weight_scaling {μ : Measure (Rd d)} {alpha : ℝ} (hI : SpectralHomogen
   field_simp
 
 /-- `N₂(θ)² = θ^{-β} N₂(1)²` with `β = 4 - α - α₀`, for `θ > 0`, under
-`H:homog` (lines 809-812; the change of variables of lines 881-885). -/
+`H:homog` (lines 1016-1019; the change of variables of lines 1104-1108). -/
 theorem N2sq_scaling {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (h : HomogCovariance d alpha alpha0 Γ μ) (θ : ℝ) (hθ : 0 < θ) :
     N2sq alpha0 θ μ = θ ^ (-(4 - alpha - alpha0)) * N2sq alpha0 1 μ := by
@@ -289,7 +289,7 @@ theorem N2sq_scaling {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   field_simp
 
 /-- `N₁(θ) = θ^{α+a-2} N₁(1)` for `θ > 0`, given the spectral homogeneity
-`μ(cA) = c^α μ(A)` (any `a`; lines 809-812 and 881-882 with `a = α₀`). -/
+`μ(cA) = c^α μ(A)` (any `a`; lines 1016-1019 and 1104-1105 with `a = α₀`). -/
 theorem N1_scaling {alpha : ℝ} {μ : Measure (Rd d)} (hI : SpectralHomogeneous μ alpha)
     (a θ : ℝ) (hθ : 0 < θ) :
     N1 a θ μ = θ ^ (alpha + a - 2) * N1 a 1 μ := by
@@ -315,8 +315,8 @@ theorem N1_scaling {alpha : ℝ} {μ : Measure (Rd d)} (hI : SpectralHomogeneous
     rw [mul_assoc, hc]; field_simp
   rw [this]; simp only [add_comm (1 : ℝ)]; ring
 
-/-- `N₀(θ) = θ^{-2}` for `θ > 0` (lines 809-810), given the supplied mass identity
-`G_s(ℝ^d) = s` (line 881), with the integrand integrable on `(0,∞)`. -/
+/-- `N₀(θ) = θ^{-2}` for `θ > 0` (lines 1016-1017), given the supplied mass identity
+`G_s(ℝ^d) = s` (line 1104), with the integrand integrable on `(0,∞)`. -/
 theorem N0_eq (G : ℝ → Measure (Rd d)) (hG : GreenMass G) (θ : ℝ) (hθ : 0 < θ) :
     IntegrableOn (fun s => Real.exp (-(θ * s)) * (G s univ).toReal) (Ioi 0) ∧
       N0 G θ = θ ^ (-(2 : ℝ)) := by
@@ -522,7 +522,7 @@ theorem weight_smoothed_le (μ : Measure (Rd d)) (g : Rd d → ℝ≥0) (hg : Me
   exact mul_le_mul_of_nonneg_left hd (by positivity)
 
 /-- The second comparison of `E:damped-multiplier-comparison` (TeX lines
-836-841, proof 894-911), its upper bound: for `S ⊆ S'` measurable and `g`
+1043-1048, proof 1129-1146), its upper bound: for `S ⊆ S'` measurable and `g`
 measurable with values in `[0,1]`, `N_{2,g,S}(θ)²` (the second norm of `gμ`
 with kernel `K_S`) is at most `N_{2,1,S'}(θ)²`; both outer integrands are
 integrable.  Hypotheses:
@@ -552,7 +552,7 @@ theorem N2onSq_smoothed_mono (μ : Measure (Rd d)) [SFinite μ]
         exact weight_nonneg μ hR a θ l ha0 hθ hl
 
 /-- The first comparison of `E:damped-multiplier-comparison` (TeX lines
-836-841, proof 912-913), its upper bound: for `S ⊆ S'` and `g` measurable with
+1043-1048, proof 1147-1148), its upper bound: for `S ⊆ S'` and `g` measurable with
 values in `[0,1]`, `N_{1,g,S}(θ) ≤ N_{1,1,S'}(θ)`, and the integrand for `gμ`
 is integrable.  Hypotheses:
 `∫(1+|ξ|²)⁻¹ dμ < ∞`, `a > 0`, `θ > 0`, and integrability on `(0,∞)` of the
@@ -606,7 +606,7 @@ theorem homog_spectral_facts {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
 /-- The second tail norm under `H:homog`, for every `M`: its integrand is
 absolutely integrable on `(0,∞)² × ℝ^d`, its outer integrand is integrable on
 `(0,∞)²`, `N₂^{(M)}(1)² = ∫_{(M,∞)∩(0,∞)} w_1(λ) dλ` and
-`N₂^{(M)}(1)² ≥ 0` (lines 891-892). -/
+`N₂^{(M)}(1)² ≥ 0` (lines 1123-1124). -/
 theorem N2tail_props {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (h : HomogCovariance d alpha alpha0 Γ μ) (M : ℝ) :
     Integrable (N2onIntegrand (d := d) alpha0 1 (Ioi M)) (P2.prod μ) ∧
@@ -648,7 +648,7 @@ theorem N2tail_tendsto {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
 
 /-! ### `L:damped-homogeneous-norms` -/
 
-/-- **`L:damped-homogeneous-norms`** (main TeX lines 803-848) under `H:homog`
+/-- **`L:damped-homogeneous-norms`** (main TeX lines 1010-1055) under `H:homog`
 (`HomogCovariance`, temporal exponent `a = α₀`; no `Γ ≠ 0`) and the supplied
 mass identity `GreenMass G` for the `N₀` part only.  Conclusions:
 1. for every `θ > 0`: the finiteness part (`ClockCopyHomog.damped_norms_finite_paper`),
@@ -658,7 +658,7 @@ mass identity `GreenMass G` for the `N₀` part only.  Conclusions:
 2. for every `M`: the tail integrands are integrable and `N₂^{(M)}(1)² ≥ 0`;
 3. `E:damped-tail-norms`: `N₁^{(M)}(1) → 0`, `N₂^{(M)}(1)² → 0` and
    `N₂^{(M)}(1) → 0` as `M → ∞`;
-4. the upper bounds of `E:damped-multiplier-comparison` (lines 826-847, with
+4. the upper bounds of `E:damped-multiplier-comparison` (lines 1033-1054, with
    a measurable multiplier `g` on `μ` with values in `[0,1]` and measurable
    Laplace domains): for `θ > 0` and measurable `S ⊆ S'`,
    `N_{1,g,S}(θ) ≤ N_{1,1,S'}(θ)` and `N_{2,g,S}(θ)² ≤ N_{2,1,S'}(θ)²`, with

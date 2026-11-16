@@ -1,7 +1,7 @@
 /-
 Refutation for `‖k_R‖₁ = L` (`notes/integrated_covariance_foundation.tex`
-lines 80-82 at a284420, the reason the ball bound `E:masked-auxiliary-growth`
-of `P:masked-auxiliary-norm`, lines 90-93, is uniform in `R`), package theorem
+lines 97-99 at 39f2597a, the reason the ball bound `E:masked-auxiliary-growth`
+of `P:masked-auxiliary-norm`, lines 108-111, is uniform in `R`), package theorem
 `StratonovichHAMSecondMoment.MaskedAuxiliaryNorm.integral_norm_kR`.
 
 Wrong variant: the `L¹` norm of the kernel scales with the Jacobian,

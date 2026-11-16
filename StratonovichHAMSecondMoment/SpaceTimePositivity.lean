@@ -8,17 +8,17 @@ Wave L8, item L8-c1: step (c) of the deterministic discharge of `S1Bdd`
 route of feasibility report R2 (finite hat partition in place of the countable selection;
 decision 3 of wave L8).  Everything here is a route step, auxiliary to the Lean route, except
 where a doc comment names a TeX display it formalizes in narrower form.  TeX at revision
-a284420:
-* `notes/integrated_occupation_ceiling.tex` (whole section lines 1-308): standing
+39f2597a:
+* `notes/integrated_occupation_ceiling.tex` (whole section lines 1-386): standing
   assumptions lines 4-21 (`a = α₀`, `K(s,t) = |s-t|^{-a}` on `I = (0,1)`, `Γ ≠ 0`); the
   form `A(g)` of `E:raw-occupation-definitions` (lines 10-18); `L:occupation-raw-square`
-  (statement lines 23-42, proof 44-90): `E:occupation-raw-identities` (lines 33-37) and the
-  bound `⟨Ψ,ρ_g⟩ ≤ √(v_Ψ A(g))` (line 40).
+  (statement lines 24-43, proof 45-108): `E:occupation-raw-identities` (lines 34-38) and the
+  bound `⟨Ψ,ρ_g⟩ ≤ √(v_Ψ A(g))` (line 41).
 * `notes/integrated_intrinsic_constant.tex`: `L:positive-raw-embedding` (statement lines
-  22-39): `E:positive-bochner-inclusion` (lines 26-30) and the first identity
-  `‖Ψ‖²_{H_I} = v_Ψ` of `E:positive-raw-mean` (lines 33-36).
+  23-40): `E:positive-bochner-inclusion` (lines 27-31) and the first identity
+  `‖Ψ‖²_{H_I} = v_Ψ` of `E:positive-raw-mean` (lines 34-37).
 * `notes/integrated_unmasked_variational.tex` lines 4-19 and
-  `notes/integrated_compact_mean_family.tex` lines 402-411: `C_pos`, `h_{Ψ,s}`
+  `notes/integrated_compact_mean_family.tex` lines 533-542: `C_pos`, `h_{Ψ,s}`
   (`E:compact-raw-mean`) and `v_Ψ` (`E:compact-raw-cost`), reused here as
   `VariationalDilation.CPos`, `VariationalDilation.mean`, `VariationalDilation.rawCost`.
 
@@ -75,7 +75,7 @@ fields live in `L²(I; H_sp)`); integrability of every integrand is a conclusion
 statement holds through Lean's junk value `0` of a non-integrable Bochner integral;
 `0 < a` for positivity (the mixture `TimeCompletion.kern_eq_mixture` needs it; `H:homog` has
 `α₀ > 0`) and `a < 1` for integrability.  Local finiteness of `Γ` replaces the TeX's
-physical covariance bound `E:positive-local-spatial-bound` (intrinsic lines 68-75).
+physical covariance bound `E:positive-local-spatial-bound` (intrinsic lines 86-93).
 
 Proof route (differs from the TeX, which works in the completed Hilbert spaces `H_sp`,
 `H_t ⊗ H_sp`):
@@ -331,7 +331,7 @@ def stPair (Γ : Measure (Rd d)) (Φ₁ Φ₂ : ℝ × Rd d → ℝ) (p : ℝ ×
 
 /-- **The space-time form** `F(Φ₁,Φ₂) = ∫∫_{I²} |s-t|^{-a} B_Γ(Φ₁(s,·), Φ₂(t,·)) ds dt`
 (the integral on the right of `E:positive-bochner-inclusion`,
-`integrated_intrinsic_constant.tex` lines 26-30, for the physical pairing; and the form
+`integrated_intrinsic_constant.tex` lines 27-31, for the physical pairing; and the form
 `A(g)` of `E:raw-occupation-definitions` at `Φ₁ = Φ₂ = g²`), as a Bochner integral over
 `I² = (0,1)²` with the product Lebesgue measure.  The time kernel is
 `TimeSchur.kern a (s - t) = |s-t|^{-a}` (Lean's `rpow`; its diagonal value is irrelevant,
@@ -740,7 +740,7 @@ positive mixture of rank-one kernels (`TimeCompletion.kern_eq_mixture`); by Fubi
 `F(Φ,Φ) = ∫ ρ(w) B_Γ(Q_w,Q_w) dν(w)` with `Q_w = ∫_I φ_w(s) Φ(s,·) ds` continuous and
 compactly supported (`weighted_stPair`), and `B_Γ(Q_w,Q_w) ≥ 0`
 (`spatialPair_self_nonneg_of_continuous`).  The TeX gets the same positivity from the norm
-`‖J_G F‖²` of `L:positive-raw-embedding` (`integrated_intrinsic_constant.tex` lines 22-39). -/
+`‖J_G F‖²` of `L:positive-raw-embedding` (`integrated_intrinsic_constant.tex` lines 23-40). -/
 theorem stForm_self_nonneg {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) {Γ μ : Measure (Rd d)}
     [IsLocallyFiniteMeasure Γ] (hsp : IsSpectralMeasure Γ μ) {Φ : ℝ × Rd d → ℝ}
     (hΦ : Continuous Φ) (hΦs : HasCompactSupport Φ) : 0 ≤ stForm a Γ Φ Φ := by
@@ -855,7 +855,7 @@ theorem spatialPair_eq_conv (Γ : Measure (Rd d)) [IsLocallyFiniteMeasure Γ] {F
   rw [integral_const_mul]
 
 /-- **The mean identity** (the second identity of `E:occupation-raw-identities`,
-`integrated_occupation_ceiling.tex` lines 33-37, in the form of the space-time pairing, with
+`integrated_occupation_ceiling.tex` lines 34-38, in the form of the space-time pairing, with
 the field `Φ` in place of `g²`; auxiliary to the Lean route).  For `a < 1`, locally finite
 `Γ` and continuous compactly supported real fields `Ψ, Φ` on `ℝ × ℝ^d`, with
 `h_{Ψ,t}(x) = ∫_I |t-u|^{-a} (Γ * Ψ(u,·))(x) du` (`VariationalDilation.mean`):
@@ -939,7 +939,7 @@ theorem integral_mean_mul_eq_stForm_swap {a : ℝ} (ha1 : a < 1) (Γ : Measure (
   rw [← integral_congr_ae hae, stForm, integral_prod _ hKP]
 
 /-- **The variance identity `F(Ψ,Ψ) = v_Ψ`** (the integral form of the first identity of
-`E:positive-raw-mean`, `‖Ψ‖²_{H_I} = v_Ψ`, `integrated_intrinsic_constant.tex` lines 31-36,
+`E:positive-raw-mean`, `‖Ψ‖²_{H_I} = v_Ψ`, `integrated_intrinsic_constant.tex` lines 32-37,
 through `E:positive-bochner-inclusion`; auxiliary to the Lean route).  For `a < 1`, locally
 finite `Γ` and a continuous compactly supported field `Ψ`,
 `F(Ψ,Ψ) = ∫_I ∫ Ψ(σ,x) h_{Ψ,σ}(x) dx dσ = v_Ψ` (`VariationalDilation.rawCost`).  In
@@ -951,7 +951,7 @@ theorem stForm_self_eq_rawCost {a : ℝ} (ha1 : a < 1) (Γ : Measure (Rd d))
   congr 1; funext σ; congr 1; funext x; ring
 
 /-- **The mean identity, with the arguments of the manuscript** (the second identity of
-`E:occupation-raw-identities`, `integrated_occupation_ceiling.tex` lines 33-37, for a
+`E:occupation-raw-identities`, `integrated_occupation_ceiling.tex` lines 34-38, for a
 continuous compactly supported field `Φ` in place of `g²`; auxiliary to the Lean route).  For
 `a < 1`, an even locally finite `Γ` and continuous compactly supported `Ψ, Φ`:
 `x ↦ h_{Ψ,t}(x) Φ(t,x)` is integrable for every `t ∈ [0,1]`, `t ↦ ∫ h_{Ψ,t} Φ(t,·)` is
@@ -976,7 +976,7 @@ theorem sq_data {G : ℝ × Rd d → ℝ} (hG : Continuous G) (hGs : HasCompactS
 
 /-- **The mean identity for a squared field** (`∫_0^1 ∫ h_s(x) G_s(x)² dx ds = F(Ψ, G²)`, the
 second identity of `E:occupation-raw-identities`, `integrated_occupation_ceiling.tex`
-lines 33-37, for continuous compactly supported `G`; auxiliary to the Lean route).
+lines 34-38, for continuous compactly supported `G`; auxiliary to the Lean route).
 Hypotheses as in `integral_mean_mul_eq_stForm`. -/
 theorem integral_mean_mul_sq_eq_stForm {a : ℝ} (ha1 : a < 1) {Γ : Measure (Rd d)}
     [IsLocallyFiniteMeasure Γ] (hE : IsEven Γ) {Ψ G : ℝ × Rd d → ℝ} (hΨ : Continuous Ψ)
@@ -989,7 +989,7 @@ theorem integral_mean_mul_sq_eq_stForm {a : ℝ} (ha1 : a < 1) {Γ : Measure (Rd
     (sq_data hG hGs).2
 
 /-- **The Cauchy-Schwarz bound against the mean** (the final display of
-`L:occupation-raw-square`, `integrated_occupation_ceiling.tex` lines 39-41,
+`L:occupation-raw-square`, `integrated_occupation_ceiling.tex` lines 40-42,
 `⟨Ψ,ρ_g⟩ ≤ √(v_Ψ A(g))`, in the form of the space-time pairing, for a continuous compactly
 supported field `Φ` in place of `g²`; auxiliary to the Lean route).  For `0 < a < 1`, an even
 locally finite `Γ` with spectral measure `μ`, and continuous compactly supported `Ψ, Φ`:
@@ -1057,7 +1057,7 @@ theorem space_time_positivity_homog {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)
     hc hcs).2.2
 
 /-- **`L:occupation-raw-square`, narrower form for continuous compactly supported profiles**
-(`integrated_occupation_ceiling.tex`, statement lines 23-42, proof 44-90).  Hypotheses: the
+(`integrated_occupation_ceiling.tex`, statement lines 24-43, proof 45-108).  Hypotheses: the
 section's standing assumptions (lines 4-6 and 20: `H:homog`, `a = α₀`, `Γ ≠ 0`) and
 `Ψ ∈ C_pos`.  For a continuous compactly supported real field `g` on `ℝ × ℝ^d` (in place of
 the class `O` of strongly `H¹`-measurable unit profiles) and `A(g) = F(g², g²)`
@@ -1065,7 +1065,7 @@ the class `O` of strongly `H¹`-measurable unit profiles) and `A(g) = F(g², g²
 `A(g) ≥ 0` is a genuine integral; `x ↦ h_{Ψ,t}(x) g(t,x)²` is integrable for `t ∈ [0,1]` and
 `t ↦ ∫ h_{Ψ,t} g(t,·)²` on `I`; `∫_I ∫ h_{Ψ,t}(x) g(t,x)² dx dt = F(Ψ, g²)` (the pairing
 `⟨Ψ,ρ_g⟩` of `E:occupation-raw-identities` in its integral form); and
-`∫_I ∫ h_{Ψ,t}(x) g(t,x)² dx dt ≤ √(v_Ψ A(g))` (line 40).  Narrower: the Hilbert space
+`∫_I ∫ h_{Ψ,t}(x) g(t,x)² dx dt ≤ √(v_Ψ A(g))` (line 41).  Narrower: the Hilbert space
 `H_sp`, the map `Q`, the element `ρ_g ∈ H_I` and the norm identity `‖ρ_g‖² = A(g)` are not
 formalized; the profile class is continuous compactly supported fields (no unit-norm
 condition is needed for these statements); the Lean route is the mixture positivity of
@@ -1090,9 +1090,9 @@ theorem occupation_raw_square_cc_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd
   exact ⟨h1 _ _ hc hcs hc hcs, h2 _ hc hcs, e1, e2, e3, h6 Ψ hΨ g hg hgs⟩
 
 /-- **The variance identity of `L:positive-raw-embedding`, integral form**
-(`integrated_intrinsic_constant.tex`, statement lines 22-39; `E:positive-raw-mean`, first
-identity `‖Ψ‖²_{H_I} = v_Ψ`, lines 33-36, with `‖J_G F‖²` the integral of
-`E:positive-bochner-inclusion`, lines 26-30).  Hypotheses: the section's standing
+(`integrated_intrinsic_constant.tex`, statement lines 23-40; `E:positive-raw-mean`, first
+identity `‖Ψ‖²_{H_I} = v_Ψ`, lines 34-37, with `‖J_G F‖²` the integral of
+`E:positive-bochner-inclusion`, lines 27-31).  Hypotheses: the section's standing
 assumptions (lines 4-5 and 19: the original covariance under `H:homog`, `a = α₀`, `Γ ≠ 0`)
 and `Ψ ∈ C_pos`.  Conclusion: the integrand of `F(Ψ,Ψ)` is integrable on `I²`, and
 `F(Ψ,Ψ) = ∫∫_{I²} |s-t|^{-a} B_Γ(Ψ_s, Ψ_t) ds dt = v_Ψ` (`VariationalDilation.rawCost`, the
@@ -1132,9 +1132,9 @@ theorem stFormIter_eq {a : ℝ} (ha1 : a < 1) (Γ : Measure (Rd d)) [IsLocallyFi
 /-- The three facts of step (c) in the form consumed by item L8-c2, verbatim
 `OccupationCeilingFinite.SpaceTimeCS` with its `stForm` written `stFormIter` (the two
 structures have definitionally equal fields): Cauchy-Schwarz `cs` (positive semidefiniteness,
-`L:positive-raw-embedding`, `integrated_intrinsic_constant.tex` lines 22-39), `self`
-(`F(Ψ,Ψ) = v_Ψ`, `E:positive-raw-mean`, line 34) and `mean` (`∫_0^1 ∫ h_{Ψ,s} Φ_s = F(Ψ,Φ)`,
-`E:occupation-raw-identities`, `integrated_occupation_ceiling.tex` lines 33-37), for controls
+`L:positive-raw-embedding`, `integrated_intrinsic_constant.tex` lines 23-40), `self`
+(`F(Ψ,Ψ) = v_Ψ`, `E:positive-raw-mean`, line 35) and `mean` (`∫_0^1 ∫ h_{Ψ,s} Φ_s = F(Ψ,Φ)`,
+`E:occupation-raw-identities`, `integrated_occupation_ceiling.tex` lines 34-38), for controls
 `Ψ ∈ C_pos` and nonnegative continuous compactly supported fields `Φ`. -/
 structure SpaceTimeCS (a : ℝ) (Γ : Measure (Rd d)) : Prop where
   cs : ∀ Ψ ∈ CPos d, ∀ Φ : ℝ × Rd d → ℝ, Continuous Φ → HasCompactSupport Φ →

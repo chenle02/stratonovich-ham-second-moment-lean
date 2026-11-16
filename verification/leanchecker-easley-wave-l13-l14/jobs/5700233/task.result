@@ -1,0 +1,14 @@
+index=123
+mode=fresh
+target=StratonovichHAMSecondMoment.TwoSimplexTime
+rc=0
+commit=8f51004c412ac618f4be6a5f4a42c7cc78188638
+tree=79a7f16872b7c49a7055b032451460e2f9af3f0d
+inputs_sha256=b488932d82c1849e43f619b0175e5d6e22c11e0242b570ab1079df5be91df4aa
+ws_tar_sha256=83fa0b88ab4e401756b51b845ae7d8ca4d970bce1deaf34774c1dd7788b7fed9
+leanchecker_sha256=12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6
+node=node860
+job=5700233
+array_job=5700104
+start=2026-11-13T14:58:49-0600
+end=2026-11-13T15:48:28-0600

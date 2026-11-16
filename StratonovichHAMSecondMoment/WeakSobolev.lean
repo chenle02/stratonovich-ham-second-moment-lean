@@ -6,10 +6,10 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 The real Sobolev space `H^1(ℝ^d; ℝ)` through weak gradients, the real
 Rayleigh value set of `E:variational-real-rayleigh`
 (`notes/integrated_unmasked_variational.tex`, Proposition
-`P:variational-unmasked-rate`, TeX lines 101-110) for a general real
+`P:variational-unmasked-rate`, TeX lines 129-138) for a general real
 potential `V`, and its behaviour under the `L^2` dilation
 `U_r f(x) = r^{d/2} f(r x)` used in the proof of Lemma
-`L:variational-control-dilation` (TeX lines 260-266).
+`L:variational-control-dilation` (TeX lines 359-365).
 
 Mathlib has no Sobolev spaces and no weak derivatives, so this foundation is
 built here by hand:
@@ -33,7 +33,7 @@ integral from entering the set.  `rayleighRate V = √(sSup (rayleighSet V))`.
 
 Proved here (auxiliary to the Lean proof route of
 `L:variational-control-dilation`; the TeX states these facts in one sentence,
-lines 260-264): `U_r` preserves `L^2` and the `L^2` norm, transports a weak
+lines 359-363): `U_r` preserves `L^2` and the `L^2` norm, transports a weak
 gradient `g` of `f` to the weak gradient `r U_r g` of `U_r f`, and therefore
 `rayleighSet (r² V(r ·)) = r² · rayleighSet V` as sets, whence
 `rayleighRate (r² V(r ·)) = r · rayleighRate V`.  These set and rate
@@ -128,7 +128,7 @@ theorem weakGradient_ae_unique {f : Rd d → ℝ} {g₁ g₂ : Rd d → Rd d}
 
 /-! ### The `L^2` dilation `U_r` -/
 
-/-- `U_r f(x) = r^{d/2} f(r x)` (TeX line 260), for real- or vector-valued `f`. -/
+/-- `U_r f(x) = r^{d/2} f(r x)` (TeX line 359), for real- or vector-valued `f`. -/
 def dilL2 {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
     (r : ℝ) (f : Rd d → E) : Rd d → E :=
   fun x => r ^ ((d : ℝ) / 2) • f (r • x)
@@ -183,7 +183,7 @@ theorem integral_norm_dilL2_sq {E : Type*} [NormedAddCommGroup E] [NormedSpace �
   exact integral_jacobian hr (fun y => ‖f y‖ ^ 2)
 
 /-- `U_r` transports weak gradients: if `g` is a weak gradient of `f`, then
-`r U_r g` is a weak gradient of `U_r f` (TeX line 262,
+`r U_r g` is a weak gradient of `U_r f` (TeX line 361,
 `‖∇U_r f‖₂² = r² ‖∇f‖₂²`). -/
 theorem hasWeakGradient_dilL2 {r : ℝ} (hr : 0 < r) {f : Rd d → ℝ} {g : Rd d → Rd d}
     (h : HasWeakGradient f g) :
@@ -288,7 +288,7 @@ theorem IsRayleighTrial.dil {V : Rd d → ℝ} {f : Rd d → ℝ} {g : Rd d → 
       integral_jacobian hr (fun y => ‖g y‖ ^ 2)]
     ring
 
-/-- The real Rayleigh bijection (TeX lines 260-264):
+/-- The real Rayleigh bijection (TeX lines 359-363):
 `rayleighSet (r² V(r ·)) = r² · rayleighSet V` for every real potential `V`
 and `r > 0`. -/
 theorem rayleighSet_dil (V : Rd d → ℝ) {r : ℝ} (hr : 0 < r) :

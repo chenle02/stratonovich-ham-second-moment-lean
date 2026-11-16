@@ -1,6 +1,6 @@
 /-
 Refutation for the bijection part of `L:variational-control-dilation`
-(`notes/integrated_unmasked_variational.tex` lines 227-232), package theorem
+(`notes/integrated_unmasked_variational.tex` lines 316-321), package theorem
 `StratonovichHAMSecondMoment.VariationalDilation.dil_mapsTo` (and
 `dil_bijOn`) and package definitions `CPos`, `dil`.
 

@@ -1,7 +1,7 @@
 /-
 Refutation for `L:damped-homogeneous-norms` (main TeX
-`notes/notes_stratonovich_ham_second_moment.tex`, revision a284420, lines
-846-847 and 916-917), package theorem
+`notes/notes_stratonovich_ham_second_moment.tex`, revision 39f2597a, lines
+1053-1054 and 1151-1152), package theorem
 `StratonovichHAMSecondMoment.DampedMultiplier.greenMass_conv` (convolution with
 a PROBABILITY measure preserves the mass identity `G_s(ℝ^d) = s`).
 

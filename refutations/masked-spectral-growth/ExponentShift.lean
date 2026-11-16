@@ -1,6 +1,6 @@
 /-
 Refutation for the Gaussian bound of `P:masked-spectral-growth`
-(`notes/integrated_covariance_foundation.tex` lines 46-47 at a284420),
+(`notes/integrated_covariance_foundation.tex` lines 49-50 at 39f2597a),
 package theorem
 `StratonovichHAMSecondMoment.MaskedSpectralGrowth.translated_gauss_le`.
 

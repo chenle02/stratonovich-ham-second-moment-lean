@@ -102,6 +102,17 @@ def gaussSchwartz (c : ℝ) (hc : 0 < c) : SchwartzMap E ℝ where
   smooth' := contDiff_gauss c
   decay' := gauss_decay hc
 
+/-- Auxiliary to the Lean proof route. -/
+@[simp] theorem gaussSchwartz_apply (c : ℝ) (hc : 0 < c) (x : E) :
+    gaussSchwartz c hc x = Real.exp (-(c * ‖x‖ ^ 2)) := rfl
+
+/-- Auxiliary to the Lean proof route. The phase `x ↦ e^{-i⟨y,x⟩}` has
+temperate growth. -/
+theorem phase_hasTemperateGrowth (y : E) :
+    (fun x : E => Complex.exp (((-inner ℝ y x : ℝ) : ℂ) * Complex.I)).HasTemperateGrowth :=
+  Complex.hasTemperateGrowth_exp_mul_I.comp
+    (Function.hasTemperateGrowth_inner_right (H := E) y).neg
+
 /-- Auxiliary to the Lean proof route. The translation `x ↦ x - w` has
 temperate growth. -/
 theorem sub_hasTemperateGrowth (w : E) : (fun x : E => x - w).HasTemperateGrowth :=
@@ -125,6 +136,55 @@ def gaussTest (s : ℝ) (hs : 0 < s) (w y : E) : SchwartzMap E ℂ :=
   SchwartzMap.smulLeftCLM ℂ (fun x : E => Complex.exp (((-inner ℝ y x : ℝ) : ℂ) * Complex.I))
     (SchwartzMap.compCLM ℝ (sub_hasTemperateGrowth w) (sub_upper w)
       (SchwartzMap.postcompCLM (𝕜 := ℝ) Complex.ofRealCLM (gaussSchwartz s hs)))
+
+/-- The values of the test: `e^{-i⟨y,x⟩} e^{-s‖x-w‖²}`. -/
+theorem gaussTest_apply (s : ℝ) (hs : 0 < s) (w y x : E) :
+    gaussTest s hs w y x =
+      Complex.exp (-(Complex.I * (inner ℝ y x : ℝ))) * (Real.exp (-(s * ‖x - w‖ ^ 2)) : ℂ) := by
+  rw [gaussTest, SchwartzMap.smulLeftCLM_apply_apply (phase_hasTemperateGrowth y)]
+  simp only [SchwartzMap.compCLM_apply, Function.comp_apply, SchwartzMap.postcompCLM_apply,
+    gaussSchwartz_apply, Complex.ofRealCLM_apply, smul_eq_mul]
+  congr 2
+  push_cast
+  ring
+
+open HomogHypothesis in
+/-- The Gaussian Fourier integral of the test (lines 73-76 of
+`integrated_covariance_foundation.tex` when `w = 0`, `s = r²/4`):
+`∫ e^{-i⟨y,x⟩} e^{-s‖x-w‖²} e^{i⟨ξ,x⟩} dx =
+(π/s)^{d/2} e^{i⟨ξ-y,w⟩} e^{-‖ξ-y‖²/(4s)}` on `ℝ^d`, `s > 0`. -/
+theorem gaussTest_fourier {d : ℕ} (s : ℝ) (hs : 0 < s) (w y ξ : Rd d) :
+    ∫ x, gaussTest s hs w y x * Complex.exp (Complex.I * (inner ℝ ξ x : ℝ)) =
+      ((Real.pi / s) ^ ((d : ℝ) / 2) : ℝ) * Complex.exp (Complex.I * (inner ℝ (ξ - y) w : ℝ)) *
+        (Real.exp (-(‖ξ - y‖ ^ 2 / (4 * s))) : ℂ) := by
+  have hpt : ∀ x : Rd d, gaussTest s hs w y x * Complex.exp (Complex.I * (inner ℝ ξ x : ℝ)) =
+      Complex.exp (Complex.I * (inner ℝ (ξ - y) w : ℝ)) *
+        Complex.exp (-(s : ℂ) * ‖x - w‖ ^ 2 + Complex.I * (inner ℝ (ξ - y) (x - w) : ℝ)) := by
+    intro x
+    rw [gaussTest_apply, Complex.ofReal_exp, ← Complex.exp_add, ← Complex.exp_add,
+      ← Complex.exp_add]
+    congr 1
+    simp only [inner_sub_left, inner_sub_right, Complex.ofReal_sub, Complex.ofReal_neg,
+      Complex.ofReal_mul, Complex.ofReal_pow]
+    ring
+  simp_rw [hpt]
+  rw [integral_const_mul]
+  rw [integral_sub_right_eq_self
+    (fun v : Rd d => Complex.exp (-(s : ℂ) * ‖v‖ ^ 2 + Complex.I * (inner ℝ (ξ - y) v : ℝ))) w]
+  rw [GaussianFourier.integral_cexp_neg_mul_sq_norm_add (by simpa using hs) Complex.I (ξ - y)]
+  rw [finrank_euclideanSpace_fin]
+  have hπ : ((Real.pi / s) ^ ((d : ℝ) / 2) : ℝ) = ((Real.pi : ℂ) / s) ^ ((d : ℂ) / 2) := by
+    rw [Complex.ofReal_cpow (by positivity)]
+    push_cast
+    rfl
+  rw [hπ]
+  have he : Complex.I ^ 2 * (‖ξ - y‖ : ℂ) ^ 2 / (4 * (s : ℂ)) =
+      ((-(‖ξ - y‖ ^ 2 / (4 * s)) : ℝ) : ℂ) := by
+    push_cast
+    rw [Complex.I_sq]
+    ring
+  rw [he, ← Complex.ofReal_exp]
+  ring
 
 end StratonovichHAMSecondMoment.GaussianTest
 

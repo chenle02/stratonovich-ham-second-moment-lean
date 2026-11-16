@@ -3,7 +3,7 @@ Refutation for (F2) of wave L6, package theorem
 `StratonovichHAMSecondMoment.VariationalFloor.measure_ball_pos`
 (`Γ(B_r) > 0`; the exhaustion-and-scaling argument of
 `L:spatial-static-controls`, `notes/integrated_spatial_occupation.tex`
-lines 89-91 at a284420).
+lines 108-110 at 39f2597a).
 
 Wrong variant: the hypothesis `Γ ≠ 0` dropped.  Counterexample: `Γ = 0`,
 which has the set scaling of `H:homog` for every `α` (zero covariance is

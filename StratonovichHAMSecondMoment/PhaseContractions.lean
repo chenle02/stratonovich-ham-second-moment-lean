@@ -4,11 +4,11 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `L:phase-contractions` (Two static contraction bounds) of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` at revision a284420: the
-statement at lines 2072-2086 (displays `E:phase-resolvent`, `E:phase-trace` and
-the definition of `T_ε`), its proof at lines 2088-2138, the standing
-assumptions of Section `S:static-phase` at lines 2054-2057 and the constants of
-`E:phase-constants` at lines 2058-2070.
+`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a: the
+statement at lines 2509-2523 (displays `E:phase-resolvent`, `E:phase-trace` and
+the definition of `T_ε`), its proof at lines 2525-2586, the standing
+assumptions of Section `S:static-phase` at lines 2490-2493 and the constants of
+`E:phase-constants` at lines 2494-2506.
 
 Objects.  `PhaseCovariance α Γ μ` is the section's class (`0 < α < 2`, `Γ`
 nonnegative, even, positive-definite, tempered, Radon on `ℝ³`,
@@ -43,13 +43,13 @@ Supplied inputs (named hypotheses, both being proved by wave item L9-G, to be
 instantiated at integration):
 * `WaveFourierThree`: `∫ e^{iξ·x} G_s(dx) = sin(s|ξ|)/|ξ|` (value `s` at
   `ξ = 0`, `waveHat s ξ`) for `s > 0`, `ξ ∈ ℝ³`.  It is the `d = 3` case of the
-  formula `Ĝ_s(ξ) = sin(s|ξ|)/|ξ|` of main TeX lines 777-778 for the measure
-  `G_s`, which the TeX uses as `Ĝ_a` at lines 2083 and 2107-2108; no
+  formula `Ĝ_s(ξ) = sin(s|ξ|)/|ξ|` of main TeX lines 983-984 for the measure
+  `G_s`, which the TeX uses as `Ĝ_a` at lines 2520 and 2555-2556; no
   stronger.  Used only for the Fourier form of `T_ε`.
 * `ArchimedesLaw`: for every unit `e ∈ ℝ³`, the image of `volume.toSphere`
   under `ω ↦ ⟨e,ω⟩` is `2π` Lebesgue measure on `[-1,1]`.  It is the
   classical fact behind "direct integration over its normal coordinate" (main
-  TeX lines 2125-2126) and behind the radiality of `G_a * p_{2ε}` (line 2118);
+  TeX lines 2573-2574) and behind the radiality of `G_a * p_{2ε}` (line 2566);
   it concerns only the sphere measure, not the covariance.  Used only for the
   bound `E:phase-trace`.
 
@@ -113,7 +113,7 @@ open HomogHypothesis SpectralHomog MaskedSpectralGrowth SpectralMassIdentity Wav
 /-! ### The section's covariance class and constants -/
 
 /-- The standing assumptions of Section `S:static-phase` (main TeX lines
-2054-2057 at a284420): `0 < α < 2`; `Γ` a nonnegative, even,
+2490-2493 at 39f2597a): `0 < α < 2`; `Γ` a nonnegative, even,
 positive-definite, tempered Radon measure on `ℝ³` with `Γ(rA) = r^{3-α}Γ(A)`
 (Borel `A`, `r > 0`); `μ` its spectral measure in the convention
 `Γ = ∫ e^{iξ·x} μ(dξ)` (`HomogHypothesis.IsSpectralMeasure`), a positive even
@@ -161,17 +161,17 @@ theorem PhaseCovariance.scaling' {alpha : ℝ} {Γ μ : Measure (Rd 3)}
   have := h.scaling A hA c hc
   simpa using this
 
-/-- `M = Γ(B_1)` (`E:phase-constants`, main TeX line 2060; `B_1` the open unit
-ball, line 2067), as a real number (finite for locally finite `Γ`). -/
+/-- `M = Γ(B_1)` (`E:phase-constants`, main TeX line 2496; `B_1` the open unit
+ball, line 2503), as a real number (finite for locally finite `Γ`). -/
 def massM (Γ : Measure (Rd 3)) : ℝ := (Γ (ball (0 : Rd 3) 1)).toReal
 
-/-- `c_Γ = (3-α)M/(4π)` (`E:phase-constants`, main TeX line 2062). -/
+/-- `c_Γ = (3-α)M/(4π)` (`E:phase-constants`, main TeX line 2498). -/
 def cGam (Γ : Measure (Rd 3)) (alpha : ℝ) : ℝ := (3 - alpha) * massM Γ / (4 * π)
 
-/-- `b_α = 2^α + 3^{2-α}/(2-α)` (`E:phase-constants`, main TeX line 2063). -/
+/-- `b_α = 2^α + 3^{2-α}/(2-α)` (`E:phase-constants`, main TeX line 2499). -/
 def bAlpha (alpha : ℝ) : ℝ := 2 ^ alpha + 3 ^ (2 - alpha) / (2 - alpha)
 
-/-- `D_Γ = c_Γ b_α` (`E:phase-constants`, main TeX line 2064). -/
+/-- `D_Γ = c_Γ b_α` (`E:phase-constants`, main TeX line 2500). -/
 def dGam (Γ : Measure (Rd 3)) (alpha : ℝ) : ℝ := cGam Γ alpha * bAlpha alpha
 
 /-- `D_Γ` is the expression carried by the `hDdef` hypotheses of
@@ -183,7 +183,7 @@ theorem dGam_eq (Γ : Measure (Rd 3)) (alpha : ℝ) :
 /-! ### `E:phase-resolvent` -/
 
 /-- The Gaussian Fourier pairing step of the proof of `L:phase-contractions`
-(main TeX lines 2090-2098): for `s > 0` and `q ∈ ℝ^d`,
+(main TeX lines 2534-2542): for `s > 0` and `q ∈ ℝ^d`,
 `∫ e^{-s|q+ξ|²} μ(dξ) ≤ ∫ e^{-s|ξ|²} μ(dξ)`.  Only the spectral convention is
 assumed.  Proof route: `MaskedSpectralGrowth.masked_gaussian_transform` writes
 both sides as Gaussian-weighted Fourier integrals of `Γ`, and the left one is
@@ -271,8 +271,8 @@ theorem lintegral_shift_resolvent_le {d : ℕ} {Γ μ : Measure (Rd d)} [SFinite
   refine setLIntegral_mono' measurableSet_Ioi fun s hs => ?_
   exact mul_le_mul_of_nonneg_left (ENNReal.ofReal_le_ofReal (gauss_shift_le hsp s hs q)) (zero_le)
 
-/-- **`E:phase-resolvent`** (main TeX lines 2075-2077 at a284420, proof
-2089-2105), general
+/-- **`E:phase-resolvent`** (main TeX lines 2512-2514 at 39f2597a, proof
+2533-2549), general
 form in every dimension `d`: for a locally finite tempered `μ` with the
 spectral convention `IsSpectralMeasure Γ μ`, the scaling
 `Γ(cA) = c^{d-α}Γ(A)` (`SpectralHomogeneous Γ (d - α)`) and `0 < α < 2`, for
@@ -379,7 +379,7 @@ theorem map_norm_eq {d : ℕ} (ν : Measure (Rd d)) [IsLocallyFiniteMeasure ν] 
       measure_sdiff hsub measurableSet_Iio.nullMeasurableSet (by rw [hR]; exact hfin a),
       hL, hL, hR, hR]
 
-/-- The radial law (proof of `L:phase-contractions`, main TeX lines 2110-2117),
+/-- The radial law (proof of `L:phase-contractions`, main TeX lines 2558-2565),
 general form: for a locally finite measure `ν` on `ℝ^d` with
 `ν(cA) = c^β ν(A)` (`β > 0`) and measurable `f ≥ 0`,
 `∫ f(|y|) ν(dy) = β ν(B_1) ∫_0^∞ f(r) r^{β-1} dr`.  For `Γ`, `β = 3 - α`
@@ -392,9 +392,9 @@ theorem lintegral_norm_radial {d : ℕ} (ν : Measure (Rd d)) [IsLocallyFiniteMe
     lintegral_withDensity_eq_lintegral_mul _ (by fun_prop) hf, smul_eq_mul]
   rfl
 
-/-- No origin atom (main TeX lines 2089-2090 for `μ`: "there is no origin
+/-- No origin atom (main TeX lines 2533-2534 for `μ`: "there is no origin
 atom"; for `Γ` it is implicit in the radial distribution step, lines
-2110-2111): a locally finite measure with
+2558-2559): a locally finite measure with
 `ν(cA) = c^β ν(A)`, `β > 0`, has no atom at the origin
 (`SpectralHomog.measure_zero`, restated for the section). -/
 theorem measure_singleton_zero {d : ℕ} (ν : Measure (Rd d)) [IsLocallyFiniteMeasure ν]
@@ -416,7 +416,7 @@ theorem volume_homogeneous : SpectralHomogeneous (volume : Measure (Rd 3)) 3 := 
 def pprof (d : ℕ) (v u : ℝ) : ℝ := (2 * π * v) ^ (-((d : ℝ) / 2)) * Real.exp (-(u / (2 * v)))
 
 /-- The Brownian Gaussian density `p_v(x) = (2πv)^{-d/2} e^{-|x|²/(2v)}` with
-covariance `v I` (main TeX lines 2068-2069); `p_{2ε}` is `pdens (2ε)`. -/
+covariance `v I` (main TeX lines 2504-2505); `p_{2ε}` is `pdens (2ε)`. -/
 def pdens {d : ℕ} (v : ℝ) (x : Rd d) : ℝ := pprof d v (‖x‖ ^ 2)
 
 /-- Auxiliary to the Lean proof route. -/
@@ -460,8 +460,8 @@ theorem lintegral_pdens {d : ℕ} (v : ℝ) (hv : 0 < v) :
 wave item L9-G): for `s > 0` and `ξ ∈ ℝ³`,
 `∫ e^{iξ·x} G_s(dx) = sin(s|ξ|)/|ξ|` (value `s` at `ξ = 0`), i.e.
 `WaveKernel.waveHat s ξ`, for `G_s = WaveGreen.waveGreen 3 s`.  The TeX uses it
-in the Fourier form of `T_ε` (main TeX lines 2081-2084 and 2107-2108, "`Ĝ_a`"); its source is the
-Fourier formula `Ĝ_s(ξ) = sin(s|ξ|)/|ξ|` of main TeX lines 777-778. -/
+in the Fourier form of `T_ε` (main TeX lines 2518-2521 and 2555-2556, "`Ĝ_a`"); its source is the
+Fourier formula `Ĝ_s(ξ) = sin(s|ξ|)/|ξ|` of main TeX lines 983-984. -/
 def WaveFourierThree : Prop :=
   ∀ s : ℝ, 0 < s → ∀ ξ : Rd 3,
     ∫ x, Complex.exp (Complex.I * ((inner ℝ ξ x : ℝ) : ℂ)) ∂(waveGreen 3 s) = (waveHat s ξ : ℂ)
@@ -470,7 +470,7 @@ def WaveFourierThree : Prop :=
 unit vector `e ∈ ℝ³`, the image of the unit-sphere measure
 `volume.toSphere` (the measure used by `WaveGreen.waveGreen 3`) under
 `ω ↦ ⟨e, ω⟩` is `2π` times Lebesgue measure on `[-1, 1]`.  The TeX uses it as
-"direct integration over its normal coordinate" (main TeX lines 2125-2126). -/
+"direct integration over its normal coordinate" (main TeX lines 2573-2574). -/
 def ArchimedesLaw : Prop :=
   ∀ e : Rd 3, ‖e‖ = 1 →
     (volume : Measure (Rd 3)).toSphere.map (fun ω : sphere (0 : Rd 3) 1 => inner ℝ e (ω : Rd 3)) =
@@ -478,7 +478,7 @@ def ArchimedesLaw : Prop :=
 
 /-- Integration against the spherical wave measure through its normal
 coordinate (the "direct integration over its normal coordinate" of main TeX
-lines 2125-2126), from Archimedes' law: for `a > 0`, `y ∈ ℝ³` and measurable
+lines 2573-2574), from Archimedes' law: for `a > 0`, `y ∈ ℝ³` and measurable
 `φ ≥ 0`,
 `∫ φ(|y-x|²) G_a(dx) = (a/2) ∫_{-1}^{1} φ(|y|² + a² - 2a|y|t) dt`.
 In particular `x ↦ ∫ φ(|x-w|²) G_a(dw)` is radial. -/
@@ -531,7 +531,7 @@ theorem sq_rpow_eq_abs (x p : ℝ) : (x ^ 2) ^ p = |x| ^ (2 * p) := by
   norm_cast
 
 /-- The one-dimensional integral behind the sphere convolution formula (main
-TeX lines 2125-2131): for `a, r > 0` and `α < 2`,
+TeX lines 2573-2579): for `a, r > 0` and `α < 2`,
 `∫_{-1}^{1} (r² + a² - 2art)^{-α/2} dt = ((a+r)^{2-α} - |a-r|^{2-α})/(ar(2-α))`
 with integrability (the integrand is singular at `t = 1` when `r = a`). -/
 theorem integral_normal_coordinate (a r alpha : ℝ) (ha : 0 < a) (hr : 0 < r)
@@ -583,7 +583,7 @@ theorem integral_normal_coordinate (a r alpha : ℝ) (ha : 0 < a) (hr : 0 < r)
   field_simp
   ring
 
-/-- **The sphere convolution formula** (main TeX lines 2125-2131): for
+/-- **The sphere convolution formula** (main TeX lines 2573-2579): for
 `a > 0`, `α < 2` (the TeX has `0 < α < 2`) and `z ∈ ℝ³` with `r = |z| > 0`,
 `(G_a * |·|^{-α})(z) = ∫ |z-x|^{-α} G_a(dx) = ((a+r)^{2-α} - |a-r|^{2-α})/(2r(2-α))`,
 as a lower integral (so in particular finite), given Archimedes' law. -/
@@ -656,7 +656,7 @@ theorem kernel_le_of_dist (hA : ArchimedesLaw) (a : ℝ) (ha : 0 < a) (alpha : �
 theorem mul_rpow_neg (a alpha : ℝ) (ha : 0 < a) : a * a ^ (-alpha) = a ^ (1 - alpha) := by
   rw [sub_eq_add_neg, Real.rpow_add ha, Real.rpow_one]
 
-/-- The middle region of the three-region bound (main TeX lines 2134-2135),
+/-- The middle region of the three-region bound (main TeX lines 2582-2583),
 a real inequality: for `a > 0`, `α < 2` and `a/2 ≤ r ≤ 2a`,
 `((a+r)^{2-α} - |a-r|^{2-α})/(2r(2-α)) ≤ 3^{2-α} a^{1-α}/(2-α)`. -/
 theorem middle_region_le (a r alpha : ℝ) (ha : 0 < a) (ha2 : alpha < 2) (hz1 : a / 2 ≤ r)
@@ -685,7 +685,7 @@ theorem middle_region_le (a r alpha : ℝ) (ha : 0 < a) (ha2 : alpha < 2) (hz1 :
         rw [hpow]
         field_simp
 
-/-- **The three-region bound** (main TeX lines 2132-2136) for
+/-- **The three-region bound** (main TeX lines 2580-2584) for
 `(G_a * |·|^{-α})(z) = ∫ |z-x|^{-α} G_a(dx)`, `a > 0`, `0 < α < 2`, `r = |z|`:
 for `r ≤ a/2` it is at most `2^α a^{1-α}`; for `r ≥ 2a` at most `a^{1-α}`;
 for `a/2 ≤ r ≤ 2a` at most `3^{2-α} a^{1-α}/(2-α)`.  The regions are closed
@@ -715,7 +715,7 @@ theorem three_regions (hA : ArchimedesLaw) (a : ℝ) (ha : 0 < a) (alpha : ℝ) 
     rw [sphere_convolution hA a ha alpha ha2 z hz]
     exact ENNReal.ofReal_le_ofReal (middle_region_le a ‖z‖ alpha ha ha2 hz1 hz2)
 
-/-- `sup_z (G_a * |·|^{-α})(z) ≤ b_α a^{1-α}` (main TeX lines 2123 and 2132-2136): the
+/-- `sup_z (G_a * |·|^{-α})(z) ≤ b_α a^{1-α}` (main TeX lines 2571 and 2580-2584): the
 maximum of the three regional bounds is at most `b_α = 2^α + 3^{2-α}/(2-α)`. -/
 theorem kernel_le_bAlpha (hA : ArchimedesLaw) (a : ℝ) (ha : 0 < a) (alpha : ℝ) (ha0 : 0 < alpha)
     (ha2 : alpha < 2) (z : Rd 3) :
@@ -741,11 +741,11 @@ theorem kernel_le_bAlpha (hA : ArchimedesLaw) (a : ℝ) (ha : 0 < a) (alpha : �
 
 /-! ### `Γ_ε`, `T_ε` and `E:phase-trace` -/
 
-/-- `Γ_ε = p_{2ε} * Γ` (main TeX lines 2069-2070): `Γ_ε(x) = ∫ p_{2ε}(x-y) Γ(dy)`. -/
+/-- `Γ_ε = p_{2ε} * Γ` (main TeX lines 2505-2506): `Γ_ε(x) = ∫ p_{2ε}(x-y) Γ(dy)`. -/
 def gammaEps {d : ℕ} (Γ : Measure (Rd d)) (ε : ℝ) (x : Rd d) : ℝ :=
   ∫ y, pdens (2 * ε) (x - y) ∂Γ
 
-/-- `T_ε(a,q) = ∫ e^{iq·x} Γ_ε(x) G_a(dx)` (main TeX lines 2081-2082), with
+/-- `T_ε(a,q) = ∫ e^{iq·x} Γ_ε(x) G_a(dx)` (main TeX lines 2518-2519), with
 `G_a = WaveGreen.waveGreen 3 a`. -/
 def traceT (Γ : Measure (Rd 3)) (ε a : ℝ) (q : Rd 3) : ℂ :=
   ∫ x, Complex.exp (Complex.I * ((inner ℝ q x : ℝ) : ℂ)) * (gammaEps Γ ε x : ℂ) ∂(waveGreen 3 a)
@@ -780,7 +780,7 @@ theorem measurable_gammaEps {d : ℕ} (Γ : Measure (Rd d)) [SFinite Γ] (ε : �
     (continuous_pdens _).comp (continuous_fst.sub continuous_snd)
   exact (hc.stronglyMeasurable.integral_prod_right' (ν := Γ)).measurable
 
-/-- The main estimate of `E:phase-trace` (main TeX lines 2108-2136), as a lower
+/-- The main estimate of `E:phase-trace` (main TeX lines 2556-2584), as a lower
 integral: for a locally finite tempered `Γ` on `ℝ³` with
 `Γ(cA) = c^{3-α}Γ(A)`, `0 < α < 2`, `ε, a > 0`, and Archimedes' law,
 `∫ Γ_ε dG_a ≤ D_Γ a^{1-α}`.  Route as in the TeX: nonnegative Fubini, the
@@ -922,7 +922,7 @@ theorem lintegral_gammaEps_le (hA : ArchimedesLaw) {Γ : Measure (Rd 3)} [IsLoca
         unfold dGam
         ring
 
-/-- **`E:phase-trace`** (main TeX lines 2078-2082, proof 2108-2136), general form:
+/-- **`E:phase-trace`** (main TeX lines 2515-2519, proof 2556-2584), general form:
 for a locally finite tempered `Γ` on `ℝ³` with `Γ(cA) = c^{3-α}Γ(A)`,
 `0 < α < 2`, `ε, a > 0`, `q ∈ ℝ³`, and Archimedes' law: the integrand of
 `T_ε(a,q)` is `G_a`-integrable, `T_ε(a,0) = ∫ Γ_ε dG_a` is real,
@@ -970,7 +970,7 @@ theorem phase_trace (hA : ArchimedesLaw) {Γ : Measure (Rd 3)} [IsLocallyFiniteM
 /-! ### The Fourier form of `T_ε` -/
 
 /-- The Gaussian Fourier pairing for `Γ_ε` (proof of `L:phase-contractions`,
-main TeX lines 2090-2096 and 2107-2108): `Γ_ε(x) = ∫ e^{iξ·x} e^{-ε|ξ|²} μ(dξ)` for `ε > 0`,
+main TeX lines 2534-2540 and 2555-2556): `Γ_ε(x) = ∫ e^{iξ·x} e^{-ε|ξ|²} μ(dξ)` for `ε > 0`,
 any `d`; only the spectral convention is assumed (as an identity of Lean
 integrals). -/
 theorem gammaEps_fourier {d : ℕ} {Γ μ : Measure (Rd d)} (hsp : IsSpectralMeasure Γ μ) (ε : ℝ)
@@ -999,7 +999,7 @@ theorem gammaEps_fourier {d : ℕ} {Γ μ : Measure (Rd d)} (hsp : IsSpectralMea
   congr 4
   field_simp
 
-/-- **The Fourier form of `T_ε`** (main TeX lines 2081-2084, proof 2107-2108,
+/-- **The Fourier form of `T_ε`** (main TeX lines 2518-2521, proof 2555-2556,
 "Fourier Fubini"): given the d = 3 wave Green Fourier identity, for a locally
 finite tempered `μ` with the spectral convention, `ε, a > 0` and `q ∈ ℝ³`,
 `ξ ↦ Ĝ_a(q+ξ) e^{-ε|ξ|²}` is `μ`-integrable and
@@ -1051,9 +1051,9 @@ theorem traceT_fourier (hW : WaveFourierThree) {Γ μ : Measure (Rd 3)} [IsLocal
 /-! ### `L:phase-contractions` -/
 
 /-- **`L:phase-contractions`** (Two static contraction bounds; main TeX lines
-2072-2086, proof 2088-2138, at a284420), with the section's standing
-assumptions (`PhaseCovariance`, main TeX lines 2054-2057) and the constants of
-`E:phase-constants` (lines 2058-2067), for `G_a = WaveGreen.waveGreen 3 a`, given the two supplied
+2509-2523, proof 2525-2586, at 39f2597a), with the section's standing
+assumptions (`PhaseCovariance`, main TeX lines 2490-2493) and the constants of
+`E:phase-constants` (lines 2494-2503), for `G_a = WaveGreen.waveGreen 3 a`, given the two supplied
 inputs `WaveFourierThree` (the d = 3 wave Green Fourier identity) and
 `ArchimedesLaw`:
 * `E:phase-resolvent`: for `λ > 0` and `q ∈ ℝ³`, `ξ ↦ 1/(λ²+|q+ξ|²)` is

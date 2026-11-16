@@ -4,15 +4,15 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:masked-temporal-modulation` (Modulated amplitudes) of
-`notes/integrated_covariance_foundation.tex` (statement TeX lines 300-309,
-display `E:masked-temporal-modulation` 303-307, proof 311-345), in
+`notes/integrated_covariance_foundation.tex` (statement TeX lines 396-405,
+display `E:masked-temporal-modulation` 399-403, proof 407-452), in
 double-integral form, and a re-issued wrapper of Lemma `L:masked-trig-products`
-(TeX lines 347-374) in which the supplied modulation input of
+(TeX lines 459-489) in which the supplied modulation input of
 `MaskedTrigProducts.masked_trig_products_paper` is replaced by the norm
 identity of `L:masked-time-completion`.
 
 Statement formalized (`masked_temporal_modulation_paper`).  Standing
-assumptions (TeX lines 296-298 and `L:masked-time-completion`): `T > 0`,
+assumptions (TeX lines 391-393 and `L:masked-time-completion`): `T > 0`,
 `0 < a < 1`, `I = [s, s+h] ⊆ [0, T]`, `0 < h ≤ 1`.  Lemma hypotheses:
 `A ∈ C¹(I; ℂ)`, `M = sup_I |A|`, `D = sup_I |A'|`.  Conclusion, for every real
 `ω`: the integrand of the complexified temporal form at
@@ -20,7 +20,7 @@ assumptions (TeX lines 296-298 and `L:masked-time-completion`): `T > 0`,
 `|∫_0^T ∫_0^T F(t) conj F(u) |t-u|^{-a} du dt| ≤ C₀(a) h^{2-a} (M+hD)² ⟨hω⟩^{a-1}`,
 `C₀(a) = 16/(1-a)`, the manuscript's constant.  The manuscript's left side is
 the norm `‖1_I A e^{iωt}‖_a²` of the complexified completion `H_a^ℂ`; by the
-complexification clause of `L:masked-time-completion` (TeX lines 153-154) this
+complexification clause of `L:masked-time-completion` (TeX lines 201-202) this
 norm is the double integral bounded here.  The completion itself is not
 constructed; the bound is on the double integral, and nothing about `H_a` is
 assumed for it.
@@ -40,7 +40,7 @@ Conventions and side conditions made explicit here:
   `MaskedTrigProducts.C₀`, the mode `1_I A e^{iωt}` is
   `MaskedTrigProducts.modeFn I A ω` (shared with `L:masked-trig-products`).
 * `T > 0` and `h ≤ 1` are carried in the wrapper but not used: the bound is
-  uniform in `T, s, h, A, ω` (TeX line 308).
+  uniform in `T, s, h, A, ω` (TeX line 404).
 
 Proof route (differs from the TeX proof; same statement and same constant).
 * The TeX's `c(v) = ∫_s^{s+h-v} A(u+v) conj A(u) du` is represented as the
@@ -53,11 +53,11 @@ Proof route (differs from the TeX proof; same statement and same constant).
 * The shear `u = t - v` and Fubini give `⟨F,F⟩_a = ∫_ℝ |v|^{-a} e^{iωv} c(v) dv`
   (`timeForm_eq_acorr`); `c(-v) = conj c(v)` splits it as `X + conj X`,
   `X = ∫_0^∞ v^{-a} e^{iωv} c(v) dv` (`integral_acorr_split`; the TeX's two
-  conjugate triangles, lines 318-324).  Hence `|⟨F,F⟩_a| ≤ 2|X|`.
+  conjugate triangles, lines 420-426).  Hence `|⟨F,F⟩_a| ≤ 2|X|`.
 * Case `⟨hω⟩ ≤ 8` (contains the TeX's case `|ωh| ≤ 1`): `|X| ≤ M² h^{2-a}/(1-a)`
   (`crude_bound`) and `⟨hω⟩^{a-1} ≥ 1/8` (`constant_small`).
 * Case `⟨hω⟩ > 8`, so `k = h|ω| > 7`: the TeX integrates by parts on `[1/k, 1]`
-  (lines 331-342).  Here the oscillation is used through the half-period shift
+  (lines 438-449).  Here the oscillation is used through the half-period shift
   `v ↦ v + δ`, `δ = π/|ω|`, `e^{iωδ} = -1`, so `2X = ∫ (g(v) - g(v+δ)) e^{iωv}`
   with `g = 1_{v>0} v^{-a} c(v)` (`osc_bound`, with the explicit majorant
   `majorant` and `profile_sub_le`).  This gives
@@ -67,8 +67,8 @@ Proof route (differs from the TeX proof; same statement and same constant).
 Re-issued `L:masked-trig-products` (`masked_trig_products_bridged_paper`):
 the supplied input `hmod` of `masked_trig_products_paper` is discharged by
 `masked_temporal_modulation_paper` through the supplied norm identity `hnorm`
-(for `f ∈ V ∩ L²(0,T)`, `‖emb f‖² = Re ⟨f,f⟩_a`; TeX lines 153-154, extended to
-`L²(0,T)` by lines 148-149 and 177-179).  `hmem` (TeX lines 154-155) stays
+(for `f ∈ V ∩ L²(0,T)`, `‖emb f‖² = Re ⟨f,f⟩_a`; TeX lines 201-202, extended to
+`L²(0,T)` by lines 195-196 and 237-239).  `hmem` (TeX lines 202-203) stays
 supplied.  `MaskedTrigProducts` itself is not modified.
 
 Auxiliary to the Lean proof route (no direct manuscript label): every lemma
@@ -417,7 +417,7 @@ theorem osc_bound {a h B L δ : ℝ} (ha0 : 0 < a) (ha1 : a < 1) (hδ0 : 0 < δ)
 
 /-- The autocorrelation `c(v) = ∫ Φ(u+v) conj Φ(u) du` over `ℝ`.  For
 `Φ = 1_I A` with `I = [s, s+h]` and `0 ≤ v ≤ h` it is the TeX's
-`c(v) = ∫_s^{s+h-v} A(u+v) conj A(u) du` (TeX line 312). -/
+`c(v) = ∫_s^{s+h-v} A(u+v) conj A(u) du` (TeX line 414). -/
 def acorr (Φ : ℝ → ℂ) (v : ℝ) : ℂ := ∫ u, Φ (u + v) * conj (Φ u)
 
 section Acorr
@@ -464,7 +464,7 @@ theorem acorr_integrand_le (hΦ0 : ∀ u ∉ Icc s (s + h), Φ u = 0) (hΦb : �
       exact hu ⟨h2.1, by linarith [h1.2]⟩
     rcases this with h0 | h0 <;> simp [h0]
 
-/-- Auxiliary: `|c(v)| ≤ M² (h - v)_+` for every real `v` (TeX line 318 states
+/-- Auxiliary: `|c(v)| ≤ M² (h - v)_+` for every real `v` (TeX line 420 states
 `|c(v)| ≤ hM²` for `0 ≤ v ≤ h`, and `c(h) = 0`). -/
 theorem acorr_bound (hΦ0 : ∀ u ∉ Icc s (s + h), Φ u = 0)
     (hΦb : ∀ u, ‖Φ u‖ ≤ M) (v : ℝ) :
@@ -478,7 +478,7 @@ theorem acorr_bound (hΦ0 : ∀ u ∉ Icc s (s + h), Φ u = 0)
   rw [this, mul_comm]
 
 /-- Auxiliary: the Lipschitz bound `|c(v) - c(w)| ≤ (M² + hMD)(w - v)` for
-`0 ≤ v ≤ w` (TeX line 318 states `|c'(v)| ≤ M² + hMD`; here no derivative of `c`
+`0 ≤ v ≤ w` (TeX line 420 states `|c'(v)| ≤ M² + hMD`; here no derivative of `c`
 is used). -/
 theorem acorr_lip (hΦm : Measurable Φ) (hΦ0 : ∀ u ∉ Icc s (s + h), Φ u = 0)
     (hΦb : ∀ u, ‖Φ u‖ ≤ M)
@@ -677,7 +677,7 @@ theorem timeForm_eq_acorr {a T : ℝ} (ha1 : a < 1) (hΦm : Measurable Φ)
 
 /-- Auxiliary: the convolution integral is `X + conj X` with `X` its half over
 `v > 0`, by the symmetry `c(-v) = conj c(v)` (the TeX's "two conjugate
-triangles", lines 318-324). -/
+triangles", lines 420-426). -/
 theorem integral_acorr_split {a : ℝ} (ha1 : a < 1) (hΦm : Measurable Φ)
     (hΦ0 : ∀ u ∉ Icc s (s + h), Φ u = 0) (hΦb : ∀ u, ‖Φ u‖ ≤ M) (hh : 0 ≤ h) (ω : ℝ) :
     ∫ v, ((kern a v : ℝ) : ℂ) * (phase ω v * acorr Φ v) =
@@ -869,7 +869,7 @@ theorem modeFn_eq_indicator_mul (I : Set ℝ) (A : ℝ → ℂ) (ω : ℝ) :
   · simp [modeFn, phase, indicator_of_mem ht]
   · simp [modeFn, indicator_of_notMem ht]
 
-/-- `L:masked-temporal-modulation` (TeX lines 300-345), general form under the
+/-- `L:masked-temporal-modulation` (TeX lines 396-452), general form under the
 envelope bounds the proof uses: let `0 < a < 1`, `h > 0`, `0 ≤ s`, `s + h ≤ T`,
 `I = [s, s+h]`, `A` continuous on `I` with `‖A‖ ≤ M` on `I` and
 `‖A(x) - A(y)‖ ≤ D |x - y|` on `I`.  Then for every real `ω` the integrand of
@@ -1062,9 +1062,9 @@ theorem memLp_modeFn {s h T : ℝ} (A : ℝ → ℂ) (hcont : ContinuousOn A (Ic
   · rw [indicator_of_notMem ht, norm_zero]
     exact le_max_right _ _
 
-/-- `L:masked-temporal-modulation` (TeX lines 300-345, display 303-307), exact
+/-- `L:masked-temporal-modulation` (TeX lines 396-452, display 399-403), exact
 hypotheses, in double-integral form.  Standing assumptions of the subsection
-(TeX lines 296-298): `I = [s, s+h] ⊆ [0, T]`, `0 < h ≤ 1`, with `T > 0` and
+(TeX lines 391-393): `I = [s, s+h] ⊆ [0, T]`, `0 < h ≤ 1`, with `T > 0` and
 `0 < a < 1` from `L:masked-time-completion`; lemma hypotheses: `A ∈ C¹(I; ℂ)`,
 `M = sup_I |A|`, `D = sup_I |A'|` (with `A'` the derivative within `I`).  For
 every real `ω`, the integrand `F(t) conj F(u) |t-u|^{-a}`, `F = 1_I A e^{iω·}`,
@@ -1074,7 +1074,7 @@ is integrable on `[0,T]²` and its double integral (the complexified form of
 
 The left side of the manuscript's display is the completion norm
 `‖1_I A e^{iωt}‖_a²`; by the complexification clause of
-`L:masked-time-completion` (TeX lines 153-154) it equals this double integral,
+`L:masked-time-completion` (TeX lines 201-202) it equals this double integral,
 which is what is bounded here (the completion is not constructed).  The
 hypotheses `T > 0` and `h ≤ 1` are not used by the proof (the bound is uniform
 in `T`, `s`, `h`, `A` and `ω`, as the TeX states). -/
@@ -1095,7 +1095,7 @@ theorem masked_temporal_modulation_paper (a T s h : ℝ) (ha0 : 0 < a) (ha1 : a 
 
 /-! ### `L:masked-trig-products` with the norm identity in place of the modulation input -/
 
-/-- `L:masked-trig-products` (TeX lines 347-374), re-issued with one supplied
+/-- `L:masked-trig-products` (TeX lines 459-489), re-issued with one supplied
 input fewer than `MaskedTrigProducts.masked_trig_products_paper`: the
 modulation bound `hmod` (`L:masked-temporal-modulation`) is no longer assumed
 but proved (`masked_temporal_modulation_paper`), through the norm identity
@@ -1103,8 +1103,8 @@ but proved (`masked_temporal_modulation_paper`), through the norm identity
 `hnorm`: for `f ∈ V` with `f ∈ L²(0,T)`, `‖emb f‖² = Re ∬_{[0,T]²} f(t) conj f(u) |t-u|^{-a}`,
 
 which is the complexification clause of `L:masked-time-completion` (TeX lines
-153-154; with lines 148-149 and 177-178 it holds for all of `L²(0,T)`).
-Remaining supplied inputs: `hmem` (TeX lines 154-155, the modes belong to the
+201-202; with lines 195-196 and 237-238 it holds for all of `L²(0,T)`).
+Remaining supplied inputs: `hmem` (TeX lines 202-203, the modes belong to the
 accepted class `V`, whose inclusion `emb` into `E = H_a^ℂ` is linear) and
 `hnorm`.  The other hypotheses are the manuscript's, as in
 `masked_trig_products_paper`; `T > 0` and `h ≤ 1` are carried but not used. -/

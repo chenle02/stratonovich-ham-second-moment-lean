@@ -1,8 +1,8 @@
 /-
 Refutation for `E:intro-spectral-mass` read as the resolvent identity, package
 theorem `StratonovichHAMSecondMoment.SpectralMassIdentity.resolvent_one_eq_ralpha`
-(`R_Γ(1) = απ μ(B_1)/(2 sin(πα/2))`; main TeX lines 526-532 and 850-860 at
-a284420).
+(`R_Γ(1) = απ μ(B_1)/(2 sin(πα/2))`; main TeX lines 691-697 and 1057-1076 at
+39f2597a).
 
 Wrong variant: the denominator `sin(πα/2)` in place of `2 sin(πα/2)`, same
 binders and hypotheses.  Witness: `d = 1`, `μ` = Lebesgue measure on `ℝ¹`

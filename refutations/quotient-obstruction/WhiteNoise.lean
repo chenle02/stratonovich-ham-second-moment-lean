@@ -1,6 +1,6 @@
 /-
 Refutation for `P:masked-quotient-obstruction`
-(`notes/integrated_covariance_foundation.tex` line 270 at a284420: "This is not
+(`notes/integrated_covariance_foundation.tex` line 357 at 39f2597a: "This is not
 spatial white noise in dimension two"), package definition
 `StratonovichHAMSecondMoment.QuotientObstruction.Gamma0`.
 

@@ -1,6 +1,6 @@
 /-
 Refutation for the standing hypothesis `a < 1` of `L:masked-time-completion`
-(`notes/integrated_covariance_foundation.tex` lines 141-152 at a284420), package
+(`notes/integrated_covariance_foundation.tex` lines 188-200 at 39f2597a), package
 theorem `StratonovichHAMSecondMoment.TimeSchur.time_schur_paper` (whose integrability
 conclusion `H_a` is built on).
 

@@ -23,7 +23,7 @@ def main() -> int:
     for row in csv.reader((r / "inputs" / "expect.tsv").open(), delimiter="\t"):
         if row and not row[0].startswith("#"):
             exp[row[0]] = row
-    print(f"{'label':34} {'rc':>3} {'wall_s':>9} {'rss_GB':>7} | office wall/rss")
+    print(f"{'label':34} {'rc':>3} {'wall_s':>9} {'rss_GB':>7} | <MACHINE> wall/rss")
     worst = 0.0
     for row in csv.reader((r / "pilot" / "results.tsv").open(), delimiter="\t"):
         label, rc, wall, rss = row[0], row[1], float(row[2]), int(row[3]) / 1e6

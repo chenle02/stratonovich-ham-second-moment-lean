@@ -2,7 +2,7 @@ import StratonovichHAMSecondMoment.WhiteRelativeWidth
 
 /-!
 Refutation for `StratonovichHAMSecondMoment.WhiteRelativeWidth.boundK0_mul_boundMass`,
-the proof display of `C:white-relative-width` (TeX lines 148--152).
+the proof display of `C:white-relative-width` (TeX lines 191--195).
 
 Wrong variant: the product identity with `K_0(a)` mistyped as `2^a/(1+a)` instead of
 `2^a/(1-a)`.  Counterexample: `a = 1/2`; the mistyped product is `(1-a)/(1+a) = 1/3`

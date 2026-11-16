@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.StaticInteractionCompleted.circle_of_complex_phase

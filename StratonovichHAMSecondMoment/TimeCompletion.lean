@@ -4,33 +4,33 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:masked-time-completion` (Temporal covariance completion) of
-`notes/integrated_covariance_foundation.tex` at revision a284420 (statement TeX lines
-141-156, display `E:masked-time-schur` 150-152, proof 158-181), with the completion
-`H_a` constructed, and Lemma `L:masked-trig-products` (TeX lines 347-374) re-issued
+`notes/integrated_covariance_foundation.tex` at revision 39f2597a (statement TeX lines
+188-204, display `E:masked-time-schur` 197-200, proof 206-241), with the completion
+`H_a` constructed, and Lemma `L:masked-trig-products` (TeX lines 459-489) re-issued
 with nothing supplied.
 
-Standing hypotheses.  `T > 0` and `0 < a < 1` (the section's `a = α₀`; TeX lines 4-7).
+Standing hypotheses.  `T > 0` and `0 < a < 1` (the section's `a = α₀`; TeX lines 6-9).
 The section also assumes `H:homog` and `Γ ≠ 0`, but states that "the purely temporal
-estimates remain valid independently of `Γ`" (lines 5-8); this lemma is purely
+estimates remain valid independently of `Γ`" (lines 7-10); this lemma is purely
 temporal, so neither `H:homog` nor `Γ ≠ 0` is assumed here.
 
 What is constructed and proved (`masked_time_completion_paper`):
 * the form `⟨f,g⟩_a = ∬_{[0,T]²} f(t) conj g(s) |t-s|^{-a}` (`TimeSchur.timeForm`) is a
   Hermitian positive semidefinite sesquilinear form on complex `L²(0,T)`
   (`timeForm_add_right`, `timeForm_smul_right`, `conj_timeForm`, `timeForm_re_nonneg`);
-  this contains the TeX's positivity on real compact smooth tests (lines 143-147);
+  this contains the TeX's positivity on real compact smooth tests (lines 190-194);
 * `H_a` (`Ha p`) is Mathlib's `UniformSpace.Completion` of `L²(0,T)` with this
   pre-inner product: a separable complex Hilbert space (`separableSpace_Ha`), in which
   functions at seminorm distance zero are identified (the null quotient);
 * the inclusion `emb p : L²(0,T) → H_a` satisfies `‖emb f‖² = Re⟨f,f⟩_a`
   (`emb_norm_sq`), the Schur bound `E:masked-time-schur` (`emb_norm_sq_le`), and
   factors through a continuous linear map on a.e.-classes `extL2 p` with
-  `‖extL2 p w‖² ≤ (2T^{1-a}/(1-a))‖w‖²` (lines 148-149, 177-179);
-* complexification (lines 153-154, 175-177): `‖emb f‖²` equals the complex double
+  `‖extL2 p w‖² ≤ (2T^{1-a}/(1-a))‖w‖²` (lines 195-196, 237-239);
+* complexification (lines 201-202, 235-237): `‖emb f‖²` equals the complex double
   integral with `f(t) conj f(s)` (`emb_norm_sq_eq_timeForm`), it is the sum of the
   squared norms of the real and imaginary parts (`emb_norm_sq_re_im`), and for real `g`
   it is the real double integral `∬ g(t) g(s) |t-s|^{-a}` (`emb_norm_sq_real`);
-* interval amplitudes (lines 154-155): `indicator_mem_L2fun`;
+* interval amplitudes (lines 202-203): `indicator_mem_L2fun`;
 * the complex compact smooth tests supported in `(0,T)` have dense image in `H_a`
   (`dense_emb_testSet`), and the complex span of the real ones is dense
   (`dense_span_realTestSet`); hence `H_a` is the complexified null-quotient completion
@@ -43,7 +43,7 @@ construction (`MaskedModulation.memLp_modeFn`, `emb_norm_sq`).  No supplied inpu
 remains.  The existing modules are not modified.
 
 Proof route and differences from the TeX.
-* Positivity follows the TeX (lines 159-172): Gamma subordination
+* Positivity follows the TeX (lines 216-229): Gamma subordination
   (`TimeFractional.rpow_neg_eq_subordination`) and the exponential-kernel identity
   (`exp_abs_eq`) give, off the null diagonal, `|t-s|^{-a}` as a mixture
   `∫ ρ(λ,u) φ_{λ,u}(t) φ_{λ,u}(s)` with `ρ = Γ(a)⁻¹2λ^a ≥ 0`,
@@ -102,9 +102,9 @@ namespace StratonovichHAMSecondMoment.TimeCompletion
 
 open StratonovichHAMSecondMoment.TimeSchur
 
-/-! ### The exponential kernel and Gamma subordination (TeX lines 159-169) -/
+/-! ### The exponential kernel and Gamma subordination (TeX lines 216-226) -/
 
-/-- The exponential-kernel identity of the proof (TeX lines 164-169): for `λ > 0`,
+/-- The exponential-kernel identity of the proof (TeX lines 221-226): for `λ > 0`,
 `e^{-λ|t-s|} = 2λ ∫_{-∞}^{min(t,s)} e^{-λ(t-u)} e^{-λ(s-u)} du`. -/
 theorem exp_abs_eq (l t s : ℝ) (hl : 0 < l) :
     Real.exp (-(l * |t - s|)) =
@@ -167,7 +167,7 @@ theorem mixProfile_nonneg (w : ℝ × ℝ) (t : ℝ) : 0 ≤ mixProfile w t := b
   · exact (Real.exp_pos _).le
   · exact le_rfl
 
-/-- The kernel as a mixture of products (TeX lines 159-169, combined): for `a > 0` and
+/-- The kernel as a mixture of products (TeX lines 216-226, combined): for `a > 0` and
 `t ≠ s` (off the null diagonal),
 `|t-s|^{-a} = ∫_{(0,∞)×ℝ} Γ(a)⁻¹ 2λ^a 1_{u≤t} e^{-λ(t-u)} 1_{u≤s} e^{-λ(s-u)} dλ du`,
 as an identity in `[0,∞]` (Tonelli).  It combines the subordination formula
@@ -249,7 +249,7 @@ theorem ae_ne_diag (T : ℝ) :
 
 /-! ### A positivity criterion for mixtures of product kernels -/
 
-/-- Auxiliary to the Lean proof route (the abstract form of TeX lines 170-171, "its
+/-- Auxiliary to the Lean proof route (the abstract form of TeX lines 227-228, "its
 quadratic form is an integral of a square"): let `μ` on `ℝ` and `ν` on `W` be
 s-finite, `ρ ≥ 0` measurable on `W`, `φ ≥ 0` jointly measurable on `W × ℝ`, and
 `K ≥ 0` a kernel with `K(t,s) = ∫ ρ(w) φ_w(t) φ_w(s) dν(w)` (in `[0,∞]`) for
@@ -427,10 +427,10 @@ theorem conj_timeForm {a T : ℝ} (ha1 : a < 1) (hT : 0 ≤ T) {f g : ℝ → �
     kern_sub_comm a p.2 p.1]
   ring
 
-/-- Positive semidefiniteness of the form on all of complex `L²(0,T)` (TeX lines 143-147
+/-- Positive semidefiniteness of the form on all of complex `L²(0,T)` (TeX lines 190-194
 assert it on real compact smooth tests; this is stronger): for `0 < a < 1`, `T ≥ 0`
 and `f ∈ L²(0,T)`, `Re ∬_{[0,T]²} f(t) conj f(s) |t-s|^{-a} ≥ 0`.  Route as in the
-TeX proof (lines 159-172): Gamma subordination and the exponential-kernel identity
+TeX proof (lines 216-229): Gamma subordination and the exponential-kernel identity
 (`kern_eq_mixture`) write the kernel, off the null diagonal, as a mixture of products
 `φ_w(t) φ_w(s)` with nonnegative weight; Fubini on `[0,T]² × (0,∞) × ℝ`, justified by
 the Schur bound, turns the form into `∫ ρ(w) |∫ f φ_w|² ≥ 0`
@@ -485,7 +485,7 @@ theorem timeForm_one {a T : ℝ} (ha1 : a < 1) (hT : 0 ≤ T) :
 
 /-! ### The completion `H_a` -/
 
-/-- The standing parameters of `L:masked-time-completion` (TeX lines 141-142 and
+/-- The standing parameters of `L:masked-time-completion` (TeX lines 188-189 and
 the section's standing assumptions): `0 < a < 1` and `T > 0`. -/
 structure TimeParams where
   /-- the exponent `a` (`= α₀` in the section). -/
@@ -654,7 +654,7 @@ instance separableSpace_pre : TopologicalSpace.SeparableSpace (Pre p) := by
     exact ⟨_, mem_range_self _, by rw [dist_ofLp_toLp]; exact hε⟩
   exact TopologicalSpace.isSeparable_univ_iff.1 (hcl ▸ hs.closure)
 
-/-- `H_a` is separable (TeX lines 147-148 and 173-174). -/
+/-- `H_a` is separable (TeX lines 194-195 and 230-231). -/
 theorem separableSpace_Ha : TopologicalSpace.SeparableSpace (Ha p) := inferInstance
 
 variable (p)
@@ -695,8 +695,8 @@ theorem extL2Lin_norm_le (w : Lp ℂ 2 (volume.restrict (Icc (0 : ℝ) p.T))) :
 
 variable (p)
 
-/-- The continuous linear extension `L²(0,T) → H_a` of the inclusion (TeX lines 148-149
-and 177-179), defined on a.e.-classes: `extL2 p w` is the image of any representative. -/
+/-- The continuous linear extension `L²(0,T) → H_a` of the inclusion (TeX lines 195-196
+and 237-239), defined on a.e.-classes: `extL2 p w` is the image of any representative. -/
 def extL2 : Lp ℂ 2 (volume.restrict (Icc (0 : ℝ) p.T)) →L[ℂ] Ha p :=
   (extL2Lin p).mkContinuous (Real.sqrt (schurConst p)) extL2Lin_norm_le
 
@@ -707,20 +707,20 @@ theorem extL2_toLp (f : ℝ → ℂ) (hf : MemLp f 2 (volume.restrict (Icc (0 : 
     extL2 p (hf.toLp f) = emb p ⟨f, hf⟩ :=
   coe_eq_of_ae (ofLp p (hf.toLp f)) (toPre ⟨f, hf⟩) hf.coeFn_toLp
 
-/-- The extension bound (`E:masked-time-schur`, TeX lines 150-152, for classes):
+/-- The extension bound (`E:masked-time-schur`, TeX lines 197-200, for classes):
 `‖extL2 p w‖² ≤ (2T^{1-a}/(1-a)) ‖w‖²`. -/
 theorem extL2_norm_sq_le (w : Lp ℂ 2 (volume.restrict (Icc (0 : ℝ) p.T))) :
     ‖extL2 p w‖ ^ 2 ≤ schurConst p * ‖w‖ ^ 2 :=
   extL2Lin_norm_sq_le w
 
-/-- `E:masked-time-schur` (TeX lines 150-152) in `H_a`: for `f ∈ L²(0,T)`,
+/-- `E:masked-time-schur` (TeX lines 197-200) in `H_a`: for `f ∈ L²(0,T)`,
 `‖f‖_a² ≤ (2T^{1-a}/(1-a)) ∫_0^T |f|²`. -/
 theorem emb_norm_sq_le (f : L2fun p.T) :
     ‖emb p f‖ ^ 2 ≤ schurConst p * ∫ t in Icc 0 p.T, ‖(f : ℝ → ℂ) t‖ ^ 2 := by
   rw [emb_apply, UniformSpace.Completion.norm_coe]
   exact norm_pre_sq_le _
 
-/-! ### The complexified norm (TeX lines 153-154 and 175-177) -/
+/-! ### The complexified norm (TeX lines 201-202 and 235-237) -/
 
 /-- The form at `f ∈ L²(0,T)` is real: `Im⟨f,f⟩_a = 0`. -/
 theorem timeForm_self_im (f : L2fun p.T) : (timeForm p.a p.T f f).im = 0 := by
@@ -762,7 +762,7 @@ theorem eq_reL2_add_imL2 (f : L2fun p.T) : f = reL2 f + Complex.I • imL2 f := 
   exact (Complex.re_add_im _).symm
 
 /-- The complex quadratic form is the sum of those of the real and imaginary parts
-(TeX lines 175-177: "symmetry cancels the imaginary cross term"):
+(TeX lines 235-237: "symmetry cancels the imaginary cross term"):
 `‖emb f‖² = ‖emb (Re f)‖² + ‖emb (Im f)‖²`. -/
 theorem emb_norm_sq_re_im (f : L2fun p.T) :
     ‖emb p f‖ ^ 2 = ‖emb p (reL2 f)‖ ^ 2 + ‖emb p (imL2 f)‖ ^ 2 := by
@@ -780,7 +780,7 @@ theorem emb_norm_sq_re_im (f : L2fun p.T) :
     one_mul]
   simp [hreal]
 
-/-! ### Interval amplitudes (TeX lines 154-155 and 179-180) -/
+/-! ### Interval amplitudes (TeX lines 202-203 and 239-240) -/
 
 /-- Bounded measurable amplitudes on an interval `[c,d]`, extended by zero, belong to
 `L²(0,T)`, hence (through `emb`) to `H_a`. -/
@@ -796,7 +796,7 @@ theorem indicator_mem_L2fun (T c d M : ℝ) (A : ℝ → ℂ)
   filter_upwards [ae_restrict_mem measurableSet_Icc] with t ht
   exact hM t ht
 
-/-! ### Compact smooth tests inside `(0,T)` are dense (TeX lines 141-147, 173-179) -/
+/-! ### Compact smooth tests inside `(0,T)` are dense (TeX lines 188-194, 230-239) -/
 
 /-- Auxiliary: the boundary layer `[0,T] \ [η, T-η]` has measure at most `2η`. -/
 theorem measure_compl_Icc_le (T η : ℝ) (hη : 0 ≤ η) :
@@ -816,7 +816,7 @@ theorem measure_compl_Icc_le (T η : ℝ) (hη : 0 ≤ η) :
         congr 1; ring
 
 /-- Density of compact smooth tests supported inside `(0,T)` in `L²(0,T)` (the TeX's
-"smooth density in `L²`", line 177): for `T > 0`, `f ∈ L²(0,T)` and `ε > 0` there is a
+"smooth density in `L²`", line 237): for `T > 0`, `f ∈ L²(0,T)` and `ε > 0` there is a
 smooth compactly supported `g` with `tsupport g ⊆ (0,T)` and `‖f - g‖_{L²(0,T)} ≤ ε`.
 Route: Mathlib's density of smooth compactly supported functions
 (`MemLp.exist_eLpNorm_sub_le`), multiplied by a smooth bump equal to one on
@@ -945,7 +945,7 @@ theorem dense_emb_testSet : Dense (emb p '' testSet p.T) := by
   exact closure_minimal hsub isClosed_closure hx
 
 /-- `H_a` is the complexified completion of the real compact smooth tests on `(0,T)`:
-the complex span of their images is dense in `H_a` (TeX lines 141-147 and 173-177). -/
+the complex span of their images is dense in `H_a` (TeX lines 188-194 and 230-237). -/
 theorem dense_span_realTestSet :
     Dense (Submodule.span ℂ (emb p '' realTestSet p.T) : Set (Ha p)) := by
   refine dense_emb_testSet.mono ?_
@@ -969,31 +969,31 @@ theorem memLp_of_test (T : ℝ) (f : ℝ → ℝ) (hf : ContDiff ℝ (⊤ : ℕ�
     (hc : HasCompactSupport f) : MemLp f 2 (volume.restrict (Icc 0 T)) :=
   (hf.continuous.memLp_of_hasCompactSupport hc).restrict _
 
-/-- `L:masked-time-completion` (TeX lines 141-156, proof 158-181), exact standing
+/-- `L:masked-time-completion` (TeX lines 188-204, proof 206-241), exact standing
 hypotheses `T > 0`, `0 < a < 1` (no `Γ ≠ 0`: the TeX says the purely temporal
-estimates hold for any `Γ`, lines 5-7).  With `p = ⟨a, T, …⟩`, `H_a = Ha p` the
+estimates hold for any `Γ`, lines 7-9).  With `p = ⟨a, T, …⟩`, `H_a = Ha p` the
 completion of `L²(0,T)` for `‖f‖_a = (Re⟨f,f⟩_a)^{1/2}` and `emb p` the inclusion:
 
-1. (positive semidefinite, TeX lines 143-147) for every real compact smooth test `f`
+1. (positive semidefinite, TeX lines 190-194) for every real compact smooth test `f`
    the integrand `f(t) f(s) |t-s|^{-a}` is integrable on `[0,T]²` and
    `∬ f(t) f(s) |t-s|^{-a} ≥ 0` (the hypothesis `tsupport f ⊆ (0,T)` is carried but
    not used: positivity holds for every real, indeed every complex, `f ∈ L²(0,T)`,
    `timeForm_re_nonneg`);
-2. (separable, line 147) `H_a` is separable;
-3. (`E:masked-time-schur`, lines 148-152) `‖emb f‖² ≤ (2T^{1-a}/(1-a)) ∫_0^T |f|²` for
+2. (separable, line 194) `H_a` is separable;
+3. (`E:masked-time-schur`, lines 195-200) `‖emb f‖² ≤ (2T^{1-a}/(1-a)) ∫_0^T |f|²` for
    `f ∈ L²(0,T)`;
-4. (continuous extension from `L²`, lines 148-149 and 177-179) the continuous linear
+4. (continuous extension from `L²`, lines 195-196 and 237-239) the continuous linear
    map `extL2 p` on a.e.-classes agrees with `emb` on every `f ∈ L²(0,T)` and satisfies
    `‖extL2 p w‖² ≤ (2T^{1-a}/(1-a)) ‖w‖²`;
-5. (complexification, lines 153-154 and 175-177) for complex `f ∈ L²(0,T)` the
+5. (complexification, lines 201-202 and 235-237) for complex `f ∈ L²(0,T)` the
    integrand `f(t) conj f(s) |t-s|^{-a}` is integrable, `‖emb f‖²` equals the double
    integral `∬ f(t) conj f(s) |t-s|^{-a}` (as a complex number), and
    `‖emb f‖² = ‖emb (Re f)‖² + ‖emb (Im f)‖²`; for real `g ∈ L²(0,T)`,
    `‖emb g‖² = ∬ g(t) g(s) |t-s|^{-a}`;
-6. (interval amplitudes, lines 154-155) a bounded a.e.-strongly measurable amplitude on
+6. (interval amplitudes, lines 202-203) a bounded a.e.-strongly measurable amplitude on
    an interval `[c,d]`, extended by zero, lies in `L²(0,T)`, hence has an image under
    `emb`;
-7. (identification with the TeX's completion, lines 141-147 and 177) the complex span
+7. (identification with the TeX's completion, lines 188-194 and 237) the complex span
    of the images of the real compact smooth tests supported in `(0,T)` is dense in
    `H_a`.
 
@@ -1043,12 +1043,12 @@ theorem masked_time_completion_paper (a T : ℝ) (ha0 : 0 < a) (ha1 : a < 1) (hT
 
 /-! ### `L:masked-trig-products` with nothing supplied -/
 
-/-- `L:masked-trig-products` (TeX lines 347-374, display 352-360), re-issued with NO
+/-- `L:masked-trig-products` (TeX lines 459-489, display 464-472), re-issued with NO
 supplied input: `MaskedModulation.masked_trig_products_bridged_paper` instantiated with
 `E = H_a`, `V = L²(0,T)` and `emb`, so that its inputs `hmem` (the modes
 `1_I A e^{iωt}` lie in `L²(0,T)`, by `MaskedModulation.memLp_modeFn`) and `hnorm`
 (`‖emb f‖² = Re⟨f,f⟩_a`, `emb_norm_sq`) hold by construction.  Hypotheses: exactly the
-manuscript's (TeX lines 296-298 and 347-351, with `T > 0`, `0 < a < 1` from
+manuscript's (TeX lines 391-393 and 459-463, with `T > 0`, `0 < a < 1` from
 `L:masked-time-completion`); `T > 0` and `h ≤ 1` are carried but not used by the
 proof.  Conclusion: `1_I A P_r Q_ρ ∈ L²(0,T)` and
 `‖1_I A P_r Q_ρ‖_a² ≤ C₀(a) h^{2-a} (M+hD)² 𝒬_h(r,ρ)`, the norm being that of `H_a` as

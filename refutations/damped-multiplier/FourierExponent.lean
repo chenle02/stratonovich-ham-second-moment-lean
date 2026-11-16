@@ -1,7 +1,7 @@
 /-
 Refutation for `L:damped-homogeneous-norms` (main TeX
-`notes/notes_stratonovich_ham_second_moment.tex`, revision a284420, lines
-845-846 and 915-916, Green smoothing as a multiplier), package theorem
+`notes/notes_stratonovich_ham_second_moment.tex`, revision 39f2597a, lines
+1052-1053 and 1150-1151, Green smoothing as a multiplier), package theorem
 `StratonovichHAMSecondMoment.DampedMultiplier.charFun_gaussKernel_conv`
 (`\widehat{p*G}(ξ) = e^{-v|ξ|²/2} Ĝ(ξ)` for `p = N(0, vI)`).
 

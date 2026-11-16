@@ -1,8 +1,8 @@
 /-
 Refutation for the Laplace-domain part of `E:damped-multiplier-comparison` in
 `L:damped-homogeneous-norms` (main TeX
-`notes/notes_stratonovich_ham_second_moment.tex`, revision a284420, lines
-826-847, and the kernel bounds at 888-889 and 903), package theorems
+`notes/notes_stratonovich_ham_second_moment.tex`, revision 39f2597a, lines
+1033-1054, and the kernel bounds at 1120-1121 and 1138), package theorems
 `StratonovichHAMSecondMoment.DampedNormsHomog.KS_le` and `KS_univ`
 (restricting the Laplace domain decreases the kernel, `K_S(r) ≤ |r|^{-a}`).
 

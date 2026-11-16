@@ -39,12 +39,12 @@ def N2integrand (a θ : ℝ) (z : (ℝ × ℝ) × Rd d) : ℝ :=
   Real.exp (-(θ * (z.1.1 + z.1.2))) * |z.1.1 - z.1.2| ^ (-a) *
     (waveHat z.1.1 z.2 * waveHat z.1.2 z.2)
 
-/-- `N₂(θ)²` of `E:damped-norm-definitions` (lines 788-791), temporal exponent `a`. -/
+/-- `N₂(θ)²` of `E:damped-norm-definitions` (lines 994-997), temporal exponent `a`. -/
 def N2sq (a θ : ℝ) (μ : Measure (Rd d)) : ℝ :=
   ∫ p, Real.exp (-(θ * (p.1 + p.2))) * |p.1 - p.2| ^ (-a) *
     ∫ ξ, waveHat p.1 ξ * waveHat p.2 ξ ∂μ ∂P2
 
-/-- `N₁(θ)` of `E:damped-norm-definitions` (lines 785-787), temporal exponent `a`. -/
+/-- `N₁(θ)` of `E:damped-norm-definitions` (lines 991-993), temporal exponent `a`. -/
 def N1 (a θ : ℝ) (μ : Measure (Rd d)) : ℝ :=
   (Real.Gamma a)⁻¹ * ∫ l in Ioi (0 : ℝ), l ^ (a - 1) * resolvent μ (θ + l)
 

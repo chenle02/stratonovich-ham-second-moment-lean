@@ -27,34 +27,34 @@ namespace StratonovichHAMSecondMoment.StaticPhaseCauchy
 /-! ## Constants -/
 
 /-- `I_a = ∫_0^∞ s^{-1/2}(1+s)^{(a-3)/2} ds` (`L:complex-phase`, main TeX line
-2298), as a set integral over `(0, ∞)`; integrable for `a < 2`
+2761), as a set integral over `(0, ∞)`; integrable for `a < 2`
 (`phaseI_integrableOn`). -/
 def phaseI (a : ℝ) : ℝ :=
   ∫ s in Ioi (0 : ℝ), s ^ (-(1 / 2 : ℝ)) * (1 + s) ^ ((a - 3) / 2)
 
-/-- `δ_a = min{1/4, π/(8 I_a)}` (`L:complex-phase`, main TeX line 2299). -/
+/-- `δ_a = min{1/4, π/(8 I_a)}` (`L:complex-phase`, main TeX line 2762). -/
 def deltaA (a : ℝ) : ℝ := min (1 / 4) (π / (8 * phaseI a))
 
-/-! ## Cauchy estimate (main TeX lines 2616-2624) -/
+/-! ## Cauchy estimate (main TeX lines 3134-3142) -/
 
 /-- The `n`th Taylor coefficient at `0` of a map `F : ℂ → G`,
 `(n!)⁻¹ F^{(n)}(0)`.  For an entire `F` with operator-valued power series
 `F(z) = ∑ z^n C_n` it is `C_n` (`taylorCoeff_eq_coeff`); in the proof of
-`P:static-phase-all-orders` (main TeX lines 2616-2625), `F` is the phase
+`P:static-phase-all-orders` (main TeX lines 3134-3143), `F` is the phase
 propagator `z ↦ 𝓜_z(h)` and the coefficient applied to the initial phase is the
 `n`th Duhamel phase at the cutoffs. -/
 def taylorCoeff {G : Type*} [NormedAddCommGroup G] [NormedSpace ℂ G] (F : ℂ → G) (n : ℕ) : G :=
   ((n ! : ℂ))⁻¹ • iteratedDeriv n F 0
 
-/-- `d_N = 2 √(N+1) √R` (`E:fock-sandwich`, main TeX lines 2484-2488, with
+/-- `d_N = 2 √(N+1) √R` (`E:fock-sandwich`, main TeX lines 2972-2976, with
 `R = R_α`). -/
 def fockD (N : ℕ) (R : ℝ) : ℝ := 2 * √((N : ℝ) + 1) * √R
 
 /-- `400 √2 e²/δ`: with `δ = δ_{α/2}` this is the TeX's
-`A_α = 400 √2 e²/δ_{α/2}` (main TeX lines 2585-2587, `allOrdersA`). -/
+`A_α = 400 √2 e²/δ_{α/2}` (main TeX lines 3095-3097, `allOrdersA`). -/
 def orderConst (δ : ℝ) : ℝ := 400 * √2 * Real.exp 2 / δ
 
-/-- `A_α = 400 √2 e²/δ_{α/2}` (main TeX lines 2585-2587). -/
+/-- `A_α = 400 √2 e²/δ_{α/2}` (main TeX lines 3095-3097). -/
 def allOrdersA (alpha : ℝ) : ℝ := orderConst (deltaA (alpha / 2))
 
 end StratonovichHAMSecondMoment.StaticPhaseCauchy

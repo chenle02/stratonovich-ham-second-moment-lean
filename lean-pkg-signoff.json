@@ -1,0 +1,10 @@
+{
+  "schema": "lean-pkg-signoff/1",
+  "configs": {
+    "comparator-helpers.json": {
+      "smoke": {
+        "reason": "Helper theorems: the compared theorems that no coverage row credits. A row names the theorems it named at the wave-L13/L14 gate and, since v0.10.0, those whose statement-ledger label cell names a direct manuscript label with a coverage row; every other theorem (auxiliary lemmas, foundations and steps of the Lean proof route, statements labelled only by an equation, hypothesis or section label that has no row, and the structure-field projections and @[ext] lemma that lean-pkg cannot match to their claims) is in this configuration. The comparator checks each of them against its restatement in Challenge.lean like any other theorem, but none of them is credited to a paper result."
+      }
+    }
+  }
+}

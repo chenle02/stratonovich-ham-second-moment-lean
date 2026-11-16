@@ -1,0 +1,13 @@
+node=node889 job=5698995 array=5698959_36 mode=fresh target=StratonovichHAMSecondMoment.FiniteGaussianMatrix start=2026-11-13T08:45:34-0600
+tmp_avail_G=891
+VERIFIED_COMMIT=56fc59ec31b8ede85ac5ab7a2283237b091029a7 TREE=df0322362d43b18a73c060519d72955b328900c5 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1360 waited_s=0
+REPLAY_STARTED 2026-11-13T08:49:33-0600
+BEGIN fresh StratonovichHAMSecondMoment.FiniteGaussianMatrix 08:49:33
+END fresh StratonovichHAMSecondMoment.FiniteGaussianMatrix	0	0:41:10.08	7592648	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2470 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.FiniteGaussianMatrix
+PROCESS_EXIT=0 end=2026-11-13T09:30:44-0600

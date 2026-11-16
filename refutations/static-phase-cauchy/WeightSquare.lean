@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.StaticPhaseCauchy
 /-!
 Refutation for `StratonovichHAMSecondMoment.StaticPhaseCauchy.phase_weight_le` (pointwise
 form of the norm comparison `‖z‖_{1/h} ≤ n ‖z‖_{n/h}` of `P:static-phase-all-orders`,
-main TeX line 2632 at a284420).
+main TeX line 3154 at 39f2597a).
 
 Wrong variant: the multiplier comparison with `n` in place of `n²` (forgetting that the
 norm comparison by `n` is a comparison of squared norms by `n²`).  Counterexample:

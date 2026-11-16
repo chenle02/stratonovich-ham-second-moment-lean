@@ -33,7 +33,7 @@ open HomogHypothesis TimeFractional SpectralHomog WaveKernel DampedNorms DampedN
 
 /-! ### Definition -/
 
-/-- The wave Green measure `G_s` on `ℝ^d` (main TeX lines 746, 5182-5186;
+/-- The wave Green measure `G_s` on `ℝ^d` (main TeX lines 952, 6127-6131;
 Chen (2.5)): `d = 1`: `½ 1_{|x|<s} dx`; `d = 2`:
 `1_{|x|<s} dx / (2π√(s²-|x|²))`; `d = 3`: `σ_s/(4πs)`, written as
 `(s/(4π)) · map (ω ↦ sω) volume.toSphere`, which takes Mathlib's

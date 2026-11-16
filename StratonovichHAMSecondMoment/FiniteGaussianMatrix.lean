@@ -4,11 +4,11 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Finite slice of Section `S:compact-gaussian` of
-`notes/integrated_compact_gaussian.tex` (commit `a284420`): Lemma
-`L:gaussian-trace-bounds` (lines 47--90), Proposition `P:finite-gaussian-matrix`
-(lines 98--177, including the Hermitian core `E:finite-hermitian-gaussian`,
-line 150, and the Hermitian dilation, lines 156--169) and Remark
-`R:gaussian-one-variance-test` (lines 179--193).  Lemma
+`notes/integrated_compact_gaussian.tex` (commit `39f2597a`): Lemma
+`L:gaussian-trace-bounds` (lines 68--129), Proposition `P:finite-gaussian-matrix`
+(lines 138--249, including the Hermitian core `E:finite-hermitian-gaussian`,
+line 215, and the Hermitian dilation, lines 224--241) and Remark
+`R:gaussian-one-variance-test` (lines 257--271).  Lemma
 `L:gaussian-scalar-powers` is reused from `GaussianScalarPowers`; the Gaussian
 integration by parts is the foundation module `GaussianIBP`.  Nothing is
 supplied as a named input: every step, including integration by parts and
@@ -149,12 +149,12 @@ theorem trace_mul_diag_mul_diag (B : Matrix n n ℂ) (a b : n → ℂ) :
   refine Finset.sum_congr rfl fun j _ => ?_
   rw [mul_diagonal]
 
-/-- The weights `|b_{ij}|^2` of `B` in the eigenbasis of `Y` (TeX line 64) (auxiliary to the
+/-- The weights `|b_{ij}|^2` of `B` in the eigenbasis of `Y` (TeX line 90) (auxiliary to the
 Lean proof route). -/
 def eigWeight {Y : Matrix n n ℂ} (hY : Y.IsHermitian) (B : Matrix n n ℂ) (i j : n) : ℝ :=
   Complex.normSq (eigConj hY B i j)
 
-/-- `|b_{ij}| = |b_{ji}|` by Hermitian symmetry (TeX lines 64--65, 71) (auxiliary to the Lean
+/-- `|b_{ij}| = |b_{ji}|` by Hermitian symmetry (TeX lines 90--91, 101) (auxiliary to the Lean
 proof route). -/
 theorem eigWeight_symm {Y B : Matrix n n ℂ} (hY : Y.IsHermitian) (hB : B.IsHermitian) (i j : n) :
     eigWeight hY B i j = eigWeight hY B j i := by
@@ -162,7 +162,7 @@ theorem eigWeight_symm {Y B : Matrix n n ℂ} (hY : Y.IsHermitian) (hB : B.IsHer
   rw [← (eigConj_isHermitian hY hB).apply i j]
   simp
 
-/-- The eigenbasis formula of the TeX proof (lines 63--68):
+/-- The eigenbasis formula of the TeX proof (lines 89--94):
 `Tr(B Y^q B Y^r) = Σ_{i,j} |b_{ij}|^2 λ_j^q λ_i^r`, a real number (auxiliary to the Lean proof
 route). -/
 theorem trace_word_eq {B Y : Matrix n n ℂ} (hB : B.IsHermitian) (hY : Y.IsHermitian) (q r : ℕ) :
@@ -185,7 +185,7 @@ theorem trace_word_eq {B Y : Matrix n n ℂ} (hB : B.IsHermitian) (hY : Y.IsHerm
   simp only [RCLike.star_def]
   ring
 
-/-- `Tr(D Y^r) = Σ_i D'_{ii} λ_i^r` in the eigenbasis of `Y` (TeX line 76) (auxiliary to the
+/-- `Tr(D Y^r) = Σ_i D'_{ii} λ_i^r` in the eigenbasis of `Y` (TeX line 109) (auxiliary to the
 Lean proof route). -/
 theorem trace_mul_pow_eq {D Y : Matrix n n ℂ} (hY : Y.IsHermitian) (r : ℕ) :
     trace (D * Y ^ r) = ∑ i, eigConj hY D i i * ((hY.eigenvalues i : ℂ)) ^ r := by
@@ -373,7 +373,7 @@ theorem trace_mul_pow_im {D Y : Matrix n n ℂ} (hD : D.IsHermitian)
   rw [← Complex.ofReal_pow, Complex.mul_im, Complex.ofReal_im, Complex.ofReal_re, him]
   ring
 
-/-- `L:gaussian-trace-bounds` (TeX lines 47--60), with the manuscript's
+/-- `L:gaussian-trace-bounds` (TeX lines 68--81), with the manuscript's
 hypotheses: `B`, `Y` finite Hermitian, `m ≥ 2`, `L = 2m-2`, `0 ≤ q ≤ L`, and
 `D ≥ 0` Hermitian (positive semidefinite).  `|Y|` is `CFC.abs Y`.  The traces
 on the right are real (their imaginary parts vanish), and the bounds compare
@@ -406,7 +406,7 @@ end TraceBounds
 /-! ### Derivative of a noncommutative matrix power -/
 
 /-- Noncommutative derivative of a power along an affine path in a normed algebra:
-`d/dt (Y + tC)^k = Σ_{q<k} (Y+tC)^q C (Y+tC)^{k-1-q}` (TeX line 130, "differentiate
+`d/dt (Y + tC)^k = Σ_{q<k} (Y+tC)^q C (Y+tC)^{k-1-q}` (TeX line 184, "differentiate
 the factors in their order") (auxiliary to the Lean proof route). -/
 theorem hasDerivAt_pow_affine {𝔸 : Type*} [NormedRing 𝔸] [NormedAlgebra ℝ 𝔸] (Y C : 𝔸) (s : ℝ)
     (k : ℕ) :
@@ -451,7 +451,7 @@ instance instFiniteDimensionalNMat : FiniteDimensional ℝ (NMat n) :=
   (inferInstance : FiniteDimensional ℝ (Matrix n n ℂ))
 
 /-- `d/dt Re Tr(B (Y + tC)^k) = Σ_{q<k} Re Tr(B Y_t^q C Y_t^{k-1-q})`, `Y_t = Y + tC`
-(TeX line 130) (auxiliary to the Lean proof route). -/
+(TeX line 184) (auxiliary to the Lean proof route). -/
 theorem hasDerivAt_re_trace_pow (B Y C : Matrix n n ℂ) (k : ℕ) (s : ℝ) :
     HasDerivAt (fun t : ℝ => (trace (B * (Y + t • C) ^ k)).re)
       (∑ q ∈ Finset.range k,
@@ -501,7 +501,7 @@ theorem norm_entry_le_linfty (M : Matrix n n ℂ) (i j : n) :
     Finset.le_sup (f := fun i => ∑ j', ‖M i j'‖₊) (Finset.mem_univ i)
   exact_mod_cast h1.trans h2
 
-/-- Polynomial growth of `g ↦ Re Tr(B Y(g)^j C Y(g)^l)` (TeX lines 122--123, "all
+/-- Polynomial growth of `g ↦ Re Tr(B Y(g)^j C Y(g)^l)` (TeX lines 168--169, "all
 polynomial moments are finite") (auxiliary to the Lean proof route). -/
 theorem word_growth {N : ℕ} (Bs : Fin N → Matrix n n ℂ) (B C : Matrix n n ℂ) (j l : ℕ) :
     ∃ K : ℝ, ∀ g : Fin N → ℝ,
@@ -575,7 +575,7 @@ theorem gaussLin_update (x : Fin N → ℝ) (k : Fin N) (s : ℝ) :
       rw [Function.update_of_ne (Finset.ne_of_mem_erase hi)])]
   abel
 
-/-- Integrability of matrix words against `stdPi N` (TeX lines 122--126) (auxiliary to the Lean
+/-- Integrability of matrix words against `stdPi N` (TeX lines 168--172) (auxiliary to the Lean
 proof route). -/
 theorem integrable_word (B C : Matrix n n ℂ) (j l : ℕ) :
     Integrable (fun x => (trace (B * (gaussLin Bs x ^ j * C * gaussLin Bs x ^ l))).re)
@@ -617,14 +617,14 @@ theorem ibp_word (k : Fin N) (B : Matrix n n ℂ) (j : ℕ) :
   simp only [gaussLin_update]
   exact hasDerivAt_re_trace_pow B (gaussLin Bs x - x k • Bs k) (Bs k) j t
 
-/-- `Tr Y^(j+1) = Σ_k g_k Tr(B_k Y^j)` (TeX line 129) (auxiliary to the Lean proof route). -/
+/-- `Tr Y^(j+1) = Σ_k g_k Tr(B_k Y^j)` (TeX line 183) (auxiliary to the Lean proof route). -/
 theorem re_trace_pow_succ (x : Fin N → ℝ) (j : ℕ) :
     (trace (gaussLin Bs x ^ (j + 1))).re = ∑ k, x k * (trace (Bs k * gaussLin Bs x ^ j)).re := by
   rw [pow_succ', gaussLin, Finset.sum_mul, trace_sum, Complex.re_sum]
   refine Finset.sum_congr rfl fun k _ => ?_
   rw [smul_mul_assoc, trace_smul, Complex.real_smul, Complex.re_ofReal_mul]
 
-/-- The integration-by-parts identity of the TeX proof (line 132):
+/-- The integration-by-parts identity of the TeX proof (line 186):
 `E Tr Y^(j+1) = Σ_k Σ_{q<j} E Tr(B_k Y^q B_k Y^(j-1-q))`. -/
 theorem integral_trace_pow_succ (j : ℕ) :
     ∫ x, (trace (gaussLin Bs x ^ (j + 1))).re ∂stdPi N =
@@ -647,7 +647,7 @@ end Words
 
 /-! ### The Hermitian core `E:finite-hermitian-gaussian` -/
 
-/-- The scalar bootstrap of the TeX proof (lines 147--148): from
+/-- The scalar bootstrap of the TeX proof (lines 212--213): from
 `F ≤ c a^{1/m} F^{(m-1)/m}` with `F, a, c ≥ 0` and `m ≥ 2`, deduce `F ≤ c^m a`. -/
 theorem bootstrap_scalar {F a c : ℝ} {m : ℕ} (hm : 2 ≤ m) (hF : 0 ≤ F) (ha : 0 ≤ a)
     (hc : 0 ≤ c) (h : F ≤ c * a ^ (1 / (m : ℝ)) * F ^ (((m : ℝ) - 1) / m)) :
@@ -682,7 +682,7 @@ theorem variance_posSemidef (hB : ∀ k, (Bs k).IsHermitian) :
   have := posSemidef_conjTranspose_mul_self (Bs k)
   rwa [(hB k).eq, ← sq] at this
 
-/-- `Y^(2m)` is positive semidefinite, so `Tr Y^(2m) ≥ 0` (TeX line 145) (auxiliary to the Lean
+/-- `Y^(2m)` is positive semidefinite, so `Tr Y^(2m) ≥ 0` (TeX line 206) (auxiliary to the Lean
 proof route). -/
 theorem trace_pow_even_psd (hB : ∀ k, (Bs k).IsHermitian) (x : Fin N → ℝ) (m : ℕ) :
     (gaussLin Bs x ^ (2 * m)).PosSemidef := by
@@ -690,12 +690,12 @@ theorem trace_pow_even_psd (hB : ∀ k, (Bs k).IsHermitian) (x : Fin N → ℝ) 
   have := posSemidef_conjTranspose_mul_self (gaussLin Bs x ^ m)
   rwa [(hY.pow m).eq, ← pow_add, ← two_mul] at this
 
-/-- Integrability of `Re Tr Y^j` against `stdPi N` (TeX lines 122--123). -/
+/-- Integrability of `Re Tr Y^j` against `stdPi N` (TeX lines 168--169). -/
 theorem integrable_trace_pow (j : ℕ) :
     Integrable (fun x => (trace (gaussLin Bs x ^ j)).re) (stdPi N) := by
   simpa only [Matrix.one_mul] using integrable_word_one Bs 1 j
 
-/-- First step of the TeX bound (line 140): `F ≤ (2m-1) E Re Tr(D Y^(2m-2))`,
+/-- First step of the TeX bound (line 199): `F ≤ (2m-1) E Re Tr(D Y^(2m-2))`,
 from the integration-by-parts identity and the trace-word bound. -/
 theorem integral_trace_pow_le (hB : ∀ k, (Bs k).IsHermitian) (m : ℕ) (hm : 1 ≤ m) :
     ∫ x, (trace (gaussLin Bs x ^ (2 * m))).re ∂stdPi N ≤
@@ -815,12 +815,12 @@ def vIn {N : ℕ} (A : Fin N → Matrix o n ℂ) : Matrix n n ℂ := ∑ k, (A k
 def dil (M : Matrix o n ℂ) : Matrix (o ⊕ n) (o ⊕ n) ℂ := fromBlocks 0 M Mᴴ 0
 
 omit [Fintype o] [Fintype n] [DecidableEq o] [DecidableEq n] in
-/-- The dilation is Hermitian (TeX line 156). -/
+/-- The dilation is Hermitian (TeX line 224). -/
 theorem dil_isHermitian (M : Matrix o n ℂ) : (dil M).IsHermitian := by
   simp [dil, IsHermitian, fromBlocks_conjTranspose]
 
 omit [Fintype o] [Fintype n] [DecidableEq o] [DecidableEq n] in
-/-- `Σ g_k dil(A_k) = dil(Σ g_k A_k)` (TeX lines 157--159). -/
+/-- `Σ g_k dil(A_k) = dil(Σ g_k A_k)` (TeX lines 225--227). -/
 theorem gaussLin_dil {N : ℕ} (A : Fin N → Matrix o n ℂ) (x : Fin N → ℝ) :
     gaussLin (fun k => dil (A k)) x = dil (gaussLin A x) := by
   ext (i | i) (j | j) <;>
@@ -844,7 +844,7 @@ theorem trace_fromBlocks (P : Matrix o o ℂ) (Q : Matrix o n ℂ) (R : Matrix n
     (S : Matrix n n ℂ) : trace (fromBlocks P Q R S) = trace P + trace S := by
   simp [trace, Fintype.sum_sum_type]
 
-/-- `M (M^*M)^k = (MM^*)^k M` (TeX line 164) (auxiliary to the Lean proof route). -/
+/-- `M (M^*M)^k = (MM^*)^k M` (TeX line 236) (auxiliary to the Lean proof route). -/
 theorem mul_conj_pow_mul (M : Matrix o n ℂ) (k : ℕ) :
     M * (Mᴴ * M) ^ k = (M * Mᴴ) ^ k * M := by
   induction k with
@@ -853,27 +853,27 @@ theorem mul_conj_pow_mul (M : Matrix o n ℂ) (k : ℕ) :
     rw [pow_succ, ← Matrix.mul_assoc, ih, pow_succ, Matrix.mul_assoc, Matrix.mul_assoc,
       Matrix.mul_assoc]
 
-/-- `Tr((MM^*)^m) = Tr((M^*M)^m)` for `m ≥ 1` (TeX lines 162--164). -/
+/-- `Tr((MM^*)^m) = Tr((M^*M)^m)` for `m ≥ 1` (TeX lines 234--236). -/
 theorem trace_mul_conj_pow (M : Matrix o n ℂ) {m : ℕ} (hm : 1 ≤ m) :
     trace ((M * Mᴴ) ^ m) = trace ((Mᴴ * M) ^ m) := by
   obtain ⟨k, rfl⟩ : ∃ k, m = k + 1 := ⟨m - 1, by omega⟩
   rw [pow_succ, ← Matrix.mul_assoc, ← mul_conj_pow_mul, Matrix.mul_assoc, trace_mul_comm,
     Matrix.mul_assoc, ← pow_succ]
 
-/-- `Tr dil(M)^(2m) = 2 Tr((M^*M)^m)` for `m ≥ 1` (TeX line 166). -/
+/-- `Tr dil(M)^(2m) = 2 Tr((M^*M)^m)` for `m ≥ 1` (TeX line 238). -/
 theorem trace_dil_pow (M : Matrix o n ℂ) {m : ℕ} (hm : 1 ≤ m) :
     (trace (dil M ^ (2 * m))).re = 2 * schattenPow M m := by
   rw [pow_mul, dil_sq, fromBlocks_diag_pow, trace_fromBlocks, trace_mul_conj_pow M hm,
     schattenPow, Complex.add_re]
   ring
 
-/-- `D = Σ_k dil(A_k)^2 = diag(V_out, V_in)` (TeX line 160). -/
+/-- `D = Σ_k dil(A_k)^2 = diag(V_out, V_in)` (TeX line 228). -/
 theorem sum_dil_sq {N : ℕ} (A : Fin N → Matrix o n ℂ) :
     ∑ k, dil (A k) ^ 2 = fromBlocks (vOut A) 0 0 (vIn A) := by
   simp only [dil_sq]
   ext (i | i) (j | j) <;> simp [vOut, vIn, Matrix.sum_apply, fromBlocks]
 
-/-- `Tr D^m = Tr V_out^m + Tr V_in^m` (TeX lines 167--168). -/
+/-- `Tr D^m = Tr V_out^m + Tr V_in^m` (TeX lines 239--240). -/
 theorem trace_variance_pow {N : ℕ} (A : Fin N → Matrix o n ℂ) (m : ℕ) :
     (trace ((∑ k, dil (A k) ^ 2) ^ m)).re =
       (trace (vOut A ^ m)).re + (trace (vIn A ^ m)).re := by
@@ -933,7 +933,7 @@ theorem integral_schattenPow_le (m : ℕ) (hm : 1 ≤ m) :
   rw [integral_const_mul] at h
   linarith
 
-/-- At `p = 2`: `E ‖X‖_{S_2}^2 = (Tr V_out + Tr V_in)/2` (TeX lines 173--175). -/
+/-- At `p = 2`: `E ‖X‖_{S_2}^2 = (Tr V_out + Tr V_in)/2` (TeX lines 245--247). -/
 theorem integral_schattenPow_one :
     ∫ x, schattenPow (gaussLin A x) 1 ∂stdPi N =
       ((trace (vOut A ^ 1)).re + (trace (vIn A ^ 1)).re) / 2 := by
@@ -945,7 +945,7 @@ theorem integral_schattenPow_one :
   rw [← pow_one (∑ k, dil (A k) ^ 2), trace_variance_pow] at h
   linarith
 
-/-- `P:finite-gaussian-matrix` (TeX lines 98--118), on the canonical space
+/-- `P:finite-gaussian-matrix` (TeX lines 138--158), on the canonical space
 `stdPi N` of `N` independent standard Gaussians: for `p = 2m ≥ 2`,
 `(E ‖X‖_{S_p}^p)^{1/p} ≤ √(p-1) ((Tr V_out^m + Tr V_in^m)/2)^{1/p}
 ≤ √(p-1) max(‖V_out^{1/2}‖_{S_p}, ‖V_in^{1/2}‖_{S_p})`, with integrability. -/
@@ -997,7 +997,7 @@ theorem finite_gaussian_matrix_two :
   refine ⟨by rw [h1]; simp [h2], h2, ?_⟩
   rw [h1]; norm_num
 
-/-- Empty or zero families give the zero identity (TeX line 117): if every
+/-- Empty or zero families give the zero identity (TeX line 157): if every
 `A_k = 0` (in particular if `N = 0`), then `E ‖X‖_{S_p}^p = 0`, the average
 `(Tr V_out^m + Tr V_in^m)/2` is `0`, and both `‖V^{1/2}‖_{S_p}` vanish. -/
 theorem finite_gaussian_matrix_zero (hA : ∀ k, A k = 0) (m : ℕ) (hm : 1 ≤ m) :
@@ -1035,7 +1035,7 @@ def rowFamily (n : ℕ) : Fin n → Matrix (Fin 1) (Fin n) ℂ :=
 def colFamily (n : ℕ) : Fin n → Matrix (Fin n) (Fin 1) ℂ :=
   fun k => of fun i _ => if i = k then 1 else 0
 
-/-- `X = (g_1, …, g_n)` as a row (TeX line 181) (auxiliary to the Lean proof route). -/
+/-- `X = (g_1, …, g_n)` as a row (TeX line 259) (auxiliary to the Lean proof route). -/
 theorem gaussLin_rowFamily {n : ℕ} (x : Fin n → ℝ) :
     gaussLin (rowFamily n) x = of fun _ j => (x j : ℂ) := by
   ext a j
@@ -1069,7 +1069,7 @@ theorem one_by_one_sq (s : ℝ) :
     (trace ((of fun _ _ => (s : ℂ) : Matrix (Fin 1) (Fin 1) ℂ) ^ 2)).re = s ^ 2 := by
   simp [sq, trace, mul_apply]
 
-/-- `‖X‖_{S_4}^4 = (Σ_k g_k^2)^2` (TeX lines 182--185). -/
+/-- `‖X‖_{S_4}^4 = (Σ_k g_k^2)^2` (TeX lines 260--263). -/
 theorem schattenPow_rowFamily {n : ℕ} (x : Fin n → ℝ) :
     schattenPow (gaussLin (rowFamily n) x) 2 = (∑ j, x j ^ 2) ^ 2 := by
   rw [schattenPow, ← trace_mul_conj_pow _ (by norm_num), rowFamily_mul_conj, one_by_one_sq]
@@ -1137,12 +1137,12 @@ theorem integral_sum_sq_sq (n : ℕ) :
       Fintype.card_fin, nsmul_eq_mul, mul_one, Finset.sum_ite_eq, Finset.mem_univ, ite_true]
   simp only [hrow, Finset.sum_const, Finset.card_univ, Fintype.card_fin, nsmul_eq_mul]
 
-/-- `V_out = n` (TeX line 187). -/
+/-- `V_out = n` (TeX line 265). -/
 theorem vOut_rowFamily (n : ℕ) : vOut (rowFamily n) = of fun _ _ => (n : ℂ) := by
   ext a b
   simp [vOut, rowFamily, Matrix.sum_apply, mul_apply]
 
-/-- `V_in = I_n` (TeX line 187). -/
+/-- `V_in = I_n` (TeX line 265). -/
 theorem vIn_rowFamily (n : ℕ) : vIn (rowFamily n) = 1 := by
   ext i j
   simp [vIn, rowFamily, Matrix.sum_apply, mul_apply, one_apply, eq_comm]
@@ -1178,7 +1178,7 @@ theorem sqrt_three_mul_pow (y : ℝ) : (√(2 * ((2 : ℕ) : ℝ) - 1) * y) ^ 4 
       _ = 9 := by rw [h3]; norm_num
   rw [h]
 
-/-- `Tr V_in^2 = Tr I_16 = 16` (TeX line 189). -/
+/-- `Tr V_in^2 = Tr I_16 = 16` (TeX line 267). -/
 theorem trace_vIn_rowFamily_sq : (trace (vIn (rowFamily 16) ^ 2)).re = 16 := by
   simp [vIn_rowFamily]
 
@@ -1189,7 +1189,7 @@ theorem trace_vOut_rowFamily_sq : (trace (vOut (rowFamily 16) ^ 2)).re = 256 := 
       of fun _ _ => ((16 : ℝ) : ℂ) := by ext; simp
   rw [this, one_by_one_sq]; norm_num
 
-/-- `E ‖X‖_{S_4}^4 = 288` for `n = 16` (TeX line 185), with integrability. -/
+/-- `E ‖X‖_{S_4}^4 = 288` for `n = 16` (TeX line 263), with integrability. -/
 theorem integral_schattenPow_rowFamily :
     Integrable (fun x => schattenPow (gaussLin (rowFamily 16) x) 2) (stdPi 16) ∧
       ∫ x, schattenPow (gaussLin (rowFamily 16) x) 2 ∂stdPi 16 = 288 := by
@@ -1205,7 +1205,7 @@ theorem integral_schattenPow_colFamily :
   obtain ⟨h1, h2⟩ := integral_sum_sq_sq 16
   exact ⟨h1, by rw [h2]; norm_num⟩
 
-/-- `R:gaussian-one-variance-test` (TeX lines 179--193) on `stdPi 16`: for
+/-- `R:gaussian-one-variance-test` (TeX lines 257--271) on `stdPi 16`: for
 `n = 16` and the coordinate rows `A_k = e_k^T`, `X X^* = Σ_k g_k^2`,
 `E ‖X‖_{S_4}^4 = n(n+2) = 288`, `V_out = n`, `V_in = I_n`; the input-only
 form of `E:finite-gaussian-maximum` (fourth power `9 Tr I_n^2 = 144`) is
@@ -1265,7 +1265,7 @@ theorem continuous_schattenPow_gaussLin {o n : Type*} [Fintype o] [Fintype n]
   fun_prop
 
 /-- `E:finite-hermitian-gaussian` on a probability space carrying independent
-standard Gaussians `g_1, …, g_N` (TeX lines 121--154): for Hermitian `B_k`,
+standard Gaussians `g_1, …, g_N` (TeX lines 167--219): for Hermitian `B_k`,
 `Y = Σ g_k B_k`, `D = Σ B_k^2`, `m ≥ 1`: `E Tr Y^(2m) ≤ (2m-1)^m Tr D^m`,
 with equality `E Tr Y^2 = Tr D` at `m = 1`. -/
 theorem finite_hermitian_gaussian_paper {n : Type*} [Fintype n] [DecidableEq n] {N : ℕ}
@@ -1286,7 +1286,7 @@ theorem finite_hermitian_gaussian_paper {n : Type*} [Fintype n] [DecidableEq n] 
   subst h
   rw [hI]; exact integral_trace_sq_eq Bs
 
-/-- `P:finite-gaussian-matrix` (TeX lines 98--118), with the manuscript's
+/-- `P:finite-gaussian-matrix` (TeX lines 138--158), with the manuscript's
 hypotheses: complex `o × n` matrices `A_1, …, A_N` with `o, n, N ≥ 1`,
 independent real standard Gaussians `g_k` on a probability space, `X = Σ g_k A_k`,
 even `p = 2m ≥ 2`, `‖A‖_{S_p}^p = Tr((A^*A)^m)`.  Conclusions: integrability of

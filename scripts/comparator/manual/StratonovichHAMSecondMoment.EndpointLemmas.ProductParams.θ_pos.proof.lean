@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.EndpointLemmas.ProductParams.θ_pos

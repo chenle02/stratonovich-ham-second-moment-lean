@@ -23,6 +23,17 @@ for line in open(SPANS):
         # a private proof auxiliary of a copied theorem is regenerated with the copy
         if n.startswith("_private."): continue
         reach[n] = (m, None if a == "-" else (int(a), int(b)))
+# theorems a copied declaration's proof needs although no claimed type reaches them (a
+# copied theorem is kept whole when a generated `_proof_N` of it is reachable, e.g.
+# FockSandwichModel.mulOp_one, whose proof uses op_ext and mulOp_ae): listed one per line
+# in scripts/comparator/extra_reach.txt and copied like reachable constants
+xr = f"{W}/scripts/comparator/extra_reach.txt"
+if os.path.exists(xr):
+    for n in (l.strip() for l in open(xr)):
+        if not n or n.startswith("#"): continue
+        hit = [(m, a, b) for m in allspans for (x, a, b) in allspans[m] if x == n]
+        assert hit, n
+        reach[n] = (hit[0][0], (hit[0][1], hit[0][2]))
 mods = sorted({m for m, _ in reach.values()})
 keep = collections.defaultdict(set)
 for n, (m, r) in reach.items():

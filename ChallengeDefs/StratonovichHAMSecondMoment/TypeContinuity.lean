@@ -33,13 +33,13 @@ def seriesSum (c : ℕ → ℝ) (z : ℝ) : ℝ := ∑' k : ℕ, c k * z ^ k
 
 /-- The normalized logarithmic type
 `τ = limsup_{z → ∞} z^{-1/ν} log F(z)` of `L:positive-series-type` (main TeX
-line 7226), as an extended real number (no truncation, no boundedness side
+line 8423), as an extended real number (no truncation, no boundedness side
 condition). -/
 def seriesType (ν : ℝ) (c : ℕ → ℝ) : EReal :=
   limsup (fun z : ℝ => ((z ^ (-(1 / ν)) * Real.log (seriesSum c z) : ℝ) : EReal)) atTop
 
 /-- The coefficient type `K = limsup_{k → ∞} ((k!)^ν c_k)^{1/k}` of
-`E:positive-series-type` (main TeX line 7230), in `ℝ≥0∞`. For `c_k ≥ 0` (a
+`E:positive-series-type` (main TeX line 8427), in `ℝ≥0∞`. For `c_k ≥ 0` (a
 hypothesis of every result below) the real number `((k!)^ν c_k)^{1/k}` is
 nonnegative, so `ENNReal.ofReal` does not truncate it; `K = ∞` is allowed.
 The `k = 0` term (where Lean's `1/0 = 0` gives the value `1`) does not affect
@@ -51,31 +51,31 @@ def coeffType (ν : ℝ) (c : ℕ → ℝ) : ℝ≥0∞ :=
 
 /-- The normalized upper time growth rate
 `limsup_{T → ∞} T^{-κ} log m(T)` of `E:moment-growth-types` (main TeX
-lines 7505-7514), as an extended real number. -/
+lines 8757-8766), as an extended real number. -/
 def growthUpper (κ : ℝ) (m : ℝ → ℝ) : EReal :=
   limsup (fun T : ℝ => ((T ^ (-κ) * Real.log (m T) : ℝ) : EReal)) atTop
 
 /-- The normalized lower time growth rate
 `liminf_{T → ∞} T^{-κ} log m(T)` of `E:moment-growth-types` (main TeX
-lines 7505-7514), as an extended real number. -/
+lines 8757-8766), as an extended real number. -/
 def growthLower (κ : ℝ) (m : ℝ → ℝ) : EReal :=
   liminf (fun T : ℝ => ((T ^ (-κ) * Real.log (m T) : ℝ) : EReal)) atTop
 
-/-! ### The manuscript's parameters (main TeX lines 7062-7069) -/
+/-! ### The manuscript's parameters (main TeX lines 8239-8246) -/
 
-/-- `ν = 3 - α` (main TeX line 7065). -/
+/-- `ν = 3 - α` (main TeX line 8242). -/
 def nuOf (alpha : ℝ) : ℝ := 3 - alpha
 
-/-- `a_max = min(1, 2 - α)` (main TeX line 7065). -/
+/-- `a_max = min(1, 2 - α)` (main TeX line 8242). -/
 def amaxOf (alpha : ℝ) : ℝ := min 1 (2 - alpha)
 
-/-- `β(a) = 4 - α - a` (main TeX line 7066). -/
+/-- `β(a) = 4 - α - a` (main TeX line 8243). -/
 def betaOf (alpha a : ℝ) : ℝ := 4 - alpha - a
 
-/-- `κ(a) = β(a)/ν` (main TeX line 7067). -/
+/-- `κ(a) = β(a)/ν` (main TeX line 8244). -/
 def kappaOf (alpha a : ℝ) : ℝ := betaOf alpha a / nuOf alpha
 
-/-- `κ_st = (4 - α)/ν` (main TeX line 7068). -/
+/-- `κ_st = (4 - α)/ν` (main TeX line 8245). -/
 def kappaSt (alpha : ℝ) : ℝ := (4 - alpha) / nuOf alpha
 
 /-! ### The named inputs -/
@@ -83,29 +83,29 @@ def kappaSt (alpha : ℝ) : ℝ := (4 - alpha) / nuOf alpha
 /-- The inputs of `P:moment-growth-logconvex` and
 `C:static-moment-constant-continuity` that are not formalized here, for the
 moments `mom p a T = E[u^{(a)}(T,x)^p]` at a fixed point `x` (`p = 1, 2`;
-`mom p 0` is the static moment `E[U(T,x)^p]`, main TeX lines 7070-7074) and the
+`mom p 0` is the static moment `E[U(T,x)^p]`, main TeX lines 8247-8251) and the
 full-moment coefficients `c p a k = c_{p,k}(a)` of
 `E:full-moment-coefficients`. Each field is no stronger than its manuscript
 source:
 * `L0_pos`, `static_law`: the imported static law `E:static-ratio-input`
-  (Chen-Hu, main TeX lines 7079-7087): `0 < L_0 < ∞` and
+  (Chen-Hu, main TeX lines 8256-8264): `0 < L_0 < ∞` and
   `T^{-κ_st} log E U(T,x)^p → p^{κ_st} L_0` for `p = 1, 2`, verbatim.
 * `series`: `E:full-moment-positive-series` with nonnegative coefficients
   and `c_{p,0}(a) = 1` (the definition `E:full-moment-coefficients`), from
-  `L:full-moment-coefficient-holder` (main TeX lines 7433-7439), for
+  `L:full-moment-coefficient-holder` (main TeX lines 8667-8673), for
   `0 ≤ a < a_max`; the convergence `< ∞` is stated as summability.
-* `holder`: `E:full-moment-coefficient-holder` (main TeX lines 7440-7444),
+* `holder`: `E:full-moment-coefficient-holder` (main TeX lines 8674-8678),
   verbatim.
 * `minorant`: `E:static-minorant-rate` of `P:static-minorant-lower` (main TeX
-  lines 7271-7275), `liminf ≥ p^{κ_st} L_0`, in the equivalent real form
+  lines 8478-8482), `liminf ≥ p^{κ_st} L_0`, in the equivalent real form
   "every `y < p^{κ_st} L_0` is eventually below the normalized logarithm".
 * `full_upper`: `E:full-upper-bound` of `T:full-upper` (main TeX lines
-  3758-3772) applied at temporal exponent `a` (as the TeX does at lines 7534 and
-  7365-7366):
+  4474-4488) applied at temporal exponent `a` (as the TeX does at lines 8794 and
+  8595-8596):
   `E u^{(a)}(T,x)^2 ≤ e (T+2)^d exp(C T^{κ(a)})` for `T ≥ 1`, with the
   manuscript's finite `C R_α^{1/(3-α)}` written as one finite constant `C`.
 * `cauchy_schwarz`: `(E u)^2 ≤ E u^2` for the same solution (the
-  Cauchy-Schwarz step at main TeX line 7535). -/
+  Cauchy-Schwarz step at main TeX line 8795). -/
 structure TypeContinuityInputs (d : ℕ) (alpha : ℝ) (mom : ℕ → ℝ → ℝ → ℝ)
     (c : ℕ → ℝ → ℕ → ℝ) (L0 : ℝ) : Prop where
   L0_pos : 0 < L0

@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.TimeFractional
 /-!
 Refutation for `StratonovichHAMSecondMoment.TimeFractional.Psi_le_rpow`
 (the bound `Ψ_a(r,v) ≤ r^{-a}` stated after `E:averaged-clock-kernel`, main
-TeX line 7713): the exponent `-a` cannot be replaced by `a`.
+TeX line 8991): the exponent `-a` cannot be replaced by `a`.
 
 The wrong variant is the package statement (same binders and hypotheses) with
 `r^{-a}` replaced by `r^a`. Witness: `a = 1/2`, `r = 1/4`, `v = 0`, where

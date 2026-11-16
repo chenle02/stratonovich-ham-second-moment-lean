@@ -4,12 +4,12 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `L:low-alpha-convolution` (Low-`α` convolution bound) of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` (revision a284420): statement
-at main TeX lines 4702-4716 (displays `E:low-alpha-radial`, lines 4704-4708,
-and `E:low-alpha-convolution`, lines 4710-4714), proof at lines 4718-4757,
-standing assumptions of the subsection at lines 4691-4700.
+`notes/notes_stratonovich_ham_second_moment.tex` (revision 39f2597a): statement
+at main TeX lines 5566-5580 (displays `E:low-alpha-radial`, lines 5568-5572,
+and `E:low-alpha-convolution`, lines 5574-5578), proof at lines 5582-5631,
+standing assumptions of the subsection at lines 5554-5563.
 
-Objects (the TeX's notation, lines 4695-4698):
+Objects (the TeX's notation, lines 5558-5561):
 * `V = μ({ξ : |ξ| ≤ 1})` is `specV μ` (the closed unit ball, as in the TeX;
   `SpectralMassIdentity.ralpha` uses the open ball for `R_α`, a different
   constant);
@@ -17,7 +17,7 @@ Objects (the TeX's notation, lines 4695-4698):
   `|ξ|^{-1} = ∞`), not Lean's junk `min h 0⁻¹ = 0`;
 * `p_ε` is the centered Gaussian density with covariance `ε I`
   (`heatDens ε`, `(2πε)^{-d/2} e^{-|w|²/(2ε)}`; the TeX fixes this
-  normalization at lines 4513-4515 and 5004-5005, not inside the lemma), and
+  normalization at lines 5346-5348 and 5915-5916, not inside the lemma), and
   `γ_ε = p_ε * Γ` is `gammaEps Γ ε`, `γ_ε(x) = ∫ p_ε(x - y) Γ(dy)`;
 * `G_{h,η} = p_η * G_h` is `smoothedGreen G h η = gaussKernel η ∗ G h`
   (`DampedMultiplier.gaussKernel η = N(0, ηI)`); for `η = 0` it is `G_h`
@@ -33,7 +33,7 @@ Formalized:
   `∫ min{h, |ξ|^{-1}} dμ = V h^{1-α}/(1-α)` for `h > 0`, `α < 1` (second
   display of `E:low-alpha-radial`), by the layer-cake formula as in the TeX;
 * the Gaussian spectral representation (the "Fourier Fubini" step that the
-  TeX invokes at lines 4736-4738 without displaying it):
+  TeX invokes at lines 5610-5612 without displaying it):
   `gammaEps_spectral`, `γ_ε(x) = ∫ e^{iξ·x} e^{-ε|ξ|²/2} μ(dξ)`, and
   **`smoothed_pairing_spectral`**: for every finite measure `G`, `ε > 0`,
   `z ∈ ℝ^d`, with `Ĝ = charFun G`,
@@ -44,12 +44,12 @@ Formalized:
 * `low_alpha_convolution` (general form) and the wrappers below: the whole
   lemma, `E:low-alpha-convolution` with integrability of `y ↦ γ_ε(y + z)`
   against `G_{h,η}`, for all `ε > 0`, `η ≥ 0`, `z` (the uniformity of line
-  4715 is the order of quantifiers: the bound does not depend on `ε, η, z`).
+  5579 is the order of quantifiers: the bound does not depend on `ε, η, z`).
 
 Wrappers:
 * `low_alpha_convolution_paper`: under `H:homog`
   (`HomogHypothesis.HomogCovariance`, `d ∈ {1,2,3}`, no `Γ ≠ 0`; the
-  subsection retains `H:homog`, line 4691), `α < 1` (with `0 < α` from
+  subsection retains `H:homog`, line 5554), `α < 1` (with `0 < α` from
   `H:homog`, returned as the first conjunct) and the supplied input below,
   for `G_h = waveGreen d h`;
 * `low_alpha_convolution_one`: the same in `d = 1` with nothing supplied (the
@@ -59,7 +59,7 @@ Supplied input (one): `GreenFourier (waveGreen d)`
 (`DampedMultiplier.GreenFourier`: `G_h` finite and
 `charFun (G_h) = waveHat h`, i.e. `Ĝ_h(ξ) = sin(h|ξ|)/|ξ|` with value `h` at
 `0`, for `h > 0`).  It is exactly the identity the TeX imports from the source's
-wave-kernel formulas (main TeX lines 4738-4744, Chen (2.3)-(2.5), p. 7), with
+wave-kernel formulas (main TeX lines 5612-5618, Chen (2.3)-(2.5), p. 7), with
 the finiteness of `G_h` that the TeX states in the same display (`G_h(ℝ^d) = h`);
 so it is no stronger than the TeX's input.  It is proved in `d = 1`
 (`greenFourier_one`); for `d = 2, 3` it is being proved by wave item L9-G and
@@ -82,19 +82,19 @@ Fields of `H:homog` used by the wrappers (directly or through
 
 Differences from the TeX (statement and route):
 * The TeX's derivation `μ(cA) = c^α μ(A)` from Fourier uniqueness (lines
-  4719-4722) is `MaskedSpectralGrowth.spectralHomogeneous_of_homog`; the
-  consequence `μ{0} = 0` (lines 4723-4724) is not needed here: `lowKernel h`
+  5590-5593) is `MaskedSpectralGrowth.spectralHomogeneous_of_homog`; the
+  consequence `μ{0} = 0` (lines 5594-5595) is not needed here: `lowKernel h`
   has the value `h` at `0` and its level sets `{t ≤ lowKernel h}` are closed
   balls, which contain `0` (`SpectralHomog.measure_zero` has `μ{0} = 0`).
 * Integrability of `e^{-ε|ξ|²/2}` against `μ` (TeX: "by the polynomial ball
-  growth of `μ`", line 4736) is taken from the temperedness of `μ`.
+  growth of `μ`", line 5610) is taken from the temperedness of `μ`.
 * The lower bound: in Lean `Γ` is a (positive) measure, so `γ_ε ≥ 0` because
   `p_ε ≥ 0` (`gammaEps_nonneg`); the TeX argues by distributional
-  nonnegativity (lines 4752-4753).  The covariance of `H:homog` is a measure,
+  nonnegativity (lines 5626-5627).  The covariance of `H:homog` is a measure,
   so this is the same situation.
 * The upper bound follows the TeX: `|∫ G_{h,η}(dy) γ_ε(y + z)| ≤
   ∫ |e^{-η|ξ|²/2} Ĝ_h(ξ)| e^{-ε|ξ|²/2} μ(dξ) ≤ ∫ min{h, |ξ|^{-1}} dμ`
-  (lines 4744-4750), via `smoothed_pairing_spectral`, Mathlib's `charFun_conv`
+  (lines 5618-5624), via `smoothed_pairing_spectral`, Mathlib's `charFun_conv`
   (through `DampedMultiplier.charFun_gaussKernel_conv`) and
   `WaveKernel.abs_waveHat_le_min`.
 * The general theorem holds in every dimension `d` and for every family `G`
@@ -102,8 +102,8 @@ Differences from the TeX (statement and route):
 
 Narrower than the TeX: none for the lemma's displays.  Not stated: the
 commentary sentences "This computation uses ball masses, not a radial density"
-(lines 4733-4734) and "No positivity of the oscillatory Fourier integrand is
-asserted" (lines 4755-4756).
+(lines 5604-5605) and "No positivity of the oscillatory Fourier integrand is
+asserted" (lines 5629-5630).
 
 Lemmas marked "Auxiliary to the Lean proof route" have no manuscript label.
 -/
@@ -169,7 +169,7 @@ theorem heatDens_nonneg {ε : ℝ} (hε : 0 ≤ ε) (w : Rd d) : 0 ≤ heatDens 
   unfold heatDens
   exact mul_nonneg (Real.rpow_nonneg (by positivity) _) (Real.exp_pos _).le
 
-/-- `γ_ε ≥ 0` for `ε ≥ 0` (main TeX line 4752): the smoothed covariance of a
+/-- `γ_ε ≥ 0` for `ε ≥ 0` (main TeX line 5626): the smoothed covariance of a
 (positive) measure `Γ` is nonnegative, since `p_ε ≥ 0`. -/
 theorem gammaEps_nonneg (Γ : Measure (Rd d)) {ε : ℝ} (hε : 0 ≤ ε) (x : Rd d) :
     0 ≤ gammaEps Γ ε x :=
@@ -188,7 +188,7 @@ theorem lowKernel_nonneg {h : ℝ} (hh : 0 ≤ h) (ξ : Rd d) : 0 ≤ lowKernel 
   · exact le_min hh (inv_nonneg.2 (norm_nonneg _))
 
 /-- `|Ĝ_h(ξ)| ≤ min{h, |ξ|^{-1}}` for `h ≥ 0`, including `ξ = 0` (the second
-inequality of the display at main TeX lines 4747-4751). -/
+inequality of the display at main TeX lines 5621-5625). -/
 theorem abs_waveHat_le_lowKernel {h : ℝ} (hh : 0 ≤ h) (ξ : Rd d) :
     |waveHat h ξ| ≤ lowKernel h ξ := by
   unfold lowKernel
@@ -218,8 +218,8 @@ theorem integrable_gaussFactor {μ : Measure (Rd d)} (hμt : IsTempered μ) {ε 
 
 /-! ### The ball masses and the layer cake (`E:low-alpha-radial`) -/
 
-/-- The ball-mass formula of `E:low-alpha-radial` (main TeX line 4705; proof
-lines 4719-4723):
+/-- The ball-mass formula of `E:low-alpha-radial` (main TeX line 5569; proof
+lines 5590-5594):
 `μ({|ξ| ≤ R}) = V R^α` for `R > 0`, from `μ(cA) = c^α μ(A)`. -/
 theorem measure_closedBall_eq {μ : Measure (Rd d)} {alpha : ℝ}
     (hI : SpectralHomogeneous μ alpha) (R : ℝ) (hR : 0 < R) :
@@ -250,7 +250,7 @@ theorem levelset_lowKernel_empty {h t : ℝ} (hth : h < t) :
   · exact hth
   · exact lt_of_le_of_lt (min_le_left _ _) hth
 
-/-- Auxiliary to the Lean proof route (the last integral of main TeX line 4729).
+/-- Auxiliary to the Lean proof route (the last integral of main TeX line 5600).
 `∫_0^h u^{-α} du = h^{1-α}/(1-α)` for
 `α < 1`, `h ≥ 0`, as a lower integral over `(0, h]`. -/
 theorem lintegral_rpow_Ioc {alpha h : ℝ} (ha1 : alpha < 1) (hh : 0 ≤ h) :
@@ -266,8 +266,8 @@ theorem lintegral_rpow_Ioc {alpha h : ℝ} (ha1 : alpha < 1) (hh : 0 ≤ h) :
   congr 1
   rw [show -alpha + 1 = 1 - alpha by ring, sub_zero]
 
-/-- The layer-cake identity of `E:low-alpha-radial` (main TeX lines 4706-4707;
-proof lines 4723-4733; with `V < ∞` and the
+/-- The layer-cake identity of `E:low-alpha-radial` (main TeX lines 5570-5571;
+proof lines 5594-5604; with `V < ∞` and the
 integrability of `min{h, |ξ|^{-1}}`): for `h > 0` and `α < 1`,
 `∫ min{h, |ξ|^{-1}} μ(dξ) = V h^{1-α}/(1-α)`. -/
 theorem integral_lowKernel {μ : Measure (Rd d)} {alpha : ℝ} [IsLocallyFiniteMeasure μ]
@@ -319,7 +319,7 @@ theorem integrable_heatDens {Γ : Measure (Rd d)} (hΓt : IsTempered Γ) {ε : �
   field_simp
 
 /-- The pointwise Gaussian spectral representation of the smoothed covariance
-(part of the Fourier Fubini step invoked at main TeX lines 4736-4738):
+(part of the Fourier Fubini step invoked at main TeX lines 5610-5612):
 for `ε > 0`, `γ_ε(x) = ∫ e^{iξ·x} e^{-ε|ξ|²/2} μ(dξ)`, where `μ` is the
 spectral measure of `Γ` (`IsSpectralMeasure Γ μ`). -/
 theorem gammaEps_spectral {Γ μ : Measure (Rd d)} (hsp : IsSpectralMeasure Γ μ) {ε : ℝ}
@@ -383,7 +383,7 @@ theorem gammaEps_continuous_bounded {Γ μ : Measure (Rd d)} (hμt : IsTempered 
 
 /-- **Gaussian spectral representation of the smoothed pairing** (the
 "Fourier Fubini" step of the proof of `L:low-alpha-convolution`, main TeX
-lines 4736-4738, which the TeX does not display; stated for a general finite
+lines 5610-5612, which the TeX does not display; stated for a general finite
 measure `G`).  Let `Γ` and `μ` be tempered with `IsSpectralMeasure Γ μ` (`μ`
 s-finite), `ε > 0`, `G` a finite measure on `ℝ^d` and `z ∈ ℝ^d`.  Then
 `y ↦ p_ε(x - y)` is `Γ`-integrable for every `x` (so `γ_ε` is a genuine
@@ -447,7 +447,7 @@ theorem smoothed_pairing_spectral {Γ μ : Measure (Rd d)} [SFinite μ] (hΓt : 
 
 /-! ### `L:low-alpha-convolution` -/
 
-/-- `G_{h,0} = G_h` (the convention of main TeX line 4698): `gaussKernel 0` is
+/-- `G_{h,0} = G_h` (the convention of main TeX line 5561): `gaussKernel 0` is
 the Dirac mass at `0`. -/
 theorem smoothedGreen_zero (G : ℝ → Measure (Rd d)) (h : ℝ) [SFinite (G h)] :
     smoothedGreen G h 0 = G h := by
@@ -513,7 +513,7 @@ theorem smoothedGreen_pairing_spectral {Γ μ : Measure (Rd d)} [SFinite μ]
   simp_rw [hc] at hint2 hrep
   exact ⟨hint, hint2, hrep⟩
 
-/-- **`L:low-alpha-convolution`, general form** (main TeX lines 4702-4757).
+/-- **`L:low-alpha-convolution`, general form** (main TeX lines 5566-5631).
 Let `μ` be a locally finite measure with `μ(cA) = c^α μ(A)`
 (`SpectralHomogeneous μ α`), `α < 1` (no lower bound on `α` is used), `Γ`,
 `μ` tempered with
@@ -565,11 +565,11 @@ theorem alpha_pos_of_homog {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   · exact h.1
   · subst hd; norm_num at h; linarith
 
-/-- **`L:low-alpha-convolution`** (main TeX lines 4702-4757) under the
+/-- **`L:low-alpha-convolution`** (main TeX lines 5566-5631) under the
 manuscript's hypotheses: `H:homog` (`HomogCovariance`, `d ∈ {1,2,3}`; no
 `Γ ≠ 0`), `α < 1` (so `0 < α < 1`), `G_h` the wave Green measures
 `waveGreen d h`, and the Fourier identity of the source's wave-kernel formulas
-(main TeX line 4741), supplied as `GreenFourier (waveGreen d)`.  Conclusions as
+(main TeX line 5615), supplied as `GreenFourier (waveGreen d)`.  Conclusions as
 in `low_alpha_convolution`, with `G_{h,η} = p_η * G_h` (`smoothedGreen`,
 `= G_h` for `η = 0` by `smoothedGreen_zero`). -/
 theorem low_alpha_convolution_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}

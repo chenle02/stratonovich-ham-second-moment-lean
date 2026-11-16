@@ -1,6 +1,6 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.TimeSchur.time_schur_paper`
-(`E:masked-time-schur`, TeX lines 150-152).
+(`E:masked-time-schur`, TeX lines 197-200).
 
 Wrong variant: the Schur bound with half the constant,
 `∫∫ f(t) f(s) |t-s|^{-a} ≤ (T^{1-a}/(1-a)) ∫ f²`, in the binder shape of

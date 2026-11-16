@@ -1,5 +1,5 @@
 /-
-Refutation for `L:positive-series-type` (main TeX lines 7222-7234), package
+Refutation for `L:positive-series-type` (main TeX lines 8419-8431), package
 theorem
 `StratonovichHAMSecondMoment.TypeContinuity.positive_series_type_paper`
 (`τ = ν K^{1/ν}`).

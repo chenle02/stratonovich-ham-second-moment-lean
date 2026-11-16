@@ -8,13 +8,13 @@ Density of smooth compactly supported functions in the weak-gradient `H^1`
 
 Foundation item with no manuscript label of its own.  The fact is stated in
 one sentence in the proof of Proposition `P:spatial-four-linear` of
-`notes/integrated_spatial_occupation.tex` at revision a284420, lines 262-266
+`notes/integrated_spatial_occupation.tex` at revision 39f2597a, lines 352-356
 ("Smooth compact functions are dense in `H^1`. Cutoffs equal to one on the
 radius-`R` ball, vanishing beyond `2R` and with gradient at most `C/R`,
 converge ... Mollification then converges in `H^1` by `L^2` translation
 continuity of the function and its weak gradients."), and it is used where
 smooth-profile statements are extended to `H^1`: the same proof, lines
-270-271, and the proof of Proposition `P:spatial-energy-map`, lines 328-330.
+360-361, and the proof of Proposition `P:spatial-energy-map`, lines 437-439.
 
 The space is the package's hand-rolled `H^1` of `WeakSobolev`
 (`IsTestFunction`, `HasWeakGradient`, `MemH1`); the classical gradient of a
@@ -55,7 +55,7 @@ route and are not TeX steps):
 The mollifier sequence reuses `VariationalFloor.bumpN` (so
 `mollify (VariationalFloor.bumpN d n) f` is `VariationalFloor.moll f n` for
 real `f`, by definition).  Not formalized: the separability remark of the
-same proof (lines 266-268).
+same proof (lines 356-358).
 -/
 public import Mathlib
 public import StratonovichHAMSecondMoment.HomogHypothesis
@@ -405,7 +405,7 @@ on the closed unit ball and `0` outside the open ball of radius `2`. -/
 def cutBump (d : ℕ) : ContDiffBump (0 : Rd d) := ⟨1, 2, by norm_num, by norm_num⟩
 
 /-- Auxiliary to the Lean proof route: the cutoff `χ_n(x) = χ(x/(n+1))`
-(TeX line 262-263 with `R = n + 1`). -/
+(TeX line 352-353 with `R = n + 1`). -/
 def cutoff (n : ℕ) (x : Rd d) : ℝ := cutBump d (((n : ℝ) + 1)⁻¹ • x)
 
 /-- Auxiliary to the Lean proof route: `χ_n` is smooth. -/
@@ -455,7 +455,7 @@ theorem exists_bound_fderiv_cutBump :
   exact ⟨max C 0, le_max_right _ _, fun y => (hC y).trans (le_max_left _ _)⟩
 
 /-- Auxiliary to the Lean proof route: `‖∇χ_n‖ ≤ C/(n+1)` when `‖Dχ‖ ≤ C`
-(the TeX's gradient bound `C/R`, line 263). -/
+(the TeX's gradient bound `C/R`, line 353). -/
 theorem norm_grad_cutoff_le {C : ℝ} (hC : ∀ y : Rd d, ‖fderiv ℝ (cutBump d) y‖ ≤ C)
     (n : ℕ) (x : Rd d) : ‖grad (cutoff n) x‖ ≤ C / ((n : ℝ) + 1) := by
   simp only [grad, LinearIsometryEquiv.norm_map]
@@ -484,7 +484,7 @@ theorem tendsto_cutoff_smul {G : Type*} [NormedAddCommGroup G] [NormedSpace ℝ 
 
 /-- Auxiliary to the Lean proof route: for smooth `h` with `h, ∇h ∈ L²`,
 the test functions `χ_n h` converge to `h` and their gradients to `∇h` in
-`L²` (the TeX's cutoff step, lines 262-265, applied to a smooth function). -/
+`L²` (the TeX's cutoff step, lines 352-355, applied to a smooth function). -/
 theorem tendsto_cutoff_test {h : Rd d → ℝ} (hh : ContDiff ℝ ∞ h) (hL : MemLp h 2 volume)
     (hG : MemLp (grad h) 2 volume) :
     Tendsto (fun n => eLpNorm (fun x => cutoff n x * h x - h x) 2 volume) atTop (𝓝 0) ∧
@@ -568,7 +568,7 @@ theorem exists_test_approx {f : Rd d → ℝ} {g : Rd d → Rd d} (hf : MemLp f 
 
 /-- **Density of `C_c^∞` in the weak-gradient `H^1`** (half (a) of the
 D8-lite foundation; `notes/integrated_spatial_occupation.tex`, proof of
-`P:spatial-four-linear`, lines 262-266 at a284420), for every dimension `d`.
+`P:spatial-four-linear`, lines 352-356 at 39f2597a), for every dimension `d`.
 Lean proof route: mollification first (with an `L²` contraction and density
 of `C_c` in `L²` in place of the TeX's translation continuity), then the
 TeX's cutoff estimate; see the module doc comment. -/

@@ -5,21 +5,21 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The Fourier identities of the wave Green measures `G_s` in `d = 2, 3`, of the
 main TeX file `notes/notes_stratonovich_ham_second_moment.tex` (revision
-a284420), Archimedes' law for the sphere measure, and the extension of the
+39f2597a), Archimedes' law for the sphere measure, and the extension of the
 Green-smoothing identification of `L:damped-homogeneous-norms` (L8-b,
 `DampedMultiplier`) to every `d ∈ {1,2,3}`.
 
-Sources at a284420 (main TeX):
-* `Ĝ_s(ξ) = sin(s|ξ|)/|ξ|`, value `s` at `ξ = 0` (lines 777-778, before
+Sources at 39f2597a (main TeX):
+* `Ĝ_s(ξ) = sin(s|ξ|)/|ξ|`, value `s` at `ξ = 0` (lines 983-984, before
   `E:damped-norm-definitions`);
-* the display `Ĝ_h(ξ) = sin(h|ξ|)/|ξ|`, `G_h(ℝ^d) = h` (lines 4738-4744, in
-  the proof of `L:low-alpha-convolution`, lines 4702-4757), quoted from the
+* the display `Ĝ_h(ξ) = sin(h|ξ|)/|ξ|`, `G_h(ℝ^d) = h` (lines 5612-5618, in
+  the proof of `L:low-alpha-convolution`, lines 5566-5631), quoted from the
   source's (2.3)-(2.5), p. 7; the identity is also used in the proof of
-  `L:alpha-one-convolution` (lines 4760-4818, the factor `sin(hr)/r` at
-  4787-4794) and in `E:phase-trace` of `L:phase-contractions` (lines
-  2072-2137; `T_ε(a,q) = ∫ Ĝ_a(q+ξ) e^{-ε|ξ|²} μ(dξ)`, lines 2081-2084, d = 3).
+  `L:alpha-one-convolution` (lines 5635-5708, the factor `sin(hr)/r` at
+  5673-5680) and in `E:phase-trace` of `L:phase-contractions` (lines
+  2509-2585; `T_ε(a,q) = ∫ Ĝ_a(q+ξ) e^{-ε|ξ|²} μ(dξ)`, lines 2518-2521, d = 3).
   The TeX states the identity without proof (it is imported from the source).
-* the measures `G_h^{(2)}`, `G_h^{(3)}` (lines 5179-5187), formalized as
+* the measures `G_h^{(2)}`, `G_h^{(3)}` (lines 6124-6132), formalized as
   `WaveGreen.waveGreen` (unchanged).  The `d = 3` measure is the recorded
   DEFINITIONAL CHOICE of `WaveGreen` (Le's decision 4 for wave L6):
   `(s/(4π)) · map (ω ↦ sω) σ` with `σ = volume.toSphere`; this module proves
@@ -31,7 +31,7 @@ Formalized (all proved, nothing supplied):
   waveHat s ξ` for `s > 0`, every `ξ`, with integrability;
 * `waveGreen_fourier`: the same for `d ∈ {1,2,3}` (with
   `WaveGreen.waveGreen_fourier_one`), and `waveGreen_fourier_paper`, the display
-  at lines 4740-4744 with the right side written as in the TeX
+  at lines 5614-5618 with the right side written as in the TeX
   (`sin(h|ξ|)/|ξ|`, value `h` at `ξ = 0`) together with `G_h(ℝ^d) = h`;
 * `sphere_fourier`: `∫_{S²} e^{iξ·ω} σ(dω) = 4π sinc|ξ|`;
 * `archimedes`: the image of `σ` under `ω ↦ ⟪e,ω⟫` (`‖e‖ = 1`) is
@@ -42,12 +42,12 @@ Formalized (all proved, nothing supplied):
 * `damped_homogeneous_norms_fourier_wave`: the conclusions of
   `DampedMultiplier.damped_homogeneous_norms_fourier_paper` with
   `G := waveGreen d` under `H:homog` alone (`HomogCovariance`; `d` from `h.dim`,
-  no `Γ ≠ 0`), i.e. the Green-smoothing identification (main TeX lines 845-847,
-  915-917) in every `d`, generalizing `damped_homogeneous_norms_fourier_one`.
+  no `Γ ≠ 0`), i.e. the Green-smoothing identification (main TeX lines 1052-1054,
+  1150-1152) in every `d`, generalizing `damped_homogeneous_norms_fourier_one`.
 
 Not formalized: the three lemmas that use the identity (`L:low-alpha-convolution`,
 `L:alpha-one-convolution`, `L:phase-contractions`) and the spherical computations
-that use Archimedes' law (lines 2125-2131, 5189-5194).
+that use Archimedes' law (lines 2573-2579, 6134-6139).
 
 Proof route (the TeX has no proof; no Bessel functions are used):
 * `d = 2`: rotate `ξ` to `|ξ|e₀` by a reflection (`Submodule.reflection_sub`;
@@ -268,7 +268,7 @@ theorem radial2_sqrt (s t u : ℝ) :
   rw [Real.sq_sqrt (by positivity)]; ring_nf
 
 /-- The Fourier identity in `d = 2`: `∫ e^{iξ·x} G_s(dx) = Ĝ_s(ξ) =
-sin(s|ξ|)/|ξ|` (`WaveKernel.waveHat`; main TeX lines 777-778, quoted at 4741
+sin(s|ξ|)/|ξ|` (`WaveKernel.waveHat`; main TeX lines 983-984, quoted at 5615
 from the source's (2.3)-(2.5)) for `s > 0`, with integrability.  Proof route:
 rotation of `ξ` to `|ξ|e₀`, slicing, and `∫_{-a}^{a}(a²-u²)^{-1/2} du = π`. -/
 theorem waveGreen_fourier_two (s : ℝ) (hs : 0 < s) (ξ : Rd 2) :
@@ -575,7 +575,7 @@ theorem sphere_fourier_aux (ξ : Rd 3) : spherePhi ξ 1 = ((4 * π * Real.sinc �
 every `ξ`, where `σ = volume.toSphere`.  No rotation invariance of `toSphere`
 is used (Mathlib has none); the identity comes from computing
 `∫_{|x|<R} e^{iξ·x} dx` in polar coordinates and by slicing.  This is the
-`d = 3` core of the Fourier identity (main TeX lines 777-778, 4741). -/
+`d = 3` core of the Fourier identity (main TeX lines 983-984, 5615). -/
 theorem sphere_fourier (ξ : Rd 3) :
     Integrable (fun ω : sphere (0 : Rd 3) 1 =>
         Complex.exp (Complex.I * ((inner ℝ ξ (ω : Rd 3) : ℝ) : ℂ)))
@@ -588,7 +588,7 @@ theorem sphere_fourier (ξ : Rd 3) :
   simp [spherePhi]
 
 /-- The Fourier identity in `d = 3`: `∫ e^{iξ·x} G_s(dx) = Ĝ_s(ξ) =
-sin(s|ξ|)/|ξ|` (`WaveKernel.waveHat`; main TeX lines 777-778, quoted at 4741
+sin(s|ξ|)/|ξ|` (`WaveKernel.waveHat`; main TeX lines 983-984, quoted at 5615
 from the source's (2.3)-(2.5)) for `s > 0`, with integrability.  `G_s =
 waveGreen 3 s` is the definitional choice `(s/(4π)) · map (ω ↦ sω) toSphere`
 recorded in `WaveGreen`. -/
@@ -615,8 +615,8 @@ vector `e`, the image of `σ = volume.toSphere` under `ω ↦ ⟪e,ω⟫` is `2�
 Lebesgue measure on `[-1,1]`.  Proof: equality of characteristic functions
 (`Measure.ext_of_charFun`), both being `4π sinc t` by `sphere_fourier`.  This
 is the image law behind the computations "direct integration over its normal
-coordinate" (main TeX lines 2125-2131, proof of `L:phase-contractions`) and
-"In dimension three spherical coordinates give" (lines 5189-5194, proof of
+coordinate" (main TeX lines 2573-2579, proof of `L:phase-contractions`) and
+"In dimension three spherical coordinates give" (lines 6134-6139, proof of
 `L:higher-riesz`); neither computation is formalized here. -/
 theorem archimedes (e : Rd 3) (he : ‖e‖ = 1) :
     ((volume : Measure (Rd 3)).toSphere).map
@@ -686,7 +686,7 @@ theorem integral_sphere_inner (e : Rd 3) (he : ‖e‖ = 1) {E : Type*} [NormedA
 
 /-- The Fourier identity of the wave Green measures for `d ∈ {1,2,3}`:
 `∫ e^{iξ·x} G_s(dx) = Ĝ_s(ξ) = s sinc(s|ξ|)` (`WaveKernel.waveHat`, main TeX lines
-777-778 and 4741) for `s > 0` and every `ξ`, with integrability.  `d = 1` is
+983-984 and 5615) for `s > 0` and every `ξ`, with integrability.  `d = 1` is
 `WaveGreen.waveGreen_fourier_one`; the `d = 3` measure is the definitional choice
 of `WaveGreen`. -/
 theorem waveGreen_fourier (d : ℕ) (hd : d = 1 ∨ d = 2 ∨ d = 3) (s : ℝ) (hs : 0 < s)
@@ -701,7 +701,7 @@ theorem waveGreen_fourier (d : ℕ) (hd : d = 1 ∨ d = 2 ∨ d = 3) (s : ℝ) (
   · exact waveGreen_fourier_three s hs ξ
 
 /-- `waveHat h ξ = sin(h|ξ|)/|ξ|` for `ξ ≠ 0` and `= h` at `ξ = 0` (`h > 0`), the
-form written at main TeX lines 777-778 and 4741.  Auxiliary to the Lean proof
+form written at main TeX lines 983-984 and 5615.  Auxiliary to the Lean proof
 route. -/
 theorem waveHat_eq_sin_div (d : ℕ) (h : ℝ) (hh : 0 < h) (ξ : Rd d) :
     waveHat h ξ = if ξ = 0 then h else Real.sin (h * ‖ξ‖) / ‖ξ‖ := by
@@ -712,7 +712,7 @@ theorem waveHat_eq_sin_div (d : ℕ) (h : ℝ) (hh : 0 < h) (ξ : Rd d) :
     rw [Real.sinc_of_ne_zero (mul_ne_zero hh.ne' hn)]
     field_simp
 
-/-- The display at main TeX lines 4740-4744 (proof of `L:low-alpha-convolution`,
+/-- The display at main TeX lines 5614-5618 (proof of `L:low-alpha-convolution`,
 quoted from the source's (2.3)-(2.5)), for the wave Green measures in
 `d ∈ {1,2,3}` (the dimension clause of `H:homog`) and `h > 0`:
 `∫ e^{iξ·x} G_h(dx) = sin(h|ξ|)/|ξ|`, with value `h` at `ξ = 0`, with
@@ -732,7 +732,7 @@ theorem waveGreen_fourier_paper (d : ℕ) (hd : d = 1 ∨ d = 2 ∨ d = 3) (h : 
 
 /-- `DampedMultiplier.GreenFourier (waveGreen d)` for `d ∈ {1,2,3}`: the wave
 Green measures are finite and their characteristic functions are `waveHat s`
-for `s > 0` (main TeX lines 777-778).  Extends `greenFourier_one`. -/
+for `s > 0` (main TeX lines 983-984).  Extends `greenFourier_one`. -/
 theorem greenFourier (d : ℕ) (hd : d = 1 ∨ d = 2 ∨ d = 3) : GreenFourier (waveGreen d) := by
   refine ⟨fun s _ => isFiniteMeasure_waveGreen d s, fun s hs ξ => ?_⟩
   rw [charFun_apply, ← (waveGreen_fourier d hd s hs ξ).2]
@@ -740,13 +740,13 @@ theorem greenFourier (d : ℕ) (hd : d = 1 ∨ d = 2 ∨ d = 3) : GreenFourier (
   simp only
   rw [real_inner_comm, mul_comm]
 
-/-- `L:damped-homogeneous-norms` (main TeX lines 803-919), the second norm of the
+/-- `L:damped-homogeneous-norms` (main TeX lines 1010-1154), the second norm of the
 wave Green measures and of their Gaussian smoothing, under `H:homog` alone, in
 every `d` (`d ∈ {1,2,3}` from `h.dim`; `GreenFourier (waveGreen d)` discharged
 by `greenFourier`): for `v ≥ 0`, `θ > 0` and measurable `S ⊆ S'`, the second
 norm of `waveGreen d` is `N2onSq α₀ θ S μ`, that of the Gaussian-smoothed family
 `p * G` is `N_{2,m,S}(θ)²` with `m = e^{-v|ξ|²}`, all four outer integrands are
-integrable, and `0 ≤ N_{2,m,S}(θ)² ≤ N_{2,1,S'}(θ)²` (lines 845-847, 915-917).
+integrable, and `0 ≤ N_{2,m,S}(θ)² ≤ N_{2,1,S'}(θ)²` (lines 1052-1054, 1150-1152).
 The conclusions are those of `DampedMultiplier.damped_homogeneous_norms_fourier_paper`
 with `G := waveGreen d`; in `d = 1` this is
 `DampedMultiplier.damped_homogeneous_norms_fourier_one`. -/

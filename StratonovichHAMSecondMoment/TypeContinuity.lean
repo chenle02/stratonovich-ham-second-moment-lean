@@ -5,11 +5,11 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Section `S:temporal-type-continuity` (Temporal interpolation of the full
 moment) of `notes/notes_stratonovich_ham_second_moment.tex` (main TeX file;
-line numbers at revision a284420), together with the lemma it uses from the
+line numbers at revision 39f2597a), together with the lemma it uses from the
 preceding section `S:near-static-lower`:
 
 * `L:positive-series-type` (Type of a positive coefficient series; lines
-  7222-7234, proof 7236-7263): formalized IN FULL with the manuscript's
+  8419-8431, proof 8433-8470): formalized IN FULL with the manuscript's
   hypotheses (`positive_series_type_paper`), nothing supplied. The type
   `τ = limsup z^{-1/ν} log F(z)` is an extended real (`seriesType`, no
   truncation), the coefficient type `K = limsup ((k!)^ν c_k)^{1/k}` is in
@@ -20,7 +20,7 @@ preceding section `S:near-static-lower`:
   `C_L e^{L z^{1/ν}}`, and the factorial bounds are proved by induction
   (`SeriesType.log_factorial_bounds`) instead of integrating `log x`.
 * `P:moment-growth-logconvex` (Log-convexity of the upper growth type; lines
-  7516-7528, proof 7530-7572): every conclusion is proved
+  8769-8781, proof 8783-8839): every conclusion is proved
   (`moment_growth_logconvex_paper`): positivity and finiteness of
   `Λ̄_p` on `[0, a_max)`, `E:moment-growth-logconvex`, convexity of
   `log Λ̄_p` (on `[0, a_max)`, the range of the inequality) and continuity of
@@ -36,21 +36,21 @@ preceding section `S:near-static-lower`:
   `E:full-upper-bound` (`T:full-upper`) at each exponent `a`, and the
   Cauchy-Schwarz inequality `(E u)^2 ≤ E u^2`. Positivity and finiteness of
   the rates are derived from these exactly as in the TeX proof (lines
-  7531-7537), not supplied.
+  8791-8797), not supplied.
 * `C:static-moment-constant-continuity` (Recovery of the static moment
-  constant; lines 7574-7593, proof 7595-7606): every conclusion is proved
+  constant; lines 8842-8861, proof 8863-8874): every conclusion is proved
   (`static_moment_constant_continuity_paper`) from the same inputs (the
   corollary's own inputs `P:static-minorant-lower` and `Λ̄_p(0) = C_p` are
   derived from `minorant` and `static_law`).
 
 Modelling choices: `E[u^{(a)}(T,x)^p]` is an abstract real function
 `mom p a T` at a fixed point `x` (so the spatial stationarity used at line
-7541 is not needed); `mom p 0` is the static moment `E[U(T,x)^p]`, as the TeX
-defines `u^{(0)} = U` (lines 7072-7074). Growth rates are extended reals
+8805 is not needed); `mom p 0` is the static moment `E[U(T,x)^p]`, as the TeX
+defines `u^{(0)} = U` (lines 8249-8251). Growth rates are extended reals
 (`growthUpper`, `growthLower`); statements about `Λ̄_p` as real numbers use
 `EReal.toReal` only together with a proved finiteness (and positivity), so no
 junk value of `toReal` enters. The section's standing assumption "a nonzero
-spatial covariance in `H:homog`" (lines 7062, 7423) is carried as
+spatial covariance in `H:homog`" (lines 8239, 8657) is carried as
 `HomogCovariance` and `Γ ≠ 0`; the proofs use from it only `α < 2` (hence
 `ν = 3 - α ≥ 1`, `a_max > 0`, `β(a) > 0`), and `Γ ≠ 0` is carried unused.
 The general cores (`growth_logconvex_core`, `static_constant_core`) state
@@ -106,13 +106,13 @@ def seriesSum (c : ℕ → ℝ) (z : ℝ) : ℝ := ∑' k : ℕ, c k * z ^ k
 
 /-- The normalized logarithmic type
 `τ = limsup_{z → ∞} z^{-1/ν} log F(z)` of `L:positive-series-type` (main TeX
-line 7226), as an extended real number (no truncation, no boundedness side
+line 8423), as an extended real number (no truncation, no boundedness side
 condition). -/
 def seriesType (ν : ℝ) (c : ℕ → ℝ) : EReal :=
   limsup (fun z : ℝ => ((z ^ (-(1 / ν)) * Real.log (seriesSum c z) : ℝ) : EReal)) atTop
 
 /-- The coefficient type `K = limsup_{k → ∞} ((k!)^ν c_k)^{1/k}` of
-`E:positive-series-type` (main TeX line 7230), in `ℝ≥0∞`. For `c_k ≥ 0` (a
+`E:positive-series-type` (main TeX line 8427), in `ℝ≥0∞`. For `c_k ≥ 0` (a
 hypothesis of every result below) the real number `((k!)^ν c_k)^{1/k}` is
 nonnegative, so `ENNReal.ofReal` does not truncate it; `K = ∞` is allowed.
 The `k = 0` term (where Lean's `1/0 = 0` gives the value `1`) does not affect
@@ -132,7 +132,7 @@ theorem term_le_seriesSum {c : ℕ → ℝ} (hc : ∀ k, 0 ≤ c k) {z : ℝ} (h
     (hs : Summable (fun k => c k * z ^ k)) (k : ℕ) : c k * z ^ k ≤ seriesSum c z :=
   hs.le_tsum k (fun j _ => mul_nonneg (hc j) (pow_nonneg hz j))
 
-/-- The type is nonnegative: `0 ≤ τ` (main TeX line 7237, "Since `c_0 = 1`,
+/-- The type is nonnegative: `0 ≤ τ` (main TeX line 8441, "Since `c_0 = 1`,
 `τ ≥ 0`"). -/
 theorem seriesType_nonneg {ν : ℝ} {c : ℕ → ℝ} (hc : ∀ k, 0 ≤ c k) (hc0 : c 0 = 1)
     (hF : ∀ z, 0 ≤ z → Summable (fun k => c k * z ^ k)) : 0 ≤ seriesType ν c := by
@@ -155,7 +155,7 @@ theorem tendsto_log_add_one_div_nat :
   refine h3.congr fun k => ?_
   simp [add_div]
 
-/-- **First half of `L:positive-series-type`** (main TeX lines 7237-7249): if
+/-- **First half of `L:positive-series-type`** (main TeX lines 8441-8453): if
 `τ < L` then `K ≤ (L/ν)^ν`. Needs only `ν > 0`. Route as in the TeX
 (test the single term `c_k z^k ≤ F(z)` at `z = (νk/L)^ν` and use the upper
 factorial bound `log k! ≤ k log k - k + 1 + log k`), except that the TeX's
@@ -254,7 +254,7 @@ theorem coeffType_le_of_seriesType_lt {ν : ℝ} (hν : 0 < ν) {c : ℕ → ℝ
 
 /-- Auxiliary (Lean route): for `κ > 0`, `z^{-κ}(A + B log z) → 0` as `z → ∞`
 (used for the TeX's "the polynomial contributes zero to the normalized
-logarithmic growth", main TeX lines 7259-7260, and for the polynomial prefactor of
+logarithmic growth", main TeX lines 8466-8467, and for the polynomial prefactor of
 `E:full-upper-bound`). -/
 theorem tendsto_rpow_neg_mul_affine_log {κ : ℝ} (hκ : 0 < κ) (A B : ℝ) :
     Tendsto (fun z : ℝ => z ^ (-κ) * (A + B * Real.log z)) atTop (𝓝 0) := by
@@ -268,7 +268,7 @@ theorem tendsto_rpow_neg_mul_affine_log {κ : ℝ} (hκ : 0 < κ) (A B : ℝ) :
   rw [Real.rpow_neg hz.le]
   field_simp
 
-/-- **Second half of `L:positive-series-type`** (main TeX lines 7251-7262): if
+/-- **Second half of `L:positive-series-type`** (main TeX lines 8455-8469): if
 `K < A` (with `A > 0`), then `τ ≤ ν A^{1/ν}`. Needs `ν ≥ 1` (for the
 `ℓ^ν` bound `SeriesType.seriesNu_summable_le`). Route as in the TeX: all
 large coefficients obey `c_k ≤ A^k/(k!)^ν`, so
@@ -372,7 +372,7 @@ theorem seriesType_le_of_coeffType_lt {ν : ℝ} (hν : 1 ≤ ν) {c : ℕ → �
 /-! ### `L:positive-series-type`: the statement -/
 
 /-- **`L:positive-series-type`** (Type of a positive coefficient series; main
-TeX lines 7222-7234, proof 7236-7263), with the manuscript's hypotheses:
+TeX lines 8419-8431, proof 8433-8470), with the manuscript's hypotheses:
 `ν ≥ 1`, `c_k ≥ 0`, `c_0 = 1`, and `F(z) = ∑ c_k z^k < ∞` for every `z ≥ 0`
 (made explicit as summability, since a Lean `tsum` of a non-summable family is
 `0`). If `τ < ∞` then `K < ∞` and `τ = ν K^{1/ν}`; conversely finite `K`
@@ -487,13 +487,13 @@ theorem seriesType_exp_family {ν A : ℝ} (hν : 1 ≤ ν) (hA : 0 ≤ A) :
 
 /-- The normalized upper time growth rate
 `limsup_{T → ∞} T^{-κ} log m(T)` of `E:moment-growth-types` (main TeX
-lines 7505-7514), as an extended real number. -/
+lines 8757-8766), as an extended real number. -/
 def growthUpper (κ : ℝ) (m : ℝ → ℝ) : EReal :=
   limsup (fun T : ℝ => ((T ^ (-κ) * Real.log (m T) : ℝ) : EReal)) atTop
 
 /-- The normalized lower time growth rate
 `liminf_{T → ∞} T^{-κ} log m(T)` of `E:moment-growth-types` (main TeX
-lines 7505-7514), as an extended real number. -/
+lines 8757-8766), as an extended real number. -/
 def growthLower (κ : ℝ) (m : ℝ → ℝ) : EReal :=
   liminf (fun T : ℝ => ((T ^ (-κ) * Real.log (m T) : ℝ) : EReal)) atTop
 
@@ -513,7 +513,7 @@ theorem map_rpow_inv_atTop {β : ℝ} (hβ : 0 < β) :
     _ ≤ map (fun z : ℝ => z ^ (1 / β)) atTop := map_mono hh
 
 /-- **The identification of the growth rate with the series type** (main TeX
-lines 7539-7543, in the proof of `P:moment-growth-logconvex`): if
+lines 8803-8807, in the proof of `P:moment-growth-logconvex`): if
 `m(t) = F(t^β)` for every `t > 0`, then the substitution `z = T^β` gives
 `limsup_T T^{-β/ν} log m(T) = limsup_z z^{-1/ν} log F(z)`, i.e. the growth
 rate at `κ = β/ν` equals the type `τ` of `L:positive-series-type`. Proved
@@ -538,7 +538,7 @@ theorem growthUpper_eq_seriesType {β ν : ℝ} (hβ : 0 < β) (hν : 0 < ν) {m
 
 /-! ### Coefficient interpolation and the upper growth type -/
 
-/-- **The coefficient-type interpolation** (main TeX lines 7550-7556, in the
+/-- **The coefficient-type interpolation** (main TeX lines 8814-8820, in the
 proof of `P:moment-growth-logconvex`): if `c_k ≤ c1_k^{1-θ} c2_k^θ` for every
 `k` with `0 < θ < 1`, and both endpoint types are finite, then
 `K ≤ K1^{1-θ} K2^θ`. As in the TeX, the endpoint root sequences are eventually
@@ -610,7 +610,7 @@ theorem coeffType_interp {ν θ : ℝ} (hθ0 : 0 < θ) (hθ1 : θ < 1) {c c1 c2 
 
 /-- Auxiliary (Lean route): `ν (x^{1-θ} y^θ)^{1/ν} = (ν x^{1/ν})^{1-θ}(ν y^{1/ν})^θ`
 for `x, y ≥ 0` and `ν > 0` (the TeX's "taking the `1/ν` power and multiplying
-by `ν`", main TeX lines 7558-7559). -/
+by `ν`", main TeX lines 8822-8823). -/
 theorem nu_rpow_interp {ν θ x y : ℝ} (hν : 0 < ν) (hx : 0 ≤ x) (hy : 0 ≤ y) :
     ν * (x ^ (1 - θ) * y ^ θ) ^ (1 / ν) =
       (ν * x ^ (1 / ν)) ^ (1 - θ) * (ν * y ^ (1 / ν)) ^ θ := by
@@ -649,7 +649,7 @@ theorem summable_of_rpow {β : ℝ} (hβ : 0 < β) {c : ℕ → ℝ}
   · have := hs (z ^ (1 / β)) (Real.rpow_pos_of_pos hpos _)
     rwa [one_div, Real.rpow_inv_rpow hpos.le hβ.ne'] at this
 
-/-- **The upper growth rate as a coefficient type** (main TeX lines 7539-7549,
+/-- **The upper growth rate as a coefficient type** (main TeX lines 8803-8813,
 in the proof of `P:moment-growth-logconvex`): if `m(t) = ∑ c_k (t^β)^k` with
 `c_k ≥ 0`, `c_0 = 1`, summable for `t > 0`, and the growth rate at
 `κ = β/ν` is finite, then it equals `ν K^{1/ν}` with `K` the (finite)
@@ -669,7 +669,7 @@ theorem growthUpper_eq_coeffType {ν β : ℝ} (hν : 1 ≤ ν) (hβ : 0 < β) {
   rw [hid] at hfin ⊢
   exact (positive_series_type_paper hν hc hc0 hF).1 hfin
 
-/-- **Core of `P:moment-growth-logconvex`** (main TeX lines 7516-7572), for a
+/-- **Core of `P:moment-growth-logconvex`** (main TeX lines 8769-8839), for a
 single family of moments `m a` with coefficients `c a`, an exponent map `β`
 and `κ(a) = β(a)/ν`, over the range `0 ≤ a < amax`. Inputs (each a hypothesis
 of this general statement): the positive coefficient series with `c_0 = 1`
@@ -680,7 +680,7 @@ upper growth rate. Conclusions, for the real rate
 finiteness): `E:moment-growth-logconvex`, convexity of `log λ` on `[0, amax)`
 and continuity of `λ` and `log λ` on `(0, amax)`. Continuity uses
 `ConvexOn.continuousOn_interior` instead of the TeX's secant-slope argument
-(main TeX lines 7561-7570), same statement. -/
+(main TeX lines 8828-8837), same statement. -/
 theorem growth_logconvex_core {ν amax : ℝ} (hν : 1 ≤ ν) (β : ℝ → ℝ)
     (hβ : ∀ a ∈ Ico 0 amax, 0 < β a) (m : ℝ → ℝ → ℝ) (c : ℝ → ℕ → ℝ)
     (hser : ∀ a ∈ Ico 0 amax, (∀ k, 0 ≤ c a k) ∧ c a 0 = 1 ∧ ∀ t : ℝ, 0 < t →
@@ -809,7 +809,7 @@ theorem rpow_interp_eq {C x θ : ℝ} (hC : 0 < C) (hx : 0 ≤ x) :
   field_simp
 
 /-- **Core of `C:static-moment-constant-continuity`** (main TeX lines
-7574-7606), for one family as in `growth_logconvex_core` and `amax > 0`.
+8842-8874), for one family as in `growth_logconvex_core` and `amax > 0`.
 Inputs besides those of the core proposition: the endpoint value
 `Λ̄(0) = C > 0` and the lower bound `Λ̲(a) ≥ C` for `0 < a < amax`.
 Conclusions: the envelope `E:static-constant-envelope`
@@ -897,21 +897,21 @@ theorem static_constant_core {ν amax : ℝ} (hν : 1 ≤ ν) (hamax : 0 < amax)
   · refine ((continuous_coe_real_ereal.tendsto C).comp hupR).congr' ?_
     exact hbounds.mono fun a h => h.2.2.2.2
 
-/-! ### The manuscript's parameters (main TeX lines 7062-7069) -/
+/-! ### The manuscript's parameters (main TeX lines 8239-8246) -/
 
-/-- `ν = 3 - α` (main TeX line 7065). -/
+/-- `ν = 3 - α` (main TeX line 8242). -/
 def nuOf (alpha : ℝ) : ℝ := 3 - alpha
 
-/-- `a_max = min(1, 2 - α)` (main TeX line 7065). -/
+/-- `a_max = min(1, 2 - α)` (main TeX line 8242). -/
 def amaxOf (alpha : ℝ) : ℝ := min 1 (2 - alpha)
 
-/-- `β(a) = 4 - α - a` (main TeX line 7066). -/
+/-- `β(a) = 4 - α - a` (main TeX line 8243). -/
 def betaOf (alpha a : ℝ) : ℝ := 4 - alpha - a
 
-/-- `κ(a) = β(a)/ν` (main TeX line 7067). -/
+/-- `κ(a) = β(a)/ν` (main TeX line 8244). -/
 def kappaOf (alpha a : ℝ) : ℝ := betaOf alpha a / nuOf alpha
 
-/-- `κ_st = (4 - α)/ν` (main TeX line 7068). -/
+/-- `κ_st = (4 - α)/ν` (main TeX line 8245). -/
 def kappaSt (alpha : ℝ) : ℝ := (4 - alpha) / nuOf alpha
 
 /-- Auxiliary (Lean route): `κ(0) = κ_st`. -/
@@ -931,29 +931,29 @@ theorem params_of_lt_two {alpha : ℝ} (h : alpha < 2) :
 /-- The inputs of `P:moment-growth-logconvex` and
 `C:static-moment-constant-continuity` that are not formalized here, for the
 moments `mom p a T = E[u^{(a)}(T,x)^p]` at a fixed point `x` (`p = 1, 2`;
-`mom p 0` is the static moment `E[U(T,x)^p]`, main TeX lines 7070-7074) and the
+`mom p 0` is the static moment `E[U(T,x)^p]`, main TeX lines 8247-8251) and the
 full-moment coefficients `c p a k = c_{p,k}(a)` of
 `E:full-moment-coefficients`. Each field is no stronger than its manuscript
 source:
 * `L0_pos`, `static_law`: the imported static law `E:static-ratio-input`
-  (Chen-Hu, main TeX lines 7079-7087): `0 < L_0 < ∞` and
+  (Chen-Hu, main TeX lines 8256-8264): `0 < L_0 < ∞` and
   `T^{-κ_st} log E U(T,x)^p → p^{κ_st} L_0` for `p = 1, 2`, verbatim.
 * `series`: `E:full-moment-positive-series` with nonnegative coefficients
   and `c_{p,0}(a) = 1` (the definition `E:full-moment-coefficients`), from
-  `L:full-moment-coefficient-holder` (main TeX lines 7433-7439), for
+  `L:full-moment-coefficient-holder` (main TeX lines 8667-8673), for
   `0 ≤ a < a_max`; the convergence `< ∞` is stated as summability.
-* `holder`: `E:full-moment-coefficient-holder` (main TeX lines 7440-7444),
+* `holder`: `E:full-moment-coefficient-holder` (main TeX lines 8674-8678),
   verbatim.
 * `minorant`: `E:static-minorant-rate` of `P:static-minorant-lower` (main TeX
-  lines 7271-7275), `liminf ≥ p^{κ_st} L_0`, in the equivalent real form
+  lines 8478-8482), `liminf ≥ p^{κ_st} L_0`, in the equivalent real form
   "every `y < p^{κ_st} L_0` is eventually below the normalized logarithm".
 * `full_upper`: `E:full-upper-bound` of `T:full-upper` (main TeX lines
-  3758-3772) applied at temporal exponent `a` (as the TeX does at lines 7534 and
-  7365-7366):
+  4474-4488) applied at temporal exponent `a` (as the TeX does at lines 8794 and
+  8595-8596):
   `E u^{(a)}(T,x)^2 ≤ e (T+2)^d exp(C T^{κ(a)})` for `T ≥ 1`, with the
   manuscript's finite `C R_α^{1/(3-α)}` written as one finite constant `C`.
 * `cauchy_schwarz`: `(E u)^2 ≤ E u^2` for the same solution (the
-  Cauchy-Schwarz step at main TeX line 7535). -/
+  Cauchy-Schwarz step at main TeX line 8795). -/
 structure TypeContinuityInputs (d : ℕ) (alpha : ℝ) (mom : ℕ → ℝ → ℝ → ℝ)
     (c : ℕ → ℝ → ℕ → ℝ) (L0 : ℝ) : Prop where
   L0_pos : 0 < L0
@@ -986,7 +986,7 @@ theorem one_le_mom {d : ℕ} {alpha : ℝ} {mom : ℕ → ℝ → ℝ → ℝ} {
   exact one_le_seriesSum hc hc0 (Real.rpow_nonneg hT.le _) hsum
 
 /-- **Positivity and finiteness of the upper growth rates** (the first sentence
-of `P:moment-growth-logconvex`, main TeX lines 7518-7519, proof 7531-7537),
+of `P:moment-growth-logconvex`, main TeX lines 8771-8772, proof 8791-8797),
 from the named inputs: `Λ̄_p(0) = C_p := p^{κ_st} L_0` (static law),
 `Λ̲_p(a) ≥ C_p` for `0 < a < a_max` (`P:static-minorant-lower`), finiteness for
 `p = 2` from `T:full-upper` and for `p = 1` by Cauchy-Schwarz. Needs
@@ -1088,8 +1088,8 @@ theorem alpha_lt_two {d : ℕ} {alpha alpha0 : ℝ}
   linarith [h.threshold, h.alpha0_pos]
 
 /-- **`P:moment-growth-logconvex`** (Log-convexity of the upper growth type;
-main TeX lines 7516-7528, proof 7530-7572), under the section's standing
-assumptions (main TeX lines 7062-7069, 7423): a nonzero spatial covariance in
+main TeX lines 8769-8781, proof 8783-8839), under the section's standing
+assumptions (main TeX lines 8239-8246, 8657): a nonzero spatial covariance in
 `H:homog` (`HomogCovariance`, `Γ ≠ 0`; both carried, only `α < 2` is used),
 `ν = 3 - α`, `a_max = min(1, 2-α)`, `β(a) = 4-α-a`, `κ(a) = β(a)/ν`, and the
 named inputs `TypeContinuityInputs` (see there for each input's manuscript
@@ -1102,7 +1102,7 @@ holds for `0 ≤ a1 < a < a2 < a_max`, stated for the real values
 through `z = T^{β(a)}` is proved (`growthUpper_eq_seriesType`), not supplied.
 Continuity is proved with `ConvexOn.continuousOn_interior` instead of the
 TeX's secant slopes. Moments are at a fixed point `x`, so the spatial
-stationarity used at main TeX line 7541 is not needed. -/
+stationarity used at main TeX line 8805 is not needed. -/
 theorem moment_growth_logconvex_paper {d : ℕ} {alpha alpha0 : ℝ}
     {Γ μ : MeasureTheory.Measure (HomogHypothesis.Rd d)}
     (h : HomogHypothesis.HomogCovariance d alpha alpha0 Γ μ) (_hΓ : Γ ≠ 0)
@@ -1127,7 +1127,7 @@ theorem moment_growth_logconvex_paper {d : ℕ} {alpha alpha0 : ℝ}
     (hin.holder p hp) (fun a ha => (hpf a ha).1) (fun a ha => (hpf a ha).2)⟩
 
 /-- **`C:static-moment-constant-continuity`** (Recovery of the static moment
-constant; main TeX lines 7574-7593, proof 7595-7606), under the same standing
+constant; main TeX lines 8842-8861, proof 8863-8874), under the same standing
 assumptions and named inputs as `moment_growth_logconvex_paper` (its own
 inputs being `P:static-minorant-lower` and `Λ̄_p(0) = C_p`, both derived from
 `TypeContinuityInputs`). With `C_p = p^{κ_st} L_0`, `Λ̲_p(a) =

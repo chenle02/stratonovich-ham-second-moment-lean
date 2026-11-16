@@ -4,9 +4,9 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Corollary `C:intrinsic-spatial-bracket` (A common spatial-energy bracket) of
-`notes/integrated_occupation_ceiling.tex` at revision a284420 (statement lines 252-266, proof
-lines 268-300), together with the scalar map `E:occupation-scalar-map` (lines 195-203) and the
-second form of `E:occupation-score-ceiling` (lines 208-216), stated for the variational value
+`notes/integrated_occupation_ceiling.tex` at revision 39f2597a (statement lines 319-333, proof
+lines 335-371), together with the scalar map `E:occupation-scalar-map` (lines 238-246) and the
+second form of `E:occupation-score-ceiling` (lines 252-260), stated for the variational value
 `S_2^pos` (not for `C_2`).
 
 Standing assumptions (section setup, lines 4-21 of the same file): `H:homog` via
@@ -14,26 +14,26 @@ Standing assumptions (section setup, lines 4-21 of the same file): `H:homog` via
 and `Γ ≠ 0` (lines 20-21: "Assume `Γ ≠ 0` until the direct zero case below").
 
 Objects reused, not redefined: `S_c^pos = sSup (VariationalRate.scoreSet α₀ Γ c)`
-(`P:variational-positive-scores`, `integrated_unmasked_variational.tex` lines 270-284; every
+(`P:variational-positive-scores`, `integrated_unmasked_variational.tex` lines 370-384; every
 other line number in this module is in `integrated_occupation_ceiling.tex`),
 `VariationalRate.S1Bdd`, `VariationalRate.S1pos`, `C_pos = VariationalDilation.CPos`,
 `I_Ψ = VariationalDilation.integratedRate`, `v_Ψ = VariationalDilation.rawCost`,
 `R_sp = SpatialFourLinear.Rsp`, `𝓔_sp = SpatialFourLinear.Esp`, `F₀ = SpatialFourLinear.F0`,
 `M_a = TemporalEquilibrium.mass`, the energy map value `SpatialFourLinear.energyValue`.
-New definitions: `K0` (`K_0 = 2^a/(1-a)`, line 94), `coef` and `Fb` (`F_b`,
-`E:occupation-scalar-map`, lines 195-201), `logGap` (`Δ`, lines 276-279), `Dzeta`
-(`D_ζ`, `E:raw-occupation-energy`, lines 99-104), `ceilingValue` (`U_𝔠` of
-`E:occupation-score-ceiling` with `C_occ` replaced by a real argument `C`, lines 208-213), and
+New definitions: `K0` (`K_0 = 2^a/(1-a)`, line 113), `coef` and `Fb` (`F_b`,
+`E:occupation-scalar-map`, lines 238-244), `logGap` (`Δ`, lines 347-350), `Dzeta`
+(`D_ζ`, `E:raw-occupation-energy`, lines 118-123), `ceilingValue` (`U_𝔠` of
+`E:occupation-score-ceiling` with `C_occ` replaced by a real argument `C`, lines 252-257), and
 the named input `OccupationCeilingK0`.
 
 Formalized:
 * scalar facts (general, no covariance): `Fb_zero` (`F_b(0) = 0`), `Fb_zero_eq_F0` (`F_0` of
-  line 202 is `SpatialFourLinear.F0`), `logGap_pos` (`Δ > 0` for `a > 0`, `q - 2a > 0`, lines
-  276-283, by strict convexity of `x log x`), `log_Fb_ratio` (`log(F_a(z)/F_0(z)) = Δ/k`, line
-  286), `F0_lt_Fa`, `ceilingValue_eq_zeta` (second form of `E:occupation-score-ceiling`, lines
-  214-215, for every `ζ > 0` with `𝓔_ζ^𝒪` replaced by `D_ζ C^{2/(2-α)}`, i.e. the right side of
-  `E:raw-occupation-energy` at `C_occ = C`), `ceiling_ratio_exp` (lines 287-288), and the
-  numerical counterexample at `ζ = 1`, `α = 5/4`, `a = 1/2` (lines 290-298):
+  line 245 is `SpatialFourLinear.F0`), `logGap_pos` (`Δ > 0` for `a > 0`, `q - 2a > 0`, lines
+  347-354, by strict convexity of `x log x`), `log_Fb_ratio` (`log(F_a(z)/F_0(z)) = Δ/k`, line
+  357), `F0_lt_Fa`, `ceilingValue_eq_zeta` (second form of `E:occupation-score-ceiling`, lines
+  258-259, for every `ζ > 0` with `𝓔_ζ^𝒪` replaced by `D_ζ C^{2/(2-α)}`, i.e. the right side of
+  `E:raw-occupation-energy` at `C_occ = C`), `ceiling_ratio_exp` (lines 358-359), and the
+  numerical counterexample at `ζ = 1`, `α = 5/4`, `a = 1/2` (lines 361-369):
   `counterexample_integers` (the two integers and their order, `norm_num`), `counterexample_log`,
   `counterexample_ratio`;
 * `spatial_bracket_lower_paper` (lower half of `E:intrinsic-spatial-bracket` for `S_2^pos`,
@@ -44,17 +44,17 @@ Formalized:
 
 Supplied input (named hypothesis `OccupationCeilingK0 α α₀ Γ`): for every `c > 0` and every
 `Ψ ∈ C_pos`, `c I_Ψ - v_Ψ/2 ≤ U_c` with `C_occ` replaced by `K_0 R_sp`.  It stands for
-`T:intrinsic-occupation-ceiling` (`E:occupation-score-ceiling`, lines 205-220) combined with
-`C_occ ≤ K_0 R_sp` of `P:raw-occupation-energy` (lines 92-97), exactly as the corollary's proof
-uses them (lines 269-271), and is no stronger: `U_c` is increasing in `C_occ`, and the pointwise
+`T:intrinsic-occupation-ceiling` (`E:occupation-score-ceiling`, lines 249-264) combined with
+`C_occ ≤ K_0 R_sp` of `P:raw-occupation-energy` (lines 111-116), exactly as the corollary's proof
+uses them (lines 340-342), and is no stronger: `U_c` is increasing in `C_occ`, and the pointwise
 form is equivalent to "the value set is bounded above and `S_c^pos ≤ U_c`" because the value
 sets are nonempty.  Wave item L8-c (steps (a)-(d) of the feasibility report R2, section 3, with
 step (e) at integration) proves it; the integrator instantiates it.
 
 Narrower than the TeX (recorded):
 * the corollary is stated for `S_2^pos`, not for `C_2(Γ,a)`: the identification `C_2 = S_2^pos`
-  is `T:intrinsic-second-moment` (stochastic, decision 4 of wave L8), used in lines 269-273;
-* the comparison `C_2 ≤ 2^m F_0(𝓔_{1/2}^𝒪) < 2^m F_a(𝓔_{1/2}^𝒪)` (lines 261-265) is stated
+  is `T:intrinsic-second-moment` (stochastic, decision 4 of wave L8), used in lines 340-344;
+* the comparison `C_2 ≤ 2^m F_0(𝓔_{1/2}^𝒪) < 2^m F_a(𝓔_{1/2}^𝒪)` (lines 328-332) is stated
   with `𝓔_{1/2}^𝒪 = D_{1/2} C_occ^{2/(2-α)}` replaced by `D_{1/2}(K_0R_sp)^{2/(2-α)} =
   energyValue α (K_0 R_sp)`: the class `𝒪` with the original kernel, `A(g)`, `C_occ` and
   `𝓔_ζ^𝒪` are not formalized (decision 4); the scalar identities are stated for every
@@ -62,15 +62,15 @@ Narrower than the TeX (recorded):
 * the lower half in the `sSup` form needs `S1Bdd` (`spatial_bracket_lower_sSup_paper`) or the
   named input (`intrinsic_spatial_bracket_paper`, which derives `S1Bdd`); the existential form
   needs neither;
-* the direct zero case `Γ = 0` (lines 302-307, after the corollary) is not formalized: every
+* the direct zero case `Γ = 0` (lines 379-384, after the corollary) is not formalized: every
   wrapper carries `Γ ≠ 0`, the section's standing assumption of lines 20-21.
 `HomogCovariance` is passed whole to the cited package wrappers; no field is claimed unused.
-Proof route: as in the TeX (lines 268-300) for `S_2^pos`.  The lower half multiplies
+Proof route: as in the TeX (lines 335-371) for `S_2^pos`.  The lower half multiplies
 `E:spatial-static-energy-score` by `2^m`: the existential form through
 `E:variational-score-set-scaling` (dilating one control), the `sSup` form through
 `E:variational-score-homogeneity` (`S_2^pos = 2^m S_1^pos`); the TeX's further step to `C_2`
-(`T:intrinsic-second-moment`, lines 271-272) is out of scope.  `Δ > 0` uses the strict midpoint
-convexity of `x log x` (one of the two arguments the TeX names, lines 280-283).
+(`T:intrinsic-second-moment`, lines 342-343) is out of scope.  `Δ > 0` uses the strict midpoint
+convexity of `x log x` (one of the two arguments the TeX names, lines 351-354).
 Lemmas marked "Auxiliary to the Lean proof route" have no manuscript label.  The fallback
 scope was not needed.
 -/
@@ -97,36 +97,36 @@ variable {d : ℕ}
 
 /-! ### Scalar objects -/
 
-/-- `K_0 = 2^a/(1-a)` (TeX line 94, `P:raw-occupation-energy`). -/
+/-- `K_0 = 2^a/(1-a)` (TeX line 113, `P:raw-occupation-energy`). -/
 def K0 (a : ℝ) : ℝ := 2 ^ a / (1 - a)
 
 /-- The coefficient `(q-2b)^{(q-2b)/2}/(8(q-b)^{q-b})` of `E:occupation-scalar-map` (TeX lines
-197-200), `q = 4-α`. -/
+240-243), `q = 4-α`. -/
 def coef (alpha b : ℝ) : ℝ :=
   (4 - alpha - 2 * b) ^ ((4 - alpha - 2 * b) / 2) / (8 * (4 - alpha - b) ^ (4 - alpha - b))
 
 /-- `F_b(z) = k[(q-2b)^{(q-2b)/2}/(8(q-b)^{q-b}) (2z/(2-α))^{(2-α)/2}]^{1/k}`, `k = 3-α`,
-`q = 4-α` (`E:occupation-scalar-map`, TeX lines 195-201).  The TeX defines it for `z > 0` with
+`q = 4-α` (`E:occupation-scalar-map`, TeX lines 238-244).  The TeX defines it for `z > 0` with
 `F_b(0) = 0`; the formula gives `F_b(0) = 0` (`Fb_zero`); it is used only for `z ≥ 0`. -/
 def Fb (alpha b z : ℝ) : ℝ :=
   (3 - alpha) * (coef alpha b * (2 * z / (2 - alpha)) ^ ((2 - alpha) / 2)) ^ (1 / (3 - alpha))
 
-/-- `Δ = ½[q log q + (q-2a) log(q-2a)] - (q-a) log(q-a)`, `q = 4-α` (TeX lines 276-279). -/
+/-- `Δ = ½[q log q + (q-2a) log(q-2a)] - (q-a) log(q-a)`, `q = 4-α` (TeX lines 347-350). -/
 def logGap (alpha a : ℝ) : ℝ :=
   ((4 - alpha) * log (4 - alpha) + (4 - alpha - 2 * a) * log (4 - alpha - 2 * a)) / 2 -
     (4 - alpha - a) * log (4 - alpha - a)
 
-/-- `D_ζ = (2-α)/2 (α/(2ζ))^{α/(2-α)}` (`E:raw-occupation-energy`, TeX lines 99-104). -/
+/-- `D_ζ = (2-α)/2 (α/(2ζ))^{α/(2-α)}` (`E:raw-occupation-energy`, TeX lines 118-123). -/
 def Dzeta (alpha ζ : ℝ) : ℝ := (2 - alpha) / 2 * (alpha / (2 * ζ)) ^ (alpha / (2 - alpha))
 
-/-- `U_𝔠 = 𝔠^m k[α^{α/2} C/(8q^{q/2})]^{1/k}` (`E:occupation-score-ceiling`, TeX lines 208-213),
+/-- `U_𝔠 = 𝔠^m k[α^{α/2} C/(8q^{q/2})]^{1/k}` (`E:occupation-score-ceiling`, TeX lines 252-257),
 `m = q/k`, with the constant `C_occ` replaced by the real argument `C`. -/
 def ceilingValue (alpha c C : ℝ) : ℝ :=
   c ^ ((4 - alpha) / (3 - alpha)) * ((3 - alpha) *
     (alpha ^ (alpha / 2) * C / (8 * (4 - alpha) ^ ((4 - alpha) / 2))) ^ (1 / (3 - alpha)))
 
-/-- The named input: the ceiling `E:occupation-score-ceiling` (TeX lines 205-220) with `C_occ`
-replaced by `K_0 R_sp` (`C_occ ≤ K_0 R_sp`, `P:raw-occupation-energy`, lines 92-97), in
+/-- The named input: the ceiling `E:occupation-score-ceiling` (TeX lines 249-264) with `C_occ`
+replaced by `K_0 R_sp` (`C_occ ≤ K_0 R_sp`, `P:raw-occupation-energy`, lines 111-116), in
 pointwise form: for every `c > 0` and `Ψ ∈ C_pos`, `c I_Ψ - v_Ψ/2 ≤ U_c[K_0 R_sp]`.  Wave item
 L8-c proves it; see the module doc comment for why it is no stronger than its sources. -/
 def OccupationCeilingK0 (alpha a : ℝ) (Γ : Measure (Rd d)) : Prop :=
@@ -144,7 +144,7 @@ theorem coef_pos {alpha b : ℝ} (h2 : 0 < 4 - alpha - 2 * b) (h1 : 0 < 4 - alph
     0 < coef alpha b :=
   div_pos (rpow_pos_of_pos h2 _) (mul_pos (by norm_num) (rpow_pos_of_pos h1 _))
 
-/-- `F_b(0) = 0` (TeX line 195) for `α < 2`. -/
+/-- `F_b(0) = 0` (TeX line 238) for `α < 2`. -/
 theorem Fb_zero {alpha : ℝ} (ha2 : alpha < 2) (b : ℝ) : Fb alpha b 0 = 0 := by
   unfold Fb
   rw [mul_zero, zero_div, zero_rpow (by linarith), mul_zero,
@@ -158,7 +158,7 @@ theorem Fb_pos {alpha b z : ℝ} (ha2 : alpha < 2) (h2 : 0 < 4 - alpha - 2 * b)
   exact mul_pos (by linarith) (rpow_pos_of_pos (mul_pos (coef_pos h2 h1)
     (rpow_pos_of_pos hw _)) _)
 
-/-- At `b = 0` the map `F_b` is `F_0` of `E:spatial-static-energy-score` (TeX lines 202-203), i.e.
+/-- At `b = 0` the map `F_b` is `F_0` of `E:spatial-static-energy-score` (TeX lines 245-246), i.e.
 `SpatialFourLinear.F0`, for `α < 4`. -/
 theorem Fb_zero_eq_F0 {alpha : ℝ} (ha4 : alpha < 4) (z : ℝ) : Fb alpha 0 z = F0 alpha z := by
   have hq : 0 < 4 - alpha := by linarith
@@ -181,7 +181,7 @@ theorem log_coef {alpha b : ℝ} (h2 : 0 < 4 - alpha - 2 * b) (h1 : 0 < 4 - alph
     log_mul (by norm_num) (rpow_pos_of_pos h1 _).ne', log_rpow h2, log_rpow h1]
   ring
 
-/-- **`Δ > 0`** (TeX lines 275-283): for `a > 0` and `q - 2a > 0` (`q = 4-α`), by strict midpoint
+/-- **`Δ > 0`** (TeX lines 346-354): for `a > 0` and `q - 2a > 0` (`q = 4-α`), by strict midpoint
 convexity of `x ↦ x log x` on `[0,∞)`. -/
 theorem logGap_pos {alpha a : ℝ} (ha : 0 < a) (h2 : 0 < 4 - alpha - 2 * a) :
     0 < logGap alpha a := by
@@ -196,7 +196,7 @@ theorem logGap_pos {alpha a : ℝ} (ha : 0 < a) (h2 : 0 < 4 - alpha - 2 * a) :
   unfold logGap
   linarith
 
-/-- **`log(F_a(z)/F_0(z)) = Δ/k`** (TeX line 286), `k = 3-α`, for `α < 2`, `q - 2a > 0`, `z > 0`. -/
+/-- **`log(F_a(z)/F_0(z)) = Δ/k`** (TeX line 357), `k = 3-α`, for `α < 2`, `q - 2a > 0`, `z > 0`. -/
 theorem log_Fb_ratio {alpha a z : ℝ} (ha2 : alpha < 2)
     (h2 : 0 < 4 - alpha - 2 * a) (hz : 0 < z) :
     log (Fb alpha a z / Fb alpha 0 z) = logGap alpha a / (3 - alpha) := by
@@ -217,7 +217,7 @@ theorem log_Fb_ratio {alpha a z : ℝ} (ha2 : alpha < 2)
   field_simp
   ring
 
-/-- **`F_0(z) < F_a(z)`** (TeX lines 261-265, 286): for `0 < α < 2`, `a > 0`, `q - 2a > 0`, `z > 0`,
+/-- **`F_0(z) < F_a(z)`** (TeX lines 328-332, 357): for `0 < α < 2`, `a > 0`, `q - 2a > 0`, `z > 0`,
 with `F_0 = SpatialFourLinear.F0`. -/
 theorem F0_lt_Fa {alpha a z : ℝ} (ha2 : alpha < 2) (ha : 0 < a)
     (h2 : 0 < 4 - alpha - 2 * a) (hz : 0 < z) : F0 alpha z < Fb alpha a z := by
@@ -260,7 +260,7 @@ theorem energyValue_pow {alpha C : ℝ} (ha0 : 0 < alpha) (ha2 : alpha < 2) (hC 
 
 /-- The ceiling at `ζ = 1/2`: for `0 < α < 2`, `C ≥ 0`,
 `U_𝔠[C] = 𝔠^m F₀(D_{1/2} C^{2/(2-α)})`, where `D_{1/2} C^{2/(2-α)} = energyValue α C`
-(TeX lines 214-215 at `ζ = 1/2`). -/
+(TeX lines 258-259 at `ζ = 1/2`). -/
 theorem ceilingValue_eq_half {alpha c C : ℝ} (ha0 : 0 < alpha) (ha2 : alpha < 2) (hC : 0 ≤ C) :
     ceilingValue alpha c C =
       c ^ ((4 - alpha) / (3 - alpha)) * F0 alpha (energyValue alpha C) := by
@@ -275,7 +275,7 @@ theorem Dzeta_half (alpha C : ℝ) :
   norm_num
 
 /-- The ceiling with `C = K R`: for `0 < α < 2`, `K, R ≥ 0`,
-`U_𝔠[K R] = 𝔠^m K^{1/k} F₀(energyValue α R)` (TeX lines 269-270: inserting `C_occ ≤ K_0 R_sp` and
+`U_𝔠[K R] = 𝔠^m K^{1/k} F₀(energyValue α R)` (TeX lines 340-341: inserting `C_occ ≤ K_0 R_sp` and
 `E:spatial-energy-map`). -/
 theorem ceilingValue_mul {alpha c K R : ℝ} (ha0 : 0 < alpha) (ha2 : alpha < 2) (hK : 0 ≤ K)
     (hR : 0 ≤ R) :
@@ -291,7 +291,7 @@ theorem ceilingValue_mul {alpha c K R : ℝ} (ha0 : 0 < alpha) (ha2 : alpha < 2)
   rw [e, mul_rpow hK (div_nonneg (mul_nonneg (rpow_nonneg ha0.le _) hR) hq.le)]
   ring
 
-/-- **Second form of `E:occupation-score-ceiling`** (TeX lines 214-215): for `0 < α < 2`, `ζ > 0`,
+/-- **Second form of `E:occupation-score-ceiling`** (TeX lines 258-259): for `0 < α < 2`, `ζ > 0`,
 `C ≥ 0`, `U_𝔠[C] = 𝔠^m (2ζ)^{α/(2k)} F₀(D_ζ C^{2/(2-α)})`, `k = 3-α`.  In the TeX
 `D_ζ C_occ^{2/(2-α)} = 𝓔_ζ^𝒪` (`E:raw-occupation-energy`); here `C` is any real `C ≥ 0`. -/
 theorem ceilingValue_eq_zeta {alpha c C ζ : ℝ} (ha0 : 0 < alpha) (ha2 : alpha < 2)
@@ -313,7 +313,7 @@ theorem ceilingValue_eq_zeta {alpha c C ζ : ℝ} (ha0 : 0 < alpha) (ha2 : alpha
     field_simp; ring
   rw [e, rpow_zero, one_mul]
 
-/-- **The ratio identity** (TeX lines 287-288): for `0 < α < 2`, `q - 2a > 0`, `𝔠 > 0`,
+/-- **The ratio identity** (TeX lines 358-359): for `0 < α < 2`, `q - 2a > 0`, `𝔠 > 0`,
 `C > 0`, `ζ > 0`, with `E = D_ζ C^{2/(2-α)}` (in the TeX `𝓔_ζ^𝒪` at `C = C_occ`):
 `𝔠^m F_a(E)/U_𝔠[C] = exp((Δ - (α/2) log(2ζ))/k)`. -/
 theorem ceiling_ratio_exp {alpha a c C ζ : ℝ} (ha0 : 0 < alpha) (ha2 : alpha < 2)
@@ -343,16 +343,16 @@ theorem ceiling_ratio_exp {alpha a c C ζ : ℝ} (ha0 : 0 < alpha) (ha2 : alpha 
   field_simp
   ring
 
-/-! ### The numerical counterexample at `ζ = 1` (TeX lines 290-298) -/
+/-! ### The numerical counterexample at `ζ = 1` (TeX lines 361-369) -/
 
-/-- The two integers of TeX lines 297-298 and their order: `11^11 7^7 = 234966429149994773`,
+/-- The two integers of TeX lines 368-369 and their order: `11^11 7^7 = 234966429149994773`,
 `2^5 9^18 = 4803028329503971872`, and the first is smaller. -/
 theorem counterexample_integers :
     (11 : ℕ) ^ 11 * 7 ^ 7 = 234966429149994773 ∧ (2 : ℕ) ^ 5 * 9 ^ 18 = 4803028329503971872 ∧
       (11 : ℕ) ^ 11 * 7 ^ 7 < 2 ^ 5 * 9 ^ 18 := by
   norm_num
 
-/-- **TeX lines 290-295**: at `α = 5/4`, `a = 1/2`,
+/-- **TeX lines 361-366**: at `α = 5/4`, `a = 1/2`,
 `8[Δ - (α/2) log 2] = log(11^{11} 7^7/(2^5 9^{18})) < 0`.  (The TeX also fixes `d = 2`; the
 scalar identity does not depend on `d`.) -/
 theorem counterexample_log :
@@ -376,7 +376,7 @@ theorem counterexample_log :
   rw [hid]
   exact log_neg (by norm_num) (by norm_num)
 
-/-- **At `ζ = 1` the comparison is not universally favorable** (TeX lines 290-298): at
+/-- **At `ζ = 1` the comparison is not universally favorable** (TeX lines 361-369): at
 `α = 5/4`, `a = 1/2`, for every `𝔠 > 0` and `C > 0`, `𝔠^m F_a(D_1 C^{2/(2-α)}) < U_𝔠[C]`
 (in the TeX `D_1 C_occ^{2/(2-α)} = 𝓔_1^𝒪`). -/
 theorem counterexample_ratio {c C : ℝ} (hc : 0 < c) (hC : 0 < C) :
@@ -407,7 +407,7 @@ theorem S1Bdd_of_ceiling {alpha a : ℝ} {Γ : Measure (Rd d)} (hC : OccupationC
   simpa only [one_mul] using hC 1 one_pos Ψ hΨ
 
 /-- **Lower half of `E:intrinsic-spatial-bracket` for `S_2^pos`, existential form** (TeX lines
-256-260, 271-272) under the standing assumptions (`H:homog`, `a = α₀`, `Γ ≠ 0`): every
+323-327, 342-343) under the standing assumptions (`H:homog`, `a = α₀`, `Γ ≠ 0`): every
 `y < 2^m M_a^{-1/k} F₀(𝓔_sp)` (`m = q/k`, `k = 3-α`, `q = 4-α`) is exceeded by
 `2 I_Ψ - v_Ψ/2` for some `Ψ ∈ C_pos`.  Narrower: `S_2^pos`, not `C_2`; this form is implied by
 `2^m M_a^{-1/k} F₀(𝓔_sp) ≤ S_2^pos` and needs no boundedness. -/
@@ -431,7 +431,7 @@ theorem spatial_bracket_lower_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)
   rwa [div_lt_iff₀' hm] at hlt
 
 /-- **Lower half of `E:intrinsic-spatial-bracket` for `S_2^pos`, `sSup` form** (TeX lines
-256-260, 271-272) under the standing assumptions and `S1Bdd α₀ Γ` (which the named input
+323-327, 342-343) under the standing assumptions and `S1Bdd α₀ Γ` (which the named input
 `OccupationCeilingK0` implies, `S1Bdd_of_ceiling`): `2^m M_a^{-1/k} F₀(𝓔_sp) ≤ S_2^pos`.
 Narrower: `S_2^pos`, not `C_2`. -/
 theorem spatial_bracket_lower_sSup_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
@@ -444,7 +444,7 @@ theorem spatial_bracket_lower_sSup_paper {alpha alpha0 : ℝ} {Γ μ : Measure (
     (SpatialOccupationL7Completed.spatial_static_energy_score_sSup_paper_completed hH hΓ hB1)
     (rpow_pos_of_pos two_pos _).le
 
-/-- **Upper half of `E:intrinsic-spatial-bracket` for `S_2^pos`** (TeX lines 256-260, 269-271)
+/-- **Upper half of `E:intrinsic-spatial-bracket` for `S_2^pos`** (TeX lines 323-327, 340-342)
 under the standing assumptions and the named input `OccupationCeilingK0 α α₀ Γ`: the
 coefficient-two value set is bounded above and `S_2^pos ≤ 2^m K_0^{1/k} F₀(𝓔_sp)`.
 Narrower: `S_2^pos`, not `C_2`. -/
@@ -471,7 +471,7 @@ theorem spatial_bracket_upper_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)
   exact ⟨⟨_, hub⟩, hU ▸ csSup_le hne hub⟩
 
 /-- **`C:intrinsic-spatial-bracket` for `S_2^pos`** (`integrated_occupation_ceiling.tex` lines
-252-300) under the section's standing assumptions (lines 4-21: `H:homog`, `a = α₀`, `Γ ≠ 0`)
+319-371) under the section's standing assumptions (lines 4-21: `H:homog`, `a = α₀`, `Γ ≠ 0`)
 and the named input `OccupationCeilingK0 α α₀ Γ` (`E:occupation-score-ceiling` with `C_occ`
 replaced by `K_0 R_sp`): `S1Bdd α₀ Γ` holds and the coefficient-two value set is bounded above;
 `2^m M_a^{-1/k} F₀(𝓔_sp) ≤ S_2^pos ≤ 2^m K_0^{1/k} F₀(𝓔_sp)` (`E:intrinsic-spatial-bracket`);

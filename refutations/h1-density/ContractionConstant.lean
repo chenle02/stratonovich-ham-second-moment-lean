@@ -2,8 +2,8 @@
 Refutation for the `L²` contraction of the mollification in `H1Density`,
 package theorem `StratonovichHAMSecondMoment.H1Density.eLpNorm_mollify_le`
 (`‖ρ_φ ⋆ u‖₂ ≤ ‖u‖₂`; auxiliary to the Lean proof route of the density
-`h1TestDense`, `notes/integrated_spatial_occupation.tex`, lines 262-266 at
-a284420).
+`h1TestDense`, `notes/integrated_spatial_occupation.tex`, lines 352-356 at
+39f2597a).
 
 Wrong variant: a smaller constant, `‖ρ_φ ⋆ u‖₂ ≤ ‖u‖₂ / 2` for every bump
 `φ` and every `u ∈ L²`.  Counterexample in `d = 1`: `u = prof` (the bump of

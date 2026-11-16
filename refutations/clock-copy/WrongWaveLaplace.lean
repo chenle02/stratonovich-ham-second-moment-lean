@@ -2,7 +2,7 @@ import StratonovichHAMSecondMoment.WaveKernel
 
 /-!
 Refutation for `StratonovichHAMSecondMoment.WaveKernel.waveHat_laplace`
-(the elementary wave Laplace transform, main TeX lines 794-795):
+(the elementary wave Laplace transform, main TeX lines 1000-1001):
 `∫_0^∞ e^{-as} Ĝ_s(ξ) ds = (a²+|ξ|²)⁻¹`.
 
 Wrong variant: the value `(a+|ξ|)⁻²` (the transform of `s e^{-|ξ|s}`-type

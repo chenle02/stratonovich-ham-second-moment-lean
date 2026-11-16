@@ -6,11 +6,11 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 Gaussian Schwartz test functions, built by hand (Mathlib has no Gaussian
 `SchwartzMap`).  This module has no manuscript label of its own: it is the
 foundation for `P:masked-spectral-growth`
-(`notes/integrated_covariance_foundation.tex`, revision a284420, lines 34-77),
-whose proof (lines 56-66) applies the spectral convention
-`E:masked-spectral-convention` (lines 15-19) "to the single Schwartz test
+(`notes/integrated_covariance_foundation.tex`, revision 39f2597a, lines 37-94),
+whose proof (lines 68-78) applies the spectral convention
+`E:masked-spectral-convention` (lines 17-21) "to the single Schwartz test
 `e^{-r²|x|²/4} e^{-iy·x}`" and uses the Gaussian Fourier integral of
-lines 61-64.  Everything here is auxiliary to the Lean proof route.
+lines 73-76.  Everything here is auxiliary to the Lean proof route.
 
 Contents:
 * `poly_mul_exp_neg_sq_le`: `(1+s)^m e^{-cs²} ≤ e^{m²/(4c)}` for `s ≥ 0`,
@@ -23,7 +23,7 @@ Contents:
   `x ↦ e^{-s‖x-w‖²} e^{-i⟨y,x⟩}` (`s > 0`): the real Gaussian, translated by
   `w` and modulated by the phase `e^{-i⟨y,x⟩}`;
 * `gaussTest_fourier`: on `ℝ^d`, `∫ gaussTest(x) e^{i⟨ξ,x⟩} dx =
-  (π/s)^{d/2} e^{i⟨ξ-y,w⟩} e^{-‖ξ-y‖²/(4s)}` (the identity of lines 61-64 for
+  (π/s)^{d/2} e^{i⟨ξ-y,w⟩} e^{-‖ξ-y‖²/(4s)}` (the identity of lines 73-76 for
   `w = 0`, `s = r²/4`), from Mathlib's
   `GaussianFourier.integral_cexp_neg_mul_sq_norm_add`.
 -/
@@ -167,7 +167,7 @@ theorem gaussTest_apply (s : ℝ) (hs : 0 < s) (w y x : E) :
   ring
 
 open HomogHypothesis in
-/-- The Gaussian Fourier integral of the test (lines 61-64 of
+/-- The Gaussian Fourier integral of the test (lines 73-76 of
 `integrated_covariance_foundation.tex` when `w = 0`, `s = r²/4`):
 `∫ e^{-i⟨y,x⟩} e^{-s‖x-w‖²} e^{i⟨ξ,x⟩} dx =
 (π/s)^{d/2} e^{i⟨ξ-y,w⟩} e^{-‖ξ-y‖²/(4s)}` on `ℝ^d`, `s > 0`. -/

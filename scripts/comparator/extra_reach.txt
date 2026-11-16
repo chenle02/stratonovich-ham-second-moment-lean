@@ -1,0 +1,18 @@
+# Theorems copied into ChallengeDefs although no claimed type reaches them (read by gen_defs.py):
+# the proof of the copied FockSandwichModel.mulOp_one (kept whole because its _proof_1 is reachable) uses them.
+StratonovichHAMSecondMoment.FockColumnBound.op_ext
+StratonovichHAMSecondMoment.FockColumnBound.L2Map.op_ae
+StratonovichHAMSecondMoment.FockColumnBound.mulOp_ae
+# wave L13/L14: lemmas the copied proofs use by name or as simp lemmas (GaussianTest.gaussTest_apply,
+# the Module instance of MaskedAuxiliaryReal.Cx, DiagramModel and H1Mathlib proofs)
+StratonovichHAMSecondMoment.GaussianTest.gaussSchwartz_apply
+StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.add_re
+StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.add_im
+StratonovichHAMSecondMoment.DiagramModel.pred_eq_none_iff
+StratonovichHAMSecondMoment.H1Mathlib.testSchwartz_apply
+StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.zero_re
+StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.zero_im
+StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.neg_re
+StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.neg_im
+StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.sub_re
+StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.sub_im

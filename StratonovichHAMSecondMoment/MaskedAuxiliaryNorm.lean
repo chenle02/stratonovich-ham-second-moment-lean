@@ -4,27 +4,27 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `P:masked-auxiliary-norm` (Auxiliary mask norm) of
-`notes/integrated_covariance_foundation.tex` (revision a284420): statement
-lines 88-100, proof lines 102-137, with the definitions of lines 79-86
+`notes/integrated_covariance_foundation.tex` (revision 39f2597a): statement
+lines 106-118, proof lines 120-180, with the definitions of lines 96-103
 (`ζ_R`, `k_R`, `L`, `E:masked-auxiliary-measure`) and the unitary Fourier
-transform of lines 8-12.
+transform of lines 10-14.
 
 Definitions (in the manuscript's convention, not Mathlib's):
 * `cd d = (2π)^{-d/2}` and `paperHat f ξ = c_d ∫ e^{-iξ·x} f(x) dx` for `f`
-  with values in a complex normed space (lines 8-12);
+  with values in a complex normed space (lines 10-14);
   `integrable_paperHat_integrand`: for a Schwartz map the defining integrand
   is integrable;
-* `zetaR ζ R x = ζ(x/R)`, `kR ζ R = (ζ_R)^`, `Lz ζ = ‖ζ̂‖₁` (lines 79-80);
+* `zetaR ζ R x = ζ(x/R)`, `kR ζ R = (ζ_R)^`, `Lz ζ = ‖ζ̂‖₁` (lines 96-97);
 * `rho μ ζ R η = c_d² L ∫ |k_R(ξ-η)| μ(dξ)` as an `ℝ≥0∞`-valued lower
   integral of a nonnegative function, and `nu μ ζ R = ρ_R dη`
-  (`E:masked-auxiliary-measure`, lines 83-86).
+  (`E:masked-auxiliary-measure`, lines 100-103).
 
 Formalized:
-* lines 80-82: `kR_scale` (`k_R(u) = R^d ζ̂(Ru)`), `integral_norm_kR`
+* lines 97-99: `kR_scale` (`k_R(u) = R^d ζ̂(Ru)`), `integral_norm_kR`
   (`‖k_R‖₁ = L`, with `integrable_kR`), `Lz_pos` (`ζ̂` integrable and `L > 0`
   for `ζ ≠ 0`);
 * `masked_auxiliary_norm_paper`, under the section's standing assumptions
-  (lines 5-6) `H:homog` (`HomogHypothesis.HomogCovariance`) and `Γ ≠ 0`, with
+  (lines 7-8) `H:homog` (`HomogHypothesis.HomogCovariance`) and `Γ ≠ 0`, with
   `ζ` a real nonzero Schwartz function, `R > 0`, `H` a separable complex
   Hilbert space and `F` an `H`-valued Schwartz map: `L > 0`, `‖k_R‖₁ = L`,
   `ν_R` is even (`IsEven`), tempered (`IsTempered`) and Radon
@@ -34,7 +34,7 @@ Formalized:
   (`E:masked-auxiliary-growth`); and `E:masked-hilbert-fourier`
   `∫ ‖(ζ_R F)^(ξ)‖² μ(dξ) ≤ ∫ ‖F̂(η)‖² ν_R(dη)` with both integrands integrable,
   stated both for Bochner integrals and for lower integrals, together with the
-  finiteness of the right side (lines 134-135).  `C_Γ` is
+  finiteness of the right side (lines 177-178).  `C_Γ` is
   `MaskedSpectralGrowth.CGamma`.
 * The general form `masked_auxiliary_norm` assumes only: `μ` s-finite,
   tempered and even, the spectral convention `IsSpectralMeasure Γ μ`, the
@@ -55,10 +55,10 @@ supplied) was not needed.
 
 Narrower than the TeX:
 * the last sentence of the proposition, "For a real `H`, the same assertion
-  holds after complexification" (line 99), is not formalized (Mathlib has no
+  holds after complexification" (line 117), is not formalized (Mathlib has no
   complexification of a real Hilbert space);
 * the proof's intermediate claims that `ρ_R` is finite everywhere and
-  continuous (lines 103-106) are not formalized: they are not part of the
+  continuous (lines 131-134) are not formalized: they are not part of the
   statement, and the Lean route proves local finiteness of `ν_R` from the
   ball bound instead.
 
@@ -75,21 +75,21 @@ Proof route (differences from the TeX).
   from `SchwartzMap.fourierTransformCLM` composed with a dilation (`hatS`).
 * `L > 0` by Fourier injectivity (the TeX states it without proof).
 * Ball bound: Tonelli twice and the substitution `u = ξ - η`, then
-  `MaskedSpectralGrowth.closedBall_le` at every center, as in lines 108-113.
+  `MaskedSpectralGrowth.closedBall_le` at every center, as in lines 140-145.
 * Radon: from the ball bound, not from the continuity of `ρ_R`.
 * Tempered: Peetre's inequality
   `(1+|η|)^{-N} ≤ (1+|ξ|)^{-N}(1+|ξ-η|)^N` and the Schwartz decay of `k_R`
   give `∫(1+|η|)^{-N} dν_R ≤ c_d² L (∫(1+|ξ|)^{-N} dμ)(∫(1+|u|)^N|k_R(u)|du)`
   with the exponent `N` of `μ`; this replaces the "same dyadic argument" of
-  lines 113-114 and is simpler.
+  lines 145-146 and is simpler.
 * Even: `k_R(-u) = conj k_R(u)` (`ζ` real) and the evenness of `μ`, as in
-  lines 106-107.
-* Convolution identity `(ζ_R F)^(ξ) = c_d ∫ k_R(ξ-η) F̂(η) dη` (lines 116-120):
+  lines 134-135.
+* Convolution identity `(ζ_R F)^(ξ) = c_d ∫ k_R(ξ-η) F̂(η) dη` (lines 153-157):
   Fourier inversion of `F` and one Bochner Fubini swap in the Banach space
   directly (`paperHat_mask`); the scalar, finite-rank and projection steps of
-  lines 121-127 are not needed.  Weighted Cauchy-Schwarz (lines 127-132) is
+  lines 161-167 are not needed.  Weighted Cauchy-Schwarz (lines 167-172) is
   proved by the nonnegativity of the quadratic `t ↦ ∫ a (g - t)²`
-  (`sq_integral_mul_le`); the final Tonelli step (lines 133-134) is
+  (`sq_integral_mul_le`); the final Tonelli step (lines 176-177) is
   `lintegral_nu`.
 Lemmas marked "Auxiliary to the Lean proof route" have no manuscript label.
 -/
@@ -116,7 +116,7 @@ variable {d : ℕ}
 
 /-! ### The unitary Fourier transform of the section -/
 
-/-- `c_d = (2π)^{-d/2}` (line 11). -/
+/-- `c_d = (2π)^{-d/2}` (line 13). -/
 def cd (d : ℕ) : ℝ := (2 * π) ^ (-(d : ℝ) / 2)
 
 /-- Auxiliary to the Lean proof route. -/
@@ -129,7 +129,7 @@ theorem cd_sq_mul (d : ℕ) : cd d ^ 2 * (2 * π) ^ d = 1 := by
     ← Real.rpow_natCast (2 * π) d, ← Real.rpow_add h2]
   norm_num
 
-/-- The unitary Fourier transform of the section (lines 8-12), for a function
+/-- The unitary Fourier transform of the section (lines 10-14), for a function
 with values in a complex normed space `E`:
 `f̂(ξ) = c_d ∫ e^{-i ξ·x} f(x) dx`. -/
 def paperHat {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E] (f : Rd d → E)
@@ -198,7 +198,7 @@ theorem integrable_paperHat (f : SchwartzMap (Rd d) E) : Integrable (paperHat (f
 
 /-- Fourier inversion in the section's convention, for a Schwartz map with
 values in a complex Banach space: `f(x) = c_d ∫ e^{i η·x} f̂(η) dη` (used in
-the proof of `P:masked-auxiliary-norm`, line 121, "Fourier inversion").
+the proof of `P:masked-auxiliary-norm`, line 161, "Fourier inversion").
 Derived from Mathlib's `Continuous.fourierInv_fourier_eq` by the change of
 variables `w = η/(2π)`. -/
 theorem paper_inversion [CompleteSpace E] (f : SchwartzMap (Rd d) E) (x : Rd d) :
@@ -246,7 +246,7 @@ theorem integrable_one_add_pow_mul {E : Type*} [NormedAddCommGroup E] [NormedSpa
         mul_le_mul_of_nonneg_right hb (norm_nonneg _)
     _ = 2 ^ (N - 1) * (‖f u‖ + ‖u‖ ^ N * ‖f u‖) := by ring
 
-/-! ### The mask `ζ_R`, the kernel `k_R` and the constant `L` (lines 79-82) -/
+/-! ### The mask `ζ_R`, the kernel `k_R` and the constant `L` (lines 96-99) -/
 
 /-- Auxiliary to the Lean proof route. The real Schwartz function `ζ` as a
 complex Schwartz map. -/
@@ -256,14 +256,14 @@ def zc (ζ : SchwartzMap (Rd d) ℝ) : SchwartzMap (Rd d) ℂ :=
 /-- Auxiliary to the Lean proof route. -/
 @[simp] theorem zc_apply (ζ : SchwartzMap (Rd d) ℝ) (x : Rd d) : zc ζ x = (ζ x : ℂ) := rfl
 
-/-- The mask `ζ_R(x) = ζ(x/R)` (line 79). -/
+/-- The mask `ζ_R(x) = ζ(x/R)` (line 96). -/
 def zetaR (ζ : SchwartzMap (Rd d) ℝ) (R : ℝ) (x : Rd d) : ℝ := ζ (R⁻¹ • x)
 
-/-- The kernel `k_R = ζ_R^` (line 80), the section's transform of the mask. -/
+/-- The kernel `k_R = ζ_R^` (line 97), the section's transform of the mask. -/
 def kR (ζ : SchwartzMap (Rd d) ℝ) (R : ℝ) : Rd d → ℂ :=
   paperHat (fun x => (zetaR ζ R x : ℂ))
 
-/-- `L = ‖ζ̂‖₁` (line 80). -/
+/-- `L = ‖ζ̂‖₁` (line 97). -/
 def Lz (ζ : SchwartzMap (Rd d) ℝ) : ℝ := ∫ η, ‖paperHat (fun x => (ζ x : ℂ)) η‖
 
 /-- Auxiliary to the Lean proof route. The mask as a complex Schwartz map
@@ -291,7 +291,7 @@ theorem continuous_kR (ζ : SchwartzMap (Rd d) ℝ) {R : ℝ} (hR : R ≠ 0) : C
 theorem integrable_kR (ζ : SchwartzMap (Rd d) ℝ) {R : ℝ} (hR : R ≠ 0) : Integrable (kR ζ R) := by
   rw [kR_eq_hatS ζ R hR]; exact (hatS _).integrable
 
-/-- The scaling of the kernel (line 81): `k_R(u) = R^d ζ̂(Ru)` for `R > 0`. -/
+/-- The scaling of the kernel (line 98): `k_R(u) = R^d ζ̂(Ru)` for `R > 0`. -/
 theorem kR_scale (ζ : SchwartzMap (Rd d) ℝ) {R : ℝ} (hR : 0 < R) (u : Rd d) :
     kR ζ R u = ((R ^ d : ℝ) : ℂ) * paperHat (fun x => (ζ x : ℂ)) (R • u) := by
   rw [kR, paperHat, paperHat]
@@ -309,7 +309,7 @@ theorem kR_scale (ζ : SchwartzMap (Rd d) ℝ) {R : ℝ} (hR : 0 < R) (u : Rd d)
   rw [Complex.real_smul, smul_eq_mul, smul_eq_mul]
   ring
 
-/-- `‖k_R‖₁ = L` for `R > 0` (line 81), with `k_R` integrable. -/
+/-- `‖k_R‖₁ = L` for `R > 0` (line 98), with `k_R` integrable. -/
 theorem integral_norm_kR (ζ : SchwartzMap (Rd d) ℝ) {R : ℝ} (hR : 0 < R) :
     ∫ u, ‖kR ζ R u‖ = Lz ζ := by
   simp_rw [kR_scale ζ hR, norm_mul, Complex.norm_real, Real.norm_of_nonneg (by positivity : (0:ℝ) ≤ R ^ d)]
@@ -328,7 +328,7 @@ theorem eq_zero_of_paperHat_eq_zero (ζ : SchwartzMap (Rd d) ℝ)
   simp only [h', smul_zero, integral_zero] at hx
   simpa using hx
 
-/-- `L > 0` for a nonzero real Schwartz `ζ` (line 82), with `ζ̂` integrable. -/
+/-- `L > 0` for a nonzero real Schwartz `ζ` (line 99), with `ζ̂` integrable. -/
 theorem Lz_pos (ζ : SchwartzMap (Rd d) ℝ) (hζ : ζ ≠ 0) :
     Integrable (paperHat (fun x => (ζ x : ℂ))) ∧ 0 < Lz ζ := by
   have hint : Integrable (paperHat (fun x => (ζ x : ℂ))) := integrable_paperHat (zc ζ)
@@ -342,7 +342,7 @@ theorem Lz_pos (ζ : SchwartzMap (Rd d) ℝ) (hζ : ζ ≠ 0) :
     isOpen_ne_fun hcont.norm continuous_const
   exact hopen.measure_pos volume ⟨η, by simpa using hη⟩
 
-/-- Since `ζ` is real, `k_R(-u) = conj(k_R(u))` (lines 106-107), hence
+/-- Since `ζ` is real, `k_R(-u) = conj(k_R(u))` (lines 134-135), hence
 `|k_R(-u)| = |k_R(u)|`. -/
 theorem kR_neg (ζ : SchwartzMap (Rd d) ℝ) (R : ℝ) (u : Rd d) :
     kR ζ R (-u) = (starRingEnd ℂ) (kR ζ R u) := by
@@ -360,16 +360,16 @@ theorem norm_kR_neg (ζ : SchwartzMap (Rd d) ℝ) (R : ℝ) (u : Rd d) :
     ‖kR ζ R (-u)‖ = ‖kR ζ R u‖ := by
   rw [kR_neg, Complex.norm_conj]
 
-/-! ### The auxiliary measure `ν_R` (`E:masked-auxiliary-measure`, lines 83-86) -/
+/-! ### The auxiliary measure `ν_R` (`E:masked-auxiliary-measure`, lines 100-103) -/
 
 /-- The density `ρ_R(η) = c_d² L ∫ |k_R(ξ-η)| μ(dξ)` of
-`E:masked-auxiliary-measure` (line 85), as an `ℝ≥0∞`-valued function (the
+`E:masked-auxiliary-measure` (line 102), as an `ℝ≥0∞`-valued function (the
 integrand is nonnegative, so the lower Lebesgue integral is the manuscript's
 integral and no junk value enters). -/
 def rho (μ : Measure (Rd d)) (ζ : SchwartzMap (Rd d) ℝ) (R : ℝ) (η : Rd d) : ℝ≥0∞ :=
   ENNReal.ofReal (cd d ^ 2 * Lz ζ) * ∫⁻ ξ, ‖kR ζ R (ξ - η)‖ₑ ∂μ
 
-/-- The auxiliary measure `ν_R(dη) = ρ_R(η) dη` (line 84). -/
+/-- The auxiliary measure `ν_R(dη) = ρ_R(η) dη` (line 101). -/
 def nu (μ : Measure (Rd d)) (ζ : SchwartzMap (Rd d) ℝ) (R : ℝ) : Measure (Rd d) :=
   volume.withDensity (rho μ ζ R)
 
@@ -407,7 +407,7 @@ theorem lintegral_nu [SFinite μ] (hR : R ≠ 0) {w : Rd d → ℝ≥0∞} (hw :
       |>.aemeasurable
 
 /-- Auxiliary to the Lean proof route (Tonelli and the substitution
-`u = ξ - η`, as in lines 108-111): for measurable `A`,
+`u = ξ - η`, as in lines 140-143): for measurable `A`,
 `ν_R(A) = c_d² L ∫ |k_R(u)| μ(A + u) du`, written with the preimage of `A`
 under `ξ ↦ ξ - u`. -/
 theorem nu_apply [SFinite μ] (hR : R ≠ 0) {A : Set (Rd d)} (hA : MeasurableSet A) :
@@ -489,7 +489,7 @@ section Properties
 
 variable {μ Γ : Measure (Rd d)} {ζ : SchwartzMap (Rd d) ℝ} {R alpha : ℝ}
 
-/-- `E:masked-auxiliary-growth` (lines 90-93), closed ball: for `R > 0`, `r > 0`,
+/-- `E:masked-auxiliary-growth` (lines 108-111), closed ball: for `R > 0`, `r > 0`,
 `ν_R(B̄(y,r)) ≤ c_d² L² C_Γ r^α`. General form: `μ` s-finite and tempered,
 the spectral convention and the scaling `Γ(cA) = c^{d-α}Γ(A)`. -/
 theorem nu_closedBall_le [SFinite μ] (hμt : IsTempered μ) (hsp : IsSpectralMeasure Γ μ)
@@ -500,7 +500,7 @@ theorem nu_closedBall_le [SFinite μ] (hμt : IsTempered μ) (hsp : IsSpectralMe
   exact nu_le_of_translate_le hR measurableSet_closedBall fun u => by
     rw [preimage_sub_closedBall]; exact mu_closedBall_le hμt hsp hΓs _ hr
 
-/-- `E:masked-auxiliary-growth` (lines 90-93), open ball. Same hypotheses as
+/-- `E:masked-auxiliary-growth` (lines 108-111), open ball. Same hypotheses as
 `nu_closedBall_le`. -/
 theorem nu_ball_le [SFinite μ] (hμt : IsTempered μ) (hsp : IsSpectralMeasure Γ μ)
     (hΓs : SpectralHomogeneous Γ ((d : ℝ) - alpha)) (hR : 0 < R) (y : Rd d) {r : ℝ}
@@ -508,9 +508,9 @@ theorem nu_ball_le [SFinite μ] (hμt : IsTempered μ) (hsp : IsSpectralMeasure 
     nu μ ζ R (ball y r) ≤ ENNReal.ofReal (cd d ^ 2 * Lz ζ ^ 2 * CGamma Γ * r ^ alpha) :=
   (measure_mono ball_subset_closedBall).trans (nu_closedBall_le hμt hsp hΓs hR y hr)
 
-/-- `ν_R` is Radon (line 89): locally finite (on `ℝ^d` a locally finite Borel
+/-- `ν_R` is Radon (line 107): locally finite (on `ℝ^d` a locally finite Borel
 measure is Radon, as in `HomogHypothesis.HomogCovariance`). Lean route: from
-the ball bound, instead of the continuity of `ρ_R` (lines 103-106). Same
+the ball bound, instead of the continuity of `ρ_R` (lines 131-134). Same
 hypotheses as `nu_closedBall_le`. -/
 theorem isLocallyFiniteMeasure_nu [SFinite μ] (hμt : IsTempered μ)
     (hsp : IsSpectralMeasure Γ μ) (hΓs : SpectralHomogeneous Γ ((d : ℝ) - alpha))
@@ -570,9 +570,9 @@ theorem lintegral_weight_kR_lt_top (hR : R ≠ 0) (N : ℕ) :
   rw [kR_eq_hatS ζ R hR]
   exact (integrable_one_add_pow_mul (hatS (zetaS ζ R hR)) N).lintegral_lt_top
 
-/-- `ν_R` is tempered (line 89), with the exponent of `μ`. Lean route:
+/-- `ν_R` is tempered (line 107), with the exponent of `μ`. Lean route:
 Peetre's inequality and the Schwartz decay of `k_R`, instead of the polynomial
-growth on centred balls and the dyadic argument of lines 113-114. Hypotheses:
+growth on centred balls and the dyadic argument of lines 145-146. Hypotheses:
 `μ` s-finite and tempered, `R ≠ 0`. -/
 theorem isTempered_nu [SFinite μ] (hμt : IsTempered μ) (hR : R ≠ 0) :
     IsTempered (nu μ ζ R) := by
@@ -581,7 +581,7 @@ theorem isTempered_nu [SFinite μ] (hμt : IsTempered μ) (hR : R ≠ 0) :
     (ENNReal.mul_lt_top hN (lintegral_weight_kR_lt_top hR N)))⟩
 
 /-- Auxiliary to the Lean proof route. `ρ_R` is even when `μ` is even and `ζ`
-is real (lines 106-107). -/
+is real (lines 134-135). -/
 theorem rho_neg (hR : R ≠ 0) (hμe : IsEven μ) (η : Rd d) : rho μ ζ R (-η) = rho μ ζ R η := by
   unfold rho
   congr 1
@@ -594,7 +594,7 @@ theorem rho_neg (hR : R ≠ 0) (hμe : IsEven μ) (η : Rd d) : rho μ ζ R (-η
   rw [show -ξ - -η = -(ξ - η) by abel, ← ofReal_norm, ← ofReal_norm,
     norm_kR_neg]
 
-/-- `ν_R` is even (line 89): `μ` even, `ζ` real, `R ≠ 0`. -/
+/-- `ν_R` is even (line 107): `μ` even, `ζ` real, `R ≠ 0`. -/
 theorem isEven_nu (hR : R ≠ 0) (hμe : IsEven μ) : IsEven (nu μ ζ R) := by
   unfold IsEven
   ext A hA
@@ -612,7 +612,7 @@ end Properties
 
 /-! ### The Hilbert-valued Fourier bound `E:masked-hilbert-fourier` -/
 
-/-- Auxiliary to the Lean proof route (weighted Cauchy-Schwarz, lines 127-128, in
+/-- Auxiliary to the Lean proof route (weighted Cauchy-Schwarz, lines 167-168, in
 the form of a nonnegative quadratic): for `a ≥ 0` with `a`, `a g`, `a g²`
 integrable, `(∫ a g)² ≤ (∫ a)(∫ a g²)`. -/
 theorem sq_integral_mul_le {a g : Rd d → ℝ} (ha : ∀ x, 0 ≤ a x) (hai : Integrable a)
@@ -670,13 +670,13 @@ theorem norm_exp_I_mul (r : ℝ) : ‖Complex.exp (Complex.I * (r : ℂ))‖ = 1
 theorem norm_exp_neg_I_mul (r : ℝ) : ‖Complex.exp (-(Complex.I * (r : ℂ)))‖ = 1 := by
   rw [Complex.norm_exp]; simp
 
-/-- The convolution identity of the proof (lines 116-120): for a Schwartz map
+/-- The convolution identity of the proof (lines 153-157): for a Schwartz map
 `F` with values in a complex Banach space and `R ≠ 0`,
 `(ζ_R F)^(ξ) = c_d ∫ k_R(ξ-η) F̂(η) dη`.  Lean route: Fourier inversion of
 `F` (`paper_inversion`) and one Bochner Fubini swap (`integral_integral_swap`,
 the integrand being dominated by `c_d |ζ_R(x)| |F̂(η)|`), directly in the
 Banach space; the TeX's passage through scalar, finite-rank and projected
-functions (lines 121-127) is not needed. -/
+functions (lines 161-167) is not needed. -/
 theorem paperHat_mask (hR : R ≠ 0) (F : SchwartzMap (Rd d) E) (ξ : Rd d) :
     paperHat (fun x => (zetaR ζ R x : ℂ) • F x) ξ =
       (cd d : ℂ) • ∫ η, kR ζ R (ξ - η) • paperHat (F : Rd d → E) η := by
@@ -743,7 +743,7 @@ theorem integrable_weighted (hR : R ≠ 0) (F : SchwartzMap (Rd d) E) (ξ : Rd d
   · rw [Real.norm_of_nonneg (by positivity)]
     exact pow_le_pow_left₀ (norm_nonneg _) (hb η) 2
 
-/-- The pointwise bound of the proof (lines 127-132), from the convolution
+/-- The pointwise bound of the proof (lines 167-172), from the convolution
 identity, the triangle inequality and weighted Cauchy-Schwarz (`R > 0`):
 `|(ζ_R F)^(ξ)|² ≤ c_d² L ∫ |k_R(ξ-η)| |F̂(η)|² dη`. -/
 theorem norm_sq_paperHat_mask_le (hR : 0 < R) (F : SchwartzMap (Rd d) E) (ξ : Rd d) :
@@ -767,7 +767,7 @@ theorem norm_sq_paperHat_mask_le (hR : 0 < R) (F : SchwartzMap (Rd d) E) (ξ : R
         exact sq_integral_mul_le (fun _ => norm_nonneg _) hai hag hag2
     _ = _ := by rw [hM]; ring
 
-/-- `E:masked-hilbert-fourier` (lines 93-98) as an inequality of lower
+/-- `E:masked-hilbert-fourier` (lines 111-116) as an inequality of lower
 integrals (no junk value): for `μ` s-finite, `R > 0`, and a Schwartz map `F`
 with values in a complex Banach space,
 `∫ |(ζ_R F)^(ξ)|² μ(dξ) ≤ ∫ |F̂(η)|² ν_R(dη)`. -/
@@ -796,7 +796,7 @@ theorem masked_hilbert_fourier_lintegral [SFinite μ] (hR : 0 < R) (F : Schwartz
         rw [ENNReal.ofReal_mul (norm_nonneg _), ofReal_norm_sq, ofReal_norm, mul_comm]
 
 omit [CompleteSpace E] in
-/-- The right side of `E:masked-hilbert-fourier` is finite (lines 134-135, "by
+/-- The right side of `E:masked-hilbert-fourier` is finite (lines 177-178, "by
 Schwartz decay and temperedness of `ν_R`"), for `μ` s-finite and tempered and
 `R ≠ 0`. -/
 theorem lintegral_paperHat_nu_lt_top [SFinite μ] (hμt : IsTempered μ) (hR : R ≠ 0)
@@ -838,7 +838,7 @@ theorem continuous_paperHat_mask (hR : R ≠ 0) (F : SchwartzMap (Rd d) E) :
   rw [he]
   exact continuous_paperHat _
 
-/-- **`E:masked-hilbert-fourier`** (lines 93-98) for a Schwartz map `F` with
+/-- **`E:masked-hilbert-fourier`** (lines 111-116) for a Schwartz map `F` with
 values in a complex Banach space `E`, `μ` s-finite and tempered, `R > 0`:
 both sides are integrable, `∫ |(ζ_R F)^|² dμ ≤ ∫ |F̂|² dν_R` as Bochner
 integrals and as lower integrals, and the right side is finite.  The
@@ -882,13 +882,13 @@ end Hilbert
 
 /-! ### `P:masked-auxiliary-norm` -/
 
-/-- **`P:masked-auxiliary-norm`** (lines 88-100), general form. Hypotheses:
+/-- **`P:masked-auxiliary-norm`** (lines 106-118), general form. Hypotheses:
 `μ` s-finite, tempered and even; the spectral convention
 `E:masked-spectral-convention` (`IsSpectralMeasure Γ μ`); the scaling
 `Γ(cA) = c^{d-α}Γ(A)` (`SpectralHomogeneous Γ (d - α)`); `ζ` a nonzero real
 Schwartz function; `E` a complex Banach space and `F` an `E`-valued Schwartz
-map.  Conclusions: `ζ̂` is integrable and `L > 0` (line 82); for every
-`R > 0`: `k_R` is integrable with `‖k_R‖₁ = L` (line 81); `ν_R` is even,
+map.  Conclusions: `ζ̂` is integrable and `L > 0` (line 99); for every
+`R > 0`: `k_R` is integrable with `‖k_R‖₁ = L` (line 98); `ν_R` is even,
 tempered and locally finite (Radon); `ν_R(B(y,r)) ≤ c_d² L² C_Γ r^α` for open
 and closed balls, with a constant independent of `R`
 (`E:masked-auxiliary-growth`); and `E:masked-hilbert-fourier` with both sides
@@ -921,13 +921,13 @@ theorem masked_auxiliary_norm {Γ μ : Measure (Rd d)} {alpha : ℝ} [SFinite μ
 
 /-- **`P:masked-auxiliary-norm` with the manuscript's hypotheses**: the
 section's standing assumptions `H:homog` (`HomogCovariance`) and `Γ ≠ 0`
-(lines 5-6; `a = α₀` plays no role here), `ζ` a real nonzero Schwartz function
-(line 79), `R > 0`, and `H` a separable complex Hilbert space with an
-`H`-valued Schwartz map `F` (lines 93-94).  Conclusions as in
+(lines 7-8; `a = α₀` plays no role here), `ζ` a real nonzero Schwartz function
+(line 96), `R > 0`, and `H` a separable complex Hilbert space with an
+`H`-valued Schwartz map `F` (lines 111-112).  Conclusions as in
 `masked_auxiliary_norm`.  Uses the fields `μ_radon` (for s-finiteness),
 `μ_tempered`, `μ_even`, `spectral` and `scaling` of `H:homog`; `Γ ≠ 0`, the
 inner product and the separability of `H` are carried, unused.  The clause
-"for a real `H`, the same assertion holds after complexification" (line 99)
+"for a real `H`, the same assertion holds after complexification" (line 117)
 is not formalized (narrower). -/
 theorem masked_auxiliary_norm_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (h : HomogCovariance d alpha alpha0 Γ μ) (_hΓ : Γ ≠ 0) (ζ : SchwartzMap (Rd d) ℝ)

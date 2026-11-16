@@ -1,6 +1,6 @@
 /-
 Refutation for the factor `(1-ϱ)^{N-1}` of `E:raw-block-positive-product`
-(`L:raw-block-indexed-cone`, TeX lines 243--248 and 318), package theorem
+(`L:raw-block-indexed-cone`, TeX lines 327--332 and 429), package theorem
 `StratonovichHAMSecondMoment.IndexedCone.indexed_cone`.
 
 Wrong variant: the geometric loss dropped, i.e. a bound

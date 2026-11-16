@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.EndpointLemmas.product_vectors_mem

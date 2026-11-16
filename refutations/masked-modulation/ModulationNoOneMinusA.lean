@@ -1,6 +1,6 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.MaskedModulation.modulation_bound`
-(`L:masked-temporal-modulation`, TeX lines 300-309).
+(`L:masked-temporal-modulation`, TeX lines 396-405).
 
 Wrong variant: the modulation bound with the `a`-free constant `16` in place
 of `C₀(a) = 16/(1-a)`, in the binder shape of `modulation_bound`. Witness

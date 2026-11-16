@@ -1,7 +1,7 @@
 /-
 Refutation for `L:damped-homogeneous-norms` (main TeX
-`notes/notes_stratonovich_ham_second_moment.tex`, revision a284420, lines
-809-810 and 881), package theorem
+`notes/notes_stratonovich_ham_second_moment.tex`, revision 39f2597a, lines
+1016-1017 and 1104), package theorem
 `StratonovichHAMSecondMoment.DampedNormsHomog.N0_eq` (`N₀(θ) = θ^{-2}` from the
 mass identity `G_s(ℝ^d) = s`).
 

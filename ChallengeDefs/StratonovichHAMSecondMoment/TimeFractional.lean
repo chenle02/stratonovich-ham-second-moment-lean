@@ -63,7 +63,7 @@ theorem rpow_neg_eq_subordination (a r : ℝ) (ha : 0 < a) (hr : 0 < r) :
 /-- Auxiliary to the Lean proof route. The integrand of `Ψ_a`. -/
 def psiKernel (a r v l : ℝ) : ℝ := l ^ (a - 1) * Real.exp (-(r * l) - v * l ^ 2 / 2)
 
-/-- `E:averaged-clock-kernel` (line 7704):
+/-- `E:averaged-clock-kernel` (line 8982):
 `Ψ_a(r,v) = Γ(a)⁻¹ ∫_0^∞ λ^{a-1} e^{-rλ - vλ²/2} dλ`. -/
 def Psi (a r v : ℝ) : ℝ := (Real.Gamma a)⁻¹ * ∫ l in Ioi (0 : ℝ), psiKernel a r v l
 

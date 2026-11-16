@@ -4,7 +4,7 @@ import StratonovichHAMSecondMoment.WhiteRelativeWidth
 Refutation for `StratonovichHAMSecondMoment.WhiteRelativeWidth.ratio_eq` (and so for
 `white_relative_width_paper`), manuscript label `C:white-relative-width`.
 
-Wrong variant: the ratio identity with the hypothesis `c > 0` (TeX line 132) weakened
+Wrong variant: the ratio identity with the hypothesis `c > 0` (TeX line 175) weakened
 to the section's `c ≥ 0` (line 4).  Counterexample: `c = 0`, `a = 1/2`.  JUNK-VALUE
 RELIANCE: at `c = 0` both formulas are `0` and Lean's `0/0 = 0`, while
 `sqrt(K_0 M) > 0`; mathematically the ratio is undefined there, which is why the

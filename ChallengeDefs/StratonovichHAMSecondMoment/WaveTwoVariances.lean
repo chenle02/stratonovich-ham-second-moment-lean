@@ -36,7 +36,7 @@ open StratonovichHAMSecondMoment.HomogHypothesis (Rd)
 open StratonovichHAMSecondMoment.FrequencyRow (rowKernel)
 
 /-- Auxiliary (Lean proof route): `b_r(t) = ⟨r⟩ · t · sinc(rt)` for every real `r, t`
-(the continuous sine quotient of TeX lines 185, 250-251, 326-327), used for joint
+(the continuous sine quotient of TeX lines 219, 293-294, 397-398), used for joint
 continuity in `(r, t)`. -/
 theorem bFn_eq_sinc (r t : ℝ) : bFn r t = bracket r * (t * Real.sinc (r * t)) := by
   by_cases hr : r = 0
@@ -53,7 +53,7 @@ theorem continuous_bFn : Continuous fun x : ℝ × ℝ => bFn x.1 x.2 := by
   have := FrequencyRow.continuous_bracket
   fun_prop
 
-/-- The row factor of `E:variance-normalized-kernel` (TeX lines 231-238): `b_r` in row
+/-- The row factor of `E:variance-normalized-kernel` (TeX lines 266-273): `b_r` in row
 `i = 0` (the TeX's row 1) and `c_r` in row `i = 1` (row 2). -/
 def rowWave : Fin 2 → Wave := ![.b, .c]
 /-- The row sign of `E:variance-normalized-kernel`: `-1` in row `0`, `+1` in row `1`. -/
@@ -62,7 +62,7 @@ def rowSign : Fin 2 → ℝ := ![-1, 1]
 in column `j = 1`. -/
 def colWave : Fin 2 → Wave := ![.c, .b]
 
-/-- The entries `𝒦_ij(t; ξ, η)` of `E:variance-normalized-kernel` (TeX lines 229-238):
+/-- The entries `𝒦_ij(t; ξ, η)` of `E:variance-normalized-kernel` (TeX lines 264-273):
 `𝒦 = (⟨ξ⟩⟨η⟩)^{-1/2} [[-b_r c_ρ, -b_r b_ρ], [c_r c_ρ, c_r b_ρ]](t)` with `r = |ξ|`,
 `ρ = |η|`, and `c_r, b_r` the functions of `L:masked-continuous-wave`
 (`MaskedContinuousWave.cFn`, `bFn`; `b_0(t) = t`). Indices `0, 1` are the TeX's `1, 2`
@@ -71,8 +71,8 @@ def kernelEntry {d : ℕ} (i j : Fin 2) (ξ η : Rd d) (t : ℝ) : ℝ :=
   rowSign i * ((rowWave i).eval ‖ξ‖ t * (colWave j).eval ‖η‖ t) /
     Real.sqrt (bracket ‖ξ‖ * bracket ‖η‖)
 
-/-- The masked kernel `t ↦ 1_I(t) 𝒦_ij(t; ξ, η)` with `I = [s, s+h]` (TeX lines 187-188,
-243, 391), as a complex function. -/
+/-- The masked kernel `t ↦ 1_I(t) 𝒦_ij(t; ξ, η)` with `I = [s, s+h]` (TeX lines 221-222,
+278, 482), as a complex function. -/
 def maskedKernel {d : ℕ} (s h : ℝ) (i j : Fin 2) (ξ η : Rd d) : ℝ → ℂ :=
   (Icc s (s + h)).indicator fun t => ((kernelEntry i j ξ η t : ℝ) : ℂ)
 
@@ -87,7 +87,7 @@ theorem sqrt_bracket_pos {d : ℕ} (ξ η : Rd d) : 0 < Real.sqrt (bracket ‖ξ
   Real.sqrt_pos.2 (mul_pos (FrequencyRow.bracket_pos _) (FrequencyRow.bracket_pos _))
 
 /-- Auxiliary (Lean proof route): `((ξ, η), t) ↦ 𝒦_ij(t; ξ, η)` is jointly continuous
-(TeX lines 404-408: the kernels are continuous in their frequency variables). -/
+(TeX lines 497-501: the kernels are continuous in their frequency variables). -/
 theorem continuous_kernelEntry {d : ℕ} (i j : Fin 2) :
     Continuous fun x : (Rd d × Rd d) × ℝ => kernelEntry i j x.1.1 x.1.2 x.2 := by
   unfold kernelEntry
@@ -122,16 +122,16 @@ def kernelLp {d : ℕ} (T s h : ℝ) (i j : Fin 2) (ξ η : Rd d) :
   (memLp_maskedKernel T s h i j ξ η).toLp _
 
 /-- The element `1_I 𝒦_ij(·; ξ, η)` of the temporal completion `H_a = TimeCompletion.Ha p`
-(the TeX's `H_a^ℂ`, TeX lines 243, 391), defined as the image of its `L²(0,T)` class
-under the continuous inclusion `TimeCompletion.extL2` (TeX lines 148-149). -/
+(the TeX's `H_a^ℂ`, TeX lines 278, 482), defined as the image of its `L²(0,T)` class
+under the continuous inclusion `TimeCompletion.extL2` (TeX lines 179-180). -/
 def kerH (p : TimeParams) {d : ℕ} (s h : ℝ) (i j : Fin 2) (ξ η : Rd d) : Ha p :=
   extL2 p (kernelLp p.T s h i j ξ η)
 
-/-- `A_T = C₁(a)(1+T)⁴` (TeX line 393), with `a = p.a`, `T = p.T`. -/
+/-- `A_T = C₁(a)(1+T)⁴` (TeX line 484), with `a = p.a`, `T = p.T`. -/
 def AT (p : TimeParams) : ℝ := C₁ p.a * (1 + p.T) ^ 4
 
 /-- The `H_a`-valued spatial integral inside `E:variance-normalized-covariance` (TeX lines
-240-246): `∫ ∑_{i,j} 1_I 𝒦_ij(·; η+λ, η) U_j(η) conj(V_i(η+λ)) dη` with `I = [s, s+h]`,
+275-281): `∫ ∑_{i,j} 1_I 𝒦_ij(·; η+λ, η) U_j(η) conj(V_i(η+λ)) dη` with `I = [s, s+h]`,
 a Bochner integral in `H_a` (its integrand's integrability is part of the conclusions
 that use it). -/
 def coef (p : TimeParams) {d : ℕ} (s h : ℝ) (U V : Fin 2 → Rd d → ℂ) (l : Rd d) : Ha p :=
@@ -143,7 +143,7 @@ finite `L²(ℝ^d; ℂ²)`-orthonormal family `U_k` (standing for `J e_k`) and e
 in `H_a`, `⟨ξ⟩^{-2γ} ∑|V_i|²` is integrable, and
 `∑_k ∫ ‖∫ ∑_{ij} 1_I 𝒦_ij(·;η+λ,η) U_kj(η) conj V_i(η+λ) dη‖²_{H_a} ν(dλ)
  ≤ M ‖⟨ξ⟩^{-γ} V‖₂²` (the `λ` integral is the lower integral of a nonnegative
-function, TeX lines 410-411). -/
+function, TeX lines 503-504). -/
 def InputBound (p : TimeParams) {d : ℕ} (s h : ℝ) (ν : Measure (Rd d)) (γ M : ℝ) : Prop :=
   ∀ (n : ℕ) (U : Fin n → Fin 2 → Rd d → ℂ), PhaseBessel.IsOrthonormalL2 volume U →
     ∀ V : Fin 2 → Rd d → ℂ, (∀ i, MemLp (V i) 2 volume) →
@@ -166,7 +166,7 @@ def OutputBound (p : TimeParams) {d : ℕ} (s h : ℝ) (ν : Measure (Rd d)) (γ
       ∑ k, ∫⁻ l, ‖coef p s h U (V k) l‖ₑ ^ 2 ∂ν ≤
         ENNReal.ofReal (M * ∫ ξ, bracket ‖ξ‖ ^ (-(2 * γ)) * ∑ j, ‖U j ξ‖ ^ 2)
 
-/-- `C_ν = c_d² L_ζ² C_Γ` of `E:variance-actual-growth-constant` (TeX lines 205-208), with
+/-- `C_ν = c_d² L_ζ² C_Γ` of `E:variance-actual-growth-constant` (TeX lines 239-242), with
 `L_ζ = MaskedAuxiliaryNorm.Lz ζ = ‖ζ̂‖₁` and `C_Γ = MaskedSpectralGrowth.CGamma Γ`. -/
 def Cnu {d : ℕ} (Γ : Measure (Rd d)) (ζ : SchwartzMap (Rd d) ℝ) : ℝ :=
   MaskedAuxiliaryNorm.cd d ^ 2 * MaskedAuxiliaryNorm.Lz ζ ^ 2 * MaskedSpectralGrowth.CGamma Γ

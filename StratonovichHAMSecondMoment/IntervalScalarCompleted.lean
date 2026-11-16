@@ -5,12 +5,12 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Integration of wave items L7-a (`InventoryProduct`) and L7-f (`IntervalScalar`)
 for `notes/notes_stratonovich_ham_second_moment.tex` (main TeX file; line
-numbers at revision a284420).  This module discharges the
+numbers at revision 39f2597a).  This module discharges the
 `L:inventory-product` input of the `IntervalScalar` step rows of
-`P:interval-coefficients` (statement lines 3402-3414, proof 3416-3581).
+`P:interval-coefficients` (statement lines 4054-4066, proof 4068-4271).
 
 `IntervalScalar` takes `L:inventory-product` (`E:inventory-product`, lines
-2986-2997) as the hypothesis `IntervalScalar.InventoryProduct α α₀ C`, with the
+3581-3592) as the hypothesis `IntervalScalar.InventoryProduct α α₀ C`, with the
 product written over `j : Fin M` at `i = j + 1` and the exponent `3 - α`.
 `InventoryProduct` proves the same statement IN FULL with the product over
 `i ∈ Finset.Icc 1 M`, the exponent `TypeContinuity.nuOf α = 3 - α` and the
@@ -26,7 +26,7 @@ explicit constant `InventoryProduct.inventoryConst α α₀`.
   hypotheses of `InventoryProduct.inventory_product`),
   `IntervalScalar.InventoryProduct α α₀ (inventoryConst α α₀)`;
   `inventoryProduct_holds_paper`: the same under `H:homog`
-  (`HomogHypothesis.HomogCovariance`, lines 225-242).
+  (`HomogHypothesis.HomogCovariance`, lines 384-401).
 * `interval_coefficient_assembly_completed` and
   `interval_coefficient_assembly_paper_completed`: the two `IntervalScalar`
   theorems that take the input (`interval_coefficient_assembly`,
@@ -58,27 +58,27 @@ namespace StratonovichHAMSecondMoment.IntervalScalarCompleted
 open StratonovichHAMSecondMoment.IntervalScalar StratonovichHAMSecondMoment.TypeContinuity
 
 /-- Auxiliary bridge: `IntervalScalar.invV = InventoryProduct.vCoef` (both are
-`v_i` of `L:inventory-product`, main TeX lines 2989-2990). -/
+`v_i` of `L:inventory-product`, main TeX lines 3584-3585). -/
 theorem invV_eq (alpha alpha0 : ℝ) (k i : ℕ) :
     invV alpha alpha0 k i = InventoryProduct.vCoef alpha alpha0 k i := by
   simp only [invV, InventoryProduct.vCoef, betaOf, InventoryProduct.pOf]
 
 /-- Auxiliary bridge: `IntervalScalar.invB = InventoryProduct.bCoef` (both are
-`b_{i,l}` of `L:inventory-product`, main TeX line 2991). -/
+`b_{i,l}` of `L:inventory-product`, main TeX line 3586). -/
 theorem invB_eq (alpha alpha0 : ℝ) (k i l : ℕ) :
     invB alpha alpha0 k i l = InventoryProduct.bCoef alpha alpha0 k i l := by
   simp only [invB, InventoryProduct.bCoef, betaOf, nuOf, neg_mul]
 
 /-- Auxiliary bridge: `IntervalScalar.invCoeff = InventoryProduct.factorCoeff`
 (the coefficients of `1 + v_i z + ∑_{l≥2} b_{i,l} z^l`, main TeX lines
-2994-2997). -/
+3589-3592). -/
 theorem invCoeff_eq (alpha alpha0 : ℝ) (k i l : ℕ) :
     invCoeff alpha alpha0 k i l = InventoryProduct.factorCoeff alpha alpha0 k i l := by
   simp only [invCoeff, InventoryProduct.factorCoeff, invV_eq, invB_eq]
 
 /-- Auxiliary bridge: the product over `j : Fin M` at `i = j + 1` used in
 `IntervalScalar.InventoryProduct` is `InventoryProduct.inventoryProduct`, the
-product over `i ∈ Icc 1 M` (main TeX lines 2994-2997). -/
+product over `i ∈ Icc 1 M` (main TeX lines 3589-3592). -/
 theorem prod_fin_eq_inventoryProduct (alpha alpha0 : ℝ) (M k : ℕ) :
     ∏ j : Fin M, PowerSeries.mk (invCoeff alpha alpha0 k ((j : ℕ) + 1)) =
       InventoryProduct.inventoryProduct alpha alpha0 M k := by
@@ -96,7 +96,7 @@ theorem prod_fin_eq_inventoryProduct (alpha alpha0 : ℝ) (M k : ℕ) :
   rw [hfun, add_comm]
 
 /-- **`L:inventory-product` discharges the `IntervalScalar` input** (main TeX
-lines 2986-2997): under `0 < α₀ < 1` and `α₀ + α < 2`, the hypotheses of
+lines 3581-3592): under `0 < α₀ < 1` and `α₀ + α < 2`, the hypotheses of
 `InventoryProduct.inventory_product`, the statement
 `IntervalScalar.InventoryProduct α α₀ C` holds with
 `C = InventoryProduct.inventoryConst α α₀ = 4 e^{K(α,α₀)}`, a function of
@@ -111,7 +111,7 @@ theorem inventoryProduct_holds {alpha alpha0 : ℝ} (h0 : 0 < alpha0) (h1 : alph
   simpa only [nuOf, Nat.cast_id] using this
 
 /-- **`L:inventory-product` under `H:homog` discharges the `IntervalScalar`
-input** (main TeX lines 2986-2997; `H:homog`, lines 225-242, is the standing
+input** (main TeX lines 3581-3592; `H:homog`, lines 384-401, is the standing
 hypothesis of section `S:interval-upper`): from
 `InventoryProduct.inventory_product_paper`, the constant
 `InventoryProduct.inventoryConst α α₀` is positive and satisfies
@@ -127,14 +127,14 @@ theorem inventoryProduct_holds_paper {d : ℕ} {alpha alpha0 : ℝ}
     inventoryProduct_holds hH.alpha0_pos hH.alpha0_lt_one hH.threshold⟩
 
 /-- **Step row of `P:interval-coefficients`, `E:interval-coefficient-bound`**
-(main TeX lines 3405-3408, proof 3478-3547) at `L ≥ 1`, general form, with the
-`L:inventory-product` input (main TeX lines 2986-2997) discharged:
+(main TeX lines 4057-4060, proof 4147-4228) at `L ≥ 1`, general form, with the
+`L:inventory-product` input (main TeX lines 3581-3592) discharged:
 `IntervalScalar.interval_coefficient_assembly` without `hinv`, with
 `C_inv = InventoryProduct.inventoryConst α α₀` (by `inventoryProduct_holds`).
 Every other hypothesis is exactly that of
 `IntervalScalar.interval_coefficient_assembly`; the inputs `hsplits`
-(`E:interval-energy-splits` with the reflection parity, lines 3478-3485) and
-`hfixed` (`L:fixed-split`, lines 3080-3091, at `λ = k/T` with constant
+(`E:interval-energy-splits` with the reflection parity, lines 4147-4154) and
+`hfixed` (`L:fixed-split`, lines 3702-3713, at `λ = k/T` with constant
 `C_split`) remain supplied.  Conclusion:
 `|coef| ≤ (12 c L^β C_split C_inv)^k R^k T^{βk}/(k!)^ν V`. -/
 theorem interval_coefficient_assembly_completed {alpha alpha0 R T L c Cs V coef : ℝ}
@@ -156,8 +156,8 @@ theorem interval_coefficient_assembly_completed {alpha alpha0 R T L c Cs V coef 
     (inventoryProduct_holds ha0 ha01 (by linarith)) hsplits hfixed
 
 /-- **Step row of `P:interval-coefficients`, `E:interval-coefficient-bound`**
-(main TeX lines 3405-3408; proof 3416-3420 and 3478-3547) under `H:homog`,
-with the `L:inventory-product` input (main TeX lines 2986-2997) discharged:
+(main TeX lines 4057-4060; proof 4068-4082 and 4147-4228) under `H:homog`,
+with the `L:inventory-product` input (main TeX lines 3581-3592) discharged:
 `IntervalScalar.interval_coefficient_assembly_paper` without `hinv`, with
 `C_inv = InventoryProduct.inventoryConst α α₀` (by
 `inventoryProduct_holds_paper`).  Every other hypothesis is exactly that of
@@ -167,7 +167,7 @@ remain supplied.  The constant
 `C = 12 max(c,0) max(1,L)^β C_split C_inv` depends only on `α, α₀, L, c` and
 `C_split`.  Narrower than the TeX exactly as the original wrapper: `R_α > 0`
 and `σ_i > 0` are assumed; the zero-noise case and the sign reduction (lines
-3417, 3420-3423) are not formalized. -/
+4079, 4082-4085) are not formalized. -/
 theorem interval_coefficient_assembly_paper_completed {d : ℕ} {alpha alpha0 : ℝ}
     {Γ μ : Measure (HomogHypothesis.Rd d)}
     (hH : HomogHypothesis.HomogCovariance d alpha alpha0 Γ μ)

@@ -40,7 +40,7 @@ variable {d : ℕ}
 /-! ### Definitions -/
 
 /-- `w_θ(λ) = λ^{a-2}/(2θΓ(a)) (R_Γ(θ) - R_Γ(θ+λ))`
-(`E:cross-clock-lambda-weight`, lines 7756-7762). -/
+(`E:cross-clock-lambda-weight`, lines 9035-9041). -/
 def weight (a θ : ℝ) (μ : Measure (Rd d)) (l : ℝ) : ℝ :=
   l ^ (a - 2) / (2 * θ * Real.Gamma a) * (𝓡 μ θ - 𝓡 μ (θ + l))
 
@@ -48,7 +48,7 @@ def weight (a θ : ℝ) (μ : Measure (Rd d)) (l : ℝ) : ℝ :=
 def filteredWeight (a θ : ℝ) (μ : Measure (Rd d)) (l : ℝ) : ℝ :=
   2 * θ / (2 * θ + l) * weight a θ μ l
 
-/-- `v_ρ(u,v) = u + v - 2ρ min(u,v)` (line 7737). -/
+/-- `v_ρ(u,v) = u + v - 2ρ min(u,v)` (line 9015). -/
 def vRho (ρ u v : ℝ) : ℝ := u + v - 2 * ρ * min u v
 
 /-- The integrand of `E:naive-clock-candidate`:
@@ -57,7 +57,7 @@ def Jintegrand (a θ : ℝ) (μ : Measure (Rd d)) (ρ : ℝ) (p : ℝ × ℝ) : 
   Real.exp (-(θ ^ 2 * (p.1 + p.2) / 2)) * heat μ (p.1 + p.2) *
     Psi a (θ * |p.1 - p.2|) (vRho ρ p.1 p.2)
 
-/-- `J_{Γ,ρ}(θ)` of `E:naive-clock-candidate` (lines 7741-7746). -/
+/-- `J_{Γ,ρ}(θ)` of `E:naive-clock-candidate` (lines 9019-9024). -/
 def J (a θ : ℝ) (μ : Measure (Rd d)) (ρ : ℝ) : ℝ :=
   1 / 4 * ∫ p, Jintegrand a θ μ ρ p ∂P2
 

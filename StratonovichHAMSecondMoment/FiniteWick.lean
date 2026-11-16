@@ -7,11 +7,11 @@ Finite Wick (Isserlis) formula: a reusable foundation (a D1 slice; no manuscript
 label of its own; nothing supplied).
 
 Source: the Wick step of the proof of `L:terminal-wick` in the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` at revision a284420 (lemma
-statement lines 3600-3645, the formula `E:terminal-wick-formula` at 3619-3622,
+`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a (lemma
+statement lines 4291-4336, the formula `E:terminal-wick-formula` at 4310-4313,
 "each pairing has coefficient one" and "if `m+n` is odd, the expectation is
-zero" at 3638; proof lines 3662-3675 for the Wick step, 3651-3656 for the moment
-bound, 3693-3695 for nonnegativity and monotonicity).  The terminal-chain
+zero" at 4329; proof lines 4365-4378 for the Wick step, 4351-4356 for the moment
+bound, 4404-4406 for nonnegativity and monotonicity).  The terminal-chain
 integrals themselves are in `TerminalWick`.
 
 Formalized (all proved):
@@ -39,8 +39,8 @@ recursion `E[g_e F(g)] = E[∂_e F(g)]` (`GaussianIBP.integral_coord_mul_eq_of_g
 applied to `x = √K g` (Mathlib defines `multivariateGaussian 0 K` as the image
 of `stdGaussian` under `√K`; `map_pi_eq_stdGaussian` identifies `stdGaussian`
 with `stdPi N`), instead of differentiating the moment generating function as in
-TeX lines 3664-3673; the moment bound uses the Wick formula and the count of
-pairings instead of Hölder's inequality (lines 3651-3656); the bounds are the
+TeX lines 4367-4376; the moment bound uses the Wick formula and the count of
+pairings instead of Hölder's inequality (lines 4351-4356); the bounds are the
 same.  Lemmas marked "Auxiliary" serve only this Lean route.
 
 Implicit hypotheses made explicit: `K ⪰ 0` (Mathlib's `multivariateGaussian 0 K`
@@ -68,7 +68,7 @@ variable {ι : Type*} [Fintype ι] [LinearOrder ι]
 fixed-point-free involutions of `S`: maps `p : ι → ι` with `p x ∈ S`, `p x ≠ x`,
 `p (p x) = x` for `x ∈ S`, normalized by `p x = x` off `S` (so that each pairing
 of `S` is one function).  For `S` all of `Fin (2k)` these are the pair partitions
-`D ∈ Π_k` of the TeX (main TeX lines 3619-3622, 3670-3673). -/
+`D ∈ Π_k` of the TeX (main TeX lines 4310-4313, 4373-4376). -/
 def pairings (S : Finset ι) : Finset (ι → ι) :=
   univ.filter fun p => (∀ x ∈ S, p x ∈ S ∧ p x ≠ x ∧ p (p x) = x) ∧ ∀ x, x ∉ S → p x = x
 
@@ -508,7 +508,7 @@ real `N × N` matrix `A`: for indices `j : ι → Fin N` and a finite set `S`,
 route, the Stein recursion): integration by parts `E[g_e F(g)] = E[∂_e F(g)]`
 (`GaussianIBP.integral_coord_mul_eq_of_growth`) in every coordinate `e` for the
 least index `a`, then `wickSum_eq_sum_erase`.  The TeX instead differentiates
-the moment generating function (main TeX lines 3664-3673); the conclusion is
+the moment generating function (main TeX lines 4367-4376); the conclusion is
 the same. -/
 theorem wick_stdPi (A : Matrix (Fin N) (Fin N) ℝ) (j : ι → Fin N) (n : ℕ) :
     ∀ S : Finset ι, S.card = n →
@@ -632,7 +632,7 @@ theorem wick_hasLaw (K : Matrix (Fin N) (Fin N) ℝ) (hK : K.PosSemidef)
 end Law
 
 /-- A centered real Gaussian field `W` on a point set `X` with covariance `K`
-(the hypothesis of `L:terminal-wick`, main TeX lines 3601-3602): for every finite
+(the hypothesis of `L:terminal-wick`, main TeX lines 4292-4293): for every finite
 family of points `p : Fin n → X`, the covariance matrix `(K(p_a, p_b))` is
 positive semidefinite and the vector `(W(p_a))_a` has law
 `multivariateGaussian 0 (K(p_a, p_b))`.  The positive semidefiniteness is part
@@ -683,7 +683,7 @@ theorem CenteredGaussianField.abs_le (hW : CenteredGaussianField W K P) (V : ℝ
   rw [_root_.abs_le]
   constructor <;> nlinarith
 
-/-- The concatenated mixed moment (main TeX lines 3616-3618, 3662-3673): for
+/-- The concatenated mixed moment (main TeX lines 4307-4309, 4365-4376): for
 `p : Fin m → X`, `q : Fin n → X`,
 `E[∏_a W(p_a) ∏_b W(q_b)] = Σ_{D ∈ Π(m+n)} ∏_{{a,b} ∈ D} K(τ_a, τ_b)` with
 `τ = Fin.append p q`, and the product is integrable. -/
@@ -699,7 +699,7 @@ theorem CenteredGaussianField.wick_append (hW : CenteredGaussianField W K P) {m 
   exact h
 
 /-- The moment bound behind `E:terminal-term-majorant` (main TeX lines
-3651-3656): if `K(z,z) ≤ V` for every `z`, then
+4351-4356): if `K(z,z) ≤ V` for every `z`, then
 `E(∏_{a<n} W(p_a))² ≤ (2n-1)!! V^n`.  Lean route: the Wick formula for the
 `2n` values and `wickSum_abs_le` (`(2n-1)!!` pairings, each at most `V^n` in
 absolute value), instead of the TeX's Hölder inequality and `L^{2n}` Gaussian

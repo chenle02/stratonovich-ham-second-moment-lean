@@ -1,4 +1,4 @@
-# probe	expected_rc	office_wall_s	office_maxrss_kb	what
+# probe	expected_rc	<MACHINE>_wall_s	<MACHINE>_maxrss_kb	what
 P00_import_full	0	4.71	6930020	import Mathlib (the companion's import style: 77 of 81 modules)
 P01_import_bessel	0	2.87	3479688	BesselPotentialSpace slice only
 P02_import_operator	0	2.88	3477696	LaxMilgram, Rayleigh, Spectrum, LinearPMap, Fredholm, CFC rpow slice only

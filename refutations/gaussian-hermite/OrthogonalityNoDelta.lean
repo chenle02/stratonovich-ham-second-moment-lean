@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.GaussianHermite
 /-!
 Refutation for `StratonovichHAMSecondMoment.GaussianHermite.integral_He_mul_He` (Hermite
 orthogonality `E[He_n He_m] = n! δ_{nm}`, used in the proofs of `L:fock-form`, main TeX lines
-2515-2517, and `E:occupied-multiplication`, lines 1805-1810, at a284420).
+3016-3018, and `E:occupied-multiplication`, lines 2192-2197, at 39f2597a).
 
 Wrong variant: dropping the Kronecker delta, `E[He_n He_m] = n!` for all `n, m`.
 Counterexample: `n = 0`, `m = 1`: the package gives `0`, the wrong variant `0! = 1`.

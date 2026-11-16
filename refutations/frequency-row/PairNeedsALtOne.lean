@@ -1,5 +1,5 @@
 /-
-Refutation for the bound `𝒬_h ≤ 2` used in `P:frequency-row` (TeX lines 86-87:
+Refutation for the bound `𝒬_h ≤ 2` used in `P:frequency-row` (TeX lines 96-97:
 "Both bracket powers in `𝒬_h` are at most one, since `a - 1 < 0`"), package
 theorem `StratonovichHAMSecondMoment.FrequencyRow.frequencyPair_le_two` and
 package definition `StratonovichHAMSecondMoment.MaskedTrigProducts.frequencyPair`.

@@ -2,10 +2,10 @@ import StratonovichHAMSecondMoment.StaticPhaseCauchy
 
 /-!
 Refutation for `StratonovichHAMSecondMoment.StaticPhaseCauchy.all_orders_arith` (the
-scalar arithmetic of `P:static-phase-all-orders`, main TeX lines 2631-2641 at a284420).
+scalar arithmetic of `P:static-phase-all-orders`, main TeX lines 3149-3163 at 39f2597a).
 
 Wrong variant: the constant `A = 400 √2 e²/δ` of `E:all-static-phase-orders` replaced by
-a quarter of it, `100 √2 e²/δ` (the factor `100 n ≤ 200^n` of line 2640 dropped).
+a quarter of it, `100 √2 e²/δ` (the factor `100 n ≤ 200^n` of line 3162 dropped).
 Counterexample: `n = 1`, `h = δ = R = 1`, `α = 1`, `d = 2√2`, where the left side is
 `200 √2 e²` and the wrong right side is `100 √2 e²`.  No junk-value reliance (all
 bases positive).  `half_constant_contrast` is the package inequality at the same point.

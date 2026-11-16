@@ -1,0 +1,13 @@
+node=node831 job=5699051 array=5698959_90 mode=fresh target=StratonovichHAMSecondMoment.SpatialSmoothRatio start=2026-11-13T08:45:36-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=56fc59ec31b8ede85ac5ab7a2283237b091029a7 TREE=df0322362d43b18a73c060519d72955b328900c5 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1440 waited_s=0
+REPLAY_STARTED 2026-11-13T08:49:46-0600
+BEGIN fresh StratonovichHAMSecondMoment.SpatialSmoothRatio 08:49:52
+END fresh StratonovichHAMSecondMoment.SpatialSmoothRatio	0	0:42:53.49	7582720	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2580 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.SpatialSmoothRatio
+PROCESS_EXIT=0 end=2026-11-13T09:32:46-0600

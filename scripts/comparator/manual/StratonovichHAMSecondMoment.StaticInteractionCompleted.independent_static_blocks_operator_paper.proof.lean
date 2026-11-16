@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.StaticInteractionCompleted.independent_static_blocks_operator_paper

@@ -35,11 +35,75 @@ open VariationalDilation (CPos conv mean rawCost)
 
 variable {d : ℕ}
 
+/-! ### The spatial pairing on continuous compactly supported profiles -/
+
+/-- Auxiliary to the Lean proof route: if `F` vanishes for `|x| > R` and `G` vanishes for
+`|x| > R`, then the inner integral `y ↦ ∫ F(x) G(x-y) dx` of `B_Γ(F,G)` vanishes for
+`|y| > 2R`. -/
+theorem cross_eq_zero {F G : Rd d → ℝ} {R : ℝ} (hFR : ∀ x, R < ‖x‖ → F x = 0)
+    (hGR : ∀ x, R < ‖x‖ → G x = 0) {y : Rd d} (hy : 2 * R < ‖y‖) :
+    ∫ x, F x * G (x - y) = 0 := by
+  have h : ∀ x, F x * G (x - y) = 0 := by
+    intro x
+    by_cases hx : R < ‖x‖
+    · rw [hFR x hx, zero_mul]
+    · have h1 : ‖y‖ ≤ ‖x‖ + ‖x - y‖ := by
+        have := norm_sub_le x (x - y)
+        simpa using this
+      rw [hGR (x - y) (by linarith), mul_zero]
+  simp [h]
+
+/-- Auxiliary to the Lean proof route: the inner integral is bounded,
+`|∫ F(x) G(x-y) dx| ≤ |B_R| A B` when `F` vanishes for `|x| > R`, `|F| ≤ A`, `|G| ≤ B`
+(no integrability assumed: a non-integrable integrand has Bochner integral `0`). -/
+theorem abs_cross_le {F G : Rd d → ℝ} {R A B : ℝ} (hFR : ∀ x, R < ‖x‖ → F x = 0)
+    (hA : ∀ x, |F x| ≤ A) (hB : ∀ x, |G x| ≤ B) (y : Rd d) :
+    |∫ x, F x * G (x - y)| ≤ A * B * volume.real (closedBall (0 : Rd d) R) := by
+  rw [← setIntegral_eq_integral_of_forall_compl_eq_zero (s := closedBall (0 : Rd d) R)
+    fun x hx => by
+      rw [mem_closedBall, dist_zero_right, not_le] at hx
+      rw [hFR x hx, zero_mul], ← Real.norm_eq_abs]
+  refine norm_setIntegral_le_of_norm_le_const
+    (measure_closedBall_lt_top (μ := (volume : Measure (Rd d))))
+    fun x _ => ?_
+  rw [Real.norm_eq_abs, abs_mul]
+  exact mul_le_mul (hA x) (hB _) (abs_nonneg _) ((abs_nonneg _).trans (hA x))
+
+/-- Auxiliary to the Lean proof route (the local bound `E:positive-local-spatial-bound` of
+`L:positive-raw-embedding`, in bilinear form): for a locally finite `Γ` and `F`, `G` vanishing
+for `|x| > R` with `|F| ≤ A`, `|G| ≤ B`,
+`|B_Γ(F,G)| ≤ A B |B_R| Γ(B_{2R})`. -/
+theorem abs_spatialPair_le (Γ : Measure (Rd d)) [IsLocallyFiniteMeasure Γ] {F G : Rd d → ℝ}
+    {R A B : ℝ} (hFR : ∀ x, R < ‖x‖ → F x = 0) (hGR : ∀ x, R < ‖x‖ → G x = 0)
+    (hA : ∀ x, |F x| ≤ A) (hB : ∀ x, |G x| ≤ B) :
+    |spatialPair Γ F G| ≤
+      A * B * volume.real (closedBall (0 : Rd d) R) * Γ.real (closedBall (0 : Rd d) (2 * R)) := by
+  unfold spatialPair
+  rw [← setIntegral_eq_integral_of_forall_compl_eq_zero (s := closedBall (0 : Rd d) (2 * R))
+    fun y hy => by
+      rw [mem_closedBall, dist_zero_right, not_le] at hy
+      exact cross_eq_zero hFR hGR hy]
+  rw [← Real.norm_eq_abs]
+  exact norm_setIntegral_le_of_norm_le_const measure_closedBall_lt_top fun y _ => by
+    rw [Real.norm_eq_abs]; exact abs_cross_le hFR hA hB y
+
+/-- Auxiliary to the Lean proof route: a continuous `Q` vanishing for `|x| > R` has compact
+support. -/
+theorem hasCompactSupport_of_radius {Q : Rd d → ℝ} {R : ℝ} (hQR : ∀ x, R < ‖x‖ → Q x = 0) :
+    HasCompactSupport Q :=
+  HasCompactSupport.intro (isCompact_closedBall (0 : Rd d) R) fun x hx => by
+    rw [mem_closedBall, dist_zero_right, not_le] at hx
+    exact hQR x hx
+
 /-! ### The space-time form -/
 
 /-- Lebesgue measure on the time interval `I = (0,1)` (TeX: `K(s,t) = |s-t|^{-a}` on
 `I = (0,1)`, `integrated_occupation_ceiling.tex` lines 5-6). -/
 abbrev timeMeasure : Measure ℝ := volume.restrict (Ioo (0 : ℝ) 1)
+
+/-- Auxiliary: `(0,1)` and `[0,1]` carry the same restricted Lebesgue measure. -/
+theorem timeMeasure_eq_Icc : timeMeasure = volume.restrict (Icc (0 : ℝ) 1) :=
+  Measure.restrict_congr_set Ioo_ae_eq_Icc
 
 /-- The physical pairing of the time slices of two space-time fields,
 `(s,t) ↦ B_Γ(Φ₁(s,·), Φ₂(t,·))` (`SpatialFourierBound.spatialPair`, the real form of
@@ -49,7 +113,7 @@ def stPair (Γ : Measure (Rd d)) (Φ₁ Φ₂ : ℝ × Rd d → ℝ) (p : ℝ ×
 
 /-- **The space-time form** `F(Φ₁,Φ₂) = ∫∫_{I²} |s-t|^{-a} B_Γ(Φ₁(s,·), Φ₂(t,·)) ds dt`
 (the integral on the right of `E:positive-bochner-inclusion`,
-`integrated_intrinsic_constant.tex` lines 26-30, for the physical pairing; and the form
+`integrated_intrinsic_constant.tex` lines 27-31, for the physical pairing; and the form
 `A(g)` of `E:raw-occupation-definitions` at `Φ₁ = Φ₂ = g²`), as a Bochner integral over
 `I² = (0,1)²` with the product Lebesgue measure.  The time kernel is
 `TimeSchur.kern a (s - t) = |s-t|^{-a}` (Lean's `rpow`; its diagonal value is irrelevant,
@@ -61,6 +125,20 @@ def stForm (a : ℝ) (Γ : Measure (Rd d)) (Φ₁ Φ₂ : ℝ × Rd d → ℝ) :
 /-- Auxiliary to the Lean proof route: the time average `x ↦ ∫_I f(s) Φ(s,x) ds` of a field
 against a weight `f` (`Q_w` of the mixture route). -/
 def tAvg (f : ℝ → ℝ) (Φ : ℝ × Rd d → ℝ) (x : Rd d) : ℝ := ∫ s, f s * Φ (s, x) ∂timeMeasure
+
+/-- Auxiliary to the Lean proof route: a continuous compactly supported field on `ℝ × ℝ^d` is
+bounded and vanishes for `|x| > R`, for some `R ≥ 0`. -/
+theorem field_data {Φ : ℝ × Rd d → ℝ} (hΦ : Continuous Φ) (hΦs : HasCompactSupport Φ) :
+    ∃ M R : ℝ, 0 ≤ M ∧ 0 ≤ R ∧ (∀ p, |Φ p| ≤ M) ∧ ∀ s x, R < ‖x‖ → Φ (s, x) = 0 := by
+  obtain ⟨M, hM⟩ := hΦ.bounded_above_of_compact_support hΦs
+  obtain ⟨R, hR0, hR⟩ := VariationalMean.exists_radius hΦs
+  exact ⟨M, R, (norm_nonneg _).trans (hM 0), hR0, fun p => by simpa using hM p, hR⟩
+
+/-- Auxiliary to the Lean proof route: the slices `x ↦ Φ(s,x)` of a field vanishing for
+`|x| > R` are compactly supported. -/
+theorem slice_hasCompactSupport {Φ : ℝ × Rd d → ℝ} {R : ℝ} (hR : ∀ s x, R < ‖x‖ → Φ (s, x) = 0)
+    (s : ℝ) : HasCompactSupport fun x => Φ (s, x) :=
+  hasCompactSupport_of_radius fun x hx => hR s x hx
 
 /-! ### Positivity through the mixture of rank-one time kernels -/
 
@@ -84,9 +162,9 @@ def stFormIter (a : ℝ) (Γ : Measure (Rd d)) (Φ Φ' : ℝ × Rd d → ℝ) : 
 /-- The three facts of step (c) in the form consumed by item L8-c2, verbatim
 `OccupationCeilingFinite.SpaceTimeCS` with its `stForm` written `stFormIter` (the two
 structures have definitionally equal fields): Cauchy-Schwarz `cs` (positive semidefiniteness,
-`L:positive-raw-embedding`, `integrated_intrinsic_constant.tex` lines 22-39), `self`
-(`F(Ψ,Ψ) = v_Ψ`, `E:positive-raw-mean`, line 34) and `mean` (`∫_0^1 ∫ h_{Ψ,s} Φ_s = F(Ψ,Φ)`,
-`E:occupation-raw-identities`, `integrated_occupation_ceiling.tex` lines 33-37), for controls
+`L:positive-raw-embedding`, `integrated_intrinsic_constant.tex` lines 23-40), `self`
+(`F(Ψ,Ψ) = v_Ψ`, `E:positive-raw-mean`, line 35) and `mean` (`∫_0^1 ∫ h_{Ψ,s} Φ_s = F(Ψ,Φ)`,
+`E:occupation-raw-identities`, `integrated_occupation_ceiling.tex` lines 34-38), for controls
 `Ψ ∈ C_pos` and nonnegative continuous compactly supported fields `Φ`. -/
 structure SpaceTimeCS (a : ℝ) (Γ : Measure (Rd d)) : Prop where
   cs : ∀ Ψ ∈ CPos d, ∀ Φ : ℝ × Rd d → ℝ, Continuous Φ → HasCompactSupport Φ →

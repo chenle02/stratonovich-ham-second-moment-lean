@@ -1,0 +1,9 @@
+Command: timeout -k 30s 14400s lake env leanchecker --fresh StratonovichHAMAudit.InteractionDriver
+Exit status: 0
+Elapsed wall (s): 792.80
+Elapsed wall (h:mm:ss): 0:13:12.80
+User CPU (s): 780.29
+System CPU (s): 12.46
+Peak RSS of largest waited descendant (KiB): 3007716
+Output bytes: 0
+Host: node861  Job: NA

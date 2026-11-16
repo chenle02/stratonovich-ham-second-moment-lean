@@ -39,7 +39,7 @@ variable {d : ℕ}
 /-! ### (i) The multiplier class and Gaussian multipliers -/
 
 /-- The multiplier class of `E:damped-multiplier-comparison` (TeX lines
-826-829): `g : ℝ^d → ℝ≥0` measurable with values in `[0,1]`. -/
+1033-1036): `g : ℝ^d → ℝ≥0` measurable with values in `[0,1]`. -/
 def IsMultiplier (g : Rd d → ℝ≥0) : Prop := Measurable g ∧ ∀ ξ, g ξ ≤ 1
 
 /-- The Gaussian multiplier `ξ ↦ e^{-η|ξ|²}`, as a function with values in
@@ -50,7 +50,7 @@ def gaussMult (η : ℝ) (ξ : Rd d) : ℝ≥0 := ⟨Real.exp (-(η * ‖ξ‖ ^
 
 /-- The centered Gaussian law on `ℝ^d` with covariance `v I` (`v ≥ 0`), the
 image of Mathlib's standard Gaussian `stdGaussian` under `x ↦ √v x`.  It stands
-for the heat kernel `p_η` of the TeX (lines 1674, 4698): `p_η = N(0, cη I)` for
+for the heat kernel `p_η` of the TeX (lines 2023, 5561): `p_η = N(0, cη I)` for
 the source's normalization constant `c > 0` is `gaussKernel (c η)`. -/
 def gaussKernel (v : ℝ) : Measure (Rd d) :=
   (stdGaussian (Rd d)).map fun x => Real.sqrt v • x
@@ -58,7 +58,7 @@ def gaussKernel (v : ℝ) : Measure (Rd d) :=
 /-! ### (iii) Green smoothing as a Fourier multiplier -/
 
 /-- The outer integrand of the second norm of a Green family `G` (TeX
-`E:damped-norm-definitions`, lines 788-791, with kernel `K_S`, `μ` the spectral
+`E:damped-norm-definitions`, lines 994-997, with kernel `K_S`, `μ` the spectral
 measure), with `Ĝ_s` the characteristic function of `G_s`:
 `e^{-θ(s+t)} K_S(s-t) ∫ Ĝ_s(ξ) \overline{Ĝ_t(ξ)} μ(dξ)` (complex valued). -/
 def N2GreenOuter (a θ : ℝ) (S : Set ℝ) (μ : Measure (Rd d)) (G : ℝ → Measure (Rd d))
@@ -71,7 +71,7 @@ def N2GreenOuter (a θ : ℝ) (S : Set ℝ) (μ : Measure (Rd d)) (G : ℝ → M
 def N2GreenSq (a θ : ℝ) (S : Set ℝ) (μ : Measure (Rd d)) (G : ℝ → Measure (Rd d)) : ℂ :=
   ∫ p, N2GreenOuter a θ S μ G p ∂P2
 
-/-- The Fourier identity of `E:damped-norm-definitions` (TeX lines 777-778,
+/-- The Fourier identity of `E:damped-norm-definitions` (TeX lines 983-984,
 `Ĝ_s(ξ) = sin(s|ξ|)/|ξ|`, i.e. `WaveKernel.waveHat`) for a family of measures:
 for `s > 0`, `G_s` is finite and its characteristic function is `waveHat s`.
 Discharged in `d = 1` by `waveGreen_fourier_one` (`greenFourier_one`). -/

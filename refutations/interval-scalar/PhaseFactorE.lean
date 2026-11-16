@@ -1,11 +1,11 @@
 /-
 Refutation for the summation step of `P:interval-coefficients`
-(`E:interval-phase-bound`, main TeX lines 3570-3579 at revision a284420),
+(`E:interval-phase-bound`, main TeX lines 4260-4269 at revision 39f2597a),
 package theorem
 `StratonovichHAMSecondMoment.IntervalScalar.interval_phase_bound_of_coefficients`.
 
 Wrong variant: dropping the prefactor `e` (the zero-order energy bound
-`≤ e‖v‖²` of lines 3570-3571), i.e. `energy ≤ exp(ν C^{1/ν} R^{1/ν} T^{β/ν}) V`.
+`≤ e‖v‖²` of lines 4260-4261), i.e. `energy ≤ exp(ν C^{1/ν} R^{1/ν} T^{β/ν}) V`.
 Counterexample: `ν = 2`, `β = 3`, `C = R = 0`, `T = V = 1`, coefficients
 `c_0 = e` and `c_m = 0` otherwise (all hypotheses hold), energy `= e > 1 =
 exp 0`.  The value `0^{1/2} = 0` is the honest real power at `0`, not a junk

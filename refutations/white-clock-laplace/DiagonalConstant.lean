@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.WhiteClockLaplace
 /-!
 Refutation for `StratonovichHAMSecondMoment.WhiteClockLaplace.crossValue_diag` (and the
 diagonal clause of `white_clock_laplace_paper`), manuscript statement
-`K_×(θ,θ) = Γ_E(1-a)/(4θ^{3-a})` of `L:white-clock-laplace` (TeX lines 7660--7661).
+`K_×(θ,θ) = Γ_E(1-a)/(4θ^{3-a})` of `L:white-clock-laplace` (TeX lines 8929--8930).
 
 Wrong variant: the diagonal value with constant `2` instead of `4`,
 `K_×(θ,θ) = Γ_E(1-a)/(2θ^{3-a})`.  Counterexample: `a = 1/2`, `θ = 1`; the package

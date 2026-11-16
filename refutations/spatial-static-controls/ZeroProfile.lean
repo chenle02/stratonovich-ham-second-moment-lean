@@ -1,6 +1,6 @@
 /-
 Refutation for the positivity claim of part (i) of `L:spatial-static-controls`
-(`notes/integrated_spatial_occupation.tex` lines 41-47 at a284420:
+(`notes/integrated_spatial_occupation.tex` lines 43-49 at 39f2597a:
 "for every nonnegative nonzero `z`, `λ_z(c)²` is positive"), package theorem
 `StratonovichHAMSecondMoment.SpatialStaticControls.static_rate`.
 

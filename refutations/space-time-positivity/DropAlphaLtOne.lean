@@ -3,7 +3,7 @@ Refutation for the integrability of the space-time kernel, package theorems
 `StratonovichHAMSecondMoment.SpaceTimePositivity.kern_integrable` and
 `stIntegrand_integrable` (`|s-t|^{-a}` integrable on `(0,1)²` for `a < 1`; auxiliary to the
 Lean route of step (c) of the S1Bdd discharge; the TeX's `a = α₀ < 1`,
-`integrated_occupation_ceiling.tex` lines 4-6 at a284420).
+`integrated_occupation_ceiling.tex` lines 4-6 at 39f2597a).
 
 Wrong variant: the hypothesis `a < 1` dropped, i.e. `|s-t|^{-1}` integrable on `(0,1)²`.
 Counterexample: `a = 1`.  If it were integrable, then for a.e. `s ∈ (0,1)` the section

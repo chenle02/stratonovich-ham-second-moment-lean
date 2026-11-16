@@ -2,7 +2,7 @@
 Refutation for the per-frequency identity
 `StratonovichHAMSecondMoment.SymplecticFree.freeMatrix_symplectic`
 (`W_tᵀ J_symp W_t = J_symp`; `L:symplectic-free`,
-`notes/integrated_symplectic_phase.tex` lines 79-81 at a284420).
+`notes/integrated_symplectic_phase.tex` lines 89-91 at 39f2597a).
 
 Wrong variant: the free matrix is orthogonal, `W_tᵀ W_t = I` (the free group would then
 be isometric and `‖S_E(h)‖ ≥ 1` would be an equality).  Counterexample: `t = 1`,

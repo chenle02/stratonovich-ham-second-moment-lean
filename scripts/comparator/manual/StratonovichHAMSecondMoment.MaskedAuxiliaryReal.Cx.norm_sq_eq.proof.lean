@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.norm_sq_eq

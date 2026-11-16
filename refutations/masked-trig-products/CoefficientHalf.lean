@@ -1,6 +1,6 @@
 /-
 Refutation for the four-mode expansion of `L:masked-trig-products` (TeX
-l. 363-365), package theorems
+l. 475-477), package theorems
 `StratonovichHAMSecondMoment.MaskedTrigProducts.four_mode` and
 `StratonovichHAMSecondMoment.MaskedTrigProducts.cos_cos_expand`.
 

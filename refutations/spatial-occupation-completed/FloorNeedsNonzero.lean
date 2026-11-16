@@ -2,7 +2,7 @@
 Refutation for `rayleighFloor_of_homog` of the integration module
 `StratonovichHAMSecondMoment.SpatialOccupationCompleted` (the discharge of the
 input `RayleighFloor` of `L:spatial-static-controls`,
-`notes/integrated_spatial_occupation.tex` lines 40-49 at a284420).
+`notes/integrated_spatial_occupation.tex` lines 42-51 at 39f2597a).
 
 Wrong variant: the hypothesis `Γ ≠ 0` dropped, i.e. `H:homog` alone gives the
 floor.  Counterexample: `d = 1`, `α = α₀ = 1/2`, `Γ = μ = 0`, which satisfies

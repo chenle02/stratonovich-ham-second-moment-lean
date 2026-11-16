@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.DampedSmoothing.spatial_smoothing_multiplier_paper

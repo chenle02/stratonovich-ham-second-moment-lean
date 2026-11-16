@@ -5,11 +5,11 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:inventory-product` (A coefficient bound for a product with
 nonnegative coefficients) of `notes/notes_stratonovich_ham_second_moment.tex`
-(main TeX file; line numbers at revision a284420): statement lines 2986-2998,
-equation `E:inventory-product` at 2994-2997, proof lines 3000-3040. The
-section `S:interval-upper` (line 2803) fixes at lines 2809-2812
+(main TeX file; line numbers at revision 39f2597a): statement lines 3581-3593,
+equation `E:inventory-product` at 3589-3592, proof lines 3595-3661. The
+section `S:interval-upper` (line 3353) fixes at lines 3359-3362
 `ν = 3 - α > 1`, `β = 4 - α - α₀ > 2`, `p = 2 - α₀ > 1`, under the standing
-hypothesis `H:homog` (lines 225-242, here `HomogHypothesis.HomogCovariance`).
+hypothesis `H:homog` (lines 384-401, here `HomogHypothesis.HomogCovariance`).
 
 Formalized IN FULL, nothing supplied:
 
@@ -73,16 +73,16 @@ open StratonovichHAMSecondMoment.TypeContinuity
 
 /-! ### The objects of `L:inventory-product` -/
 
-/-- `p = 2 - α₀` (main TeX line 2812). `ν = 3 - α` and `β = 4 - α - α₀`
-(lines 2811-2812) are `TypeContinuity.nuOf` and `TypeContinuity.betaOf`. -/
+/-- `p = 2 - α₀` (main TeX line 3362). `ν = 3 - α` and `β = 4 - α - α₀`
+(lines 3361-3362) are `TypeContinuity.nuOf` and `TypeContinuity.betaOf`. -/
 def pOf (alpha0 : ℝ) : ℝ := 2 - alpha0
 
-/-- `v_i = i^{-β} + k^{-1} i^{-(β-1)} + k^{α-2} i^{-p}` (main TeX lines 2989-2990). -/
+/-- `v_i = i^{-β} + k^{-1} i^{-(β-1)} + k^{α-2} i^{-p}` (main TeX lines 3584-3585). -/
 def vCoef (alpha alpha0 : ℝ) (k i : ℕ) : ℝ :=
   (i : ℝ) ^ (-betaOf alpha alpha0) + (k : ℝ)⁻¹ * (i : ℝ) ^ (-(betaOf alpha alpha0 - 1)) +
     (k : ℝ) ^ (alpha - 2) * (i : ℝ) ^ (-pOf alpha0)
 
-/-- `b_{i,l} = i^{-βl}(1 + li/k)^2/(l!)^ν` (main TeX line 2991). -/
+/-- `b_{i,l} = i^{-βl}(1 + li/k)^2/(l!)^ν` (main TeX line 3586). -/
 def bCoef (alpha alpha0 : ℝ) (k i l : ℕ) : ℝ :=
   (i : ℝ) ^ (-betaOf alpha alpha0 * l) * (1 + l * i / k) ^ 2 / ((l ! : ℕ) : ℝ) ^ nuOf alpha
 
@@ -95,7 +95,7 @@ def factorSeries (alpha alpha0 : ℝ) (k i : ℕ) : PowerSeries ℝ :=
   PowerSeries.mk (factorCoeff alpha alpha0 k i)
 
 /-- The product `∏_{i=1}^M (1 + v_i z + ∑_{l≥2} b_{i,l} z^l)` of
-`E:inventory-product` (main TeX lines 2994-2998), as a formal power series. -/
+`E:inventory-product` (main TeX lines 3589-3593), as a formal power series. -/
 def inventoryProduct (alpha alpha0 : ℝ) (M k : ℕ) : PowerSeries ℝ :=
   ∏ i ∈ Icc 1 M, factorSeries alpha alpha0 k i
 
@@ -211,7 +211,7 @@ theorem coeff_mul_pow_le_partialEval (F : PowerSeries ℝ) (hF : ∀ n, 0 ≤ co
   exact single_le_sum (f := fun n => coeff n F * z ^ n)
     (fun n _ => mul_nonneg (hF n) (pow_nonneg hz _)) (self_mem_range_succ N)
 
-/-- **The evaluation bound `[z^k]F ≤ F(z)/z^k`** (main TeX lines 3037-3038,
+/-- **The evaluation bound `[z^k]F ≤ F(z)/z^k`** (main TeX lines 3658-3659,
 "positivity of its coefficients bounds the `k`th coefficient"): for a finite
 product `F = ∏_{i ∈ s} F_i` of power series with nonnegative coefficients,
 each convergent at `z > 0` (the summability is a hypothesis), the `k`th
@@ -250,7 +250,7 @@ theorem sum_range_rpow_tail_le {s : ℝ} (hs : 1 < s) {a : ℕ} (ha : 1 ≤ a) (
 
 /-- The tail bound `∑_{i ∈ t} i^{-s} ≤ a^{1-s}/(s-1)` for a finite set `t` of
 indices `i > a ≥ 1` and `s > 1` (used without proof at main TeX lines
-3024-3035). -/
+3642-3656). -/
 theorem sum_rpow_tail_le {s : ℝ} (hs : 1 < s) {a : ℕ} (ha : 1 ≤ a) (t : Finset ℕ)
     (ht : ∀ i ∈ t, a < i) :
     ∑ i ∈ t, (i : ℝ) ^ (-s) ≤ (a : ℝ) ^ (1 - s) / (s - 1) := by
@@ -273,7 +273,7 @@ theorem sum_rpow_tail_le {s : ℝ} (hs : 1 < s) {a : ℕ} (ha : 1 ≤ a) (t : Fi
 
 /-- The whole-sum bound `∑_{i ∈ t} i^{-s} ≤ s/(s-1)` for a finite set of
 positive indices and `s > 1` (the convergence of `∑ i^{-s}` used at main TeX
-lines 3004-3011 and 3017-3022). -/
+lines 3608-3617 and 3630-3635). -/
 theorem sum_rpow_pos_le {s : ℝ} (hs : 1 < s) (t : Finset ℕ) (ht : ∀ i ∈ t, 1 ≤ i) :
     ∑ i ∈ t, (i : ℝ) ^ (-s) ≤ s / (s - 1) := by
   classical
@@ -339,7 +339,7 @@ theorem sq_le_two_pow_succ (l : ℕ) : ((l : ℝ)) ^ 2 ≤ 2 ^ (l + 1) := by
 theorem factorial_rpow_ge_one {ν : ℝ} (hν : 0 ≤ ν) (l : ℕ) : 1 ≤ ((l ! : ℕ) : ℝ) ^ ν :=
   Real.one_le_rpow (by exact_mod_cast Nat.one_le_iff_ne_zero.mpr (Nat.factorial_ne_zero l)) hν
 
-/-- The factors with `i ≤ k` (main TeX lines 3013-3022), for every partial sum:
+/-- The factors with `i ≤ k` (main TeX lines 3626-3635), for every partial sum:
 if the terms of a factor are `1`, `A + Q` and `P^l(1+ly)^2/(l!)^ν` (`l ≥ 2`)
 with `A ≤ 4P` and `0 ≤ y ≤ 1`, then each partial sum is at most
 `S_ν(4P) + Q ≤ exp(ν(4P)^{1/ν} + Q)`. -/
@@ -382,7 +382,7 @@ theorem factor_small {ν P A Q y z : ℝ} (hν : 1 ≤ ν) (c : ℕ → ℝ) (hP
         gcongr; linarith [Real.add_one_le_exp Q]
     _ = _ := (Real.exp_add _ _).symm
 
-/-- The factors with `i > k` (main TeX lines 3024-3036), for every partial sum:
+/-- The factors with `i > k` (main TeX lines 3642-3657), for every partial sum:
 if the terms are `1`, `A + Q` and `P^l(1+ly)^2/(l!)^ν` (`l ≥ 2`) with
 `0 ≤ P ≤ 1/4` and `y ≥ 0`, then each partial sum is at most
 `exp(A + Q + 128 P^2(1+y^2))`. This contains the TeX's uniform bound
@@ -438,8 +438,8 @@ theorem factor_large {ν P A Q y z : ℝ} (hν : 0 ≤ ν) (c : ℕ → ℝ) (hP
 
 /-! ### The parameters -/
 
-/-- The parameter facts used in the proof (main TeX lines 2809-2814 and
-3003): under `0 < α₀ < 1` and `α₀ + α < 2`, `ν = 3 - α ≥ 1`, `ν ≤ β`,
+/-- The parameter facts used in the proof (main TeX lines 3359-3364 and
+3607): under `0 < α₀ < 1` and `α₀ + α < 2`, `ν = 3 - α ≥ 1`, `ν ≤ β`,
 `β > 2`, `p > 1` and `ν + (α - 2) = 1`. -/
 theorem params {alpha alpha0 : ℝ} (h0 : 0 < alpha0) (h1 : alpha0 < 1)
     (hth : alpha0 + alpha < 2) :
@@ -467,13 +467,13 @@ def gExp (alpha alpha0 : ℝ) (k i : ℕ) : ℝ :=
       8 * (k : ℝ) ^ (2 * nuOf alpha - 2) * (i : ℝ) ^ (-(2 * betaOf alpha alpha0 - 2))
 
 /-- The coefficients `1`, `v_i`, `b_{i,l}` of every factor are nonnegative
-("positive product", main TeX line 3001). -/
+("positive product", main TeX line 3605). -/
 theorem factorCoeff_nonneg (k i l : ℕ) : 0 ≤ factorCoeff alpha alpha0 k i l := by
   unfold factorCoeff vCoef bCoef
   split_ifs <;> positivity
 
 /-- Auxiliary: every partial sum of the `i`th factor at `z = θ k^ν` is at most
-`e^{g_i}` (main TeX lines 3001-3036). -/
+`e^{g_i}` (main TeX lines 3605-3657). -/
 theorem factor_partial_le (h0 : 0 < alpha0) (h1 : alpha0 < 1) (hth : alpha0 + alpha < 2)
     {k i : ℕ} (hk : 1 ≤ k) (hi : 1 ≤ i) (N : ℕ) :
     ∑ l ∈ range N, factorCoeff alpha alpha0 k i l * (1 / 4 * (k : ℝ) ^ nuOf alpha) ^ l ≤
@@ -564,7 +564,7 @@ theorem factor_partial_le (h0 : 0 < alpha0) (h1 : alpha0 < 1) (hth : alpha0 + al
     rw [hPdef, hz] at e2
     linear_combination e2
 
-/-- **The evaluated product** (main TeX lines 3001-3037): at `z = θ k^ν`,
+/-- **The evaluated product** (main TeX lines 3605-3658): at `z = θ k^ν`,
 `θ = 1/4`, every factor series converges, each factor sum is nonnegative, and
 the product of the factor sums is at most `e^{K k}`, `K = expConst α α₀`
 ("the entire product is consequently at most `e^{Ck}`"). Hypotheses: those
@@ -631,8 +631,8 @@ theorem inventory_product_eval_le (h0 : 0 < alpha0) (h1 : alpha0 < 1)
     _ = Real.exp (∑ i ∈ Icc 1 M, gExp alpha alpha0 k i) := (Real.exp_sum _ _).symm
     _ ≤ Real.exp (expConst alpha alpha0 * k) := Real.exp_le_exp.mpr hsum
 
-/-- **`L:inventory-product`, general form** (main TeX lines 2986-2998, proof
-3000-3040): for `0 < α₀ < 1`, `α₀ + α < 2`, every `M` and every `k ≥ 1`,
+/-- **`L:inventory-product`, general form** (main TeX lines 3581-3593, proof
+3595-3661): for `0 < α₀ < 1`, `α₀ + α < 2`, every `M` and every `k ≥ 1`,
 `[z^k] ∏_{i=1}^M (1 + v_i z + ∑_{l≥2} b_{i,l} z^l) ≤ C^k/(k!)^ν` with
 `C = inventoryConst α α₀ = 4 e^{K(α,α₀)}`, which depends on `(α, α₀)` only.
 Proof as in the TeX (evaluation at `z = k^ν/4`, `k^{-νk} ≤ (k!)^{-ν}`), with
@@ -679,9 +679,9 @@ theorem inventory_product (h0 : 0 < alpha0) (h1 : alpha0 < 1) (hth : alpha0 + al
         mul_le_mul hprod hfk hfpos.le (Real.exp_pos _).le
 
 /-- **`L:inventory-product` with the manuscript's hypotheses** (main TeX lines
-2986-2998, proof 3000-3040): under `H:homog` (lines 225-242, the standing
+3581-3593, proof 3595-3661): under `H:homog` (lines 384-401, the standing
 hypothesis of section `S:interval-upper`, with `ν = 3 - α`,
-`β = 4 - α - α₀`, `p = 2 - α₀` as at lines 2809-2812), the finite constant
+`β = 4 - α - α₀`, `p = 2 - α₀` as at lines 3359-3362), the finite constant
 `C = inventoryConst α α₀ > 0`, a function of `(α, α₀)` alone, satisfies
 `[z^k] ∏_{i=1}^M (1 + v_i z + ∑_{l≥2} b_{i,l} z^l) ≤ C^k/(k!)^ν` for every
 `M` and every `k ≥ 1`. Of `H:homog` only `0 < α₀ < 1` and `α₀ + α < 2` are

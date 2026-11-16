@@ -1,5 +1,5 @@
 /-
-Refutation for the far-region bracket bound of `P:frequency-row` (TeX line 107:
+Refutation for the far-region bracket bound of `P:frequency-row` (TeX line 123:
 "Each oscillatory bracket is at least `⟨hr⟩/2`"), package theorem
 `StratonovichHAMSecondMoment.FrequencyRow.bracket_rpow_le_half`.
 

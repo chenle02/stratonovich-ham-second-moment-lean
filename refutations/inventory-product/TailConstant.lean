@@ -1,6 +1,6 @@
 /-
 Refutation for the tail bound used in the proof of `L:inventory-product`
-(`notes/notes_stratonovich_ham_second_moment.tex` lines 3024-3035 at a284420),
+(`notes/notes_stratonovich_ham_second_moment.tex` lines 3642-3656 at 39f2597a),
 package theorem `StratonovichHAMSecondMoment.InventoryProduct.sum_rpow_tail_le`
 (`∑_{i ∈ t, i > a} i^{-s} ≤ a^{1-s}/(s-1)`).
 

@@ -1,7 +1,7 @@
 /-
 Refutation for the evaluation bound `[z^k]F ≤ F(z)/z^k` (inside the proof of
 `L:inventory-product`, `notes/notes_stratonovich_ham_second_moment.tex`
-lines 3037-3038 at a284420), package theorem
+lines 3658-3659 at 39f2597a), package theorem
 `StratonovichHAMSecondMoment.InventoryProduct.coeff_prod_le_prod_tsum`.
 
 Wrong variant: the bound without the nonnegativity of the coefficients.

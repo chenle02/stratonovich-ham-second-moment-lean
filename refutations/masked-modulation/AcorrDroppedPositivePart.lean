@@ -1,6 +1,6 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.MaskedModulation.acorr_bound`
-(the bound `|c(v)| ≤ M²(h-v)_+` behind TeX line 318 of
+(the bound `|c(v)| ≤ M²(h-v)_+` behind TeX line 420 of
 `L:masked-temporal-modulation`).
 
 Wrong variant: the bound with the positive part dropped,

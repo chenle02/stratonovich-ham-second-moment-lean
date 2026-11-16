@@ -1,6 +1,6 @@
 /-
 Refutation for the variance part of `L:variational-control-dilation`
-(`notes/integrated_unmasked_variational.tex` lines 234-235 and 254-258),
+(`notes/integrated_unmasked_variational.tex` lines 323-324 and 350-354),
 package theorem `StratonovichHAMSecondMoment.VariationalDilation.rawCost_dil`
 and package definitions `rawCost`, `mean`, `dil`, `SetScaling`.
 

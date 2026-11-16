@@ -4,10 +4,10 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The damped occupation kernel and its exact row maximum, from
-`notes/integrated_spatial_occupation.tex` (revision a284420):
-the kernel `K_⋆` of `E:occupation-damped-kernel` (lines 352-359) and
-Lemma `L:occupation-kernel-row` (lines 361-379, display
-`E:occupation-kernel-row`, lines 365-368).
+`notes/integrated_spatial_occupation.tex` (revision 39f2597a):
+the kernel `K_⋆` of `E:occupation-damped-kernel` (lines 465-472) and
+Lemma `L:occupation-kernel-row` (lines 477-495, display
+`E:occupation-kernel-row`, lines 481-484).
 
 Standing assumptions of the section (lines 4-10): a nonzero original
 covariance from `H:homog`, `a = α₀`, `q = 4 - α`, `D = q - 2a > 0`.
@@ -15,7 +15,7 @@ covariance from `H:homog`, `a = α₀`, `q = 4 - α`, `D = q - 2a > 0`.
 Formalized here (all proved, no supplied input):
 * `Kstar a D u`: the manuscript's formula
   `K_⋆(u) = Γ_E(a)⁻¹ ∫_0^∞ e^{-(λ + λ²/(2D))|u|} λ^{a-1} dλ` for `u ≠ 0`,
-  and `K_⋆(0) = 0` (line 359); `Γ_E` is Mathlib's `Real.Gamma`.
+  and `K_⋆(0) = 0` (line 472); `Γ_E` is Mathlib's `Real.Gamma`.
   `Kstar_eq_Psi` identifies it, for `u ≠ 0`, with the averaged clock kernel
   `TimeFractional.Psi a |u| (|u|/D)` of the main file, and
   `kstarIntegrand_integrable` proves that the defining integral is a
@@ -35,7 +35,7 @@ Formalized here (all proved, no supplied input):
   by the proof.
 
 Also formalized (all proved, no supplied input), Lemma `L:spatial-physical-pair`
-(lines 12-33, display `E:spatial-physical-pair`, lines 15-17):
+(lines 13-34, display `E:spatial-physical-pair`, lines 16-18):
 * `pairMeasure Γ = volume.prod Γ` (`ν(dx,dy) = dx Γ(dy)`) and
   `pairing Γ f h = ∫⁻ f(x) h(x-y) dν` for `[0,∞]`-valued `f, h` (the TeX's
   "extended nonnegative integral"; arbitrary `[0,∞]`-valued functions are
@@ -45,7 +45,7 @@ Also formalized (all proved, no supplied input), Lemma `L:spatial-physical-pair`
   Lebesgue-a.e. equal functions; for Lebesgue-a.e. measurable `f, h` the
   integrand is `ν`-a.e. measurable; Lebesgue-a.e. convergence of a sequence of
   real functions transfers to `ν`-a.e. convergence at `x` and at `x - y`.
-  `ae_pair_of_ae` is the null-set transfer of the TeX proof (lines 26-29);
+  `ae_pair_of_ae` is the null-set transfer of the TeX proof (lines 27-30);
 * `spatial_physical_pair_paper`: the same under `HomogCovariance d α a Γ μ`
   and `Γ ≠ 0`; only local finiteness of `Γ` is used.
 
@@ -81,14 +81,14 @@ open StratonovichHAMSecondMoment.TimeFractional
 
 namespace StratonovichHAMSecondMoment.OccupationKernelRow
 
-/-! ### The kernel `K_⋆` (`E:occupation-damped-kernel`, lines 352-359) -/
+/-! ### The kernel `K_⋆` (`E:occupation-damped-kernel`, lines 465-472) -/
 
 /-- The integrand of `E:occupation-damped-kernel`:
-`e^{-(λ + λ²/(2D))|u|} λ^{a-1}` (lines 354-357). -/
+`e^{-(λ + λ²/(2D))|u|} λ^{a-1}` (lines 467-470). -/
 def kstarIntegrand (a D u l : ℝ) : ℝ :=
   Real.exp (-(l + l ^ 2 / (2 * D)) * |u|) * l ^ (a - 1)
 
-/-- The kernel `K_⋆` of `E:occupation-damped-kernel` (lines 352-359):
+/-- The kernel `K_⋆` of `E:occupation-damped-kernel` (lines 465-472):
 `Γ_E(a)⁻¹ ∫_0^∞ e^{-(λ + λ²/(2D))|u|} λ^{a-1} dλ` for `u ≠ 0`, and
 `K_⋆(0) = 0`. -/
 def Kstar (a D u : ℝ) : ℝ :=
@@ -110,7 +110,7 @@ theorem kstarIntegrand_eq_psiKernel (a D u l : ℝ) :
   ring
 
 /-- For `u ≠ 0`, `K_⋆(u) = Ψ_a(|u|, |u|/D)`, the averaged clock kernel
-`TimeFractional.Psi` of `E:averaged-clock-kernel` (main file, line 7704). -/
+`TimeFractional.Psi` of `E:averaged-clock-kernel` (main file, line 8982). -/
 theorem Kstar_eq_Psi (a D u : ℝ) (hu : u ≠ 0) : Kstar a D u = Psi a |u| (|u| / D) := by
   simp only [Kstar, hu, ite_false, Psi, kstarIntegrand_eq_psiKernel]
 
@@ -242,10 +242,10 @@ theorem Kstar_locallyIntegrable (a D : ℝ) (ha : 0 < a) (ha1 : a < 1) (hD : 0 <
 
 /-! ### The row and its maximum (`E:occupation-kernel-row`) -/
 
-/-- `Φ(t) = ∫_0^t K_⋆(u) du` of the proof of `L:occupation-kernel-row` (lines 374-375). -/
+/-- `Φ(t) = ∫_0^t K_⋆(u) du` of the proof of `L:occupation-kernel-row` (lines 490-491). -/
 def Phi (a D t : ℝ) : ℝ := ∫ u in (0 : ℝ)..t, Kstar a D u
 
-/-- The row is `Φ(s) + Φ(1-s)` (TeX line 376), for every real `s`
+/-- The row is `Φ(s) + Φ(1-s)` (TeX line 492), for every real `s`
 (`0 < a < 1`, `D > 0`). -/
 theorem row_eq_Phi (a D s : ℝ) (ha : 0 < a) (ha1 : a < 1) (hD : 0 < D) :
     row a D s = Phi a D s + Phi a D (1 - s) := by
@@ -288,7 +288,7 @@ theorem Phi_sum_le_of_le_half (a D s : ℝ) (ha : 0 < a) (ha1 : a < 1) (hD : 0 <
   rw [e2, e3]
   linarith
 
-/-- `Φ(s) + Φ(1-s) ≤ 2Φ(1/2)` for `s ∈ [0,1]` (TeX line 376). -/
+/-- `Φ(s) + Φ(1-s) ≤ 2Φ(1/2)` for `s ∈ [0,1]` (TeX line 492). -/
 theorem Phi_sum_le (a D s : ℝ) (ha : 0 < a) (ha1 : a < 1) (hD : 0 < D)
     (hs : s ∈ Icc (0 : ℝ) 1) :
     Phi a D s + Phi a D (1 - s) ≤ 2 * Phi a D (1 / 2) := by
@@ -298,7 +298,7 @@ theorem Phi_sum_le (a D s : ℝ) (ha : 0 < a) (ha1 : a < 1) (hD : 0 < D)
     rw [sub_sub_cancel] at this
     linarith
 
-/-- Lemma `L:occupation-kernel-row` (lines 361-379), for `0 < a < 1` and `D > 0`:
+/-- Lemma `L:occupation-kernel-row` (lines 477-495), for `0 < a < 1` and `D > 0`:
 `K_⋆` is even, positive off zero, locally integrable, strictly decreasing on `(0,∞)`,
 `K_⋆(u) ≤ |u|^{-a}` off zero; every row `t ↦ K_⋆(s-t)`, `s ∈ [0,1]`, is integrable
 on `[0,1]`; `R_⋆ = 2∫_0^{1/2} K_⋆` is the greatest row value over `s ∈ [0,1]`
@@ -335,7 +335,7 @@ theorem occupation_kernel_row (a D : ℝ) (ha : 0 < a) (ha1 : a < 1) (hD : 0 < D
     exact Kstar_pos a D x ha hD hx.1.ne'
 
 open HomogHypothesis in
-/-- Lemma `L:occupation-kernel-row` (lines 361-379) under the standing assumptions of
+/-- Lemma `L:occupation-kernel-row` (lines 477-495) under the standing assumptions of
 Section `S:spatial-occupation-foundation` (lines 4-10): `H:homog` with `α₀ = a`, a nonzero
 covariance `Γ`, and `D = q - 2a` with `q = 4 - α`.  `D > 0` and `a < 1` follow from
 `H:homog`; `Γ ≠ 0` is carried as stated and not used. -/
@@ -358,19 +358,19 @@ theorem occupation_kernel_row_paper {d : ℕ} {alpha a : ℝ} {Γ μ : Measure (
     linarith
   exact occupation_kernel_row a D hH.alpha0_pos hH.alpha0_lt_one hD0
 
-/-! ### The physical two-point integral (`L:spatial-physical-pair`, lines 12-33) -/
+/-! ### The physical two-point integral (`L:spatial-physical-pair`, lines 13-34) -/
 
 open HomogHypothesis
 
-/-- The physical pair measure `ν(dx, dy) = dx Γ(dy)` on `ℝ^d × ℝ^d` (line 13). -/
+/-- The physical pair measure `ν(dx, dy) = dx Γ(dy)` on `ℝ^d × ℝ^d` (line 14). -/
 abbrev pairMeasure {d : ℕ} (Γ : Measure (Rd d)) : Measure (Rd d × Rd d) := volume.prod Γ
 
-/-- `B_Γ(f,h) = ∫ f(x) h(x-y) ν(dx,dy)` of `E:spatial-physical-pair` (lines 15-17), as an
+/-- `B_Γ(f,h) = ∫ f(x) h(x-y) ν(dx,dy)` of `E:spatial-physical-pair` (lines 16-18), as an
 extended nonnegative (lower Lebesgue) integral of `[0,∞]`-valued functions. -/
 def pairing {d : ℕ} (Γ : Measure (Rd d)) (f h : Rd d → ℝ≥0∞) : ℝ≥0∞ :=
   ∫⁻ p, f p.1 * h (p.1 - p.2) ∂(pairMeasure Γ)
 
-/-- Null-set transfer (TeX lines 26-29): for a locally finite `Γ`, a property that holds
+/-- Null-set transfer (TeX lines 27-30): for a locally finite `Γ`, a property that holds
 for Lebesgue-a.e. `x` holds `ν`-a.e. at both positions `x` and `x - y`.  No measurability
 of the property is assumed (an arbitrary Lebesgue null set has a Borel null superset). -/
 theorem ae_pair_of_ae {d : ℕ} (Γ : Measure (Rd d)) [IsLocallyFiniteMeasure Γ]
@@ -400,7 +400,7 @@ theorem ae_pair_of_ae {d : ℕ} (Γ : Measure (Rd d)) [IsLocallyFiniteMeasure Γ
   · exact Or.inl (hsub (show p.1 ∈ {x | ¬ P x} from hq))
   · exact Or.inr (hsub (show p.1 - p.2 ∈ {x | ¬ P x} from hq))
 
-/-- Lemma `L:spatial-physical-pair` (lines 12-33) for a locally finite `Γ` on `ℝ^d`:
+/-- Lemma `L:spatial-physical-pair` (lines 13-34) for a locally finite `Γ` on `ℝ^d`:
 (1) `ν` is sigma-finite; (2) `B_Γ(f,h)` is representative independent: Lebesgue-a.e.
 equal `[0,∞]`-valued functions give the same value (no measurability needed);
 (3) for Lebesgue-a.e. measurable `f, h` the integrand `f(x) h(x-y)` is `ν`-a.e.
@@ -427,7 +427,7 @@ theorem spatial_physical_pair {d : ℕ} (Γ : Measure (Rd d)) [IsLocallyFiniteMe
     · filter_upwards [ae_pair_of_ae Γ (hf.ae_eq_mk.and hh.ae_eq_mk)] with p hp
       rw [hp.1.1, hp.2.2]
 
-/-- Lemma `L:spatial-physical-pair` (lines 12-33) under the standing assumptions of
+/-- Lemma `L:spatial-physical-pair` (lines 13-34) under the standing assumptions of
 Section `S:spatial-occupation-foundation` (lines 4-10): `H:homog` with `α₀ = a` and a
 nonzero covariance `Γ`.  Only local finiteness of `Γ` (part of `H:homog`) is used;
 `Γ ≠ 0` and the rest of `H:homog` are carried as stated and not used. -/

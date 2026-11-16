@@ -1,5 +1,5 @@
 sacct: ['COMPLETED|0:0|00:49:20||00:00:00']
-label                               rc    wall_s  rss_GB | office wall/rss
+label                               rc    wall_s  rss_GB | <MACHINE> wall/rss
 P00_import_full.cold                 0       6.8    3.28 | 4.71 s / 6.9 GB
 P01_import_bessel.cold               0       3.8    1.78 | 2.87 s / 3.5 GB
 P02_import_operator.cold             0       3.8    1.78 | 2.88 s / 3.5 GB

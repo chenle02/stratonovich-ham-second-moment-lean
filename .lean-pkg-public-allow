@@ -1,7 +1,16 @@
 allow: *.lean: ^notes/$
 allow: docs/statement-ledger.md: ^notes/$
+allow: coverage.yaml: ^notes/$
 allow: provenance/manuscript-anchor.json: ^notes/$
 allow: replay*.py: se[c]:05\.2f
 allow: provenance/DEVELOPMENT.md: ^stratonovich-ham-second-momen[t]-lean-dev$
 allow: provenance/DEVELOPMENT.md: ^stratonovich-ham-second-momen[t]$
 allow: statement-ledger.html: ^notes/$
+allow: verification/leanchecker-easley-wave-l12/*: ^stratonovich-ham-second-momen[t]-lean-dev$
+allow: verification/leanchecker-easley-wave-l12/harness/*: ^stratonovich-ham-second-momen[t]-lean-dev$
+allow: scripts/comparator/scaffold.json: ^/tmp/$
+allow: verification/leanchecker-easley-wave-l13-l14/*: ^stratonovich-ham-second-momen[t]-lean-dev$
+allow: verification/leanchecker-easley-wave-l13-l14/harness/*: ^stratonovich-ham-second-momen[t]-lean-dev$
+allow: Challenge.lean: ^-@MeasureTheory\.integral$
+allow: Solution.lean: ^-@MeasureTheory\.integral$
+allow: scripts/comparator/scaffold.json: ^-@MeasureTheory\.integral$

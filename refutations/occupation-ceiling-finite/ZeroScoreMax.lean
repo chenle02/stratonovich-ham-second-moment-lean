@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.OccupationCeilingFinite
 /-!
 Refutation for `StratonovichHAMSecondMoment.OccupationCeilingFinite.young_q`
 (`E v^{1/q} - v/2 ≤ (k/2)(2E/q)^{q/k}`, the second scalar maximum of the proof of
-`T:intrinsic-occupation-ceiling`, `integrated_occupation_ceiling.tex` lines 235-237).
+`T:intrinsic-occupation-ceiling`, `integrated_occupation_ceiling.tex` lines 301-303).
 
 Wrong variant: the maximum `0` (variance penalty alone dominates), with the same binders and
 hypotheses. Witness: `α = 0`, `E = 1`, `v = 1`, where the left side is `1/2`. No junk value is

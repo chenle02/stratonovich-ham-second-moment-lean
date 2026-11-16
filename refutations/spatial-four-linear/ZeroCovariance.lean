@@ -1,6 +1,6 @@
 /-
 Refutation for the positivity claim of `P:spatial-four-linear`
-(`notes/integrated_spatial_occupation.tex` line 236 at a284420: every nonzero `H¹` profile has
+(`notes/integrated_spatial_occupation.tex` line 314 at 39f2597a: every nonzero `H¹` profile has
 `A_sp(f) > 0`), package theorem `StratonovichHAMSecondMoment.SpatialFourLinear.pairing_sq_pos`,
 which assumes `Γ ≠ 0` (the section's standing nonzero covariance, line 4).
 

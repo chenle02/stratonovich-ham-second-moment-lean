@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.OccupationCeilingFinite
 /-!
 Refutation for `StratonovichHAMSecondMoment.OccupationCeilingFinite.rpow_add_rpow_le`
 (`s^p + (1-s)^p ≤ 2^{1-p}`, the concavity step of the row bound,
-`integrated_intrinsic_constant.tex` lines 42-46).
+`integrated_intrinsic_constant.tex` lines 52-56).
 
 Wrong variant: the bound `1` in place of `2^{1-p}`, with the same binders and hypotheses.
 Witness: `p = 0`, `s = 1/2`, where the left side is `2`. No junk value is used (`x^0 = 1`).

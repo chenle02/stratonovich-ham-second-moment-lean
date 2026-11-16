@@ -1,6 +1,6 @@
 /-
 Refutation for the frequency count in `L:masked-trig-products` (TeX
-l. 371-373: two modes have `|r-ρ|`, two have `r+ρ`), package theorem
+l. 486-488: two modes have `|r-ρ|`, two have `r+ρ`), package theorem
 `StratonovichHAMSecondMoment.MaskedTrigProducts.sum_bracket_freq` and
 definition `frequencyPair`.
 

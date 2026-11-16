@@ -1,7 +1,7 @@
 /-
 Refutation for the local-finiteness hypothesis of `L:spatial-physical-pair`
-(`notes/integrated_spatial_occupation.tex`, lines 12-33 at a284420; the proof,
-line 25, uses "local finiteness of `Γ`"), package theorem
+(`notes/integrated_spatial_occupation.tex`, lines 13-34 at 39f2597a; the proof,
+line 26, uses "local finiteness of `Γ`"), package theorem
 `StratonovichHAMSecondMoment.OccupationKernelRow.spatial_physical_pair` and
 package definition `pairMeasure`.
 

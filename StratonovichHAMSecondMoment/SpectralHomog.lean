@@ -4,30 +4,30 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Spectral homogeneity under `H:homog`, from the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` (revision a284420): the
-first paragraph of the proof of `L:damped-homogeneous-norms` (lines 851-860)
+`notes/notes_stratonovich_ham_second_moment.tex` (revision 39f2597a): the
+first paragraph of the proof of `L:damped-homogeneous-norms` (lines 1067-1076)
 and the facts about `h_Γ` and `R_Γ` stated before
-`P:clock-copy-obstruction` (lines 7715-7724); the same derivation appears in the proof of
-`L:low-alpha-convolution` (lines 4718-4722).
+`P:clock-copy-obstruction` (lines 8993-9002); the same derivation appears in the proof of
+`L:low-alpha-convolution` (lines 5582-5593).
 
 Supplied input (the only one of this slice):
 * `SpectralHomogeneous μ α`: `μ(cA) = c^α μ(A)` for Borel `A` and `c > 0`.
   The manuscript derives it in the proof of `L:damped-homogeneous-norms`
-  (lines 851-852: "Scaling the Fourier representation of `Γ` and using Fourier
+  (lines 1067-1068: "Scaling the Fourier representation of `Γ` and using Fourier
   uniqueness gives `μ(cA) = c^α μ(A)`").  It is exactly that sentence's
   conclusion, so it is no stronger than the manuscript.  (The package's
   `HomogHypothesis.HomogCovariance` records the scaling of `Γ`; the Fourier
   uniqueness step from it to `μ` is not formalized.)
 
 Proved here from that input, local finiteness of `μ` and `0 < α < 2`:
-* `μ{0} = 0` and `μ(B_r) = r^α μ(B_1)` (lines 852-854);
-* `∫ (1+|ξ|²)⁻¹ μ(dξ) < ∞` (the finiteness at lines 856-858), by the layer-cake
+* `μ{0} = 0` and `μ(B_r) = r^α μ(B_1)` (lines 1068-1070);
+* `∫ (1+|ξ|²)⁻¹ μ(dξ) < ∞` (the finiteness at lines 1072-1074), by the layer-cake
   formula instead of the manuscript's polar formula (proof-route
   difference, same conclusion);
 * the scaling `∫ f(cξ) μ(dξ) = c^{-α} ∫ f dμ`, and from it
-  `R_Γ(q) = q^{α-2} R_Γ(1)` and `h_Γ(w) = w^{-α/2} h_Γ(1)` (lines 7723-7724);
+  `R_Γ(q) = q^{α-2} R_Γ(1)` and `h_Γ(w) = w^{-α/2} h_Γ(1)` (lines 9001-9002);
 * finiteness of `R_Γ(q)` and `h_Γ(w)` for `q, w > 0`, and their positivity
-  when `μ ≠ 0` (line 7722), and `R_Γ(q) > R_Γ(q')` for `0 < q < q'`.
+  when `μ ≠ 0` (line 9000), and `R_Γ(q) > R_Γ(q')` for `0 < q < q'`.
 
 Proved without the input: `Γ ≠ 0 ⇒ μ ≠ 0` for a locally finite `Γ` with
 spectral measure `μ` in the sense of `HomogHypothesis.IsSpectralMeasure`
@@ -55,7 +55,7 @@ namespace StratonovichHAMSecondMoment.SpectralHomog
 open HomogHypothesis
 
 /-- The supplied input `μ(cA) = c^α μ(A)` (proof of
-`L:damped-homogeneous-norms`, lines 851-852). -/
+`L:damped-homogeneous-norms`, lines 1067-1068). -/
 def SpectralHomogeneous {d : ℕ} (μ : Measure (Rd d)) (alpha : ℝ) : Prop :=
   ∀ A : Set (Rd d), MeasurableSet A → ∀ c : ℝ, 0 < c →
     μ (c • A) = ENNReal.ofReal (c ^ alpha) * μ A
@@ -78,14 +78,14 @@ theorem integral_comp_smul (hI : SpectralHomogeneous μ alpha) (c : ℝ) (hc : 0
     map_smul_eq hI c hc, integral_smul_measure, ENNReal.toReal_ofReal (by positivity),
     smul_eq_mul]
 
-/-- `μ(B_r) = r^α μ(B_1)` for `r > 0` (line 853). -/
+/-- `μ(B_r) = r^α μ(B_1)` for `r > 0` (line 1069). -/
 theorem measure_ball (hI : SpectralHomogeneous μ alpha) (r : ℝ) (hr : 0 < r) :
     μ (ball 0 r) = ENNReal.ofReal (r ^ alpha) * μ (ball 0 1) := by
   have h := smul_unitBall (E := Rd d) (c := r) hr.ne'
   rw [Real.norm_eq_abs, abs_of_pos hr] at h
   rw [← h, hI _ measurableSet_ball r hr]
 
-/-- `μ{0} = 0` (lines 852-853: Radon finiteness and `α > 0`). -/
+/-- `μ{0} = 0` (lines 1068-1069: Radon finiteness and `α > 0`). -/
 theorem measure_zero (hI : SpectralHomogeneous μ alpha) [IsLocallyFiniteMeasure μ]
     (ha : 0 < alpha) : μ {0} = 0 := by
   have h := hI {0} (measurableSet_singleton 0) 2 two_pos
@@ -169,10 +169,10 @@ theorem integrable_inv_one_add_sq (hI : SpectralHomogeneous μ alpha)
 
 /-! ### The resolvent `R_Γ` and the heat mass `h_Γ` -/
 
-/-- `R_Γ(q) = ∫ μ(dξ)/(q²+|ξ|²)` (line 7720). -/
+/-- `R_Γ(q) = ∫ μ(dξ)/(q²+|ξ|²)` (line 8998). -/
 def resolvent (μ : Measure (Rd d)) (q : ℝ) : ℝ := ∫ ξ, 1 / (q ^ 2 + ‖ξ‖ ^ 2) ∂μ
 
-/-- `h_Γ(w) = ∫ e^{-w|ξ|²/2} μ(dξ)` (line 7718). -/
+/-- `h_Γ(w) = ∫ e^{-w|ξ|²/2} μ(dξ)` (line 8996). -/
 def heat (μ : Measure (Rd d)) (w : ℝ) : ℝ := ∫ ξ, Real.exp (-(w * ‖ξ‖ ^ 2 / 2)) ∂μ
 
 /-- Auxiliary to the Lean proof route. -/
@@ -221,7 +221,7 @@ theorem heat_integrable (hR : Integrable (fun ξ : Rd d => 1 / (1 + ‖ξ‖ ^ 2
     _ ≤ max 1 (2 / w) * 1 := mul_le_mul_of_nonneg_left he (by positivity)
     _ = max 1 (2 / w) := mul_one _
 
-/-- `R_Γ(q) = q^{α-2} R_Γ(1)` for `q > 0` (line 7724). -/
+/-- `R_Γ(q) = q^{α-2} R_Γ(1)` for `q > 0` (line 9002). -/
 theorem resolvent_homog (hI : SpectralHomogeneous μ alpha) (q : ℝ) (hq : 0 < q) :
     resolvent μ q = q ^ (alpha - 2) * resolvent μ 1 := by
   have h := integral_comp_smul hI q⁻¹ (inv_pos.2 hq) (fun ξ => 1 / (1 + ‖ξ‖ ^ 2))
@@ -240,7 +240,7 @@ theorem resolvent_homog (hI : SpectralHomogeneous μ alpha) (q : ℝ) (hq : 0 < 
   field_simp
   linarith
 
-/-- `h_Γ(w) = w^{-α/2} h_Γ(1)` for `w > 0` (line 7723). -/
+/-- `h_Γ(w) = w^{-α/2} h_Γ(1)` for `w > 0` (line 9001). -/
 theorem heat_homog (hI : SpectralHomogeneous μ alpha) (w : ℝ) (hw : 0 < w) :
     heat μ w = w ^ (-(alpha / 2)) * heat μ 1 := by
   have hs : 0 < Real.sqrt w := Real.sqrt_pos.2 hw

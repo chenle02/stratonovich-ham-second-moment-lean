@@ -1,6 +1,6 @@
 /-
 Refutation for `C:static-moment-constant-continuity` (main TeX lines
-7574-7593), package theorem
+8842-8861), package theorem
 `StratonovichHAMSecondMoment.TypeContinuity.static_moment_constant_continuity_paper`
 (`Λ̲_2(a)/Λ̄_1(a) → 2^{κ_st}`, `E:static-moment-ratio-continuity`).
 

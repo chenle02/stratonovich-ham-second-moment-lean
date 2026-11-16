@@ -2,7 +2,7 @@
 Refutation for the sphere Fourier identity of `WaveGreenFourier`, package
 theorem `StratonovichHAMSecondMoment.WaveGreenFourier.sphere_fourier`
 (`∫_{S²} e^{iξ·ω} σ(dω) = 4π sinc|ξ|`, the `d = 3` core of the Fourier identity
-at main TeX lines 777-778 and 4741).
+at main TeX lines 983-984 and 5615).
 
 Wrong variant: the constant `2π` in place of `4π`, i.e.
 `∫_{S²} e^{iξ·ω} σ(dω) = 2π sinc|ξ|` for every `ξ`.  Counterexample: `ξ = 0`,

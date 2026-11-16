@@ -3,9 +3,9 @@ module
 /-
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
-Propositions `P:variational-unmasked-rate` (TeX lines 98-111; proof 113-164)
-and `P:variational-positive-scores` (TeX lines 270-284; proof 286-337) of
-`notes/integrated_unmasked_variational.tex` at revision a284420.  The
+Propositions `P:variational-unmasked-rate` (TeX lines 126-139; proof 141-217)
+and `P:variational-positive-scores` (TeX lines 370-384; proof 386-462) of
+`notes/integrated_unmasked_variational.tex` at revision 39f2597a.  The
 section's standing assumption (line 4) is a nonzero covariance satisfying
 `H:homog` with `a = α₀`; the wrappers carry it as
 `HomogHypothesis.HomogCovariance`, `Γ ≠ 0`, `a = α₀`.  Definitions reused
@@ -27,14 +27,14 @@ Formalized:
   nonempty and bounded above, with a uniform positive floor and ceiling
   `ε ≤ λ_s² = sup ≤ M`; `|λ_s² - λ_t²| ≤ C_Ψ|s - t|` (from the general
   `abs_sSup_rayleighSet_sub_le`, `|sup R_V - sup R_W| ≤ ‖V - W‖_∞`, TeX line
-  156); `√ε ≤ λ_s ≤ √M`; `|λ_s - λ_t| ≤ C_Ψ/(2√ε)|s - t|` (line 158); `λ`
+  209); `√ε ≤ λ_s ≤ √M`; `|λ_s - λ_t| ≤ C_Ψ/(2√ε)|s - t|` (line 211); `λ`
   integrable on `(0,1)`; `√ε ≤ I_Ψ ≤ √M`.
 * `variational_positive_scores_paper` (general form `positive_scores`), no
   supplied input: the value sets are nonempty; every `I_Ψ` and `v_Ψ` is a
   genuine (integrable, finite) value with `I_Ψ > 0` and `v_Ψ > 0`
   (`rawCost_genuine`, `rawCost_pos`); the positive test at
-  `r_0 = (I_0/v_0)^{1/k}` (lines 290-296); `E:variational-score-set-scaling`
-  (lines 298-304, `score_set_scaling`); the set identity of lines 305-307
+  `r_0 = (I_0/v_0)^{1/k}` (lines 397-406); `E:variational-score-set-scaling`
+  (lines 412-418, `score_set_scaling`); the set identity of lines 422-424
   (`scoreSet_eq`); boundedness for any `c > 0` is equivalent to `S1Bdd`.
 * `variational_positive_scores_sSup_paper` (general form
   `positive_scores_sSup`), over the named input `S1Bdd`: `S_1^pos` is a
@@ -42,9 +42,9 @@ Formalized:
   `c > 0`.
 
 Supplied input (named, one): `S1Bdd a Γ`, the boundedness above of
-`{I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}`, word for word the claim of TeX lines 272-274 for
+`{I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}`, word for word the claim of TeX lines 372-374 for
 `c = 1`; by `positive_scores` it is equivalent to the boundedness for any
-`c > 0`.  Provenance (lines 309-325): `T:full-upper` and
+`c > 0`.  Provenance (lines 430-446): `T:full-upper` and
 `E:variational-unmasked-point-lower` (`P:variational-remove-mask`), both
 stochastic and not formalized.  It is used only by the supremum statements.
 Since `I_Ψ` and `v_Ψ` are proved genuine first, no junk value enters it.
@@ -58,7 +58,7 @@ Narrower conclusions (not formalized):
 * `P:variational-positive-scores`: the second identity `Q_2 ≥ S_2^pos` of
   `E:variational-score-homogeneity` (the stochastic point liminf `Q_2`), and
   the boundedness, supplied as `S1Bdd`.  The TeX's remark
-  `S_2^pos > 2 S_1^pos` (line 333) is a comment, not part of the statement.
+  `S_2^pos > 2 S_1^pos` (line 458) is a comment, not part of the statement.
 * `v_Ψ` is the integral form of `E:compact-raw-cost`; its identification with
   `E W(Ψ)²` is `L:compact-raw-profile` (foundation D1), not used.
 
@@ -71,7 +71,7 @@ and for `sSup` of an empty or unbounded set are thereby excluded).
 
 Proof routes that differ from the TeX:
 * Positivity floor: the TeX bounds `E_s ≤ -ε₀` by the compact common trial of
-  `P:compact-original-common-trial` (lines 150-155).  Here: `h_s ≥ Γ * Ψ̄`
+  `P:compact-original-common-trial` (lines 203-208).  Here: `h_s ≥ Γ * Ψ̄`
   for `s ∈ [0,1]` with `Ψ̄ = ∫_0^1 Ψ(u,·) du` (because `|s - u|^{-α₀} ≥ 1`
   on `[0,1]²` off the diagonal, and Fubini), and the dilation floor
   `VariationalFloor.dilation_floor` (uses `α < 2`) gives one unit test with
@@ -290,7 +290,7 @@ theorem sSup_rayleighSet_le_add {V W : Rd d → ℝ} {D : ℝ} (hD : ∀ x, V x 
 /-- `|λ_V² - λ_W²| ≤ ‖V - W‖_∞` in the Rayleigh form: if `|V - W| ≤ D`
 pointwise, both `V f²` and `W f²` are integrable for every `f ∈ L²`, and both
 value sets are nonempty and bounded above, then
-`|sup R_V - sup R_W| ≤ D` (TeX line 156, "comparing identical unit form
+`|sup R_V - sup R_W| ≤ D` (TeX line 209, "comparing identical unit form
 tests"). -/
 theorem abs_sSup_rayleighSet_sub_le {V W : Rd d → ℝ} {D : ℝ} (hD : ∀ x, |V x - W x| ≤ D)
     (hV : ∀ f : Rd d → ℝ, MemLp f 2 volume → Integrable (fun x => V x * f x ^ 2) volume)
@@ -502,11 +502,11 @@ theorem rawCost_pos {alpha : ℝ} {Γ μ : Measure (Rd d)} (hΓt : IsTempered Γ
 /-! ### `P:variational-positive-scores` -/
 
 /-- The coefficient-`c` variational value set
-`{c I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` (TeX lines 272-273). -/
+`{c I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` (TeX lines 372-373). -/
 def scoreSet (a : ℝ) (Γ : Measure (Rd d)) (c : ℝ) : Set ℝ :=
   (fun Ψ => c * integratedRate a Γ Ψ - rawCost a Γ Ψ / 2) '' CPos d
 
-/-- The coefficient-one set `{I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` (TeX lines 272-273 at
+/-- The coefficient-one set `{I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` (TeX lines 372-373 at
 `c = 1`), whose supremum is `S_1^pos`.  This is the one coefficient-one set of
 the package (`SpatialSmoothRatio` and `SpatialStaticControls` use it). -/
 def score1Set (a : ℝ) (Γ : Measure (Rd d)) : Set ℝ :=
@@ -516,7 +516,7 @@ def score1Set (a : ℝ) (Γ : Measure (Rd d)) : Set ℝ :=
 theorem scoreSet_one (a : ℝ) (Γ : Measure (Rd d)) : scoreSet a Γ 1 = score1Set a Γ := by
   simp [scoreSet, score1Set]
 
-/-- `E:variational-score-set-scaling` (TeX lines 298-304): with
+/-- `E:variational-score-set-scaling` (TeX lines 412-418): with
 `k = 3 - α > 0`, `q = 4 - α`, `r_c = c^{1/k}` and `K_c = c^{q/k}`,
 `c I_{D_{r_c}Ψ} - v_{D_{r_c}Ψ}/2 = K_c (I_Ψ - v_Ψ/2)` for every continuous
 `Ψ` and `c > 0` (an exact identity of the defined quantities, from
@@ -537,7 +537,7 @@ theorem score_set_scaling {alpha : ℝ} {Γ : Measure (Rd d)} (hS : SetScaling a
     field_simp
   rw [← mul_assoc, e1, e2]; ring
 
-/-- The whole set identity (TeX lines 305-307): for `c > 0`, the
+/-- The whole set identity (TeX lines 422-424): for `c > 0`, the
 coefficient-`c` set is `K_c` times the coefficient-one set, because `D_{r_c}`
 is a bijection of `C_pos`. -/
 theorem scoreSet_eq {alpha : ℝ} {Γ : Measure (Rd d)} (hS : SetScaling alpha Γ)
@@ -558,7 +558,7 @@ theorem scoreSet_eq {alpha : ℝ} {Γ : Measure (Rd d)} (hS : SetScaling alpha �
     simp only [smul_eq_mul, one_mul]
     exact score_set_scaling hS hk hc hΦ.1.continuous a
 
-/-- The positive test (TeX lines 290-296): for `Ψ₀` with `I_0 > 0`, `v_0 > 0`
+/-- The positive test (TeX lines 397-406): for `Ψ₀` with `I_0 > 0`, `v_0 > 0`
 and `r_0 = (I_0/v_0)^{1/k}` (`k = 3 - α > 0`), `D_{r_0}Ψ₀` has variational value
 `I - v/2 = r_0 I_0/2 > 0`. -/
 theorem positive_test {alpha : ℝ} {Γ : Measure (Rd d)} (hS : SetScaling alpha Γ)
@@ -588,15 +588,15 @@ theorem positive_test {alpha : ℝ} {Γ : Measure (Rd d)} (hS : SetScaling alpha
   ring
 
 /-- The radius `r_0 = (I_0/v_0)^{1/k}`, `k = 3 - α`, of the positive test
-(TeX line 290). -/
+(TeX line 397). -/
 def testRadius (alpha a : ℝ) (Γ : Measure (Rd d)) (Ψ₀ : ℝ × Rd d → ℝ) : ℝ :=
   (integratedRate a Γ Ψ₀ / rawCost a Γ Ψ₀) ^ (3 - alpha)⁻¹
 
 /-- The named input `S1Bdd`: the coefficient-one variational value set
 `{I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` is bounded above.  This is word for word the
 boundedness claim of `P:variational-positive-scores` for `c = 1`
-(`notes/integrated_unmasked_variational.tex` lines 272-274 at a284420).  Its
-manuscript proof (lines 309-325) is stochastic: it combines the moment upper
+(`notes/integrated_unmasked_variational.tex` lines 372-374 at 39f2597a).  Its
+manuscript proof (lines 430-446) is stochastic: it combines the moment upper
 bound of `T:full-upper` (`E|u(T,0)|² ≤ e(T+2)^d e^{C_up T^κ}`) with the point
 lower bound `E:variational-unmasked-point-lower` of
 `P:variational-remove-mask` for the same canonical solution, so that every
@@ -610,7 +610,7 @@ manuscript claim it stands for. -/
 def S1Bdd (a : ℝ) (Γ : Measure (Rd d)) : Prop :=
   BddAbove (score1Set a Γ)
 
-/-- `S_1^pos = sup {I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` (TeX line 274 at `c = 1`).  It is
+/-- `S_1^pos = sup {I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` (TeX line 374 at `c = 1`).  It is
 a genuine supremum exactly under `S1Bdd` (the set is nonempty,
 `positive_scores`); every statement about it assumes `S1Bdd`. -/
 def S1pos (a : ℝ) (Γ : Measure (Rd d)) : ℝ :=
@@ -710,8 +710,8 @@ theorem alpha_lt_two {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (hH : HomogCovariance d alpha alpha0 Γ μ) : alpha < 2 := by
   linarith [hH.threshold, hH.alpha0_pos]
 
-/-- **`P:variational-unmasked-rate`, Rayleigh-form part** (TeX lines 98-111
-at a284420) with the section's standing hypotheses (lines 4-5: a nonzero
+/-- **`P:variational-unmasked-rate`, Rayleigh-form part** (TeX lines 126-139
+at 39f2597a) with the section's standing hypotheses (lines 4-5: a nonzero
 covariance satisfying `H:homog`, `a = α₀`) and `Ψ ∈ C_pos`, `I = [0,1]`.
 With `λ_{Ψ,s}` DEFINED as the square root of the real Rayleigh supremum
 `E:variational-real-rayleigh` (`VariationalDilation.rate`): there are reals
@@ -721,7 +721,7 @@ With `λ_{Ψ,s}` DEFINED as the square root of the real Rayleigh supremum
 and bounded above with `ε ≤ λ_s² = sup ≤ M` (uniformly negative bottom
 `-M ≤ -λ_s² ≤ -ε` in the TeX's notation `E_s = -λ_s²`);
 `|λ_s² - λ_t²| ≤ C|s - t|`; `√ε ≤ λ_s ≤ √M`;
-`|λ_s - λ_t| ≤ C/(2√ε) |s - t|` (TeX line 158); `λ` is integrable on
+`|λ_s - λ_t| ≤ C/(2√ε) |s - t|` (TeX line 211); `λ` is integrable on
 `(0,1)`; and `√ε ≤ I_Ψ ≤ √M`, so `I_Ψ` is positive and finite.
 
 Narrower than the TeX (not formalized, foundation D8): the operator
@@ -732,7 +732,7 @@ remark asserts nothing.  Different route: the positive floor `ε` comes from
 the dilation floor (`VariationalFloor.dilation_floor`) applied to the lower
 envelope `h_s ≥ Γ * Ψ̄` (`Ψ̄ = ∫_0^1 Ψ(u,·) du`, valid because
 `|s - u|^{-α₀} ≥ 1` on `[0,1]²`), not from the compact common trial of
-`P:compact-original-common-trial` (TeX lines 150-155).  Of `H:homog`, the
+`P:compact-original-common-trial` (TeX lines 203-208).  Of `H:homog`, the
 fields `Γ_tempered`, `μ_tempered`, `spectral`, `Γ_radon`, `scaling`,
 `alpha0_pos`, `alpha0_lt_one`, `threshold` are used; the others are carried,
 unused. -/
@@ -761,17 +761,17 @@ theorem variational_unmasked_rate_paper {alpha alpha0 : ℝ} {Γ μ : Measure (R
   exact unmasked_rate hH.Γ_tempered hH.μ_tempered hH.spectral hH.scaling (alpha_lt_two hH) hΓ0
     hH.alpha0_pos.le hH.alpha0_lt_one hΨ
 
-/-- **`P:variational-positive-scores`, input-free part** (TeX lines 270-337 at
-a284420, without `S1Bdd`) with the section's standing hypotheses (lines 4-5: a
+/-- **`P:variational-positive-scores`, input-free part** (TeX lines 370-462 at
+39f2597a, without `S1Bdd`) with the section's standing hypotheses (lines 4-5: a
 nonzero covariance satisfying `H:homog`, `a = α₀`); `k = 3 - α`,
 `q = 4 - α`.  The value sets `{c I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` are nonempty; every
 value is genuine (for each `Ψ ∈ C_pos`: `λ` integrable on `(0,1)`, every
 variance integrand integrable) with `I_Ψ > 0` and `v_Ψ > 0` (deterministically;
 the TeX cites `L:compact-raw-profile` for `v_0 > 0`); the positive test of TeX
-lines 290-296, `I_{D_{r_0}Ψ₀} - v_{D_{r_0}Ψ₀}/2 = r_0 I_0/2 > 0` with
+lines 397-406, `I_{D_{r_0}Ψ₀} - v_{D_{r_0}Ψ₀}/2 = r_0 I_0/2 > 0` with
 `r_0 = (I_0/v_0)^{1/k}`, for every `Ψ₀ ∈ C_pos`; the coefficient-one set has
 a positive element; `E:variational-score-set-scaling` for every `c > 0`; the
-set identity `{c I - v/2} = c^{q/k} {I - v/2}` (lines 305-307); and the
+set identity `{c I - v/2} = c^{q/k} {I - v/2}` (lines 422-424); and the
 coefficient-`c` set is bounded above iff `S1Bdd` holds.  Not formalized here:
 the boundedness itself (`S1Bdd`, stochastic proof, see its doc comment) and
 the second identity `Q_2 ≥ S_2^pos` of `E:variational-score-homogeneity`
@@ -805,10 +805,10 @@ theorem variational_positive_scores_paper {alpha alpha0 : ℝ} {Γ μ : Measure 
     hΓ0 hH.alpha0_pos.le hH.alpha0_lt_one
 
 /-- **`P:variational-positive-scores`, supremum part, over the named input
-`S1Bdd`** (TeX lines 272-277 and 327-332 at a284420) with the section's
+`S1Bdd`** (TeX lines 372-377 and 452-457 at 39f2597a) with the section's
 standing hypotheses (nonzero covariance satisfying `H:homog`, `a = α₀`):
-given `S1Bdd` (the boundedness claim of lines 272-274 for `c = 1`; its
-manuscript proof at lines 309-325 goes through `T:full-upper` and
+given `S1Bdd` (the boundedness claim of lines 372-374 for `c = 1`; its
+manuscript proof at lines 430-446 goes through `T:full-upper` and
 `E:variational-unmasked-point-lower`, see `S1Bdd`), the supremum
 `S_1^pos` is a positive real, and for every `c > 0` the value set is nonempty
 and bounded above with positive supremum `S_c^pos = c^{(4-α)/(3-α)} S_1^pos`

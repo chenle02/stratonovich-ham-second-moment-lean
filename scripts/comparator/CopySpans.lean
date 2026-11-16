@@ -5,8 +5,8 @@ Input of `gen_defs.py` (read-only; writes nothing):
 
   lake env lean --run scripts/comparator/CopySpans.lean > <spans.tsv>
 
-For every theorem of `comparator.json` (`StratonovichHamSecondMomentLeanAudit.D`, `D` the
-claimed declaration), it walks the project constants reachable from the type of `D`
+For every theorem of the comparator configurations `comparator.json` and
+`comparator-helpers.json` (`StratonovichHamSecondMomentLeanAudit.D`, `D` the claimed declaration), it walks the project constants reachable from the type of `D`
 (through the types and values of project definitions, theorems and inductives) and prints
 `REACH<TAB>name<TAB>module<TAB>first line<TAB>last line` (`-` when the constant has no
 source range, e.g. a generated `_proof_N`), then `ALL<TAB>name<TAB>module<TAB>first<TAB>last`
@@ -25,8 +25,10 @@ def projMod? (env : Environment) (c : Name) : Option Name := do
 def main : IO UInt32 := do
   initSearchPath (← findSysroot)
   let env ← importModules #[{ module := `StratonovichHAMSecondMoment }] {}
-  let cfg ← IO.ofExcept <| Json.parse (← IO.FS.readFile "comparator.json")
-  let names ← IO.ofExcept <| cfg.getObjValAs? (Array String) "theorem_names"
+  let mut names : Array String := #[]
+  for path in #["comparator.json", "comparator-helpers.json"] do
+    let cfg ← IO.ofExcept <| Json.parse (← IO.FS.readFile path)
+    names := names ++ (← IO.ofExcept <| cfg.getObjValAs? (Array String) "theorem_names")
   let pfx := "StratonovichHamSecondMomentLeanAudit."
   let mut work : Array Name := #[]
   for s in names do

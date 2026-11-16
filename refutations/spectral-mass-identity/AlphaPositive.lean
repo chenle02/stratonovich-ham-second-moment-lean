@@ -1,8 +1,8 @@
 /-
 Refutation for the hypothesis `0 < α` of the package theorem
 `StratonovichHAMSecondMoment.SpectralMassIdentity.resolvent_one_eq_ralpha`
-(`R_Γ(1) = R_α`; `E:intro-spectral-mass`, main TeX lines 526-532, under
-`0 < α < 2` as in main TeX line 860 and `H:homog`).
+(`R_Γ(1) = R_α`; `E:intro-spectral-mass`, main TeX lines 691-697, under
+`0 < α < 2` as in main TeX line 1076 and `H:homog`).
 
 Wrong variant: the identity with the hypothesis `0 < α` dropped.  Witness:
 `d = 1`, `μ = δ_0`, `α = 0` (locally finite, homogeneous of degree `0`).

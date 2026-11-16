@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Proposition `P:spatial-smooth-ratio` (The finite smooth spatial ratio) of
-`notes/integrated_spatial_occupation.tex` (revision a284420, lines 166-217),
+`notes/integrated_spatial_occupation.tex` (revision 39f2597a, lines 223-290),
 under the section's standing assumptions (lines 4-10: a nonzero covariance
 satisfying `H:homog`, `a = α₀`).
 
@@ -14,25 +14,25 @@ Formalized (wrappers `*_paper` with the manuscript's hypotheses
   `g ∈ C_c^∞(ℝ^d)`, `b(g) > 0`, `A_sp(g)` is a genuine (integrable) integral
   and positive, `0 < R(g) ≤ 2^{1+α} R_Γ(1)`; the ratio set is nonempty and
   bounded above and `0 < R_0 ≤ 2^{1+α} R_Γ(1)`, `R(g) ≤ R_0`, i.e. "`R_0` is a
-  positive finite real number" (lines 168-170).  Finiteness as in the TeX
-  (proof lines 185-188): the deterministic Fourier bound
+  positive finite real number" (lines 225-227).  Finiteness as in the TeX
+  (proof lines 250-253): the deterministic Fourier bound
   `L:spatial-fourier-bound` (`SpatialFourierBound`), not the finiteness of
   `S_1^pos`, so `R_0 < ∞` does not depend on `T:full-upper`, for every `Γ` in
   `H:homog`, including singular ones.  Positivity as in the TeX (lines
-  182-187):
+  247-252):
   `Γ(B_r) > 0` for every `r > 0` and positivity of the autocorrelation of
-  `g² ≥ 0` near `0` (lines 89-91; `VariationalFloor.autocorr_pos`), plus a
+  `g² ≥ 0` near `0` (lines 108-110; `VariationalFloor.autocorr_pos`), plus a
   normalized bump (`exists_unitTest`).
-* `spatial_dilation_paper`: `E:spatial-dilation` (lines 189-195) on
+* `spatial_dilation_paper`: `E:spatial-dilation` (lines 254-260) on
   `C_c^∞`, `A_sp(U_ℓ g) = ℓ^α A_sp(g)`, `b(U_ℓ g) = ℓ² b(g)`, via
   `VariationalDilation.integral_dilation` and the Lebesgue substitution.
-* `spatial_smooth_score_paper`: `E:spatial-smooth-score` (lines 171-176) in the
+* `spatial_smooth_score_paper`: `E:spatial-smooth-score` (lines 228-233) in the
   EXISTENTIAL form of Le's decision 2 (classified same-assumptions with a
   note): for every real unit `g` and every
   `y < k [R(g) α^{α/2}/(8 M_a q^{q/2})]^{1/k}` (`k = 3-α`, `q = 4-α`) some
   `Ψ ∈ C_pos` has `y < I_Ψ - v_Ψ/2`.  This form is implied by the TeX's
   `S_1^pos ≥ ...` and equivalent to it whenever `S_1^pos` is finite; it needs
-  no `S1Bdd`.  Proof as in the TeX (lines 197-213): the control
+  no `S1Bdd`.  Proof as in the TeX (lines 266-286): the control
   `z = θ (U_ℓ g)²`, the Rayleigh trial `U_ℓ g`, the choices
   `ℓ² = uL²/b`, `θ = (1+u)L²/(ℓ^α A)` (`u = α/q`), and the maximiser
   `L = q X^{1/k}` of `L - C L^q` substituted directly (the identity
@@ -43,20 +43,20 @@ Formalized (wrappers `*_paper` with the manuscript's hypotheses
   `R_0 ≤ 8 M_a q^{q/2} (S_1^pos/k)^k / α^{α/2}`, `E:spatial-smooth-score`
   solved for `R(g)`: the manuscript's route to finiteness before revision
   a284420, which now proves it by `L:spatial-fourier-bound` and keeps the
-  finite `S_1^pos` only for the score inequality (lines 213-215).
+  finite `S_1^pos` only for the score inequality (lines 286-288).
 * `spatial_smooth_ratio_paper`: both claims of the proposition together.
 
 Supplied inputs (named hypotheses):
-* `StaticControls a Γ` = `L:spatial-static-controls` (lines 40-96; wave item
+* `StaticControls a Γ` = `L:spatial-static-controls` (lines 42-115; wave item
   L6-f) for every nonnegative nonzero `z ∈ C_c^∞`: the finiteness of
   `λ_z(1)² = sup R(Γ*z)` (BddAbove of `WeakSobolev.rayleighSet (Γ*z)`, part
-  of "positive and finite", lines 47-48) and `E:spatial-static-score`
-  (lines 50-53) in the existential form.  It is that lemma's conclusion
+  of "positive and finite", lines 49-50) and `E:spatial-static-score`
+  (lines 52-55) in the existential form.  It is that lemma's conclusion
   (existential form implied by the `sup` form), so no stronger than the
   manuscript.  Used only for the score statements; the `R_0` statement is
   input-free.
 * `S1Bdd a Γ` (BddAbove of `{I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}`, the first claim of
-  `P:variational-positive-scores`, unmasked TeX lines 270-274; Le's decision
+  `P:variational-positive-scores`, unmasked TeX lines 370-374; Le's decision
   1): only for the `sSup` statements and "`S1Bdd ⇒ R_0` finite".
 
 The L6-d foundations used here are imported, not assumed: F2 and F3 in the
@@ -142,7 +142,7 @@ theorem sq_ne_zero_of_unit {g : Rd d → ℝ} (hg : IsUnitTest g) :
   simp only [show (fun x => g x ^ 2) = fun _ => (0 : ℝ) from h, integral_zero] at this
   exact zero_ne_one this
 
-/-- `0 < A_sp(g)` for a real unit `g ∈ C_c^∞(ℝ^d)` (TeX lines 182-185), with
+/-- `0 < A_sp(g)` for a real unit `g ∈ C_c^∞(ℝ^d)` (TeX lines 247-250), with
 `Γ ≠ 0` locally finite and `Γ(cA) = c^{d-α}Γ(A)`. -/
 theorem spatialEnergy_pos {alpha : ℝ} {Γ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ]
     (hS : SetScaling alpha Γ) (hΓ : Γ ≠ 0) {g : Rd d → ℝ} (hg : IsUnitTest g) :
@@ -165,7 +165,7 @@ theorem isUnitTest_dilL2 {ℓ : ℝ} (hℓ : 0 < ℓ) {g : Rd d → ℝ} (hg : I
     rw [h, hu]
 
 /-- `b(U_ℓ g) = ℓ² b(g)` (second identity of `E:spatial-dilation`, TeX line
-192), for differentiable `g`. -/
+257), for differentiable `g`. -/
 theorem gradEnergy_dilL2 {ℓ : ℝ} (hℓ : 0 < ℓ) {g : Rd d → ℝ} (hg : Differentiable ℝ g) :
     gradEnergy (dilL2 ℓ g) = ℓ ^ 2 * gradEnergy g := by
   have hD : ∀ x, fderiv ℝ (dilL2 ℓ g) x = ℓ ^ ((d : ℝ) / 2) • (ℓ • fderiv ℝ g (ℓ • x)) := by
@@ -189,7 +189,7 @@ theorem gradEnergy_dilL2 {ℓ : ℝ} (hℓ : 0 < ℓ) {g : Rd d → ℝ} (hg : D
   rw [integral_const_mul, WeakSobolev.integral_jacobian hℓ (fun y => ‖fderiv ℝ g y‖ ^ 2)]
 
 /-- `A_sp(U_ℓ g) = ℓ^α A_sp(g)` (first identity of `E:spatial-dilation`, TeX
-lines 191-195): the factors `ℓ^{2d}` from the two squares, `ℓ^{-d}` from `dx`
+lines 256-260): the factors `ℓ^{2d}` from the two squares, `ℓ^{-d}` from `dx`
 and `ℓ^{α-d}` from the Radon pushforward (`VariationalDilation.integral_dilation`).
 For continuous compactly supported `g` and `Γ(cA) = c^{d-α}Γ(A)`. -/
 theorem spatialEnergy_dilL2 {alpha : ℝ} {Γ : Measure (Rd d)} (hS : SetScaling alpha Γ)
@@ -232,7 +232,7 @@ theorem conv_eq_convolution (Γ : Measure (Rd d)) (G : Rd d → ℝ) :
 
 /-- Auxiliary to the Lean proof route: `Γ * G` is continuous for continuous compactly supported `G` and locally
 finite `Γ` (the manuscript's `U_z = Γ * z` "in its usual pointwise sense",
-line 37-38). -/
+line 38-39). -/
 theorem conv_continuous (Γ : Measure (Rd d)) [IsLocallyFiniteMeasure Γ] {G : Rd d → ℝ}
     (hG : Continuous G) (hc : HasCompactSupport G) : Continuous (conv Γ G) := by
   rw [conv_eq_convolution]
@@ -242,7 +242,7 @@ theorem conv_continuous (Γ : Measure (Rd d)) [IsLocallyFiniteMeasure Γ] {G : R
 /-- Auxiliary to the Lean proof route: the physical pairing as a potential integral: for continuous compactly
 supported real `F, G` and locally finite `Γ`, `(Γ * G) F` is integrable and
 `∫ (Γ * G)(x) F(x) dx = B_Γ(F, G)` (Tonelli/Fubini for the sigma-finite
-`dx Γ(dy)` of `L:spatial-physical-pair`; the TeX uses it at lines 198-199,
+`dx Γ(dy)` of `L:spatial-physical-pair`; the TeX uses it at lines 267-268,
 `λ_z(1)² ≥ θ ℓ^α A - ℓ² b`). -/
 theorem integral_conv_mul (Γ : Measure (Rd d)) [IsLocallyFiniteMeasure Γ] {F G : Rd d → ℝ}
     (hF : Continuous F) (hFc : HasCompactSupport F) (hG : Continuous G)
@@ -293,7 +293,7 @@ theorem spatialPair_const_mul_left (Γ : Measure (Rd d)) (F G : Rd d → ℝ) (c
 
 /-! ### The smooth ratio `R(g)` and its supremum `R_0` -/
 
-/-- `R(g) = A_sp(g)/b(g)^{α/2}` (TeX lines 168-169).  On real unit tests in
+/-- `R(g) = A_sp(g)/b(g)^{α/2}` (TeX lines 225-226).  On real unit tests in
 `d ≥ 1`, `b(g) > 0` (`SpatialFourierBound.gradEnergy_pos`), so no division
 by zero occurs there. -/
 def ratio (Γ : Measure (Rd d)) (alpha : ℝ) (g : Rd d → ℝ) : ℝ :=
@@ -303,7 +303,7 @@ def ratio (Γ : Measure (Rd d)) (alpha : ℝ) (g : Rd d → ℝ) : ℝ :=
 def ratioSet (Γ : Measure (Rd d)) (alpha : ℝ) : Set ℝ :=
   {r | ∃ g, IsUnitTest g ∧ ratio Γ alpha g = r}
 
-/-- `R_0 = sup R(g)` over real unit `g ∈ C_c^∞(ℝ^d)` (TeX line 169).  The
+/-- `R_0 = sup R(g)` over real unit `g ∈ C_c^∞(ℝ^d)` (TeX line 226).  The
 statements below establish nonemptiness and boundedness of `ratioSet` (the
 positivity statements assert both; `R0_finite_of_S1Bdd` and its `_paper`
 wrapper assert boundedness and their proofs establish nonemptiness), so they
@@ -311,7 +311,7 @@ never rest on Lean's `sSup` junk value. -/
 def R0 (Γ : Measure (Rd d)) (alpha : ℝ) : ℝ := sSup (ratioSet Γ alpha)
 
 /-- A real unit test exists (a normalized smooth bump; the TeX's "normalized
-compact bump", lines 186-187). -/
+compact bump", lines 251-252). -/
 theorem exists_unitTest (d : ℕ) : ∃ g : Rd d → ℝ, IsUnitTest g := by
   obtain ⟨b⟩ : Nonempty (ContDiffBump (0 : Rd d)) := ⟨⟨1, 2, one_pos, one_lt_two⟩⟩
   have hbs : ContDiff ℝ ∞ (fun x => b x) := b.contDiff
@@ -332,7 +332,7 @@ theorem exists_unitTest (d : ℕ) : ∃ g : Rd d → ℝ, IsUnitTest g := by
   simp_rw [mul_pow, hs]
   rw [integral_const_mul, ← hN, inv_mul_cancel₀ hNpos.ne']
 
-/-- **First claim of `P:spatial-smooth-ratio`** (TeX lines 168-170), general
+/-- **First claim of `P:spatial-smooth-ratio`** (TeX lines 225-227), general
 form: `R_0` is a positive finite real number.  Precisely: the ratio set is
 nonempty and bounded above, every ratio is positive and at most
 `2^{1+α} R_Γ(1)`, `0 < R_0 ≤ 2^{1+α} R_Γ(1)` and `R(g) ≤ R_0` for every unit
@@ -340,7 +340,7 @@ test.  Hypotheses: `Γ, μ` locally finite, `μ` a spectral measure of `Γ`
 (manuscript convention), `μ` `α`-homogeneous, `Γ(cA) = c^{d-α}Γ(A)`,
 `Γ ≠ 0`, `d ≥ 1`, `α < 2`.  Finiteness is proved by the deterministic Fourier
 bound (`SpatialFourierBound.spatial_fourier_bound`), `L:spatial-fourier-bound`,
-as in the TeX (proof lines 185-188). -/
+as in the TeX (proof lines 250-253). -/
 theorem R0_pos_finite {Γ μ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ]
     [IsLocallyFiniteMeasure μ] (hsp : HomogHypothesis.IsSpectralMeasure Γ μ) {alpha : ℝ}
     (hI : SpectralHomog.SpectralHomogeneous μ alpha) (hS : SetScaling alpha Γ)
@@ -399,11 +399,11 @@ theorem isRayleighTrial_of_unitTest {V : Rd d → ℝ} (hV : Continuous V) {f : 
 
 /-! ### The static-control input and the score set -/
 
-/-- **Supplied input: `L:spatial-static-controls`** (TeX lines 40-96; wave item
+/-- **Supplied input: `L:spatial-static-controls`** (TeX lines 42-115; wave item
 L6-f), in the existential form of Le's decision 2.  For every nonnegative
 nonzero `z ∈ C_c^∞(ℝ^d)`: `λ_z(1)² = sup R(Γ*z)` is finite (the Rayleigh set
 of the potential `U_z = Γ*z` is bounded above; part of "positive and finite",
-lines 47-48), and `E:spatial-static-score` (lines 50-53) in the form "every
+lines 49-50), and `E:spatial-static-score` (lines 52-55) in the form "every
 `y < λ_z(1) - (M_a/2) B_Γ(z,z)` is exceeded by `I_Ψ - v_Ψ/2` for some
 `Ψ ∈ C_pos`", with `λ_z(1) = rayleighRate (Γ*z)`, `M_a = mass a` and
 `B_Γ(z,z) = spatialPair Γ z z`.  This is that lemma's conclusion: the TeX's
@@ -418,14 +418,14 @@ def StaticControls (a : ℝ) (Γ : Measure (Rd d)) : Prop :=
           TemporalEquilibrium.mass a / 2 * spatialPair Γ z z →
         ∃ Ψ ∈ CPos d, y < integratedRate a Γ Ψ - rawCost a Γ Ψ / 2
 
-/-- The right side of `E:spatial-smooth-score` (TeX lines 172-176):
+/-- The right side of `E:spatial-smooth-score` (TeX lines 229-233):
 `k [R α^{α/2} / (8 M_a q^{q/2})]^{1/k}` with `k = 3 - α`, `q = 4 - α`. -/
 def smoothScoreBound (alpha a R : ℝ) : ℝ :=
   (3 - alpha) * (R * alpha ^ (alpha / 2) /
     (8 * TemporalEquilibrium.mass a * (4 - alpha) ^ ((4 - alpha) / 2))) ^ (1 / (3 - alpha))
 
 /-- Auxiliary to the Lean proof route: the scalar identity behind the optimisation
-of TeX lines 200-213.  With `k = 3-α`, `q = 4-α`, `X = R α^{α/2}/(8 M q^{q/2})`,
+of TeX lines 269-286.  With `k = 3-α`, `q = 4-α`, `X = R α^{α/2}/(8 M q^{q/2})`,
 `L = q X^{1/k}` (the maximiser `L^k = 1/(qC)`) and `u = α/q`:
 `M (1+u)² L^q = 2 X^{1/k} u^{α/2} R`, i.e. `C L^q = X^{1/k}` for the TeX's
 `C = M(1+u)²/(2 R u^{α/2})`. -/
@@ -469,7 +469,7 @@ theorem score_algebra {alpha M R : ℝ} (ha0 : 0 < alpha) (ha2 : alpha < 2) (hM 
   field_simp
   rw [mul_assoc _ a1 a2, h12]; ring
 
-/-- **`E:spatial-smooth-score`** (TeX lines 171-176, proof lines 197-213), in the
+/-- **`E:spatial-smooth-score`** (TeX lines 228-233, proof lines 266-286), in the
 existential form (Le's decision 2), general form.  For a real unit
 `g ∈ C_c^∞(ℝ^d)` with `b(g) > 0`: every `y` below
 `k [R(g) α^{α/2}/(8 M_a q^{q/2})]^{1/k}` is exceeded by `I_Ψ - v_Ψ/2` for some
@@ -588,7 +588,7 @@ theorem spatial_smooth_score {alpha a : ℝ} {Γ : Measure (Rd d)} [IsLocallyFin
   linarith [hbound ▸ hy]
 
 
-/-- `E:spatial-smooth-score` in the `sSup` form of the TeX (lines 171-176),
+/-- `E:spatial-smooth-score` in the `sSup` form of the TeX (lines 228-233),
 general form: under the hypotheses of `spatial_smooth_score` and the named
 input `S1Bdd a Γ` (so that `S_1^pos = sSup score1Set` is a genuine supremum),
 `S_1^pos ≥ k [R(g) α^{α/2}/(8 M_a q^{q/2})]^{1/k}`. -/
@@ -665,7 +665,7 @@ theorem homog_consequences {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     · rw [h1, h2]; norm_num
   · linarith [hH.threshold, hH.alpha0_pos]
 
-/-- `E:spatial-dilation` (TeX lines 189-195) under the section's standing
+/-- `E:spatial-dilation` (TeX lines 254-260) under the section's standing
 assumptions (lines 4-6: `H:homog`, `Γ ≠ 0`, `a = α₀`): for a real unit
 `g ∈ C_c^∞(ℝ^d)` and `ℓ > 0`, `U_ℓ g` is again a real unit test,
 `A_sp(U_ℓ g) = ℓ^α A_sp(g)` and `b(U_ℓ g) = ℓ² b(g)`.  Only the scaling
@@ -678,18 +678,18 @@ theorem spatial_dilation_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   ⟨isUnitTest_dilL2 hℓ hg, spatialEnergy_dilL2 hH.scaling hℓ hg.1.continuous hg.2.1,
     gradEnergy_dilL2 hℓ (hg.1.differentiable (by simp))⟩
 
-/-- **`P:spatial-smooth-ratio`, first claim** (TeX lines 166-170 and proof lines
-180-188) under the section's standing assumptions (lines 4-6:
+/-- **`P:spatial-smooth-ratio`, first claim** (TeX lines 223-227 and proof lines
+245-253) under the section's standing assumptions (lines 4-6:
 `H:homog`, `Γ ≠ 0`, `a = α₀`), with no supplied input: for every real unit
 `g ∈ C_c^∞(ℝ^d)`, `b(g) > 0`, the autocorrelation of `g²` is `Γ`-integrable
 (`A_sp(g) < ∞`) and `A_sp(g) > 0`, `0 < R(g) ≤ 2^{1+α} R_Γ(1)`; the ratio set
 is nonempty and bounded above, `0 < R_0 ≤ 2^{1+α} R_Γ(1)` and `R(g) ≤ R_0`.
 Finiteness by the deterministic Fourier bound `L:spatial-fourier-bound`
 (`SpatialFourierBound.spatial_fourier_bound_paper`), as in the TeX (lines
-185-188); `R_0 < ∞` does not depend on `T:full-upper`, for every `Γ` in
+250-253); `R_0 < ∞` does not depend on `T:full-upper`, for every `Γ` in
 `H:homog` including singular ones.  Proof-route difference: `b(g) > 0` by a
 constancy argument (as in the proof of `L:spatial-fourier-bound`) instead of
-this proof's Fourier support argument (lines 180-182). -/
+this proof's Fourier support argument (lines 245-247). -/
 theorem spatial_smooth_ratio_R0_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     (hH : HomogCovariance d alpha alpha0 Γ μ) (hΓ : Γ ≠ 0) :
     (∀ g, IsUnitTest g → 0 < gradEnergy g ∧ Integrable (autocorr (fun x => g x ^ 2)) Γ ∧
@@ -707,8 +707,8 @@ theorem spatial_smooth_ratio_R0_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd 
   obtain ⟨hb, hi, -⟩ := spatial_fourier_bound_paper hH hg
   exact ⟨hb, hi, spatialEnergy_pos hH.scaling hΓ hg⟩
 
-/-- **`P:spatial-smooth-ratio`, `E:spatial-smooth-score`** (TeX lines 171-176,
-proof lines 197-213) under the section's standing assumptions (`H:homog`,
+/-- **`P:spatial-smooth-ratio`, `E:spatial-smooth-score`** (TeX lines 228-233,
+proof lines 266-286) under the section's standing assumptions (`H:homog`,
 `Γ ≠ 0`, `a = α₀`) and the supplied input `StaticControls α₀ Γ`
 (`L:spatial-static-controls`), in the existential form (Le's decision 2,
 same-assumptions with a note: the form "every `y` below the right side is
@@ -726,7 +726,7 @@ theorem spatial_smooth_score_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   have := hH.Γ_radon
   exact spatial_smooth_score hH.scaling hΓ ha0 ha2 hM hSC hg (gradEnergy_pos hd hg)
 
-/-- `E:spatial-smooth-score` in the TeX's `sSup` form (lines 171-176) under the
+/-- `E:spatial-smooth-score` in the TeX's `sSup` form (lines 228-233) under the
 standing assumptions, the input `StaticControls α₀ Γ` and the named input
 `S1Bdd α₀ Γ` (`S_1^pos < ∞`, first claim of `P:variational-positive-scores`):
 `S_1^pos ≥ k [R(g) α^{α/2}/(8 M_a q^{q/2})]^{1/k}` for every real unit
@@ -754,7 +754,7 @@ theorem R0_finite_of_S1Bdd_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   have := hH.Γ_radon
   exact R0_finite_of_S1Bdd hH.scaling hΓ hd ha0 ha2 hM hSC hB
 
-/-- **`P:spatial-smooth-ratio`** (TeX lines 166-176), both claims, under the
+/-- **`P:spatial-smooth-ratio`** (TeX lines 223-233), both claims, under the
 section's standing assumptions and the supplied input `StaticControls α₀ Γ`
 (used only by the second claim): `R_0` is a positive finite real number
 (nonempty bounded ratio set, `0 < R_0 ≤ 2^{1+α} R_Γ(1)`, `R(g) ≤ R_0`), and

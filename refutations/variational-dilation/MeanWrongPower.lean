@@ -1,6 +1,6 @@
 /-
 Refutation for the mean part of `L:variational-control-dilation`
-(`notes/integrated_unmasked_variational.tex` lines 234-235), package theorem
+(`notes/integrated_unmasked_variational.tex` lines 323-324), package theorem
 `StratonovichHAMSecondMoment.VariationalDilation.mean_dil` and package
 definitions `mean`, `dil`, `conv`, `SetScaling`.
 

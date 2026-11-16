@@ -6,12 +6,12 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 Finite Gaussian integration by parts (a reusable foundation; no direct
 manuscript label of its own).
 
-Source: `notes/integrated_compact_gaussian.tex` at commit `a284420`, proof of
-Proposition `P:finite-gaussian-matrix` (lines 121--126: "Componentwise
+Source: `notes/integrated_compact_gaussian.tex` at commit `39f2597a`, proof of
+Proposition `P:finite-gaussian-matrix` (lines 167--172: "Componentwise
 integration by parts against the product Gaussian density gives
 `E[g_k P(g)] = E[∂_k P(g)]`, with zero boundary terms ... absolute polynomial
 integrability justifies Fubini") and Remark `R:gaussian-one-variance-test`
-(lines 182--183: "Gaussian integration by parts gives `E g^2 = 1`,
+(lines 260--261: "Gaussian integration by parts gives `E g^2 = 1`,
 `E g^4 = 3`").  This module proves that step in the generality used there.
 
 Contents:
@@ -257,11 +257,11 @@ theorem moment_recursion (j : ℕ) :
   simp only [← pow_succ'] at h
   rw [h]; push_cast; ring
 
-/-- `E g^2 = 1` (manuscript `R:gaussian-one-variance-test`, line 183). -/
+/-- `E g^2 = 1` (manuscript `R:gaussian-one-variance-test`, line 261). -/
 theorem moment_two : ∫ x, x ^ 2 ∂gaussianReal 0 1 = 1 := by
   rw [moment_recursion 0]; simp
 
-/-- `E g^4 = 3` (manuscript `R:gaussian-one-variance-test`, line 183). -/
+/-- `E g^4 = 3` (manuscript `R:gaussian-one-variance-test`, line 261). -/
 theorem moment_four : ∫ x, x ^ 4 ∂gaussianReal 0 1 = 3 := by
   rw [moment_recursion 2, moment_two]; norm_num
 

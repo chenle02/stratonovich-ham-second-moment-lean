@@ -1,0 +1,13 @@
+node=node939 job=5699011 array=5698959_50 mode=fresh target=StratonovichHAMSecondMoment.GramScalarAlgebra start=2026-11-13T08:45:36-0600
+tmp_avail_G=891
+VERIFIED_COMMIT=56fc59ec31b8ede85ac5ab7a2283237b091029a7 TREE=df0322362d43b18a73c060519d72955b328900c5 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1480 waited_s=0
+REPLAY_STARTED 2026-11-13T08:51:20-0600
+BEGIN fresh StratonovichHAMSecondMoment.GramScalarAlgebra 08:51:20
+END fresh StratonovichHAMSecondMoment.GramScalarAlgebra	0	0:10:19.72	3016168	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=620 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.GramScalarAlgebra
+PROCESS_EXIT=0 end=2026-11-13T09:01:40-0600

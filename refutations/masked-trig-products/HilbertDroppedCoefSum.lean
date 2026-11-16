@@ -1,6 +1,6 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.MaskedTrigProducts.norm_sq_sum_le`
-(`L:masked-trig-products`, TeX l. 365-368).
+(`L:masked-trig-products`, TeX l. 477-480).
 
 Wrong variant: the package statement with the factor `Σ|c_j|` dropped,
 `‖Σ c_j v_j‖² ≤ Σ|c_j| ‖v_j‖²`, in the exact binder shape of `norm_sq_sum_le`

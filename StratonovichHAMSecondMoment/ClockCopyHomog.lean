@@ -4,16 +4,16 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The wrappers of `P:clock-copy-obstruction` (main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex`, revision a284420, lines
-7754-7905) and of the finiteness and nonnegativity parts of
-`L:damped-homogeneous-norms` (lines 803-919), re-issued with the
+`notes/notes_stratonovich_ham_second_moment.tex`, revision 39f2597a, lines
+9033-9208) and of the finiteness and nonnegativity parts of
+`L:damped-homogeneous-norms` (lines 1010-1154), re-issued with the
 manuscript's hypotheses only: the supplied input
 `SpectralHomog.SpectralHomogeneous μ α` of `ClockCopy.clock_copy_obstruction_paper`,
 `ClockCopy.damped_N2_nonneg_paper` and `DampedNorms.damped_norms_finite_paper`
 is now derived from `H:homog` by
 `MaskedSpectralGrowth.spectralHomogeneous_of_homog` (the sentence
 "Scaling the Fourier representation of `Γ` and using Fourier uniqueness gives
-`μ(cA) = c^α μ(A)`", lines 851-852).
+`μ(cA) = c^α μ(A)`", lines 1067-1068).
 
 Each theorem here has exactly the conclusion of the existing wrapper it
 re-issues and is proved by applying that wrapper; the existing modules and

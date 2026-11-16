@@ -4,7 +4,7 @@ Refutation for the scalar identity of `SpatialFourierBound`, package theorem
 (`8 b (2√b)^{α-2} = 2^{1+α} b^{α/2}`; auxiliary to the Lean proof route of the
 deterministic bound `A_sp(g) ≤ 2^{1+α} R_Γ(1) b^{α/2}` for
 `P:spatial-smooth-ratio`, `notes/integrated_spatial_occupation.tex` lines
-166-170 at a284420).
+223-227 at 39f2597a).
 
 Wrong variant: the constant `2^α` instead of `2^{1+α}`, i.e.
 `8 b (2√b)^{α-2} = 2^α b^{α/2}` for all `α` and `b > 0`.

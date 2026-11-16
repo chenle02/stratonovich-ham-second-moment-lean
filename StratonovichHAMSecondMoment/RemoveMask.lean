@@ -5,8 +5,8 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Proposition `P:variational-remove-mask` (Monotone rates and the original
 point moment) of `notes/integrated_unmasked_variational.tex` at revision
-a284420: statement TeX lines 168-179, proof lines 181-221, display
-`E:variational-unmasked-point-lower` lines 175-178.  The section's standing
+39f2597a: statement TeX lines 227-238, proof lines 240-302, display
+`E:variational-unmasked-point-lower` lines 234-237.  The section's standing
 assumption (line 4) is a nonzero covariance satisfying `H:homog` with
 `a = α₀`; the wrappers carry it as `HomogHypothesis.HomogCovariance`,
 `Γ ≠ 0`, and use `a = α₀`.  Reused: the class `CPos`, the mean `h_{Ψ,s}`
@@ -19,7 +19,7 @@ floor of `VariationalFloor`; `VariationalMean.global_mean` and
 
 New definitions: the profile `chi r = Real.smoothTransition (2 - r)`, which is
 the TeX's `χ(r) = F(2-r)/(F(2-r) + F(r-1))` with `F(t) = e^{-1/t}` for
-`t > 0` and `0` otherwise (`chi_eq`, `expNegInvGlue_eq`; lines 182-185); the
+`t > 0` and `0` otherwise (`chi_eq`, `expNegInvGlue_eq`; lines 248-251); the
 masks `mask R x = χ(|x|/R)`; the masked mean `m_R h_{Ψ,s}`
 (`maskedMean`); the masked rate `λ_{R,s}` (`maskedRate`, the square root of
 the supremum of the real Rayleigh values of `m_R h_s`, the convention of
@@ -27,12 +27,12 @@ the supremum of the real Rayleigh values of `m_R h_s`, the convention of
 `RawBlockOriginalLower`.
 
 Formalized:
-* The masks (lines 184-191, `mask_family`): `χ` has a positive denominator,
+* The masks (lines 250-257, `mask_family`): `χ` has a positive denominator,
   is nonincreasing, smooth, `[0,1]`-valued, `1` on `r ≤ 1` and `0` on
   `r ≥ 2`; for `R > 0`, `m_R` is smooth (also at the origin), even, radial,
   `[0,1]`-valued, `1` on `|x| ≤ R`, supported in the closed ball of radius
   `2R`, nondecreasing in `R`, and `m_R → 1` pointwise.
-* The rate clauses (lines 168-174, 193-212; general form `remove_mask`,
+* The rate clauses (lines 227-233, 270-289; general form `remove_mask`,
   wrapper `variational_remove_mask_rates_paper`, no supplied input): a common
   margin `ε > 0` for every `R ≥ R₀` (`ε ≤ λ_{R,s}² ≤ M`); monotonicity
   `λ_{R,s} ≤ λ_{R',s} ≤ λ_{Ψ,s}` for `0 < R ≤ R'`; the Lipschitz bound
@@ -42,7 +42,7 @@ Formalized:
   monotonicity and convergence `∫_I λ_{R,s} ds → I_Ψ`, each bounded by `I_Ψ`.
   The general exchange step is `tendsto_sSup_rayleighSet`: for potentials
   `V_i ≤ W`, `|V_i| ≤ B`, `V_i → W` pointwise, `sup R_{V_i} → sup R_W`.
-* `E:variational-unmasked-point-lower` (lines 175-178, 214-218; general form
+* `E:variational-unmasked-point-lower` (lines 234-237, 295-299; general form
   `unmasked_point_lower`, wrapper `variational_remove_mask_paper`) over the
   named input: `2 I_Ψ - v_Ψ/2 ≤ liminf_{T→∞} L(T)` in `EReal`.
 
@@ -50,13 +50,13 @@ Supplied input (named, one): `RawBlockOriginalLower a Γ Ψ v L`, for all large
 `R`, `2 ∫_0^1 λ_{R,s} ds - v/2 ≤ liminf_{T→∞} L(T)` in `EReal`, where `L(T)`
 stands for `T^{-κ} log E|u(T,x)|²` at a fixed `x`.  It is
 `E:raw-block-original-lower` (`P:raw-block-original-lower`,
-`notes/integrated_raw_block_lower.tex` lines 541-549 at a284420) applied with
+`notes/integrated_raw_block_lower.tex` lines 739-747 at 39f2597a) applied with
 the mask `m_R`, which is eligible there (even, `[0,1]`-valued, one on `B_R`,
 supported in the closed ball of radius `2R`, lines 7-8 of that file) for `R`
 at least the radius of `P:compact-original-common-trial`, read with two
 identifications the TeX makes: the compact ground rate of `m_R h_s` equals
 the Rayleigh rate `maskedRate` (`integrated_unmasked_variational.tex`
-lines 195-196, the argument of `E:variational-real-rayleigh`), and
+lines 272-273, the argument of `E:variational-real-rayleigh`), and
 `v_Ψ = E W(Ψ)²` equals the integral form
 `rawCost` (`L:compact-raw-profile`).  It is no stronger than that source: it
 is asserted only for all sufficiently large `R` (the source gives every
@@ -81,21 +81,21 @@ smoothness, plateau, support and monotonicity statements assume `R > 0`
 
 Proof routes that differ from the TeX:
 * Common margin: the TeX uses the compact trial of
-  `P:compact-original-common-trial` (line 193).  Here the trial is the test
+  `P:compact-original-common-trial` (line 270).  Here the trial is the test
   function of `VariationalFloor.dilation_floor` (the route of
   `VariationalRate.unmasked_rate`), supported in a ball of radius `R₁`;
   `R₀ = R₁ + 1`, and for `R ≥ R₀` its masked and unmasked Rayleigh values
   coincide.
 * Exchange of suprema: proved as convergence of the suprema as `R → ∞`
-  (dominated convergence for each fixed trial, lines 197-199), from which the
+  (dominated convergence for each fixed trial, lines 274-276), from which the
   supremum over `R ≥ R₀` follows by monotonicity.
 * Uniform convergence: Mathlib's Dini theorem
   (`Monotone.tendstoUniformlyOn_of_forall_tendsto`) applied to the monotone
   family `R ↦ λ_{max(R,R₀),s}` of continuous functions on `I`, which equals
   `λ_{R,s}` for `R ≥ R₀`; the TeX runs the finite-subcover argument along
-  `R_n = R₀ + n` and extends by monotonicity (lines 208-211).
+  `R_n = R₀ + n` and extends by monotonicity (lines 285-288).
 * `∫_I λ_{R,s} ds → I_Ψ`: dominated convergence with the bound `√M`; the TeX
-  deduces it from the uniform convergence (line 212).
+  deduces it from the uniform convergence (line 289).
 Lemmas marked "Auxiliary to the Lean proof route" have no manuscript label.
 -/
 public import Mathlib
@@ -130,43 +130,43 @@ variable {d : ℕ}
 
 /-! ### The profile `χ` and the masks `m_R` -/
 
-/-- The TeX's `F` (line 182): `F(t) = e^{-1/t}` for `t > 0` and `0` otherwise
+/-- The TeX's `F` (line 248): `F(t) = e^{-1/t}` for `t > 0` and `0` otherwise
 is Mathlib's `expNegInvGlue`. -/
 theorem expNegInvGlue_eq (t : ℝ) :
     expNegInvGlue t = if t ≤ 0 then 0 else Real.exp (-(1 / t)) := by
   rw [one_div]; rfl
 
-/-- The profile of the masks (TeX line 184), `χ(r) = smoothTransition(2 - r)`. -/
+/-- The profile of the masks (TeX line 250), `χ(r) = smoothTransition(2 - r)`. -/
 def chi (r : ℝ) : ℝ := Real.smoothTransition (2 - r)
 
-/-- `χ` is the TeX's quotient: `χ(r) = F(2-r)/(F(2-r) + F(r-1))` (line 184). -/
+/-- `χ` is the TeX's quotient: `χ(r) = F(2-r)/(F(2-r) + F(r-1))` (line 250). -/
 theorem chi_eq (r : ℝ) :
     chi r = expNegInvGlue (2 - r) / (expNegInvGlue (2 - r) + expNegInvGlue (r - 1)) := by
   unfold chi Real.smoothTransition
   rw [show (1 : ℝ) - (2 - r) = r - 1 by ring]
 
-/-- The denominator of `χ` is positive (line 187). -/
+/-- The denominator of `χ` is positive (line 253). -/
 theorem chi_denom_pos (r : ℝ) : 0 < expNegInvGlue (2 - r) + expNegInvGlue (r - 1) := by
   have := Real.smoothTransition.pos_denom (2 - r)
   rwa [show (1 : ℝ) - (2 - r) = r - 1 by ring] at this
 
-/-- `χ` is nonincreasing (lines 187-188). -/
+/-- `χ` is nonincreasing (lines 253-254). -/
 theorem chi_antitone : Antitone chi := fun _ _ hab =>
   Real.smoothTransition.monotone (by linarith)
 
-/-- `χ = 1` on `r ≤ 1` (line 188). -/
+/-- `χ = 1` on `r ≤ 1` (line 254). -/
 theorem chi_eq_one {r : ℝ} (hr : r ≤ 1) : chi r = 1 :=
   Real.smoothTransition.one_of_one_le (by linarith)
 
-/-- `χ = 0` on `r ≥ 2` (line 189). -/
+/-- `χ = 0` on `r ≥ 2` (line 255). -/
 theorem chi_eq_zero {r : ℝ} (hr : 2 ≤ r) : chi r = 0 :=
   Real.smoothTransition.zero_of_nonpos (by linarith)
 
-/-- `0 ≤ χ ≤ 1` (line 191). -/
+/-- `0 ≤ χ ≤ 1` (line 257). -/
 theorem chi_mem (r : ℝ) : 0 ≤ chi r ∧ chi r ≤ 1 :=
   ⟨Real.smoothTransition.nonneg _, Real.smoothTransition.le_one _⟩
 
-/-- `χ` is smooth (line 189). -/
+/-- `χ` is smooth (line 255). -/
 theorem chi_contDiff : ContDiff ℝ ∞ chi :=
   Real.smoothTransition.contDiff.comp (contDiff_const.sub contDiff_id)
 
@@ -174,7 +174,7 @@ theorem chi_contDiff : ContDiff ℝ ∞ chi :=
 theorem chi_continuous : Continuous chi :=
   Real.smoothTransition.continuous.comp (continuous_const.sub continuous_id)
 
-/-- The masks of the TeX (line 185): `m_R(x) = χ(|x|/R)`.  (For `R = 0`
+/-- The masks of the TeX (line 251): `m_R(x) = χ(|x|/R)`.  (For `R = 0`
 Lean's division convention, and for `R < 0` the sign, make `m_R ≡ 1`; the
 smoothness, plateau, support and monotonicity statements below assume
 `R > 0`, the limits concern `R → ∞`.) -/
@@ -184,27 +184,27 @@ def mask (R : ℝ) (x : Rd d) : ℝ := chi (‖x‖ / R)
 theorem mask_continuous (R : ℝ) : Continuous (mask (d := d) R) :=
   chi_continuous.comp (continuous_norm.div_const R)
 
-/-- `0 ≤ m_R ≤ 1` (line 191). -/
+/-- `0 ≤ m_R ≤ 1` (line 257). -/
 theorem mask_mem (R : ℝ) (x : Rd d) : 0 ≤ mask R x ∧ mask R x ≤ 1 := chi_mem _
 
-/-- `m_R` is radial (line 170). -/
+/-- `m_R` is radial (line 229). -/
 theorem mask_radial (R : ℝ) {x y : Rd d} (h : ‖x‖ = ‖y‖) : mask R x = mask R y := by
   simp only [mask, h]
 
-/-- `m_R` is even (line 191). -/
+/-- `m_R` is even (line 257). -/
 theorem mask_neg (R : ℝ) (x : Rd d) : mask R (-x) = mask R x := by
   simp only [mask, norm_neg]
 
-/-- `m_R = 1` on the closed ball `|x| ≤ R` (from line 188). -/
+/-- `m_R = 1` on the closed ball `|x| ≤ R` (from line 254). -/
 theorem mask_eq_one {R : ℝ} (hR : 0 < R) {x : Rd d} (hx : ‖x‖ ≤ R) : mask R x = 1 :=
   chi_eq_one ((div_le_one hR).2 hx)
 
-/-- `m_R = 0` on `|x| ≥ 2R` (from line 189). -/
+/-- `m_R = 0` on `|x| ≥ 2R` (from line 255). -/
 theorem mask_eq_zero {R : ℝ} (hR : 0 < R) {x : Rd d} (hx : 2 * R ≤ ‖x‖) : mask R x = 0 :=
   chi_eq_zero ((le_div_iff₀ hR).2 hx)
 
 /-- The support of `m_R` lies in the closed ball of radius `2R` (from line
-189). -/
+255). -/
 theorem tsupport_mask_subset {R : ℝ} (hR : 0 < R) :
     tsupport (mask (d := d) R) ⊆ closedBall 0 (2 * R) := by
   refine closure_minimal (fun x hx => ?_) isClosed_closedBall
@@ -218,7 +218,7 @@ theorem mask_hasCompactSupport {R : ℝ} (hR : 0 < R) : HasCompactSupport (mask 
     (tsupport_mask_subset hR)
 
 /-- `m_R` is smooth for `R > 0`, also at the origin, where it is constant
-(lines 189-190). -/
+(lines 255-256). -/
 theorem mask_contDiff {R : ℝ} (hR : 0 < R) : ContDiff ℝ ∞ (mask (d := d) R) := by
   rw [contDiff_iff_contDiffAt]
   intro x
@@ -230,7 +230,7 @@ theorem mask_contDiff {R : ℝ} (hR : 0 < R) : ContDiff ℝ ∞ (mask (d := d) R
     exact contDiffAt_const.congr_of_eventuallyEq this
   · exact chi_contDiff.contDiffAt.comp x ((contDiffAt_norm ℝ hx).div_const R)
 
-/-- The masks increase in `R > 0` (line 191). -/
+/-- The masks increase in `R > 0` (line 257). -/
 theorem mask_mono {R R' : ℝ} (hR : 0 < R) (hRR : R ≤ R') (x : Rd d) :
     mask R x ≤ mask R' x :=
   chi_antitone (div_le_div_of_nonneg_left (norm_nonneg x) hR hRR)
@@ -242,7 +242,7 @@ theorem mask_eventually_one (x : Rd d) : ∀ᶠ R in atTop, mask R x = 1 := by
   exact mask_eq_one (lt_of_lt_of_le one_pos ((le_max_right _ _).trans hR))
     ((le_max_left _ _).trans hR)
 
-/-- The masks tend to one pointwise (line 191). -/
+/-- The masks tend to one pointwise (line 257). -/
 theorem mask_tendsto (x : Rd d) : Tendsto (fun R => mask R x) atTop (𝓝 1) :=
   tendsto_const_nhds.congr' ((mask_eventually_one x).mono fun _ h => h.symm)
 
@@ -288,7 +288,7 @@ theorem sSup_rayleighSet_mono {V W : Rd d → ℝ} (hVW : ∀ x, V x ≤ W x)
   ⟨rayleighSet_nonempty hV, ⟨_, fun _ hq => rayleighValue_le_sSup_of_le hVW hW hbW hq⟩,
     csSup_le (rayleighSet_nonempty hV) fun _ hq => rayleighValue_le_sSup_of_le hVW hW hbW hq⟩
 
-/-- The exchange of the two suprema (TeX lines 197-207) for a general family
+/-- The exchange of the two suprema (TeX lines 274-284) for a general family
 of potentials.  Let `V_i ≤ W` pointwise, `|V_i| ≤ B`, `V_i → W` pointwise
 along a countably generated filter, with `V_i f²` and `W f²` integrable for
 every `f ∈ L²`, and the value set of `W` nonempty and bounded above.  Then
@@ -338,7 +338,7 @@ def maskedIntegratedRate (a : ℝ) (Γ : Measure (Rd d)) (Ψ : ℝ × Rd d → �
   ∫ s in Ioo (0 : ℝ) 1, maskedRate a Γ Ψ R s
 
 /-- **`P:variational-remove-mask`, rate part, general form** (TeX lines
-168-174 and 193-212).  For tempered `Γ`, `μ` with the spectral convention,
+227-233 and 270-289).  For tempered `Γ`, `μ` with the spectral convention,
 `Γ` nonzero and locally finite with the set scaling of `H:homog`, `α < 2`,
 `0 ≤ a < 1` and `Ψ ∈ CPos`: there are reals `ε > 0`, `M ≥ ε`, `C ≥ 0`,
 `R₀ > 0` such that (i) for `R ≥ R₀` and `s ∈ [0,1]` the Rayleigh value set
@@ -561,7 +561,7 @@ theorem remove_mask {alpha : ℝ} {Γ μ : Measure (Rd d)} (hΓt : IsTempered Γ
 /-! ### The original point moment -/
 
 /-- Auxiliary to the Lean proof route (the numerical supremum of TeX lines
-217-218): if `J R → I` and, for all large `R`,
+298-299): if `J R → I` and, for all large `R`,
 `2 J R - v/2 ≤ liminf_T L(T)` in `EReal`, then `2 I - v/2 ≤ liminf_T L(T)`.
 No junk value: the liminf is taken in the complete lattice `EReal`. -/
 theorem le_liminf_of_tendsto {J : ℝ → ℝ} {I v : ℝ} {L : ℝ → ℝ}
@@ -574,7 +574,7 @@ theorem le_liminf_of_tendsto {J : ℝ → ℝ} {I v : ℝ} {L : ℝ → ℝ}
 
 /-- The named input for `E:variational-unmasked-point-lower`
 (`P:raw-block-original-lower`, `notes/integrated_raw_block_lower.tex` lines
-541-549 at a284420, applied with the mask `m_R` and read with the
+739-747 at 39f2597a, applied with the mask `m_R` and read with the
 identification of its ground rate with `maskedRate`; in the wrapper `v` is
 `rawCost`, the integral form of `v_Ψ`): for all large `R`,
 `liminf_{T→∞} L(T) ≥ 2 ∫_0^1 λ_{R,s} ds - v/2` in `EReal`, where `L(T)`
@@ -585,7 +585,7 @@ def RawBlockOriginalLower (a : ℝ) (Γ : Measure (Rd d)) (Ψ : ℝ × Rd d → 
     liminf (fun T => (L T : EReal)) atTop
 
 /-- **`E:variational-unmasked-point-lower`, general form** (TeX lines
-175-178 and 214-218), over the named input `RawBlockOriginalLower` and the
+234-237 and 295-299), over the named input `RawBlockOriginalLower` and the
 hypotheses of `remove_mask`: for any real `v` and `L : ℝ → ℝ` with
 `RawBlockOriginalLower a Γ Ψ v L`, `2 I_Ψ - v/2 ≤ liminf_{T→∞} L(T)` in
 `EReal`. -/
@@ -601,12 +601,12 @@ theorem unmasked_point_lower {alpha : ℝ} {Γ μ : Measure (Rd d)} (hΓt : IsTe
 
 /-! ### The manuscript's statement -/
 
-/-- The masks `m_R` (TeX lines 184-191) form an increasing family of
+/-- The masks `m_R` (TeX lines 250-257) form an increasing family of
 admissible radial masks tending to one: for `R > 0`, `m_R` is smooth, even,
 radial, `[0,1]`-valued, equal to one on `|x| ≤ R` and supported in the closed
 ball of radius `2R` (the eligibility conditions of
 `notes/integrated_raw_block_lower.tex` lines 7-8 and
-`notes/integrated_compact_mean_family.tex` lines 475-477, apart from the size
+`notes/integrated_compact_mean_family.tex` lines 633-635, apart from the size
 of `R`); `m_R ≤ m_{R'}` for `0 < R ≤ R'`; `m_R → 1` pointwise. -/
 theorem mask_family :
     (∀ R, 0 < R →
@@ -620,18 +620,18 @@ theorem mask_family :
     fun x hx => mask_eq_one hR hx, tsupport_mask_subset hR⟩,
     fun R R' hR hRR x => mask_mono hR hRR x, mask_tendsto⟩
 
-/-- **`P:variational-remove-mask`, rate part** (TeX lines 168-174 and
-181-212 of `notes/integrated_unmasked_variational.tex` at a284420), with the
+/-- **`P:variational-remove-mask`, rate part** (TeX lines 227-233 and
+240-289 of `notes/integrated_unmasked_variational.tex` at 39f2597a), with the
 section's standing hypotheses (line 4: a nonzero covariance satisfying
 `H:homog`, `a = α₀`) and `Ψ ∈ C_pos`, `I = [0,1]`; no supplied input.  The
 masks (`mask_family`) and, with `λ_{R,s}` DEFINED as the square root of the
 real Rayleigh supremum of `m_R h_s` (`maskedRate`; `λ_{Ψ,s}` is
 `VariationalDilation.rate`): reals `ε > 0`, `M ≥ ε`, `C ≥ 0`, `R₀ > 0` with
 (i) for `R ≥ R₀` and `s ∈ I` the value set of `m_R h_s` nonempty and bounded
-above with `ε ≤ λ_{R,s}² = sup ≤ M` (the common margin, lines 193-194) and
+above with `ε ≤ λ_{R,s}² = sup ≤ M` (the common margin, lines 270-271) and
 `√ε ≤ λ_{R,s} ≤ √M`; (ii) `λ_{R,s} ≤ λ_{R',s} ≤ λ_{Ψ,s}` for `0 < R ≤ R'`;
 (iii) `|λ_{R,s} - λ_{R,t}| ≤ C/(2√ε) |s - t|` for `R ≥ R₀`; (iv) the
-exchange display (lines 200-206) in the form
+exchange display (lines 277-283) in the form
 `sup_{R ≥ R₀} λ_{R,s}² = λ_{Ψ,s}²` (stated with the suprema of the value sets,
 equal to the squared rates by (i) and `VariationalRate.unmasked_rate`);
 (v) `λ_{R,s} → λ_{Ψ,s}` for every `s ∈ I`; (vi) uniformly on `I`;
@@ -639,7 +639,7 @@ equal to the squared rates by (i) and `VariationalRate.unmasked_rate`);
 nondecreasing in `R ≥ R₀` and at most `I_Ψ`, and `∫_I λ_{R,s} ds → I_Ψ`.
 Narrower than the TeX: the rates are the Rayleigh rates; the TeX's compact
 ground rates (`P:compact-ground-family` applied to `m_R h_s`) and their
-identification with the Rayleigh form (lines 195-196) are not formalized
+identification with the Rayleigh form (lines 272-273) are not formalized
 (foundation D8), as for `λ_{Ψ,s}` in `variational_unmasked_rate_paper`.
 Of `H:homog`, the fields `Γ_tempered`, `μ_tempered`, `spectral`, `Γ_radon`,
 `scaling`, `alpha0_pos`, `alpha0_lt_one`, `threshold` are used; `dim`,
@@ -685,18 +685,18 @@ theorem variational_remove_mask_rates_paper {alpha alpha0 : ℝ} {Γ μ : Measur
     remove_mask hH.Γ_tempered hH.μ_tempered hH.spectral hH.scaling (alpha_lt_two hH) hΓ0
       hH.alpha0_pos.le hH.alpha0_lt_one hΨ⟩
 
-/-- **`P:variational-remove-mask`** (TeX lines 168-221 of
-`notes/integrated_unmasked_variational.tex` at a284420), with the section's
+/-- **`P:variational-remove-mask`** (TeX lines 227-302 of
+`notes/integrated_unmasked_variational.tex` at 39f2597a), with the section's
 standing hypotheses (line 4: a nonzero covariance satisfying `H:homog`,
 `a = α₀`), `Ψ ∈ C_pos`, `I = [0,1]`, and the named input
 `RawBlockOriginalLower` (see its doc comment) for a function `L`, where
 `L(T)` stands for `T^{-κ} log E|u(T,x)|²` at a fixed `x`.  Conclusions: the
 rate part of `variational_remove_mask_rates_paper` and
-`E:variational-unmasked-point-lower` (lines 175-178) in the form
+`E:variational-unmasked-point-lower` (lines 234-237) in the form
 `2 I_Ψ - v_Ψ/2 ≤ liminf_{T→∞} L(T)` in `EReal`, with `v_Ψ` the integral form
 `VariationalDilation.rawCost` of `E:compact-raw-cost`.  Narrower than the TeX:
 the canonical solution `u` and its moment are not defined in Lean; the
-display relates the same `L` that the named input bounds (lines 214-218, the
+display relates the same `L` that the named input bounds (lines 295-299, the
 numerical supremum over the individual bounds).  The rate convention and the
 `H:homog` fields used are as in `variational_remove_mask_rates_paper`. -/
 theorem variational_remove_mask_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}

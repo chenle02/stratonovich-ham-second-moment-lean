@@ -1,0 +1,13 @@
+node=node948 job=5700161 array=5700104_57 mode=fresh target=StratonovichHAMSecondMoment.GaussianTest start=2026-11-13T14:40:38-0600
+tmp_avail_G=891
+VERIFIED_COMMIT=8f51004c412ac618f4be6a5f4a42c7cc78188638 TREE=79a7f16872b7c49a7055b032451460e2f9af3f0d MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1440 waited_s=0
+REPLAY_STARTED 2026-11-13T14:43:00-0600
+BEGIN fresh StratonovichHAMSecondMoment.GaussianTest 14:43:00
+END fresh StratonovichHAMSecondMoment.GaussianTest	0	0:42:48.44	7571336	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2569 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.GaussianTest
+PROCESS_EXIT=0 end=2026-11-13T15:25:49-0600

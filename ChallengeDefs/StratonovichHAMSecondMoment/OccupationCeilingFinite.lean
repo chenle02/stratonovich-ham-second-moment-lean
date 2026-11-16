@@ -43,13 +43,48 @@ variable {d : ℕ}
 /-! ### The constant `K_0` and the sharp Schur row -/
 
 /-- `K_0 = 2^a/(1-a)` (`E:positive-bochner-inclusion`, `integrated_intrinsic_constant.tex`
-line 29; `P:raw-occupation-energy`, `integrated_occupation_ceiling.tex` line 94). -/
+line 30; `P:raw-occupation-energy`, `integrated_occupation_ceiling.tex` line 113). -/
 def K0 (a : ℝ) : ℝ := 2 ^ a / (1 - a)
+
+/-- Auxiliary to the Lean proof route: `K_0 > 0` for `a < 1`. -/
+theorem K0_pos {a : ℝ} (ha : a < 1) : 0 < K0 a :=
+  div_pos (Real.rpow_pos_of_pos two_pos _) (by linarith)
+
+/-- Auxiliary to the Lean proof route: concavity of `x ↦ x^p` (`0 ≤ p ≤ 1`) gives
+`s^p + (1-s)^p ≤ 2^{1-p}` for `s ∈ [0,1]`. -/
+theorem rpow_add_rpow_le {p s : ℝ} (hp0 : 0 ≤ p) (hp1 : p ≤ 1) (hs : s ∈ Icc (0 : ℝ) 1) :
+    s ^ p + (1 - s) ^ p ≤ 2 ^ (1 - p) := by
+  have h := (Real.concaveOn_rpow hp0 hp1).2 (show s ∈ Ici (0 : ℝ) from hs.1)
+    (show 1 - s ∈ Ici (0 : ℝ) from by simp only [mem_Ici]; linarith [hs.2])
+    (show (0 : ℝ) ≤ 1 / 2 by norm_num) (show (0 : ℝ) ≤ 1 / 2 by norm_num) (by norm_num)
+  simp only [smul_eq_mul] at h
+  have e : 1 / 2 * s + 1 / 2 * (1 - s) = (1 / 2 : ℝ) := by ring
+  rw [e] at h
+  have e2 : (2 : ℝ) ^ (1 - p) = 2 * (1 / 2 : ℝ) ^ p := by
+    rw [Real.rpow_sub two_pos, Real.rpow_one, Real.div_rpow (by norm_num) (by norm_num),
+      Real.one_rpow]
+    ring
+  rw [e2]
+  linarith
+
+/-- The sharp row bound (`integrated_intrinsic_constant.tex` lines 52-56, in the proof of
+`L:positive-raw-embedding`): for `0 ≤ a < 1` and `s ∈ [0,1]`,
+`∫_0^1 |s-t|^{-a} dt = (s^{1-a} + (1-s)^{1-a})/(1-a) ≤ K_0`, in `[0,∞]`. -/
+theorem row_le {a s : ℝ} (ha0 : 0 ≤ a) (ha1 : a < 1) (hs : s ∈ Icc (0 : ℝ) 1) :
+    ∫⁻ t in Ioo (0 : ℝ) 1, ENNReal.ofReal (kern a (s - t)) ≤ ENNReal.ofReal (K0 a) := by
+  obtain ⟨hi, he⟩ := TimeSchur.integral_row (T := 1) ha1 hs
+  rw [Measure.restrict_congr_set Ioo_ae_eq_Icc,
+    ← ofReal_integral_eq_lintegral_ofReal hi (ae_of_all _ fun t => kern_nonneg _ _), he]
+  apply ENNReal.ofReal_le_ofReal
+  unfold K0
+  rw [div_le_div_iff_of_pos_right (by linarith)]
+  have := rpow_add_rpow_le (p := 1 - a) (by linarith) (by linarith) hs
+  rwa [sub_sub_cancel] at this
 
 /-! ### Scalar maxima -/
 
 /-- The ceiling `U_c = c^m k [α^{α/2} C / (8 q^{q/2})]^{1/k}` of `E:occupation-score-ceiling`
-(`integrated_occupation_ceiling.tex` lines 209-212), `q = 4 - α`, `k = 3 - α`, `m = q/k`,
+(`integrated_occupation_ceiling.tex` lines 253-256), `q = 4 - α`, `k = 3 - α`, `m = q/k`,
 with a real constant `C` in the place of `C_occ` (the definition agreed with wave item L8-d,
 `SpatialBracket.ceilingValue`, verbatim). -/
 def ceilingValue (alpha c C : ℝ) : ℝ :=
@@ -88,11 +123,11 @@ space-time form `stForm` (`F`) for the section's controls `Ψ ∈ C_pos` and non
 compactly supported space-time fields `Φ` on `ℝ × ℝ^d` (such as `fieldG`):
 * `cs`: Cauchy-Schwarz `F(Ψ,Φ)² ≤ F(Ψ,Ψ) F(Φ,Φ)` (positive semidefiniteness of the form: the
   Hilbert inclusion `J_{H_sp}` of `L:positive-raw-embedding`,
-  `integrated_intrinsic_constant.tex` lines 22-39, `E:positive-bochner-inclusion`);
-* `self`: `F(Ψ,Ψ) = v_Ψ` (the first identity of `E:positive-raw-mean`, line 34, with `v_Ψ` the
+  `integrated_intrinsic_constant.tex` lines 23-40, `E:positive-bochner-inclusion`);
+* `self`: `F(Ψ,Ψ) = v_Ψ` (the first identity of `E:positive-raw-mean`, line 35, with `v_Ψ` the
   integral form `VariationalDilation.rawCost` of `E:compact-raw-cost`);
 * `mean`: `∫_0^1 ∫ h_{Ψ,s} Φ_s dx ds = F(Ψ,Φ)` (the second identity of
-  `E:occupation-raw-identities`, `integrated_occupation_ceiling.tex` lines 34-37, for a squared
+  `E:occupation-raw-identities`, `integrated_occupation_ceiling.tex` lines 35-38, for a squared
   field in the place of `g_s²`).
 All three are deterministic and follow from positive-definiteness of `|s-t|^{-a}` and of `Γ`
 and Fubini; they are no stronger than the manuscript statements named.  The hypothesis is

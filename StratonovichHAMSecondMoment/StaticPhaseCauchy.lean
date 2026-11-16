@@ -5,8 +5,8 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Cauchy and scalar steps of `P:static-phase-all-orders` (All regularized static
 phase orders) of `notes/notes_stratonovich_ham_second_moment.tex` (main TeX
-file; line numbers at revision a284420; statement lines 2577-2605, proof
-2607-2683).  The proposition is an operator and stochastic statement; this
+file; line numbers at revision 39f2597a; statement lines 3087-3115, proof
+3117-3211).  The proposition is an operator and stochastic statement; this
 module formalizes the complex-analytic, scalar and Banach-space deductions of
 its proof.  Every result here is a STEP of the proposition (class: inputs
 supplied, conclusion weaker than the labelled statement): the operator and
@@ -15,38 +15,38 @@ and lines.
 
 Constants (formalized, nothing supplied):
 * `phaseI`, `deltaA`: `I_a = ∫_0^∞ s^{-1/2}(1+s)^{(a-3)/2} ds` and
-  `δ_a = min{1/4, π/(8 I_a)}` of `L:complex-phase` (lines 2298-2299), with
+  `δ_a = min{1/4, π/(8 I_a)}` of `L:complex-phase` (lines 2761-2762), with
   `I_a > 0` and `δ_a > 0` proved for `a < 2` (the TeX uses `a = α/2 ∈ (0,1)`).
-* `allOrdersA`: `A_α = 400 √2 e²/δ_{α/2}` (lines 2585-2587), positive.
-* `fockD`: `d_N = 2 √(N+1) √R_α` (`E:fock-sandwich`, lines 2484-2488).
+* `allOrdersA`: `A_α = 400 √2 e²/δ_{α/2}` (lines 3095-3097), positive.
+* `fockD`: `d_N = 2 √(N+1) √R_α` (`E:fock-sandwich`, lines 2972-2976).
 
 Steps (formalized):
 * the Cauchy estimate for an entire map with values in a complex Banach space
-  (operator-valued included) bounded on a circle (lines 2616-2624):
+  (operator-valued included) bounded on a circle (lines 3134-3142):
   `norm_taylorCoeff_le`, `norm_taylorCoeff_le_of_disc`, and the identification
   of the Taylor coefficient with the power-series coefficient
   (`taylorCoeff_eq_coeff`);
-* the arithmetic at `λ = n/h` (lines 2631-2641): `d_n ≤ 2√(2n)√R_α`, the
-  display of lines 2636-2638, `100 n ≤ 200^n`, `n! ≤ n^n`
+* the arithmetic at `λ = n/h` (lines 3149-3163): `d_n ≤ 2√(2n)√R_α`, the
+  display of lines 3158-3160, `100 n ≤ 200^n`, `n! ≤ n^n`
   (`fockD_le`, `order_display_eq`, `all_orders_arith`); and the pointwise
-  multiplier form of the norm comparisons of lines 2632-2633
+  multiplier form of the norm comparisons of lines 3154-3155
   (`phase_weight_le`);
 * `E:all-static-phase-orders` from these, at fixed cutoffs
   (`static_phase_order_cutoff`) and after both cutoff removals given as
   convergence of norms (`static_phase_all_orders_step`, wrapper
   `static_phase_all_orders_paper`);
-* `E:all-static-phase-sum` (lines 2669-2681) from the order bounds and
+* `E:all-static-phase-sum` (lines 3197-3209) from the order bounds and
   `‖Z_0(h)‖_{1/h} ≤ √e ‖(f,g)‖_{1/h}`, with the elementary series bound
   `SeriesType.seriesNu_le_two_exp_three` (`all_static_phase_sum_step`, wrapper
   `all_static_phase_sum_paper`).
 
 Supplied (named hypotheses, not formalized): `L:fock-form` and
-`L:complex-phase` (the circle bound `100 e^{2λh}`, lines 2611-2614), entireness
-of the phase entries in the coupling (lines 2616-2617), the identification of
+`L:complex-phase` (the circle bound `100 e^{2λh}`, lines 3129-3132), entireness
+of the phase entries in the coupling (lines 3134-3135), the identification of
 the coefficient with the cutoff Duhamel phase via `L:finite-word-cutoff` (lines
-2625-2630), the `X_λ` norm comparisons after integration (lines 2632-2633), the
-cutoff removals (lines 2643-2667, as convergence of norms), and the free bound
-`‖Z_0(h)‖_{1/h} ≤ √e ‖(f,g)‖_{1/h}` (line 2679).  Abstract complex (orders) and
+3143-3148), the `X_λ` norm comparisons after integration (lines 3154-3155), the
+cutoff removals (lines 3168-3192, as convergence of norms), and the free bound
+`‖Z_0(h)‖_{1/h} ≤ √e ‖(f,g)‖_{1/h}` (line 3207).  Abstract complex (orders) and
 real (sum) Banach spaces stand for `L²(Ω; X_λ)`; the Gaussian polynomial
 structure of `Z_n^ε(h)` and the uniformity in `ε` are those of the inputs.
 Narrower than the TeX: the conclusions are the two displays for the quantities
@@ -54,7 +54,7 @@ named by the inputs; that the phases are Gaussian polynomials of degree at most
 `n`, and convergence of `∑ σ^n Z_n^ε(h)` as an `L²` phase identified with the
 Duhamel series, are only as good as the supplied identification.
 
-The section's standing class (lines 2054-2066) enters the wrappers as in
+The section's standing class (lines 2490-2502) enters the wrappers as in
 `IntervalScalar.static_interaction_paper`: locally finite `μ, Γ` on `ℝ³`,
 `0 < α < 2` and `R_α = απ μ(B_1)/(2 sin(πα/2))`; evenness, positive
 definiteness and scaling enter only through the supplied inputs.
@@ -85,7 +85,7 @@ open StratonovichHAMSecondMoment.SeriesType
 /-! ## Constants -/
 
 /-- `I_a = ∫_0^∞ s^{-1/2}(1+s)^{(a-3)/2} ds` (`L:complex-phase`, main TeX line
-2298), as a set integral over `(0, ∞)`; integrable for `a < 2`
+2761), as a set integral over `(0, ∞)`; integrable for `a < 2`
 (`phaseI_integrableOn`). -/
 def phaseI (a : ℝ) : ℝ :=
   ∫ s in Ioi (0 : ℝ), s ^ (-(1 / 2 : ℝ)) * (1 + s) ^ ((a - 3) / 2)
@@ -93,7 +93,7 @@ def phaseI (a : ℝ) : ℝ :=
 /-- Auxiliary (Lean route): for `a < 2`, the integrand
 `s^{-1/2}(1+s)^{(a-3)/2}` of `I_a` is integrable on `(0, ∞)` (it is bounded by
 `s^{-1/2}` on `(0,1]` and by `s^{(a-4)/2}` on `(1, ∞)`).  The TeX uses only
-`0 < a < 1` (`L:complex-phase`, main TeX line 2291). -/
+`0 < a < 1` (`L:complex-phase`, main TeX line 2754). -/
 theorem phaseI_integrableOn {a : ℝ} (ha : a < 2) :
     IntegrableOn (fun s : ℝ => s ^ (-(1 / 2 : ℝ)) * (1 + s) ^ ((a - 3) / 2)) (Ioi 0) := by
   have hmeas : Measurable (fun s : ℝ => s ^ (-(1 / 2 : ℝ)) * (1 + s) ^ ((a - 3) / 2)) := by
@@ -131,7 +131,7 @@ theorem phaseI_integrableOn {a : ℝ} (ha : a < 2) :
           rw [← Real.rpow_add hs0]; congr 1; ring
 
 /-- `I_a > 0` for `a < 2`, so `δ_a = min{1/4, π/(8 I_a)}` is not a junk value
-(main TeX lines 2298-2299, used for `a = α/2 ∈ (0,1)`).  Integrability of the
+(main TeX lines 2761-2762, used for `a = α/2 ∈ (0,1)`).  Integrability of the
 integrand is proved (`phaseI_integrableOn`), so `I_a` is the genuine integral. -/
 theorem phaseI_pos {a : ℝ} (ha : a < 2) : 0 < phaseI a := by
   unfold phaseI
@@ -148,7 +148,7 @@ theorem phaseI_pos {a : ℝ} (ha : a < 2) : 0 < phaseI a := by
     have hs0 : (0 : ℝ) < s := hs
     exact (mul_pos (Real.rpow_pos_of_pos hs0 _) (Real.rpow_pos_of_pos (by linarith) _)).le
 
-/-- `δ_a = min{1/4, π/(8 I_a)}` (`L:complex-phase`, main TeX line 2299). -/
+/-- `δ_a = min{1/4, π/(8 I_a)}` (`L:complex-phase`, main TeX line 2762). -/
 def deltaA (a : ℝ) : ℝ := min (1 / 4) (π / (8 * phaseI a))
 
 /-- `δ_a > 0` for `a < 2` (in the TeX, `0 < a < 1`). -/
@@ -157,15 +157,15 @@ theorem deltaA_pos {a : ℝ} (ha : a < 2) : 0 < deltaA a := by
   have := phaseI_pos ha
   exact lt_min (by norm_num) (by positivity)
 
-/-- `δ_a ≤ 1/4` (main TeX line 2299). -/
+/-- `δ_a ≤ 1/4` (main TeX line 2762). -/
 theorem deltaA_le_quarter (a : ℝ) : deltaA a ≤ 1 / 4 := min_le_left _ _
 
-/-! ## Cauchy estimate (main TeX lines 2616-2624) -/
+/-! ## Cauchy estimate (main TeX lines 3134-3142) -/
 
 /-- The `n`th Taylor coefficient at `0` of a map `F : ℂ → G`,
 `(n!)⁻¹ F^{(n)}(0)`.  For an entire `F` with operator-valued power series
 `F(z) = ∑ z^n C_n` it is `C_n` (`taylorCoeff_eq_coeff`); in the proof of
-`P:static-phase-all-orders` (main TeX lines 2616-2625), `F` is the phase
+`P:static-phase-all-orders` (main TeX lines 3134-3143), `F` is the phase
 propagator `z ↦ 𝓜_z(h)` and the coefficient applied to the initial phase is the
 `n`th Duhamel phase at the cutoffs. -/
 def taylorCoeff {G : Type*} [NormedAddCommGroup G] [NormedSpace ℂ G] (F : ℂ → G) (n : ℕ) : G :=
@@ -174,7 +174,7 @@ def taylorCoeff {G : Type*} [NormedAddCommGroup G] [NormedSpace ℂ G] (F : ℂ 
 /-- Auxiliary (Lean route): if `F` has the power series `p` at `0` on a ball of
 any positive radius, its `n`th series coefficient `p.coeff n` (the `C_n` of
 `F(z) = ∑ z^n C_n`) is `taylorCoeff F n`.  This lets the coefficient bound be
-applied to "the operator-valued series" of main TeX lines 2616-2618. -/
+applied to "the operator-valued series" of main TeX lines 3134-3136. -/
 theorem taylorCoeff_eq_coeff {G : Type*} [NormedAddCommGroup G] [NormedSpace ℂ G] [CompleteSpace G]
     {F : ℂ → G} {p : FormalMultilinearSeries ℂ ℂ G} {r : ENNReal}
     (hp : HasFPowerSeriesOnBall F p 0 r) (n : ℕ) : p.coeff n = taylorCoeff F n := by
@@ -185,7 +185,7 @@ theorem taylorCoeff_eq_coeff {G : Type*} [NormedAddCommGroup G] [NormedSpace ℂ
   rfl
 
 /-- **Step of `P:static-phase-all-orders`, Cauchy's estimate** (main TeX lines
-2616-2624), general form: for a complete complex normed space `G` (for example
+3134-3142), general form: for a complete complex normed space `G` (for example
 `E →L[ℂ] E`, operator-valued), an entire `F : ℂ → G` with `‖F z‖ ≤ M` on the
 circle `|z| = ρ`, `ρ > 0`, has `‖(n!)⁻¹ F^{(n)}(0)‖ ≤ M/ρ^n`.  From Mathlib's
 `Complex.norm_iteratedDeriv_le_of_forall_mem_sphere_norm_le`. -/
@@ -202,13 +202,13 @@ theorem norm_taylorCoeff_le {G : Type*} [NormedAddCommGroup G] [NormedSpace ℂ 
 
 
 /-- **Step of `P:static-phase-all-orders`, the coefficient bound of main TeX
-lines 2619-2623** in the form used there: if `‖F z‖ ≤ M` whenever
+lines 3137-3141** in the form used there: if `‖F z‖ ≤ M` whenever
 `|z| ≤ c/d'` for every `d' > 0` with `d ≤ d'` (`c > 0`, `d ≥ 0`), then
 `‖C_n‖ ≤ M (d/c)^n`.  With `c = δ_{α/2} λ^{2-α/2}`, `d = d_N` and
 `M = 100 e^{2λh}` this is the TeX's display.  Quantifying over every `d' ≥ d`,
 `d' > 0`, is what `L:complex-phase` (which requires `d > 0`) gives from
 `L:fock-form` (a sandwich bound with constant `d_N` also holds with every larger
-constant); it also covers `d = 0` (the TeX's `R_α = 0` case, line 2608) without
+constant); it also covers `d = 0` (the TeX's `R_α = 0` case, line 3126) without
 dividing by zero.  Proof route (Lean): Cauchy on the circle of radius `c/d'`,
 then `d' ↓ d`. -/
 theorem norm_taylorCoeff_le_of_disc {G : Type*} [NormedAddCommGroup G] [NormedSpace ℂ G]
@@ -228,14 +228,14 @@ theorem norm_taylorCoeff_le_of_disc {G : Type*} [NormedAddCommGroup G] [NormedSp
     exact (this.tendsto d).mono_left nhdsWithin_le_nhds
   exact ge_of_tendsto hcont (eventually_nhdsWithin_of_forall (fun d' hd' => key d' hd'))
 
-/-- `d_N = 2 √(N+1) √R` (`E:fock-sandwich`, main TeX lines 2484-2488, with
+/-- `d_N = 2 √(N+1) √R` (`E:fock-sandwich`, main TeX lines 2972-2976, with
 `R = R_α`). -/
 def fockD (N : ℕ) (R : ℝ) : ℝ := 2 * √((N : ℝ) + 1) * √R
 
 /-- Auxiliary: `d_N ≥ 0`. -/
 theorem fockD_nonneg (N : ℕ) (R : ℝ) : 0 ≤ fockD N R := by unfold fockD; positivity
 
-/-- Step of `P:static-phase-all-orders` (main TeX lines 2633-2634):
+/-- Step of `P:static-phase-all-orders` (main TeX lines 3155-3156):
 `d_n ≤ 2 √(2n) √R` for `n ≥ 1`. -/
 theorem fockD_le {n : ℕ} (hn : 1 ≤ n) (R : ℝ) : fockD n R ≤ 2 * √(2 * n) * √R := by
   unfold fockD
@@ -245,10 +245,10 @@ theorem fockD_le {n : ℕ} (hn : 1 ≤ n) (R : ℝ) : fockD n R ≤ 2 * √(2 * 
   gcongr
 
 /-- `400 √2 e²/δ`: with `δ = δ_{α/2}` this is the TeX's
-`A_α = 400 √2 e²/δ_{α/2}` (main TeX lines 2585-2587, `allOrdersA`). -/
+`A_α = 400 √2 e²/δ_{α/2}` (main TeX lines 3095-3097, `allOrdersA`). -/
 def orderConst (δ : ℝ) : ℝ := 400 * √2 * Real.exp 2 / δ
 
-/-- `A_α = 400 √2 e²/δ_{α/2}` (main TeX lines 2585-2587). -/
+/-- `A_α = 400 √2 e²/δ_{α/2}` (main TeX lines 3095-3097). -/
 def allOrdersA (alpha : ℝ) : ℝ := orderConst (deltaA (alpha / 2))
 
 /-- `A_α > 0` for `α < 4` (in the TeX, `0 < α < 2`). -/
@@ -258,8 +258,8 @@ theorem allOrdersA_pos {alpha : ℝ} (hα : alpha < 4) : 0 < allOrdersA alpha :=
   positivity
 
 /-- Step of `P:static-phase-all-orders`, pointwise multiplier form of the norm
-comparisons (main TeX lines 2632-2633).  The `X_λ` norm is
-`‖(f,g)‖_λ² = ‖f‖² + ‖A_λ^{-1/2} g‖²` with `A_λ = λ² - Δ` (line 2307), whose
+comparisons (main TeX lines 3154-3155).  The `X_λ` norm is
+`‖(f,g)‖_λ² = ‖f‖² + ‖A_λ^{-1/2} g‖²` with `A_λ = λ² - Δ` (line 2770), whose
 `g`-part has Fourier multiplier `(λ² + r)⁻¹`, `r = |η|²`.  For `n ≥ 1`, `h > 0`,
 `r ≥ 0`: `((1/h)² + r)⁻¹ ≤ n² ((n/h)² + r)⁻¹` and `((n/h)² + r)⁻¹ ≤ ((1/h)² + r)⁻¹`.
 Integrating against `|ĝ|²` (and `1 ≤ n²` for the `f`-part) gives
@@ -281,7 +281,7 @@ theorem phase_weight_le {n : ℕ} (hn : 1 ≤ n) {h r : ℝ} (hh : 0 < h) (hr : 
   rw [this]
   nlinarith
 
-/-- Step of `P:static-phase-all-orders` (main TeX lines 2632-2638): at
+/-- Step of `P:static-phase-all-orders` (main TeX lines 3154-3160): at
 `λ = n/h`, the coefficient factor with `d = 2√(2n)√R` equals the TeX's display,
 `e^{2λh} (2√(2n)√R/(δ λ^{2-α/2}))^n
  = (2√2 e²/δ)^n R^{n/2} h^{(4-α)n/2} n^{-(3-α)n/2}`
@@ -311,7 +311,7 @@ theorem order_display_eq {n : ℕ} (hn : 1 ≤ n) {h R δ alpha : ℝ} (hh : 0 <
   rw [hq, hs, hh2, ← hm]
   field_simp
 
-/-- Step of `P:static-phase-all-orders` (main TeX line 2640): `100 n ≤ 200^n`
+/-- Step of `P:static-phase-all-orders` (main TeX line 3162): `100 n ≤ 200^n`
 for `n ≥ 1`. -/
 theorem hundred_mul_le {n : ℕ} (hn : 1 ≤ n) : (100 : ℝ) * n ≤ 200 ^ n := by
   have h1 : (n : ℝ) ≤ 2 ^ n := by exact_mod_cast (Nat.lt_two_pow_self).le
@@ -319,7 +319,7 @@ theorem hundred_mul_le {n : ℕ} (hn : 1 ≤ n) : (100 : ℝ) * n ≤ 200 ^ n :=
   calc (100 : ℝ) * n ≤ 100 ^ n * 2 ^ n := by gcongr
     _ = 200 ^ n := by rw [← mul_pow]; norm_num
 
-/-- Step of `P:static-phase-all-orders` (main TeX line 2640, `n! ≤ n^n`): for
+/-- Step of `P:static-phase-all-orders` (main TeX line 3162, `n! ≤ n^n`): for
 `γ ≥ 0` and `n ≥ 1`, `n^{-γn} ≤ 1/(n!)^γ`. -/
 theorem rpow_neg_le_factorial {n : ℕ} (hn : 1 ≤ n) {γ : ℝ} (hγ : 0 ≤ γ) :
     (n : ℝ) ^ (-(γ * n)) ≤ 1 / (n ! : ℝ) ^ γ := by
@@ -330,8 +330,8 @@ theorem rpow_neg_le_factorial {n : ℕ} (hn : 1 ≤ n) {γ : ℝ} (hγ : 0 ≤ �
     ← Real.rpow_neg hf.le]
   exact Real.rpow_le_rpow_of_nonpos hf hle (by linarith)
 
-/-- Step of `P:static-phase-all-orders` (main TeX lines 2640-2641): the display
-of lines 2636-2638, times `100 n`, is at most
+/-- Step of `P:static-phase-all-orders` (main TeX lines 3162-3163): the display
+of lines 3158-3160, times `100 n`, is at most
 `(A √R)^n h^{(4-α)n/2}/(n!)^{(3-α)/2}` with `A = orderConst δ = 400√2 e²/δ`,
 for `α ≤ 3` (the TeX has `0 < α < 2`). -/
 theorem order_final_le {n : ℕ} (hn : 1 ≤ n) {h R δ alpha : ℝ} (hh : 0 < h)
@@ -357,11 +357,11 @@ theorem order_final_le {n : ℕ} (hn : 1 ≤ n) {h R δ alpha : ℝ} (hh : 0 < h
     _ = _ := by rw [hA, mul_pow, mul_pow]; ring
 
 /-- **Step of `P:static-phase-all-orders`, the scalar arithmetic at `λ = n/h`**
-(main TeX lines 2631-2641): for `n ≥ 1`, `h, δ > 0`, `α ≤ 3` and
+(main TeX lines 3149-3163): for `n ≥ 1`, `h, δ > 0`, `α ≤ 3` and
 `0 ≤ d ≤ 2√(2n)√R`,
 `n · 100 e^{2λh} (d/(δ λ^{2-α/2}))^n ≤ (A √R)^n h^{(4-α)n/2}/(n!)^{(3-α)/2}`
 with `λ = n/h` and `A = 400√2 e²/δ`.  The factor `n` is the norm comparison
-`‖z‖_{1/h} ≤ n ‖z‖_{n/h}` of line 2632. -/
+`‖z‖_{1/h} ≤ n ‖z‖_{n/h}` of line 3154. -/
 theorem all_orders_arith {n : ℕ} (hn : 1 ≤ n) {h R δ alpha d : ℝ} (hh : 0 < h)
     (hδ : 0 < δ) (hα : alpha ≤ 3) (hd0 : 0 ≤ d) (hd : d ≤ 2 * √(2 * n) * √R) :
     n * (100 * Real.exp (2 * (n / h) * h) * (d / (δ * (n / h) ^ (2 - alpha / 2))) ^ n) ≤
@@ -380,20 +380,20 @@ theorem all_orders_arith {n : ℕ} (hn : 1 ≤ n) {h R δ alpha d : ℝ} (hh : 0
 /-! ## `E:all-static-phase-orders` -/
 
 /-- **Step row of `P:static-phase-all-orders`, `E:all-static-phase-orders` at
-fixed cutoffs** (main TeX lines 2609-2641).  `E` is a complex Banach space
+fixed cutoffs** (main TeX lines 3127-3163).  `E` is a complex Banach space
 standing for the cutoff space `L²(Ω; X_λ)` at `λ = n/h` (finite Gaussian
 cutoff `m`, degree cutoff `N = n`, band `b`), `F z` the phase propagator
 `𝓜_z(h)` at complex coupling `z`, `v` the initial phase `S_b(f,g)` times the
 vacuum, `z1` the `L²(Ω; X_{1/h})` norm of the cutoff `n`th Duhamel phase and
 `N1 = ‖(f,g)‖_{1/h}`.  Supplied inputs:
-* `hentire`: the phase entries are entire in the coupling (lines 2616-2617);
+* `hentire`: the phase entries are entire in the coupling (lines 3134-3135);
 * `hcircle`: the bound `100 e^{2λh}` on `|z| ≤ δ λ^{2-α/2}/d'` for every
   `d' > 0`, `d' ≥ d_n` (`L:complex-phase` with `a = α/2`, applied to the sandwich
-  bound of `L:fock-form`, lines 2611-2614);
+  bound of `L:fock-form`, lines 3129-3132);
 * `hz`: the identification of the coefficient with the cutoff Duhamel phase
-  (lines 2625-2630, via `L:finite-word-cutoff`) together with the norm
-  comparison `‖z‖_{1/h} ≤ n ‖z‖_{n/h}` (line 2632);
-* `hv`: `‖S_b(f,g)‖_{n/h} ≤ ‖(f,g)‖_{n/h} ≤ ‖(f,g)‖_{1/h}` (line 2633; the first
+  (lines 3143-3148, via `L:finite-word-cutoff`) together with the norm
+  comparison `‖z‖_{1/h} ≤ n ‖z‖_{n/h}` (line 3154);
+* `hv`: `‖S_b(f,g)‖_{n/h} ≤ ‖(f,g)‖_{n/h} ≤ ‖(f,g)‖_{1/h}` (line 3155; the first
   inequality, `S_b` a contraction in `X_λ`, is implicit in the TeX).
 Conclusion: `z1 ≤ (A √R)^n h^{(4-α)n/2}/(n!)^{(3-α)/2} N1`, `A = 400√2 e²/δ`.
 The Cauchy estimate and the arithmetic are proved; the step holds for every
@@ -424,12 +424,12 @@ theorem static_phase_order_cutoff {E : Type*} [NormedAddCommGroup E] [NormedSpac
 
 
 /-- **Step row of `P:static-phase-all-orders`, `E:all-static-phase-orders`**
-(main TeX lines 2588-2595, proof 2609-2667): the cutoff bound of
+(main TeX lines 3098-3105, proof 3127-3192): the cutoff bound of
 `static_phase_order_cutoff` at every Gaussian cutoff `m` and band `b`, with the
 cutoff removals supplied as convergence of norms: `hband`, for each `m` the
-cutoff norms converge as `b → ∞` (lines 2643-2652), and `hgauss`, the
+cutoff norms converge as `b → ∞` (lines 3168-3177), and `hgauss`, the
 resulting norms converge to `z = ‖Z_n^ε(h)‖_{L²(Ω; X_{1/h})}` as `m → ∞`
-(lines 2654-2666).  Norm convergence is implied by the strong convergence the
+(lines 3179-3191).  Norm convergence is implied by the strong convergence the
 TeX proves.  The estimate survives both limits (proved).  The other inputs are
 those of `static_phase_order_cutoff`, at each cutoff. -/
 theorem static_phase_all_orders_step (E : ℕ → ℕ → Type*) [∀ m b, NormedAddCommGroup (E m b)]
@@ -452,8 +452,8 @@ theorem static_phase_all_orders_step (E : ℕ → ℕ → Type*) [∀ m b, Norme
 
 /-! ## `E:all-static-phase-sum` -/
 
-/-- Step of `P:static-phase-all-orders` (main TeX lines 2669-2670 and
-2600-2603): with `x = A|σ|√R h^{(4-α)/2}` and `β = (3-α)/2`,
+/-- Step of `P:static-phase-all-orders` (main TeX lines 3197-3198 and
+3110-3113): with `x = A|σ|√R h^{(4-α)/2}` and `β = (3-α)/2`,
 `x^{1/β} = A^{2/(3-α)} (|σ|²R)^{1/(3-α)} h^{(4-α)/(3-α)}`. -/
 theorem sum_exponent_eq {alpha A R h σ : ℝ} (hα : alpha < 3) (hA : 0 ≤ A) (hR : 0 ≤ R)
     (hh : 0 < h) :
@@ -473,9 +473,9 @@ theorem sum_exponent_eq {alpha A R h σ : ℝ} (hα : alpha < 3) (hA : 0 ≤ A) 
   rw [e1, e2, e3]; ring
 
 /-- **Step row of `P:static-phase-all-orders`, `E:all-static-phase-sum`** (main
-TeX lines 2596-2604, proof 2669-2681).  In a real Banach space standing for
+TeX lines 3106-3114, proof 3197-3209).  In a real Banach space standing for
 `L²(Ω; X_{1/h})`, with `N = ‖(f,g)‖_{1/h}`, the supplied inputs are
-`hZ0`: `‖Z_0(h)‖_{1/h} ≤ √e N` (line 2679, free evolution) and `hZ`: the bounds
+`hZ0`: `‖Z_0(h)‖_{1/h} ≤ √e N` (line 3207, free evolution) and `hZ`: the bounds
 `E:all-static-phase-orders` for `n ≥ 1` (proved under their inputs by
 `static_phase_all_orders_paper`).  Conclusion: `∑ σ^n Z_n` converges absolutely
 and `‖∑ σ^n Z_n‖² ≤ (√e+2)² exp{6 A^{2/(3-α)} (|σ|²R)^{1/(3-α)} h^{(4-α)/(3-α)}} N²`.
@@ -554,9 +554,9 @@ theorem all_static_phase_sum_step {E : Type*} [NormedAddCommGroup E] [NormedSpac
     _ = _ := by rw [hexp]; ring_nf
 
 /-- **Step row of `P:static-phase-all-orders`, `E:all-static-phase-orders`, with
-the section's constants** (main TeX lines 2577-2595, proof 2607-2667): for
-locally finite (Radon) `μ, Γ` on `ℝ³`, `0 < α < 2` (line 2054),
-`R = R_α = απ μ(B_1)/(2 sin(πα/2))` (line 2061), `δ = δ_{α/2}` in the circle
+the section's constants** (main TeX lines 3087-3105, proof 3117-3192): for
+locally finite (Radon) `μ, Γ` on `ℝ³`, `0 < α < 2` (line 2490),
+`R = R_α = απ μ(B_1)/(2 sin(πα/2))` (line 2497), `δ = δ_{α/2}` in the circle
 bound and `A_α = 400√2 e²/δ_{α/2}`, for `n ≥ 1` and `h > 0`:
 `‖Z_n^ε(h)‖_{L²(Ω; X_{1/h})} ≤ (A_α √R_α)^n h^{(4-α)n/2}/(n!)^{(3-α)/2} ‖(f,g)‖_{1/h}`.
 Supplied inputs as in `static_phase_all_orders_step` (`L:fock-form`,
@@ -586,9 +586,9 @@ theorem static_phase_all_orders_paper (E : ℕ → ℕ → Type*) [∀ m b, Norm
     (deltaA_pos (a := alpha / 2) (by linarith)) hentire hcircle hz hv hband hgauss
 
 /-- **Step row of `P:static-phase-all-orders`, `E:all-static-phase-sum`, with the
-section's constants** (main TeX lines 2596-2604, proof 2669-2681): for locally
+section's constants** (main TeX lines 3106-3114, proof 3197-3209): for locally
 finite `μ, Γ` on `ℝ³`, `0 < α < 2`, `R = R_α = απ μ(B_1)/(2 sin(πα/2))` and
-`A = A_α = 400√2 e²/δ_{α/2}`, from the supplied `hZ0` (free bound, line 2679)
+`A = A_α = 400√2 e²/δ_{α/2}`, from the supplied `hZ0` (free bound, line 3207)
 and `hZ` (`E:all-static-phase-orders`, the conclusion of
 `static_phase_all_orders_paper` for each `n ≥ 1`), the series `∑ σ^n Z_n`
 converges absolutely and

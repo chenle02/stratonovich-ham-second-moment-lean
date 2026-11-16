@@ -32,10 +32,10 @@ variable {d : ℕ}
 
 /-! ### The unitary Fourier transform of the section -/
 
-/-- `c_d = (2π)^{-d/2}` (line 11). -/
+/-- `c_d = (2π)^{-d/2}` (line 13). -/
 def cd (d : ℕ) : ℝ := (2 * π) ^ (-(d : ℝ) / 2)
 
-/-- The unitary Fourier transform of the section (lines 8-12), for a function
+/-- The unitary Fourier transform of the section (lines 10-14), for a function
 with values in a complex normed space `E`:
 `f̂(ξ) = c_d ∫ e^{-i ξ·x} f(x) dx`. -/
 def paperHat {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E] (f : Rd d → E)
@@ -59,21 +59,21 @@ def hatS (f : SchwartzMap (Rd d) E) : SchwartzMap (Rd d) E :=
 
 end Fourier
 
-/-! ### The mask `ζ_R`, the kernel `k_R` and the constant `L` (lines 79-82) -/
+/-! ### The mask `ζ_R`, the kernel `k_R` and the constant `L` (lines 96-99) -/
 
 /-- Auxiliary to the Lean proof route. The real Schwartz function `ζ` as a
 complex Schwartz map. -/
 def zc (ζ : SchwartzMap (Rd d) ℝ) : SchwartzMap (Rd d) ℂ :=
   SchwartzMap.postcompCLM (𝕜 := ℝ) Complex.ofRealCLM ζ
 
-/-- The mask `ζ_R(x) = ζ(x/R)` (line 79). -/
+/-- The mask `ζ_R(x) = ζ(x/R)` (line 96). -/
 def zetaR (ζ : SchwartzMap (Rd d) ℝ) (R : ℝ) (x : Rd d) : ℝ := ζ (R⁻¹ • x)
 
-/-- The kernel `k_R = ζ_R^` (line 80), the section's transform of the mask. -/
+/-- The kernel `k_R = ζ_R^` (line 97), the section's transform of the mask. -/
 def kR (ζ : SchwartzMap (Rd d) ℝ) (R : ℝ) : Rd d → ℂ :=
   paperHat (fun x => (zetaR ζ R x : ℂ))
 
-/-- `L = ‖ζ̂‖₁` (line 80). -/
+/-- `L = ‖ζ̂‖₁` (line 97). -/
 def Lz (ζ : SchwartzMap (Rd d) ℝ) : ℝ := ∫ η, ‖paperHat (fun x => (ζ x : ℂ)) η‖
 
 /-- Auxiliary to the Lean proof route. The mask as a complex Schwartz map
@@ -81,16 +81,16 @@ def Lz (ζ : SchwartzMap (Rd d) ℝ) : ℝ := ∫ η, ‖paperHat (fun x => (ζ 
 def zetaS (ζ : SchwartzMap (Rd d) ℝ) (R : ℝ) (hR : R ≠ 0) : SchwartzMap (Rd d) ℂ :=
   SchwartzMap.compCLMOfContinuousLinearEquiv ℝ (dil R⁻¹ (inv_ne_zero hR)) (zc ζ)
 
-/-! ### The auxiliary measure `ν_R` (`E:masked-auxiliary-measure`, lines 83-86) -/
+/-! ### The auxiliary measure `ν_R` (`E:masked-auxiliary-measure`, lines 100-103) -/
 
 /-- The density `ρ_R(η) = c_d² L ∫ |k_R(ξ-η)| μ(dξ)` of
-`E:masked-auxiliary-measure` (line 85), as an `ℝ≥0∞`-valued function (the
+`E:masked-auxiliary-measure` (line 102), as an `ℝ≥0∞`-valued function (the
 integrand is nonnegative, so the lower Lebesgue integral is the manuscript's
 integral and no junk value enters). -/
 def rho (μ : Measure (Rd d)) (ζ : SchwartzMap (Rd d) ℝ) (R : ℝ) (η : Rd d) : ℝ≥0∞ :=
   ENNReal.ofReal (cd d ^ 2 * Lz ζ) * ∫⁻ ξ, ‖kR ζ R (ξ - η)‖ₑ ∂μ
 
-/-- The auxiliary measure `ν_R(dη) = ρ_R(η) dη` (line 84). -/
+/-- The auxiliary measure `ν_R(dη) = ρ_R(η) dη` (line 101). -/
 def nu (μ : Measure (Rd d)) (ζ : SchwartzMap (Rd d) ℝ) (R : ℝ) : Measure (Rd d) :=
   volume.withDensity (rho μ ζ R)
 

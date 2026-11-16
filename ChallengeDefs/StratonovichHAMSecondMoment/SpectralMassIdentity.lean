@@ -33,7 +33,7 @@ open SpectralHomog (SpectralHomogeneous resolvent)
 variable {d : ℕ}
 
 /-- `R_α = απ μ(B_1)/(2 sin(πα/2))` with `B_1` the open unit ball
-(`E:intro-spectral-mass`, main TeX lines 526-532; the same expression as the
+(`E:intro-spectral-mass`, main TeX lines 691-697; the same expression as the
 hypothesis `hRdef` in `IntervalScalar`). -/
 def ralpha (μ : Measure (Rd d)) (alpha : ℝ) : ℝ :=
   alpha * π * (μ (ball (0 : Rd d) 1)).toReal / (2 * Real.sin (π * alpha / 2))

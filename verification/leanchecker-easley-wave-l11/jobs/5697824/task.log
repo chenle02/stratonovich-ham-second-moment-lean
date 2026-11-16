@@ -1,0 +1,13 @@
+node=node966 job=5697824 array=5697760_64 mode=fresh target=StratonovichHAMSecondMoment.MaskedContinuousWave start=2026-11-13T01:25:14-0600
+tmp_avail_G=891
+VERIFIED_COMMIT=b780f10c932e10709415939221e10c6a2a704363 TREE=b12af9bc140a05736c079087408dcdc0dcbb54e0 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1640 waited_s=0
+REPLAY_STARTED 2026-11-13T01:28:44-0600
+BEGIN fresh StratonovichHAMSecondMoment.MaskedContinuousWave 01:28:45
+END fresh StratonovichHAMSecondMoment.MaskedContinuousWave	0	0:42:37.39	7574492	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2559 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.MaskedContinuousWave
+PROCESS_EXIT=0 end=2026-11-13T02:11:23-0600

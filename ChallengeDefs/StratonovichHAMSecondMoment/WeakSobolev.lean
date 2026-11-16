@@ -47,7 +47,7 @@ def MemH1 (f : Rd d → ℝ) : Prop :=
 
 /-! ### The `L^2` dilation `U_r` -/
 
-/-- `U_r f(x) = r^{d/2} f(r x)` (TeX line 260), for real- or vector-valued `f`. -/
+/-- `U_r f(x) = r^{d/2} f(r x)` (TeX line 359), for real- or vector-valued `f`. -/
 def dilL2 {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
     (r : ℝ) (f : Rd d → E) : Rd d → E :=
   fun x => r ^ ((d : ℝ) / 2) • f (r • x)

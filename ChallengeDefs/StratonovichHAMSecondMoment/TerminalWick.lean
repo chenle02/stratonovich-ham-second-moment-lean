@@ -29,7 +29,7 @@ namespace StratonovichHAMSecondMoment.TerminalWick
 open WaveGreen
 
 /-- The integrand of the total mass of the terminal-chain measure
-`g_n^{T,x}` (`E:terminal-chain-measure`, main TeX lines 3585-3598), written by
+`g_n^{T,x}` (`E:terminal-chain-measure`, main TeX lines 4275-4288), written by
 recursion on the last vertex: `chainWeight d 0 T () = 1` and
 `chainWeight d (n+1) T s = 1_{0 < s_{n+1} < T} G_{T - s_{n+1}}(ℝ^d) ·
 chainWeight d n s_{n+1} (s_1, …, s_n)`, i.e. `1_{[0,T]^n_<}(s) ∏_j G_{s_{j+1}-s_j}(ℝ^d)`
@@ -72,14 +72,14 @@ theorem memLp_prod (hW : CenteredGaussianField W K P) {n : ℕ} (z : Fin n → X
   simpa [sq] using (hW.wick_append z z).1
 
 /-- The `L²(Ω)` class of `∏_{j} W(z_j)` for a tuple of points `z : Fin n → X`
-(the integrand of `Y_n`, TeX line 3607). -/
+(the integrand of `Y_n`, TeX line 4298). -/
 def prodL2 (hW : CenteredGaussianField W K P) {n : ℕ} (z : Fin n → X) : Lp ℝ 2 P :=
   (memLp_prod hW z).toLp _
 
 variable [MeasurableSpace X] (ν : ∀ n : ℕ, Measure (Fin n → X)) [∀ n, IsFiniteMeasure (ν n)]
 
 /-- `Y_n = ∫ ∏_j W(s_j, y_j) g_n(ds, dy)` as an `L²(Ω)`-valued Bochner integral
-(TeX lines 3605-3608) against a measure `ν n` on `n`-tuples of points.  It is a
+(TeX lines 4296-4299) against a measure `ν n` on `n`-tuples of points.  It is a
 genuine integral (not the junk value `0`) exactly when `prodL2 hW` is
 `ν n`-integrable, which `integrable_prodL2` proves from the supplied strong
 measurability. -/
@@ -98,15 +98,15 @@ end Mono
 section Paper
 open FiniteWick Finset Filter Topology HomogHypothesis
 
-/-- The point set `[0,T] × ℝ^d` of the field in `L:terminal-wick` (TeX line 3601). -/
+/-- The point set `[0,T] × ℝ^d` of the field in `L:terminal-wick` (TeX line 4292). -/
 abbrev Pt (d : ℕ) (T : ℝ) := ↥(Set.Icc (0 : ℝ) T) × Rd d
 
-/-- `M_n(T)`, the total mass of `g_n^{T,x}` (TeX lines 3648-3651), as the integral
+/-- `M_n(T)`, the total mass of `g_n^{T,x}` (TeX lines 4348-4351), as the integral
 of `chainWeight` (product of the wave Green masses over the ordered simplex). -/
 def chainMass (d n : ℕ) (T : ℝ) : ℝ≥0∞ := ∫⁻ s, chainWeight d n T s
 
 /-- Joint mean-square continuity on each open cell of a finite partition of
-`[0,T]`, times `ℝ^d` (TeX lines 3603-3605): there is a finite set `Z` of cut
+`[0,T]`, times `ℝ^d` (TeX lines 4294-4296): there is a finite set `Z` of cut
 times such that at every point `p` whose time is not in `Z`,
 `E|W(q) - W(p)|² = K(q,q) - 2K(p,q) + K(p,p) → 0` as `q → p` (the open cells
 are open, so continuity on them is continuity at their points; `Z` contains the
@@ -116,7 +116,7 @@ def MeanSquareCellContinuous {d : ℕ} {T : ℝ} (K : Pt d T → Pt d T → ℝ)
     Tendsto (fun q => K q q - 2 * K p q + K p p) (𝓝 p) (𝓝 0)
 
 /-- The pairing integral `T^K_{m,n,D}` of `E:terminal-pairing-integral` (TeX
-lines 3624-3637): the integral against `ν_m ⊗ ν_n` (the two chain measures)
+lines 4315-4328): the integral against `ν_m ⊗ ν_n` (the two chain measures)
 of `∏_{{a,b} ∈ D} K(τ_a, τ_b)`, `τ = Fin.append` of the two tuples. -/
 def pairingIntegral {X : Type*} [MeasurableSpace X] (ν : ∀ n : ℕ, Measure (Fin n → X))
     (K : X → X → ℝ) (m n : ℕ) (D : Fin (m + n) → Fin (m + n)) : ℝ :=

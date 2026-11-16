@@ -2,7 +2,7 @@
 Refutation for the density theorem of `H1Density`, package theorem
 `StratonovichHAMSecondMoment.H1Density.h1TestDense` (density of `C_c^∞` in
 the weak-gradient `H^1`; `notes/integrated_spatial_occupation.tex`, proof of
-`P:spatial-four-linear`, lines 262-266 at a284420).
+`P:spatial-four-linear`, lines 352-356 at 39f2597a).
 
 Wrong variant: drop the hypothesis `f ∈ L²` (keep `g ∈ L²` and the weak
 gradient).  Counterexample in `d = 1`: `f = 1` (constant) has weak gradient

@@ -28,7 +28,7 @@ namespace StratonovichHAMSecondMoment.SpectralHomog
 open HomogHypothesis
 
 /-- The supplied input `μ(cA) = c^α μ(A)` (proof of
-`L:damped-homogeneous-norms`, lines 851-852). -/
+`L:damped-homogeneous-norms`, lines 1067-1068). -/
 def SpectralHomogeneous {d : ℕ} (μ : Measure (Rd d)) (alpha : ℝ) : Prop :=
   ∀ A : Set (Rd d), MeasurableSet A → ∀ c : ℝ, 0 < c →
     μ (c • A) = ENNReal.ofReal (c ^ alpha) * μ A
@@ -37,10 +37,10 @@ variable {d : ℕ} {μ : Measure (Rd d)} {alpha : ℝ}
 
 /-! ### The resolvent `R_Γ` and the heat mass `h_Γ` -/
 
-/-- `R_Γ(q) = ∫ μ(dξ)/(q²+|ξ|²)` (line 7720). -/
+/-- `R_Γ(q) = ∫ μ(dξ)/(q²+|ξ|²)` (line 8998). -/
 def resolvent (μ : Measure (Rd d)) (q : ℝ) : ℝ := ∫ ξ, 1 / (q ^ 2 + ‖ξ‖ ^ 2) ∂μ
 
-/-- `h_Γ(w) = ∫ e^{-w|ξ|²/2} μ(dξ)` (line 7718). -/
+/-- `h_Γ(w) = ∫ e^{-w|ξ|²/2} μ(dξ)` (line 8996). -/
 def heat (μ : Measure (Rd d)) (w : ℝ) : ℝ := ∫ ξ, Real.exp (-(w * ‖ξ‖ ^ 2 / 2)) ∂μ
 
 end StratonovichHAMSecondMoment.SpectralHomog

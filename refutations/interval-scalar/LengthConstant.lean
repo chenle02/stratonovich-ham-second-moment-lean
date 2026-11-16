@@ -1,8 +1,8 @@
 /-
 Refutation for the length-substitution step of `P:interval-coefficients`
-(main TeX lines 3506-3538 at revision a284420), package theorem
+(main TeX lines 4183-4215 at revision 39f2597a), package theorem
 `StratonovichHAMSecondMoment.IntervalScalar.singleton_weight_le`, which needs
-`L ≥ 1` (the TeX's reduction `L ↦ max{1, L}`, lines 3417-3420).
+`L ≥ 1` (the TeX's reduction `L ↦ max{1, L}`, lines 4079-4082).
 
 Wrong variant: dropping `L ≥ 1` (any `L > 0`).  Counterexample:
 `α = α₀ = 1` (so `β = 2`), `L = 1/2`, `T = 1`, `k = i = 1`, `h = LT/i = 1/2`:

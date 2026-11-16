@@ -1,6 +1,6 @@
 /-
 Refutation for `E:masked-gaussian-transform` of `P:masked-spectral-growth`
-(`notes/integrated_covariance_foundation.tex` lines 42-45 at a284420), package
+(`notes/integrated_covariance_foundation.tex` lines 45-48 at 39f2597a), package
 theorem `StratonovichHAMSecondMoment.MaskedSpectralGrowth.masked_gaussian_transform`.
 
 Wrong variant: the normalizing factor `(r/(2√π))^d` dropped, i.e.

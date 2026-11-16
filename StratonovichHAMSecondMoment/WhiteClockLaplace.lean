@@ -4,11 +4,11 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:white-clock-laplace` (White-space low-order Laplace transforms) of
-`notes/notes_stratonovich_ham_second_moment.tex` at revision `a284420`
-(section `S:two-clock-screen`): statement lines 7645--7671, with the displays
-`E:white-cross-clock-transform` (lines 7648--7659), the diagonal value (lines
-7660--7661) and `E:white-self-clock-transform` (lines 7663--7670); proof lines
-7673--7696.  The section's standing case (lines 7640--7643) is `d = α = 1`,
+`notes/notes_stratonovich_ham_second_moment.tex` at revision `39f2597a`
+(section `S:two-clock-screen`): statement lines 8914--8940, with the displays
+`E:white-cross-clock-transform` (lines 8917--8928), the diagonal value (lines
+8929--8930) and `E:white-self-clock-transform` (lines 8932--8939); proof lines
+8942--8974.  The section's standing case (lines 8908--8911) is `d = α = 1`,
 `Γ = δ_0`, `0 < a < 1` and `G_s(y) = (1/2) 1_{|y|<s}`.
 
 What is formalized, in full:
@@ -23,12 +23,12 @@ What is formalized, in full:
   quadrant and iterated (`∫_0^∞ (∫_0^∞ · dr₁) dr₂`) integrals equal
   `Γ_E(1-a)/(2 η₁² η₂^{1-a})`;
 * the two Green-factor steps of the proof: `∫ G_s G_t = min(s,t)/2`
-  (lines 7674--7679) and `G_{r₂}(0) = 1/2`, `∫ G_{r₁} = r₁` (lines 7691--7693).
+  (lines 8949--8954) and `G_{r₂}(0) = 1/2`, `∫ G_{r₁} = r₁` (lines 8969--8971).
 
 Conventions and side conditions made explicit here:
 * `Γ_E` is Mathlib's `Real.Gamma`; powers are `Real.rpow`.
 * The self transform's damping parameters `η₁, η₂` are not given a sign in the
-  TeX (line 7662, "independent gap damping"); the integral converges only for
+  TeX (line 8931, "independent gap damping"); the integral converges only for
   `η₁, η₂ > 0`, which is made an explicit hypothesis.
 * Every integral conclusion carries integrability on the quadrant (the Bochner
   integral of a non-integrable function is `0` in Lean); the iterated integral
@@ -51,7 +51,7 @@ reduced to the first by the coordinate swap (exchanging `θ₁` and `θ₂`), an
 product integral is computed by `integral_prod_mul` and the Gamma integral
 `integral_rpow_mul_exp_neg_mul_rpow`.  In the section "Auxiliary",
 `laplace_id` and `laplace_rpow` are the two elementary integrals of the TeX
-proof (lines 7683--7687); the other helpers there serve only this Lean route
+proof (lines 8958--8962); the other helpers there serve only this Lean route
 and are not TeX steps.
 -/
 public import Mathlib
@@ -69,7 +69,7 @@ namespace StratonovichHAMSecondMoment.WhiteClockLaplace
 /-! ### Auxiliary: one-dimensional Laplace integrals and the quadrant product -/
 
 /-- Step of the TeX proof of `L:white-clock-laplace` (the first elementary integral of TeX lines
-7683--7685): for `c > 0`, `t e^{-ct}` is integrable on `(0,∞)` and
+8958--8960): for `c > 0`, `t e^{-ct}` is integrable on `(0,∞)` and
 `∫_0^∞ t e^{-ct} dt = c^{-2}`. -/
 theorem laplace_id {c : ℝ} (hc : 0 < c) :
     IntegrableOn (fun t : ℝ => t * exp (-(c * t))) (Ioi 0) ∧
@@ -86,7 +86,7 @@ theorem laplace_id {c : ℝ} (hc : 0 < c) :
   ring
 
 /-- Step of the TeX proof of `L:white-clock-laplace` (the second elementary integral of TeX lines
-7686--7687): for `a < 1` and `θ > 0`, `v^{-a} e^{-θ v}` is integrable on
+8961--8962): for `a < 1` and `θ > 0`, `v^{-a} e^{-θ v}` is integrable on
 `(0,∞)` and `∫_0^∞ v^{-a} e^{-θ v} dv = Γ_E(1-a) θ^{a-1}`. -/
 theorem laplace_rpow {a θ : ℝ} (ha : a < 1) (hθ : 0 < θ) :
     IntegrableOn (fun v : ℝ => v ^ (-a) * exp (-(θ * v))) (Ioi 0) ∧
@@ -108,7 +108,7 @@ theorem volume_restrict_quadrant :
       (volume.restrict (Ioi (0:ℝ))).prod (volume.restrict (Ioi (0:ℝ))) := by
   rw [Measure.prod_restrict, Measure.volume_eq_prod]
 
-/-- Auxiliary (Lean route; the Tonelli separation of TeX line 7688): for `f, g`
+/-- Auxiliary (Lean route; the Tonelli separation of TeX line 8963): for `f, g`
 integrable on `(0,∞)`, `f(x) g(y)` is integrable on the quadrant and its integral
 is `(∫_0^∞ f)(∫_0^∞ g)`. -/
 theorem quadrant_mul {f g : ℝ → ℝ} (hf : IntegrableOn f (Ioi 0)) (hg : IntegrableOn g (Ioi 0)) :
@@ -134,22 +134,22 @@ theorem quadrant_iterated {F : ℝ × ℝ → ℝ} (hF : IntegrableOn F (Ioi 0 �
 
 /-! ### The cross-pair transform `E:white-cross-clock-transform` -/
 
-/-- The integrand of `E:white-cross-clock-transform` (TeX line 7652) at
+/-- The integrand of `E:white-cross-clock-transform` (TeX line 8921) at
 `p = (s, t)`: `e^{-θ₁ s - θ₂ t} |s-t|^{-a} min(s,t)/2`. -/
 def crossIntegrand (a θ₁ θ₂ : ℝ) (p : ℝ × ℝ) : ℝ :=
   exp (-θ₁ * p.1 - θ₂ * p.2) * |p.1 - p.2| ^ (-a) * (min p.1 p.2 / 2)
 
-/-- The right side of `E:white-cross-clock-transform` (TeX lines 7654--7656):
+/-- The right side of `E:white-cross-clock-transform` (TeX lines 8923--8925):
 `Γ_E(1-a)/(2(θ₁+θ₂)²) (θ₁^{a-1} + θ₂^{a-1})`. -/
 def crossValue (a θ₁ θ₂ : ℝ) : ℝ :=
   Gamma (1 - a) / (2 * (θ₁ + θ₂) ^ 2) * (θ₁ ^ (a - 1) + θ₂ ^ (a - 1))
 
 /-- Auxiliary (Lean route): the half `{0 < t < s}` of the quadrant (the TeX part
-`s = t + v`, `v > 0`, line 7680). -/
+`s = t + v`, `v > 0`, line 8955). -/
 def upperHalf : Set (ℝ × ℝ) := {p | 0 < p.2 ∧ p.2 < p.1}
 
 /-- Auxiliary (Lean route): the half `{0 < s < t}` of the quadrant (the TeX part
-`t = s + v`, `v > 0`, line 7680). -/
+`t = s + v`, `v > 0`, line 8955). -/
 def lowerHalf : Set (ℝ × ℝ) := {p | 0 < p.1 ∧ p.1 < p.2}
 
 /-- Auxiliary (Lean route): `upperHalf` is measurable. -/
@@ -216,7 +216,7 @@ theorem crossIntegrand_shear (a θ₁ θ₂ : ℝ) {z : ℝ × ℝ} (hz : z ∈ 
     show -θ₁ * (z.1 + z.2) - θ₂ * z.2 = -(θ₁ * z.1) + -((θ₁ + θ₂) * z.2) by ring, exp_add]
   ring
 
-/-- Auxiliary (Lean route; one half of the TeX split, lines 7680--7687): on
+/-- Auxiliary (Lean route; one half of the TeX split, lines 8955--8962): on
 `{0 < t < s}` the cross integrand is integrable with integral
 `Γ_E(1-a) θ₁^{a-1} / (2(θ₁+θ₂)²)`. -/
 theorem cross_upperHalf {a θ₁ θ₂ : ℝ} (ha1 : a < 1) (hθ₁ : 0 < θ₁) (hθ₂ : 0 < θ₂) :
@@ -284,7 +284,7 @@ theorem crossIntegrand_split {a : ℝ} (ha0 : 0 < a) (θ₁ θ₂ : ℝ) :
     have h2 : (s, t) ∉ lowerHalf := fun hp => by simp [lowerHalf] at hp; linarith [hp.2]
     simp [indicator_of_mem h1, indicator_of_notMem h2]
 
-/-- `E:white-cross-clock-transform` (TeX lines 7648--7659), quadrant form: for
+/-- `E:white-cross-clock-transform` (TeX lines 8917--8928), quadrant form: for
 `0 < a < 1` and `θ₁, θ₂ > 0` the cross integrand is integrable on the open
 quadrant and its integral there is `Γ_E(1-a)/(2(θ₁+θ₂)²)(θ₁^{a-1}+θ₂^{a-1})`. -/
 theorem cross_transform {a θ₁ θ₂ : ℝ} (ha0 : 0 < a) (ha1 : a < 1) (hθ₁ : 0 < θ₁)
@@ -309,7 +309,7 @@ theorem cross_transform {a θ₁ θ₂ : ℝ} (ha0 : 0 < a) (ha1 : a < 1) (hθ�
     hUsub, hLsub, hUV, hLV, crossValue]
   ring
 
-/-- `E:white-cross-clock-transform` (TeX lines 7648--7659), iterated form in the
+/-- `E:white-cross-clock-transform` (TeX lines 8917--8928), iterated form in the
 TeX order `∫_0^∞ (∫_0^∞ · ds) dt`, together with integrability on the quadrant. -/
 theorem cross_transform_iterated {a θ₁ θ₂ : ℝ} (ha0 : 0 < a) (ha1 : a < 1) (hθ₁ : 0 < θ₁)
     (hθ₂ : 0 < θ₂) :
@@ -319,7 +319,7 @@ theorem cross_transform_iterated {a θ₁ θ₂ : ℝ} (ha0 : 0 < a) (ha1 : a < 
   obtain ⟨hI, hV⟩ := cross_transform ha0 ha1 hθ₁ hθ₂
   exact ⟨hI, (quadrant_iterated hI).symm.trans hV⟩
 
-/-- The diagonal value (TeX lines 7660--7661):
+/-- The diagonal value (TeX lines 8929--8930):
 `K_×(θ,θ) = Γ_E(1-a)/(4 θ^{3-a})` for `θ > 0`. -/
 theorem crossValue_diag (a : ℝ) {θ : ℝ} (hθ : 0 < θ) :
     crossValue a θ θ = Gamma (1 - a) / (4 * θ ^ (3 - a)) := by
@@ -332,16 +332,16 @@ theorem crossValue_diag (a : ℝ) {θ : ℝ} (hθ : 0 < θ) :
 
 /-! ### The self-pair transform `E:white-self-clock-transform` -/
 
-/-- The integrand of `E:white-self-clock-transform` (TeX line 7666) at
+/-- The integrand of `E:white-self-clock-transform` (TeX line 8935) at
 `p = (r₁, r₂)`: `e^{-η₁ r₁ - η₂ r₂} r₂^{-a} r₁/2`. -/
 def selfIntegrand (a η₁ η₂ : ℝ) (p : ℝ × ℝ) : ℝ :=
   exp (-η₁ * p.1 - η₂ * p.2) * p.2 ^ (-a) * (p.1 / 2)
 
-/-- The right side of `E:white-self-clock-transform` (TeX lines 7668--7669):
+/-- The right side of `E:white-self-clock-transform` (TeX lines 8937--8938):
 `Γ_E(1-a)/(2 η₁² η₂^{1-a})`. -/
 def selfValue (a η₁ η₂ : ℝ) : ℝ := Gamma (1 - a) / (2 * η₁ ^ 2 * η₂ ^ (1 - a))
 
-/-- `E:white-self-clock-transform` (TeX lines 7663--7670), quadrant and iterated
+/-- `E:white-self-clock-transform` (TeX lines 8932--8939), quadrant and iterated
 (`∫_0^∞ (∫_0^∞ · dr₁) dr₂`, the TeX order) forms: for `a < 1` and `η₁, η₂ > 0`
 the self integrand is integrable on the quadrant and both integrals equal
 `Γ_E(1-a)/(2 η₁² η₂^{1-a})`.  (`a > 0` is not needed here.) -/
@@ -372,13 +372,13 @@ theorem self_transform {a η₁ η₂ : ℝ} (ha1 : a < 1) (hη₁ : 0 < η₁) 
     linear_combination h
   exact ⟨hI, hV, (quadrant_iterated hI).symm.trans hV⟩
 
-/-! ### The Green-factor steps of the proof (TeX lines 7674--7679, 7691--7693) -/
+/-! ### The Green-factor steps of the proof (TeX lines 8949--8954, 8969--8971) -/
 
-/-- The one-dimensional wave Green function of the section (TeX line 7642):
+/-- The one-dimensional wave Green function of the section (TeX line 8910):
 `G_s(y) = (1/2) 1_{|y| < s}`. -/
 def green (s y : ℝ) : ℝ := if |y| < s then 1 / 2 else 0
 
-/-- Proof step (TeX lines 7674--7679): for `s, t ≥ 0`, `G_s G_t` is integrable on
+/-- Proof step (TeX lines 8949--8954): for `s, t ≥ 0`, `G_s G_t` is integrable on
 `ℝ` and `∫ G_s(y) G_t(y) dy = min(s,t)/2` (the `δ_0`-pairing read as the
 diagonal integral, as in the TeX). -/
 theorem green_cross_factor {s t : ℝ} (hs : 0 ≤ s) (ht : 0 ≤ t) :
@@ -400,7 +400,7 @@ theorem green_cross_factor {s t : ℝ} (hs : 0 ≤ s) (ht : 0 ≤ t) :
     measureReal_def, Real.volume_Ioo, ENNReal.toReal_ofReal (by linarith)]
   ring
 
-/-- Proof step (TeX lines 7691--7693): `G_{r₂}(0) = 1/2` for `r₂ > 0`, and for
+/-- Proof step (TeX lines 8969--8971): `G_{r₂}(0) = 1/2` for `r₂ > 0`, and for
 `r₁ ≥ 0` the first Green factor is integrable with mass `∫ G_{r₁} = r₁`. -/
 theorem green_self_factor {r₁ r₂ : ℝ} (hr₁ : 0 ≤ r₁) (hr₂ : 0 < r₂) :
     green r₂ 0 = 1 / 2 ∧ Integrable (green r₁) ∧ ∫ y, green r₁ y = r₁ := by
@@ -419,8 +419,8 @@ theorem green_self_factor {r₁ r₂ : ℝ} (hr₁ : 0 ≤ r₁) (hr₂ : 0 < r�
 
 /-! ### Lemma `L:white-clock-laplace` under its exact hypotheses -/
 
-/-- Lemma `L:white-clock-laplace` (TeX lines 7645--7671) under the section's
-hypothesis `0 < a < 1` (line 7641), `θ₁, θ₂ > 0` (line 7657) and the implicit
+/-- Lemma `L:white-clock-laplace` (TeX lines 8914--8940) under the section's
+hypothesis `0 < a < 1` (line 8909), `θ₁, θ₂ > 0` (line 8926) and the implicit
 `η₁, η₂ > 0` (made explicit):
 1. `E:white-cross-clock-transform`: the cross integrand is integrable on the
    quadrant and its iterated integral `∫_0^∞ ∫_0^∞ · ds dt` equals

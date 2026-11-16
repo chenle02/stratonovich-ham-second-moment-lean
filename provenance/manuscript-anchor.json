@@ -1,14 +1,14 @@
 {
   "schema": "manuscript-anchor/1",
   "manuscript": {
-    "title": "The second moment of the hyperbolic Anderson model",
+    "title": "Stratonovich Waves Driven by Space-Time Gaussian Noise: Second Moment and Exact Asymptotics",
     "author": "Le Chen",
     "status": "in preparation (not yet posted)",
-    "revision": "a2844206199b6798464eee7bdaaa45ed9b7c21a0",
+    "revision": "39f2597a5bc4cdc6b9cab91e50051cd8a95b37d8",
     "tex_sources": [
       {
         "path": "notes/notes_stratonovich_ham_second_moment.tex",
-        "sha256": "c71765fb6a13aad853f7c5b834ef35b6bc0e780666af29e4cb1a610784c526b1",
+        "sha256": "85a7d3e9e2402a1e763391dea691d1b0c1e3f877974395f3939a59f5fd066901",
         "role": "main"
       },
       {
@@ -18,37 +18,67 @@
       },
       {
         "path": "notes/index/anchors.tex",
-        "sha256": "30afb1c5af81a7ee7a5d9545052c9ff7ad51b22d4191cdb5ee1ccbc1a1189185",
+        "sha256": "c4e1168312fbc38c6f61cebb971566544d7389f06c01831c2469cf1f5964f051",
+        "role": "included"
+      },
+      {
+        "path": "notes/arxiv-eprint-links.tex",
+        "sha256": "49469123345268a4da036302df928bf8178173f5906966e925ef8d44e30b7c15",
         "role": "included"
       },
       {
         "path": "notes/figures/styles.tex",
-        "sha256": "ba5c01a670b3c4cdece04550e4d60775a7c0e65f139a14a040d1068f08a6a3b9",
+        "sha256": "771a6119fef0f46f95e8ee0c4caf13455b377fe3ca899c08155a3eecbb70d078",
         "role": "figure"
       },
       {
         "path": "notes/ai-statistics-data.tex",
-        "sha256": "d8eb3d9447afb6307413eb403151553f1c115479c7506a930b64355004708a5d",
+        "sha256": "3239de009af3c00e284e21787b68f51092e3684b9c834d0a5a061b90f898df33",
         "role": "included"
       },
       {
         "path": "notes/lean-coverage-data.tex",
-        "sha256": "451a07a7e59d72dc5ec3a7be332ff5a462e22560241c915ae5f32de8359108d9",
+        "sha256": "a25183127ece1f9ecef32951a0724cddad31302211985d9f1324f0e549192195",
+        "role": "included"
+      },
+      {
+        "path": "notes/verification-status-data.tex",
+        "sha256": "b6eea9e29ba75b4aabfc3a74512db684dfb09c71372d0ce2e1b929c396b33d22",
+        "role": "included"
+      },
+      {
+        "path": "notes/critical-path-data.tex",
+        "sha256": "ebc94bed777bd6b89bb3fa4a23d18155be0ab39b6da53ef84ff5255e2bbf568f",
+        "role": "included"
+      },
+      {
+        "path": "notes/lean-markers-data.tex",
+        "sha256": "b6220747a865e8d988492cd7e1458c9c38463e8a8a76abb2859624c35529bf51",
         "role": "included"
       },
       {
         "path": "notes/book-layout.tex",
-        "sha256": "7f52be4b32e7528ce3be49ccb07991331ba32bea5cca31f5513a3b166e06d984",
+        "sha256": "9c2f9a3bfbcf10a3ec7f6581cac61b44437aa316fb2b91ee299388af13308f2c",
+        "role": "included"
+      },
+      {
+        "path": "notes/imprint.tex",
+        "sha256": "7fe673a1a12a9c740102a3757019b58836f8fdea12339515ab52728d06773753",
         "role": "included"
       },
       {
         "path": "notes/preface.tex",
-        "sha256": "76cc1ce9d3d1265addb7f9e05768023abba260156983b192958be9757d187c34",
+        "sha256": "7f33b9c6bdfd9dc90176067a843e3c0623197155ec08e8f734953b9f0c03515a",
         "role": "included"
       },
       {
+        "path": "notes/figures/<person>-observatory-drawing.tex",
+        "sha256": "573e572caa50c75c16bce3af39067c11e767f36482338b2ed789ff03bc781bdb",
+        "role": "figure"
+      },
+      {
         "path": "notes/chapter-guides/01-setting.tex",
-        "sha256": "2a9106511f5a62795844d3fd969bf5c940166643bc0c6d2606681e31f0f56d61",
+        "sha256": "9ade6731be3bd005683d6b0d226798c92d4fcb9f2be9b66e3fa2aac5a31a2850",
         "role": "included"
       },
       {
@@ -58,17 +88,12 @@
       },
       {
         "path": "notes/figures/walsh-guitar.tex",
-        "sha256": "f645d260bd3be7471950738166b638cdc8ded857d0a0bda89bf64583a79d9328",
-        "role": "figure"
-      },
-      {
-        "path": "notes/figures/proof-map.tex",
-        "sha256": "2a0b11365792b75b41e2a009105161e3583991f0ad43a120cd6a34fd4772317e",
+        "sha256": "7bbb1664231136cdb131ee1b72cc6486fc13684aaaaf2fc7d97c779ff68bbd56",
         "role": "figure"
       },
       {
         "path": "notes/figures/chapter-roadmap.tex",
-        "sha256": "6e945b11a10d9e52108288d3576dc33ecdf670b4a1bffa4e715c0a6d8c28bc73",
+        "sha256": "e49033acbcf06baeb52dbcbe4f5c7924a163234d8597ef5a99d1b47abe774b80",
         "role": "figure"
       },
       {
@@ -92,8 +117,38 @@
         "role": "figure"
       },
       {
+        "path": "notes/why_kappa.tex",
+        "sha256": "12e922f7f321b8aced42941a3a974e073ee7673b3996be239f5c84b1cd49c61b",
+        "role": "included"
+      },
+      {
+        "path": "notes/figures/kappa-fan-figure.tex",
+        "sha256": "969e419f88b745b32981d15d6582deae8a5e9fc45180ebbd372fc57f74041a25",
+        "role": "figure"
+      },
+      {
+        "path": "notes/figures/kappa-fan-drawing.tex",
+        "sha256": "3dbc4aa18bda1ac2b57047b7b0b7903d0388fbad1f26f7521ae395c85055d1e0",
+        "role": "figure"
+      },
+      {
+        "path": "notes/consistency_checks.tex",
+        "sha256": "25685f4e0deca767045e715a7a985d6660ae9ecea5ea58392f4b7c85ac804638",
+        "role": "included"
+      },
+      {
+        "path": "notes/proof_strategy.tex",
+        "sha256": "0a91bbce34df7b41c35172611d7c9ef1c699d70998a49a9a4cac281310b49556",
+        "role": "included"
+      },
+      {
+        "path": "notes/figures/proof-map.tex",
+        "sha256": "2a0b11365792b75b41e2a009105161e3583991f0ad43a120cd6a34fd4772317e",
+        "role": "figure"
+      },
+      {
         "path": "notes/future_work.tex",
-        "sha256": "7cf9f2a211c33aaa23855c02e474e872d382af38badcfa704a363654632add3e",
+        "sha256": "7eeb6fc505ab045b6cb7d3e70e69e63f8e9fbd5f28bd7ba3006b3272f96bbbfd",
         "role": "included"
       },
       {
@@ -107,13 +162,33 @@
         "role": "included"
       },
       {
+        "path": "notes/future_rough_noise.tex",
+        "sha256": "f14002f56f88ec9cdb9c1b42275cffb0f62c6f5a744ad584a6fe965528458ea1",
+        "role": "included"
+      },
+      {
+        "path": "notes/figures/rough-noise-regions-figure.tex",
+        "sha256": "bf011bb262951d1fb7aa5bbc29be188f0593d7420b991dc6eecf07e9a155c333",
+        "role": "figure"
+      },
+      {
+        "path": "notes/figures/rough-noise-regions.tikz.tex",
+        "sha256": "f8209b446b56021d69ab05eebff11864f7e75fc4efc232366bb9145523119d0c",
+        "role": "figure"
+      },
+      {
+        "path": "notes/future_first_moment.tex",
+        "sha256": "6e6c1568d6a8e437d9c8e79be4e8ee5680896e75f7dca2ee1b4297dec0440e32",
+        "role": "included"
+      },
+      {
         "path": "notes/theory_outlook.tex",
         "sha256": "f958cfb8518b88d40e427c7a16cd669b4c687e6725e0b25ce61a3c5da7d2db5d",
         "role": "included"
       },
       {
         "path": "notes/chapter-guides/02-G0.tex",
-        "sha256": "ce0e63c362d71710cc375bda1cd1f81bfd2f28b3aad5e05e80d2fd56dd2053ec",
+        "sha256": "fa5503c0f4ab33e615838bcea079162e77f9f73b94d9c77f66591ee77e0e001e",
         "role": "included"
       },
       {
@@ -128,17 +203,37 @@
       },
       {
         "path": "notes/figures/order-of-limits.tex",
-        "sha256": "75911afa9e6eeed742a092d3a10fe06d6e914127091a498c1f273c027b4e43b2",
+        "sha256": "8b64bc2c4013d8f8b1fbd84746d13d8ec5a11a75ab13f58639a91e020c48e6ed",
         "role": "figure"
       },
       {
+        "path": "notes/figures/order-of-limits-drawing.tex",
+        "sha256": "d2c398e9fae64ddc276f6d489bd6da1319e8966aa7c413f0f38aef94b5e3332e",
+        "role": "figure"
+      },
+      {
+        "path": "notes/chapter-endings/02-G0.tex",
+        "sha256": "e5d71a93cd6b7a05273daa82cfdd5531e4d0211e15fedc77bde0ea786d3a6b39",
+        "role": "included"
+      },
+      {
         "path": "notes/chapter-guides/03-independent-upper.tex",
-        "sha256": "0ff7c528285b48b911644c3fc9db71c08bd6f492573c9a204f5d5e21a0e17fe7",
+        "sha256": "d599eb99b17107a3f2e6a1f37557062a2048b288a71c769ede34220b4c1d2588",
         "role": "included"
       },
       {
         "path": "notes/figures/hermite-cutoff.tex",
         "sha256": "e4d4799edc4022305c24850fa33c9c08a635d9d6f79a49f0ea4972b828a22325",
+        "role": "figure"
+      },
+      {
+        "path": "notes/figures/noise-memory-figure.tex",
+        "sha256": "4943ddca8de76693ea853d6823dd046f4ac9b1934a511105912128642a6c20d3",
+        "role": "figure"
+      },
+      {
+        "path": "notes/figures/noise-memory-drawing.tex",
+        "sha256": "2f7aa73bd7da699be53bfd316de6ed942f77e2b4d64597aaf660d7c7431cf5d9",
         "role": "figure"
       },
       {
@@ -162,188 +257,263 @@
         "role": "figure"
       },
       {
+        "path": "notes/chapter-endings/03-independent-upper.tex",
+        "sha256": "12cb4c24da9f53bcf81773fb28097ea822ed2320e70e282307511267440c1a42",
+        "role": "included"
+      },
+      {
         "path": "notes/chapter-guides/04-gaussian-foundations.tex",
-        "sha256": "4ac7c208a84526c551b7c8fa7c14087b6795fc27c6693c4d7ed58eafc26beff2",
+        "sha256": "a35b5a50877fc913bd5480ed89fc20a851398915360af0a2807293edbc324c0c",
         "role": "included"
       },
       {
         "path": "notes/integrated_covariance_foundation.tex",
-        "sha256": "17aa2c1d764b9161c7e6640ed1ce19755f2b43c7a77b03119300030813d31f77",
+        "sha256": "f1a11d5b23ffae6ca37d43eee40892a834dca470496ed14d1e7b78bf44fd1dc7",
         "role": "included"
       },
       {
+        "path": "notes/figures/mask-window-figure.tex",
+        "sha256": "744c3980a78a61b677bbe34d8edc8df1f40a6b636846a3e4f2788081f9dca440",
+        "role": "figure"
+      },
+      {
+        "path": "notes/figures/mask-window-drawing.tex",
+        "sha256": "f5ed5bf0d0189f7632e9b93a03e799359acbb561296d8cdb66b6131b5be48bb0",
+        "role": "figure"
+      },
+      {
         "path": "notes/integrated_wave_variance.tex",
-        "sha256": "d7e956c8fc4c890b1b968f452ac4acc72aaed07e15bf6a13cc320a741d25eeeb",
+        "sha256": "0ceec4120677c5794af029042f42fa6ca389cbcdc7b844f9560d6c27d72e6c4f",
         "role": "included"
       },
       {
         "path": "notes/integrated_compact_gaussian.tex",
-        "sha256": "3043665006548bb5081b80a39e3017b96c6a03ecc8704ffd906044b939c105a0",
+        "sha256": "7bef7e3d85639bf444e529060fecf92c52eab0ed4a234c4068f3061b7097b003",
+        "role": "included"
+      },
+      {
+        "path": "notes/chapter-endings/04-gaussian-foundations.tex",
+        "sha256": "a3021d6d7919358b6bf16d8c52c2c70134b020c3bc7bc0a326bb1fd53ea1df00",
         "role": "included"
       },
       {
         "path": "notes/chapter-guides/05-operator-paths.tex",
-        "sha256": "0bb9269766b3ade084b931c671691c514c01aa798002adca5c935d6cc1bb5d1c",
+        "sha256": "87ec6502156085fff966ab11fce92cd85d4a9647f24da1acc5c2f539732381ea",
         "role": "included"
       },
       {
         "path": "notes/integrated_actual_operator_driver.tex",
-        "sha256": "25dbba4a4ca9c5c4296e9b3aaba7895ae8ad984d104a9a42429e30a38df99409",
+        "sha256": "4c886f0954288cb346b6f2a70aaf9cbdd6a4a285c4e701eca79736089d7704db",
         "role": "included"
       },
       {
         "path": "notes/integrated_source_convergence.tex",
-        "sha256": "c347e3022348fd7975d38dc9c4c15e830aca223c8817253c4c39e753e4148696",
+        "sha256": "6939eac248ef012e3063696a721e193fdef8161a24f517aeb382c6384ac40477",
         "role": "included"
       },
       {
         "path": "notes/figures/common-noise.tex",
-        "sha256": "f1bcf1462a808df02d7159c7441f2c42bcf2536a239e2a39716d7b785730c76c",
+        "sha256": "03690fde4bf756fcada84ae1c9a474d0e272244e85781523482fbdfdf222d136",
         "role": "figure"
       },
       {
+        "path": "notes/figures/common-noise-drawing.tex",
+        "sha256": "f445e831ff37667ad496a57ca7e05b6cb1735cafe0103f2f5d97cf31439f67c2",
+        "role": "figure"
+      },
+      {
+        "path": "notes/chapter-endings/05-operator-paths.tex",
+        "sha256": "0e54e3f8800c23d96565d0bea610742341b347bfa5d2a8b0a4e2f9f1bd27b795",
+        "role": "included"
+      },
+      {
         "path": "notes/chapter-guides/06-wave-evolution.tex",
-        "sha256": "037982115503f2c2e2071c1564eec0918c9950ba443e42e7b45abbebc3f80fb1",
+        "sha256": "509feb42eca7dd278210e357e6fc54349d537fe41cfd29cffde4608f88407725",
         "role": "included"
       },
       {
         "path": "notes/integrated_masked_moments.tex",
-        "sha256": "533f96300b5e0e10205aeb374cdd55378fd3a27e8a5faf6148187f0c02221024",
+        "sha256": "f8fa717e95be1d65a588adb5de40e2f4f082c7a335b64a8d212a92618d1c348c",
         "role": "included"
       },
       {
         "path": "notes/integrated_constant_phase_young.tex",
-        "sha256": "a97b4669b47a0ee4de84747a7a9e6763c38bdcafedadc638ee7f937a6c4b01bd",
+        "sha256": "9b6cc5984431668207d0138b244ad401ede096b88b95e6af68ea766841fd54bd",
         "role": "included"
       },
       {
         "path": "notes/integrated_compact_mean_family.tex",
-        "sha256": "c52144e81d52ff1842c8081579ef2fdb300fbed4f8b962e21ae3e62d42fd2493",
+        "sha256": "3149356913139b69707c4854c3c9f750d67195d1574eee8a93b43abde6d51f43",
+        "role": "included"
+      },
+      {
+        "path": "notes/chapter-endings/06-wave-evolution.tex",
+        "sha256": "eae00d70ca79f65a97b8c5dd0291cb64d7bb680272e129d85f1f5da4780534ba",
         "role": "included"
       },
       {
         "path": "notes/chapter-guides/07-lower.tex",
-        "sha256": "86a3b6f6c3086a60c00a18a128e8c797cc44a0784115b3b1a123677104fe5933",
+        "sha256": "c0fe68588bada4089f66641cfbde14fbe270c477c28f28390cd900866d1d04d1",
         "role": "included"
       },
       {
         "path": "notes/integrated_exact_scaling.tex",
-        "sha256": "4fc63312f1adfdcf045071c5fb61bc34985260089723203966afb1d7b8393649",
+        "sha256": "ae63d4caf30854b02c1a5655883e0525c7bd531ad251076c5f22c47c32108a58",
         "role": "included"
       },
       {
         "path": "notes/integrated_raw_block_lower.tex",
-        "sha256": "dc10f207c3347e5e85b3169526cec53023b3e9d6ee86b6104f96de2d0cd2db2e",
+        "sha256": "1f4fd5ab1bdfd3108c987128f0a40140d7f67ae158257d89cb8538c46b5a8061",
         "role": "included"
       },
       {
         "path": "notes/figures/global-control-blocks.tex",
-        "sha256": "385d22194b62a51faa2f01096b745abcc47a6c5137649b2fca4e5c696dfaa703",
+        "sha256": "7aa960a1061684b1c3c1ee7efe7bbfbe719c3dee6a768d8384e929cd5992b76d",
         "role": "figure"
       },
       {
         "path": "notes/integrated_unmasked_variational.tex",
-        "sha256": "985069b8e1dea64c8bd309102b406a6d9c0685840077e5d3a1193b0fd80907b4",
+        "sha256": "220a25783bd6f0716de0ff29bf9ead5d562c0c4c99fb35c50374743ea7860e4f",
         "role": "included"
       },
       {
         "path": "notes/figures/nonseparable-controls.tex",
-        "sha256": "76526fb586f0b5dd9bc01ab6007ac0590e61f6538d25f98ed5b4eec08f1517bd",
+        "sha256": "b58049f2ffd6673d19c5f1469df22c0535ae9973ebf2ec0b85b3d1568824d15a",
         "role": "figure"
       },
       {
-        "path": "notes/chapter-guides/08-means.tex",
-        "sha256": "070630e15115518e2379656037a13fd0d9b9307d0eaf36aee831707fb0ddf04c",
+        "path": "notes/chapter-endings/07-lower.tex",
+        "sha256": "15fc86f2a49d4736f3bb988f8450e6c270aa3ac2848a4bb2ccf1fe8cf2831fd9",
         "role": "included"
       },
       {
+        "path": "notes/chapter-guides/08-means.tex",
+        "sha256": "207379d615a32a7ebd8043b50cb05e898b6f5f1dee3f3fbf360a9d13d3051813",
+        "role": "included"
+      },
+      {
+        "path": "notes/figures/control-mean-wave-figure.tex",
+        "sha256": "1fa19b1b491000f62916e7e9fa4a6749c48a18843850070f28b127cb95db90a2",
+        "role": "figure"
+      },
+      {
+        "path": "notes/figures/control-mean-wave-drawing.tex",
+        "sha256": "74fff52722e708f53f00467738bcb0817c0b62494915eee0c1e1a1a67d044651",
+        "role": "figure"
+      },
+      {
         "path": "notes/integrated_temporal_equilibrium.tex",
-        "sha256": "3040006c990fd35c51b169dc262db8bc3120d4f45f76b2c87b4d63f368409228",
+        "sha256": "fe9ba7da1f782fa99f35d05b47f25890d6a3849a34661bc63180f2f3de947016",
         "role": "included"
       },
       {
         "path": "notes/integrated_spatial_occupation.tex",
-        "sha256": "5089f4d6140d0594d1d218caa88e5031182b5eeac82f61b4c45b5c46acb6ddec",
+        "sha256": "2af5611be2b9acf995ee99a1c08c174d6825e2287cf429163f26ad6535e52c31",
         "role": "included"
       },
       {
         "path": "notes/integrated_cameron_mean.tex",
-        "sha256": "e21f9afd8c1c25c678e4dcb39c9946cd0dcc09b0419f2501172ac8a991ee7212",
+        "sha256": "216e0d08cf8c7ed1c04e840d85319a8a9014ae646fd4c98c6ee2d6d609743f1f",
         "role": "included"
       },
       {
         "path": "notes/integrated_young_upper_foundation.tex",
-        "sha256": "9436e1ba483cf4ae03664f3935eb58996c244db7c394c3afaa704ff91742c53c",
+        "sha256": "c2a255fe1afdfff821595f982ce12f7e3b83803499ee5397de7186231cb8d766",
+        "role": "included"
+      },
+      {
+        "path": "notes/chapter-endings/08-means.tex",
+        "sha256": "342425e42b2dfd2278912905e0eacf0b6afca12091b112a0e345cccbc2b9a44a",
         "role": "included"
       },
       {
         "path": "notes/chapter-guides/09-growing-radius.tex",
-        "sha256": "2c3bfa996d1c3f998d54ac00a70e177f8810c61394ba468fabf3681771e286c8",
+        "sha256": "0b5af87665d3d848ab6e46ff611caf185e71348a4e107d24e71ec8a7d8066ec1",
+        "role": "included"
+      },
+      {
+        "path": "notes/chapter-tables/09-radius.tex",
+        "sha256": "8bb4fb11bb4742d5b2b3559220df2d37bb06b585b456f249ee62515adc023609",
         "role": "included"
       },
       {
         "path": "notes/integrated_uniform_mean.tex",
-        "sha256": "7b37b4fd7d6d43e7b26c280232fb6b337a6a8ec976df8fbc353872ae68cdf6fd",
+        "sha256": "821b49568bc2ca3c0272d2db4b435b35c133caf723c931c45d7837711168f094",
         "role": "included"
       },
       {
         "path": "notes/integrated_radius_anchor.tex",
-        "sha256": "f9687211913c1d68366374c4a24f8f7729de2fe44a89137f96af6b04dbab1e84",
+        "sha256": "37711d311d2b7ffef6b2f4c68c5a4be6333277a13cafcbebaa9d79a49e67153e",
         "role": "included"
       },
       {
         "path": "notes/integrated_signed_static.tex",
-        "sha256": "8515397712a7aee51b4dc83fbe166fc070f85c85a9d48cc1f50452e6c6c3efd6",
+        "sha256": "fc54852ab4eb26efab97f1f08f99cb117f9f7f755acbe8e6bbb4e0a8a25afc11",
+        "role": "included"
+      },
+      {
+        "path": "notes/chapter-endings/09-growing-radius.tex",
+        "sha256": "2692c2e7fef63fc3ba3637df13404d85e98176748efb693349b6438f606cff16",
         "role": "included"
       },
       {
         "path": "notes/chapter-guides/10-point-upper.tex",
-        "sha256": "d2166db4d4eaaca4dfe069a20038b75d27dc6c834ba6d8c17739e5c665594a3d",
+        "sha256": "e421da9040da29312f8c2e5ff4a51959a49f9441fb6a5fd34dc34c0df6b720ae",
         "role": "included"
       },
       {
         "path": "notes/integrated_symplectic_phase.tex",
-        "sha256": "23b1747511dde29836b5f83b2699de3cc26ad4d6e928a09446aa8e1e2c58a025",
+        "sha256": "ef966ddaa4c469fb886436429d9c202a7e25a485e25fb36a6e2a560bcd5ff244",
         "role": "included"
       },
       {
         "path": "notes/integrated_gaussian_tubes.tex",
-        "sha256": "171c57df271f36bf98860437cd5f52ee076e3460b84354743d63c9c41ff7b713",
+        "sha256": "9fb196596d59c499194d916234f908fe85fd2c7b1f674356c2a9bb4d0ca80c6e",
         "role": "included"
       },
       {
         "path": "notes/figures/gaussian-enlargement.tex",
-        "sha256": "a3cadc03e1355b02b1730f0d4dc3f637958a6307c79c1f1eabcee7c3f5e33734",
+        "sha256": "1d771d0ec7a5ce4b81e465ceb217320b9f250187803bc3d38b90dc63131012a1",
+        "role": "figure"
+      },
+      {
+        "path": "notes/figures/gaussian-enlargement-drawing.tex",
+        "sha256": "6fd5377c69c5fb33fce257a916ae00662d5304376e2f2a751ea1156dd2727164",
         "role": "figure"
       },
       {
         "path": "notes/integrated_uniform_products.tex",
-        "sha256": "9f04e127d2f06a27561c56ba0fa0279396bcd8e9f7625a08ed67229b855ea4b8",
+        "sha256": "69a9facbe6c5d3ce8d58fdaffd99e65cdeed1f21e4239226aac339b2c2206ea0",
         "role": "included"
       },
       {
         "path": "notes/integrated_point_transfer.tex",
-        "sha256": "d9a403b97b63577b82eb51ab36f7ce7bd587cf762e300647040bde44b8685ec4",
+        "sha256": "e6e4695daa516fd1f5ed214c8f040256c0d59cbf2782eb20330a0bf703d0e1da",
         "role": "included"
       },
       {
         "path": "notes/figures/light-cone.tex",
-        "sha256": "6380579e482602631c92750d46544ae8ed203ddea779649d70290803742c5941",
+        "sha256": "6f369e76b5c90593e9f84373585d360a84b6bdd349b70e7ce3c319477b91c6ad",
+        "role": "figure"
+      },
+      {
+        "path": "notes/figures/light-cone-drawing.tex",
+        "sha256": "dee276183b6a7ac50f2a034e2f08cb70cb28f66534a735f4d080e186fc8ef76e",
         "role": "figure"
       },
       {
         "path": "notes/integrated_signed_moment_upper.tex",
-        "sha256": "9c39dfb1047d354694abab75b1f726c2d83fbb70094245bc064acb37f6e96247",
+        "sha256": "32939c424eb0e805ceabe1bcbc181f453d1345b9ef86ce4eb406ad652a6173f1",
         "role": "included"
       },
       {
         "path": "notes/chapter-guides/11-constant.tex",
-        "sha256": "ef1633d68755251a8bc5a1aaf44fce0f1a568a6125915b73e480a365e08e6728",
+        "sha256": "54371e54eaea3783b75e3f469fdc1575548cb93b502c21150677aca088d7270b",
         "role": "included"
       },
       {
         "path": "notes/integrated_positive_gram.tex",
-        "sha256": "5d497cc4a5f3254de757d6b650f68f9a5415fb5757668a0f3cd895654f0b6102",
+        "sha256": "d25987040b3830ae95813a7aca3c3c867f1b542af12261b40d22cb10e2cd89c7",
         "role": "included"
       },
       {
@@ -358,57 +528,122 @@
       },
       {
         "path": "notes/integrated_intrinsic_constant.tex",
-        "sha256": "fcbd45d8aff9d3fe7d403bdd068988fd9d293a4f3769cdaeaeb0268b92426898",
+        "sha256": "074fa74cb5940783f7177acfc0e3de39a2e9b649082edf17a18ff55be06b6fdf",
         "role": "included"
       },
       {
         "path": "notes/integrated_occupation_ceiling.tex",
-        "sha256": "3d5cbf91bb2a7069070554d975e2f23345e7f9b166458efb2e9c48fd7403936c",
+        "sha256": "cf71e1a18d5787fc9438dc53be25faa8f4c1957c8d9ab41538fe9ecf9891280a",
         "role": "included"
       },
       {
         "path": "notes/integrated_white_evaluation.tex",
-        "sha256": "2f086a980f5eda53b39e7a16674267cec71cbbe744b37c00feca36f038bb75f7",
-        "role": "included"
-      },
-      {
-        "path": "notes/chapter-guides/12-finite-order.tex",
-        "sha256": "1977212c3c0540bad1c296a271b915dcd08623df553e3931283b31062db5a960",
-        "role": "included"
-      },
-      {
-        "path": "notes/figures/white-strip.tex",
-        "sha256": "685fe49aed151fd2b4bd728dcf3b037e6e4033926ce6254c590ffa358dc1f645",
-        "role": "figure"
-      },
-      {
-        "path": "notes/chapter-guides/13-direct.tex",
-        "sha256": "467874d9940c6021f57da7791d27a83adf18718da961a65f81e0a32c4a95ca8c",
-        "role": "included"
-      },
-      {
-        "path": "notes/chapter-guides/14-covariance.tex",
-        "sha256": "56a5fb1200e307dc1621d4aeb02ceb8362ac96fb9e9b5118474b1873c02281ed",
-        "role": "included"
-      },
-      {
-        "path": "notes/chapter-guides/15-static-clock.tex",
-        "sha256": "416009590d456c1adc4f83b0907e5afa8a955ab99ff9d47cdfcb3df335f25b74",
-        "role": "included"
-      },
-      {
-        "path": "notes/ai-statistics.tex",
-        "sha256": "7cb032b09dafef8ebf97463cb02dada5b300682aea39ec1c5681f276f2eeb0d0",
-        "role": "included"
-      },
-      {
-        "path": "notes/lean-coverage.tex",
-        "sha256": "dbc46581109b246f01f3ac37dde581b08a83314742c4820f6ff513075594dc5d",
+        "sha256": "96357900b7f1b9c838ff1f9cc767ef2bee8380766ce13e6c875b2e403e0b2e50",
         "role": "included"
       },
       {
         "path": "notes/no-go-appendix.tex",
-        "sha256": "159eddafef77fcedd3b70ad14d978f1fd4ac892777de6c63b7fc16a8b63f87ee",
+        "sha256": "135e1b96769b364b71c30098663362681dd67c8e4308ca29a79a213d1805f411",
+        "role": "included"
+      },
+      {
+        "path": "notes/figures/research-iceberg-figure.tex",
+        "sha256": "004427f3850a6766d3ce52af4cc8eec3e481867bcd5ef6a6d5d755cc00880848",
+        "role": "figure"
+      },
+      {
+        "path": "notes/figures/research-iceberg-drawing.tex",
+        "sha256": "99fb4f3134da12b5e068fa4b5dabb102d6e4066294ffc971d4a33602b8d3adc4",
+        "role": "figure"
+      },
+      {
+        "path": "notes/no-go/pairings.tex",
+        "sha256": "63a69cae3d25e4ae3adb39a2ab24cbb29dabd89c02f24b6cbf260a70129e549c",
+        "role": "included"
+      },
+      {
+        "path": "notes/figures/nogo-chain-geometry.tex",
+        "sha256": "273a7818e8b6fbb2124f698efe54bbd30ce2d844fc7bcf292c7b0673f6a23a28",
+        "role": "figure"
+      },
+      {
+        "path": "notes/no-go/covariance.tex",
+        "sha256": "dcf7abb6b8b60c4adf2b05c872fbad8c38b169a069d69d904109710420f35aab",
+        "role": "included"
+      },
+      {
+        "path": "notes/no-go/phase.tex",
+        "sha256": "493142b0f114fce46d9bf1547097387c0ac7ca882ab58693e3a0ea1edfd54d9a",
+        "role": "included"
+      },
+      {
+        "path": "notes/figures/nogo-phase-blocks.tex",
+        "sha256": "e5a1114c695a44cfb0290a01efad2458752c0eea0ffb2c60175b0d3a8f752121",
+        "role": "figure"
+      },
+      {
+        "path": "notes/no-go/topology.tex",
+        "sha256": "9572d66f6f56fab3ce5b405ef45681ecb9006d0e369bec9cfa659633f1900c33",
+        "role": "included"
+      },
+      {
+        "path": "notes/figures/nogo-projection-escape.tex",
+        "sha256": "042157b7a4bb25a56852baa4254e7f6615aa08bbb5201070070f1cf37dbe9253",
+        "role": "figure"
+      },
+      {
+        "path": "notes/figures/nogo-feature-range.tex",
+        "sha256": "8e739703462ac166d62f2ba06a933ba99418dc52c626d2d1e55e80bb099e61b0",
+        "role": "figure"
+      },
+      {
+        "path": "notes/no-go/optimization.tex",
+        "sha256": "70c748c15ce428c39a268d128cad85327afc12e1f026bac5ab0f9a218a748d59",
+        "role": "included"
+      },
+      {
+        "path": "notes/chapter-guides/12-finite-order.tex",
+        "sha256": "79c065fb6bba3c5af452684b1c1edde12bd8275c0d70bc4110f05199d45584f7",
+        "role": "included"
+      },
+      {
+        "path": "notes/figures/white-strip.tex",
+        "sha256": "6a9e9e90b14b5dc07d0824ee037f3668d8c31d287b86ddf030a198a629fc5ef0",
+        "role": "figure"
+      },
+      {
+        "path": "notes/chapter-guides/13-direct.tex",
+        "sha256": "ee44f8efd1555dc84ef1d373b7950a55a52e0901552b73d24521e22abbd21280",
+        "role": "included"
+      },
+      {
+        "path": "notes/chapter-guides/14-covariance.tex",
+        "sha256": "23f0989703d1b3d2a73120df37602198fa217829fc8d5204c975c39cc7d91d11",
+        "role": "included"
+      },
+      {
+        "path": "notes/chapter-guides/15-static-clock.tex",
+        "sha256": "a27eef88f0f11f0bac258d806ebe2b92694172935633eda43881c3302a9ac644",
+        "role": "included"
+      },
+      {
+        "path": "notes/ai-statistics.tex",
+        "sha256": "24b253c7f3c0106067cc99cce222bc3378f1b0cce8cad8db689a33ed5351c152",
+        "role": "included"
+      },
+      {
+        "path": "notes/lean-coverage.tex",
+        "sha256": "ec18d7626f2b02c7d460a0086e50013703cc7611c454fee0bc9f5d26ee326a83",
+        "role": "included"
+      },
+      {
+        "path": "notes/verification-status.tex",
+        "sha256": "c82e717e0b59f6cc9a708c02d97ec06c4a5715be86e33d820caae00a44174f1e",
+        "role": "included"
+      },
+      {
+        "path": "notes/glossary.tex",
+        "sha256": "b7684a1b9c26b4afc7e27a4e6dbce279fab66c8dd79830a3d05cd9b8be7b9394",
         "role": "included"
       },
       {
@@ -417,13 +652,13 @@
         "role": "included"
       }
     ],
-    "tex_source_count": 82,
+    "tex_source_count": 129,
     "pdf": {
       "path": "notes/notes_stratonovich_ham_second_moment.pdf",
-      "sha256": "7fcc700df7377ef1aba6cd314e0d5ccb1eac9c5318d669da9af0e3d54d162d70",
-      "pages": 345
+      "sha256": "4226c3c8b06492869a5258079c7c9973c48743f9ef866ed0c195614ba2b1c002",
+      "pages": 474
     },
-    "change_from_previous": "Revision a284420 makes two mathematical edits that the companion follows, and changes front matter (title, abstract, preface, a theory-outlook chapter, the reader edition, Appendices F (What Lean checks) and G (Approaches that do not work), the list of notation moved to the back). (1) notes/integrated_spatial_occupation.tex adds Lemma L:spatial-fourier-bound (statement 101-111, display E:spatial-fourier-bound at 106-109, proof 113-164): A_sp(g) <= 2^(1+alpha) R_alpha b^(alpha/2) under H:homog, Gamma = 0 allowed; the proof of P:spatial-smooth-ratio (label and statement unchanged) now derives R_0 < inf from it (proof lines 182-188) and keeps the finiteness of S_1^pos only for the score inequality (213-215). (2) notes/notes_stratonovich_ham_second_moment.tex replaces the smoothing and truncation sentence of L:damped-homogeneous-norms by the multiplier comparison E:damped-multiplier-comparison (statement 826-847, display 836-841, proof 894-917). Of the cited TeX inputs only these two files differ from 975feb3 among those with line citations. Every one of the 255 labels cited by the statement ledger, coverage.yaml, docs/coverage-scope-tex.yaml, claims.yaml, README.md, FORMALIZATION.md and the Lean doc comments exists exactly once at a284420; the 252 that also exist at 975feb3 are in the same file, and 249 have the same statement environment and proof up to whitespace and braces; the exceptions are P:spatial-smooth-ratio (proof), L:damped-homogeneous-norms (statement and proof) and the section S:spatial-occupation-foundation (the new lemma). The three new labels are L:spatial-fourier-bound, E:spatial-fourier-bound and E:damped-multiplier-comparison; E:intro-spectral-mass is newly cited and unchanged. 2888 TeX line citations were found (2755 after 'line(s)' and 133 further ranges and numbers in the same citations, e.g. 'proof 2660-2723' at 975feb3, 'proof 2733-2796' at a284420); 1386 moved, by a per-file line map (difflib) where the cited text is unchanged (checked: same text at both revisions), and 57 ranges inside the two edited passages were mapped by hand to the corresponding new passages; 25 citations of the removed passage on R_0 (lines 141-145 at 975feb3) were rewritten with the new content. Shifts: +1 to +73 in the main file, +68 to +72 in integrated_spatial_occupation.tex. A re-check then read every citation in a main-file or occupation-file context (1781) against a284420 and corrected 19 wrong locators (citations attributed to the wrong file and so shifted by the wrong offset or not at all, e.g. the zero-covariance remark 374-379 -> 444-449 and H^1 density 227-233 -> 262-268, and slips carried over from 975feb3, e.g. 825 -> 881, 89-90 -> 87-88) and widened 27 ranges that cut the cited text by a line."
+    "change_from_previous": "Revision 39f2597a (1045 manuscript commits after a284420) adds front matter, appendices and figures (47 new TeX inputs, among them the no-go appendix files), and added lines in 27 integrated files. The revision renames the appendix-local direct-bound constant C_2 to C_dir (C_dir^gen) in P:d1-upper, P:low-alpha-upper and C:planar-range; the intrinsic C_2(Gamma,a) is unchanged, and the companion follows the rename in prose only. The revision clarifies the attribution of the quoted source result T:first to X. Chen's paper (the source's own covariance and homogeneity assumptions, and a sentence that the quoted result is not extended to every covariance of H:homog); this is wording only, the companion does not formalize T:first, and no statement it cites changed. The revision adds a front-guide paragraph pointing readers to L:white-test and P:nogo-05 (four lines, wording only). The revision adds explanatory sentences to 207 of the book's 249 proofs (a readability pass; one more proof, of P:original-signed-point-upper, changes only by an original-text correction listed below); every statement, display, label and reference is kept, and every old proof line is kept word for word except 50 reworded lines and 32 re-wrapped ones (28 and 15 of them in the proof of L:cutoff-factorization, the sample proof the author approved, which the companion does not formalize); the companion's line citations into rewritten proofs were moved with the pass's per-file line maps. The revision corrects six places of the original text at the author's decision: two unparsable sentences in the proofs of T:intrinsic-second-moment and P:original-signed-point-upper, a garbled clause in the proof of L:point-fast-sources, and three typographical errors in the statements of P:masked-source-moments, P:source-gaussian-transfer and L:signed-score-envelope; none of these results is formalized here. The revision removes an unused setup step from the proof of P:symplectic-block-mean, which the companion does not formalize. Every one of the 452 labels cited by the companion exists exactly once in the include closure at 39f2597a. 8915 TeX line locators were read (generated comparator copies included): 227 unchanged, 6531 moved by the git diff of their file, each with the same text at both revisions (up to the C_dir rename), 563 in rewritten proofs located through the rewrite's line maps, every cited line kept word for word with explanatory sentences inserted between them, 1 located the same way with its words kept but re-wrapped around inserted explanatory sentences, and 1593 resolved by hand (file attribution confirmed or corrected by reading; 12 already wrong at a284420 corrected). Earlier waves were anchored to 975feb3 and then a284420."
   },
   "identifiers": "Manuscript labels (T:, L:, P:, ...) are the durable identifiers; page numbers will change in the combined arXiv edition.",
   "lean_sources": [
@@ -526,6 +761,428 @@
   ],
   "lean_source_note": "Every StratonovichHAMAudit module except HermiteWordConsumer.lean is byte-identical to the file checked in the development record; HermiteWordConsumer.lean differs only in its import path.",
   "history": [
+    {
+      "revision": "a2844206199b6798464eee7bdaaa45ed9b7c21a0",
+      "tex_source_count": 82,
+      "tex_sources": [
+        {
+          "path": "notes/notes_stratonovich_ham_second_moment.tex",
+          "sha256": "c71765fb6a13aad853f7c5b834ef35b6bc0e780666af29e4cb1a610784c526b1",
+          "role": "main"
+        },
+        {
+          "path": "notes/index/setup.tex",
+          "sha256": "e35c7dc9bf809df8afc3bc869a895d1e546fcd6ff4022554af873f7191c3a3ba",
+          "role": "included"
+        },
+        {
+          "path": "notes/index/anchors.tex",
+          "sha256": "30afb1c5af81a7ee7a5d9545052c9ff7ad51b22d4191cdb5ee1ccbc1a1189185",
+          "role": "included"
+        },
+        {
+          "path": "notes/figures/styles.tex",
+          "sha256": "ba5c01a670b3c4cdece04550e4d60775a7c0e65f139a14a040d1068f08a6a3b9",
+          "role": "figure"
+        },
+        {
+          "path": "notes/ai-statistics-data.tex",
+          "sha256": "d8eb3d9447afb6307413eb403151553f1c115479c7506a930b64355004708a5d",
+          "role": "included"
+        },
+        {
+          "path": "notes/lean-coverage-data.tex",
+          "sha256": "451a07a7e59d72dc5ec3a7be332ff5a462e22560241c915ae5f32de8359108d9",
+          "role": "included"
+        },
+        {
+          "path": "notes/book-layout.tex",
+          "sha256": "7f52be4b32e7528ce3be49ccb07991331ba32bea5cca31f5513a3b166e06d984",
+          "role": "included"
+        },
+        {
+          "path": "notes/preface.tex",
+          "sha256": "76cc1ce9d3d1265addb7f9e05768023abba260156983b192958be9757d187c34",
+          "role": "included"
+        },
+        {
+          "path": "notes/chapter-guides/01-setting.tex",
+          "sha256": "2a9106511f5a62795844d3fd969bf5c940166643bc0c6d2606681e31f0f56d61",
+          "role": "included"
+        },
+        {
+          "path": "notes/history_wave_equations.tex",
+          "sha256": "672957b0b7830efca2f2d9edc8709ef7aae5d3d7f21f58a1f0f4547cada2536f",
+          "role": "included"
+        },
+        {
+          "path": "notes/figures/walsh-guitar.tex",
+          "sha256": "f645d260bd3be7471950738166b638cdc8ded857d0a0bda89bf64583a79d9328",
+          "role": "figure"
+        },
+        {
+          "path": "notes/figures/proof-map.tex",
+          "sha256": "2a0b11365792b75b41e2a009105161e3583991f0ad43a120cd6a34fd4772317e",
+          "role": "figure"
+        },
+        {
+          "path": "notes/figures/chapter-roadmap.tex",
+          "sha256": "6e945b11a10d9e52108288d3576dc33ecdf670b4a1bffa4e715c0a6d8c28bc73",
+          "role": "figure"
+        },
+        {
+          "path": "notes/literature_review.tex",
+          "sha256": "8bdfe93ebe9798ce78119bfd59e8597f01e06f4c6509ac962921bd6f69b8ff0e",
+          "role": "included"
+        },
+        {
+          "path": "notes/figures/literature-interpretations.tex",
+          "sha256": "a1b7622141ba00d5b990d2b5efae376938a0a9ae448c4ba9654a3a745ca1cc59",
+          "role": "figure"
+        },
+        {
+          "path": "notes/figures/literature-results-map.tex",
+          "sha256": "5ce006ee03e0bc96f78b4ea70b2175358a8b4a18e4839a49782ec66ba876768e",
+          "role": "figure"
+        },
+        {
+          "path": "notes/figures/literature-results-drawing.tex",
+          "sha256": "299d12c349791c8ab7be6c5ca45af521a5be051dbe7a693e40003c7d525b0ab7",
+          "role": "figure"
+        },
+        {
+          "path": "notes/future_work.tex",
+          "sha256": "7cf9f2a211c33aaa23855c02e474e872d382af38badcfa704a363654632add3e",
+          "role": "included"
+        },
+        {
+          "path": "notes/future_optimizers.tex",
+          "sha256": "16556b898d78c5f17154aaf1bcd93da62bc7de72e5e0164c8be51e39782d1b45",
+          "role": "included"
+        },
+        {
+          "path": "notes/future_universality.tex",
+          "sha256": "fb5dcd4646ac0fe94d757dcb753e55df944c1e482909d31745aa914368b10f98",
+          "role": "included"
+        },
+        {
+          "path": "notes/theory_outlook.tex",
+          "sha256": "f958cfb8518b88d40e427c7a16cd669b4c687e6725e0b25ce61a3c5da7d2db5d",
+          "role": "included"
+        },
+        {
+          "path": "notes/chapter-guides/02-G0.tex",
+          "sha256": "ce0e63c362d71710cc375bda1cd1f81bfd2f28b3aad5e05e80d2fd56dd2053ec",
+          "role": "included"
+        },
+        {
+          "path": "notes/figures/two-chain-pairings.tex",
+          "sha256": "1ad3e9a2b1cfce10e64c2dc8bfff1cd852a9770b7059cf7a9e87ac3c67ba5110",
+          "role": "figure"
+        },
+        {
+          "path": "notes/figures/endpoint-elimination.tex",
+          "sha256": "10e2fc042630cb1d7ff1219df70175fe9c89b854ff2c9d5ae7ddb25f543033d0",
+          "role": "figure"
+        },
+        {
+          "path": "notes/figures/order-of-limits.tex",
+          "sha256": "75911afa9e6eeed742a092d3a10fe06d6e914127091a498c1f273c027b4e43b2",
+          "role": "figure"
+        },
+        {
+          "path": "notes/chapter-guides/03-independent-upper.tex",
+          "sha256": "0ff7c528285b48b911644c3fc9db71c08bd6f492573c9a204f5d5e21a0e17fe7",
+          "role": "included"
+        },
+        {
+          "path": "notes/figures/hermite-cutoff.tex",
+          "sha256": "e4d4799edc4022305c24850fa33c9c08a635d9d6f79a49f0ea4972b828a22325",
+          "role": "figure"
+        },
+        {
+          "path": "notes/figures/interval-allocations.tex",
+          "sha256": "21e1120f238cfaade99eec1bf6986fe1415fbae13b5a22340977c9cd3c4477f8",
+          "role": "figure"
+        },
+        {
+          "path": "notes/figures/interval-end-metrics.tex",
+          "sha256": "d9580cdbab4306c620eae2d71fc797d3c1ba9649b54a5ece4a12c56808c1f790",
+          "role": "figure"
+        },
+        {
+          "path": "notes/figures/cross-colour-cube.tex",
+          "sha256": "ae0226fe1dfba034b24d244464f4749812c512ba17e3697c1194676a35e61352",
+          "role": "figure"
+        },
+        {
+          "path": "notes/figures/dyadic-cover.tex",
+          "sha256": "88733e66835907f09f7bbadba378804ecc56606b9edcb7c29074ec10764bd509",
+          "role": "figure"
+        },
+        {
+          "path": "notes/chapter-guides/04-gaussian-foundations.tex",
+          "sha256": "4ac7c208a84526c551b7c8fa7c14087b6795fc27c6693c4d7ed58eafc26beff2",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_covariance_foundation.tex",
+          "sha256": "17aa2c1d764b9161c7e6640ed1ce19755f2b43c7a77b03119300030813d31f77",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_wave_variance.tex",
+          "sha256": "d7e956c8fc4c890b1b968f452ac4acc72aaed07e15bf6a13cc320a741d25eeeb",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_compact_gaussian.tex",
+          "sha256": "3043665006548bb5081b80a39e3017b96c6a03ecc8704ffd906044b939c105a0",
+          "role": "included"
+        },
+        {
+          "path": "notes/chapter-guides/05-operator-paths.tex",
+          "sha256": "0bb9269766b3ade084b931c671691c514c01aa798002adca5c935d6cc1bb5d1c",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_actual_operator_driver.tex",
+          "sha256": "25dbba4a4ca9c5c4296e9b3aaba7895ae8ad984d104a9a42429e30a38df99409",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_source_convergence.tex",
+          "sha256": "c347e3022348fd7975d38dc9c4c15e830aca223c8817253c4c39e753e4148696",
+          "role": "included"
+        },
+        {
+          "path": "notes/figures/common-noise.tex",
+          "sha256": "f1bcf1462a808df02d7159c7441f2c42bcf2536a239e2a39716d7b785730c76c",
+          "role": "figure"
+        },
+        {
+          "path": "notes/chapter-guides/06-wave-evolution.tex",
+          "sha256": "037982115503f2c2e2071c1564eec0918c9950ba443e42e7b45abbebc3f80fb1",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_masked_moments.tex",
+          "sha256": "533f96300b5e0e10205aeb374cdd55378fd3a27e8a5faf6148187f0c02221024",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_constant_phase_young.tex",
+          "sha256": "a97b4669b47a0ee4de84747a7a9e6763c38bdcafedadc638ee7f937a6c4b01bd",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_compact_mean_family.tex",
+          "sha256": "c52144e81d52ff1842c8081579ef2fdb300fbed4f8b962e21ae3e62d42fd2493",
+          "role": "included"
+        },
+        {
+          "path": "notes/chapter-guides/07-lower.tex",
+          "sha256": "86a3b6f6c3086a60c00a18a128e8c797cc44a0784115b3b1a123677104fe5933",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_exact_scaling.tex",
+          "sha256": "4fc63312f1adfdcf045071c5fb61bc34985260089723203966afb1d7b8393649",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_raw_block_lower.tex",
+          "sha256": "dc10f207c3347e5e85b3169526cec53023b3e9d6ee86b6104f96de2d0cd2db2e",
+          "role": "included"
+        },
+        {
+          "path": "notes/figures/global-control-blocks.tex",
+          "sha256": "385d22194b62a51faa2f01096b745abcc47a6c5137649b2fca4e5c696dfaa703",
+          "role": "figure"
+        },
+        {
+          "path": "notes/integrated_unmasked_variational.tex",
+          "sha256": "985069b8e1dea64c8bd309102b406a6d9c0685840077e5d3a1193b0fd80907b4",
+          "role": "included"
+        },
+        {
+          "path": "notes/figures/nonseparable-controls.tex",
+          "sha256": "76526fb586f0b5dd9bc01ab6007ac0590e61f6538d25f98ed5b4eec08f1517bd",
+          "role": "figure"
+        },
+        {
+          "path": "notes/chapter-guides/08-means.tex",
+          "sha256": "070630e15115518e2379656037a13fd0d9b9307d0eaf36aee831707fb0ddf04c",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_temporal_equilibrium.tex",
+          "sha256": "3040006c990fd35c51b169dc262db8bc3120d4f45f76b2c87b4d63f368409228",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_spatial_occupation.tex",
+          "sha256": "5089f4d6140d0594d1d218caa88e5031182b5eeac82f61b4c45b5c46acb6ddec",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_cameron_mean.tex",
+          "sha256": "e21f9afd8c1c25c678e4dcb39c9946cd0dcc09b0419f2501172ac8a991ee7212",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_young_upper_foundation.tex",
+          "sha256": "9436e1ba483cf4ae03664f3935eb58996c244db7c394c3afaa704ff91742c53c",
+          "role": "included"
+        },
+        {
+          "path": "notes/chapter-guides/09-growing-radius.tex",
+          "sha256": "2c3bfa996d1c3f998d54ac00a70e177f8810c61394ba468fabf3681771e286c8",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_uniform_mean.tex",
+          "sha256": "7b37b4fd7d6d43e7b26c280232fb6b337a6a8ec976df8fbc353872ae68cdf6fd",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_radius_anchor.tex",
+          "sha256": "f9687211913c1d68366374c4a24f8f7729de2fe44a89137f96af6b04dbab1e84",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_signed_static.tex",
+          "sha256": "8515397712a7aee51b4dc83fbe166fc070f85c85a9d48cc1f50452e6c6c3efd6",
+          "role": "included"
+        },
+        {
+          "path": "notes/chapter-guides/10-point-upper.tex",
+          "sha256": "d2166db4d4eaaca4dfe069a20038b75d27dc6c834ba6d8c17739e5c665594a3d",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_symplectic_phase.tex",
+          "sha256": "23b1747511dde29836b5f83b2699de3cc26ad4d6e928a09446aa8e1e2c58a025",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_gaussian_tubes.tex",
+          "sha256": "171c57df271f36bf98860437cd5f52ee076e3460b84354743d63c9c41ff7b713",
+          "role": "included"
+        },
+        {
+          "path": "notes/figures/gaussian-enlargement.tex",
+          "sha256": "a3cadc03e1355b02b1730f0d4dc3f637958a6307c79c1f1eabcee7c3f5e33734",
+          "role": "figure"
+        },
+        {
+          "path": "notes/integrated_uniform_products.tex",
+          "sha256": "9f04e127d2f06a27561c56ba0fa0279396bcd8e9f7625a08ed67229b855ea4b8",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_point_transfer.tex",
+          "sha256": "d9a403b97b63577b82eb51ab36f7ce7bd587cf762e300647040bde44b8685ec4",
+          "role": "included"
+        },
+        {
+          "path": "notes/figures/light-cone.tex",
+          "sha256": "6380579e482602631c92750d46544ae8ed203ddea779649d70290803742c5941",
+          "role": "figure"
+        },
+        {
+          "path": "notes/integrated_signed_moment_upper.tex",
+          "sha256": "9c39dfb1047d354694abab75b1f726c2d83fbb70094245bc064acb37f6e96247",
+          "role": "included"
+        },
+        {
+          "path": "notes/chapter-guides/11-constant.tex",
+          "sha256": "ef1633d68755251a8bc5a1aaf44fce0f1a568a6125915b73e480a365e08e6728",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_positive_gram.tex",
+          "sha256": "5d497cc4a5f3254de757d6b650f68f9a5415fb5757668a0f3cd895654f0b6102",
+          "role": "included"
+        },
+        {
+          "path": "notes/figures/active-subset-optimization.tex",
+          "sha256": "7b6b20c0965ef8db57d0c1d354d230cb998c84cd6e66ef139954c2bf32772470",
+          "role": "figure"
+        },
+        {
+          "path": "notes/figures/positive-gram.tex",
+          "sha256": "297b5f9c49b3de0dc9f4a6a8a61600284645d75ecb1f4c140cb8b3986ef09db7",
+          "role": "figure"
+        },
+        {
+          "path": "notes/integrated_intrinsic_constant.tex",
+          "sha256": "fcbd45d8aff9d3fe7d403bdd068988fd9d293a4f3769cdaeaeb0268b92426898",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_occupation_ceiling.tex",
+          "sha256": "3d5cbf91bb2a7069070554d975e2f23345e7f9b166458efb2e9c48fd7403936c",
+          "role": "included"
+        },
+        {
+          "path": "notes/integrated_white_evaluation.tex",
+          "sha256": "2f086a980f5eda53b39e7a16674267cec71cbbe744b37c00feca36f038bb75f7",
+          "role": "included"
+        },
+        {
+          "path": "notes/chapter-guides/12-finite-order.tex",
+          "sha256": "1977212c3c0540bad1c296a271b915dcd08623df553e3931283b31062db5a960",
+          "role": "included"
+        },
+        {
+          "path": "notes/figures/white-strip.tex",
+          "sha256": "685fe49aed151fd2b4bd728dcf3b037e6e4033926ce6254c590ffa358dc1f645",
+          "role": "figure"
+        },
+        {
+          "path": "notes/chapter-guides/13-direct.tex",
+          "sha256": "467874d9940c6021f57da7791d27a83adf18718da961a65f81e0a32c4a95ca8c",
+          "role": "included"
+        },
+        {
+          "path": "notes/chapter-guides/14-covariance.tex",
+          "sha256": "56a5fb1200e307dc1621d4aeb02ceb8362ac96fb9e9b5118474b1873c02281ed",
+          "role": "included"
+        },
+        {
+          "path": "notes/chapter-guides/15-static-clock.tex",
+          "sha256": "416009590d456c1adc4f83b0907e5afa8a955ab99ff9d47cdfcb3df335f25b74",
+          "role": "included"
+        },
+        {
+          "path": "notes/ai-statistics.tex",
+          "sha256": "7cb032b09dafef8ebf97463cb02dada5b300682aea39ec1c5681f276f2eeb0d0",
+          "role": "included"
+        },
+        {
+          "path": "notes/lean-coverage.tex",
+          "sha256": "dbc46581109b246f01f3ac37dde581b08a83314742c4820f6ff513075594dc5d",
+          "role": "included"
+        },
+        {
+          "path": "notes/no-go-appendix.tex",
+          "sha256": "159eddafef77fcedd3b70ad14d978f1fd4ac892777de6c63b7fc16a8b63f87ee",
+          "role": "included"
+        },
+        {
+          "path": "notes/index/list-of-notation.tex",
+          "sha256": "879e1933a2ba8feb75fe9c5980406f702b717a2d974a892388995cad4c5ccf8d",
+          "role": "included"
+        }
+      ],
+      "pdf": {
+        "path": "notes/notes_stratonovich_ham_second_moment.pdf",
+        "sha256": "7fcc700df7377ef1aba6cd314e0d5ccb1eac9c5318d669da9af0e3d54d162d70",
+        "pages": 345
+      },
+      "note": "The companion was re-anchored to it at f3be834; waves L7 to L14 were written and reviewed against it (README). Superseded by 39f2597a, whose changes are summarized in manuscript.change_from_previous."
+    },
     {
       "revision": "975feb31ea651541f24f6c1b2734f6dba9266122",
       "tex_source_count": 78,

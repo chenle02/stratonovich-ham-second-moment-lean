@@ -19,7 +19,7 @@ Manuscript input supplied as a hypothesis (not proved here):
   uniform in the deterministic residual projection.
 
 Representation of `C^θ([0,B];E)`.  The manuscript
-(`integrated_actual_operator_driver.tex`, line 23) defines the `C^θ` norm as the
+(`integrated_actual_operator_driver.tex`, line 24) defines the `C^θ` norm as the
 supremum norm plus the `θ`-Hölder seminorm.  We define both explicitly as real
 suprema over `[0,B]`:
 `supNorm B f = sup_{t∈[0,B]} ‖f t‖`,
@@ -49,13 +49,13 @@ namespace StratonovichHAMSecondMoment.RadiusMeanAnchor
 
 /-! ### The margin `e_anchor > 0` (general dimension) -/
 
-/-- `Q > 2d/(1-a)` is equivalent to `Q(1-a) > 2d` (TeX line 324). -/
+/-- `Q > 2d/(1-a)` is equivalent to `Q(1-a) > 2d` (TeX line 387). -/
 theorem anchor_Q_iff (a Q d : ℝ) (ha : a < 1) :
     2 * d / (1 - a) < Q ↔ 2 * d < Q * (1 - a) :=
   div_lt_iff₀ (by linarith)
 
 /-- `e_anchor = (1-a)/2 - d/Q > 0` from `Q > 2d/(1-a)`, any real `d`
-(TeX lines 323-325). -/
+(TeX lines 386-388). -/
 theorem anchor_margin_pos (a Q d : ℝ) (ha : a < 1) (hQ : 0 < Q)
     (hcut : 2 * d / (1 - a) < Q) : 0 < (1 - a) / 2 - d / Q := by
   have h : 2 * d < Q * (1 - a) := (anchor_Q_iff a Q d ha).1 hcut
@@ -136,13 +136,13 @@ theorem stopped_isCHolder {θ B ℓ : ℝ} {f : ℝ → E} (hθ : 0 ≤ θ) (h�
   ⟨⟨supNorm B f, stop_supSet_le hℓ0 hf.1⟩,
     ⟨holderSemi θ B f, stop_quotSet_le hθ hℓ0 hf.2⟩⟩
 
-/-- Stopping does not increase the supremum (TeX lines 308-309). -/
+/-- Stopping does not increase the supremum (TeX lines 371-372). -/
 theorem stopped_path_sup_le {B ℓ : ℝ} {f : ℝ → E} (hℓ0 : 0 ≤ ℓ)
     (hf : BddAbove (supSet B f)) : supNorm B (stop ℓ f) ≤ supNorm B f :=
   Real.sSup_le (stop_supSet_le hℓ0 hf) (supNorm_nonneg B f)
 
 /-- Stopping does not increase the `θ`-Hölder seminorm, `θ ≥ 0`
-(TeX lines 308-309). -/
+(TeX lines 371-372). -/
 theorem stopped_path_holder_le {θ B ℓ : ℝ} {f : ℝ → E} (hθ : 0 ≤ θ) (hℓ0 : 0 ≤ ℓ)
     (hf : BddAbove (quotSet θ B f)) :
     holderSemi θ B (stop ℓ f) ≤ holderSemi θ B f :=
@@ -153,7 +153,7 @@ theorem stopped_holderNorm_le {θ B ℓ : ℝ} {f : ℝ → E} (hθ : 0 ≤ θ) 
   add_le_add (stopped_path_sup_le hℓ0 hf.1) (stopped_path_holder_le hθ hℓ0 hf.2)
 
 /-- An empty last interval (`ℓ = 0`) gives the zero path on `[0,B]` for a path
-starting at zero (TeX lines 309-310). -/
+starting at zero (TeX lines 372-373). -/
 theorem stop_zero_path {B : ℝ} {f : ℝ → E} (hf0 : f 0 = 0) :
     ∀ u ∈ Icc 0 B, stop 0 f u = 0 := by
   intro u hu
@@ -186,7 +186,7 @@ theorem smul_isCHolder_and_le {θ B : ℝ} (g : ℝ) {f : ℝ → E} (hf : IsCHo
 def blockPath (g ℓ : ℝ) (P : ℝ → E) : ℝ → E := fun u => g • P (min u ℓ)
 
 /-- `‖g P(min(·,ℓ))‖_{C^θ} ≤ |g| ‖P‖_{C^θ}` (stopping at
-`ℓ ≥ 0`, then scaling by `g`; TeX lines 287, 308-309). -/
+`ℓ ≥ 0`, then scaling by `g`; TeX lines 350, 371-372). -/
 theorem blockPath_norm_le {θ B ℓ : ℝ} (g : ℝ) {P : ℝ → E} (hθ : 0 ≤ θ) (hℓ0 : 0 ≤ ℓ)
     (hP : IsCHolder θ B P) :
     holderNorm θ B (blockPath g ℓ P) ≤ |g| * holderNorm θ B P := by
@@ -200,7 +200,7 @@ end Scale
 /-! ### The block partition -/
 
 /-- `N + 1 ≤ 2/(δB)` and `N ≥ 1` for `N = ⌊1/(δB)⌋`, `δB < 1`
-(TeX lines 320-321). -/
+(TeX lines 383-384). -/
 theorem block_count_le (δ B : ℝ) (hδ : 0 < δ) (hB : 0 < B) (hδB : δ * B < 1) :
     1 ≤ ⌊1 / (δ * B)⌋₊ ∧ ((⌊1 / (δ * B)⌋₊ : ℝ) + 1 ≤ 2 / (δ * B)) := by
   have hpos : 0 < δ * B := mul_pos hδ hB
@@ -270,7 +270,7 @@ theorem lyapunov_mean_le {Ω : Type*} [MeasurableSpace Ω] (μ : Measure Ω)
         Real.rpow_le_rpow (Real.rpow_nonneg hE0 p) hJ (by positivity)
 
 /-- The averaged block mean from per-block `p`-th moment bounds
-`𝔼 Y_m^p ≤ A^p` (TeX lines 311-319): `Z = (δ ∑_{m ≤ N} Y_m^p)^{1/p}` is
+`𝔼 Y_m^p ≤ A^p` (TeX lines 374-382): `Z = (δ ∑_{m ≤ N} Y_m^p)^{1/p}` is
 integrable and `𝔼 Z ≤ (δ(N+1))^{1/p} A`.  Only linearity of the finite sum is
 used. -/
 theorem mean_anchor_bound_general {Ω : Type*} [MeasurableSpace Ω] (μ : Measure Ω)
@@ -319,7 +319,7 @@ section Paths
 
 variable [NormedSpace ℝ E]
 
-/-- `E:radius-mean-anchor` (TeX lines 293-296, proof 307-321) for a general
+/-- `E:radius-mean-anchor` (TeX lines 356-359, proof 370-384) for a general
 block count `N` and stopping times `ℓ_m ≥ 0`, from the supplied moment input.
 Conclusion: `Z_δ` is integrable and
 `𝔼 Z_δ ≤ (δ(N+1))^{1/p} g C √p R^{d/Q}`. -/
@@ -389,7 +389,7 @@ end Paths
 
 /-! ### Decay with `R_δ = δ⁻¹ + 2` -/
 
-/-- `R_δ = 1/δ + 2 ≤ 3/δ` for `0 < δ ≤ 1` (TeX line 323). -/
+/-- `R_δ = 1/δ + 2 ≤ 3/δ` for `0 < δ ≤ 1` (TeX line 386). -/
 theorem radius_le (δ : ℝ) (hδ : 0 < δ) (hδ1 : δ ≤ 1) : 1 / δ + 2 ≤ 3 / δ := by
   rw [div_add' _ _ _ hδ.ne', div_le_div_iff_of_pos_right hδ]
   linarith

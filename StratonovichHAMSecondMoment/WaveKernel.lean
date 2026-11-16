@@ -4,21 +4,21 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The Fourier transform of the wave kernel, from the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` (revision a284420),
-Section "Recovering the quadratic-exponential bound" (lines 775-796) and the
-proof of `L:damped-homogeneous-norms` (lines 803-919).
+`notes/notes_stratonovich_ham_second_moment.tex` (revision 39f2597a),
+Section "Recovering the quadratic-exponential bound" (lines 981-1002) and the
+proof of `L:damped-homogeneous-norms` (lines 1010-1154).
 
-`Ĝ_s(ξ) = sin(s|ξ|)/|ξ|` with value `s` at `ξ = 0` (lines 777-778) is defined as
+`Ĝ_s(ξ) = sin(s|ξ|)/|ξ|` with value `s` at `ξ = 0` (lines 983-984) is defined as
 `waveHat s ξ = s · sinc(s|ξ|)`, which is that function for every `ξ`
 (`waveHat_of_ne_zero`, `waveHat_zero`); it is real, so the complex conjugate
 in `E:damped-norm-definitions` acts trivially.
 
 Formalized (all proved, no supplied input):
 * the bounds `|Ĝ_s(ξ)| ≤ |s|` and `|Ĝ_s(ξ)| ≤ |ξ|⁻¹` (`ξ ≠ 0`), i.e. the
-  bound `|Ĝ_s(ξ)| ≤ min(s, |ξ|⁻¹)` used at line 866;
-* the scaling `Ĝ_{u/θ}(θη) = θ⁻¹ Ĝ_u(η)` (line 884);
+  bound `|Ĝ_s(ξ)| ≤ min(s, |ξ|⁻¹)` used at line 1086;
+* the scaling `Ĝ_{u/θ}(θη) = θ⁻¹ Ĝ_u(η)` (line 1107);
 * the elementary wave Laplace transform
-  `∫_0^∞ e^{-as} Ĝ_s(ξ) ds = (a²+|ξ|²)⁻¹`, `a > 0` (lines 794-795), with
+  `∫_0^∞ e^{-as} Ĝ_s(ξ) ds = (a²+|ξ|²)⁻¹`, `a > 0` (lines 1000-1001), with
   integrability of the integrand.
 -/
 
@@ -40,7 +40,7 @@ open HomogHypothesis TimeFractional
 
 variable {d : ℕ}
 
-/-- `Ĝ_s(ξ) = sin(s|ξ|)/|ξ|`, with value `s` at `ξ = 0` (lines 777-778). -/
+/-- `Ĝ_s(ξ) = sin(s|ξ|)/|ξ|`, with value `s` at `ξ = 0` (lines 983-984). -/
 def waveHat (s : ℝ) (ξ : Rd d) : ℝ := s * Real.sinc (s * ‖ξ‖)
 
 /-- Auxiliary to the Lean proof route. -/
@@ -73,12 +73,12 @@ theorem abs_waveHat_le_inv (s : ℝ) (ξ : Rd d) (hξ : ξ ≠ 0) :
   rw [waveHat_of_ne_zero s ξ hξ, abs_div, abs_norm]
   exact div_le_div_of_nonneg_right (Real.abs_sin_le_one _) (norm_nonneg _)
 
-/-- `|Ĝ_s(ξ)| ≤ min(s, |ξ|⁻¹)` for `s ≥ 0`, `ξ ≠ 0` (line 866). -/
+/-- `|Ĝ_s(ξ)| ≤ min(s, |ξ|⁻¹)` for `s ≥ 0`, `ξ ≠ 0` (line 1086). -/
 theorem abs_waveHat_le_min (s : ℝ) (hs : 0 ≤ s) (ξ : Rd d) (hξ : ξ ≠ 0) :
     |waveHat s ξ| ≤ min s (1 / ‖ξ‖) :=
   le_min ((abs_waveHat_le s ξ).trans (abs_of_nonneg hs).le) (abs_waveHat_le_inv s ξ hξ)
 
-/-- The scaling `Ĝ_{u/θ}(θη) = θ⁻¹ Ĝ_u(η)` for `θ > 0` (line 884). -/
+/-- The scaling `Ĝ_{u/θ}(θη) = θ⁻¹ Ĝ_u(η)` for `θ > 0` (line 1107). -/
 theorem waveHat_scaling (u θ : ℝ) (hθ : 0 < θ) (η : Rd d) :
     waveHat (u / θ) (θ • η) = θ⁻¹ * waveHat u η := by
   simp only [waveHat, norm_smul, Real.norm_eq_abs, abs_of_pos hθ]
@@ -122,7 +122,7 @@ theorem abs_waveHat_mul_le (s t : ℝ) (ξ : Rd d) :
       linarith
     nlinarith [mul_nonneg (abs_nonneg (waveHat s ξ)) (abs_nonneg (waveHat t ξ))]
 
-/-- The elementary wave Laplace transform (lines 794-795): for `a > 0`,
+/-- The elementary wave Laplace transform (lines 1000-1001): for `a > 0`,
 `s ↦ e^{-as} Ĝ_s(ξ)` is integrable on `(0,∞)` and
 `∫_0^∞ e^{-as} Ĝ_s(ξ) ds = (a²+|ξ|²)⁻¹`. -/
 theorem waveHat_laplace (a : ℝ) (ha : 0 < a) (ξ : Rd d) :

@@ -28,16 +28,16 @@ open StratonovichHAMSecondMoment.TypeContinuity
 
 /-! ### The objects of `L:inventory-product` -/
 
-/-- `p = 2 - α₀` (main TeX line 2812). `ν = 3 - α` and `β = 4 - α - α₀`
-(lines 2811-2812) are `TypeContinuity.nuOf` and `TypeContinuity.betaOf`. -/
+/-- `p = 2 - α₀` (main TeX line 3362). `ν = 3 - α` and `β = 4 - α - α₀`
+(lines 3361-3362) are `TypeContinuity.nuOf` and `TypeContinuity.betaOf`. -/
 def pOf (alpha0 : ℝ) : ℝ := 2 - alpha0
 
-/-- `v_i = i^{-β} + k^{-1} i^{-(β-1)} + k^{α-2} i^{-p}` (main TeX lines 2989-2990). -/
+/-- `v_i = i^{-β} + k^{-1} i^{-(β-1)} + k^{α-2} i^{-p}` (main TeX lines 3584-3585). -/
 def vCoef (alpha alpha0 : ℝ) (k i : ℕ) : ℝ :=
   (i : ℝ) ^ (-betaOf alpha alpha0) + (k : ℝ)⁻¹ * (i : ℝ) ^ (-(betaOf alpha alpha0 - 1)) +
     (k : ℝ) ^ (alpha - 2) * (i : ℝ) ^ (-pOf alpha0)
 
-/-- `b_{i,l} = i^{-βl}(1 + li/k)^2/(l!)^ν` (main TeX line 2991). -/
+/-- `b_{i,l} = i^{-βl}(1 + li/k)^2/(l!)^ν` (main TeX line 3586). -/
 def bCoef (alpha alpha0 : ℝ) (k i l : ℕ) : ℝ :=
   (i : ℝ) ^ (-betaOf alpha alpha0 * l) * (1 + l * i / k) ^ 2 / ((l ! : ℕ) : ℝ) ^ nuOf alpha
 
@@ -50,7 +50,7 @@ def factorSeries (alpha alpha0 : ℝ) (k i : ℕ) : PowerSeries ℝ :=
   PowerSeries.mk (factorCoeff alpha alpha0 k i)
 
 /-- The product `∏_{i=1}^M (1 + v_i z + ∑_{l≥2} b_{i,l} z^l)` of
-`E:inventory-product` (main TeX lines 2994-2998), as a formal power series. -/
+`E:inventory-product` (main TeX lines 3589-3593), as a formal power series. -/
 def inventoryProduct (alpha alpha0 : ℝ) (M k : ℕ) : PowerSeries ℝ :=
   ∏ i ∈ Icc 1 M, factorSeries alpha alpha0 k i
 

@@ -28,14 +28,14 @@ open MeasureTheory Set
 namespace StratonovichHAMSecondMoment.VariationalMean
 
 open HomogHypothesis (Rd HomogCovariance IsTempered IsSpectralMeasure)
-
+open MaskedSpectralGrowth (integrable_gauss_of_tempered)
 open VariationalDilation (CPos conv mean)
 
 variable {d : ℕ}
 
 /-! ### `L:variational-heat-envelope` -/
 
-/-- The normalized heat kernel `p_ε(x) = (2πε)^{-d/2} e^{-|x|²/(2ε)}` (TeX lines 25-26). -/
+/-- The normalized heat kernel `p_ε(x) = (2πε)^{-d/2} e^{-|x|²/(2ε)}` (TeX lines 30-31). -/
 def heatK (ε : ℝ) (x : Rd d) : ℝ :=
   (2 * Real.pi * ε) ^ (-((d : ℝ) / 2)) * Real.exp (-(‖x‖ ^ 2 / (2 * ε)))
 
@@ -43,6 +43,20 @@ def heatK (ε : ℝ) (x : Rd d) : ℝ :=
 `ξ ↦ e^{iξ·x} e^{-ε|ξ|²/2}`. -/
 def heatSpec (ε : ℝ) (x ξ : Rd d) : ℂ :=
   Complex.exp (Complex.I * (inner ℝ ξ x : ℝ)) * (Real.exp (-(ε * ‖ξ‖ ^ 2 / 2)) : ℂ)
+
+/-- Auxiliary to the Lean proof route.  A compactly supported `Ψ` on
+`ℝ × ℝ^d` vanishes for `|x| > R`, for some `R ≥ 0` (the common spatial
+support of TeX line 100). -/
+theorem exists_radius {Ψ : ℝ × Rd d → ℝ} (hc : HasCompactSupport Ψ) :
+    ∃ R : ℝ, 0 ≤ R ∧ ∀ u z, R < ‖z‖ → Ψ (u, z) = 0 := by
+  obtain ⟨R, hR⟩ :=
+    (Metric.isBounded_iff_subset_closedBall (0 : ℝ × Rd d)).1 hc.isCompact.isBounded
+  refine ⟨max R 0, le_max_right _ _, fun u z hz => ?_⟩
+  by_contra h
+  have hm := hR (subset_tsupport Ψ h)
+  rw [Metric.mem_closedBall, dist_zero_right] at hm
+  have h2 : ‖z‖ ≤ ‖(u, z)‖ := by simp
+  linarith [le_max_left R 0]
 
 /-- Auxiliary to the Lean proof route.  The Gaussian mass
 `∫ e^{-|y|²/2} Γ(dy) = (2π)^{d/2} (Γ * p_1)(0)`. -/

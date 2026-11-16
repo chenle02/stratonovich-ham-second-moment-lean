@@ -131,7 +131,7 @@ set_option pp.all true
 #check @StratonovichHAMSecondMoment.VariationalDilation.variational_control_dilation_integrable_paper
 #print axioms StratonovichHAMSecondMoment.VariationalDilation.variational_control_dilation_integrable_paper
 open MeasureTheory in
-/-- Consumer (the use in `P:variational-positive-scores`, TeX lines 296-303):
+/-- Consumer (the use in `P:variational-positive-scores`, TeX lines 406-417):
 along the dilation orbit of a control, the variational value
 `c I - v/2` becomes `c r I_Ψ - r^{4-α} v_Ψ / 2`. -/
 private theorem score_along_orbit_consumer {d : ℕ} {alpha alpha0 : ℝ}

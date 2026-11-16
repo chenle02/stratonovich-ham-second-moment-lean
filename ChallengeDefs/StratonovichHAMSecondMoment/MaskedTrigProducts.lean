@@ -24,10 +24,10 @@ namespace StratonovichHAMSecondMoment.MaskedTrigProducts
 
 /-! ### Definitions -/
 
-/-- Japanese bracket `⟨x⟩ = √(1+x²)` (TeX l. 296). -/
+/-- Japanese bracket `⟨x⟩ = √(1+x²)` (TeX l. 391). -/
 def bracket (x : ℝ) : ℝ := Real.sqrt (1 + x ^ 2)
 
-/-- `𝒬_h(r,ρ) = ⟨h(r-ρ)⟩^{a-1} + ⟨h(r+ρ)⟩^{a-1}` (TeX l. 355-358). -/
+/-- `𝒬_h(r,ρ) = ⟨h(r-ρ)⟩^{a-1} + ⟨h(r+ρ)⟩^{a-1}` (TeX l. 467-470). -/
 def frequencyPair (a h r ρ : ℝ) : ℝ :=
   bracket (h * (r - ρ)) ^ (a - 1) + bracket (h * (r + ρ)) ^ (a - 1)
 
@@ -70,7 +70,7 @@ def freq (r ρ : ℝ) (j : Bool × Bool) : ℝ := sgn j.1 * r + sgn j.2 * ρ
 
 /-! ### (4) The paper wrapper -/
 
-/-- `C₀(a) = 16/(1-a)` (TeX l. 306). -/
+/-- `C₀(a) = 16/(1-a)` (TeX l. 402). -/
 def C₀ (a : ℝ) : ℝ := 16 / (1 - a)
 
 end StratonovichHAMSecondMoment.MaskedTrigProducts

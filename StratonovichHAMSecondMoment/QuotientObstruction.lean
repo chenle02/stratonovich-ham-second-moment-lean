@@ -4,15 +4,15 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `P:masked-quotient-obstruction` (A physical mask need not preserve noise-null
-tests) of `notes/integrated_covariance_foundation.tex` (revision a284420;
-statement lines 257-263, proof lines 265-292).
+tests) of `notes/integrated_covariance_foundation.tex` (revision 39f2597a;
+statement lines 339-345, proof lines 347-382).
 
 Formalized:
 * `masked_quotient_obstruction_paper`, with the manuscript's hypotheses `d = 2`,
   `α = 1`, `0 < a < 1` (`a = α₀`), `Γ = δ₀(dx₁) dx₂` (`Gamma0`) and the section's
   `T > 0`: (i) `Γ` with `μ = (2π)^{-1} dξ₁ δ₀(dξ₂)` (`mu0`) satisfies
   `H:homog` (`HomogHypothesis.HomogCovariance 2 1 a Gamma0 mu0`, TeX lines
-  266-270), and `Γ ≠ 0` (the section's standing assumption, lines 5-6);
+  353-357), and `Γ ≠ 0` (the section's standing assumption, lines 7-8);
   (ii) there is a real compact smooth `ζ : ℝ² → ℝ` such that no real
   `C` satisfies `E W(ζF)² ≤ C E W(F)²` for every real compact smooth test `F`
   with time support in `(0,T)` (`IsTest T F`).
@@ -22,14 +22,14 @@ Formalized:
   integrands, `‖τ‖_a² > 0`, `V(g) = 0`, `V(ζg) = J_χ I_χ²`, `E W(τ⊗g)² = 0` and
   `E W(ζ·(τ⊗g))² = ‖τ‖_a² J_χ I_χ² > 0`.
 * TeX steps: `homogCovariance_Gamma0` (with `spectral_Gamma0`, the Fourier
-  inversion of lines 266-267, and `posDef_Gamma0`, line 268), `spatialCov_Gamma0`
-  (`V(g)` as the spatial covariance, lines 270-274), `integral_chi2` (line 284),
-  `integral_chi_mul_chi2` (integration by parts, lines 284-285), `Ichi_pos`,
-  `Jchi_pos` (lines 281-283), `covW_tensor` and `timeQ_pos` (lines 286-290).
+  inversion of lines 353-354, and `posDef_Gamma0`, line 355), `spatialCov_Gamma0`
+  (`V(g)` as the spatial covariance, lines 357-361), `integral_chi2` (line 374),
+  `integral_chi_mul_chi2` (integration by parts, lines 374-375), `Ichi_pos`,
+  `Jchi_pos` (lines 371-373), `covW_tensor` and `timeQ_pos` (lines 376-380).
 
 Definitional boundary (D1).  The noise `W` is not constructed.  `E W(F)²` is
 read as the covariance functional of `E:cov` (main TeX
-`notes/notes_stratonovich_ham_second_moment.tex`, a284420, lines 219-222):
+`notes/notes_stratonovich_ham_second_moment.tex`, 39f2597a, lines 378-381):
 `covW a Γ F = ∫∫ |t-s|^{-a} ∫ Γ(dz) ∫ F(t,x) F(s,x-z) dx dt ds`, an iterated
 Bochner integral with time integrals over `ℝ` (equal to `[0,T]²` for the tests
 used).  The theorems prove integrability of the integrands they evaluate, so the
@@ -44,7 +44,7 @@ the class of tests makes the nonexistence of `C` stronger than over all compact
 smooth tests.  "Real" mask: `ζ` is real-valued.  `C` ranges over all reals.
 
 Differences from the TeX.  The bump `χ` is Mathlib's `ContDiffBump` with radii
-`1`, `2` (the TeX's explicit formula, lines 276-279, is introduced "for example");
+`1`, `2` (the TeX's explicit formula, lines 366-369, is introduced "for example");
 evenness of `χ` and `J_χ ≥ 2` are not used.  `V(g)` is identified with the spatial
 covariance through the substitution `x = y + t e₂` and Fubini on `ℝ × ℝ²`
 (`autocorr_e2`, auxiliary), for continuous compactly supported `g`.  Positive
@@ -353,8 +353,8 @@ theorem integral_shift_e2 {𝕜 : Type*} [RCLike 𝕜] (f : Rd 2 → 𝕜) (t : 
   have : q + (0, t) = (q.1, q.2 + t) := by ext <;> simp
   rw [this]
 
-/-- Auxiliary (the computation behind TeX lines 270-274 and the positive
-definiteness of `Γ`, line 268): for continuous `f` with product decay, the autocorrelation
+/-- Auxiliary (the computation behind TeX lines 357-361 and the positive
+definiteness of `Γ`, line 355): for continuous `f` with product decay, the autocorrelation
 along `e₂`, integrated over the shift, is the `L²` norm of the marginal:
 `∫_ℝ ∫_{ℝ²} f(y + t e₂) conj f(y) dy dt = ∫_ℝ |∫_ℝ f(u,v) dv|² du`, with the
 outer integrand integrable in `t` and each inner integrand integrable in `y`. -/
@@ -411,16 +411,16 @@ theorem autocorr_e2 {𝕜 : Type*} [RCLike 𝕜] {f : Rd 2 → 𝕜} (hc : Conti
 
 /-! ### The covariance `Γ = δ₀(dx₁) dx₂` and its spectral measure -/
 
-/-- The manuscript's `Γ = δ₀(dx₁) dx₂` on `ℝ²` (TeX lines 259-260): Lebesgue measure on the
+/-- The manuscript's `Γ = δ₀(dx₁) dx₂` on `ℝ²` (TeX lines 341-342): Lebesgue measure on the
 second coordinate axis. -/
 def Gamma0 : Measure (Rd 2) := lineMeasure e2
 
 /-- The manuscript's spectral measure `μ = (2π)^{-1} dξ₁ δ₀(dξ₂)` (TeX lines
-266-267): `(2π)^{-1}` times Lebesgue measure on the first coordinate axis. -/
+353-354): `(2π)^{-1}` times Lebesgue measure on the first coordinate axis. -/
 def mu0 : Measure (Rd 2) := ENNReal.ofReal (2 * π)⁻¹ • lineMeasure e1
 
 /-- `Γ = δ₀(dx₁) dx₂` is not the zero measure (the section's standing `Γ ≠ 0`,
-TeX lines 5-6, holds for it). -/
+TeX lines 7-8, holds for it). -/
 theorem Gamma0_ne_zero : Gamma0 ≠ 0 := by
   intro h
   have h1 : Gamma0 univ = (⊤ : ℝ≥0∞) := by
@@ -450,7 +450,7 @@ theorem schwartz_planeDecay (φ : SchwartzMap (Rd 2) ℂ) : PlaneDecay (⇑φ) :
         gcongr
     _ = (1 + ‖plane p‖) ^ 4 := by ring
 
-/-- `Γ = δ₀(dx₁) dx₂` is positive definite as a distribution (TeX line 268). -/
+/-- `Γ = δ₀(dx₁) dx₂` is positive definite as a distribution (TeX line 355). -/
 theorem posDef_Gamma0 : IsPosDefDistr Gamma0 := by
   intro φ
   have h := (autocorr_e2 (𝕜 := ℂ) φ.continuous (schwartz_planeDecay φ)).2.2
@@ -475,7 +475,7 @@ theorem integrable_schwartz_e1 (ψ : SchwartzMap (Rd 2) ℂ) :
   rw [smul_e1]
   exact hC (w, 0)
 
-/-- The spectral identity of TeX lines 266-267: `μ = (2π)^{-1} dξ₁ δ₀(dξ₂)` is the
+/-- The spectral identity of TeX lines 353-354: `μ = (2π)^{-1} dξ₁ δ₀(dξ₂)` is the
 spectral measure of `Γ = δ₀(dx₁) dx₂` in the convention of `H:homog`
 (`∫ φ dΓ = ∫ (∫ φ(x) e^{iξ·x} dx) μ(dξ)` for every Schwartz `φ`).  Route: Fourier
 inversion on `ℝ` (`Integrable.fourierInv_fourier_eq`) for the marginal
@@ -553,7 +553,7 @@ theorem spectral_Gamma0 : IsSpectralMeasure Gamma0 mu0 := by
   rw [hpi, one_smul]
 
 /-- `Γ = δ₀(dx₁) dx₂` and `μ = (2π)^{-1} dξ₁ δ₀(dξ₂)` satisfy `H:homog` with `d = 2`,
-`α = 1` and `α₀ = a` for every `0 < a < 1` (TeX lines 266-270). -/
+`α = 1` and `α₀ = a` for every `0 < a < 1` (TeX lines 353-357). -/
 theorem homogCovariance_Gamma0 {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
     HomogCovariance 2 1 a Gamma0 mu0 where
   dim := Or.inr (Or.inl rfl)
@@ -584,7 +584,7 @@ theorem homogCovariance_Gamma0 {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
 /-! ### The covariance functional and its factorization on tensors -/
 
 /-- The noise covariance functional of `E:cov` (main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex`, a284420, lines 219-222) read as
+`notes/notes_stratonovich_ham_second_moment.tex`, 39f2597a, lines 378-381) read as
 `E W(F)² = ∫∫ |t-s|^{-a} ∫ Γ(dz) ∫ F(t,x) F(s,x-z) dx dt ds` for a real test `F`
 (a definitional D1 reading; `W` itself is not constructed).  Time integrals run over
 `ℝ`; for tests supported in `(0,T)` this is the integral over `[0,T]²`.  An
@@ -602,11 +602,11 @@ def spatialCov {d : ℕ} (Γ : Measure (Rd d)) (f g : Rd d → ℝ) : ℝ :=
 def timeQ (a : ℝ) (τ : ℝ → ℝ) : ℝ :=
   ∫ t, ∫ s, τ t * τ s * |t - s| ^ (-a)
 
-/-- The manuscript's `V(g) = ∫_ℝ (∫_ℝ g(x₁, x₂) dx₂)² dx₁` (TeX lines 272-274). -/
+/-- The manuscript's `V(g) = ∫_ℝ (∫_ℝ g(x₁, x₂) dx₂)² dx₁` (TeX lines 359-361). -/
 def margV (g : Rd 2 → ℝ) : ℝ := ∫ u, (∫ v, g (plane (u, v))) ^ 2
 
 /-- On tensors `F(t,x) = τ(t) g(x)` the covariance functional factors as
-`‖τ‖_a² · ∫ Γ(dz) ∫ g(x) g(x-z) dx` (TeX lines 286-290).  No integrability is
+`‖τ‖_a² · ∫ Γ(dz) ∫ g(x) g(x-z) dx` (TeX lines 376-380).  No integrability is
 needed: constants are pulled out of Bochner integrals. -/
 theorem covW_tensor {d : ℕ} (a : ℝ) (Γ : Measure (Rd d)) (τ : ℝ → ℝ) (g : Rd d → ℝ) :
     covW a Γ (fun t x => τ t * g x) = timeQ a τ * spatialCov Γ g g := by
@@ -661,7 +661,7 @@ theorem planeDecay_of_hasCompactSupport {g : Rd 2 → ℝ} (hc : Continuous g)
         mul_le_mul_of_nonneg_left (mul_le_mul h1 h2 (by positivity) (wt_pos _).le)
           (by positivity)
 
-/-- `V(g)` is the spatial covariance for `Γ = δ₀(dx₁) dx₂` (TeX lines 270-274):
+/-- `V(g)` is the spatial covariance for `Γ = δ₀(dx₁) dx₂` (TeX lines 357-361):
 for real continuous compactly supported `g`, every inner integrand
 `x ↦ g(x) g(x-z)` is integrable, `z ↦ ∫ g(x) g(x-z) dx` is `Γ`-integrable, and
 `∫ Γ(dz) ∫ g(x) g(x-z) dx = ∫ (∫ g(x₁,x₂) dx₂)² dx₁`.  Route: the substitution
@@ -733,11 +733,11 @@ theorem hasCompactSupport_tensor {p q : ℝ → ℝ} (hp : HasCompactSupport p)
 /-! ### The bump `χ` and the integrals `I_χ`, `J_χ` -/
 
 /-- Auxiliary: the smooth bump on `ℝ` equal to one on `[-1,1]` and zero outside
-`(-2,2)` (Mathlib's `ContDiffBump`; the TeX's explicit formula, lines 276-279, is given
+`(-2,2)` (Mathlib's `ContDiffBump`; the TeX's explicit formula, lines 366-369, is given
 "for example"). -/
 def chiBump : ContDiffBump (0 : ℝ) := ⟨1, 2, one_pos, one_lt_two⟩
 
-/-- The manuscript's `χ` (TeX lines 275-279): smooth, compactly supported,
+/-- The manuscript's `χ` (TeX lines 365-369): smooth, compactly supported,
 nonnegative, `χ = 1` on `[-1,1]`. -/
 def chi (x : ℝ) : ℝ := chiBump x
 
@@ -769,7 +769,7 @@ theorem contDiff_chi2 : ContDiff ℝ ∞ chi2 :=
 theorem hasCompactSupport_chi2 : HasCompactSupport chi2 :=
   hasCompactSupport_chi.deriv.deriv
 
-/-- `∫ χ'' = 0` (TeX line 284). -/
+/-- `∫ χ'' = 0` (TeX line 374). -/
 theorem integral_chi2 : ∫ x, chi2 x = 0 := by
   refine integral_eq_zero_of_hasDerivAt_of_integrable (f := deriv chi)
     (fun x => ((contDiff_deriv_chi.differentiable (by simp)) x).hasDerivAt) ?_ ?_
@@ -800,7 +800,7 @@ def Ichi : ℝ := ∫ x, deriv chi x ^ 2
 /-- `J_χ = ∫ χ⁴`. -/
 def Jchi : ℝ := ∫ x, chi x ^ 4
 
-/-- Integration by parts: `∫ χ χ'' = -I_χ` (TeX lines 284-285). -/
+/-- Integration by parts: `∫ χ χ'' = -I_χ` (TeX lines 374-375). -/
 theorem integral_chi_mul_chi2 : ∫ x, chi x * chi2 x = -Ichi := by
   have hd : Differentiable ℝ chi := contDiff_chi.differentiable (by simp)
   have hd' : Differentiable ℝ (deriv chi) := contDiff_deriv_chi.differentiable (by simp)
@@ -817,7 +817,7 @@ theorem integral_chi_mul_chi2 : ∫ x, chi x * chi2 x = -Ichi := by
   rw [h, Ichi]
   simp [sq]
 
-/-- `I_χ > 0` (TeX lines 281-282: `χ` is not constant). -/
+/-- `I_χ > 0` (TeX lines 371-372: `χ` is not constant). -/
 theorem Ichi_pos : 0 < Ichi := by
   obtain ⟨x, hx⟩ : ∃ x, deriv chi x ≠ 0 := by
     by_contra h
@@ -830,7 +830,7 @@ theorem Ichi_pos : 0 < Ichi := by
     (fun y => sq_nonneg _) (x := x) ?_
   exact pow_ne_zero 2 hx
 
-/-- `J_χ > 0` (TeX line 281). -/
+/-- `J_χ > 0` (TeX line 371). -/
 theorem Jchi_pos : 0 < Jchi := by
   refine (contDiff_chi.continuous.pow 4).integral_pos_of_hasCompactSupport_nonneg_nonzero
     (hasCompactSupport_chi.comp_left (g := fun r : ℝ => r ^ 4) (by norm_num))
@@ -839,7 +839,7 @@ theorem Jchi_pos : 0 < Jchi := by
 
 /-! ### The temporal factor -/
 
-/-- The temporal factor is finite and strictly positive (TeX lines 287-289): for
+/-- The temporal factor is finite and strictly positive (TeX lines 377-379): for
 `0 < a < 1`, `T > 0` and a continuous `τ ≥ 0` vanishing outside `[0,T]` and not
 identically zero, the integrand `τ(t) τ(s) |t-s|^{-a}` is integrable on `ℝ²` and
 `‖τ‖_a² > 0`.  Integrability is `TimeSchur.time_schur_paper`; positivity holds
@@ -887,7 +887,7 @@ theorem timeQ_pos {a T : ℝ} (ha0 : 0 < a) (ha1 : a < 1) (hT : 0 < T) {τ : ℝ
 /-! ### The obstruction -/
 
 /-- Real compact smooth space-time tests supported in `(0,T) × ℝ^d`: the
-manuscript's "compact smooth test `F`" (TeX line 262) with time support in the
+manuscript's "compact smooth test `F`" (TeX line 344) with time support in the
 section's interval. -/
 def IsTest {d : ℕ} (T : ℝ) (F : ℝ → Rd d → ℝ) : Prop :=
   ContDiff ℝ ∞ (fun q : ℝ × Rd d => F q.1 q.2) ∧
@@ -906,14 +906,14 @@ theorem isTest_tensor {d : ℕ} {T : ℝ} {τ : ℝ → ℝ} {g : Rd d → ℝ} 
     · simp [image_eq_zero_of_notMem_tsupport h]
   · intro h0; exact h (by simp [h0])
 
-/-- The mask `ζ(x) = χ(x₁) χ(x₂)` of TeX line 283. -/
+/-- The mask `ζ(x) = χ(x₁) χ(x₂)` of TeX line 373. -/
 def zeta (x : Rd 2) : ℝ := chi (x 0) * chi (x 1)
 
-/-- The spatial test `g(x) = χ(x₁) χ''(x₂)` of TeX line 283. -/
+/-- The spatial test `g(x) = χ(x₁) χ''(x₂)` of TeX line 373. -/
 def gtest (x : Rd 2) : ℝ := chi (x 0) * chi2 (x 1)
 
 /-- `P:masked-quotient-obstruction`, the computation of its proof
-(`notes/integrated_covariance_foundation.tex`, a284420, lines 265-292), with
+(`notes/integrated_covariance_foundation.tex`, 39f2597a, lines 347-382), with
 `Γ = δ₀(dx₁) dx₂` and the covariance functional `covW` (`E:cov` read as a
 covariance functional; D1).  For `0 < a < 1` and `T > 0` there are a nonnegative
 nonzero smooth `τ` supported in `(0,T)` and the explicit `ζ = χ ⊗ χ`,
@@ -977,11 +977,11 @@ theorem masked_quotient_obstruction {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) {T : �
   exact mul_pos hTpos (mul_pos Jchi_pos (pow_pos Ichi_pos 2))
 
 /-- `P:masked-quotient-obstruction` (A physical mask need not preserve noise-null
-tests), `notes/integrated_covariance_foundation.tex`, a284420, statement lines
-257-263, proof lines 265-292, with the manuscript's hypotheses: `d = 2`, `α = 1`,
+tests), `notes/integrated_covariance_foundation.tex`, 39f2597a, statement lines
+339-345, proof lines 347-382, with the manuscript's hypotheses: `d = 2`, `α = 1`,
 `0 < a < 1` (`a = α₀`), `Γ = δ₀(dx₁) dx₂` and the section's `T > 0`.  Conclusions:
-`Γ` with `μ = (2π)^{-1} dξ₁ δ₀(dξ₂)` satisfies `H:homog` (TeX lines 266-270) and
-`Γ ≠ 0` (the section's standing assumption, lines 5-6, holds), and there is a
+`Γ` with `μ = (2π)^{-1} dξ₁ δ₀(dξ₂)` satisfies `H:homog` (TeX lines 353-357) and
+`Γ ≠ 0` (the section's standing assumption, lines 7-8, holds), and there is a
 real compact smooth mask `ζ` such that no finite `C` satisfies
 `E W(ζF)² ≤ C E W(F)²` for every real compact smooth test `F` supported in
 `(0,T) × ℝ²`.  `E W(F)²` is read as the covariance functional `covW` of `E:cov`

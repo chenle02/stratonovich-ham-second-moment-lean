@@ -2,7 +2,7 @@
 Refutation for (F1) of wave L6, package theorem
 `StratonovichHAMSecondMoment.VariationalFloor.dilation_floor` (the dilation
 floor behind the positivity in `P:variational-unmasked-rate`,
-`notes/integrated_unmasked_variational.tex` lines 150-155 at a284420).
+`notes/integrated_unmasked_variational.tex` lines 203-208 at 39f2597a).
 
 Wrong variant: the hypothesis `V ≥ Γ * z` dropped from the uniform floor,
 i.e. one unit trial `(f, g)` and one `ε > 0` with `ε ≤ ∫ V f² - ∫ ‖g‖²` for

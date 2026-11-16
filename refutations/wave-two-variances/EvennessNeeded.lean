@@ -1,6 +1,6 @@
 /-
 Refutation for dropping the evenness of `ν_R` in the output direction of
-`P:wave-two-variances` (`notes/integrated_wave_variance.tex` at a284420, lines 446-450:
+`P:wave-two-variances` (`notes/integrated_wave_variance.tex` at 39f2597a, lines 546-550:
 "Reflect `λ` using the evenness of `ν_R` and then use symmetry of `Φ_h`. This row becomes
 `∫ Φ_h(η, η-λ) ν_R(dλ)`"), package definition `FrequencyRow.rowKernel` and package
 theorem `StratonovichHAMSecondMoment.WaveTwoVariances.rowKernel_symm`.

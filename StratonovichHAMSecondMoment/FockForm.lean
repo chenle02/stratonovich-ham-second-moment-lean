@@ -5,32 +5,32 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Consumers of the Hermite/Fock foundation (`GaussianHermite`, `HermiteFock`) in
 `notes/notes_stratonovich_ham_second_moment.tex` (main TeX; line numbers at
-revision a284420).
+revision 39f2597a).
 
 Formalized:
-* `L:fock-form` (statement lines 2472-2489, `E:fock-sandwich` 2484-2488, proof
-  2491-2527): the Fock half of the proof and the compression by `S_b`
-  (lines 2511-2513) are proved; the spatial half (lines 2492-2511: Gaussian
+* `L:fock-form` (statement lines 2960-2977, `E:fock-sandwich` 2972-2976, proof
+  2979-3028): the Fock half of the proof and the compression by `S_b`
+  (lines 3006-3008) are proved; the spatial half (lines 2987-3006: Gaussian
   isometry, Plancherel and `E:phase-resolvent` of `L:phase-contractions`, giving
   `∑_i H_i² ≤ R_α ρ^{α-4}`) is the named input `FockColumn`.  Wrapper
   `fock_form_paper`.  Class: inputs supplied.
-* `L:interval-contractions` (statement 2828-2848, proof 2850-2897):
-  `E:interval-column` (2832-2835) is the named input (`FockColumn` at
+* `L:interval-contractions` (statement 3384-3404, proof 3406-3470):
+  `E:interval-column` (3388-3391) is the named input (`FockColumn` at
   `R_α ρ^{α-2}` for the operators `A_ρ^{-1/2} M_{e_m}`); proved from it: the
-  same column bound for band-compressed multiplications (2875-2878), the phase
+  same column bound for band-compressed multiplications (3444-3447), the phase
   insertion on a vacuum color with norm at most `√R_α ρ^{(α-2)/2}`
-  (2838-2841, 2878-2880), the substitution `∑ (A^{-1/2} M A^{-1/2})² ≤
-  R_α ρ^{α-4}` (2882-2886) and `E:interval-fock` (2844-2846, 2887-2891).
+  (3394-3397, 3447-3449), the substitution `∑ (A^{-1/2} M A^{-1/2})² ≤
+  R_α ρ^{α-4}` (3455-3459) and `E:interval-fock` (3400-3402, 3460-3464).
   Wrapper `interval_contractions_paper`.  Class: inputs supplied.
-* `E:occupied-multiplication` (lines 1802-1804, inside the proof of
-  `P:mild-construction`, statement 1773-1787, proof from line 1793) for finitely many coordinates:
+* `E:occupied-multiplication` (lines 2189-2191, inside the proof of
+  `P:mild-construction`, statement 2151-2165, proof from line 2171) for finitely many coordinates:
   `‖HF‖₂ ≤ 2√(n+1) ‖H‖₂ ‖F‖₂` for `H = ∑_i a_i g_i` and `F` a real polynomial
   of total degree at most `n` in independent standard Gaussians
   `g_1, …, g_m`, both on `stdPi m` (`occupied_multiplication`) and on a
   probability space (`occupied_multiplication_paper`).  Narrower than the TeX:
   `F` ranges over polynomials in finitely many coordinates and `H` over their
   span, not over the closed space `P_{≤n}` and all centered linear Gaussians;
-  the closure step and the almost-sure identification (lines 1810-1814) are not
+  the closure step and the almost-sure identification (lines 2197-2201) are not
   formalized.  The spanning step (monomials of degree `≤ n` lie in the Hermite
   span of degree `≤ n`) is `GaussianHermite.mvPolynomial_mem_hermiteSpan`.
 * The degree-raising hypothesis of `StratonovichHAMAudit.HermiteWord.cut_eq_raw`
@@ -54,7 +54,7 @@ rotated basis, and the annihilation part is bounded through the finite
 adjoint identity (see `HermiteFock`).
 
 Standing hypotheses in the wrappers: for `L:fock-form`, the class of
-`S:static-phase` (lines 2054-2066): `0 < α < 2`, `Γ` even, positive definite,
+`S:static-phase` (lines 2490-2502): `0 < α < 2`, `Γ` even, positive definite,
 tempered, locally finite on `ℝ³` with `Γ(rA) = r^{3-α} Γ(A)`, spectral measure
 `μ` (locally finite), `R_α = απ μ(B_1)/(2 sin(πα/2))`; for
 `L:interval-contractions`, `H:homog` (`HomogCovariance`, as in the other
@@ -96,9 +96,9 @@ variable {X : Type*} [NormedAddCommGroup X] [InnerProductSpace ℂ X] {m : ℕ}
 /-- **Named input `FockColumn`** (the spatial column bound): the family
 `H_1, …, H_m` satisfies `∑_i ‖H_i u‖² ≤ c ‖u‖²` for all `u`.  In `L:fock-form`
 it stands for `∑_i H_i² ≤ R_α ρ^{α-4}` for `H_i = A_ρ^{-1/2} M_{e_i} A_ρ^{-1/2}`
-(main TeX lines 2496-2511: Gaussian isometry, spatial Plancherel and
+(main TeX lines 2991-3006: Gaussian isometry, spatial Plancherel and
 `E:phase-resolvent` of `L:phase-contractions`); in `L:interval-contractions`
-it stands for `E:interval-column` (lines 2832-2835) with the operators
+it stands for `E:interval-column` (lines 3388-3391) with the operators
 `A_ρ^{-1/2} M_{e_m}` and `c = R_α ρ^{α-2}`.  The manuscript states these for
 the full mode family; a finite family is a sub-sum, so the input is no
 stronger. -/
@@ -128,7 +128,7 @@ theorem compress_symm {P T : X →L[ℂ] X} (hPs : ∀ u w, inner ℂ (P u) w = 
   simp only [ContinuousLinearMap.comp_apply]
   rw [hPs, hT, hPs]
 
-/-- **Compression by `S_b`** (main TeX lines 2511-2513): if `∑_i ‖H_i u‖² ≤ c‖u‖²`
+/-- **Compression by `S_b`** (main TeX lines 3006-3008): if `∑_i ‖H_i u‖² ≤ c‖u‖²`
 with `c ≥ 0` and `P` is a symmetric idempotent, then the same bound holds for
 `P H_i P`. -/
 theorem fockColumn_compress {H : Fin m → X →L[ℂ] X} {c : ℝ} (hc0 : 0 ≤ c)
@@ -154,7 +154,7 @@ theorem fock_const_eq (N : ℕ) {R ρ alpha : ℝ} (hR : 0 ≤ R) (hρ : 0 < ρ)
 /-! ### `L:fock-form` -/
 
 /-- **`L:fock-form`, general form** (`E:fock-sandwich`, main TeX lines
-2484-2488).  Let `H_1, …, H_m` be symmetric operators on `X` with the column
+2972-2976).  Let `H_1, …, H_m` be symmetric operators on `X` with the column
 bound `FockColumn H (R ρ^{α-4})` (named input; `R ≥ 0`, `ρ > 0`), and `P` a
 symmetric idempotent (the band projection `S_b`).  Then for every `N`, on
 coefficient vectors `v` of Hermite degree at most `N`, the operator
@@ -187,19 +187,19 @@ theorem fock_form {R ρ alpha : ℝ} (hR : 0 ≤ R) (hρ : 0 < ρ) (H : Fin m �
   · rw [← hconst]; exact fieldOp_bound_trunc N _ hsym hc0 hcomp hv
   · rw [← hconst]; exact hb
 
-/-- **`L:fock-form`** (main TeX lines 2472-2489, proof 2491-2527) with the
-manuscript's hypotheses: the class of `S:static-phase` (lines 2054-2066) on
+/-- **`L:fock-form`** (main TeX lines 2960-2977, proof 2979-3028) with the
+manuscript's hypotheses: the class of `S:static-phase` (lines 2490-2502) on
 `ℝ³` (`0 < α < 2`; `Γ` even, positive definite, tempered, locally finite, with
 `Γ(rA) = r^{3-α}Γ(A)`; `μ` locally finite with `Γ = ∫ e^{iξ·x} μ(dξ)`),
 `R = R_α = απ μ(B_1)/(2 sin(πα/2))`, `ε > 0`, `ρ > 0`, a finite mode number
 `m`, a band projection `P = S_b` (symmetric idempotent), and the self-adjoint
 spatial sandwiches `H_i = A_ρ^{-1/2} M_{e_i} A_ρ^{-1/2}` with the supplied
-column bound `FockColumn H (R_α ρ^{α-4})` (named input, lines 2496-2511).
+column bound `FockColumn H (R_α ρ^{α-4})` (named input, lines 2991-3006).
 Conclusion: for every `N`, `B_{N,m,b}` sandwiched by `A_ρ^{-1/2}` (which is
 `P_N (∑_i g_i ⊗ S_b H_i S_b) P_N`, since `S_b` commutes with `A_ρ`) is
 symmetric and has norm at most `d_N ρ^{α/2-2}`, `d_N = 2√(N+1)√R_α`, on the
 coefficient model and in Gaussian `L²`.  Inputs supplied: the spatial half
-(`hcol`), self-adjointness of the `H_i` (`hH`, line 2495) and the
+(`hcol`), self-adjointness of the `H_i` (`hH`, line 2990) and the
 identification of the abstract operators with the TeX's spatial operators.
 Used: `0 < α < 2` and `hRdef` (for `R_α ≥ 0`), `ρ > 0`; carried and unused:
 `_hΓ`, `_hμ`, `_hΓe`, `_hΓt`, `_hΓp`, `_hspec`, `_hscal`, `_hε`. -/
@@ -233,21 +233,21 @@ theorem fock_form_paper [CompleteSpace X] {alpha R ε ρ : ℝ}
 
 /-! ### `L:interval-contractions` -/
 
-/-- **`L:interval-contractions`, general form** (main TeX lines 2828-2897).
+/-- **`L:interval-contractions`, general form** (main TeX lines 3384-3470).
 Let `S` (standing for `A_ρ^{-1/2}`) be symmetric with `‖S f‖ ≤ ρ^{-1}‖f‖`, let
 `M_1, …, M_m` (the multiplications `M_{e_m}`) be symmetric, and let `P` (a band
 projection `S_b`) be a symmetric idempotent commuting with `S`.  Assume
 `E:interval-column` as the named input `FockColumn (S M) (R ρ^{α-2})`,
 `R ≥ 0`, `ρ > 0`.  Then:
 (a) the column bound holds for the band-compressed `S P M_i P` (lines
-2875-2878);
+3444-3447);
 (b) phase insertion on a vacuum color: for `u, w ∈ X`,
 `∫ ‖∑_i x_i S P M_i P u‖² dγ_m = ∑_i ‖S P M_i P u‖² ≤ R ρ^{α-2}(‖u‖² + ‖S w‖²)`,
 the squared form of the norm bound `√R ρ^{(α-2)/2}` for
 `(u, w) ↦ (0, W u)` in `‖(f,g)‖_ρ² = ‖f‖² + ‖A_ρ^{-1/2} g‖²` (lines
-2838-2841, 2878-2880), with integrability;
+3394-3397, 3447-3449), with integrability;
 (c) `H_i = S P M_i P S` is symmetric with column bound `R ρ^{α-4}` (lines
-2882-2886);
+3455-3459);
 (d) `E:interval-fock`: on degrees `≤ N` the truncated sandwiched field has
 norm at most `d_N ρ^{α/2-2}`, on the coefficient model and in Gaussian `L²`. -/
 theorem interval_contractions {R ρ alpha : ℝ} (hR : 0 ≤ R) (hρ : 0 < ρ)
@@ -317,9 +317,9 @@ theorem interval_contractions {R ρ alpha : ℝ} (hR : 0 ≤ R) (hρ : 0 < ρ)
     · rw [← hconst]; exact fieldOp_bound_trunc N _ hsym hc0' hc hv
     · rw [← hconst]; exact hb
 
-/-- **`L:interval-contractions`** (main TeX lines 2828-2848, proof 2850-2897)
+/-- **`L:interval-contractions`** (main TeX lines 3384-3404, proof 3406-3470)
 with the manuscript's hypotheses: `H:homog` (`HomogCovariance d α α₀ Γ μ`, the
-standing class of `S:interval-upper`, lines 2803-2824), `R = R_α`, `ε > 0`,
+standing class of `S:interval-upper`, lines 3353-3374), `R = R_α`, `ε > 0`,
 `ρ > 0`, finite mode number `m`, `A_ρ^{-1/2}` as a self-adjoint `S` with
 `‖S f‖ ≤ ρ^{-1}‖f‖` (`A_ρ ≥ ρ²`), self-adjoint multiplications `M_i`, a
 band projection `P` (self-adjoint idempotent) commuting with `S`, and
@@ -377,7 +377,7 @@ theorem interval_contractions_paper [CompleteSpace X] {d : ℕ} {alpha alpha0 R 
 /-! ### `E:occupied-multiplication` for finitely many coordinates -/
 
 /-- **`E:occupied-multiplication`, finite coordinates** (main TeX lines
-1802-1804, proof 1805-1810), on `stdPi m`: for `H(x) = ∑_i a_i x_i` and
+2189-2191, proof 2192-2197), on `stdPi m`: for `H(x) = ∑_i a_i x_i` and
 `F(x) = p(x)` with `p` a real polynomial of total degree at most `n`,
 `E[(HF)²] ≤ 4(n+1) E[H²] E[F²]`, all three integrands integrable.  (This is
 `‖HF‖₂ ≤ 2√(n+1)‖H‖₂‖F‖₂` squared.)  Proof: the spanning step
@@ -443,15 +443,15 @@ theorem occupied_multiplication (n : ℕ) (a : Fin m → ℝ) (p : MvPolynomial 
     _ ≤ _ := h3
     _ = _ := by rw [integral_congr_ae (ae_of_all _ hFF), hsq, hH2]
 
-/-- **`E:occupied-multiplication`** (main TeX lines 1802-1804, inside the proof
-of `P:mild-construction`, which starts at line 1793), for finitely many coordinates, on a
+/-- **`E:occupied-multiplication`** (main TeX lines 2189-2191, inside the proof
+of `P:mild-construction`, which starts at line 2171), for finitely many coordinates, on a
 probability space: for independent standard Gaussians `g_1, …, g_m`, the
 centered linear Gaussian `H = ∑_i a_i g_i` and `F = p(g_1, …, g_m)` with `p` a
 real polynomial of total degree at most `n`,
 `‖HF‖₂ ≤ 2√(n+1) ‖H‖₂ ‖F‖₂`, with `HF`, `H`, `F` square integrable.
 Narrower than the TeX (stated in the module doc): `F` is a polynomial in
 finitely many coordinates and `H` lies in their span; the closure in
-`P_{≤n}` (lines 1810-1814) is not formalized.  `P:mild-construction`'s
+`P_{≤n}` (lines 2197-2201) is not formalized.  `P:mild-construction`'s
 standing hypothesis `H:homog` plays no role in this display (the display is a
 statement about Gaussian polynomials only) and is not carried. -/
 theorem occupied_multiplication_paper {Ω : Type*} [MeasurableSpace Ω] {Pr : Measure Ω}

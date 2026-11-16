@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.OccupationCeilingFinite
 /-!
 Refutation for `StratonovichHAMSecondMoment.OccupationCeilingFinite.K0` and the sharp row
 bound `row_le` (`K_0 = 2^a/(1-a)`, `E:positive-bochner-inclusion`,
-`integrated_intrinsic_constant.tex` line 29).
+`integrated_intrinsic_constant.tex` line 30).
 
 Wrong variant: the row constant `1/(1-a)` (the factor `2^a` dropped), i.e. `K_0 ≤ 1/(1-a)`
 for all `0 ≤ a < 1`. Witness: `a = 1/2`, where `K_0 = 2√2 > 2 = 1/(1-a)`. No junk value is used.

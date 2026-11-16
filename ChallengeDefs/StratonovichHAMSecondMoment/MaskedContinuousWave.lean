@@ -26,16 +26,16 @@ namespace StratonovichHAMSecondMoment.MaskedContinuousWave
 open StratonovichHAMSecondMoment.TimeSchur StratonovichHAMSecondMoment.MaskedTrigProducts
   StratonovichHAMSecondMoment.MaskedModulation
 
-/-! ### The wave factors (TeX lines 379-384) -/
+/-! ### The wave factors (TeX lines 495-500) -/
 
-/-- `c_r(t) = cos(rt)` (TeX line 379). -/
+/-- `c_r(t) = cos(rt)` (TeX line 495). -/
 def cFn (r t : ℝ) : ℝ := Real.cos (r * t)
 
-/-- `b_r(t) = ⟨r⟩ sin(rt)/r` for `r ≠ 0` and `b_0(t) = t` (TeX lines 380-383;
+/-- `b_r(t) = ⟨r⟩ sin(rt)/r` for `r ≠ 0` and `b_0(t) = t` (TeX lines 496-499;
 the manuscript defines it for `r > 0` and `r = 0`, and only `r ≥ 0` is used). -/
 def bFn (r t : ℝ) : ℝ := if r = 0 then t else bracket r * Real.sin (r * t) / r
 
-/-- The two factor shapes `c` and `b` (TeX line 384). -/
+/-- The two factor shapes `c` and `b` (TeX line 500). -/
 inductive Wave
   | c
   | b
@@ -49,7 +49,7 @@ def Wave.eval : Wave → ℝ → ℝ → ℝ
 def waveFn (I : Set ℝ) (F G : Wave) (r ρ : ℝ) : ℝ → ℂ :=
   I.indicator fun t => ((F.eval r t * G.eval ρ t : ℝ) : ℂ)
 
-/-- `C₁(a) = 4·3^{1-a}·C₀(a)` (TeX line 388). -/
+/-- `C₁(a) = 4·3^{1-a}·C₀(a)` (TeX line 504). -/
 def C₁ (a : ℝ) : ℝ := 4 * 3 ^ (1 - a) * C₀ a
 
 /-! ### Amplitude decomposition of a factor (auxiliary to the Lean proof route) -/

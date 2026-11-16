@@ -1,6 +1,6 @@
 /-
 Refutation for the exponent of `E:raw-occupation-energy`
-(`notes/integrated_occupation_ceiling.tex` lines 100-104 at a284420: `𝓔_ζ^𝒪 = D_ζ
+(`notes/integrated_occupation_ceiling.tex` lines 119-123 at 39f2597a: `𝓔_ζ^𝒪 = D_ζ
 C_occ^{2/(2-α)}`), at the level of the package's scalar maximum
 `StratonovichHAMSecondMoment.RawOccupationEnergy.scalar_max_zeta`.
 

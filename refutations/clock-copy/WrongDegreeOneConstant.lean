@@ -1,7 +1,7 @@
 import StratonovichHAMSecondMoment.ClockCopy
 
 /-!
-Refutation for `E:degree-one-clock-loss` (main TeX lines 7774-7777), package
+Refutation for `E:degree-one-clock-loss` (main TeX lines 9053-9056), package
 theorem `StratonovichHAMSecondMoment.ClockCopy.degree_one` (and the last
 conjunct of `clock_copy_obstruction_paper`): `J_{Γ,1}(θ) = (2-2^a) K_Γ(θ)`
 when `α = 1`.

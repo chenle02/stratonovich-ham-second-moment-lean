@@ -102,7 +102,7 @@ theorem integral_row {a T t : ℝ} (ha1 : a < 1) (ht : t ∈ Icc 0 T) :
   ring
 
 /-- Auxiliary: the row bound `∫_0^T |t-s|^{-a} ds ≤ 2T^{1-a}/(1-a)` for `t ∈ [0,T]`
-(TeX line 171-172), in `ℝ≥0∞`. -/
+(TeX line 228-229), in `ℝ≥0∞`. -/
 theorem lintegral_row_le {a T t : ℝ} (ha1 : a < 1) (ht : t ∈ Icc 0 T) :
     ∫⁻ s in Icc 0 T, ENNReal.ofReal (kern a (t - s)) ≤
       ENNReal.ofReal (2 * T ^ (1 - a) / (1 - a)) := by
@@ -258,14 +258,14 @@ theorem time_schur_rclike {𝕜 : Type*} [RCLike 𝕜] {a T : ℝ} (ha1 : a < 1)
 
 /-- The complexified temporal form
 `⟨f,g⟩_a = ∫_0^T ∫_0^T f(t) conj g(s) |t-s|^{-a} dt ds`
-(TeX lines 143-145, complexified as in lines 153-154).  A Bochner iterated
+(TeX lines 190-192, complexified as in lines 201-202).  A Bochner iterated
 integral: it is the manuscript's form only where the integrand is integrable,
 which every theorem below proves or assumes explicitly. -/
 def timeForm (a T : ℝ) (f g : ℝ → ℂ) : ℂ :=
   ∫ t in Icc 0 T, ∫ s in Icc 0 T, f t * conj (g s) * ((kern a (t - s) : ℝ) : ℂ)
 
-/-- `E:masked-time-schur` (TeX lines 150-152) after complexification (TeX lines
-153-154 and 175-177), double-integral form: for `0 < a < 1`, `T > 0` and complex
+/-- `E:masked-time-schur` (TeX lines 197-200) after complexification (TeX lines
+201-202 and 235-237), double-integral form: for `0 < a < 1`, `T > 0` and complex
 `f ∈ L²(0,T)`, the integrand `f(t) conj f(s) |t-s|^{-a}` is integrable on
 `[0,T]²` and `|⟨f,f⟩_a| ≤ (2T^{1-a}/(1-a)) ‖f‖₂²`.  The hypothesis `0 < a` is
 the manuscript's standing assumption; the proof uses only `a < 1` and `0 ≤ T`. -/

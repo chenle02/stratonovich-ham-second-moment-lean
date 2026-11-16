@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.StaticInteractionCompleted.static_phase_all_orders_cp

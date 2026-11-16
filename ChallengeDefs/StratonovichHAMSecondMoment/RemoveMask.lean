@@ -33,17 +33,17 @@ open HomogHypothesis (Rd HomogCovariance IsTempered IsSpectralMeasure)
 open WeakSobolev
 open VariationalDilation (CPos SetScaling mean rawCost rate integratedRate)
 
-open VariationalFloor (fl gl)
+open VariationalFloor (fl gl memLp_test)
 open VariationalRate (psiBar)
 
 variable {d : ℕ}
 
 /-! ### The profile `χ` and the masks `m_R` -/
 
-/-- The profile of the masks (TeX line 184), `χ(r) = smoothTransition(2 - r)`. -/
+/-- The profile of the masks (TeX line 250), `χ(r) = smoothTransition(2 - r)`. -/
 def chi (r : ℝ) : ℝ := Real.smoothTransition (2 - r)
 
-/-- The masks of the TeX (line 185): `m_R(x) = χ(|x|/R)`.  (For `R = 0`
+/-- The masks of the TeX (line 251): `m_R(x) = χ(|x|/R)`.  (For `R = 0`
 Lean's division convention, and for `R < 0` the sign, make `m_R ≡ 1`; the
 smoothness, plateau, support and monotonicity statements below assume
 `R > 0`, the limits concern `R → ∞`.) -/
@@ -68,7 +68,7 @@ def maskedIntegratedRate (a : ℝ) (Γ : Measure (Rd d)) (Ψ : ℝ × Rd d → �
 
 /-- The named input for `E:variational-unmasked-point-lower`
 (`P:raw-block-original-lower`, `notes/integrated_raw_block_lower.tex` lines
-541-549 at a284420, applied with the mask `m_R` and read with the
+739-747 at 39f2597a, applied with the mask `m_R` and read with the
 identification of its ground rate with `maskedRate`; in the wrapper `v` is
 `rawCost`, the integral form of `v_Ψ`): for all large `R`,
 `liminf_{T→∞} L(T) ≥ 2 ∫_0^1 λ_{R,s} ds - v/2` in `EReal`, where `L(T)`

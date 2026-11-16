@@ -1,6 +1,6 @@
 /-
-Refutation for the `L^2(0,1)` part of `L:temporal-equilibrium` (TeX lines 42
-and 85), package theorem
+Refutation for the `L^2(0,1)` part of `L:temporal-equilibrium` (TeX lines 44
+and 105), package theorem
 `StratonovichHAMSecondMoment.TemporalEquilibrium.density_sq_integrableOn`
 and package definition
 `StratonovichHAMSecondMoment.TemporalEquilibrium.density`.

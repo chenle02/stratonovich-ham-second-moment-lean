@@ -4,10 +4,10 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:masked-continuous-wave` (Continuous sine factors) of
-`notes/integrated_covariance_foundation.tex` at revision a284420 (statement TeX
-lines 378-390, display `E:masked-continuous-wave` 385-389, proof 392-423), with
-the standing assumptions of its subsection (TeX lines 296-298) and of
-`L:masked-time-completion` (TeX lines 141-181).
+`notes/integrated_covariance_foundation.tex` at revision 39f2597a (statement TeX
+lines 494-506, display `E:masked-continuous-wave` 501-505, proof 508-558), with
+the standing assumptions of its subsection (TeX lines 391-393) and of
+`L:masked-time-completion` (TeX lines 188-241).
 
 Statement formalized (`masked_continuous_wave_paper`).  Standing assumptions:
 `0 < a < 1`, `T > 0`, `I = [s, s+h] ⊆ [0, T]` (`0 ≤ s`, `s + h ≤ T`),
@@ -29,21 +29,21 @@ manuscript's `‖f‖_a` is `‖emb f‖`.  It takes exactly B24's two supplied 
 under B24's names:
 * `hmem` — B24's `hmem` for every amplitude B24 accepts: for every
   `A ∈ C¹(I; ℂ)` and every real `ω`, `1_I A e^{iω·} ∈ V`.  Source:
-  `L:masked-time-completion`, TeX lines 154-155 ("bounded measurable
+  `L:masked-time-completion`, TeX lines 202-203 ("bounded measurable
   amplitudes on a subinterval, extended by zero, belong to this completion"),
   which covers every such `A` (continuous on the compact `I`, hence bounded and
   measurable after extension by zero); so the input is no stronger than its
   source.
 * `hnorm` — verbatim B24's `hnorm`: for `f ∈ V` with `f ∈ L²(0,T)`,
   `‖emb f‖² = Re ∬_{[0,T]²} f(t) conj f(u) |t-u|^{-a}`.  Source: the
-  complexification clause of `L:masked-time-completion` (TeX lines 153-154,
-  with 148-149 and 177-179).
+  complexification clause of `L:masked-time-completion` (TeX lines 201-202,
+  with 195-196 and 237-239).
 Once a concrete `H_a` is built (wave item L5-a) with its `V`, `emb` and proofs
 of these two facts, one application of `masked_continuous_wave_paper`
 discharges both inputs.
 
 Proof route (differs from the TeX proof; same statement, same constant).  The
-TeX (lines 392-423) writes `b_r = t⟨r⟩∫_0^1 cos(vrt) dv` for `r ≤ 1`, takes
+TeX (lines 508-558) writes `b_r = t⟨r⟩∫_0^1 cos(vrt) dv` for `r ≤ 1`, takes
 `H_a`-valued Bochner averages over `[0,1]^k`, applies Hilbert Jensen and
 `L:masked-trig-products` with `A(t) = t^j` to each integrand at frequencies
 `r', ρ'` with `|r'-r|, |ρ'-ρ| ≤ 1`, and compares brackets.  Here no averaging
@@ -59,7 +59,7 @@ and no continuity of a parameter family in `H_a` is used.  Instead:
 * `M = sup_I |A|` and `D = sup_I |A'|` are bounded with `csSup_le`
   (`amp_prod_sup`): each factor has `M_i + h D_i ≤ √2(1+T)` (`amp_bound`), so
   `M + hD ≤ (M_1 + hD_1)(M_2 + hD_2) ≤ 2(1+T)²` and `(M+hD)² ≤ 4(1+T)⁴`;
-* the bracket comparison is the TeX's (lines 411-419):
+* the bracket comparison is the TeX's (lines 543-554):
   `⟨x+e⟩ ≤ (1+|e|)⟨x⟩` (`bracket_add_le`), the arguments `h(r'±ρ')` differ from
   `h(r±ρ)` by at most `2` since `h ≤ 1`, so `𝒬_h(r',ρ') ≤ 3^{1-a} 𝒬_h(r,ρ)`
   (`frequencyPair_shift_le`).
@@ -95,16 +95,16 @@ namespace StratonovichHAMSecondMoment.MaskedContinuousWave
 open StratonovichHAMSecondMoment.TimeSchur StratonovichHAMSecondMoment.MaskedTrigProducts
   StratonovichHAMSecondMoment.MaskedModulation
 
-/-! ### The wave factors (TeX lines 379-384) -/
+/-! ### The wave factors (TeX lines 495-500) -/
 
-/-- `c_r(t) = cos(rt)` (TeX line 379). -/
+/-- `c_r(t) = cos(rt)` (TeX line 495). -/
 def cFn (r t : ℝ) : ℝ := Real.cos (r * t)
 
-/-- `b_r(t) = ⟨r⟩ sin(rt)/r` for `r ≠ 0` and `b_0(t) = t` (TeX lines 380-383;
+/-- `b_r(t) = ⟨r⟩ sin(rt)/r` for `r ≠ 0` and `b_0(t) = t` (TeX lines 496-499;
 the manuscript defines it for `r > 0` and `r = 0`, and only `r ≥ 0` is used). -/
 def bFn (r t : ℝ) : ℝ := if r = 0 then t else bracket r * Real.sin (r * t) / r
 
-/-- The two factor shapes `c` and `b` (TeX line 384). -/
+/-- The two factor shapes `c` and `b` (TeX line 500). -/
 inductive Wave
   | c
   | b
@@ -118,12 +118,12 @@ def Wave.eval : Wave → ℝ → ℝ → ℝ
 def waveFn (I : Set ℝ) (F G : Wave) (r ρ : ℝ) : ℝ → ℂ :=
   I.indicator fun t => ((F.eval r t * G.eval ρ t : ℝ) : ℂ)
 
-/-- `C₁(a) = 4·3^{1-a}·C₀(a)` (TeX line 388). -/
+/-- `C₁(a) = 4·3^{1-a}·C₀(a)` (TeX line 504). -/
 def C₁ (a : ℝ) : ℝ := 4 * 3 ^ (1 - a) * C₀ a
 
-/-! ### Bracket comparison (TeX lines 411-419) -/
+/-! ### Bracket comparison (TeX lines 543-554) -/
 
-/-- `⟨x+e⟩ ≤ (1+|e|)⟨x⟩` (upper half of the display at TeX lines 413-416, on line 415). -/
+/-- `⟨x+e⟩ ≤ (1+|e|)⟨x⟩` (upper half of the display at TeX lines 545-548, on line 547). -/
 theorem bracket_add_le (x e : ℝ) : bracket (x + e) ≤ (1 + |e|) * bracket x := by
   have h1 : (0 : ℝ) ≤ 1 + |e| := by positivity
   have hx : 2 * |x| ≤ 1 + x ^ 2 := by nlinarith [sq_nonneg (|x| - 1), sq_abs x]
@@ -140,7 +140,7 @@ theorem bracket_add_le (x e : ℝ) : bracket (x + e) ≤ (1 + |e|) * bracket x :
 theorem bracket_pos (x : ℝ) : 0 < bracket x := lt_of_lt_of_le one_pos (one_le_bracket x)
 
 /-- If `|x - x'| ≤ 2` and `a < 1`, then `⟨x'⟩^{a-1} ≤ 3^{1-a} ⟨x⟩^{a-1}` (TeX
-lines 418-419: "each altered bracket to the power `a-1` is at most `3^{1-a}`
+lines 553-554: "each altered bracket to the power `a-1` is at most `3^{1-a}`
 times the original one"). -/
 theorem bracket_rpow_shift_le {a : ℝ} (ha1 : a < 1) {x x' : ℝ} (hxx : |x - x'| ≤ 2) :
     bracket x' ^ (a - 1) ≤ 3 ^ (1 - a) * bracket x ^ (a - 1) := by
@@ -161,7 +161,7 @@ theorem bracket_rpow_shift_le {a : ℝ} (ha1 : a < 1) {x x' : ℝ} (hxx : |x - x
 
 /-- Frequency shifts by at most one in each variable cost at most `3^{1-a}`:
 for `0 ≤ h ≤ 1`, `|r'-r| ≤ 1`, `|ρ'-ρ| ≤ 1`, `𝒬_h(r',ρ') ≤ 3^{1-a} 𝒬_h(r,ρ)`
-(TeX lines 417-419, "the changes in `h(r±ρ)` have magnitude at most two"). -/
+(TeX lines 552-554, "the changes in `h(r±ρ)` have magnitude at most two"). -/
 theorem frequencyPair_shift_le {a h r ρ r' ρ' : ℝ} (ha1 : a < 1) (hh0 : 0 ≤ h) (hh1 : h ≤ 1)
     (hr : |r - r'| ≤ 1) (hρ : |ρ - ρ'| ≤ 1) :
     frequencyPair a h r' ρ' ≤ 3 ^ (1 - a) * frequencyPair a h r ρ := by
@@ -269,7 +269,7 @@ theorem bFn_bounds {r : ℝ} (hr : 0 ≤ r) (t : ℝ) :
 theorem bracket_le_sqrt_two {r : ℝ} (hr : 0 ≤ r) (hr1 : r ≤ 1) : bracket r ≤ √2 :=
   Real.sqrt_le_sqrt (by nlinarith)
 
-/-- Auxiliary: `⟨r⟩/r ≤ √2` for `r ≥ 1` (TeX line 393: "a coefficient at most
+/-- Auxiliary: `⟨r⟩/r ≤ √2` for `r ≥ 1` (TeX line 516: "a coefficient at most
 `√2`"). -/
 theorem bracket_div_le_sqrt_two {r : ℝ} (hr1 : 1 ≤ r) : bracket r / r ≤ √2 := by
   have hrp : 0 < r := by linarith
@@ -367,30 +367,30 @@ theorem waveFn_eq_prodFn (I : Set ℝ) (F G : Wave) (r ρ : ℝ) :
 
 /-! ### The lemma -/
 
-/-- `L:masked-continuous-wave` (TeX lines 378-423, display
-`E:masked-continuous-wave` 385-389), exact hypotheses, inputs-supplied with
+/-- `L:masked-continuous-wave` (TeX lines 494-558, display
+`E:masked-continuous-wave` 501-505), exact hypotheses, inputs-supplied with
 exactly the two inputs of `MaskedModulation.masked_trig_products_bridged_paper`
 (B24), under its names.
 
-Standing assumptions (TeX lines 296-298 and `L:masked-time-completion`):
+Standing assumptions (TeX lines 391-393 and `L:masked-time-completion`):
 `0 < a < 1`, `T > 0`, `I = [s, s+h] ⊆ [0, T]`, `0 < h ≤ 1`; lemma data:
 `r, ρ ≥ 0`, `F, G ∈ {c, b}`.  The norm `‖f‖_a` is `‖emb f‖` for the linear
 inclusion `emb : V →ₗ[ℂ] E` of the accepted class `V` into the complex inner
 product space `E` (the manuscript's `H_a^ℂ`).  Supplied inputs:
 * `hmem` — for every `A ∈ C¹(I; ℂ)` and real `ω`, `1_I A e^{iω·} ∈ V`
-  (`L:masked-time-completion`, TeX lines 154-155; B24's `hmem` for every
+  (`L:masked-time-completion`, TeX lines 202-203; B24's `hmem` for every
   amplitude B24 accepts);
 * `hnorm` — for `f ∈ V ∩ L²(0,T)`, `‖emb f‖² = Re ⟨f, f⟩_a`
-  (`L:masked-time-completion`, TeX lines 153-154; B24's `hnorm` verbatim).
+  (`L:masked-time-completion`, TeX lines 201-202; B24's `hnorm` verbatim).
 
 Conclusion: `1_I F_r G_ρ ∈ V`, and for it
 `‖1_I F_r G_ρ‖_a² ≤ C₁(a) (1+T)⁴ h^{2-a} 𝒬_h(r,ρ)`, `C₁(a) = 4·3^{1-a}·C₀(a)`.
 
 Proof route (differs from the TeX's `H_a`-valued Bochner averaging, lines
-393-407): the `b`-factors with `r < 1` and the coefficients `⟨r⟩/r` with
+516-536): the `b`-factors with `r < 1` and the coefficients `⟨r⟩/r` with
 `r ≥ 1` are moved into the `C¹` amplitude, B24 is applied once at frequencies
 `r' ∈ {r, 0}`, `ρ' ∈ {ρ, 0}`, `M` and `D` are bounded with `csSup_le`, and the
-brackets are compared as in the TeX (lines 411-419).  `T > 0` is carried but
+brackets are compared as in the TeX (lines 543-554).  `T > 0` is carried but
 not used. -/
 theorem masked_continuous_wave_paper {E : Type*} [NormedAddCommGroup E]
     [InnerProductSpace ℂ E]

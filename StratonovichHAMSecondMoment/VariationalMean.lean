@@ -4,17 +4,17 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemmas `L:variational-heat-envelope` (Gaussian envelope for the original
-covariance; statement TeX lines 23-35, proof 37-62) and
+covariance; statement TeX lines 28-40, proof 42-82) and
 `L:variational-global-mean` (global regularity of the original mean;
-statement 64-74, proof 76-96) of `notes/integrated_unmasked_variational.tex`
-at revision a284420.  The section's standing assumption (line 4) is a nonzero
+statement 85-95, proof 97-118) of `notes/integrated_unmasked_variational.tex`
+at revision 39f2597a.  The section's standing assumption (line 4) is a nonzero
 covariance satisfying `H:homog` with `a = α₀`; the wrappers carry it as
 `HomogHypothesis.HomogCovariance`, `Γ ≠ 0`, and the mean is taken with
 exponent `α₀`.  Definitions reused: `VariationalDilation.conv`
 (`(Γ * φ)(x) = ∫ φ(x - y) Γ(dy)`), `VariationalDilation.mean`
 (`h_{Ψ,s}(x) = ∫_{(0,1)} |s-u|^{-a} (Γ * Ψ(u,·))(x) du`) and the control class
 `VariationalDilation.CPos` (`E:variational-positive-class`).  New definition:
-the heat kernel `heatK ε x = (2πε)^{-d/2} e^{-|x|²/(2ε)}` (lines 25-26).
+the heat kernel `heatK ε x = (2πε)^{-d/2} e^{-|x|²/(2ε)}` (lines 30-31).
 
 Formalized:
 * `variational_heat_envelope_paper` (same assumptions as the TeX, `ε > 0`):
@@ -51,7 +51,7 @@ spatial and joint Lipschitz bounds above, which are first-order statements
 without derivatives), and only on `I = [0,1]`, the interval named in the
 display.  No differentiability of `h_s` is proved.  The smoothness of
 `x ↦ (Γ * p_ε)(x)` mentioned in the proof of `L:variational-heat-envelope`
-(lines 44-46) is not part of its statement and is not formalized either.
+(lines 60-62) is not part of its statement and is not formalized either.
 
 Supplied inputs: none (no named analytic hypotheses).
 
@@ -71,17 +71,17 @@ Proof route.  `L:variational-heat-envelope`: the identity is
 `MaskedSpectralGrowth.spectral_translated_gauss` (the spectral convention
 applied to a Gaussian Schwartz test, with Mathlib's Gaussian Fourier
 integral), not the TeX's pairing with an arbitrary Schwartz test and
-uniqueness of continuous distributions (lines 48-57); integrability against
+uniqueness of continuous distributions (lines 68-77); integrability against
 `Γ` and `μ` comes from the package's integral form of temperedness, not from
-polynomial ball growth (lines 38-44).  The bound by the value at `0` is the
-TeX's (line 59), but without evenness of `μ`: the spectral integral is real
+polynomial ball growth (lines 54-60).  The bound by the value at `0` is the
+TeX's (line 79), but without evenness of `μ`: the spectral integral is real
 because it equals the real left side.  `L:variational-global-mean`: as in the
 TeX, `|Ψ(u,z)| ≤ C e^{-|z|²/2}` from the spatial support and the envelope at
 `ε = 1` give a uniform bound on `Γ * Ψ(u,·)`; the change of variables
-`r = s - u` (lines 84-88) is `integral_sub_left_eq_self`, with the integrand
+`r = s - u` (lines 105-109) is `integral_sub_left_eq_self`, with the integrand
 vanishing outside `(-1,1)` for `s ∈ [0,1]`; and `∫_{-1}^{1} |r|^{-a} dr =
 2/(1-a)` for `a < 1`.  The Lipschitz bound does not differentiate under the
-integral (the TeX's route, lines 82-94): it applies the Lipschitz bound of
+integral (the TeX's route, lines 103-116): it applies the Lipschitz bound of
 the smooth compactly supported `Ψ` (`ContDiff.lipschitzWith_of_hasCompactSupport`)
 inside both integrals, dominated by the same Gaussian envelope.  Lemmas
 marked "Auxiliary to the Lean proof route" have no manuscript label.
@@ -113,7 +113,7 @@ variable {d : ℕ}
 /-! ### `L:variational-heat-envelope` -/
 
 
-/-- The normalized heat kernel `p_ε(x) = (2πε)^{-d/2} e^{-|x|²/(2ε)}` (TeX lines 25-26). -/
+/-- The normalized heat kernel `p_ε(x) = (2πε)^{-d/2} e^{-|x|²/(2ε)}` (TeX lines 30-31). -/
 def heatK (ε : ℝ) (x : Rd d) : ℝ :=
   (2 * Real.pi * ε) ^ (-((d : ℝ) / 2)) * Real.exp (-(‖x‖ ^ 2 / (2 * ε)))
 
@@ -128,7 +128,7 @@ def heatSpec (ε : ℝ) (x ξ : Rd d) : ℂ :=
 
 /-- Auxiliary to the Lean proof route.  For a tempered `Γ` and `ε > 0`, every
 translate `y ↦ p_ε(x - y)` is `Γ`-integrable (the TeX's finiteness of the
-classical convolution, lines 38-45, via the package's integral form of
+classical convolution, lines 54-61, via the package's integral form of
 temperedness instead of polynomial ball growth). -/
 theorem heatK_integrable {Γ : Measure (Rd d)} (hΓ : IsTempered Γ) {ε : ℝ} (hε : 0 < ε)
     (x : Rd d) : Integrable (fun y => heatK ε (x - y)) Γ := by
@@ -141,7 +141,7 @@ theorem heatK_integrable {Γ : Measure (Rd d)} (hΓ : IsTempered Γ) {ε : ℝ} 
   field_simp
 
 /-- Auxiliary to the Lean proof route.  For a tempered `μ` and `ε > 0`, the
-spectral integrand is `μ`-integrable (absolute finiteness, line 55). -/
+spectral integrand is `μ`-integrable (absolute finiteness, line 75). -/
 theorem heatSpec_integrable {μ : Measure (Rd d)} (hμ : IsTempered μ) {ε : ℝ} (hε : 0 < ε)
     (x : Rd d) : Integrable (heatSpec ε x) μ := by
   have h := integrable_gauss_zero hμ (c := ε / 2) (by positivity)
@@ -154,7 +154,7 @@ theorem heatSpec_integrable {μ : Measure (Rd d)} (hμ : IsTempered μ) {ε : �
 `(Γ * p_ε)(x) = ∫ e^{iξ·x} e^{-ε|ξ|²/2} μ(dξ)`, from the spectral convention
 alone (as an identity of Lean integrals; integrability of both sides is in
 `heat_envelope`).  Route: `MaskedSpectralGrowth.spectral_translated_gauss`,
-not the TeX's distributional pairing (lines 48-57). -/
+not the TeX's distributional pairing (lines 68-77). -/
 theorem heat_identity {Γ μ : Measure (Rd d)} (hsp : IsSpectralMeasure Γ μ) {ε : ℝ} (hε : 0 < ε)
     (x : Rd d) :
     ((conv Γ (heatK ε) x : ℝ) : ℂ) = ∫ ξ, heatSpec ε x ξ ∂μ := by
@@ -202,7 +202,7 @@ theorem heat_envelope {Γ μ : Measure (Rd d)} (hΓt : IsTempered Γ) (hμt : Is
   rw [← heat_identity hsp hε, Complex.norm_real, Real.norm_of_nonneg hnn] at hle
   rw [h0']; exact hle
 
-/-- The value at zero is strictly positive when `Γ ≠ 0` (line 60). -/
+/-- The value at zero is strictly positive when `Γ ≠ 0` (line 80). -/
 theorem heat_conv_pos {Γ : Measure (Rd d)} (hΓt : IsTempered Γ) (hΓ : Γ ≠ 0) {ε : ℝ} (hε : 0 < ε) :
     0 < conv Γ (heatK ε) 0 :=
   TimeFractional.integral_pos_of_ae_pos (heatK_integrable hΓt hε 0) hΓ
@@ -210,7 +210,7 @@ theorem heat_conv_pos {Γ : Measure (Rd d)} (hΓt : IsTempered Γ) (hΓ : Γ ≠
 
 /-- Auxiliary to the Lean proof route.  For `a < 1`, `r ↦ |r|^{-a}` is
 integrable on `(-1, 1)` (the integrability of `|r|^{-a}` used at TeX
-lines 89-91). -/
+lines 111-113). -/
 theorem abs_rpow_integrableOn {a : ℝ} (ha : a < 1) :
     IntegrableOn (fun r : ℝ => |r| ^ (-a)) (Ioo (-1) 1) := by
   have hpos : IntegrableOn (fun r : ℝ => |r| ^ (-a)) (Ioo 0 1) := by
@@ -261,7 +261,7 @@ theorem abs_rpow_integral {a : ℝ} (ha : a < 1) :
 
 /-- Auxiliary to the Lean proof route.  A compactly supported `Ψ` on
 `ℝ × ℝ^d` vanishes for `|x| > R`, for some `R ≥ 0` (the common spatial
-support of TeX line 79). -/
+support of TeX line 100). -/
 theorem exists_radius {Ψ : ℝ × Rd d → ℝ} (hc : HasCompactSupport Ψ) :
     ∃ R : ℝ, 0 ≤ R ∧ ∀ u z, R < ‖z‖ → Ψ (u, z) = 0 := by
   obtain ⟨R, hR⟩ :=
@@ -275,14 +275,14 @@ theorem exists_radius {Ψ : ℝ × Rd d → ℝ} (hc : HasCompactSupport Ψ) :
 
 /-- Auxiliary to the Lean proof route.  A function with closed support in
 `(0,1) × ℝ^d` vanishes at times outside `(0,1)` (its extension by zero, line
-77). -/
+98). -/
 theorem eq_zero_of_time {Ψ : ℝ × Rd d → ℝ} (ht : tsupport Ψ ⊆ Ioo (0 : ℝ) 1 ×ˢ univ) {u : ℝ}
     (hu : u ∉ Ioo (0 : ℝ) 1) (z : Rd d) : Ψ (u, z) = 0 := by
   by_contra h
   exact hu (ht (subset_tsupport Ψ h)).1
 
 /-- Auxiliary to the Lean proof route.  `1 ≤ e^{R²/2} e^{-|z|²/2}` on
-`|z| ≤ R` (the positive minimum of the heat kernel on the support, line 80). -/
+`|z| ≤ R` (the positive minimum of the heat kernel on the support, line 101). -/
 theorem one_le_gauss {R : ℝ} {z : Rd d} (hz : ‖z‖ ≤ R) :
     1 ≤ Real.exp (R ^ 2 / 2) * Real.exp (-(‖z‖ ^ 2 / 2)) := by
   rw [← Real.exp_add]
@@ -326,7 +326,7 @@ theorem gMass_nonneg (Γ : Measure (Rd d)) : 0 ≤ gMass Γ :=
   integral_nonneg fun _ => (Real.exp_pos _).le
 
 /-- Auxiliary to the Lean proof route.  If `|Ψ| ≤ B` and `Ψ(u,z) = 0` for
-`|z| > R`, then `|Ψ(u,z)| ≤ B e^{R²/2} e^{-|z|²/2}` (TeX lines 78-80 for
+`|z| > R`, then `|Ψ(u,z)| ≤ B e^{R²/2} e^{-|z|²/2}` (TeX lines 99-101 for
 `D = id`). -/
 theorem pt_bound {Ψ : ℝ × Rd d → ℝ} {B R : ℝ} (hB : ∀ p, |Ψ p| ≤ B)
     (hR : ∀ u z, R < ‖z‖ → Ψ (u, z) = 0) (u : ℝ) (z : Rd d) :
@@ -386,7 +386,7 @@ theorem conv_integrable {Ψ : ℝ × Rd d → ℝ} (hcont : Continuous Ψ) {B R 
   exact pt_bound hB hR u (x - y)
 
 /-- Auxiliary to the Lean proof route.  The uniform bound
-`|(Γ * Ψ(u,·))(x)| ≤ B e^{R²/2} gMass Γ` (TeX lines 81-82, for `D = id`). -/
+`|(Γ * Ψ(u,·))(x)| ≤ B e^{R²/2} gMass Γ` (TeX lines 102-103, for `D = id`). -/
 theorem conv_le {Ψ : ℝ × Rd d → ℝ} {B R : ℝ}
     (hB : ∀ p, |Ψ p| ≤ B) (hR : ∀ u z, R < ‖z‖ → Ψ (u, z) = 0) (u : ℝ) (x : Rd d) :
     |conv Γ (fun y => Ψ (u, y)) x| ≤ B * Real.exp (R ^ 2 / 2) * gMass Γ := by
@@ -449,7 +449,7 @@ theorem ctrl_data {Ψ : ℝ × Rd d → ℝ} (hΨ : Ψ ∈ CPos d) :
   have := hC.dist_le_mul p q
   rwa [Real.dist_eq] at this
 
-/-- Nonnegativity of the mean (line 93: positive kernels), for every `s`,
+/-- Nonnegativity of the mean (line 115: positive kernels), for every `s`,
 `x`, `a` and every measure `Γ` (no integrability needed: a nonnegative
 integrand has a nonnegative Bochner integral). -/
 theorem mean_nonneg {Γ : Measure (Rd d)} {Ψ : ℝ × Rd d → ℝ} (hΨ : Ψ ∈ CPos d) (a s : ℝ)
@@ -471,7 +471,7 @@ theorem shift_mem {s r : ℝ} (hs : s ∈ Icc (0 : ℝ) 1) (hr : r ∉ Ioo (-1 :
   intro h
   exact hr ⟨by linarith [h.2, hs.1], by linarith [h.1, hs.2]⟩
 
-/-- The change of variables `r = s - u` of TeX lines 84-88: for
+/-- The change of variables `r = s - u` of TeX lines 105-109: for
 `s ∈ [0,1]`, `h_s(x) = ∫_{(-1,1)} |r|^{-a} (Γ * Ψ(s-r,·))(x) dr`
 (an identity of Bochner integrals, unconditional; the TeX integrates over `ℝ`,
 here the integrand vanishes outside `(-1,1)`). -/
@@ -554,7 +554,7 @@ theorem mean_integrableOn {Ψ : ℝ × Rd d → ℝ} (hΨ : Ψ ∈ CPos d) {B L 
   simp only [hHdef, sub_sub_cancel]
 
 /-- The upper bound `h_s(x) ≤ B e^{R²/2} gMass Γ · 2/(1-a)` for
-`s ∈ [0,1]` (TeX lines 89-92, the underived case). -/
+`s ∈ [0,1]` (TeX lines 111-114, the underived case). -/
 theorem mean_le {Ψ : ℝ × Rd d → ℝ} (hΨ : Ψ ∈ CPos d) {B L R : ℝ}
     (hB : ∀ p, |Ψ p| ≤ B) (hL : ∀ p q, |Ψ p - Ψ q| ≤ L * dist p q)
     (hR : ∀ u z, R < ‖z‖ → Ψ (u, z) = 0) {a : ℝ} (ha : a < 1) {s : ℝ}
@@ -573,7 +573,7 @@ theorem mean_le {Ψ : ℝ × Rd d → ℝ} (hΨ : Ψ ∈ CPos d) {B L R : ℝ}
 `|h_s(x) - h_t(x')| ≤ 2 L e^{R²/2} gMass Γ · 2/(1-a) · dist((s,x),(t,x'))`
 for `s, t ∈ [0,1]` (Lean route: the Lipschitz bound of `Ψ` under the integral
 after the change of variables, instead of the TeX's bounded time
-derivative, lines 93-94). -/
+derivative, lines 115-116). -/
 theorem mean_lip {Ψ : ℝ × Rd d → ℝ} (hΨ : Ψ ∈ CPos d) {B L R : ℝ}
     (hB : ∀ p, |Ψ p| ≤ B) (hL : ∀ p q, |Ψ p - Ψ q| ≤ L * dist p q)
     (hR : ∀ u z, R < ‖z‖ → Ψ (u, z) = 0) {a : ℝ} (ha : a < 1) {s t : ℝ}
@@ -602,7 +602,7 @@ end mean
 
 /-! ### The manuscript's statements -/
 
-/-- **`L:variational-heat-envelope`** (TeX lines 23-35) with the section's
+/-- **`L:variational-heat-envelope`** (TeX lines 28-40) with the section's
 standing hypotheses (line 4: a nonzero covariance satisfying `H:homog`): for
 `ε > 0` and every `x`, `y ↦ p_ε(x-y)` is `Γ`-integrable (so `(Γ * p_ε)(x)` is
 finite), `ξ ↦ e^{iξ·x} e^{-ε|ξ|²/2}` is `μ`-integrable,
@@ -665,7 +665,7 @@ theorem mean_continuous_of_lip {a : ℝ} {Γ : Measure (Rd d)} {Ψ : ℝ × Rd d
     rw [Real.dist_eq, Real.coe_toNNReal _ hC, ← dist_same_time s x x']
     exact h x x').continuous
 
-/-- **`L:variational-global-mean`** (TeX lines 64-74) with the section's
+/-- **`L:variational-global-mean`** (TeX lines 85-95) with the section's
 standing hypotheses (line 4: a nonzero covariance satisfying `H:homog`,
 `a = α₀`), for `Ψ ∈ CPos` and `I = [0,1]`: there are real `M, C_Ψ ≥ 0` with
 `E:variational-global-mean`, `0 ≤ h_s(x) ≤ M` and

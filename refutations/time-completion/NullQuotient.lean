@@ -1,6 +1,6 @@
 /-
 Refutation for the null quotient of `L:masked-time-completion`
-(`notes/integrated_covariance_foundation.tex` lines 147-148 at a284420), package
+(`notes/integrated_covariance_foundation.tex` lines 194-195 at 39f2597a), package
 definitions `StratonovichHAMSecondMoment.TimeCompletion.Ha` and `emb`.
 
 Wrong variant: the inclusion `emb : L²(0,T) → H_a` is injective on functions, i.e. the

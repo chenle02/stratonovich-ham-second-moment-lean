@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.GaussianHermite
 /-!
 Refutation for `StratonovichHAMSecondMoment.GaussianHermite.integral_He_mul_He` read as
 orthonormality of the unnormalized polynomials (the normalization `hn = He_n/√(n!)` used in
-`L:fock-form`, main TeX line 2515 at a284420, is needed).
+`L:fock-form`, main TeX line 3016 at 39f2597a, is needed).
 
 Wrong variant: `E[He_n²] = 1` for all `n`.  Counterexample: `n = 2`, where `E[He_2²] = 2! = 2`.
 No junk-value reliance.  `unnormalized_contrast` is the package value.

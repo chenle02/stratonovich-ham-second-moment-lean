@@ -5,20 +5,20 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The Schur bound `E:masked-time-schur` inside Lemma `L:masked-time-completion`
 (Temporal covariance completion) of `notes/integrated_covariance_foundation.tex`
-(lemma TeX lines 141-156, display 150-152, proof sentence 171-173).
+(lemma TeX lines 188-204, display 197-200, proof sentence 228-230).
 
 Statement formalized (double-integral form).  For `T > 0`, `0 < a < 1` and
 `f ∈ L²(0,T)`,
 `∫_0^T ∫_0^T f(t) f(s) |t-s|^{-a} dt ds ≤ (2 T^{1-a}/(1-a)) ‖f‖₂²`
 (`time_schur_paper`, real `f`), and for complex `f` the same bound for the
 absolute value of the complexified double integral with `f(t) conj f(s)`
-(`time_schur_complex`; TeX lines 153-154 give the complexified norm by this
+(`time_schur_complex`; TeX lines 201-202 give the complexified norm by this
 double integral).  The left side of the manuscript's display is `‖f‖_a²`, the
 norm of `f` in the completion `H_a`; the completion itself (positive
 semidefiniteness, separability, the continuous extension) is NOT built here.
 What is proved is the bound on the defining double integral, for every
 `f ∈ L²(0,T)`, which is the inequality the manuscript's proof establishes
-(TeX lines 171-173: the row integral is at most `2T^{1-a}/(1-a)` and
+(TeX lines 228-230: the row integral is at most `2T^{1-a}/(1-a)` and
 `2|xy| ≤ x² + y²`).
 
 Conventions and side conditions made explicit here:
@@ -135,7 +135,7 @@ theorem integral_row {a T t : ℝ} (ha1 : a < 1) (ht : t ∈ Icc 0 T) :
   ring
 
 /-- Auxiliary: the row bound `∫_0^T |t-s|^{-a} ds ≤ 2T^{1-a}/(1-a)` for `t ∈ [0,T]`
-(TeX line 171-172), in `ℝ≥0∞`. -/
+(TeX line 228-229), in `ℝ≥0∞`. -/
 theorem lintegral_row_le {a T t : ℝ} (ha1 : a < 1) (ht : t ∈ Icc 0 T) :
     ∫⁻ s in Icc 0 T, ENNReal.ofReal (kern a (t - s)) ≤
       ENNReal.ofReal (2 * T ^ (1 - a) / (1 - a)) := by
@@ -292,14 +292,14 @@ theorem time_schur_rclike {𝕜 : Type*} [RCLike 𝕜] {a T : ℝ} (ha1 : a < 1)
 
 /-- The complexified temporal form
 `⟨f,g⟩_a = ∫_0^T ∫_0^T f(t) conj g(s) |t-s|^{-a} dt ds`
-(TeX lines 143-145, complexified as in lines 153-154).  A Bochner iterated
+(TeX lines 190-192, complexified as in lines 201-202).  A Bochner iterated
 integral: it is the manuscript's form only where the integrand is integrable,
 which every theorem below proves or assumes explicitly. -/
 def timeForm (a T : ℝ) (f g : ℝ → ℂ) : ℂ :=
   ∫ t in Icc 0 T, ∫ s in Icc 0 T, f t * conj (g s) * ((kern a (t - s) : ℝ) : ℂ)
 
-/-- `E:masked-time-schur` (TeX lines 150-152) after complexification (TeX lines
-153-154 and 175-177), double-integral form: for `0 < a < 1`, `T > 0` and complex
+/-- `E:masked-time-schur` (TeX lines 197-200) after complexification (TeX lines
+201-202 and 235-237), double-integral form: for `0 < a < 1`, `T > 0` and complex
 `f ∈ L²(0,T)`, the integrand `f(t) conj f(s) |t-s|^{-a}` is integrable on
 `[0,T]²` and `|⟨f,f⟩_a| ≤ (2T^{1-a}/(1-a)) ‖f‖₂²`.  The hypothesis `0 < a` is
 the manuscript's standing assumption; the proof uses only `a < 1` and `0 ≤ T`. -/
@@ -310,7 +310,7 @@ theorem time_schur_complex {a T : ℝ} (_ha0 : 0 < a) (ha1 : a < 1) (hT : 0 < T)
       ‖timeForm a T f f‖ ≤ 2 * T ^ (1 - a) / (1 - a) * ∫ t in Icc 0 T, ‖f t‖ ^ 2 :=
   time_schur_rclike ha1 hT.le f hf
 
-/-- `E:masked-time-schur` (TeX lines 150-152), exact-hypothesis wrapper in
+/-- `E:masked-time-schur` (TeX lines 197-200), exact-hypothesis wrapper in
 double-integral form for the manuscript's real functions: for `T > 0`,
 `0 < a < 1` and real `f ∈ L²(0,T)`, the integrand `f(t) f(s) |t-s|^{-a}` is
 integrable on `[0,T]²` and

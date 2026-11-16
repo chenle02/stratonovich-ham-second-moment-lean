@@ -3,8 +3,8 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Application of `StratonovichHAMAudit.HermiteWord.cut_eq_raw` (the finite-word induction of
 `L:finite-word-cutoff`, main TeX `notes/notes_stratonovich_ham_second_moment.tex`, statement
-lines 2531-2553 and proof 2555-2571 at revision a284420; display `E:finite-word-cutoff`,
-lines 2543-2550) to the concrete Gaussian Fock model of `StratonovichHAMSecondMoment.FockForm`
+lines 3036-3058 and proof 3060-3076 at revision 39f2597a; display `E:finite-word-cutoff`,
+lines 3048-3055) to the concrete Gaussian Fock model of `StratonovichHAMSecondMoment.FockForm`
 (wave item L9-H).
 
 `HermiteWord` predates the module system and is not a `module`, so a `module` file cannot
@@ -19,7 +19,7 @@ each color onto Hermite degree at most `N_c`; the start vector is `vac u = 1 ⊗
 `FockForm.goodDeg_vac`, `goodDeg_insert`, `goodDeg_frame` and `truncC_eq`.
 
 Narrower than the TeX: one mode per color, finite words only (the sentence on finite sums and
-Bochner integrals of words, lines 2551-2552, is not formalized), and `X` an inner product space
+Bochner integrals of words, lines 3056-3057, is not formalized), and `X` an inner product space
 in `Type` (the universe of `HermiteWord`), with no completeness used.
 -/
 import StratonovichHAMAudit.HermiteWord
@@ -33,7 +33,7 @@ open StratonovichHAMSecondMoment.FockForm (GoodDeg truncC goodDeg_vac goodDeg_in
   goodDeg_frame truncC_eq)
 
 /-- **`E:finite-word-cutoff` for the Fock model of `FockForm`** (`L:finite-word-cutoff`, main
-TeX lines 2531-2553, proof 2555-2571 at a284420), one Gaussian mode per color: for colors
+TeX lines 3036-3058, proof 3060-3076 at 39f2597a), one Gaussian mode per color: for colors
 `Fin m`, insertions `J_i v = g_i ⊗ K_i` (`gmul i (K_i v)`), frames `T_b` acting on `X`, a start
 vector `u`, per-color cutoffs `N_c` and a finite word `w` whose color counts are at most the
 cutoffs, the cut word (with `P = truncC Nc` before and after every insertion) equals the raw

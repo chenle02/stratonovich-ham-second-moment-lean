@@ -4,9 +4,9 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Proposition `P:occupation-physical-class` (The full physical occupation class) of
-`notes/integrated_spatial_occupation.tex` (revision a284420): the class `𝒪` (lines 381-384),
-the statement (lines 386-404: displays `E:occupation-physical-bound`, lines 395-397, and
-`E:occupation-own-energy`, lines 399-403) and its proof (lines 406-442), under the section's
+`notes/integrated_spatial_occupation.tex` (revision 39f2597a): the class `𝒪` (lines 497-500),
+the statement (lines 503-521: displays `E:occupation-physical-bound`, lines 512-514, and
+`E:occupation-own-energy`, lines 516-520) and its proof (lines 523-575), under the section's
 standing assumptions (lines 4-10: a nonzero covariance satisfying `H:homog`, `a = α₀`,
 `q = 4 - α`, `D = q - 2a`).
 
@@ -18,7 +18,7 @@ Objects (reused from the package: `OccupationKernelRow.Kstar` (`K_⋆`), `Rstar`
 * `IsOccField G DG`: the class `𝒪`, modelled through joint representatives (see below);
 * `Tlin`, `T` (`T(g)`), `Jlin`, `J` (`J(g)`), `energySet`, `EstarO` (`𝓔_⋆^𝒪`) and
   `spEnergyVal α R = (2-α)/2 · α^{α/(2-α)} · R^{2/(2-α)}` (the right side of
-  `E:spatial-energy-map`, lines 309-314, at `R_sp = R`).
+  `E:spatial-energy-map`, lines 414-419, at `R_sp = R`).
 
 Formalized:
 * `occupation_physical_class_paper` (the `_paper` wrapper, with `H:homog` as
@@ -36,11 +36,11 @@ Formalized:
   form also assumes the scaling `VariationalDilation.SetScaling α Γ` and `Γ ≠ 0`, used only for
   positivity); `Jlin_le`; `sqPair_aemeasurable`, `sqPair_Jlin_congr` (locally finite `Γ` only);
   `Tlin_congr`, `Tlin_unique` (`T(g)` depends only on `g`); `T_eq_integral`; `scalar_max` (the
-  scalar maximum of lines 431-433); `exists_pos_member` (the positivity witness of lines
-  434-439).
+  scalar maximum of lines 564-566); `exists_pos_member` (the positivity witness of lines
+  567-572).
 
 Supplied input (named hypothesis, no stronger than its source): `SquarePairingBounds Γ α R`,
-two conclusions of `P:spatial-four-linear` (lines 219-237; wave item L7-d) for real `H¹`
+two conclusions of `P:spatial-four-linear` (lines 297-315; wave item L7-d) for real `H¹`
 profiles: `E:spatial-homogeneous-bound` `A_sp(f) ≤ R N(f)⁴` (in `[0,∞]`) and
 `E:spatial-square-CS` in the equivalent squared form `B_Γ(f²,h²)² ≤ A_sp(f) A_sp(h)` in `[0,∞]`
 (`squareCS_of_sqrt` converts the real `√` form).  The wrapper takes `R = R_0`.  The TeX's bound
@@ -53,7 +53,7 @@ Modelling of `𝒪` (narrower than the TeX, recorded): the TeX's fields are stro
 `H¹(ℝ^d;ℝ)`-measurable maps on `(0,1)` (the package has no `H¹`-valued type).  `IsOccField`
 instead asks for a.e.-strongly measurable joint representatives `(s,x) ↦ g_s(x)` and
 `(s,x) ↦ ∇g_s(x)` on `(0,1) × ℝ^d` (Lebesgue), a unit `H¹` pair at a.e. time, and `T(g) < ∞`.
-The TeX proof (lines 409-414) constructs such joint representatives from strong measurability
+The TeX proof (lines 535-540) constructs such joint representatives from strong measurability
 (for `g`; the same argument applies to `∇g`); that construction, and the converse (Pettis), are
 not formalized, so `𝒪` and `𝓔_⋆^𝒪` here are over fields given by joint representatives.
 
@@ -61,15 +61,15 @@ Implicit hypotheses made explicit: the measurability above; `T(g)` and `J(g)` as
 integrals (their finiteness and the Bochner forms are conclusions); `0 < a < 1`, `D > 0`,
 `0 < α < 2` (derived from `H:homog` in the wrapper).
 
-Proof route.  As in the TeX for the bound (lines 421-429): `B_Γ(g_s², g_t²)` is bounded by
+Proof route.  As in the TeX for the bound (lines 551-559): `B_Γ(g_s², g_t²)` is bounded by
 `R_0 F(s) F(t)` with `F(s) = b(g_s)^{α/4}`, then `2F(s)F(t) ≤ F(s)² + F(t)²`, the row bound
 `E:occupation-kernel-row` and its column form by evenness, and Tonelli.  Differences:
-measurability (lines 407-419) is proved directly by Tonelli on the joint representative
+measurability (lines 533-545) is proved directly by Tonelli on the joint representative
 (no continuity of the pairing map on `H¹ × H¹` is used); the concavity step
 `∫_0^1 b^{α/2} ≤ T^{α/2}` is proved by Hölder (`lintegral_rpow_le`); positivity (lines
-434-439) uses the lower bound `J ≥ K_⋆(1) ℓ^α A_sp(g)` (`K_⋆` decreasing) instead of the
+567-572) uses the lower bound `J ≥ K_⋆(1) ℓ^α A_sp(g)` (`K_⋆` decreasing) instead of the
 exact value `J_0 ℓ^α A_sp(g)`, with an explicit `ℓ`.  The remark on zero covariance (lines
-444-449) is outside this proposition and is not formalized.  Lemmas marked "auxiliary to the
+577-582) is outside this proposition and is not formalized.  Lemmas marked "auxiliary to the
 Lean proof route" have no manuscript label.
 -/
 
@@ -97,35 +97,35 @@ open SpatialStaticControls (IsUnitH1)
 variable {d : ℕ}
 
 /-- Auxiliary to the Lean proof route: Lebesgue measure on the time interval `(0,1)` (the
-`ds`, `dt` of TeX lines 382-393). -/
+`ds`, `dt` of TeX lines 498-510). -/
 abbrev volI : Measure ℝ := volume.restrict (Ioo (0 : ℝ) 1)
 
-/-- `B_Γ(f², h²)` (TeX line 388): the physical pairing `E:spatial-physical-pair` (lines 15-17)
+/-- `B_Γ(f², h²)` (TeX line 505): the physical pairing `E:spatial-physical-pair` (lines 16-18)
 of the squares, i.e. `OccupationKernelRow.pairing` (the extended nonnegative integral
-`∫ f(x)² h(x-y)² ν(dx,dy)`) at `x ↦ f(x)²`, `x ↦ h(x)²`.  `A_sp(f) = sqPair Γ f f` (line 35).
+`∫ f(x)² h(x-y)² ν(dx,dy)`) at `x ↦ f(x)²`, `x ↦ h(x)²`.  `A_sp(f) = sqPair Γ f f` (line 36).
 On `C_c^∞` profiles it is `ofReal` of the real pairing `SpatialFourierBound.spatialPair`
 (`SpatialStaticControls.pairing_eq_spatialPair`). -/
 def sqPair (Γ : Measure (Rd d)) (f h : Rd d → ℝ) : ℝ≥0∞ :=
   pairing Γ (fun x => ENNReal.ofReal (f x ^ 2)) (fun x => ENNReal.ofReal (h x ^ 2))
 
-/-- `b(f) = ‖∇f‖₂²` (line 35) on `H¹`, as the extended integral `∫⁻ ‖gf‖²` of a weak gradient
+/-- `b(f) = ‖∇f‖₂²` (line 36) on `H¹`, as the extended integral `∫⁻ ‖gf‖²` of a weak gradient
 `gf` of `f`.  For `gf ∈ L²` it is `ofReal (∫ ‖gf‖²)` (`gradSqE_eq`); by a.e. uniqueness of `L²`
 weak gradients (`WeakSobolev.weakGradient_ae_unique`) it depends only on `f`. -/
 def gradSqE (gf : Rd d → Rd d) : ℝ≥0∞ := ∫⁻ x, ‖gf x‖ₑ ^ 2
 
-/-- `N(f) = ‖f‖₂^{1-α/4} ‖∇f‖₂^{α/4}` of `P:spatial-four-linear` (line 221), with
+/-- `N(f) = ‖f‖₂^{1-α/4} ‖∇f‖₂^{α/4}` of `P:spatial-four-linear` (line 299), with
 `‖f‖₂ = (∫ f²)^{1/2}` and `‖∇f‖₂ = (∫ ‖gf‖²)^{1/2}` for a weak gradient `gf` of `f` (genuine
 Bochner integrals when `f, gf ∈ L²`, which is how it is used). -/
 def Nnorm (alpha : ℝ) (f : Rd d → ℝ) (gf : Rd d → Rd d) : ℝ :=
   Real.sqrt (∫ x, f x ^ 2) ^ (1 - alpha / 4) * Real.sqrt (∫ x, ‖gf x‖ ^ 2) ^ (alpha / 4)
 
 /-- SUPPLIED INPUT (named hypothesis): two conclusions of `P:spatial-four-linear`
-(`integrated_spatial_occupation.tex` lines 219-237, proved in parallel by wave item L7-d), for
+(`integrated_spatial_occupation.tex` lines 297-315, proved in parallel by wave item L7-d), for
 real `f, h ∈ H¹(ℝ^d)` given as `f ∈ L²` with an `L²` weak gradient `gf`
 (`WeakSobolev.MemH1` with the gradient named):
-* `homogeneous`: `E:spatial-homogeneous-bound` (line 224), `A_sp(f) ≤ R N(f)⁴`, read as an
-  inequality in `[0,∞]` (so it includes the finiteness of `A_sp(f)`, line 222);
-* `squareCS`: `E:spatial-square-CS` (lines 225-227),
+* `homogeneous`: `E:spatial-homogeneous-bound` (line 302), `A_sp(f) ≤ R N(f)⁴`, read as an
+  inequality in `[0,∞]` (so it includes the finiteness of `A_sp(f)`, line 300);
+* `squareCS`: `E:spatial-square-CS` (lines 303-305),
   `0 ≤ B_Γ(f²,h²) ≤ √(A_sp(f) A_sp(h))`, in the equivalent squared form
   `B_Γ(f²,h²)² ≤ A_sp(f) A_sp(h)` in `[0,∞]` (`0 ≤` is automatic there; squaring is an order
   isomorphism of `[0,∞]`).  `squareCS_of_sqrt` derives it from the real `√` form.
@@ -138,27 +138,27 @@ structure SquarePairingBounds (Γ : Measure (Rd d)) (alpha R : ℝ) : Prop where
     MemLp h 2 volume → MemLp gh 2 volume → HasWeakGradient h gh →
     sqPair Γ f h ^ 2 ≤ sqPair Γ f f * sqPair Γ h h
 
-/-- `T(g) = ∫_0^1 b(g_s) ds` (lines 382-383) as an extended integral of `gradSqE`. -/
+/-- `T(g) = ∫_0^1 b(g_s) ds` (lines 498-499) as an extended integral of `gradSqE`. -/
 def Tlin (DG : ℝ → Rd d → Rd d) : ℝ≥0∞ := ∫⁻ s, gradSqE (DG s) ∂volI
 
-/-- The class `𝒪` (TeX lines 381-384), modelled through joint representatives: a field
+/-- The class `𝒪` (TeX lines 497-500), modelled through joint representatives: a field
 `s ↦ g_s` is given by `G : ℝ → ℝ^d → ℝ` (`g_s = G s`) and a gradient field `DG`
 (`∇g_s = DG s`) such that
 * `(s,x) ↦ G s x` and `(s,x) ↦ DG s x` are a.e.-strongly measurable for Lebesgue measure on
-  `(0,1) × ℝ^d` (this replaces "strongly `H¹`-measurable": the TeX proof, lines 409-414, derives
+  `(0,1) × ℝ^d` (this replaces "strongly `H¹`-measurable": the TeX proof, lines 535-540, derives
   such joint representatives from strong measurability; that derivation is not formalized);
 * for a.e. `s ∈ (0,1)`, `(G s, DG s)` is a unit `H¹` pair (`SpatialStaticControls.IsUnitH1`:
   `G s ∈ L²`, `DG s ∈ L²` a weak gradient of `G s`, `‖G s‖₂ = 1`);
 * `T(g) < ∞`.
-No time smoothness, common support or optimizer condition is imposed (line 384). -/
+No time smoothness, common support or optimizer condition is imposed (line 500). -/
 structure IsOccField (G : ℝ → Rd d → ℝ) (DG : ℝ → Rd d → Rd d) : Prop where
   meas : AEStronglyMeasurable (fun p : ℝ × Rd d => G p.1 p.2) (volI.prod volume)
   meas_grad : AEStronglyMeasurable (fun p : ℝ × Rd d => DG p.1 p.2) (volI.prod volume)
   unit : ∀ᵐ s ∂volI, IsUnitH1 (G s) (DG s)
   energy_lt_top : Tlin DG < ⊤
 
-/-- `J(g) = ∫_0^1 ∫_0^1 K_⋆(s-t) B_Γ(g_s², g_t²)` (TeX lines 390-393) as an iterated extended
-nonnegative integral ("positive Tonelli is valid before finiteness is known", line 428).
+/-- `J(g) = ∫_0^1 ∫_0^1 K_⋆(s-t) B_Γ(g_s², g_t²)` (TeX lines 507-510) as an iterated extended
+nonnegative integral ("positive Tonelli is valid before finiteness is known", line 558).
 `occupation_physical_bound` shows it is finite and equal to the Bochner integral over
 `(0,1)²`. -/
 def Jlin (a D : ℝ) (Γ : Measure (Rd d)) (G : ℝ → Rd d → ℝ) : ℝ≥0∞ :=
@@ -193,7 +193,7 @@ theorem sqPair_congr (Γ : Measure (Rd d)) [IsLocallyFiniteMeasure Γ] {f f' h h
   · filter_upwards [hf] with x hx; rw [hx]
   · filter_upwards [hh] with x hx; rw [hx]
 
-/-- Measurability of the pairings (TeX lines 388, 407-419): for a locally finite `Γ` and a field
+/-- Measurability of the pairings (TeX lines 505, 533-545): for a locally finite `Γ` and a field
 with an a.e.-strongly measurable joint representative `(s,x) ↦ G s x` on `(0,1) × ℝ^d`,
 `(s,t) ↦ B_Γ(G_s², G_t²)` (the physical integral itself) is a.e.-measurable on `(0,1)²`.
 Route: Tonelli on the joint representative and representative independence (not the
@@ -257,7 +257,7 @@ theorem sqPair_self_le {Γ : Measure (Rd d)} {alpha R : ℝ} (hR : 0 ≤ R) (ha 
   rw [hN, ENNReal.ofReal_mul hR, ← ENNReal.ofReal_rpow_of_nonneg hb0 (by linarith), ← he] at h
   exact h
 
-/-- Auxiliary to the Lean proof route, combining the TeX steps of lines 421-426 at one pair of
+/-- Auxiliary to the Lean proof route, combining the TeX steps of lines 551-556 at one pair of
 times: for unit `H¹` pairs, `B_Γ(f², h²) ≤ (R/2)(b(f)^{α/2} + b(h)^{α/2})` (the supplied
 homogeneous and square Cauchy-Schwarz bounds, then `2xy ≤ x² + y²`; `R ≥ 0`, `α ≥ 0`). -/
 theorem sqPair_le_half {Γ : Measure (Rd d)} {alpha R : ℝ} (hR : 0 ≤ R) (ha : 0 ≤ alpha)
@@ -332,7 +332,7 @@ theorem row_lintegral_le {a D : ℝ} (ha : 0 < a) (ha1 : a < 1) (hD : 0 < D) {s 
   exact hmax.2 ⟨s, hs, rfl⟩
 
 /-- Auxiliary to the Lean proof route: the column bound `∫_0^1 K_⋆(s-t) ds ≤ R_⋆` for
-`t ∈ [0,1]` (evenness of `K_⋆`, TeX lines 426-427; `0 < a < 1`, `D > 0`). -/
+`t ∈ [0,1]` (evenness of `K_⋆`, TeX lines 556-557; `0 < a < 1`, `D > 0`). -/
 theorem col_lintegral_le {a D : ℝ} (ha : 0 < a) (ha1 : a < 1) (hD : 0 < D) {t : ℝ}
     (ht : t ∈ Icc (0 : ℝ) 1) :
     ∫⁻ s, ENNReal.ofReal (Kstar a D (s - t)) ∂volI ≤ ENNReal.ofReal (Rstar a D) := by
@@ -342,7 +342,7 @@ theorem col_lintegral_le {a D : ℝ} (ha : 0 < a) (ha1 : a < 1) (hD : 0 < D) {t 
   rw [this]
   exact row_lintegral_le ha ha1 hD ht
 
-/-- Auxiliary to the Lean proof route (the TeX's concavity step, lines 423-425, proved by
+/-- Auxiliary to the Lean proof route (the TeX's concavity step, lines 553-555, proved by
 Hölder with exponents `1/p`, `1/(1-p)`): `∫_0^1 f^p ≤ (∫_0^1 f)^p` for `0 < p < 1` and an
 a.e.-measurable `f : ℝ → [0,∞]`. -/
 theorem lintegral_rpow_le {f : ℝ → ℝ≥0∞} (hf : AEMeasurable f volI) {p : ℝ} (hp : 0 < p)
@@ -364,7 +364,7 @@ theorem lintegral_rpow_le {f : ℝ → ℝ≥0∞} (hf : AEMeasurable f volI) {p
 
 
 /-- Auxiliary to the Lean proof route: for an a.e.-strongly measurable joint gradient field,
-`s ↦ b(g_s)` (`gradSqE`) is a.e.-measurable on `(0,1)` (TeX line 407). -/
+`s ↦ b(g_s)` (`gradSqE`) is a.e.-measurable on `(0,1)` (TeX line 533). -/
 theorem gradSqE_aemeasurable {DG : ℝ → Rd d → Rd d}
     (hm : AEStronglyMeasurable (fun p : ℝ × Rd d => DG p.1 p.2) (volI.prod volume)) :
     AEMeasurable (fun s => gradSqE (DG s)) volI := by
@@ -372,7 +372,7 @@ theorem gradSqE_aemeasurable {DG : ℝ → Rd d → Rd d}
     hm.enorm.pow_const 2
   exact h.lintegral_prod_right'
 
-/-- `E:occupation-physical-bound` (TeX lines 394-397) for the extended integral:
+/-- `E:occupation-physical-bound` (TeX lines 511-514) for the extended integral:
 `J(g) ≤ R_⋆ R T(g)^{α/2}` for every field of `𝒪`, given the supplied bounds
 `SquarePairingBounds Γ α R` with `R ≥ 0`, `0 < a < 1`, `D > 0`, `0 < α < 2` (any measure `Γ`). -/
 theorem Jlin_le {a D alpha R : ℝ} (ha : 0 < a) (ha1 : a < 1) (hD : 0 < D)
@@ -460,7 +460,7 @@ theorem Jlin_le {a D alpha R : ℝ} (ha : 0 < a) (ha1 : a < 1) (hD : 0 < D)
       congr 1; ring
 
 
-/-- Representative independence (TeX lines 388-389, 415-416, 428-429): for a locally finite `Γ`,
+/-- Representative independence (TeX lines 505-506, 541-542, 558-559): for a locally finite `Γ`,
 if `G' s = G s` Lebesgue-a.e. in space for a.e. `s ∈ (0,1)`, the pairings agree a.e. on
 `(0,1)²` and `J` is unchanged (this covers changes of spatial versions and null-time
 modifications). -/
@@ -507,7 +507,7 @@ def J (a D : ℝ) (Γ : Measure (Rd d)) (G : ℝ → Rd d → ℝ) : ℝ := (Jli
 def T (DG : ℝ → Rd d → Rd d) : ℝ := (Tlin DG).toReal
 
 /-- For a field of `𝒪`, `s ↦ b(g_s) = ∫ ‖∇g_s‖²` (real Bochner integrals) is integrable on
-`(0,1)` and its integral is `T(g)` (TeX lines 382-383, 407-408). -/
+`(0,1)` and its integral is `T(g)` (TeX lines 498-499, 533-534). -/
 theorem T_eq_integral {G : ℝ → Rd d → ℝ} {DG : ℝ → Rd d → Rd d} (hO : IsOccField G DG) :
     Integrable (fun s => ∫ x, ‖DG s x‖ ^ 2) volI ∧ ∫ s, (∫ x, ‖DG s x‖ ^ 2) ∂volI = T DG := by
   have hm := gradSqE_aemeasurable hO.meas_grad
@@ -522,7 +522,7 @@ theorem T_eq_integral {G : ℝ → Rd d → ℝ} {DG : ℝ → Rd d → Rd d} (h
   rfl
 
 
-/-- `E:occupation-physical-bound` (TeX lines 394-397), general form: for `0 < a < 1`, `D > 0`,
+/-- `E:occupation-physical-bound` (TeX lines 511-514), general form: for `0 < a < 1`, `D > 0`,
 `0 < α < 2`, a locally finite `Γ`, the supplied `SquarePairingBounds Γ α R` with `R ≥ 0`, and
 a field of `𝒪`: the pairings are a.e.-measurable on `(0,1)²`, `J(g) ≤ R_⋆ R T(g)^{α/2}` and
 `J(g) < ∞` as extended integrals, the real integrand `K_⋆(s-t) B_Γ(g_s², g_t²)` is integrable
@@ -577,12 +577,12 @@ theorem occupation_physical_bound {a D alpha R : ℝ} (ha : 0 < a) (ha1 : a < 1)
     rwa [ENNReal.toReal_ofReal (by positivity)] at this
 
 
-/-- The right side of `E:spatial-energy-map` (lines 309-314) with `R_sp` replaced by a real
+/-- The right side of `E:spatial-energy-map` (lines 414-419) with `R_sp` replaced by a real
 `R`: `(2-α)/2 · α^{α/(2-α)} · R^{2/(2-α)}`. -/
 def spEnergyVal (alpha R : ℝ) : ℝ :=
   (2 - alpha) / 2 * alpha ^ (alpha / (2 - alpha)) * R ^ (2 / (2 - alpha))
 
-/-- The scalar maximum (TeX lines 431-433): for `c ≥ 0`, `T ≥ 0`, `0 < α < 2`,
+/-- The scalar maximum (TeX lines 564-566): for `c ≥ 0`, `T ≥ 0`, `0 < α < 2`,
 `c T^{α/2} - T/2 ≤ (2-α)/2 · α^{α/(2-α)} · c^{2/(2-α)}`. -/
 theorem scalar_max {alpha c T : ℝ} (hal : 0 < alpha) (hal2 : alpha < 2) (hc : 0 ≤ c)
     (hT : 0 ≤ T) : c * T ^ (alpha / 2) - T / 2 ≤ spEnergyVal alpha c := by
@@ -631,7 +631,7 @@ theorem Kstar_one_le {a D : ℝ} (ha : 0 < a) (hD : 0 < D) {s t : ℝ} (hs : s �
 theorem volI_univ : volI (univ : Set ℝ) = 1 := by
   rw [Measure.restrict_apply MeasurableSet.univ, univ_inter, Real.volume_Ioo]; simp
 
-/-- Positivity step of the proof (TeX lines 434-439): for `0 < a < 1`, `D > 0`, `0 < α < 2`, a
+/-- Positivity step of the proof (TeX lines 567-572): for `0 < a < 1`, `D > 0`, `0 < α < 2`, a
 locally finite `Γ ≠ 0` with the scaling `Γ(cA) = c^{d-α}Γ(A)` (`SetScaling`), and the supplied
 bounds with `R ≥ 0` (used only for the finiteness of `J`), a constant-in-time dilated unit
 compact profile `U_ℓ g` lies in `𝒪` and has `J - T/2 > 0`.  Route: the lower bound
@@ -727,16 +727,16 @@ theorem exists_pos_member {a D alpha R : ℝ} (ha : 0 < a) (ha1 : a < 1) (hD : 0
   linarith
 
 
-/-- The value set `{J(g) - T(g)/2 : g ∈ 𝒪}` of `E:occupation-own-energy` (line 401). -/
+/-- The value set `{J(g) - T(g)/2 : g ∈ 𝒪}` of `E:occupation-own-energy` (line 518). -/
 def energySet (a D : ℝ) (Γ : Measure (Rd d)) : Set ℝ :=
   {v | ∃ (G : ℝ → Rd d → ℝ) (DG : ℝ → Rd d → Rd d), IsOccField G DG ∧
     v = J a D Γ G - T DG / 2}
 
-/-- `𝓔_⋆^𝒪 = sup_{g ∈ 𝒪} (J(g) - T(g)/2)` (TeX lines 399-401), as `sSup`; the statements below
+/-- `𝓔_⋆^𝒪 = sup_{g ∈ 𝒪} (J(g) - T(g)/2)` (TeX lines 516-518), as `sSup`; the statements below
 prove the set nonempty and bounded above, so this is not Lean's junk value. -/
 def EstarO (a D : ℝ) (Γ : Measure (Rd d)) : ℝ := sSup (energySet a D Γ)
 
-/-- `E:occupation-own-energy` (TeX lines 398-403), general form: for `0 < a < 1`, `D > 0`,
+/-- `E:occupation-own-energy` (TeX lines 515-520), general form: for `0 < a < 1`, `D > 0`,
 `0 < α < 2`, a locally finite `Γ ≠ 0` with `SetScaling α Γ`, and the supplied
 `SquarePairingBounds Γ α R` with `R ≥ 0`: the value set is nonempty and bounded above and
 `0 < 𝓔_⋆^𝒪 ≤ R_⋆^{2/(2-α)} · (2-α)/2 · α^{α/(2-α)} · R^{2/(2-α)}`. -/
@@ -765,7 +765,7 @@ theorem occupation_own_energy {a D alpha R : ℝ} (ha : 0 < a) (ha1 : a < 1) (hD
   exact ⟨⟨_, hmem⟩, hbdd, lt_of_lt_of_le hpos (le_csSup hbdd hmem), csSup_le ⟨_, hmem⟩ hub⟩
 
 
-/-- `P:occupation-physical-class` (TeX lines 386-404) under the section's standing assumptions
+/-- `P:occupation-physical-class` (TeX lines 503-521) under the section's standing assumptions
 (lines 4-10: `H:homog` with `a = α₀`, a nonzero covariance `Γ`, `D = q - 2a`, `q = 4 - α`),
 with the named input `SquarePairingBounds Γ α R_0` (two conclusions of
 `P:spatial-four-linear`).  For every field of `𝒪` (modelled as `IsOccField`):

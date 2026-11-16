@@ -1,6 +1,6 @@
 /-
 Refutation for the constant of `E:low-alpha-radial` (main TeX lines
-4706-4708 at a284420), package theorem
+5570-5572 at 39f2597a), package theorem
 `StratonovichHAMSecondMoment.LowAlphaConvolution.lintegral_rpow_Ioc`
 (the radial integral `∫_0^h u^{-α} du` behind `V h^{1-α}/(1-α)`).
 

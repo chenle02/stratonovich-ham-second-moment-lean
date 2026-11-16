@@ -1,0 +1,13 @@
+node=node847 job=5699057 array=5698959_96 mode=fresh target=StratonovichHAMSecondMoment.SymplecticFree start=2026-11-13T08:45:39-0600
+tmp_avail_G=886
+VERIFIED_COMMIT=56fc59ec31b8ede85ac5ab7a2283237b091029a7 TREE=df0322362d43b18a73c060519d72955b328900c5 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=31200 waited_s=0
+REPLAY_STARTED 2026-11-13T08:50:08-0600
+BEGIN fresh StratonovichHAMSecondMoment.SymplecticFree 08:50:09
+END fresh StratonovichHAMSecondMoment.SymplecticFree	0	0:44:15.39	7572288	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2656 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.SymplecticFree
+PROCESS_EXIT=0 end=2026-11-13T09:34:24-0600

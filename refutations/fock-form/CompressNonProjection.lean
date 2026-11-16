@@ -2,7 +2,7 @@ import StratonovichHAMSecondMoment.FockForm
 
 /-!
 Refutation for `StratonovichHAMSecondMoment.FockForm.fockColumn_compress` (compression by the
-band projection `S_b` preserves the column bound, main TeX lines 2511-2513 at a284420).
+band projection `S_b` preserves the column bound, main TeX lines 3006-3008 at 39f2597a).
 
 Wrong variant: compression by any symmetric `P` (dropping idempotence, so `‖P‖ ≤ 1` is lost).
 Counterexample: `X = ℂ`, one mode, `H = id`, `c = 1`, `P = 2 id`: `‖P H P 1‖² = 16 > 1`.

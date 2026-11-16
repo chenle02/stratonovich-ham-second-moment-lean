@@ -1,6 +1,6 @@
 /-
 Refutation for the nonnegativity of pairing sums (`L:terminal-wick`, main TeX
-lines 3639-3640 and 3693-3694 at a284420: "if `K ≥ 0`, every integral above is
+lines 4330-4331 and 4404-4405 at 39f2597a: "if `K ≥ 0`, every integral above is
 nonnegative"), package theorem
 `StratonovichHAMSecondMoment.FiniteWick.wickSum_nonneg`.
 

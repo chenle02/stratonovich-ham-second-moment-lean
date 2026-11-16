@@ -1,6 +1,6 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.MaskedContinuousWave.bracket_add_le`
-(`L:masked-continuous-wave`, TeX lines 413-416 at a284420: `⟨x+e⟩ ≤ (1+|e|)⟨x⟩`).
+(`L:masked-continuous-wave`, TeX lines 545-548 at 39f2597a: `⟨x+e⟩ ≤ (1+|e|)⟨x⟩`).
 
 Wrong variant: the comparison with the factor `1 + |e|` dropped,
 `⟨x+e⟩ ≤ ⟨x⟩`, in the binder shape of `bracket_add_le`. Witness `x = 0`,

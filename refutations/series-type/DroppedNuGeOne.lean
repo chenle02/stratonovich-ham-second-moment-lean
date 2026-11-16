@@ -2,7 +2,7 @@
 Refutation for the series bound `S_ν(x) ≤ exp(ν x^{1/ν})` of `SeriesType`,
 package theorem
 `StratonovichHAMSecondMoment.SeriesType.seriesNu_summable_le` (hypothesis
-`ν ≥ 1`; used at main TeX lines 4678-4684, 6054-6059, 6740-6745, 7255-7257).
+`ν ≥ 1`; used at main TeX lines 5541-5547, 7117-7122, 7884-7889, 8462-8464).
 
 Wrong variant: the same bound with the hypothesis `ν ≥ 1` dropped (only
 `ν > 0`). Counterexample: `ν = 1/2`, `x = 1`: the first three terms already

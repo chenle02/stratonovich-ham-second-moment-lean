@@ -3,9 +3,9 @@ module
 /-
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
-Proposition `P:frequency-row` (Uniform scalar row, TeX lines 47-139) and
+Proposition `P:frequency-row` (Uniform scalar row, TeX lines 48-165) and
 Corollary `C:frequency-time` (A time exponent above one half, TeX lines
-141-165) of `notes/integrated_wave_variance.tex` (revision a284420), with the
+172-199) of `notes/integrated_wave_variance.tex` (revision 39f2597a), with the
 definitions `E:variance-scale-profile` (l. 12-20), `E:frequency-row-kernel` and
 `E:frequency-row-integral` (l. 33-42).
 
@@ -23,8 +23,8 @@ What is proved (no supplied inputs; class same-assumptions).
   `∃ K ≥ 0, ∀ d ν C, C ≥ 0 → growth → ∀ h ∈ (0,1], sup_ξ J_h(ξ) ≤ K C B_α(h)`,
   and for every `ξ` the kernel `λ ↦ Φ_h(ξ,ξ-λ)` is `ν`-integrable with
   `⟨ξ⟩^{2γ} ∫ Φ_h(ξ,ξ-λ) dν ≤ K C B_α(h)` (the TeX's "finiteness of the original
-  integral", l. 136-137). The order `∃ K, ∀ d ν C h ξ` encodes that `K` does not
-  depend on `d, ν, C, h, ξ` (TeX l. 48-49).
+  integral", l. 162-163). The order `∃ K, ∀ d ν C h ξ` encodes that `K` does not
+  depend on `d, ν, C, h, ξ` (TeX l. 49-50).
 * `frequency_time`: for `2β < 2 - a`, `2β < 3 - a - α` (and the same hypotheses),
   `∃ K_β ≥ 0, ∀ d ν C h, h^{2-a} sup_ξ J_h(ξ) ≤ K_β C h^{2β}`.
 * `frequency_row_paper`, `frequency_time_paper`: the same with the manuscript's
@@ -55,10 +55,10 @@ growth hypothesis directly (`le_shellSum`, `lintegral_shellSum`, `shellSum_le`).
 Near region: on the shell `2^n ≤ |η| ≤ 2^{n+1}` we use `⟨ξ⟩ ≥ 2^n/5`, so
 `⟨ξ⟩^{2γ-1} ≤ (2^n/5)^{2γ-1}`; this gives the geometric ratio `2^{α+2γ-2} < 1`
 in all three cases of `α` at once, instead of the TeX's three-case bound on
-`A_ξ(q)` (l. 60-99). Far region: as in the TeX (l. 101-120), with the series
+`A_ξ(q)` (l. 68-109). Far region: as in the TeX (l. 113-139), with the series
 `rowSeries`; the bound `S(h) ≤ K_{α,a} B_α(h)` (`rowSeries_tsum_le`) splits at
-the first `M` with `h 2^M > 1` (`M = L + 1` of TeX l. 121) and treats the three
-cases as in TeX l. 121-135. The corollary follows TeX l. 155-163
+the first `M` with `h 2^M > 1` (`M = L + 1` of TeX l. 147) and treats the three
+cases as in TeX l. 147-161. The corollary follows TeX l. 186-197
 (`scale_time_le`). Lemmas marked auxiliary serve only this Lean route.
 -/
 public import Mathlib
@@ -112,7 +112,7 @@ theorem bracket_rpow_nonneg (e x : ℝ) : 0 ≤ bracket x ^ e :=
   Real.rpow_nonneg (bracket_pos x).le _
 
 /-- If `|x| ≥ t/2` with `t ≥ 0`, then `⟨x⟩^{a-1} ≤ 2^{1-a} ⟨t⟩^{a-1}` for `a < 1`
-(the bracket bound of TeX l. 107). -/
+(the bracket bound of TeX l. 123). -/
 theorem bracket_rpow_le_half {a : ℝ} (ha : a < 1) {x t : ℝ} (ht : 0 ≤ t) (hx : t / 2 ≤ |x|) :
     bracket x ^ (a - 1) ≤ (2 : ℝ) ^ (1 - a) * bracket t ^ (a - 1) := by
   have hb : bracket t / 2 ≤ bracket x := by
@@ -137,7 +137,7 @@ theorem frequencyPair_nonneg (a h r ρ : ℝ) : 0 ≤ frequencyPair a h r ρ := 
   exact add_nonneg (bracket_rpow_nonneg _ _) (bracket_rpow_nonneg _ _)
 
 /-- `𝒬_h ≤ 2` for `a < 1`: both bracket powers are at most one (a step of the
-TeX proof of `P:frequency-row`, l. 86-87). -/
+TeX proof of `P:frequency-row`, l. 96-97). -/
 theorem frequencyPair_le_two {a : ℝ} (ha : a < 1) (h r ρ : ℝ) : frequencyPair a h r ρ ≤ 2 := by
   unfold frequencyPair
   linarith [bracket_rpow_le_one ha (h * (r - ρ)), bracket_rpow_le_one ha (h * (r + ρ))]
@@ -219,7 +219,7 @@ theorem shellSum_le {E : Type*} [PseudoMetricSpace E] [MeasurableSpace E] (ν : 
 def scaleProfile (α h : ℝ) : ℝ :=
   if α < 1 then 1 else if α = 1 then 1 + Real.log (1 / h) else h ^ (1 - α)
 
-/-- `B_α(h) ≥ 1` for `0 < h ≤ 1` (used at TeX l. 134). -/
+/-- `B_α(h) ≥ 1` for `0 < h ≤ 1` (used at TeX l. 160). -/
 theorem one_le_scaleProfile (α : ℝ) {h : ℝ} (h0 : 0 < h) (h1 : h ≤ 1) :
     1 ≤ scaleProfile α h := by
   unfold scaleProfile
@@ -230,7 +230,7 @@ theorem one_le_scaleProfile (α : ℝ) {h : ℝ} (h0 : 0 < h) (h1 : h ≤ 1) :
   · exact Real.one_le_rpow_of_pos_of_le_one_of_nonpos h0 h1 (by
       rcases lt_or_gt_of_ne hα' with h' | h' <;> [exact absurd h' hα; linarith])
 
-/-- The dyadic series `S(h) = ∑_j 2^{j(α-1)} ⟨h 2^j⟩^{a-1}` of TeX l. 117-120, term `j`. -/
+/-- The dyadic series `S(h) = ∑_j 2^{j(α-1)} ⟨h 2^j⟩^{a-1}` of TeX l. 136-139, term `j`. -/
 def rowSeries (α a h : ℝ) (n : ℕ) : ℝ :=
   ((2 : ℝ) ^ (α - 1)) ^ n * bracket (h * 2 ^ n) ^ (a - 1)
 
@@ -273,7 +273,7 @@ theorem summable_rowSeries {α a h : ℝ} (ha : a < 1) (hαa : α + a < 2) (h0 :
   Summable.of_nonneg_of_le (rowSeries_nonneg α a h) (rowSeries_le_tail ha h0)
     ((summable_geometric_of_lt_one (by positivity) (two_rpow_lt_one (by linarith))).mul_left _)
 
-/-- The estimate `S(h) ≤ K_{α,a} B_α(h)` (TeX l. 120-133), with `K` independent of `h`. -/
+/-- The estimate `S(h) ≤ K_{α,a} B_α(h)` (TeX l. 139-159), with `K` independent of `h`. -/
 theorem rowSeries_tsum_le {α a : ℝ} (ha : a < 1) (hαa : α + a < 2) :
     ∃ K : ℝ, 0 ≤ K ∧ ∀ h : ℝ, 0 < h → h ≤ 1 →
       ∑' n, rowSeries α a h n ≤ K * scaleProfile α h := by
@@ -437,7 +437,7 @@ theorem weighted_le_two {d : ℕ} {a γ : ℝ} (ha : a < 1) (hγ : 2 * γ ≤ 1)
   have := one_le_bracket ‖η‖
   nlinarith [mul_le_mul h1 h2 h3 zero_le_one]
 
-/-- Near-region shell bound (replaces the three-case bound of TeX l. 60-99): if `‖λ‖ ≤ 4‖ξ‖` and
+/-- Near-region shell bound (replaces the three-case bound of TeX l. 68-109): if `‖λ‖ ≤ 4‖ξ‖` and
 `2^n ≤ ‖ξ - λ‖`, then `⟨ξ⟩^{2γ}Φ_h(ξ,ξ-λ) ≤ 2 (2^n/5)^{2γ-1} 2^{-n}` (auxiliary). -/
 theorem weighted_le_near {d : ℕ} {a γ : ℝ} (ha : a < 1) (hγ : 2 * γ ≤ 1) (h : ℝ) (ξ l : Rd d)
     (n : ℕ) (hnear : ‖l‖ ≤ 4 * ‖ξ‖) (hn : (2 : ℝ) ^ n ≤ ‖ξ - l‖) :
@@ -465,7 +465,7 @@ theorem weighted_le_near {d : ℕ} {a γ : ℝ} (ha : a < 1) (hγ : 2 * γ ≤ 1
         field_simp
     _ ≤ _ := by gcongr
 
-/-- Far-region shell bound (TeX l. 101-113): if `4‖ξ‖ < ‖λ‖` and `2^n ≤ ‖λ‖`, then
+/-- Far-region shell bound (TeX l. 113-129): if `4‖ξ‖ < ‖λ‖` and `2^n ≤ ‖λ‖`, then
 `⟨ξ⟩^{2γ}Φ_h(ξ,ξ-λ) ≤ (4/3) 2^{-n} · 2 · 2^{1-a} ⟨h 2^n⟩^{a-1}` (auxiliary). -/
 theorem weighted_le_far {d : ℕ} {a γ h : ℝ} (ha : a < 1) (hγ : 2 * γ ≤ 1) (h0 : 0 < h)
     (ξ l : Rd d) (n : ℕ) (hfar : 4 * ‖ξ‖ < ‖l‖) (hn : (2 : ℝ) ^ n ≤ ‖l‖) :
@@ -651,7 +651,7 @@ theorem rowIntegral_le {α a γ : ℝ} (ha : a < 1) (hαa : α + a < 2) (hγ : 2
         nlinarith
 
 
-/-- `P:frequency-row` (TeX l. 47-55), general form: under `a < 1`, `α + a < 2`, `2γ ≤ 1`,
+/-- `P:frequency-row` (TeX l. 48-56), general form: under `a < 1`, `α + a < 2`, `2γ ≤ 1`,
 `α + 2γ < 2`, there is `K ≥ 0`, chosen before `d, ν, C, h` (so independent of them), such that
 for every measure `ν` on `ℝ^d` with `ν(B(y,r)) ≤ C r^α` (open balls, all `y`, `r > 0`) and
 `C ≥ 0`, and every `0 < h ≤ 1`: `sup_ξ J_h(ξ) ≤ K C B_α(h)`; moreover for every `ξ` the kernel
@@ -689,7 +689,7 @@ theorem frequency_row {α a γ : ℝ} (ha : a < 1) (hαa : α + a < 2) (hγ : 2 
   rw [e]
   exact ENNReal.toReal_le_of_le_ofReal (by positivity) hJ
 
-/-- The time-scale step of `C:frequency-time` (TeX l. 155-163), auxiliary scalar form:
+/-- The time-scale step of `C:frequency-time` (TeX l. 186-197), auxiliary scalar form:
 for `2β < 2 - a` and `2β < 3 - a - α` there is `c ≥ 0` with `h^{2-a} B_α(h) ≤ c h^{2β}`
 for `0 < h ≤ 1`. -/
 theorem scale_time_le {α a β : ℝ} (hβa : 2 * β < 2 - a) (hβα : 2 * β < 3 - a - α) :
@@ -732,7 +732,7 @@ theorem scale_time_le {α a β : ℝ} (hβa : 2 * β < 2 - a) (hβα : 2 * β < 
     rw [← Real.rpow_add h0]
     exact Real.rpow_le_rpow_of_exponent_ge h0 h1 (by linarith)
 
-/-- `C:frequency-time` (TeX l. 141-165), general form: for `2β < 2 - a` and
+/-- `C:frequency-time` (TeX l. 172-199), general form: for `2β < 2 - a` and
 `2β < 3 - a - α` (and the hypotheses of `frequency_row`) there is `K_β ≥ 0`, chosen before
 `d, ν, C, h`, with `h^{2-a} sup_ξ J_h(ξ) ≤ K_β C h^{2β}` for `0 < h ≤ 1`. -/
 theorem frequency_time {α a γ β : ℝ} (ha : a < 1) (hαa : α + a < 2) (hγ : 2 * γ ≤ 1)
@@ -759,7 +759,7 @@ theorem frequency_time {α a γ β : ℝ} (ha : a < 1) (hαa : α + a < 2) (hγ 
 
 /-! ### Exact-hypothesis wrappers -/
 
-/-- `P:frequency-row` with the manuscript's hypotheses (TeX l. 3-55): the section retains
+/-- `P:frequency-row` with the manuscript's hypotheses (TeX l. 3-56): the section retains
 `H:homog` with `a = α₀` (some `Γ, μ` on `ℝ^d`), fixes `0 < γ < min(1/2, (2-α)/2)`
 (`E:variance-gamma-range`), and takes a positive Radon measure `ν` on `ℝ^d` with
 `ν(B(y,r)) ≤ C r^α` (`E:frequency-translated-growth`, open balls), `C ≥ 0`. The constant `K`
@@ -779,7 +779,7 @@ theorem frequency_row_paper {α a γ : ℝ} (_hγ0 : 0 < γ) (hγ : γ < min (1 
   · refine ⟨0, le_rfl, fun d Γ μ hH => ?_⟩
     exact absurd ⟨hH.alpha0_lt_one, by linarith [hH.threshold]⟩ hnum
 
-/-- `C:frequency-time` with the manuscript's hypotheses (TeX l. 141-150, with the standing
+/-- `C:frequency-time` with the manuscript's hypotheses (TeX l. 172-181, with the standing
 hypotheses of `frequency_row_paper`): for every `β` with
 `1/2 < β < min(1 - a/2, (3 - a - α)/2)` (`E:variance-beta-range`) there is a finite
 `K_β = K_β(α,a,γ,β)`, chosen before `d, Γ, μ, ν, C, h`, with

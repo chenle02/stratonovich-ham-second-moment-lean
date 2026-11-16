@@ -1,11 +1,11 @@
 /-
 Refutation for the auxiliary kernel lower bound of the positivity step of
-`P:occupation-physical-class` (`notes/integrated_spatial_occupation.tex` lines 434-439 at
-a284420), package theorem `StratonovichHAMSecondMoment.OccupationPhysicalClass.Kstar_one_le`
+`P:occupation-physical-class` (`notes/integrated_spatial_occupation.tex` lines 567-572 at
+39f2597a), package theorem `StratonovichHAMSecondMoment.OccupationPhysicalClass.Kstar_one_le`
 (`K_⋆(1) ≤ K_⋆(s-t)` for distinct `s, t ∈ (0,1)`).
 
 Wrong variant: the hypothesis `t ≠ s` dropped.  Counterexample: `a = 1/2`, `D = 1`,
-`s = t = 1/2`: `K_⋆(0) = 0` by the manuscript's convention (line 359), while `K_⋆(1) > 0`.
+`s = t = 1/2`: `K_⋆(0) = 0` by the manuscript's convention (line 472), while `K_⋆(1) > 0`.
 This uses the manuscript's diagonal convention `K_⋆(0) = 0`, not a Lean junk value.
 `kstar_diagonal_contrast` applies the package theorem at `s = 1/2`, `t = 1/4`.
 

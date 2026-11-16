@@ -36,7 +36,7 @@ variable {n : Type*} [Fintype n] [DecidableEq n]
 def eigConj {Y : Matrix n n ℂ} (hY : Y.IsHermitian) (D : Matrix n n ℂ) : Matrix n n ℂ :=
   star (hY.eigenvectorUnitary : Matrix n n ℂ) * D * hY.eigenvectorUnitary
 
-/-- The weights `|b_{ij}|^2` of `B` in the eigenbasis of `Y` (TeX line 64) (auxiliary to the
+/-- The weights `|b_{ij}|^2` of `B` in the eigenbasis of `Y` (TeX line 90) (auxiliary to the
 Lean proof route). -/
 def eigWeight {Y : Matrix n n ℂ} (hY : Y.IsHermitian) (B : Matrix n n ℂ) (i j : n) : ℝ :=
   Complex.normSq (eigConj hY B i j)

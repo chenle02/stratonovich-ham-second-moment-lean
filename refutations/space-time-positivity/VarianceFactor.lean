@@ -2,7 +2,7 @@
 Refutation for the variance identity of the space-time form, package theorem
 `StratonovichHAMSecondMoment.SpaceTimePositivity.stForm_self_eq_rawCost` (`F(Ψ,Ψ) = v_Ψ`, the
 integral form of `‖Ψ‖²_{H_I} = v_Ψ`, `E:positive-raw-mean`,
-`integrated_intrinsic_constant.tex` lines 33-36 at a284420).
+`integrated_intrinsic_constant.tex` lines 34-37 at 39f2597a).
 
 Wrong variant: a factor two, `F(Ψ,Ψ) = 2 v_Ψ` (as if the kernel were counted on both
 triangles twice), for every locally finite `Γ` and continuous compactly supported `Ψ`.

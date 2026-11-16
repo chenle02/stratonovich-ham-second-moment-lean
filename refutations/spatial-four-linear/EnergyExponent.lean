@@ -1,6 +1,6 @@
 /-
 Refutation for the scalar maximum behind `E:spatial-energy-map`
-(`notes/integrated_spatial_occupation.tex` lines 309-314 and 330-335 at a284420), package
+(`notes/integrated_spatial_occupation.tex` lines 414-419 and 439-444 at 39f2597a), package
 theorem `StratonovichHAMSecondMoment.SpatialFourLinear.young_bound`.
 
 Wrong variant: exponent `1` on `R` instead of `2/(2-α)`, i.e.

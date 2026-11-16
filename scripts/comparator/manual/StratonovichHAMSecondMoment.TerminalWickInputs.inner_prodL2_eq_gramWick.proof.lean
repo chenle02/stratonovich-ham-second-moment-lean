@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.TerminalWickInputs.inner_prodL2_eq_gramWick

@@ -1,7 +1,7 @@
 /-
 Refutation for the cell-width bound of the finite-cell selection (Lean route of
-`L:occupation-rayleigh-selection`, `notes/integrated_occupation_ceiling.tex` lines 149-193 at
-a284420), package theorem `StratonovichHAMSecondMoment.OccupationCeilingExact.idx_close`
+`L:occupation-rayleigh-selection`, `notes/integrated_occupation_ceiling.tex` lines 180-236 at
+39f2597a), package theorem `StratonovichHAMSecondMoment.OccupationCeilingExact.idx_close`
 (`|s - j(s)/(N+1)| ≤ 1/(N+1)` for `s ∈ [0,1]`).
 
 Wrong variant: the sharper width `1/(N+2)`.  Counterexample: `N = 1`, `s = 1`: the cell index

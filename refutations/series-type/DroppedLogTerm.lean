@@ -1,7 +1,7 @@
 /-
 Refutation for the two-sided logarithmic factorial bounds of `SeriesType`,
 package theorem `StratonovichHAMSecondMoment.SeriesType.log_factorial_bounds`
-(`log k! ≤ k log k - k + 1 + log k` for `k ≥ 1`; main TeX lines 7246-7247).
+(`log k! ≤ k log k - k + 1 + log k` for `k ≥ 1`; main TeX lines 8450-8451).
 
 Wrong variant: the upper bound without the `log k` term,
 `log k! ≤ k log k - k + 1`. Counterexample: `k = 2`: it reads

@@ -32,29 +32,29 @@ variable {d : ℕ}
 
 /-! ### Definitions -/
 
-/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 122-125): the autocorrelation
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 151-154): the autocorrelation
 `c_Q(y) = ∫ Q(x) Q(x - y) dx` (the inner integral of `B_Γ(Q,Q)` in
 `E:spatial-physical-pair`).  This is the package's one autocorrelation
 (`VariationalFloor` F3 is stated for it). -/
 def autocorr (Q : Rd d → ℝ) (y : Rd d) : ℝ := ∫ x, Q x * Q (x - y)
 
 /-- The real form of the physical pairing `E:spatial-physical-pair`
-(`integrated_spatial_occupation.tex` lines 15-17):
+(`integrated_spatial_occupation.tex` lines 16-18):
 `B_Γ(F,G) = ∫ (∫ F(x) G(x - y) dx) Γ(dy)`, as an iterated Bochner integral.
 For the continuous compactly supported functions used here it is an absolutely
 convergent integral (see `integrable_autocorr` and `SpatialSmoothRatio`). -/
 def spatialPair (Γ : Measure (Rd d)) (F G : Rd d → ℝ) : ℝ :=
   ∫ y, (∫ x, F x * G (x - y)) ∂Γ
 
-/-- `A_sp(g) = B_Γ(g², g²)` (line 35). -/
+/-- `A_sp(g) = B_Γ(g², g²)` (line 36). -/
 def spatialEnergy (Γ : Measure (Rd d)) (g : Rd d → ℝ) : ℝ :=
   spatialPair Γ (fun x => g x ^ 2) (fun x => g x ^ 2)
 
-/-- `b(g) = ‖∇g‖₂²` (line 35), for a differentiable `g`, through the operator
+/-- `b(g) = ‖∇g‖₂²` (line 36), for a differentiable `g`, through the operator
 norm of the Fréchet derivative (equal to the Euclidean norm of the gradient). -/
 def gradEnergy (g : Rd d → ℝ) : ℝ := ∫ x, ‖fderiv ℝ g x‖ ^ 2
 
-/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 116-118, up to complex conjugation): the Fourier transform in the manuscript's
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 145-147, up to complex conjugation): the Fourier transform in the manuscript's
 convention (the one of `HomogHypothesis.IsSpectralMeasure`):
 `Q̂(ξ) = ∫ Q(x) e^{i ξ·x} dx`. -/
 def fourierQ (Q : Rd d → ℝ) (ξ : Rd d) : ℂ :=
@@ -64,10 +64,141 @@ def fourierQ (Q : Rd d → ℝ) (ξ : Rd d) : ℂ :=
 def IsUnitTest (g : Rd d → ℝ) : Prop :=
   ContDiff ℝ ∞ g ∧ HasCompactSupport g ∧ ∫ x, g x ^ 2 = 1
 
+/-! ### The autocorrelation as a Schwartz function -/
+
+/-- Auxiliary to the Lean proof route: the autocorrelation is the convolution
+`Q ⋆ Q(-·)`. -/
+theorem autocorr_eq_convolution (Q : Rd d → ℝ) :
+    autocorr Q = convolution Q (fun x => Q (-x)) (ContinuousLinearMap.lsmul ℝ ℝ) volume := by
+  funext y
+  simp only [autocorr, convolution, ContinuousLinearMap.lsmul_apply, smul_eq_mul, neg_sub]
+
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX line 155). -/
+theorem autocorr_contDiff {Q : Rd d → ℝ} (hQ : ContDiff ℝ ∞ Q) (hc : HasCompactSupport Q) :
+    ContDiff ℝ ∞ (autocorr Q) := by
+  rw [autocorr_eq_convolution]
+  have hl : LocallyIntegrable (fun x => Q (-x)) volume :=
+    (hQ.continuous.comp continuous_neg).locallyIntegrable
+  exact hc.contDiff_convolution_left (ContinuousLinearMap.lsmul ℝ ℝ) hQ hl
+
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX line 155). -/
+theorem autocorr_hasCompactSupport {Q : Rd d → ℝ} (hc : HasCompactSupport Q) :
+    HasCompactSupport (autocorr Q) := by
+  rw [autocorr_eq_convolution]
+  exact hc.convolution (ContinuousLinearMap.lsmul ℝ ℝ) (hc.comp_homeomorph (Homeomorph.neg _))
+
 /-! ### The Fourier transform of the autocorrelation -/
 
 /-- Auxiliary to the Lean proof route: the exponential `e_ξ(x) = e^{i ξ·x}`. -/
 abbrev ex (ξ x : Rd d) : ℂ := Complex.exp (Complex.I * (inner ℝ ξ x : ℝ))
+
+/-- Auxiliary to the Lean proof route. -/
+theorem ex_continuous (ξ : Rd d) : Continuous (ex ξ) := by
+  unfold ex; fun_prop
+
+/-- Auxiliary to the Lean proof route. -/
+theorem norm_ex (ξ x : Rd d) : ‖ex ξ x‖ = 1 := by
+  rw [ex, Complex.norm_exp]
+  simp
+
+/-- Auxiliary to the Lean proof route: `e_ξ(z - w) = e_ξ(z) conj(e_ξ(w))`. -/
+theorem ex_sub (ξ z w : Rd d) : ex ξ (z - w) = ex ξ z * conj (ex ξ w) := by
+  simp only [ex, inner_sub_right, ← Complex.exp_conj, ← Complex.exp_add, map_mul,
+    Complex.conj_I, Complex.conj_ofReal]
+  congr 1
+  push_cast
+  ring
+
+/-- Auxiliary to the Lean proof route: a compact set containing the support of
+`(x, z) ↦ Q(z) Q(z - x)`. -/
+theorem prod_hasCompactSupport {Q : Rd d → ℝ} (hc : HasCompactSupport Q) (ξ : Rd d) :
+    HasCompactSupport (Function.uncurry fun (x z : Rd d) =>
+      ((Q z * Q (z - x) : ℝ) : ℂ) * ex ξ x) := by
+  have hK : IsCompact (tsupport Q) := HasCompactSupport.isCompact hc
+  refine HasCompactSupport.intro
+    (((hK.prod hK).image (continuous_fst.sub continuous_snd)).prod hK) ?_
+  rintro ⟨x, z⟩ hxz
+  simp only [Function.uncurry_apply_pair]
+  by_cases hz : z ∈ tsupport Q
+  · by_cases hzx : z - x ∈ tsupport Q
+    · exfalso
+      apply hxz
+      exact ⟨⟨(z, z - x), ⟨hz, hzx⟩, by simp⟩, hz⟩
+    · rw [image_eq_zero_of_notMem_tsupport hzx]; simp
+  · rw [image_eq_zero_of_notMem_tsupport hz]; simp
+
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX line 157): the Fourier transform of the autocorrelation is `|Q̂|²`:
+`∫ c_Q(x) e^{i ξ·x} dx = |Q̂(ξ)|²` for continuous compactly supported real `Q`
+(hand Fubini on `ℝ^d × ℝ^d` and the substitution `x ↦ z - x`). -/
+theorem fourier_autocorr {Q : Rd d → ℝ} (hQ : Continuous Q) (hc : HasCompactSupport Q)
+    (ξ : Rd d) :
+    ∫ x, (autocorr Q x : ℂ) * ex ξ x = ((‖fourierQ Q ξ‖ ^ 2 : ℝ) : ℂ) := by
+  have hint : Integrable (Function.uncurry fun (x z : Rd d) =>
+      ((Q z * Q (z - x) : ℝ) : ℂ) * ex ξ x) (volume.prod volume) := by
+    refine Continuous.integrable_of_hasCompactSupport ?_ (prod_hasCompactSupport hc ξ)
+    refine Continuous.mul ?_ ((ex_continuous ξ).comp continuous_fst)
+    exact Complex.continuous_ofReal.comp ((hQ.comp continuous_snd).mul
+      (hQ.comp (continuous_snd.sub continuous_fst)))
+  have step1 : ∀ x, (autocorr Q x : ℂ) * ex ξ x =
+      ∫ z, ((Q z * Q (z - x) : ℝ) : ℂ) * ex ξ x := by
+    intro x
+    rw [autocorr, integral_mul_const, integral_complex_ofReal]
+  simp_rw [step1]
+  rw [integral_integral_swap hint]
+  have inner : ∀ z, ∫ x, ((Q z * Q (z - x) : ℝ) : ℂ) * ex ξ x =
+      (Q z : ℂ) * ex ξ z * conj (fourierQ Q ξ) := by
+    intro z
+    have h1 : ∀ x, ((Q z * Q (z - x) : ℝ) : ℂ) * ex ξ x =
+        (Q z : ℂ) * ((fun w => (Q w : ℂ) * ex ξ (z - w)) (z - x)) := by
+      intro x
+      simp only [sub_sub_cancel]
+      push_cast; ring
+    simp_rw [h1]
+    rw [integral_const_mul, integral_sub_left_eq_self (fun w => (Q w : ℂ) * ex ξ (z - w))]
+    simp_rw [ex_sub]
+    have h2 : ∀ w, (Q w : ℂ) * (ex ξ z * conj (ex ξ w)) =
+        ex ξ z * conj ((Q w : ℂ) * ex ξ w) := by
+      intro w; rw [map_mul, Complex.conj_ofReal]; ring
+    simp_rw [h2]
+    rw [integral_const_mul, integral_conj]
+    rw [fourierQ]
+    ring
+  simp_rw [inner]
+  rw [integral_mul_const]
+  have h3 : ∫ z, (Q z : ℂ) * ex ξ z = fourierQ Q ξ := rfl
+  rw [h3, Complex.mul_conj, Complex.normSq_eq_norm_sq]
+
+/-- A step of the proof of `L:spatial-fourier-bound` (TeX lines 155-162): the spectral form of `A`: for smooth compactly supported real `Q` and a
+spectral measure `μ` of `Γ` (`IsSpectralMeasure`, the manuscript's convention),
+`∫ c_Q dΓ = ∫ |Q̂|² dμ` as Bochner integrals.  (No integrability is asserted
+here; see `spatial_fourier_bound` for the integrability of both sides.) -/
+theorem integral_autocorr_eq_spectral {Γ μ : Measure (Rd d)} (hsp : IsSpectralMeasure Γ μ)
+    {Q : Rd d → ℝ} (hQ : ContDiff ℝ ∞ Q) (hc : HasCompactSupport Q) :
+    ∫ y, autocorr Q y ∂Γ = ∫ ξ, ‖fourierQ Q ξ‖ ^ 2 ∂μ := by
+  have hsm : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) (fun x => (autocorr Q x : ℂ)) :=
+    Complex.ofRealCLM.contDiff.comp (autocorr_contDiff hQ hc)
+  have hcs : HasCompactSupport (fun x => (autocorr Q x : ℂ)) :=
+    (autocorr_hasCompactSupport hc).comp_left Complex.ofReal_zero
+  have h := hsp (hcs.toSchwartzMap hsm)
+  simp only [HasCompactSupport.toSchwartzMap_toFun] at h
+  have h2 : ∀ ξ, ∫ x, (autocorr Q x : ℂ) * Complex.exp (Complex.I * (inner ℝ ξ x : ℝ)) =
+      ((‖fourierQ Q ξ‖ ^ 2 : ℝ) : ℂ) := fun ξ => fourier_autocorr hQ.continuous hc ξ
+  simp_rw [h2, integral_complex_ofReal] at h
+  exact_mod_cast h
+
+/-! ### Pointwise bounds on `Q̂` -/
+
+/-- Auxiliary to the Lean proof route: `Q̂` is continuous for integrable `Q`
+(dominated convergence). -/
+theorem fourierQ_continuous {Q : Rd d → ℝ} (hQ : Integrable Q volume) :
+    Continuous (fourierQ Q) := by
+  refine continuous_of_dominated (bound := fun x => |Q x|) (fun ξ => ?_) (fun ξ => ?_)
+    hQ.abs (Eventually.of_forall fun x => ?_)
+  · exact (Complex.continuous_ofReal.comp_aestronglyMeasurable hQ.aestronglyMeasurable).mul
+      (ex_continuous ξ).aestronglyMeasurable
+  · refine Eventually.of_forall fun x => le_of_eq ?_
+    rw [norm_mul, norm_ex, mul_one, Complex.norm_real, Real.norm_eq_abs]
+  · exact continuous_const.mul (by fun_prop)
 
 end StratonovichHAMSecondMoment.SpatialFourierBound
 

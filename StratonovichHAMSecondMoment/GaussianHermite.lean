@@ -7,12 +7,12 @@ Gaussian Hermite polynomials (a reusable foundation; no manuscript label of its
 own).
 
 Source: `notes/notes_stratonovich_ham_second_moment.tex` (main TeX) at commit
-`a284420`.  The proof of `L:fock-form` (lines 2515-2517) and the proof of
-`E:occupied-multiplication` inside `P:mild-construction` (lines 1805-1810) use
+`39f2597a`.  The proof of `L:fock-form` (lines 3016-3018) and the proof of
+`E:occupied-multiplication` inside `P:mild-construction` (lines 2192-2197) use
 "normalized Hermite polynomials", for which multiplication by the coordinate
 `g_i` acts by `g_i h_k = √(k_i+1) h_{k+e_i} + √(k_i) h_{k-e_i}`, and the
 orthonormality of the products `h_k` under independent standard Gaussians.
-The TeX takes these facts from Janson (cited at lines 2467-2468).  This module
+The TeX takes these facts from Janson (cited at lines 2954-2955).  This module
 proves them.
 
 Contents (everything proved, nothing supplied):

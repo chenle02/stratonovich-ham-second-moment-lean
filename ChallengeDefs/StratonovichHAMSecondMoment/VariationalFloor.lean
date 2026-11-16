@@ -33,9 +33,51 @@ open VariationalDilation (SetScaling conv)
 
 variable {d : ℕ}
 
+/-- **(F4)** A test function `f ∈ C_c^∞(ℝ^d; ℝ)` has its classical gradient
+`x ↦ (Df(x))^♯` as weak gradient (integration by parts against a test
+function). -/
+theorem hasWeakGradient_of_test {f : Rd d → ℝ} (hf : IsTestFunction f) :
+    HasWeakGradient f (fun x => (InnerProductSpace.toDual ℝ (Rd d)).symm (fderiv ℝ f x)) := by
+  intro φ hφ v
+  have hf1 : ContDiff ℝ 1 f := hf.1.of_le (by exact_mod_cast le_top)
+  have hφ1 : ContDiff ℝ 1 φ := hφ.1.of_le (by exact_mod_cast le_top)
+  have key := integral_mul_fderiv_eq_neg_fderiv_mul_of_integrable (μ := volume) (f := f)
+    (g := φ) (v := v)
+    ((hf1.continuous_fderiv one_ne_zero).clm_apply continuous_const |>.mul hφ1.continuous
+      |>.integrable_of_hasCompactSupport hφ.2.mul_left)
+    ((hf1.continuous).mul ((hφ1.continuous_fderiv one_ne_zero).clm_apply continuous_const)
+      |>.integrable_of_hasCompactSupport (hf.2.mul_right))
+    ((hf1.continuous.mul hφ1.continuous).integrable_of_hasCompactSupport hf.2.mul_right)
+    (fun x _ => hf1.differentiable one_ne_zero x) (fun x _ => hφ1.differentiable one_ne_zero x)
+  rw [key]
+  congr 1
+  refine integral_congr_ae (Filter.Eventually.of_forall fun x => ?_)
+  simp [InnerProductSpace.toDual_symm_apply]
+
 /-- The classical gradient field `∇f = (Df)^♯` of a differentiable `f`. -/
 def grad (f : Rd d → ℝ) (x : Rd d) : Rd d :=
   (InnerProductSpace.toDual ℝ (Rd d)).symm (fderiv ℝ f x)
+
+/-- Auxiliary to the Lean proof route: the gradient field of a test function
+is continuous. -/
+theorem continuous_grad {f : Rd d → ℝ} (hf : IsTestFunction f) : Continuous (grad f) :=
+  (InnerProductSpace.toDual ℝ (Rd d)).symm.continuous.comp
+    (hf.1.continuous_fderiv (by simp))
+
+/-- Auxiliary to the Lean proof route: the gradient field of a test function
+has compact support. -/
+theorem hasCompactSupport_grad {f : Rd d → ℝ} (hf : IsTestFunction f) :
+    HasCompactSupport (grad f) :=
+  (hf.2.fderiv ℝ).comp_left (by simp)
+
+/-- Auxiliary to the Lean proof route: a test function lies in `L²`. -/
+theorem memLp_test {f : Rd d → ℝ} (hf : IsTestFunction f) : MemLp f 2 volume :=
+  hf.1.continuous.memLp_of_hasCompactSupport hf.2
+
+/-- Auxiliary to the Lean proof route: the gradient field of a test function
+lies in `L²`. -/
+theorem memLp_grad {f : Rd d → ℝ} (hf : IsTestFunction f) : MemLp (grad f) 2 volume :=
+  (continuous_grad hf).memLp_of_hasCompactSupport (hasCompactSupport_grad hf)
 
 /-! ### (F1) The dilation floor -/
 

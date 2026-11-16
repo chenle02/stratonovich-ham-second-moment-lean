@@ -1,6 +1,6 @@
 /-
 Refutation for the envelope bound of `L:variational-heat-envelope`
-(`notes/integrated_unmasked_variational.tex` lines 31-32 at a284420), package
+(`notes/integrated_unmasked_variational.tex` lines 36-37 at 39f2597a), package
 theorems `StratonovichHAMSecondMoment.VariationalMean.heat_identity` and
 `heat_envelope`.
 

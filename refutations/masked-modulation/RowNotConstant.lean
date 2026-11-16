@@ -1,6 +1,6 @@
 /-
 Refutation for the row integral behind `E:masked-time-schur` (TeX lines
-171-172), package theorem
+228-229), package theorem
 `StratonovichHAMSecondMoment.TimeSchur.integral_row`.
 
 Wrong variant: the row integral `∫_0^T |t-s|^{-a} ds` is identically equal to

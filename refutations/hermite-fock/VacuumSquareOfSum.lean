@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.HermiteFock
 /-!
 Refutation for `StratonovichHAMSecondMoment.HermiteFock.vacuum_insertion_isometry`
 (`E‖∑_i g_i w_i‖² = ∑_i ‖w_i‖²`, the phase insertion on a vacuum color, main TeX lines
-2878-2880 at a284420).
+3447-3449 at 39f2597a).
 
 Wrong variant: `(∑_i ‖w_i‖)²` on the right (forgetting the independence of the modes).
 Counterexample: two modes, `w = (1, 1)`: the package gives `2`, the wrong variant `4`.

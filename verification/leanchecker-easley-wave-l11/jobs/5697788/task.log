@@ -1,0 +1,13 @@
+node=node873 job=5697788 array=5697760_28 mode=fresh target=StratonovichHAMSecondMoment.ClockCopy start=2026-11-13T01:24:59-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=b780f10c932e10709415939221e10c6a2a704363 TREE=b12af9bc140a05736c079087408dcdc0dcbb54e0 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1760 waited_s=0
+REPLAY_STARTED 2026-11-13T01:26:44-0600
+BEGIN fresh StratonovichHAMSecondMoment.ClockCopy 01:26:45
+END fresh StratonovichHAMSecondMoment.ClockCopy	0	0:45:11.26	7582748	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2712 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.ClockCopy
+PROCESS_EXIT=0 end=2026-11-13T02:11:57-0600

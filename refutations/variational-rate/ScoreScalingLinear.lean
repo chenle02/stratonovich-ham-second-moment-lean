@@ -1,7 +1,7 @@
 /-
 Refutation for `E:variational-score-set-scaling` of
 `P:variational-positive-scores` (`notes/integrated_unmasked_variational.tex`
-lines 298-304 at a284420), package theorems
+lines 412-418 at 39f2597a), package theorems
 `StratonovichHAMSecondMoment.VariationalRate.score_set_scaling` and
 `StratonovichHAMSecondMoment.VariationalRate.positive_scores`.
 

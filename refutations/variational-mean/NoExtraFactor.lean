@@ -1,6 +1,6 @@
 /-
 Refutation for the identity of `L:variational-heat-envelope`
-(`notes/integrated_unmasked_variational.tex` lines 28-29, and line 57: "without
+(`notes/integrated_unmasked_variational.tex` lines 33-34, and line 77: "without
 an extra normalization factor"), package theorem
 `StratonovichHAMSecondMoment.VariationalMean.heat_identity`.
 

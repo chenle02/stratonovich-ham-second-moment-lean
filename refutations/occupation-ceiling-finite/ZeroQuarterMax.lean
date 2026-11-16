@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.OccupationCeilingFinite
 /-!
 Refutation for `StratonovichHAMSecondMoment.OccupationCeilingFinite.young_quarter`
 (`√X T^{α/4} - T ≤ (q/4)(α/4)^{α/q} X^{2/q}`, the first scalar maximum of the proof of
-`T:intrinsic-occupation-ceiling`, `integrated_occupation_ceiling.tex` lines 224-231).
+`T:intrinsic-occupation-ceiling`, `integrated_occupation_ceiling.tex` lines 283-290).
 
 Wrong variant: the maximum `0` (the gradient budget `T` alone controls the occupation term),
 with the same binders and hypotheses. Witness: `α = 1`, `X = 4`, `T = 1`, where the left side

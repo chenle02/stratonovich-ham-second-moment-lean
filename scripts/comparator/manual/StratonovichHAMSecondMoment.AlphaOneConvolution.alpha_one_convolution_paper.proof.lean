@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.AlphaOneConvolution.alpha_one_convolution_paper

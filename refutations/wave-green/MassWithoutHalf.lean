@@ -1,7 +1,7 @@
 /-
 Refutation for the `d = 1` wave Green mass, package theorem
 `StratonovichHAMSecondMoment.WaveGreen.mass_one` (`G_s(ℝ) = s`, main TeX lines
-746, 881).
+952, 1104).
 
 Wrong variant: the normalization without the factor `1/2`, i.e. a mass of `2s`
 (`G_s(ℝ) = 2s` for all `s > 0`, the mass of `1_{|x|<s} dx`).

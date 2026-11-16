@@ -1,7 +1,7 @@
 /-
 Refutation for the scaling of the `d = 3` wave Green measure, package theorem
 `StratonovichHAMSecondMoment.WaveGreen.scaling_three`
-(`G_s(sA) = s G_1(A)`, main TeX lines 5186-5187).
+(`G_s(sA) = s G_1(A)`, main TeX lines 6131-6132).
 
 Wrong variant: the scaling of the surface measure itself,
 `G_s(sA) = s² G_1(A)` for all `s > 0` and measurable `A` (forgetting the

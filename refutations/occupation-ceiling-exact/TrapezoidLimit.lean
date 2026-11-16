@@ -1,7 +1,7 @@
 /-
 Refutation for the limit of the time trapezoids (Lean route of `L:occupation-rayleigh-selection`
 and of the Cauchy-Schwarz bound `step_mean_le_sqrt`, `notes/integrated_occupation_ceiling.tex`
-lines 38-41 and 149-193 at a284420), package theorem
+lines 39-42 and 180-236 at 39f2597a), package theorem
 `StratonovichHAMSecondMoment.OccupationCeilingExact.trap_tendsto`
 (`trap n p q s → 1_{(p,q)}(s)`).
 

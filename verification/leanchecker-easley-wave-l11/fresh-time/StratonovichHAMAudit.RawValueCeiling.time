@@ -1,0 +1,9 @@
+Command: timeout -k 30s 14400s lake env leanchecker --fresh StratonovichHAMAudit.RawValueCeiling
+Exit status: 0
+Elapsed wall (s): 748.11
+Elapsed wall (h:mm:ss): 0:12:28.11
+User CPU (s): 735.43
+System CPU (s): 12.65
+Peak RSS of largest waited descendant (KiB): 3105236
+Output bytes: 0
+Host: node860  Job: NA

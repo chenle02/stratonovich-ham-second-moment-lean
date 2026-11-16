@@ -26,14 +26,14 @@ open StratonovichHAMSecondMoment.TimeFractional
 
 namespace StratonovichHAMSecondMoment.OccupationKernelRow
 
-/-! ### The kernel `K_⋆` (`E:occupation-damped-kernel`, lines 352-359) -/
+/-! ### The kernel `K_⋆` (`E:occupation-damped-kernel`, lines 465-472) -/
 
 /-- The integrand of `E:occupation-damped-kernel`:
-`e^{-(λ + λ²/(2D))|u|} λ^{a-1}` (lines 354-357). -/
+`e^{-(λ + λ²/(2D))|u|} λ^{a-1}` (lines 467-470). -/
 def kstarIntegrand (a D u l : ℝ) : ℝ :=
   Real.exp (-(l + l ^ 2 / (2 * D)) * |u|) * l ^ (a - 1)
 
-/-- The kernel `K_⋆` of `E:occupation-damped-kernel` (lines 352-359):
+/-- The kernel `K_⋆` of `E:occupation-damped-kernel` (lines 465-472):
 `Γ_E(a)⁻¹ ∫_0^∞ e^{-(λ + λ²/(2D))|u|} λ^{a-1} dλ` for `u ≠ 0`, and
 `K_⋆(0) = 0`. -/
 def Kstar (a D u : ℝ) : ℝ :=
@@ -47,17 +47,17 @@ def Rstar (a D : ℝ) : ℝ := 2 * ∫ u in (0 : ℝ)..(1 / 2), Kstar a D u
 
 /-! ### The row and its maximum (`E:occupation-kernel-row`) -/
 
-/-- `Φ(t) = ∫_0^t K_⋆(u) du` of the proof of `L:occupation-kernel-row` (lines 374-375). -/
+/-- `Φ(t) = ∫_0^t K_⋆(u) du` of the proof of `L:occupation-kernel-row` (lines 490-491). -/
 def Phi (a D t : ℝ) : ℝ := ∫ u in (0 : ℝ)..t, Kstar a D u
 
-/-! ### The physical two-point integral (`L:spatial-physical-pair`, lines 12-33) -/
+/-! ### The physical two-point integral (`L:spatial-physical-pair`, lines 13-34) -/
 
 open HomogHypothesis
 
-/-- The physical pair measure `ν(dx, dy) = dx Γ(dy)` on `ℝ^d × ℝ^d` (line 13). -/
+/-- The physical pair measure `ν(dx, dy) = dx Γ(dy)` on `ℝ^d × ℝ^d` (line 14). -/
 abbrev pairMeasure {d : ℕ} (Γ : Measure (Rd d)) : Measure (Rd d × Rd d) := volume.prod Γ
 
-/-- `B_Γ(f,h) = ∫ f(x) h(x-y) ν(dx,dy)` of `E:spatial-physical-pair` (lines 15-17), as an
+/-- `B_Γ(f,h) = ∫ f(x) h(x-y) ν(dx,dy)` of `E:spatial-physical-pair` (lines 16-18), as an
 extended nonnegative (lower Lebesgue) integral of `[0,∞]`-valued functions. -/
 def pairing {d : ℕ} (Γ : Measure (Rd d)) (f h : Rd d → ℝ≥0∞) : ℝ≥0∞ :=
   ∫⁻ p, f p.1 * h (p.1 - p.2) ∂(pairMeasure Γ)

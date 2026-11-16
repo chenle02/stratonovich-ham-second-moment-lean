@@ -2,7 +2,7 @@
 Refutation for the frequency-zero value of the free matrix,
 `StratonovichHAMSecondMoment.SymplecticFree.freeMatrixAt_zero`
 (`W_t(0) = (1 t; 0 1)`; `L:symplectic-free`, `notes/integrated_symplectic_phase.tex`
-line 78 at a284420).
+line 88 at 39f2597a).
 
 Wrong variant: the frequency-zero matrix is the identity, which is what the B22
 formula `forward (cos 0) (sin 0) (0/1)` gives through the junk value `0/0 = 0` of the

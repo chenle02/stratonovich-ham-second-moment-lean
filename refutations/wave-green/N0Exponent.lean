@@ -1,7 +1,7 @@
 /-
 Refutation for `N₀(θ) = θ^{-2}` with the wave Green measures, package theorem
-`StratonovichHAMSecondMoment.WaveGreen.N0_waveGreen` (main TeX lines 809-810,
-from the mass identity at line 881).
+`StratonovichHAMSecondMoment.WaveGreen.N0_waveGreen` (main TeX lines 1016-1017,
+from the mass identity at line 1104).
 
 Wrong variant: exponent `-1`, `N₀(θ) = θ^{-1}` for all `θ > 0` (as if
 `G_s(ℝ^d)` were constant in `s`).  Counterexample: `d = 1`, `θ = 2`:

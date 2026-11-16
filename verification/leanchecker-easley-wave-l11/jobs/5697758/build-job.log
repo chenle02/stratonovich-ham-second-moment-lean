@@ -1,0 +1,137 @@
+node=node938 job=5697758 cpus=4 start=2026-11-13T01:07:07-0600 commit=b780f10c932e10709415939221e10c6a2a704363 tree=b12af9bc140a05736c079087408dcdc0dcbb54e0
+tmp_avail_G=891
+/scratch/<user>/<runtime-dir>/lean-4.35.0-runtime.tar.gz: OK
+VERIFIED_COMMIT=b780f10c932e10709415939221e10c6a2a704363 TREE=b12af9bc140a05736c079087408dcdc0dcbb54e0 CLEAN_NO_IGNORED
+MANIFEST_OK modules=116
+leanprover/lean4:v4.35.0
+Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+Lake version 5.0.0-src+eb6cafb (Lean version 4.35.0)
+/usr/bin/git
+/tmp/stratham-l11b-5697758.ucQRdz/tc/leanprover--lean4---v4.35.0/bin/lake
+/tmp/stratham-l11b-5697758.ucQRdz/tc/leanprover--lean4---v4.35.0/bin/lean
+/tmp/stratham-l11b-5697758.ucQRdz/tc/leanprover--lean4---v4.35.0/bin/leanchecker
+/usr/bin/python3
+/usr/bin/timeout
+/usr/bin/curl
+bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38  lean
+8ba83c98f76562d03b8dbc33f1057151ba6cbb121679dde76b2260ccc90495e1  lake
+12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6  leanchecker
+ulimit_n=262144 file_max=262144
+
+Downloaded: 1 file(s) [attempted 1/9031 = 0%, 162 KB/s]
+Downloaded: 81 file(s) [attempted 81/9031 = 0%, 3839 KB/s]
+Downloaded: 146 file(s) [attempted 146/9031 = 1%, 1481 KB/s]
+Downloaded: 243 file(s) [attempted 243/9031 = 2%, 2357 KB/s]
+Downloaded: 372 file(s) [attempted 372/9031 = 4%, 2657 KB/s]
+Downloaded: 471 file(s) [attempted 471/9031 = 5%, 277 KB/s]
+Downloaded: 598 file(s) [attempted 598/9031 = 6%, 1667 KB/s]
+Downloaded: 715 file(s) [attempted 715/9031 = 7%, 1944 KB/s]
+Downloaded: 842 file(s) [attempted 842/9031 = 9%, 1280 KB/s]
+Downloaded: 969 file(s) [attempted 969/9031 = 10%, 189 KB/s]
+Downloaded: 1082 file(s) [attempted 1082/9031 = 11%, 3203 KB/s]
+Downloaded: 1182 file(s) [attempted 1182/9031 = 13%, 184 KB/s]
+Downloaded: 1298 file(s) [attempted 1298/9031 = 14%, 3247 KB/s]
+Downloaded: 1376 file(s) [attempted 1376/9031 = 15%, 5487 KB/s]
+Downloaded: 1480 file(s) [attempted 1480/9031 = 16%, 1369 KB/s]
+Downloaded: 1590 file(s) [attempted 1590/9031 = 17%, 332 KB/s]
+Downloaded: 1710 file(s) [attempted 1710/9031 = 18%, 446 KB/s]
+Downloaded: 1814 file(s) [attempted 1814/9031 = 20%, 1972 KB/s]
+Downloaded: 1937 file(s) [attempted 1937/9031 = 21%, 1813 KB/s]
+Downloaded: 2049 file(s) [attempted 2049/9031 = 22%, 623 KB/s]
+Downloaded: 2141 file(s) [attempted 2141/9031 = 23%, 4373 KB/s]
+Downloaded: 2290 file(s) [attempted 2290/9031 = 25%, 5991 KB/s]
+Downloaded: 2418 file(s) [attempted 2418/9031 = 26%, 414 KB/s]
+Downloaded: 2509 file(s) [attempted 2509/9031 = 27%, 514 KB/s]
+Downloaded: 2587 file(s) [attempted 2587/9031 = 28%, 299 KB/s]
+Downloaded: 2665 file(s) [attempted 2665/9031 = 29%, 508 KB/s]
+Downloaded: 2793 file(s) [attempted 2793/9031 = 30%, 1893 KB/s]
+Downloaded: 2920 file(s) [attempted 2920/9031 = 32%, 2097 KB/s]
+Downloaded: 3003 file(s) [attempted 3003/9031 = 33%, 294 KB/s]
+Downloaded: 3139 file(s) [attempted 3139/9031 = 34%, 2554 KB/s]
+Downloaded: 3263 file(s) [attempted 3263/9031 = 36%, 1336 KB/s]
+Downloaded: 3369 file(s) [attempted 3369/9031 = 37%, 2533 KB/s]
+Downloaded: 3499 file(s) [attempted 3499/9031 = 38%, 1174 KB/s]
+Downloaded: 3518 file(s) [attempted 3518/9031 = 38%, 685 KB/s]
+Downloaded: 3531 file(s) [attempted 3531/9031 = 39%, 699 KB/s]
+Downloaded: 3636 file(s) [attempted 3636/9031 = 40%, 3016 KB/s]
+Downloaded: 3694 file(s) [attempted 3694/9031 = 40%, 1315 KB/s]
+Downloaded: 3819 file(s) [attempted 3819/9031 = 42%, 2265 KB/s]
+Downloaded: 3872 file(s) [attempted 3872/9031 = 42%, 314 KB/s]
+Downloaded: 3988 file(s) [attempted 3988/9031 = 44%, 463 KB/s]
+Downloaded: 4148 file(s) [attempted 4148/9031 = 45%, 637 KB/s]
+Downloaded: 4268 file(s) [attempted 4268/9031 = 47%, 418 KB/s]
+Downloaded: 4381 file(s) [attempted 4381/9031 = 48%, 589 KB/s]
+Downloaded: 4478 file(s) [attempted 4478/9031 = 49%, 469 KB/s]
+Downloaded: 4628 file(s) [attempted 4628/9031 = 51%, 461 KB/s]
+Downloaded: 4732 file(s) [attempted 4732/9031 = 52%, 1306 KB/s]
+Downloaded: 4859 file(s) [attempted 4859/9031 = 53%, 131 KB/s]
+Downloaded: 4952 file(s) [attempted 4952/9031 = 54%, 155 KB/s]
+Downloaded: 5054 file(s) [attempted 5054/9031 = 55%, 615 KB/s]
+Downloaded: 5156 file(s) [attempted 5156/9031 = 57%, 275 KB/s]
+Downloaded: 5275 file(s) [attempted 5275/9031 = 58%, 1856 KB/s]
+Downloaded: 5386 file(s) [attempted 5386/9031 = 59%, 767 KB/s]
+Downloaded: 5476 file(s) [attempted 5476/9031 = 60%, 709 KB/s]
+Downloaded: 5579 file(s) [attempted 5579/9031 = 61%, 177 KB/s]
+Downloaded: 5722 file(s) [attempted 5722/9031 = 63%, 80 KB/s]
+Downloaded: 5844 file(s) [attempted 5844/9031 = 64%, 1816 KB/s]
+Downloaded: 5979 file(s) [attempted 5979/9031 = 66%, 1145 KB/s]
+Downloaded: 6085 file(s) [attempted 6085/9031 = 67%, 1792 KB/s]
+Downloaded: 6180 file(s) [attempted 6180/9031 = 68%, 174 KB/s]
+Downloaded: 6256 file(s) [attempted 6256/9031 = 69%, 1253 KB/s]
+Downloaded: 6343 file(s) [attempted 6343/9031 = 70%, 155 KB/s]
+Downloaded: 6465 file(s) [attempted 6465/9031 = 71%, 2890 KB/s]
+Downloaded: 6565 file(s) [attempted 6565/9031 = 72%, 194 KB/s]
+Downloaded: 6677 file(s) [attempted 6677/9031 = 73%, 1752 KB/s]
+Downloaded: 6789 file(s) [attempted 6789/9031 = 75%, 167 KB/s]
+Downloaded: 6906 file(s) [attempted 6906/9031 = 76%, 499 KB/s]
+Downloaded: 7013 file(s) [attempted 7013/9031 = 77%, 926 KB/s]
+Downloaded: 7144 file(s) [attempted 7144/9031 = 79%, 173 KB/s]
+Downloaded: 7272 file(s) [attempted 7272/9031 = 80%, 266 KB/s]
+Downloaded: 7391 file(s) [attempted 7391/9031 = 81%, 1047 KB/s]
+Downloaded: 7486 file(s) [attempted 7486/9031 = 82%, 1552 KB/s]
+Downloaded: 7586 file(s) [attempted 7586/9031 = 83%, 554 KB/s]
+Downloaded: 7717 file(s) [attempted 7717/9031 = 85%, 498 KB/s]
+Downloaded: 7835 file(s) [attempted 7835/9031 = 86%, 200 KB/s]
+Downloaded: 7965 file(s) [attempted 7965/9031 = 88%, 3375 KB/s]
+Downloaded: 7979 file(s) [attempted 7979/9031 = 88%, 168 KB/s]
+Downloaded: 8061 file(s) [attempted 8061/9031 = 89%, 531 KB/s]
+Downloaded: 8186 file(s) [attempted 8186/9031 = 90%, 526 KB/s]
+Downloaded: 8339 file(s) [attempted 8339/9031 = 92%, 2274 KB/s]
+Downloaded: 8433 file(s) [attempted 8433/9031 = 93%, 1259 KB/s]
+Downloaded: 8498 file(s) [attempted 8498/9031 = 94%, 288 KB/s]
+Downloaded: 8587 file(s) [attempted 8587/9031 = 95%, 1437 KB/s]
+Downloaded: 8682 file(s) [attempted 8682/9031 = 96%, 3401 KB/s]
+Downloaded: 8782 file(s) [attempted 8782/9031 = 97%, 6509 KB/s]
+Downloaded: 8902 file(s) [attempted 8902/9031 = 98%, 277 KB/s]
+Downloaded: 9011 file(s) [attempted 9011/9031 = 99%, 1231 KB/s]
+Downloaded: 9031 file(s) [attempted 9031/9031 = 100%, 1231 KB/s]
+Still decompressing downloaded files...
+Decompressed 9031 file(s)
+Already decompressed 9031 file(s)
+CACHE attempt=1 rc=0
+PHASE cache_get_s=73
+MATHLIB_PIN_OK=56a005855ea17e0b0958f73ec801ae140b0a1679
+NO_PROJECT_OLEANS_BEFORE_BUILD
+ Classical.choice,
+ Quot.sound]
+Build completed successfully (9163 jobs).
+PHASE build_s=501
+FRESH_BUILD=PASS
+ALL_OLEANS_PRESENT=116
+SOURCE_UNCHANGED_AFTER_BUILD
+PHASE tar_s=204 ws_tar_bytes=2541223792 ws_tar_sha256=2ba9aba10368eaad4dcb4cc399b15f235dd9e68d802e3a70df4e6166a4a99b09
+commit=b780f10c932e10709415939221e10c6a2a704363
+tree=b12af9bc140a05736c079087408dcdc0dcbb54e0
+mathlib=56a005855ea17e0b0958f73ec801ae140b0a1679
+inputs_sha256=bd90a1636596fa0a315aa9ec20c8ce75bb9c25f9964d73296beae3c8a051a9f6
+manifest_sha256=e04419f6ac016972cc6bcdc00d3b9a77099709da40dca8fa79c74024a9f6046b
+targets_sha256=e04419f6ac016972cc6bcdc00d3b9a77099709da40dca8fa79c74024a9f6046b
+ws_tar_sha256=2ba9aba10368eaad4dcb4cc399b15f235dd9e68d802e3a70df4e6166a4a99b09
+lean_sha256=bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38
+lake_sha256=8ba83c98f76562d03b8dbc33f1057151ba6cbb121679dde76b2260ccc90495e1
+leanchecker_sha256=12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6
+build_job=5697758
+build_node=node938
+built_at=2026-11-13T01:21:42-0600
+BUILD_JOB_PASS: fresh build of 116 targets; workspace tarball sealed
+PROCESS_EXIT=0 end=2026-11-13T01:21:42-0600

@@ -2,8 +2,8 @@ import StratonovichHAMSecondMoment.StaticPhaseCauchy
 
 /-!
 Refutation for `StratonovichHAMSecondMoment.StaticPhaseCauchy.fockD_le` (the step
-`d_n ≤ 2 √(2n) √R_α` of `P:static-phase-all-orders`, main TeX lines 2633-2634 at
-a284420, with `d_N = 2 √(N+1) √R_α` of `E:fock-sandwich`, lines 2484-2488).
+`d_n ≤ 2 √(2n) √R_α` of `P:static-phase-all-orders`, main TeX lines 3155-3156 at
+39f2597a, with `d_N = 2 √(N+1) √R_α` of `E:fock-sandwich`, lines 2972-2976).
 
 Wrong variant: `d_n ≤ 2 √n √R` (the `+1` of `N + 1` absorbed without the factor `2`).
 Counterexample: `n = 1`, `R = 1`: `d_1 = 2√2 > 2`.  No junk-value reliance.

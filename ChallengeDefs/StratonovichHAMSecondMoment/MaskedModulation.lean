@@ -47,7 +47,7 @@ def phase (ω t : ℝ) : ℂ := Complex.exp (((ω * t : ℝ) : ℂ) * Complex.I)
 
 /-- The autocorrelation `c(v) = ∫ Φ(u+v) conj Φ(u) du` over `ℝ`.  For
 `Φ = 1_I A` with `I = [s, s+h]` and `0 ≤ v ≤ h` it is the TeX's
-`c(v) = ∫_s^{s+h-v} A(u+v) conj A(u) du` (TeX line 312). -/
+`c(v) = ∫_s^{s+h-v} A(u+v) conj A(u) du` (TeX line 414). -/
 def acorr (Φ : ℝ → ℂ) (v : ℝ) : ℂ := ∫ u, Φ (u + v) * conj (Φ u)
 
 section Acorr

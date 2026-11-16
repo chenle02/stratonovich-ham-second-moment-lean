@@ -6,51 +6,51 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 Deterministic scalar steps of `C:static-interaction` (Summable static
 interaction bounds) and `P:interval-coefficients` (Uniform interval
 coefficients) of `notes/notes_stratonovich_ham_second_moment.tex` (main TeX
-file; line numbers at revision a284420).  Both results are operator and
+file; line numbers at revision 39f2597a).  Both results are operator and
 stochastic statements; this module formalizes the scalar, combinatorial and
 Hilbert-space deductions inside their proofs.  Every theorem here is a STEP of
 those results (class: inputs supplied, conclusion weaker than the labelled
 statement): the operator and stochastic inputs enter as named hypotheses whose
 doc comments name their labels and lines.
 
-`C:static-interaction` (statement lines 2685-2731, proof 2733-2796):
-* `static_interaction_paper` (`E:static-interaction`, line 2707; proof lines
-  2733-2770): in a real Hilbert space standing for `L²(Ω; X_λ)`, if
-  `Y_0 = (f,g)`, the order bounds of the displayed estimate at lines 2745-2751
-  hold, odd pairings vanish (line 2752) and the two first-variance inputs of
-  lines 2740-2742 hold, then `∑ σ^n Y_n` converges and
+`C:static-interaction` (statement lines 3216-3262, proof 3264-3341):
+* `static_interaction_paper` (`E:static-interaction`, line 3238; proof lines
+  3264-3311): in a real Hilbert space standing for `L²(Ω; X_λ)`, if
+  `Y_0 = (f,g)`, the order bounds of the displayed estimate at lines 3286-3292
+  hold, odd pairings vanish (line 3293) and the two first-variance inputs of
+  lines 3278-3280 hold, then `∑ σ^n Y_n` converges and
   `‖∑ σ^n Y_n‖² ≤ (1 + 𝓔(h,σ,λ)) N²` with the TeX's `L_α`,
   `B_α = 3e A_α²`, `γ = 3-α`, `x = B_α σ² R_α h^{4-α}` (`staticL`, `staticB`,
-  `staticX`, `staticE`, lines 2693-2703).  The derivation of the order bounds
+  `staticX`, `staticE`, lines 3224-3234).  The derivation of the order bounds
   from `P:static-phase-all-orders`, of the parity from Gaussian symmetry, and
   of the two first-variance inputs from `P:static-phase-variance` is not
   formalized (supplied inputs).  The identity `I = S_0(-h) ∑ σ^n Z_n =
   ∑ σ^n Y_n` is linear algebra that the inputs already encode (`Y_n` are the
   transported phases).
-* `static_block_series_paper` (`E:static-block-series`, line 2713; proof lines
-  2772-2786): in full (pure scalar statement; nothing supplied).
+* `static_block_series_paper` (`E:static-block-series`, line 3244; proof lines
+  3317-3331): in full (pure scalar statement; nothing supplied).
 * `independent_static_blocks_paper` (`E:independent-static-blocks`, line
-  2720; proof lines 2787-2794): the scalar iteration and `1 + y ≤ e^y`; the
+  3251; proof lines 3332-3339): the scalar iteration and `1 + y ≤ e^y`; the
   per-block bound (from `E:static-interaction`, `‖S_0(h_j)‖² ≤ e^{λh_j}`,
-  density and tensoring with the past, lines 2787-2792) is supplied.
+  density and tensoring with the past, lines 3332-3337) is supplied.
 
-`P:interval-coefficients` (statement lines 3402-3414, proof 3416-3581):
+`P:interval-coefficients` (statement lines 4054-4066, proof 4068-4271):
 * `interval_coefficient_assembly_paper` (`E:interval-coefficient-bound`, line
-  3405; proof lines 3417-3420 and 3499-3547): the bound
+  4057; proof lines 4079-4082 and 4176-4228): the bound
   `|[s^{2k}] energy| ≤ C^k R_α^k T^{βk}/(k!)^ν ‖v‖²` with the explicit
   `C = 12 max(c,0) max(1,L)^β C_split C_inv`, assembled from the split
   identity (`E:interval-energy-splits` with the reflection parity, lines
-  3478-3488), `L:fixed-split` (lines 3053-3094; `E:fixed-split-bound`, lines 3080-3091) and
-  `L:inventory-product` (`E:inventory-product`, lines 2986-2997), all three
+  4147-4157), `L:fixed-split` (lines 3675-3716; `E:fixed-split-bound`, lines 3702-3713) and
+  `L:inventory-product` (`E:inventory-product`, lines 3581-3592), all three
   supplied.  The local weight substitution (`h_i ≤ LT/i`, `λ = k/T`,
-  `σ_i² ≤ c h_i^{-α₀}`, lines 3499-3538), the split counting `2l+1 ≤ 3^l`,
-  the coefficient-of-a-product identity (lines 3539-3544) and the reduction
-  `L ↦ max(1,L)` (lines 3417-3420) are formalized.  The reduction to
-  `σ_i > 0` (lines 3420-3423) changes the Gaussian fields and is not
+  `σ_i² ≤ c h_i^{-α₀}`, lines 4176-4215), the split counting `2l+1 ≤ 3^l`,
+  the coefficient-of-a-product identity (lines 4220-4225) and the reduction
+  `L ↦ max(1,L)` (lines 4079-4082) are formalized.  The reduction to
+  `σ_i > 0` (lines 4082-4085) changes the Gaussian fields and is not
   formalized; the wrapper assumes `σ_i > 0` and `R_α > 0`, as `L:fixed-split`
   does (narrower: the TeX's zero-noise case and sign reduction are not covered).
-* `interval_phase_bound_paper` (`E:interval-phase-bound`, line 3410; proof
-  lines 3568-3579): from the coefficient bound, the zero-order bound
+* `interval_phase_bound_paper` (`E:interval-phase-bound`, line 4062; proof
+  lines 4258-4269): from the coefficient bound, the zero-order bound
   `≤ e‖v‖²`, vanishing odd coefficients and the power-series identity at
   `s = 1` (supplied), the energy is at most
   `e exp{ν C^{1/ν} R_α^{1/ν} T^{β/ν}} ‖v‖²`; summability is proved.
@@ -83,9 +83,9 @@ namespace StratonovichHAMSecondMoment.IntervalScalar
 
 open StratonovichHAMSecondMoment.SeriesType
 
-/-! ## `C:static-interaction` (main TeX lines 2685-2796) -/
+/-! ## `C:static-interaction` (main TeX lines 3216-3341) -/
 
-/-- Step of `C:static-interaction` (main TeX line 2762): `e(2k+1) ≤ (3e)^k` for
+/-- Step of `C:static-interaction` (main TeX line 3303): `e(2k+1) ≤ (3e)^k` for
 `k ≥ 1`. -/
 theorem exp_mul_two_k_add_one_le (k : ℕ) (hk : 1 ≤ k) :
     Real.exp 1 * (2 * k + 1) ≤ (3 * Real.exp 1) ^ k := by
@@ -127,7 +127,7 @@ theorem tail_sum_le {γ x : ℝ} (hγ : 1 ≤ γ) (hx : 0 ≤ x) (m : ℕ) :
         gcongr
         exact (hs.sum_le_tsum _ (fun i _ => by positivity)).trans hle
 
-/-- Step of `C:static-interaction` (main TeX lines 2762-2769): for `γ ≥ 1` and
+/-- Step of `C:static-interaction` (main TeX lines 3303-3310): for `γ ≥ 1` and
 `x ≥ 0`, the series `∑_{k ≥ 2} x^k/(k!)^γ` (indexed here as `k = j + 2`)
 converges and is at most `x² e^{γ x^{1/γ}}`; it uses
 `∑_{j ≥ 0} x^j/(j!)^γ ≤ e^{γ x^{1/γ}}` (`SeriesType.seriesNu_summable_le`). -/
@@ -137,7 +137,7 @@ theorem tail_series_le {γ x : ℝ} (hγ : 1 ≤ γ) (hx : 0 ≤ x) :
   ⟨summable_of_sum_range_le (fun _ => by positivity) (tail_sum_le hγ hx),
     Real.tsum_le_of_sum_range_le (fun _ => by positivity) (tail_sum_le hγ hx)⟩
 
-/-- Step of `C:static-interaction` (main TeX lines 2753-2761): if
+/-- Step of `C:static-interaction` (main TeX lines 3294-3302): if
 `‖Y_n‖ ≤ M a^n/(n!)^{γ/2} N` for every `n ≥ 0` (with `M, a, N ≥ 0`,
 `γ ≥ 0`), then for `r + s = 2k`,
 `‖Y_r‖ ‖Y_s‖ ≤ M² (a²)^k/(k!)^γ N²`, by `r! s! ≥ (k!)²`
@@ -187,7 +187,7 @@ theorem square_sum_eq (n : ℕ) (c : ℕ → ℕ → ℝ) (hodd : ∀ r s, Odd (
   simp only [mem_filter, mem_product, mem_range, Finset.HasAntidiagonal.mem_antidiagonal, Nat.even_iff]
   omega
 
-/-- Step of `C:static-interaction` (main TeX lines 2733-2770), general form: in
+/-- Step of `C:static-interaction` (main TeX lines 3264-3311), general form: in
 a complete real inner product space (standing for `L²(Ω; X_λ)`), let
 `‖Y_0‖ = N`, `‖Y_n‖ ≤ √e K a^n/(n!)^{γ/2} N` for `n ≥ 1` with `K ≥ 1`,
 `⟪Y_r, Y_s⟫ = 0` when `r + s` is odd, and
@@ -319,28 +319,28 @@ theorem static_interaction_assembly {E : Type*} [NormedAddCommGroup E] [InnerPro
   exact le_of_tendsto hlim (eventually_atTop.2 ⟨3, hpartial⟩)
 
 /-- `L_α(h, λ) = 4e R_α h² λ^{α-2} + 4√e D_Γ/((2-α)(3-α)) · h^{3-α}/λ`
-(`C:static-interaction`, main TeX lines 2696-2699). -/
+(`C:static-interaction`, main TeX lines 3227-3230). -/
 def staticL (alpha R D h lam : ℝ) : ℝ :=
   4 * Real.exp 1 * R * h ^ 2 * lam ^ (alpha - 2) +
     4 * √(Real.exp 1) * D / ((2 - alpha) * (3 - alpha)) * (h ^ (3 - alpha) / lam)
 
-/-- `B_α = 3e A_α²` (`C:static-interaction`, main TeX line 2693). -/
+/-- `B_α = 3e A_α²` (`C:static-interaction`, main TeX line 3224). -/
 def staticB (A : ℝ) : ℝ := 3 * Real.exp 1 * A ^ 2
 
-/-- `x = B_α σ² R_α h^{4-α}` (`C:static-interaction`, main TeX line 2700). -/
+/-- `x = B_α σ² R_α h^{4-α}` (`C:static-interaction`, main TeX line 3231). -/
 def staticX (alpha A R h σ : ℝ) : ℝ := staticB A * σ ^ 2 * R * h ^ (4 - alpha)
 
 /-- `𝓔(h, σ, λ) = σ² L_α(h, λ) + (λh)^{-2} x² e^{γ x^{1/γ}}` with
-`γ = 3 - α` (`C:static-interaction`, main TeX lines 2693, 2701-2703). -/
+`γ = 3 - α` (`C:static-interaction`, main TeX lines 3224, 3232-3234). -/
 def staticE (alpha A R D h σ lam : ℝ) : ℝ :=
   σ ^ 2 * staticL alpha R D h lam +
     (lam * h)⁻¹ ^ 2 * (staticX alpha A R h σ ^ 2 *
       Real.exp ((3 - alpha) * staticX alpha A R h σ ^ (1 / (3 - alpha))))
 
-/-- Step of `C:static-interaction` (main TeX lines 2737-2742): for `α < 2`,
+/-- Step of `C:static-interaction` (main TeX lines 3275-3280): for `α < 2`,
 `R, D ≥ 0`, `λ, h > 0`, `λh ≤ 1`, if `0 ≤ b ≤ e · (E:phase-born)` and
 `|m| ≤ N · √e · (E:phase-mean)` (the right sides of `P:static-phase-variance`,
-lines 2168-2174), then `|b + 2m| ≤ L_α(h, λ) N²`.  Here `b` stands for the first
+lines 2616-2622), then `|b + 2m| ≤ L_α(h, λ) N²`.  Here `b` stands for the first
 random squared norm `‖Y_1‖²` and `m` for the mean cross term `⟪Y_0, Y_2⟫`;
 `λh ≤ 1` gives `(1+λ²h²) ≤ 2`. -/
 theorem first_coefficient_le {alpha R D h lam N b m : ℝ} (hα2 : alpha < 2)
@@ -387,7 +387,7 @@ theorem first_coefficient_le {alpha R D h lam N b m : ℝ} (hα2 : alpha < 2)
     _ = b + 2 * |m| := by rw [abs_of_nonneg hb0, abs_mul]; norm_num
     _ ≤ _ := by linarith
 
-/-- Auxiliary (Lean route; the TeX uses `y = 𝓔 ≥ 0` at line 2794): for
+/-- Auxiliary (Lean route; the TeX uses `y = 𝓔 ≥ 0` at line 3339): for
 `α < 2`, `R, D ≥ 0` and `λ, h > 0`, `𝓔(h, σ, λ) ≥ 0`. -/
 theorem staticE_nonneg {alpha A R D h σ lam : ℝ} (hα2 : alpha < 2) (hR : 0 ≤ R) (hD : 0 ≤ D)
     (hlam : 0 < lam) (hh : 0 < h) : 0 ≤ staticE alpha A R D h σ lam := by
@@ -398,18 +398,18 @@ theorem staticE_nonneg {alpha A R D h σ lam : ℝ} (hα2 : alpha < 2) (hR : 0 �
   positivity
 
 /-- **Step row of `C:static-interaction`, `E:static-interaction`** (main TeX
-lines 2707-2709, proof 2733-2770), with `R_α ≥ 0` and `D_Γ ≥ 0` as hypotheses
+lines 3238-3240, proof 3264-3311), with `R_α ≥ 0` and `D_Γ ≥ 0` as hypotheses
 (`static_interaction_paper` derives them from the TeX's formulas).  In a
 complete real inner product space standing for `L²(Ω; X_λ)` with
 `Y_n = S_0(-h) Z_n^ε(h)`, `N = ‖(f,g)‖_λ` and `λh ≤ 1`, the supplied inputs are:
-* `hY0`: `Y_0 = (f,g)`, so `‖Y_0‖ = N` (line 2737);
-* `hY`: the displayed order bound at lines 2746-2751, which the TeX derives
+* `hY0`: `Y_0 = (f,g)`, so `‖Y_0‖ = N` (line 3275);
+* `hY`: the displayed order bound at lines 3287-3292, which the TeX derives
   from `P:static-phase-all-orders` (`E:all-static-phase-orders`, lines
-  2589-2594), `‖S_0(-h)‖_λ ≤ √e` and the norm comparisons for `λh ≤ 1`;
-* `hodd`: Gaussian symmetry, `E⟨Y_r, Y_s⟩_λ = 0` for odd `r + s` (line 2752);
-* `hborn`: `E‖Y_1‖² ≤ e · (E:phase-born)` (lines 2740-2741, from
+  3099-3104), `‖S_0(-h)‖_λ ≤ √e` and the norm comparisons for `λh ≤ 1`;
+* `hodd`: Gaussian symmetry, `E⟨Y_r, Y_s⟩_λ = 0` for odd `r + s` (line 3293);
+* `hborn`: `E‖Y_1‖² ≤ e · (E:phase-born)` (lines 3278-3279, from
   `P:static-phase-variance`);
-* `hmean`: `|E⟨Y_0, Y_2⟩| ≤ N · √e · (E:phase-mean)` (lines 2741-2742: `Y_0`
+* `hmean`: `|E⟨Y_0, Y_2⟩| ≤ N · √e · (E:phase-mean)` (lines 3279-3280: `Y_0`
   is deterministic, so this is Cauchy-Schwarz against `S_0(-h) E Z_2`).
 Conclusion: `∑ σ^n Y_n` converges and its squared norm is at most
 `(1 + 𝓔(h,σ,λ)) N²`.  `A` is any constant `≥ 0` (the TeX's
@@ -471,7 +471,7 @@ theorem summable_dyadic_rpow {lam q : ℝ} (hlam : 0 < lam) (hq : 0 < q) :
   refine Summable.mul_left _ (summable_geometric_of_lt_one (by positivity) ?_)
   exact Real.rpow_lt_one (by norm_num) (by norm_num) hq
 
-/-- Step of `C:static-interaction` (main TeX lines 2772-2786): at `h = q` with
+/-- Step of `C:static-interaction` (main TeX lines 3317-3331): at `h = q` with
 `0 < q ≤ 1/λ` and `σ² = q^{-α₀}`, the block term `(T/q) 𝓔(q, σ, λ)` is at most
 `C₁ q^{1-α₀} + C₂ q^{2-α-α₀} + C₃ q^{2β-3}`, `β = 4-α-α₀`, with the TeX's
 three constants; the exponential factor is bounded by its value at
@@ -534,7 +534,7 @@ theorem block_term_le {alpha alpha0 A R D lam T q s : ℝ} (hα2 : alpha < 2)
   rw [mul_add, hfirst]
   linarith [hsecond]
 
-/-- **`E:static-block-series`** (main TeX lines 2713-2716, proof 2772-2786), in
+/-- **`E:static-block-series`** (main TeX lines 3244-3247, proof 3317-3331), in
 full, with `R_α ≥ 0` and `D_Γ ≥ 0` as hypotheses (`static_block_series_paper`
 derives them): for `0 < α₀ < 1`, `α + α₀ < 2`, `λ, T > 0`,
 `h_j = 2^{-j}/λ` and `σ_j² = h_j^{-α₀}`, the series
@@ -560,7 +560,7 @@ theorem static_block_series {alpha alpha0 A R D lam T : ℝ} (σ : ℕ → ℝ)
     ((summable_dyadic_rpow hlam (by linarith)).mul_left _)).add
     ((summable_dyadic_rpow hlam (by linarith)).mul_left _)
 
-/-- Step of `C:static-interaction` (main TeX lines 2792-2794), scalar
+/-- Step of `C:static-interaction` (main TeX lines 3337-3339), scalar
 iteration: if `m_{j+1} ≤ e^{ℓ_j}(1 + E_j) m_j` for `j < K`, `E_j ≥ 0` and
 `m_0 ≥ 0`, then `m_K ≤ exp(∑_{j<K} ℓ_j + ∑_{j<K} E_j) m_0`, by `1 + y ≤ e^y`. -/
 theorem independent_blocks_scalar (K : ℕ) (m lh E : ℕ → ℝ) (hE : ∀ j, 0 ≤ E j) (hm0 : 0 ≤ m 0)
@@ -584,7 +584,7 @@ theorem independent_blocks_scalar (K : ℕ) (m lh E : ℕ → ℝ) (hE : ∀ j, 
           ring_nf
 
 /-- Auxiliary (Lean route): for `0 < α < 2`,
-`R_α = απ μ(B_1)/(2 sin(πα/2)) ≥ 0` (main TeX lines 2061 and 2820). -/
+`R_α = απ μ(B_1)/(2 sin(πα/2)) ≥ 0` (main TeX lines 2497 and 3370). -/
 theorem ralpha_nonneg {d : ℕ} {alpha : ℝ} (μ : Measure (HomogHypothesis.Rd d)) (h0 : 0 < alpha)
     (h2 : alpha < 2) :
     0 ≤ alpha * π * (μ (Metric.ball 0 1)).toReal / (2 * Real.sin (π * alpha / 2)) := by
@@ -594,7 +594,7 @@ theorem ralpha_nonneg {d : ℕ} {alpha : ℝ} (μ : Measure (HomogHypothesis.Rd 
 
 /-- Auxiliary (Lean route): for `α < 2`,
 `D_Γ = c_Γ b_α ≥ 0` with `c_Γ = (3-α)Γ(B_1)/(4π)` and
-`b_α = 2^α + 3^{2-α}/(2-α)` (`E:phase-constants`, main TeX lines 2058-2065). -/
+`b_α = 2^α + 3^{2-α}/(2-α)` (`E:phase-constants`, main TeX lines 2494-2501). -/
 theorem dgamma_nonneg {d : ℕ} {alpha : ℝ} (Γ : Measure (HomogHypothesis.Rd d)) (h2 : alpha < 2) :
     0 ≤ (3 - alpha) * (Γ (Metric.ball 0 1)).toReal / (4 * π) *
       (2 ^ alpha + 3 ^ (2 - alpha) / (2 - alpha)) := by
@@ -603,10 +603,10 @@ theorem dgamma_nonneg {d : ℕ} {alpha : ℝ} (Γ : Measure (HomogHypothesis.Rd 
   positivity
 
 /-- **Step row of `C:static-interaction`, `E:static-interaction`** (main TeX
-lines 2707-2709, proof 2733-2770), with the section's constants:
+lines 3238-3240, proof 3264-3311), with the section's constants:
 `R_α = απ μ(B_1)/(2 sin(πα/2))` and `D_Γ = c_Γ b_α` from `E:phase-constants`
-(lines 2058-2065) for locally finite (Radon) `μ, Γ` on `ℝ³` and `0 < α < 2`
-(line 2054).  The rest of the covariance class (evenness, positive
+(lines 2494-2501) for locally finite (Radon) `μ, Γ` on `ℝ³` and `0 < α < 2`
+(line 2490).  The rest of the covariance class (evenness, positive
 definiteness, scaling) enters only through the supplied inputs `hY`, `hodd`,
 `hborn`, `hmean`, documented at `static_interaction_step`.  Conclusion
 weaker than the TeX statement as explained there.  `_hμ`, `_hΓ` only make
@@ -633,9 +633,9 @@ theorem static_interaction_paper {E : Type*} [NormedAddCommGroup E] [InnerProduc
   static_interaction_step Y hα0 hα2 hA (hRdef ▸ ralpha_nonneg μ hα0 hα2)
     (hDdef ▸ dgamma_nonneg Γ hα2) hlam hh hlh hN hY0 hY hodd hborn hmean
 
-/-- **`E:static-block-series`** (main TeX lines 2711-2716, proof 2772-2786),
+/-- **`E:static-block-series`** (main TeX lines 3242-3247, proof 3317-3331),
 in full, with the section's constants `R_α`, `D_Γ` (`E:phase-constants`,
-lines 2058-2065) for locally finite `μ, Γ` on `ℝ³`: for `0 < α`,
+lines 2494-2501) for locally finite `μ, Γ` on `ℝ³`: for `0 < α`,
 `0 < α₀ < 1`, `α + α₀ < 2`, `λ, T > 0`, `h_j = 2^{-j}/λ` and
 `σ_j² = h_j^{-α₀}`, `∑_j (T/h_j) 𝓔(h_j, σ_j, λ) < ∞` (as `Summable`; every term
 is nonnegative). Nothing supplied. -/
@@ -654,12 +654,12 @@ theorem static_block_series_paper {alpha alpha0 A R D lam T : ℝ} (σ : ℕ →
     (hDdef ▸ dgamma_nonneg Γ (by linarith)) hlam hT hσ
 
 /-- **Step row of `C:static-interaction`, `E:independent-static-blocks`** (main
-TeX lines 2720-2725, proof 2787-2794): with `m_j` standing for
+TeX lines 3251-3256, proof 3332-3339): with `m_j` standing for
 `E‖M_j(h_j) ⋯ M_1(h_1)(f,g)‖_λ²` (indices shifted to start at `0`), the
 supplied input `hstep` is the per-block bound
 `m_{j+1} ≤ e^{λh_j}(1 + 𝓔(h_j, σ_j, λ)) m_j`, which the TeX obtains from
 `E:static-interaction`, `‖S_0(h_j)‖² ≤ e^{λh_j}`, density and tensoring with
-the independent past (lines 2788-2793).  Conclusion:
+the independent past (lines 3333-3338).  Conclusion:
 `m_K ≤ exp{λ ∑ h_j + ∑ 𝓔(h_j, σ_j, λ)} m_0`.  `_hlh` (`λh_j ≤ 1`), `_hμ`,
 `_hΓ` are carried, not used. -/
 theorem independent_static_blocks_paper {alpha A R D lam : ℝ} (K : ℕ) (h σ m : ℕ → ℝ)
@@ -681,26 +681,26 @@ theorem independent_static_blocks_paper {alpha A R D lam : ℝ} (K : ℕ) (h σ 
     (fun j => staticE_nonneg hα2 hR hD hlam (hh j)) hm0 hstep
   simpa [mul_sum] using this
 
-/-! ## `P:interval-coefficients` (main TeX lines 3402-3581) -/
+/-! ## `P:interval-coefficients` (main TeX lines 4054-4271) -/
 
 /-- `v_i = i^{-β} + k^{-1} i^{-(β-1)} + k^{α-2} i^{-p}` with `β = 4-α-α₀`,
-`p = 2-α₀` (`L:inventory-product`, main TeX lines 2989-2990). -/
+`p = 2-α₀` (`L:inventory-product`, main TeX lines 3584-3585). -/
 def invV (alpha alpha0 : ℝ) (k i : ℕ) : ℝ :=
   (i : ℝ) ^ (-(4 - alpha - alpha0)) + (k : ℝ)⁻¹ * (i : ℝ) ^ (-(4 - alpha - alpha0 - 1)) +
     (k : ℝ) ^ (alpha - 2) * (i : ℝ) ^ (-(2 - alpha0))
 
 /-- `b_{i,l} = i^{-βl}(1 + l i/k)²/(l!)^ν`, `ν = 3-α` (`L:inventory-product`,
-main TeX line 2991). -/
+main TeX line 3586). -/
 def invB (alpha alpha0 : ℝ) (k i l : ℕ) : ℝ :=
   (i : ℝ) ^ (-((4 - alpha - alpha0) * l)) * (1 + l * i / k) ^ 2 / (l ! : ℝ) ^ (3 - alpha)
 
 /-- The coefficients of `1 + v_i z + ∑_{l ≥ 2} b_{i,l} z^l`
-(`E:inventory-product`, main TeX lines 2994-2997). -/
+(`E:inventory-product`, main TeX lines 3589-3592). -/
 def invCoeff (alpha alpha0 : ℝ) (k i l : ℕ) : ℝ :=
   if l = 0 then 1 else if l = 1 then invV alpha alpha0 k i else invB alpha alpha0 k i l
 
 /-- The statement `E:inventory-product` of `L:inventory-product` (main TeX
-lines 2986-2997) with constant `C`: for every `M` and `k ≥ 1`,
+lines 3581-3592) with constant `C`: for every `M` and `k ≥ 1`,
 `[z^k] ∏_{i=1}^M (1 + v_i z + ∑_{l≥2} b_{i,l} z^l) ≤ C^k/(k!)^ν`, the product
 written over `j : Fin M` with `i = j + 1`.  Formalized by wave item L7-a; used
 here only as a hypothesis. -/
@@ -709,11 +709,11 @@ def InventoryProduct (alpha alpha0 C : ℝ) : Prop :=
     PowerSeries.coeff k (∏ j : Fin M, PowerSeries.mk (invCoeff alpha alpha0 k ((j : ℕ) + 1))) ≤
       C ^ k / (k ! : ℝ) ^ (3 - alpha)
 
-/-- `ℓ_i = 1_{r_i > 0} + 1_{q_i > 0}` (`L:fixed-split`, main TeX line 3075)
+/-- `ℓ_i = 1_{r_i > 0} + 1_{q_i > 0}` (`L:fixed-split`, main TeX line 3697)
 for a split `p = (r_i, q_i)`. -/
 def splitEll (p : ℕ × ℕ) : ℕ := (if 0 < p.1 then 1 else 0) + (if 0 < p.2 then 1 else 0)
 
-/-- The per-color factor of `E:fixed-split-bound` (main TeX lines 3080-3091)
+/-- The per-color factor of `E:fixed-split-bound` (main TeX lines 3702-3713)
 at `λ`: `1` if `k_i = 0` (inactive color); `σ_i² h_i² λ^{α-2}` for a cross
 singleton `k_i = 1`, `(r_i, q_i) = (1,1)` (the set `𝒞`); otherwise
 `(σ_i² h_i^{4-α})^{k_i}/(k_i!)^ν (1 + k_i/(λh_i))^{ℓ_i}` (the set `ℬ`).  The
@@ -743,7 +743,7 @@ theorem H_rpow {L T q : ℝ} {i : ℝ} (hL : 0 ≤ L) (hT : 0 ≤ T) (hi : 0 < i
     (L * T / i) ^ q = L ^ q * T ^ q * i ^ (-q) := by
   rw [Real.div_rpow (by positivity) hi.le, Real.mul_rpow hL hT, Real.rpow_neg hi.le, div_eq_mul_inv]
 
-/-- Step of `P:interval-coefficients` (main TeX lines 3506-3538, singleton
+/-- Step of `P:interval-coefficients` (main TeX lines 4183-4215, singleton
 mean row): for `β = 4-α-α₀ ≥ 1`, `L ≥ 1`, `k, i ≥ 1`, `T, h > 0` and
 `h ≤ LT/i`, `h^β (1 + 1/(λh)) ≤ L^β T^β (i^{-β} + k^{-1} i^{-(β-1)})` at
 `λ = k/T`.  The TeX's monotonicity in `h` is used in the form
@@ -777,7 +777,7 @@ theorem singleton_weight_le {alpha alpha0 h T L : ℝ} {k i : ℕ} (hβ1 : 1 ≤
         gcongr
     _ = _ := by rw [hTT]; ring
 
-/-- Step of `P:interval-coefficients` (main TeX lines 3506-3538, cross
+/-- Step of `P:interval-coefficients` (main TeX lines 4183-4215, cross
 singleton row): for `α ≤ 2`, `α₀ ≤ 2`, `L ≥ 1`, `k, i ≥ 1`, `T, h > 0` and
 `h ≤ LT/i`, `h^{2-α₀} λ^{α-2} ≤ L^β T^β k^{α-2} i^{-(2-α₀)}` at `λ = k/T`. -/
 theorem cross_weight_le {alpha alpha0 h T L : ℝ} {k i : ℕ} (hα2 : alpha ≤ 2) (ha0 : alpha0 ≤ 2)
@@ -805,7 +805,7 @@ theorem cross_weight_le {alpha alpha0 h T L : ℝ} {k i : ℕ} (hα2 : alpha ≤
           ((k : ℝ) ^ (alpha - 2) * (i : ℝ) ^ (-(2 - alpha0))) := by gcongr
     _ = _ := by rw [hTT]
 
-/-- Step of `P:interval-coefficients` (main TeX lines 3518-3533, higher-degree
+/-- Step of `P:interval-coefficients` (main TeX lines 4195-4210, higher-degree
 row): for `β ≥ 1`, `l ≥ 2`, `L ≥ 1`, `k, i ≥ 1`, `T, h > 0` and `h ≤ LT/i`,
 `(h^β)^l (1 + l/(λh))² ≤ (L^β T^β)^l i^{-βl}(1 + l i/k)²` at `λ = k/T`.
 Proof as in the TeX: the whole weight `h^{βl-2}(h + l/λ)²` increases with `h`,
@@ -852,14 +852,14 @@ theorem higher_weight_le {alpha alpha0 h T L : ℝ} {k i l : ℕ} (hβ1 : 1 ≤ 
           Real.rpow_mul_natCast hi0.le]
         ring
 
-/-- Step of `P:interval-coefficients` (main TeX line 3488): `2k+1 ≤ 3^k`
+/-- Step of `P:interval-coefficients` (main TeX line 4157): `2k+1 ≤ 3^k`
 (also the split count `∏_i (2k_i + 1) ≤ 3^k` per color). -/
 theorem two_mul_add_one_le_three_pow (k : ℕ) : 2 * k + 1 ≤ 3 ^ k := by
   induction k with
   | zero => norm_num
   | succ n ih => rw [pow_succ]; omega
 
-/-- Step of `P:interval-coefficients` (main TeX lines 3499-3538), one color:
+/-- Step of `P:interval-coefficients` (main TeX lines 4176-4215), one color:
 for `α < 2`, `0 < α₀ < 1`, `α + α₀ < 2`, `h, T > 0`, `L ≥ 1`, `c ≥ 0`,
 `k, i ≥ 1`, `h ≤ LT/i` and `σ² ≤ c h^{-α₀}`, the sum of the split factors over
 all splits `r + q = 2l` of a color of degree `l` is at most
@@ -960,7 +960,7 @@ theorem color_split_sum_le {alpha alpha0 σ h T L c : ℝ} {k i l : ℕ}
       _ ≤ 3 ^ l * ((c * (L ^ β * T ^ β)) ^ l * invB alpha alpha0 k i l) := by gcongr
       _ = _ := by simp only [invCoeff, hl0, hl1, ite_false]; ring
 
-/-- Step of `P:interval-coefficients` (main TeX lines 3539-3544): the sum over
+/-- Step of `P:interval-coefficients` (main TeX lines 4220-4225): the sum over
 degree vectors `κ` with `∑ κ_i = k` of `∏_i w_{i,κ_i}` is the `k`th coefficient
 of `∏_i ∑_l w_{i,l} z^l` (`PowerSeries.coeff_prod`), here for the inventory
 weights. -/
@@ -972,22 +972,22 @@ theorem kvector_sum_eq_coeff (alpha alpha0 : ℝ) (M k : ℕ) :
   simp [PowerSeries.coeff_mk]
 
 /-- **Step row of `P:interval-coefficients`, `E:interval-coefficient-bound`**
-(main TeX lines 3405-3408, proof 3478-3547) at `L ≥ 1`, general form.  For
+(main TeX lines 4057-4060, proof 4147-4228) at `L ≥ 1`, general form.  For
 `α < 2`, `0 < α₀ < 1`, `α + α₀ < 2`, `k ≥ 1`, `T > 0`, `c, R, V, C_split ≥ 0`,
 positive lengths with `h_i ≤ LT/i` and `σ_i² ≤ c h_i^{-α₀}` (`E:interval-inventory`,
-line 3045, colors `i = j + 1` for `j : Fin M`), supplied inputs:
+line 3666, colors `i = j + 1` for `j : Fin M`), supplied inputs:
 * `hinv`: `L:inventory-product` with constant `C_inv` (L7-a);
-* `hsplits`: `E:interval-energy-splits` (lines 3478-3482) combined with the
-  reflection parity (lines 3483-3485): the coefficient is the sum over degree
+* `hsplits`: `E:interval-energy-splits` (lines 4147-4151) combined with the
+  reflection parity (lines 4152-4154): the coefficient is the sum over degree
   vectors `κ` (`∑ κ_i = k`) and splits `p_i = (r_i, q_i)`, `r_i + q_i = 2κ_i`,
   of `Q_{r,q}`;
-* `hfixed`: `L:fixed-split` (`E:fixed-split-bound`, lines 3080-3091) at
+* `hfixed`: `L:fixed-split` (`E:fixed-split-bound`, lines 3702-3713) at
   `λ = k/T` with constant `C_split`, for every such split.
 Conclusion: `|coef| ≤ (12 c L^β C_split C_inv)^k R^k T^{βk}/(k!)^ν V`.  Proved
 here: per-color length substitution and split counting (`color_split_sum_le`),
 `k² ≤ 4^k`, and the product-coefficient identity (`kvector_sum_eq_coeff`).
 The identification of the coefficients with the finite-interval model
-(lines 3490-3497, 3549-3565) is not formalized. -/
+(lines 4163-4170, 4239-4255) is not formalized. -/
 theorem interval_coefficient_assembly {alpha alpha0 R T L c Cs Cinv V coef : ℝ} {M k : ℕ}
     (h σ : Fin M → ℝ) (Q : (Fin M → ℕ × ℕ) → ℝ)
     (hα2 : alpha < 2) (ha0 : 0 < alpha0) (ha01 : alpha0 < 1) (hsum : alpha + alpha0 < 2)
@@ -1065,12 +1065,12 @@ theorem interval_coefficient_assembly {alpha alpha0 R T L c Cs Cinv V coef : ℝ
         ring
 
 /-- Step of `P:interval-coefficients`, `E:interval-coefficient-bound` ⟹
-`E:interval-phase-bound` (main TeX lines 3570-3579), general form: for `ν ≥ 1`,
+`E:interval-phase-bound` (main TeX lines 4260-4269), general form: for `ν ≥ 1`,
 `C, R, V ≥ 0`, `T > 0`, if the energy is the sum of its coefficient series
 (`henergy`, the power-series identity at `s = 1` from the entire majorant,
-lines 3430-3471 and 3559-3563), odd coefficients vanish (`hodd`, Gaussian
-reflection of every color, lines 3483-3485), the zero-order coefficient is at
-most `e V` (lines 3570-3571) and `|c_{2k}| ≤ C^k R^k T^{βk}/(k!)^ν V` for `k ≥ 1`,
+lines 4092-4136 and 4249-4253), odd coefficients vanish (`hodd`, Gaussian
+reflection of every color, lines 4152-4154), the zero-order coefficient is at
+most `e V` (lines 4260-4261) and `|c_{2k}| ≤ C^k R^k T^{βk}/(k!)^ν V` for `k ≥ 1`,
 then the coefficient series converges and the energy is at most
 `e · exp(ν C^{1/ν} R^{1/ν} T^{β/ν}) · V`, via `(e + Y - 1) V ≤ e Y V`,
 `Y = e^{ν x^{1/ν}} ≥ 1`, `x = C R T^β`. -/
@@ -1140,17 +1140,17 @@ theorem homog_alpha_range {d : ℕ} {alpha alpha0 : ℝ} {Γ μ : Measure (Homog
   exact ⟨hpos, by linarith, h1, h2, by linarith⟩
 
 /-- **Step row of `P:interval-coefficients`, `E:interval-coefficient-bound`**
-(main TeX lines 3405-3408; proof 3416-3420 and 3478-3547) under `H:homog`
-(the section's standing class, main TeX lines 2814-2819, is that of `H:homog`,
-line 225) with `R_α = απ μ(B_1)/(2 sin(πα/2))` (line 2820).  Arbitrary real `L` and `c` are
+(main TeX lines 4057-4060; proof 4068-4082 and 4147-4228) under `H:homog`
+(the section's standing class, main TeX lines 3364-3369, is that of `H:homog`,
+line 384) with `R_α = απ μ(B_1)/(2 sin(πα/2))` (line 3370).  Arbitrary real `L` and `c` are
 reduced to `max(1, L)` and `max(c, 0)` (the TeX's `L ↦ max{1, L}`, lines
-3417-3420), giving the explicit constant
+4079-4082), giving the explicit constant
 `C = 12 max(c,0) max(1,L)^β C_split C_inv`, which depends only on
 `α, α₀, L, c` and the constants of the two lemmas.  Supplied inputs as in
 `interval_coefficient_assembly`.  Narrower than the TeX: the wrapper assumes
 `R_α > 0` and `σ_i > 0`, the hypotheses of `L:fixed-split`; the TeX's
 zero-noise case and the sign reduction `(σ_i, W_i) ↦ (|σ_i|, sgn σ_i W_i)`
-(lines 3417, 3420-3423, a change of Gaussian fields) are not formalized.
+(lines 4079, 4082-4085, a change of Gaussian fields) are not formalized.
 `_hRpos` and `_hσpos` are carried so that `hfixed` is literally
 `L:fixed-split`; the proof does not use them.  Positive lengths `h_i > 0` are
 made explicit (the TeX's `h_i^{-α₀}`). -/
@@ -1190,7 +1190,7 @@ theorem interval_coefficient_assembly_paper {d : ℕ} {alpha alpha0 : ℝ}
     (le_max_right _ _) hR hV hCs hh hlen' hσ' hinv hsplits hfixed
 
 /-- **Step row of `P:interval-coefficients`, `E:interval-phase-bound`** (main
-TeX lines 3410-3413; proof 3570-3579) under `H:homog` with `ν = 3-α`,
+TeX lines 4062-4065; proof 4260-4269) under `H:homog` with `ν = 3-α`,
 `β = 4-α-α₀` and `R_α = απ μ(B_1)/(2 sin(πα/2))`: from the coefficient bound
 `E:interval-coefficient-bound` with constant `C`, together with the supplied
 inputs of `interval_phase_bound_of_coefficients` (power-series identity at

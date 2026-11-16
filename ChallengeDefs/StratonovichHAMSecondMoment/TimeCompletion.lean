@@ -28,9 +28,9 @@ namespace StratonovichHAMSecondMoment.TimeCompletion
 
 open StratonovichHAMSecondMoment.TimeSchur
 
-/-! ### The exponential kernel and Gamma subordination (TeX lines 159-169) -/
+/-! ### The exponential kernel and Gamma subordination (TeX lines 216-226) -/
 
-/-- The exponential-kernel identity of the proof (TeX lines 164-169): for `λ > 0`,
+/-- The exponential-kernel identity of the proof (TeX lines 221-226): for `λ > 0`,
 `e^{-λ|t-s|} = 2λ ∫_{-∞}^{min(t,s)} e^{-λ(t-u)} e^{-λ(s-u)} du`. -/
 theorem exp_abs_eq (l t s : ℝ) (hl : 0 < l) :
     Real.exp (-(l * |t - s|)) =
@@ -93,7 +93,7 @@ theorem mixProfile_nonneg (w : ℝ × ℝ) (t : ℝ) : 0 ≤ mixProfile w t := b
   · exact (Real.exp_pos _).le
   · exact le_rfl
 
-/-- The kernel as a mixture of products (TeX lines 159-169, combined): for `a > 0` and
+/-- The kernel as a mixture of products (TeX lines 216-226, combined): for `a > 0` and
 `t ≠ s` (off the null diagonal),
 `|t-s|^{-a} = ∫_{(0,∞)×ℝ} Γ(a)⁻¹ 2λ^a 1_{u≤t} e^{-λ(t-u)} 1_{u≤s} e^{-λ(s-u)} dλ du`,
 as an identity in `[0,∞]` (Tonelli).  It combines the subordination formula
@@ -175,7 +175,7 @@ theorem ae_ne_diag (T : ℝ) :
 
 /-! ### A positivity criterion for mixtures of product kernels -/
 
-/-- Auxiliary to the Lean proof route (the abstract form of TeX lines 170-171, "its
+/-- Auxiliary to the Lean proof route (the abstract form of TeX lines 227-228, "its
 quadratic form is an integral of a square"): let `μ` on `ℝ` and `ν` on `W` be
 s-finite, `ρ ≥ 0` measurable on `W`, `φ ≥ 0` jointly measurable on `W × ℝ`, and
 `K ≥ 0` a kernel with `K(t,s) = ∫ ρ(w) φ_w(t) φ_w(s) dν(w)` (in `[0,∞]`) for
@@ -353,10 +353,10 @@ theorem conj_timeForm {a T : ℝ} (ha1 : a < 1) (hT : 0 ≤ T) {f g : ℝ → �
     kern_sub_comm a p.2 p.1]
   ring
 
-/-- Positive semidefiniteness of the form on all of complex `L²(0,T)` (TeX lines 143-147
+/-- Positive semidefiniteness of the form on all of complex `L²(0,T)` (TeX lines 190-194
 assert it on real compact smooth tests; this is stronger): for `0 < a < 1`, `T ≥ 0`
 and `f ∈ L²(0,T)`, `Re ∬_{[0,T]²} f(t) conj f(s) |t-s|^{-a} ≥ 0`.  Route as in the
-TeX proof (lines 159-172): Gamma subordination and the exponential-kernel identity
+TeX proof (lines 216-229): Gamma subordination and the exponential-kernel identity
 (`kern_eq_mixture`) write the kernel, off the null diagonal, as a mixture of products
 `φ_w(t) φ_w(s)` with nonnegative weight; Fubini on `[0,T]² × (0,∞) × ℝ`, justified by
 the Schur bound, turns the form into `∫ ρ(w) |∫ f φ_w|² ≥ 0`
@@ -374,7 +374,7 @@ theorem timeForm_re_nonneg {a T : ℝ} (ha0 : 0 < a) (ha1 : a < 1) (hT : 0 ≤ T
 
 /-! ### The completion `H_a` -/
 
-/-- The standing parameters of `L:masked-time-completion` (TeX lines 141-142 and
+/-- The standing parameters of `L:masked-time-completion` (TeX lines 188-189 and
 the section's standing assumptions): `0 < a < 1` and `T > 0`. -/
 structure TimeParams where
   /-- the exponent `a` (`= α₀` in the section). -/
@@ -539,14 +539,14 @@ theorem extL2Lin_norm_le (w : Lp ℂ 2 (volume.restrict (Icc (0 : ℝ) p.T))) :
 
 variable (p)
 
-/-- The continuous linear extension `L²(0,T) → H_a` of the inclusion (TeX lines 148-149
-and 177-179), defined on a.e.-classes: `extL2 p w` is the image of any representative. -/
+/-- The continuous linear extension `L²(0,T) → H_a` of the inclusion (TeX lines 195-196
+and 237-239), defined on a.e.-classes: `extL2 p w` is the image of any representative. -/
 def extL2 : Lp ℂ 2 (volume.restrict (Icc (0 : ℝ) p.T)) →L[ℂ] Ha p :=
   (extL2Lin p).mkContinuous (Real.sqrt (schurConst p)) extL2Lin_norm_le
 
 variable {p}
 
-/-! ### The complexified norm (TeX lines 153-154 and 175-177) -/
+/-! ### The complexified norm (TeX lines 201-202 and 235-237) -/
 
 /-- Auxiliary: the real part `t ↦ Re f(t)` of `f ∈ L²(0,T)`, as an element of `L²(0,T)`. -/
 def reL2 (f : L2fun p.T) : L2fun p.T :=
@@ -557,7 +557,7 @@ def reL2 (f : L2fun p.T) : L2fun p.T :=
 def imL2 (f : L2fun p.T) : L2fun p.T :=
   ⟨fun t => (((f : ℝ → ℂ) t).im : ℂ), (f.2.im).ofReal⟩
 
-/-! ### Interval amplitudes (TeX lines 154-155 and 179-180) -/
+/-! ### Interval amplitudes (TeX lines 202-203 and 239-240) -/
 
 /-- Bounded measurable amplitudes on an interval `[c,d]`, extended by zero, belong to
 `L²(0,T)`, hence (through `emb`) to `H_a`. -/
@@ -573,7 +573,7 @@ theorem indicator_mem_L2fun (T c d M : ℝ) (A : ℝ → ℂ)
   filter_upwards [ae_restrict_mem measurableSet_Icc] with t ht
   exact hM t ht
 
-/-! ### Compact smooth tests inside `(0,T)` are dense (TeX lines 141-147, 173-179) -/
+/-! ### Compact smooth tests inside `(0,T)` are dense (TeX lines 188-194, 230-239) -/
 
 /-- The complex compact smooth tests supported inside `(0,T)`, as elements of
 `L²(0,T)`. -/

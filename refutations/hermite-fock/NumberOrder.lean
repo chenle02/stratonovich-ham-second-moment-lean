@@ -2,7 +2,7 @@ import StratonovichHAMSecondMoment.HermiteFock
 
 /-!
 Refutation for `StratonovichHAMSecondMoment.HermiteFock.number_identity` (`∑_i a_i^* a_i = |k|`
-on degree `k`, main TeX lines 2517-2519 at a284420, "∑_i a_i^* a_i = (k+1) I on degree k+1").
+on degree `k`, main TeX lines 3018-3020 at 39f2597a, "∑_i a_i^* a_i = (k+1) I on degree k+1").
 
 Wrong variant: the identity with `|k| + 1` (an off-by-one in the degree, or the order
 `a_i a_i^*` with one mode).  Counterexample: `X = ℂ`, one mode, `v = 1`, `k = 0`: the package

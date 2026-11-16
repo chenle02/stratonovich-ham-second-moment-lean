@@ -2,8 +2,9 @@
 python3 scripts/comparator/gen_cs.py) from scripts/comparator/scaffold.json, the
 scaffold block `lean-pkg comparator config --from-claims NAME --from-output TYPES.json`
 wrote into lean-pkg-signoff.json (moved here once Challenge and Solution existed): the pre-filled statement of
-each entry, with every project constant name N written as StratonovichHamSecondMomentLeanAudit.N
-(the verbatim copy in ChallengeDefs). An entry with
+each entry, with every project constant name N written as StratonovichHamSecondMomentLeanDefs.N
+(the verbatim copy in ChallengeDefs; the theorem statements themselves are named with the prefix
+StratonovichHamSecondMomentLeanAudit). An entry with
 scripts/comparator/manual/<decl>.{challenge,solution}.lean is taken from those files
 (a printed type that failed lean-pkg's round-trip check); one with <decl>.proof.lean
 keeps the generated statement and replaces its proof (a bridge, see manual/Bridge.lean,
@@ -15,9 +16,13 @@ W = "."
 PFX = "StratonovichHamSecondMomentLeanAudit"
 DPFX = "StratonovichHamSecondMomentLeanDefs"
 t = json.load(open(f"{W}/scripts/comparator/scaffold.json"))["todo"]
-names = json.load(open(f"{W}/comparator.json"))["theorem_names"]
-order = {n: i for i, n in enumerate(names)}
-t.sort(key=lambda e: order[e["theorem_name"]])
+# the two comparator configurations: the credited theorems and the helper (smoke) theorems;
+# together they hold every scaffold entry exactly once; Challenge and Solution keep the
+# scaffold's order (the order of the single configuration they were generated from)
+names = [n for c in ("comparator.json", "comparator-helpers.json")
+         for n in json.load(open(f"{W}/{c}"))["theorem_names"]]
+assert len(names) == len(set(names)), "a theorem is in both comparator configurations"
+assert set(names) == {e["theorem_name"] for e in t}, "the configurations and the scaffold differ"
 proj = re.compile(r"(?<![\w.'@])(StratonovichHAMAudit|StratonovichHAMSecondMoment)\.")
 defs = sorted(p[:-5].replace("/", ".") for p in glob.glob("ChallengeDefs/**/*.lean", recursive=True))
 def head(imports):

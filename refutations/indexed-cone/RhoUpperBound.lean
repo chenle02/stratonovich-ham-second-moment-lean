@@ -1,5 +1,5 @@
 /-
-Refutation for the parameter range of `L:raw-block-indexed-cone` (TeX line 234,
+Refutation for the parameter range of `L:raw-block-indexed-cone` (TeX line 318,
 "Fix 0 < ϱ < 1/2"), package theorem
 `StratonovichHAMSecondMoment.IndexedCone.indexed_cone`.
 

@@ -1,5 +1,5 @@
 /-
-Refutation for the margin of `P:radius-mean-anchor` (TeX lines 323-325,
+Refutation for the margin of `P:radius-mean-anchor` (TeX lines 386-388,
 `E:radius-anchor-Q`), package theorem
 `StratonovichHAMSecondMoment.RadiusMeanAnchor.anchor_margin_pos`.
 

@@ -1,5 +1,5 @@
 /-
-Refutation for `L:raw-block-indexed-cone` (TeX lines 232--251), package
+Refutation for `L:raw-block-indexed-cone` (TeX lines 316--335), package
 theorem `StratonovichHAMSecondMoment.IndexedCone.indexed_cone`.
 
 Wrong variant: the operator-closeness hypothesis

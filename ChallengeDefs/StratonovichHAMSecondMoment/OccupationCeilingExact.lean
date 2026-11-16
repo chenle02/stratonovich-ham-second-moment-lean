@@ -59,7 +59,7 @@ def cellInd (N : ℕ) (j : Fin (N + 1)) (s : ℝ) : ℝ :=
 /-! ### The step field (auxiliary) -/
 
 /-- The finite-cell field `g_s = f_j` for `s` in cell `j` (TeX: the selected field `g_ε` of
-`L:occupation-rayleigh-selection`, lines 159-173, built here from finitely many equal cells
+`L:occupation-rayleigh-selection`, lines 190-212, built here from finitely many equal cells
 instead of a countable first-index selection). -/
 def stepG (N : ℕ) (f : Fin (N + 1) → Rd d → ℝ) : ℝ → Rd d → ℝ := fun s => f (idx N s)
 

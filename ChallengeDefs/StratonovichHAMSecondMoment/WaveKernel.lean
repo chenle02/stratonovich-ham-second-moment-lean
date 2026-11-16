@@ -28,7 +28,7 @@ open HomogHypothesis TimeFractional
 
 variable {d : ℕ}
 
-/-- `Ĝ_s(ξ) = sin(s|ξ|)/|ξ|`, with value `s` at `ξ = 0` (lines 777-778). -/
+/-- `Ĝ_s(ξ) = sin(s|ξ|)/|ξ|`, with value `s` at `ξ = 0` (lines 983-984). -/
 def waveHat (s : ℝ) (ξ : Rd d) : ℝ := s * Real.sinc (s * ‖ξ‖)
 
 end StratonovichHAMSecondMoment.WaveKernel

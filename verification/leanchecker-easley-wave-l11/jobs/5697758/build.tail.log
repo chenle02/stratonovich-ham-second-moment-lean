@@ -1,0 +1,60 @@
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3200:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.colorGood_frame' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3201:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.truncN_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3202:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.finite_word_cutoff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3203:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.finite_word_cutoff_paper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3204:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.wordCoef' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3205:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.finite_word_cutoff_integral' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3206:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.FullPhase' does not depend on any axioms
+info: StratonovichHAMSecondMoment/Axioms.lean:3207:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.insP' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3208:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.frameP' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3209:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.truncP' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3210:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.vacP' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3211:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.ColorGoodP' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3212:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.colorGoodP_ins' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3213:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.colorGoodP_frame' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3214:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.colorGoodP_start' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3215:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.phase_word_cutoff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3216:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.extP' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3217:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.frameC' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3218:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.cutWordC' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3219:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.startC' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3220:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.extC_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3221:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.extC_not_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3222:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.zero_mem_cutIdx' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3223:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.extP_vacPhase' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3224:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.extP_frameC' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3225:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.extP_fockJ' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3226:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.truncP_extP' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3227:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.extP_cutWordC' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3228:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.cutWordC_eq_raw' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3229:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.wordCoefP' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3230:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.DuhamelWords' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3231:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.coef_cutoff_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3232:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.fullInner' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3233:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.fullInner_extP' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3234:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.Q_identification' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:3235:0: 'StratonovichHAMSecondMoment.FiniteWordCutoff.interval_coefficient_assembly_paper_words' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Build completed successfully (9163 jobs).

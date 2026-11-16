@@ -1,6 +1,6 @@
 /-
 Refutation for `L:inventory-product` (`notes/notes_stratonovich_ham_second_moment.tex`
-lines 2986-2998 at a284420), package theorem
+lines 3581-3593 at 39f2597a), package theorem
 `StratonovichHAMSecondMoment.InventoryProduct.inventory_product`.
 
 Wrong variant: the hypothesis `α₀ < 1` (from `H:homog`, giving `p = 2 - α₀ > 1`)

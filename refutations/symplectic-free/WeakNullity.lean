@@ -2,7 +2,7 @@
 Refutation for the abstract compact-perturbation bound
 `StratonovichHAMSecondMoment.SymplecticFree.norm_le_norm_add_compact`
 (`‖S‖ ≤ ‖S + K‖` for compact `K`; `L:symplectic-free`,
-`notes/integrated_symplectic_phase.tex` lines 103-119 at a284420).
+`notes/integrated_symplectic_phase.tex` lines 121-142 at 39f2597a).
 
 Wrong variant: the bound without the weakly null isometries commuting with `S`.
 Counterexample: on `ℝ`, `S = I` and the compact `K = -I` (finite rank) give

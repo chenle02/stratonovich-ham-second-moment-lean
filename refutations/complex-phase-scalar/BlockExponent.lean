@@ -1,6 +1,6 @@
 /-
 Refutation for the final constant of `L:complex-phase` (main TeX lines
-2457-2459 at a284420), package theorem
+2944-2946 at 39f2597a), package theorem
 `StratonovichHAMSecondMoment.ComplexPhaseScalar.block_constant_le`
 (`(39+12x)e^x ≤ 39(1+x)e^x ≤ 100 e^{2x}`, `x = λh ≥ 0`).
 

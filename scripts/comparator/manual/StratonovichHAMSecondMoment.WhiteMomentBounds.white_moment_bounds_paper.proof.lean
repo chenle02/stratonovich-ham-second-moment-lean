@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.WhiteMomentBounds.white_moment_bounds_paper

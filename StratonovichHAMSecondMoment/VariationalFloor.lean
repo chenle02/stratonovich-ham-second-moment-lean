@@ -6,7 +6,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 Foundations for the variational rates of
 `notes/integrated_unmasked_variational.tex` (Section
 `S:unmasked-variational`) and of `notes/integrated_spatial_occupation.tex`
-(Section `S:spatial-occupation-foundation`), at revision a284420.  These are
+(Section `S:spatial-occupation-foundation`), at revision 39f2597a.  These are
 the five deterministic foundations of wave L6 (item L6-d); they carry no
 manuscript label of their own and are stated as general lemmas with every
 hypothesis explicit.  Exported for use (as hypotheses, instantiated at
@@ -25,12 +25,12 @@ integration) by the items that formalize `L:spatial-static-controls` and
   is at least `ℓ^α (∫ z) Γ(B̄₁)/‖φ‖₂²` (Tonelli and the scaling of `Γ` on
   balls) and the gradient term is `ℓ² ‖∇φ‖₂²/‖φ‖₂²`.  This is the elementary
   scaling principle behind the positivity in `P:variational-unmasked-rate`
-  (TeX lines 150-155), which the manuscript obtains instead from the compact
+  (TeX lines 203-208), which the manuscript obtains instead from the compact
   trial of `P:compact-original-common-trial`; it is a pure inequality (no
   limit and no supremum is taken).
 * (F2) `measure_ball_pos`, `measure_closedBall_pos`: `Γ(B_r) > 0` for every
   `r > 0` when `Γ ≠ 0` has the set scaling (exhaustion by balls plus scaling;
-  the argument of `L:spatial-static-controls`, lines 89-91 of the occupation
+  the argument of `L:spatial-static-controls`, lines 108-110 of the occupation
   file).
 * (F3) `autocorr_nonneg_of_posDef`: for real `Q ∈ C_c^∞`, the
   autocorrelation `c_Q = SpatialFourierBound.autocorr Q`
@@ -540,7 +540,7 @@ theorem autocorr_nonneg_of_posDef {Γ : Measure (Rd d)} (hP : HomogHypothesis.Is
 /-- (F3), strict form for nonnegative profiles: for continuous, nonnegative,
 nonzero, compactly supported `Q`, a nonzero locally finite `Γ` with the set
 scaling of `H:homog` has `B_Γ(Q,Q) = ∫ c_Q dΓ > 0`; this uses no positive
-definiteness (TeX lines 88-91 and 182-185 of the occupation file: the
+definiteness (TeX lines 107-110 and 247-250 of the occupation file: the
 autocorrelation is positive near zero and every centred ball has positive
 mass). -/
 theorem autocorr_pos {alpha : ℝ} {Γ : Measure (Rd d)} [IsLocallyFiniteMeasure Γ]
@@ -637,7 +637,7 @@ theorem moll_const {f : Rd d → ℝ} (hf : LocallyIntegrable f volume) (h0 : Ha
 /-- **(F5) Zero weak gradient implies zero** (half (b) of the D8-lite
 foundation): for `d ≥ 1`, an `f ∈ L²(ℝ^d)` whose weak gradient is `0` is zero
 almost everywhere.  This is the fact used in `P:spatial-smooth-ratio`
-(`notes/integrated_spatial_occupation.tex`, lines 180-182 at a284420: "a nonzero
+(`notes/integrated_spatial_occupation.tex`, lines 245-247 at 39f2597a: "a nonzero
 `L²` function with zero weak gradient would have Fourier transform supported
 only at zero, and hence would vanish").  Lean proof route (different from the
 TeX's Fourier argument): the mollifications `ρ_n ⋆ f` are smooth with

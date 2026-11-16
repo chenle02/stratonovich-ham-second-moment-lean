@@ -1,7 +1,7 @@
 /-
 Refutation for `L:damped-homogeneous-norms` (main TeX
-`notes/notes_stratonovich_ham_second_moment.tex`, revision a284420, lines
-845-846 and 915-916), package theorem
+`notes/notes_stratonovich_ham_second_moment.tex`, revision 39f2597a, lines
+1052-1053 and 1150-1151), package theorem
 `StratonovichHAMSecondMoment.DampedMultiplier.isMultiplier_gaussMult`
 (`e^{-η|ξ|²}` is in the multiplier class for `η ≥ 0`).
 

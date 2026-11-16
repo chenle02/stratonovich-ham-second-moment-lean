@@ -1,0 +1,13 @@
+node=node848 job=5696236 array=5696230_6 mode=fresh target=StratonovichHAMAudit.DirectEvent start=2026-11-12T20:30:29-0600
+tmp_avail_G=891
+VERIFIED_COMMIT=b2bf7a921fb8cbae1dcd58fb5c6331019989c4c0 TREE=50c3c6e777301316f3daf058456ce257590898c6 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1440 waited_s=0
+REPLAY_STARTED 2026-11-12T20:34:32-0600
+BEGIN fresh StratonovichHAMAudit.DirectEvent 20:34:33
+END fresh StratonovichHAMAudit.DirectEvent	0	0:10:11.25	3023576	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=612 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMAudit.DirectEvent
+PROCESS_EXIT=0 end=2026-11-12T20:44:44-0600

@@ -1,6 +1,6 @@
 /-
 Refutation for the rate part of `L:variational-control-dilation`
-(`notes/integrated_unmasked_variational.tex` lines 234-236 and 260-266),
+(`notes/integrated_unmasked_variational.tex` lines 323-325 and 359-365),
 package theorem `StratonovichHAMSecondMoment.WeakSobolev.rayleighRate_dil`
 (which gives `VariationalDilation.rate_dil`) and package definitions
 `rayleighRate`, `rayleighSet`, `IsRayleighTrial`, `HasWeakGradient`.
