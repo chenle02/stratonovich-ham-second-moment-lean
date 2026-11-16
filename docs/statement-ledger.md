@@ -14,12 +14,14 @@ direct-bound constant `C_2` of `P:d1-upper`, `P:low-alpha-upper` and
 is unchanged. The attribution of the quoted source result `T:first` is clarified
 (wording only; `T:first` is not formalized here). A front-guide paragraph
 pointing readers to `L:white-test` and `P:nogo-05` is added. A readability pass
-adds explanatory sentences to 207 of the 249 proofs; statements, displays,
-labels and references are kept, and old proof lines are kept word for word
-except 50 reworded and 32 re-wrapped lines. Six places of the original text are
-corrected (two unparsable sentences, a garbled clause and three typographical
-errors in statements of results not formalized here). An unused setup step is
-removed from the proof of `P:symplectic-block-mean` (not formalized here).
+adds explanatory sentences to 207 of the 249 proofs (one more proof, of
+`P:original-signed-point-upper`, changes only by an original-text correction
+listed below); statements, displays, labels and references are kept, and old
+proof lines are kept word for word except 50 reworded and 32 re-wrapped lines.
+Six places of the original text are corrected (two unparsable sentences, a
+garbled clause and three typographical errors in statements of results not
+formalized here). An unused setup step is removed from the proof of
+`P:symplectic-block-mean` (not formalized here).
 Every cited label exists exactly once at 39f2597a. TeX line numbers were moved
 to 39f2597a by the git diff of each file or, inside proofs rewritten by the
 readability pass, by the pass's per-file line maps. A range moved by the git

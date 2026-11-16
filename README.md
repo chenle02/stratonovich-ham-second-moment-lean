@@ -852,9 +852,10 @@ removes an unused setup step from one proof. Earlier waves were anchored to
 `975feb3` and then `a284420`.
 Every TeX line locator was moved by the git diff of its file or, inside a proof
 rewritten by the readability pass, by the pass's line map, and checked to cite
-the same text; locators resolved by hand were read and cite the same object,
-whose wording may have changed. The file of every locator was checked against
-the cited labels.
+the same text (except 1 range whose words are kept but re-wrapped around
+inserted explanatory sentences); locators resolved by hand were read and cite
+the same object, whose wording may have changed. The file of every locator was
+checked against the cited labels.
 
 </details>
 
