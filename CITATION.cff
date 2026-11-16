@@ -4,7 +4,7 @@ title: "stratonovich-ham-second-moment-lean: Lean companion to the second moment
 type: software
 license: Apache-2.0
 version: "0.10.0"
-date-released: "2026-11-13"
+date-released: "2026-11-16"
 doi: "10.5281/zenodo.24199104"
 identifiers:
   - type: doi
@@ -17,6 +17,7 @@ repository-code: "https://github.com/chenle02/stratonovich-ham-second-moment-lea
 authors:
   - family-names: "Chen"
     given-names: "Le"
+    orcid: "https://orcid.org/0000-0001-8010-136X"
     affiliation: "Auburn University"
 abstract: >-
   Lean 4 checks of the finite, algebraic, scalar and selected analytic steps
@@ -39,5 +40,6 @@ references:
     authors:
       - family-names: "Chen"
         given-names: "Le"
+        orcid: "https://orcid.org/0000-0001-8010-136X"
         affiliation: "Auburn University"
     notes: "Manuscript in preparation; the Lean statements are mapped to its labels in docs/statement-ledger.md."

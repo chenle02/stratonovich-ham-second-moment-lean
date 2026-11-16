@@ -27,6 +27,10 @@ need. Nothing in the release tree depends on that history.
 | its first part, the release bookkeeping (branch `release/v0.10.0-l14`) | `8df39cd633483e5fd82a3e17acbb16a635c605c2` | `3b3fa5fa3d468d3cdd9107bd426f4e9434f2aebc` |
 | verified commit (waves L13 and L14, tags `L13-gate` and `L14-gate`) | `8f51004c412ac618f4be6a5f4a42c7cc78188638` | `79a7f16872b7c49a7055b032451460e2f9af3f0d` |
 
+The two documentation files `README.md` and `docs/statement-ledger.md` follow
+development commit `402b646`, a documentation-only successor of `09cfc11`
+(wording from the confirmation review of the re-anchor).
+
 The release development commit is development main `e9f7bf6` (the gate
 commit `8f51004` with its receipts, its Easley evidence and its gate record)
 with the following on top (all but the last item are `8df39cd`; the last is
