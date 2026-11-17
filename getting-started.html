@@ -32,6 +32,8 @@
 <p class="group">Evidence</p>
 <ul>
 <li><a href="trust.html">Trust and verification</a></li>
+<li><a href="verification.html">Verification page (lean-pkg)</a></li>
+<li><a href="coverage.html">Coverage by result (lean-pkg)</a></li>
 <li><a href="cite.html">Cite</a></li>
 </ul>
 <p class="group">Elsewhere</p>
@@ -55,6 +57,8 @@
 <p class="group">Evidence</p>
 <ul>
 <li><a href="trust.html">Trust and verification</a></li>
+<li><a href="verification.html">Verification page (lean-pkg)</a></li>
+<li><a href="coverage.html">Coverage by result (lean-pkg)</a></li>
 <li><a href="cite.html">Cite</a></li>
 </ul>
 <p class="group">Elsewhere</p>
@@ -70,7 +74,7 @@
 Mathlib <code>56a005855ea17e0b0958f73ec801ae140b0a1679</code>. Transitive pins are in
 <code>lake-manifest.json</code>; do not run <code>lake update</code> for a routine build.</p>
 <pre><code class="language-sh">lake exe cache get        # Mathlib build cache
-lake build                # all 100 modules (umbrella: StratonovichHAMSecondMoment)
+lake build                # all 139 modules (umbrella: StratonovichHAMSecondMoment)
 lake build StratonovichHAMSecondMoment.Axioms   # axioms of every public declaration
 scripts/check-controls.sh # all negative controls must be rejected
 </code></pre>
@@ -80,7 +84,7 @@ scripts/check-controls.sh # all negative controls must be rejected
 <pre><code class="language-toml">[[require]]
 name = &quot;stratonovich-ham-second-moment-lean&quot;
 git = &quot;https://github.com/chenle02/stratonovich-ham-second-moment-lean&quot;
-rev = &quot;v0.9.0&quot;
+rev = &quot;v0.10.0&quot;
 </code></pre>
 <h2 id="architecture">Architecture</h2>
 <table>
@@ -97,7 +101,7 @@ rev = &quot;v0.9.0&quot;
 </tr>
 <tr>
 <td><code>StratonovichHAMSecondMoment/</code></td>
-<td>the 76 library modules (whole results, narrower results, foundations and proof steps)</td>
+<td>the 115 library modules (whole results, narrower results, foundations and proof steps)</td>
 </tr>
 <tr>
 <td><code>StratonovichHAMSecondMoment.lean</code></td>
@@ -137,19 +141,19 @@ rev = &quot;v0.9.0&quot;
 </tr>
 <tr>
 <td><code>coverage.yaml</code></td>
-<td>one row per covered manuscript result, with its coverage class and the exact scope of the conclusion</td>
+<td>one row per covered manuscript result, with its coverage class, the exact scope of the conclusion and the claims credited to it</td>
 </tr>
 <tr>
 <td><code>docs/coverage-scope-tex.yaml</code></td>
 <td>LaTeX versions of the coverage scope sentences</td>
 </tr>
 <tr>
-<td><code>comparator.json</code>, <code>Challenge.lean</code>, <code>Solution.lean</code>, <code>ChallengeDefs/</code></td>
-<td>the comparator tier: every theorem claim restated in <code>Challenge.lean</code> and proved from the project in <code>Solution.lean</code></td>
+<td><code>comparator.json</code>, <code>comparator-helpers.json</code>, <code>lean-pkg-signoff.json</code>, <code>Challenge.lean</code>, <code>Solution.lean</code>, <code>ChallengeDefs/</code></td>
+<td>the comparator tier: every theorem claim restated in <code>Challenge.lean</code> and proved from the project in <code>Solution.lean</code>; <code>comparator.json</code> holds the theorems credited to a coverage row, <code>comparator-helpers.json</code> the helper theorems, a smoke check declared in <code>lean-pkg-signoff.json</code></td>
 </tr>
 <tr>
 <td><code>scripts/</code></td>
-<td>the negative-control runner and the comparator scaffolding</td>
+<td>the negative-control runner and the comparator scaffolding (<code>CheckFidelity.lean</code> checks every restatement of both configurations)</td>
 </tr>
 <tr>
 <td><code>COMPLETION.md</code></td>
@@ -161,7 +165,11 @@ rev = &quot;v0.9.0&quot;
 </tr>
 <tr>
 <td><code>verification/</code></td>
-<td>external-kernel replays and the Slurm receipt pilot on the Easley cluster</td>
+<td>external-kernel replays and the Slurm receipt pilots on the Easley cluster</td>
+</tr>
+<tr>
+<td><code>site/</code></td>
+<td>sources of the documentation site (gh-pages)</td>
 </tr>
 <tr>
 <td><code>provenance/DEVELOPMENT.md</code></td>
