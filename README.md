@@ -84,6 +84,28 @@ coverage pages, which the
 [documentation site](https://chenle02.github.io/stratonovich-ham-second-moment-lean/)
 now carries.
 
+**The book's release.** The book is released as tag `v1.0.0` of the
+[book repository](https://github.com/chenle02/stratonovich-ham-second-moment),
+original-history revision `86cf977b` (public commit `51a02011ba40`; the
+tag's commit `643d1dcc8911` adds `history/commit-map.tsv` on top). The
+public history of that repository is rewritten, and its
+`history/commit-map.tsv` translates original-history revisions, including the
+manuscript revisions named in this README, to public commits. One of them,
+`39f2597a`, has no public commit: it is a merge that added only a private
+record to its first parent `74d2ec31`, so the public history keeps that parent
+(public commit `a6fc8b9baaca`) and drops the merge. Every TeX file of the
+manuscript is byte-identical in `39f2597a` and in `a6fc8b9baaca`, so the line
+citations anchored to `39f2597a` read the same in the public history. The
+book's front matter differs from `39f2597a`: a line under the title
+on the title page, and a new Preface paragraph on responsibility and
+authorship, with one figure moved. No line of the title page or the Preface
+is cited here. Every other change between the two revisions to a TeX file
+that this companion cites replaces lines one for one and touches no cited
+line. So every manuscript line citation here, anchored to `39f2597a`, cites
+the same line numbers and the same text in `86cf977b`. No Lean file, receipt
+or claim changed; `provenance/manuscript-anchor.json` keeps the file hashes
+of `39f2597a`.
+
 Commit hashes in this README, in [COMPLETION.md](COMPLETION.md), in the
 [statement ledger](docs/statement-ledger.md) and in `verification/` are
 commits of the development repository.

@@ -14,3 +14,4 @@ allow: verification/leanchecker-easley-wave-l13-l14/harness/*: ^stratonovich-ham
 allow: Challenge.lean: ^-@MeasureTheory\.integral$
 allow: Solution.lean: ^-@MeasureTheory\.integral$
 allow: scripts/comparator/scaffold.json: ^-@MeasureTheory\.integral$
+allow: README.md: ^stratonovich-ham-second-momen[t]$
