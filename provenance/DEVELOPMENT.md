@@ -199,7 +199,9 @@ commit (`.lean-receipts/ed66b5bc05fe-*`) stay.
 ## Versions
 
 `v0.9.0` is the wave-L9 gate. `v0.10.0` is the wave-L13 and wave-L14 gates
-with the bookkeeping changes above. `v1.0.0` is planned after the ledger is
-re-anchored to the final manuscript revision. The Lake package
+with the bookkeeping changes above, and re-anchors every manuscript line
+citation to the manuscript's release revision `39f2597a`. A later `v1.0.0`
+is planned once the manuscript is posted, so that the companion can cite its
+public version. The Lake package
 version in `lakefile.toml` is still `0.1.0`: the lakefile is a build input
 and is left exactly as verified.
