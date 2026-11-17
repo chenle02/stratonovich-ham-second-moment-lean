@@ -15,3 +15,8 @@ allow: Challenge.lean: ^-@MeasureTheory\.integral$
 allow: Solution.lean: ^-@MeasureTheory\.integral$
 allow: scripts/comparator/scaffold.json: ^-@MeasureTheory\.integral$
 allow: README.md: ^stratonovich-ham-second-momen[t]$
+allow: coverage.yaml: ^stratonovich-ham-second-momen[t]$
+allow: coverage.md: ^stratonovich-ham-second-momen[t]$
+allow: coverage.html: ^stratonovich-ham-second-momen[t]$
+allow: verification.md: ^stratonovich-ham-second-momen[t]$
+allow: verification.html: ^stratonovich-ham-second-momen[t]$
