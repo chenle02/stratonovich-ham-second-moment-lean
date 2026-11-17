@@ -980,7 +980,8 @@ or declares every compared theorem.
 Cite the paper, and this repository by its release tag or exact commit. See
 [CITATION.cff](CITATION.cff). The releases are archived on Zenodo; the concept DOI
 [doi:10.5281/zenodo.24199104](https://doi.org/10.5281/zenodo.24199104) always resolves to the latest release
-(release v0.9.0: [doi:10.5281/zenodo.24199105](https://doi.org/10.5281/zenodo.24199105)).
+(release v0.10.0: [doi:10.5281/zenodo.24295453](https://doi.org/10.5281/zenodo.24295453);
+release v0.9.0: [doi:10.5281/zenodo.24199105](https://doi.org/10.5281/zenodo.24199105)).
 
 ```bibtex
 @software{chen:26:stratonovich,
