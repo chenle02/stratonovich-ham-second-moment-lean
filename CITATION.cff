@@ -38,11 +38,17 @@ keywords:
   - Stratonovich integral
   - formal verification
 references:
-  - type: unpublished
+  - type: article
     title: "Stratonovich Waves Driven by Space-Time Gaussian Noise: Second Moment and Exact Asymptotics"
+    doi: "10.5281/zenodo.24342309"
+    identifiers:
+      - type: other
+        value: "arXiv:2611.23014"
+        description: "arXiv preprint"
+    url: "https://arxiv.org/abs/2611.23014"
     authors:
       - family-names: "Chen"
         given-names: "Le"
         orcid: "https://orcid.org/0000-0001-8010-136X"
         affiliation: "Auburn University"
-    notes: "Manuscript in preparation; the Lean statements are mapped to its labels in docs/statement-ledger.md."
+    notes: "The Lean statements are mapped to its labels in docs/statement-ledger.md."
