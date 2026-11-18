@@ -27,3 +27,5 @@ allow: README.md: ^arXiv:2611\.23014$
 allow: CITATION.cff: ^arXiv:2611\.23014$
 allow: site/index.md: ^arXiv:2611\.23014$
 allow: index.html: ^arXiv:2611\.23014$
+allow: coverage.html: ^arXiv:2611\.23014v1$
+allow: verification.html: ^arXiv:2611\.23014v1$
