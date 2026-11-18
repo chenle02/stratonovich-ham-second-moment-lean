@@ -20,3 +20,4 @@ allow: coverage.md: ^stratonovich-ham-second-momen[t]$
 allow: coverage.html: ^stratonovich-ham-second-momen[t]$
 allow: verification.md: ^stratonovich-ham-second-momen[t]$
 allow: verification.html: ^stratonovich-ham-second-momen[t]$
+allow: index.html: ^stratonovich-ham-second-momen[t]$
