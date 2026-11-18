@@ -4,7 +4,7 @@
 </section>
 
 Lean 4 checks of finite, algebraic and scalar steps in the paper Le Chen,
-*Stratonovich Waves Driven by Space-Time Gaussian Noise: Second Moment and Exact Asymptotics* (in preparation).
+*Stratonovich Waves Driven by Space-Time Gaussian Noise: Second Moment and Exact Asymptotics* (arXiv:2611.23014).
 
 The book has its own site: <https://chenle02.github.io/stratonovich-ham-second-moment/>.
 

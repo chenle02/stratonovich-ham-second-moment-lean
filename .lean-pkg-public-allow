@@ -25,3 +25,5 @@ allow: site/index.md: ^stratonovich-ham-second-momen[t]$
 allow: coverage.yaml: ^arXiv:2611\.23014v1$
 allow: README.md: ^arXiv:2611\.23014$
 allow: CITATION.cff: ^arXiv:2611\.23014$
+allow: site/index.md: ^arXiv:2611\.23014$
+allow: index.html: ^arXiv:2611\.23014$
