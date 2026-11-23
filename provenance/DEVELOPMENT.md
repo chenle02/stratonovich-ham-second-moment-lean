@@ -11,13 +11,100 @@ commit each release reproduces, and exactly what changed between the two.
 
 | Repository | Visibility | Contents |
 |---|---|---|
-| `chenle02/stratonovich-ham-second-moment-lean` (this one) | public | per release: the release tree in one commit and the commit after it, which adds only the receipts that bind the release tree commit and which the release tag marks (`v0.9.0`, `v0.10.0`); documentation-only commits in between |
-| `chenle02/stratonovich-ham-second-moment-lean-dev` | private | the full development history (523 commits reachable from the `v0.10.0` development commit below, and the wave branches), the milestone tags, and the receipts of every gated development commit |
-| `chenle02/stratonovich-ham-second-moment` | to be published | the manuscript and the complete development history of the paper, including the record of the Lean work (`lean-progress/PROGRESS.md`) and the correspondence reviews (`reviews/`) |
+| `chenle02/stratonovich-ham-second-moment-lean` (this one) | public | per release: the release tree in one commit and the commit after it, which adds only the receipts that bind the release tree commit; the release tag marks that commit or a documentation-only descendant of it (`v0.9.0`, `v0.10.0`, `v0.11.0`); documentation-only commits in between |
+| `chenle02/stratonovich-ham-second-moment-lean-dev` | private | the full development history (754 commits reachable from the `v0.11.0` development commit below, and the wave branches), the milestone tags, and the receipts of every gated development commit |
+| `chenle02/stratonovich-ham-second-moment` | public (history rewritten; its `history/commit-map.tsv` maps original revisions to public commits) | the manuscript and the complete development history of the paper, including the record of the Lean work (`lean-progress/PROGRESS.md`) and the correspondence reviews (`reviews/`) |
 
 The development history is not published here because its early commits
 contain machine-local paths and account names that the release tree does not
 need. Nothing in the release tree depends on that history.
+
+## The development commit release `v0.11.0` reproduces
+
+| | Commit | Tree |
+|---|---|---|
+| release development commit (branch `reanchor-edf7085f`) | `9534f89104ff8a6fe31c9ba3eb29f70a4b6bca2c` | `efed8b16de5604e033b4b1b55897fe4b58662a5a` |
+| verified commit (wave L21, tag `L21-gate`) | `38a3e00f9fc70b847b442c658ba1dc2d47b462fc` | `4c9c0b2119e8f4bf79a7c3a1439b66416f8aef50` |
+
+The two files `COMPLETION.md` and `provenance/manuscript-anchor.json` follow
+development commit `037e181`, a documentation-only successor of `9534f89`
+(wording from the final confirmation review of the re-anchor).
+
+The release development commit is the wave-L21 gate commit `38a3e00` (waves
+L15 to L21 on top of `v0.10.0`'s development commit, each gate with its
+receipts, its Easley evidence and its gate record) with the 22 commits from
+`38a3e00` to `9534f89` on top:
+
+- The comment-only documentation repairs deferred from the wave-L21 reviews
+  (module notes and docstrings of `MildInterface`, `EnvelopeFinal`,
+  `CameronProducts` and `WickFinal`, and the `ChallengeDefs/` mirror of one
+  of them), the comment-only repairs of the re-anchor review and its
+  confirmation (docstrings; a private library name in two module docstrings
+  reworded), and `claims.yaml` summaries reworded (summary text only), with
+  their copies in the comparator scaffold and `Challenge.lean`.
+- The re-anchor to manuscript revision `edf7085f` (book 1.1.3): the
+  citations of waves up to L14 were at `39f2597a` and those of waves L15 to
+  L21 at `0788ddee` (book 1.1.0). No TeX line number moved; only the revision
+  labels next to the citations changed, in the comments of `.lean` files, in
+  the documentation, in `coverage.yaml`, `docs/coverage-scope-tex.yaml`, the
+  `claims.yaml` summaries and the comparator scaffold, with the anchor
+  recorded in `provenance/manuscript-anchor.json`. The `.lean` changes are in
+  comments only (checked mechanically: equal token streams with comments
+  removed, all 3502 `.lean` files, 480 changed in comments, none in code).
+  The re-anchor tooling (`reanchor/`) and `.gitattributes` are marked
+  `export-ignore` in the development repository and are not part of this
+  tree.
+
+`lakefile.toml`, `lake-manifest.json` and `lean-toolchain` are unchanged
+since `v0.10.0`. This repository's receipts for `v0.11.0` bind its own
+release tree commit; the development receipts of the gate commits of waves
+L15 to L21 are kept in `.lean-receipts/` as evidence.
+
+## What the `v0.11.0` tree changes from the development commit
+
+**Not exported: the interface records of waves L15 to L20**
+(`docs/l15/INTERFACE.md` to `docs/l20/INTERFACE.md`). They are the working
+notes the waves were built from (frozen signatures, the build commands of the
+development machines and the readings decided for each item). Some module
+docstrings and the statement ledger name them as design records; they are
+files of the development repository. Everything they fixed that a reader
+needs is in the Lean statements, their docstrings and the statement ledger.
+
+**Lean sources and statement files: nothing.** All 3502 `.lean` files are
+byte-identical to the release development commit (checked mechanically:
+equal bytes). So are `lakefile.toml`, `lake-manifest.json`,
+`lean-toolchain`, `claims.yaml`, `coverage.yaml` (in the release tree
+commit), `comparator.json`, `comparator-helpers.json`,
+`lean-pkg-signoff.json`, `Challenge.lean`, `Solution.lean` and every file
+under `ChallengeDefs/`.
+
+**Redactions in `verification/`**, as for `v0.10.0` (the five items below
+apply unchanged to the folders they name); the folders of waves L15 to L21
+(`verification/leanchecker-easley-wave-l15/` to `-wave-l21/`) have the
+workstation name replaced by `<MACHINE>` in `harness/make-inputs.sh`
+(comments) and in the README (the connection path to the login node), and
+the READMEs say so in one added sentence.
+
+**Other placeholders** (no Lean file): the name of a local workstation in
+`COMPLETION.md` (`<MACHINE>`, in the build notes of the wave table); a path
+to a private review record in the statement ledger (replaced by "its
+adjudication record"); and, in `provenance/manuscript-anchor.json`, the
+personal first name in the file name of one figure, now
+`<person>-observatory-drawing.tex`, in the new revision entry as in the
+earlier one (the recorded SHA-256 is that of the original file).
+
+**Release documentation:** `README.md` keeps the public structure of
+`v0.10.0`, with the text of the development commit merged into it (the
+statements about what is and is not checked, the counts, the review record
+and the verification record); the "At a glance" table, the release section,
+the milestone table copied from `COMPLETION.md` and the receipt paragraph
+are updated for `v0.11.0`. In `COMPLETION.md`, the sentence on where the
+milestone tags are. `coverage.yaml` pins the posted manuscript: the book's release 1.1.3
+(tag `v1.1.3` of the book repository, commit `4fa7e18a5b6d`, with the
+SHA-256 of the book PDF there), whose TeX files are byte-identical to those
+of `edf7085f`. `CITATION.cff` and `.zenodo.json` carry version `0.11.0`.
+`.lean-pkg-public-allow` adds the harness folders of waves L15 to L21, whose
+pinned inputs name the development repository.
 
 ## The development commit release `v0.10.0` reproduces
 
@@ -93,18 +180,18 @@ wave-L9 gate `6eb79c7b2ec4ca52f02121224484aa4865e43ac8`.
 Every commit hash cited in `README.md`, `COMPLETION.md`,
 `docs/statement-ledger.md`, `verification/` and in the file names of the
 development receipts in `.lean-receipts/` is a commit of the development
-repository. Those 101 files (23 lower-tier and 16 comparator receipts with
-their logs, for 24 development commits) are kept as development evidence;
+repository. Those 149 files (31 lower-tier and 24 comparator receipts with
+their logs, for 32 development commits) are kept as development evidence;
 they do not bind any commit of this repository. A receipt names the commit
 it binds, so the receipts of a release tree commit are added by the commit
 after it: for `v0.9.0` the files whose 12-hex prefix is the root commit, for
-`v0.10.0` the files whose 12-hex prefix is the parent of the commit that
-adds them.
+`v0.10.0` and `v0.11.0` the files whose 12-hex prefix is the parent of the
+commit that adds them (`c8d8e0706afb` and `4d0e11cec4f6`).
 
 ## Milestone tags
 
 The milestone tags are annotated tags in the development repository. This
-repository carries only the release tags `v0.9.0` and `v0.10.0`.
+repository carries only the release tags `v0.9.0`, `v0.10.0` and `v0.11.0`.
 
 | Tag (development repository) | Commit |
 |---|---|
@@ -125,10 +212,17 @@ repository carries only the release tags `v0.9.0` and `v0.10.0`.
 | `L12-gate` | `56fc59e` |
 | `L13-gate` | `8f51004` |
 | `L14-gate` | `8f51004` |
+| `L15-gate` | `18c5c1d` |
+| `L16-gate` | `ebac849` |
+| `L17-gate` | `68d0c5e` |
+| `L18-gate` | `6e4644d` |
+| `L19-gate` | `fe9f1de` |
+| `L20-gate` | `5cdd493` |
+| `L21-gate` | `38a3e00` |
 
 `COMPLETION.md` gives the date, manuscript revision and counts of each.
 
-## What the `v0.10.0` tree changes from the development commit
+## What the `v0.10.0` tree changed from its development commit
 
 **Lean sources and statement files: nothing.** All 1997 `.lean` files are
 byte-identical to the release development commit (checked mechanically:
@@ -200,7 +294,9 @@ commit (`.lean-receipts/ed66b5bc05fe-*`) stay.
 
 `v0.9.0` is the wave-L9 gate. `v0.10.0` is the wave-L13 and wave-L14 gates
 with the bookkeeping changes above, and re-anchors every manuscript line
-citation to the manuscript's release revision `39f2597a`. A later `v1.0.0`
+citation to the manuscript's release revision `39f2597a`. `v0.11.0` is the
+wave-L15 to wave-L21 gates, the end point of the Lean work, and re-anchors
+every manuscript line citation to `edf7085f` (book 1.1.3). A later `v1.0.0`
 is planned once the manuscript is posted, so that the companion can cite its
 public version. The Lake package
 version in `lakefile.toml` is still `0.1.0`: the lakefile is a build input

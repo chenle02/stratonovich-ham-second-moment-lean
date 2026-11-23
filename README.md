@@ -12,7 +12,7 @@ Its releases are archived on Zenodo: [doi:10.5281/zenodo.24342309](https://doi.o
 
 [![Lean](https://img.shields.io/badge/Lean-v4.35.0-153e63)](lean-toolchain)
 [![Mathlib](https://img.shields.io/badge/Mathlib-56a0058-153e63)](https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679)
-[![Release](https://img.shields.io/badge/release-v0.10.0-153e63)](https://github.com/chenle02/stratonovich-ham-second-moment-lean/releases/tag/v0.10.0)
+[![Release](https://img.shields.io/badge/release-v0.11.0-153e63)](https://github.com/chenle02/stratonovich-ham-second-moment-lean/releases/tag/v0.11.0)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24199104.svg)](https://doi.org/10.5281/zenodo.24199104)
 [![License](https://img.shields.io/badge/license-Apache--2.0-153e63)](LICENSE)
 [![sorry](https://img.shields.io/badge/library%20sorry-0-153e63)](#verification-record)
@@ -55,64 +55,63 @@ It shows that `log E[u(t,x)²]` grows on the scale `t^κ`, with
 
 | | |
 |---|---|
-| Lean modules | 139 proof modules: 24 step modules in `StratonovichHAMAudit/` and 115 in `StratonovichHAMSecondMoment/` (besides these, the consumer `HermiteWordConsumer`, the axiom report `Axioms` and the umbrella) |
-| Labelled results of the manuscript (220) | 44 whole results; 1 whole result with two named inputs supplied; 16 narrower results; steps or parts of 34 further results; 2 main theorems outside Lean; 123 not formalized ([COMPLETION.md](COMPLETION.md)) |
-| Public declarations | 3654 theorems and 962 definitions; 4502 checked facts in [`claims.yaml`](claims.yaml) (3653 theorems, 849 definitions) |
-| Comparator | all 3653 theorem claims compared with their restatements: 1553 credited to a manuscript result in [`coverage.yaml`](coverage.yaml) (`comparator.json`: 1134 named by the rows at the wave-L13/L14 gate, 419 added in this release by the direct-label rule), 2100 helper theorems compared as a declared smoke check and credited to no result (`comparator-helpers.json`, [`lean-pkg-signoff.json`](lean-pkg-signoff.json)) |
+| Lean modules | 209 proof modules: 24 step modules in `StratonovichHAMAudit/` and 185 in `StratonovichHAMSecondMoment/` (besides these, the consumer `HermiteWordConsumer`, the axiom report `Axioms` and the umbrella) |
+| Labelled results of the manuscript (220) | 59 whole results; 1 whole result with one named input supplied; 22 narrower results; steps or parts of 30 further results; 2 main theorems outside Lean; 106 not formalized ([COMPLETION.md](COMPLETION.md)) |
+| Public declarations | 5330 theorems and 1425 definitions; 6632 checked facts in [`claims.yaml`](claims.yaml) (5326 theorems, 1306 definitions) |
+| Comparator | all 5326 theorem claims compared with their restatements: 2056 credited to a manuscript result in [`coverage.yaml`](coverage.yaml) (`comparator.json`: 1134 named by the rows at the wave-L13/L14 gate, 419 added in v0.10.0 by the direct-label rule, 503 of waves L15 to L21 credited by the same rule), 3270 helper theorems compared as a declared smoke check and credited to no result (`comparator-helpers.json`, [`lean-pkg-signoff.json`](lean-pkg-signoff.json)) |
 | Axioms | proof library: only `propext`, `Classical.choice`, `Quot.sound`; no `sorry` (`Challenge.lean`, the comparator's statement file, states each compared theorem with `sorry` by design) |
 | Negative controls, refutations, audit files | 68, 372, 137 |
 | Pinned toolchain | Lean `4.35.0`, Mathlib `56a0058` |
-| Verified state | the wave-L13 and wave-L14 gates (development commit `8f51004`, manuscript revision `a284420`), with every manuscript line citation re-anchored to manuscript revision `39f2597a`; the receipts that bind this release's tree commit are added by the commit after it |
+| Verified state | the wave-L15 to wave-L21 gates (development commit `38a3e00`, the wave-L21 gate), with every manuscript line citation re-anchored to manuscript revision `edf7085f` (book 1.1.3); the receipts that bind this release's tree commit are added by the commit after it |
 | Correspondence to the paper | AI review from a different model family, accepted by the author; not a human verification |
 
 ## This release
 
-`v0.10.0` is the wave-L13 and wave-L14 gates (waves L10 to L14 since
-`v0.9.0`). Its tree is the tree of development commit `09cfc11` of the
-private development repository: the gate commit `8f51004` with its
-receipts, its Easley evidence and its gate record, two claims that named
-Lean-generated declarations dropped, the comparator split in two
-configurations (below), release documentation, and the re-anchor of every
-manuscript line citation to manuscript revision `39f2597a`, with the cluster
-evidence in `verification/` redacted; no Lean proof file changed after the
-gate except in comments (the re-anchored line citations). It
-is one commit on top of `v0.9.0`'s history, followed by a receipts commit.
-[provenance/DEVELOPMENT.md](provenance/DEVELOPMENT.md) names the development
-repository and the commit, and lists every change.
+`v0.11.0` is the wave-L15 to wave-L21 gates (waves L15 to L21 since
+`v0.10.0`), the end point of the Lean work: after wave L21 the author
+planned no further proof waves. Its tree is the tree of development commit
+`9534f89` of the private development repository: the wave-L21 gate commit
+`38a3e00` with the receipts, Easley evidence and gate records of waves L15
+to L21, the comment-only documentation repairs of the wave-L21 reviews and
+of the re-anchor reviews, and the re-anchor of every manuscript line citation to manuscript revision
+`edf7085f` (book 1.1.3), with the cluster evidence in `verification/`
+redacted; no Lean proof file changed after the gate except in comments. The
+interface records of waves L15 to L20 (`docs/l15/` to `docs/l20/`), which
+some module docstrings and the statement ledger name as design records, are
+working notes of the development repository and are not part of this tree.
+It is one commit on top of `v0.10.0`'s history, followed by a receipts
+commit. [provenance/DEVELOPMENT.md](provenance/DEVELOPMENT.md) names the
+development repository and the commit, and lists every change.
 
-What is new besides waves L10 to L14: every compared theorem is accounted
-for. 1553 theorems are credited to rows of `coverage.yaml`: the 1134 that
-the rows named at the gate, and 419 whose statement-ledger label cell names
-a direct manuscript label with a coverage row (credited to that row in this
-release). The other 2100 helper theorems are compared in a separate
-configuration that `lean-pkg-signoff.json` declares a smoke check, and the
-491 of them that were marked `reusable` are now marked `internal` in
-`claims.yaml`. With that, lean-pkg renders the generated verification and
-coverage pages, which the
-[documentation site](https://chenle02.github.io/stratonovich-ham-second-moment-lean/)
-now carries.
+What is new: waves L15 to L21 add 70 modules to
+`StratonovichHAMSecondMoment/`, 17 coverage rows (118 in all) and 2130
+claims (6632 in all). Wave L15 gives the phase space `H^(1/2) x H^(-1/2)`
+and `L:uniform-E-lift`; wave L16 the Cameron-map chain; wave L17 the
+pairing-envelope chain; wave L18 the spatial Wick measures and the
+deterministic half of `L:joint-fixed-order`; wave L19 the `L^2`
+construction on source fields (model M9: a centered Gaussian field with the
+source's positive-width covariance, the fixed-order Stratonovich integrals
+and the series `u`), with `P:mixed`, `L:vertex-crude` and
+`L:joint-fixed-order` whole; wave L20 the mild construction
+`P:mild-construction`; and wave L21 discharges the named input
+`TubeAttained` at the manuscript's tubes. The named inputs still supplied at
+this end point are `SignedMultiplierForm`, `ThreeTransfer`, `TubeTail` and
+`CutoffCompact`. Every compared theorem is credited to a coverage row or
+declared a helper, as in `v0.10.0`.
 
-**The book's release.** The book is released as tag `v1.0.0` of the
-[book repository](https://github.com/chenle02/stratonovich-ham-second-moment),
-original-history revision `86cf977b` (public commit `51a02011ba40`; the
-tag's commit `643d1dcc8911` adds `history/commit-map.tsv` on top). The
-public history of that repository is rewritten, and its
-`history/commit-map.tsv` translates original-history revisions, including the
-manuscript revisions named in this README, to public commits. One of them,
-`39f2597a`, has no public commit: it is a merge that added only a private
-record to its first parent `74d2ec31`, so the public history keeps that parent
-(public commit `a6fc8b9baaca`) and drops the merge. Every TeX file of the
-manuscript is byte-identical in `39f2597a` and in `a6fc8b9baaca`, so the line
-citations anchored to `39f2597a` read the same in the public history. The
-book's front matter differs from `39f2597a`: a line under the title
-on the title page, and a new Preface paragraph on responsibility and
-authorship, with one figure moved. No line of the title page or the Preface
-is cited here. Every other change between the two revisions to a TeX file
-that this companion cites replaces lines one for one and touches no cited
-line. So every manuscript line citation here, anchored to `39f2597a`, cites
-the same line numbers and the same text in `86cf977b`. No Lean file, receipt
-or claim changed; `provenance/manuscript-anchor.json` keeps the file hashes
-of `39f2597a`.
+**The book's release.** The line citations are anchored to manuscript
+revision `edf7085f`, the book's release 1.1.3: tag `v1.1.3` of the
+[book repository](https://github.com/chenle02/stratonovich-ham-second-moment)
+(public commit `18eef2e33331`; the tag's commit `4fa7e18a5b6d` adds the
+commit map on top). The public history of that repository is rewritten, and
+its `history/commit-map.tsv` translates original-history revisions,
+including the manuscript revisions named in this README, to public commits.
+Every TeX file of the manuscript (135 files) is byte-identical in `edf7085f`
+and in `18eef2e33331`, so the line citations read the same in the public
+history. Version 1 of the arXiv preprint 2611.23014 is the book's release
+1.0.0; [coverage.yaml](coverage.yaml) pins the release 1.1.3 that the
+citations follow (commit and SHA-256 of the book PDF at the tag).
+`provenance/manuscript-anchor.json` keeps the file hashes of `edf7085f`.
 
 Commit hashes in this README, in [COMPLETION.md](COMPLETION.md), in the
 [statement ledger](docs/statement-ledger.md) and in `verification/` are
@@ -738,7 +737,7 @@ To use the companion as a Lake dependency:
 [[require]]
 name = "stratonovich-ham-second-moment-lean"
 git = "https://github.com/chenle02/stratonovich-ham-second-moment-lean"
-rev = "v0.10.0"
+rev = "v0.11.0"
 ```
 
 ## Architecture
@@ -785,10 +784,10 @@ Manuscript labels and TeX line numbers refer to the revision recorded in
 ## Milestones
 
 Each milestone is the commit where the author closed a gate. The milestone
-tags (`L0-companion-created`, `ledger-gate`, `L1-gate` ... `L14-gate`,
+tags (`L0-companion-created`, `ledger-gate`, `L1-gate` ... `L21-gate`,
 `reanchor-975feb3`) live in the private development repository and are listed
 with their commits in [COMPLETION.md](COMPLETION.md); this repository carries
-only the release tags `v0.9.0` and `v0.10.0`.
+only the release tags `v0.9.0`, `v0.10.0` and `v0.11.0`.
 
 | Tag | Commit | Date | Manuscript | Claims | Theorems | Coverage rows (same / inputs / outside) | Milestone |
 |---|---|---|---|---|---|---|---|
@@ -809,6 +808,13 @@ only the release tags `v0.9.0` and `v0.10.0`.
 | `L12-gate` | `56fc59e` | 2026-11-13 | `a284420` | 3107 | 2541 | 85: 56 / 27 / 2 | wave L12 (the terminal Wick lemma in full for the constructed chain measures; the damped homogeneous norms in full with the smoothed covariance modelled by its density, model choice M3; source finite comparison and tube half action in full; the tube Rayleigh transfer from two supplied inputs; the Fock sandwich proved on the Fourier-side model) |
 | `L13-gate` | `8f51004` | 2026-11-13 | `a284420` | 4504 | 3654 | 101: 64 / 35 / 2 | waves L13 and L14, closed together (the two-chain diagram model, model choice M4, with the mixed-moment proposition supplied; the spatial and order-four white diagram bounds in full on the model; the Chapter 3 upper bounds with their moment statements resting on the supplied input; H^1 identified with Mathlib's Sobolev space and the resolvent form layer) |
 | `L14-gate` | `8f51004` | 2026-11-13 | `a284420` | 4504 | 3654 | 101: 64 / 35 / 2 | waves L13 and L14, closed together (the occupation completion spaces, model choice M5, and H^1 as the weak-gradient graph, model choice M6, with the four-linear form, the occupation class and the raw occupation energy in full; the source spatial heat lemma in full; the d = 3 endpoint lemmas in full with the positive definiteness of the Riesz densities proved) |
+| `L15-gate` | `18c5c1d` | 2026-11-20 | `c3c2431d` (L15 citations; earlier rows stay on `39f2597a`, the same text) | 4705 | 3803 | 102: 64 / 36 / 2 | wave L15, item L15-UM in scope (a): the phase space `H^(1/2) x H^(-1/2)` with density of real tests, duality and multipliers; `L:uniform-E-lift` with nothing supplied (narrower: the lift `L_F` and the complex extension not formalized); the a.e. mean identity of `E:positive-raw-mean` and a canonical version agreeing a.e., for a supplied `UniformMeanRegulator`, so `L:positive-raw-embedding` is narrower with inputs supplied; closed by the author 2026-11-20 |
+| `L16-gate` | `ebac849` | 2026-11-20 | `0788ddee` (book 1.1.0; the wave-L15 citations moved to it, earlier rows stay on `39f2597a`, the same text) | 5134 | 4137 | 109: 70 / 37 / 2 | wave L16, the Cameron-map chain: `L:cameron-fractional-products` in full; L15's named inputs `CameronSpatialMap` and `UniformMeanRegulator` constructed, with the named input `CutoffCompact` (the compactness sentence of `P:cutoff-singular-values`, kept by the author's decision); `L:positive-raw-embedding` with nothing supplied, conclusion full by the author's decision; `P:cameron-temporal-map` narrower; closed by the author 2026-11-20 |
+| `L17-gate` | `68d0c5e` | 2026-11-21 | `0788ddee` (book 1.1.0) | 5642 | 4555 | 113: 72 / 39 / 2 | wave L17, the pairing-envelope chain: `L:translated-covariance-CS` and `L:pairing-product-envelope` in full with nothing supplied (label-set model M7, bridge from M4; interface amendment 1); `L:crude-corrected` and `P:envelope` narrower with `MixedMoment` supplied (diagram bounds in `d = 1, 2`, and `d = 3` for Green-smoothed kernels uniformly in `eta`; `E:envelope-growth` without the comparison `rho > kappa`); closed by the author 2026-11-21 |
+| `L18-gate` | `6e4644d` | 2026-11-21 | `0788ddee` (book 1.1.0) | 6022 | 4862 | 115: 74 / 39 / 2 | wave L18, spatial Wick measures and the deterministic half of `L:joint-fixed-order`: `L:spatial-wick-measures` in full with nothing supplied (model M8); `L:joint-fixed-order` narrower with nothing supplied (deterministic half; the L^2 construction not formalized); the named input `DiagramLimits` discharged for every `H:homog` covariance in `d = 1, 2, 3`; closed by the author 2026-11-21 |
+| `L19-gate` | `fe9f1de` | 2026-11-22 | `0788ddee` (book 1.1.0) | 6314 | 5077 | 117: 80 / 35 / 2 | wave L19, the `L^2` construction on source fields (model M9): `P:mixed`, `L:vertex-crude` and `L:joint-fixed-order` with the manuscript's hypotheses; the named inputs `MixedMoment` and `FirstMomentSeries` discharged for the chaos terms and solution of every source field; closed by the author 2026-11-22 |
+| `L20-gate` | `5cdd493` | 2026-11-23 | `0788ddee` (book 1.1.0) | 6620 | 5314 | 117: 84 / 31 / 2 | wave L20, the mild construction on source fields: `P:mild-construction` with the manuscript's hypotheses; the `d = 1` Riesz instance of `H:homog`, so the Riesz `hH` leaves three rows; `P:d1-upper`, `C:d1-first-calibration`, `P:low-alpha-upper` and `P:envelope` in full; comment-only docstring pass over 55 earlier files; closed by the author 2026-11-23 |
+| `L21-gate` | `38a3e00` | 2026-11-23 | `0788ddee` (book 1.1.0) | 6632 | 5326 | 118: 85 / 31 / 2 | wave L21, the last proof wave of the author's end point: the named input `TubeAttained` discharged at the manuscript's tubes; `L:tube-closed-geometry` with the manuscript's hypotheses (narrower conclusion); `P:tube-rayleigh-transfer` with `TubeTail` the one input left; the deferred wave-L20 Lean-comment corrections; closed by the author 2026-11-23 |
 
 ## Trust
 
@@ -819,7 +825,7 @@ to be read next to the paper. Lean does not check that correspondence.
 
 **Correspondence review, in short.** Each wave's ledger rows were reviewed
 against the manuscript by AI models from a different family than the ledger's
-author, and the author accepted every wave, the last two at the wave-L13 and wave-L14 gates. The
+author, and the author accepted every wave, the last at the wave-L21 gate. The
 full record follows.
 
 <details>
@@ -1167,13 +1173,15 @@ keep their revisions.
 **This repository.** A receipt names the commit it binds, so the receipts
 for a release's tree commit cannot be part of that commit: a lower-tier
 receipt and a comparator receipt are cut at the tree commit and added, with
-nothing else, by the commit after it, which the release tag marks (`v0.9.0`,
-`v0.10.0`). For `v0.10.0` they are the files in `.lean-receipts/` whose 12-hex
-prefix is the parent of the commit that `v0.10.0` marks. The comparator
-receipt covers both configurations, `comparator.json` (1553 theorems credited
-to coverage rows) and `comparator-helpers.json` (2100 helper theorems, a
-smoke check). The other receipts in `.lean-receipts/` bind the `v0.9.0` root
-commit or commits of the development repository and are kept as evidence.
+nothing else, by the commit after it; the release tag marks that commit or a
+documentation-only descendant of it. For `v0.11.0` they are the files in
+`.lean-receipts/` whose 12-hex prefix is `4d0e11cec4f6`, the release tree
+commit. The comparator receipt covers both configurations, `comparator.json`
+(2056 theorems credited to coverage rows) and `comparator-helpers.json`
+(3270 helper theorems, a smoke check). The receipts of `v0.10.0`'s tree
+commit (prefix `c8d8e0706afb`) and of the `v0.9.0` root commit (prefix
+`ed66b5bc05fe`) stay; the other receipts in `.lean-receipts/` bind commits
+of the development repository and are kept as evidence.
 
 **Development record.**
 

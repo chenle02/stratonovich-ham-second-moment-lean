@@ -9,7 +9,10 @@ kind: paper
 stack: lts-2026.10
 manuscript:
   title: "Stratonovich Waves Driven by Space-Time Gaussian Noise: Second Moment and Exact Asymptotics"
-  version: unposted
+  version:
+    repo: https://github.com/chenle02/stratonovich-ham-second-moment
+    commit: 4fa7e18a5b6d69d46adad461c9b5d96c3280961d
+    sha256: 0c25620b49406456526beb8549b469062c0ab53084097a84d49eaacfa8a5e7a5
 summary: "With the manuscript's hypotheses, 59 labelled results are formalized in full, as are three displays and a remark (63 full rows), and 22 with a narrower conclusion; P:tube-rayleigh-transfer in full with one input supplied; steps, parts or narrower forms of 30 further results with inputs supplied; T:full-upper and T:intrinsic-second-moment are outside Lean."
 rows:
 - paper:
