@@ -1,6 +1,6 @@
 /-
 Refutation for the named input of part (i) of `L:spatial-static-controls`
-(`notes/integrated_spatial_occupation.tex` lines 42-51 at 39f2597a), package
+(`notes/integrated_spatial_occupation.tex` lines 42-51 at edf7085f), package
 definition `StratonovichHAMSecondMoment.SpatialStaticControls.RayleighFloor`.
 
 Wrong variant: the floor without `Γ ≠ 0`, i.e. `RayleighFloor 0`.

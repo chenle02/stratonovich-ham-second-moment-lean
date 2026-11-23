@@ -75,7 +75,7 @@ def mu0 : Measure (Rd 2) := ENNReal.ofReal (2 * π)⁻¹ • lineMeasure e1
 /-! ### The covariance functional and its factorization on tensors -/
 
 /-- The noise covariance functional of `E:cov` (main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex`, 39f2597a, lines 378-381) read as
+`notes/notes_stratonovich_ham_second_moment.tex`, edf7085f, lines 378-381) read as
 `E W(F)² = ∫∫ |t-s|^{-a} ∫ Γ(dz) ∫ F(t,x) F(s,x-z) dx dt ds` for a real test `F`
 (a definitional D1 reading; `W` itself is not constructed).  Time integrals run over
 `ℝ`; for tests supported in `(0,T)` this is the integral over `[0,T]²`.  An

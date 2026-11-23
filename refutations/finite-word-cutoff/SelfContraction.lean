@@ -1,6 +1,6 @@
 /-
 Refutation for the retention of the lowering terms in `L:finite-word-cutoff`
-(main TeX lines 3070-3073 at 39f2597a: "The lowering term has been retained: the
+(main TeX lines 3070-3073 at edf7085f: "The lowering term has been retained: the
 assertion includes creation followed by annihilation and all resulting
 self-contractions"), package theorem
 `StratonovichHAMSecondMoment.FiniteWordCutoff.finite_word_cutoff` and the insertion

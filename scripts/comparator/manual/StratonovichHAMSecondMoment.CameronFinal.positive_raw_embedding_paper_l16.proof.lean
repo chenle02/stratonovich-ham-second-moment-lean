@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.CameronFinal.positive_raw_embedding_paper_l16

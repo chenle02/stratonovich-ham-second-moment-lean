@@ -4,8 +4,8 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Positive definiteness of the Riesz-type covariance measures of Section `S:three-endpoints` of
-the main TeX file `notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a (all
-line numbers below are at 39f2597a).  This module proves the three inputs that wave L14-3D
+the main TeX file `notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f (all
+line numbers below are at edf7085f).  This module proves the three inputs that wave L14-3D
 supplied as named hypotheses:
 * `EndpointLemmas.RieszProductPD` (`c ∏_j |x_j|^{-e_j} dx` on `ℝ³`, `c ≥ 0`, `0 ≤ e_j < 1`;
   the Gaussian-mixture argument in the proof of `L:product-endpoints`, lines 7251-7265);

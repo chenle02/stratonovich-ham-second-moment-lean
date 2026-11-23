@@ -1,6 +1,6 @@
 /-
 Refutation for the identification of one regularized Green factor (main TeX line 4392 at
-39f2597a, `G` replaced by `p_η * G`), package theorem
+edf7085f, `G` replaced by `p_η * G`), package theorem
 `StratonovichHAMSecondMoment.TerminalWickRegularization.regFactor_eq_conv`:
 `h · law(h V + √η Z) = G_h * p_η`, `V ~ G_1`, `Z ~ N(0, I_d)`.
 

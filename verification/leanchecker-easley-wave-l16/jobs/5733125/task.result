@@ -1,0 +1,14 @@
+index=9
+mode=fresh
+target=StratonovichHAMSecondMoment.CameronTemporalTarget
+rc=0
+commit=ebac849d61e539a125de6d920c1c2b29255ca671
+tree=411f45b32cb77ef271136fd5dfa0fbe3c9254715
+inputs_sha256=00ddee38e4536876e6d5732b3d4a25af6a66304b52451051aca7a8e56b8d86ba
+ws_tar_sha256=078d2cd125f30e4667565490f803c59aa0c43009f23e26f24961fd2b09cff049
+leanchecker_sha256=12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6
+node=node862
+job=5733125
+array_job=5733116
+start=2026-11-20T12:23:25-0600
+end=2026-11-20T13:10:15-0600

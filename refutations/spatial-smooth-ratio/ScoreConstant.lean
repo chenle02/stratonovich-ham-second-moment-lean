@@ -1,7 +1,7 @@
 /-
 Refutation for the scalar identity of the optimisation in
 `P:spatial-smooth-ratio` (`notes/integrated_spatial_occupation.tex` lines
-269-286 at 39f2597a), package theorem
+269-286 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.SpatialSmoothRatio.score_algebra`
 (`M (1+u)² L^q = 2 X^{1/k} u^{α/2} R`, i.e. `C L^q = X^{1/k}` for the TeX's
 `C = M(1+u)²/(2 R u^{α/2})` at the maximiser `L = q X^{1/k}`).

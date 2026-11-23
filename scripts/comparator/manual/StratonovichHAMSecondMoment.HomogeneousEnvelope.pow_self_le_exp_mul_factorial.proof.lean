@@ -1,0 +1,2 @@
+  set_option smartUnfolding false in
+  bridge_auto _root_.StratonovichHAMSecondMoment.HomogeneousEnvelope.pow_self_le_exp_mul_factorial

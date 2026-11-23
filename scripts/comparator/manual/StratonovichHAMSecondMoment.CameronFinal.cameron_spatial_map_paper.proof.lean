@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.CameronFinal.cameron_spatial_map_paper

@@ -1,6 +1,6 @@
 /-
 Refutation for the calibration constant of `E:d1-first-calibration`
-(`C:d1-first-calibration`, main TeX lines 5834-5839 at 39f2597a).  Package
+(`C:d1-first-calibration`, main TeX lines 5834-5839 at edf7085f).  Package
 theorems `StratonovichHAMSecondMoment.LowAlphaUpper.C1_eq` and `two_C1_lt_C2`.
 
 Wrong variant: `C_{1,*} = C_{2,*}/2` (the value that would make the Jensen

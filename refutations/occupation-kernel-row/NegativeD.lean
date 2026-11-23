@@ -1,6 +1,6 @@
 /-
 Refutation for the hypothesis `D > 0` of `L:occupation-kernel-row`
-(`notes/integrated_spatial_occupation.tex`, lines 4-10 and 465-495 at 39f2597a),
+(`notes/integrated_spatial_occupation.tex`, lines 4-10 and 465-495 at edf7085f),
 package definitions `kstarIntegrand`, `Kstar` and package theorems
 `kstarIntegrand_integrable`, `Kstar_pos`.
 

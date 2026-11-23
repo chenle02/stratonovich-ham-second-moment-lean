@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Corollary `C:white-relative-width` (Uniform relative width of the bound
-formulas) of `notes/integrated_white_evaluation.tex` at revision `39f2597a`:
+formulas) of `notes/integrated_white_evaluation.tex` at revision `edf7085f`:
 statement lines 173--181, proof lines 183--204.  The two formulas are those
 displayed in `T:white-moment-bounds` (`E:white-moment-bounds`, lines 140--150):
 `K_0(a) = 2^a/(1-a)` and `M_a = Γ_E((1+a)/2)/(Γ_E(1+a) Γ_E((1-a)/2))`, with

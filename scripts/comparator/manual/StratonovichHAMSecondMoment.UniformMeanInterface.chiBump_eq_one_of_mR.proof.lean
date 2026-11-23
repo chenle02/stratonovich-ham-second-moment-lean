@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.UniformMeanInterface.chiBump_eq_one_of_mR

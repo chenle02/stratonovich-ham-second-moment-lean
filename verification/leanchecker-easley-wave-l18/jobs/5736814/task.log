@@ -1,0 +1,13 @@
+node=node877 job=5736814 array=5736802_12 mode=fresh target=StratonovichHAMSecondMoment.WickScaling start=2026-11-21T09:18:55-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=6e4644d52192a0a43c69201fac3a08a1d9d49190 TREE=a5f01fbdf23bf39583c9ae0782a84001c92c254a MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1440 waited_s=0
+REPLAY_STARTED 2026-11-21T09:22:45-0600
+BEGIN fresh StratonovichHAMSecondMoment.WickScaling 09:22:47
+END fresh StratonovichHAMSecondMoment.WickScaling	0	0:43:13.54	7618632	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2595 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.WickScaling
+PROCESS_EXIT=0 end=2026-11-21T10:06:01-0600

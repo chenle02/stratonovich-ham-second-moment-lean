@@ -1,6 +1,6 @@
 /-
 In-domain refutations for the Gaussian Fourier pairing step of
-`L:phase-contractions` (main TeX lines 2534-2542 at 39f2597a; lemma statement
+`L:phase-contractions` (main TeX lines 2534-2542 at edf7085f; lemma statement
 lines 2509-2523; standing assumptions of `S:static-phase` lines 2490-2493),
 package theorem `StratonovichHAMSecondMoment.PhaseContractions.gauss_shift_le`:
 `∫ e^{-s|q+ξ|²} μ(dξ) ≤ ∫ e^{-s|ξ|²} μ(dξ)` for `s > 0`, `q ∈ ℝ³`.

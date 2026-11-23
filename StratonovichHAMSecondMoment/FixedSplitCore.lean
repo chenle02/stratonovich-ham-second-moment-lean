@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The model-free core of `L:fixed-split` (A fixed degree-split estimate) of
 `notes/notes_stratonovich_ham_second_moment.tex` (main TeX file; all line
-numbers below are at revision 39f2597a): statement lines 3675-3716, proof
+numbers below are at revision edf7085f): statement lines 3675-3716, proof
 3718-4051.  Wave item L10-FS0.
 
 Formalized here (the steps of the proof that do not involve the Gaussian

@@ -1,5 +1,5 @@
 /-
-Refutation for `E:interval-area` (main TeX lines 4923-4935 at 39f2597a: "`F(a,b,c)
+Refutation for `E:interval-area` (main TeX lines 4923-4935 at edf7085f: "`F(a,b,c)
 = 4ab-(a+b-c)_+^2+(|a-b|-c)_+^2`.  This is the area of `{|x|<a, |y|<b,
 |x-y|<c}`"), package definitions `StratonovichHAMSecondMoment.WhiteFour.tri`,
 `F`, theorem `volume_tri`.

@@ -1,7 +1,7 @@
 /-
 Refutation for the time-kernel integrability on bounded intervals used in the
 first sentence of `L:variational-global-mean`
-(`notes/integrated_unmasked_variational.tex` lines 111-113 at 39f2597a: "integrable
+(`notes/integrated_unmasked_variational.tex` lines 111-113 at edf7085f: "integrable
 since `a < 1`"), package theorem
 `StratonovichHAMSecondMoment.VariationalMeanDerivatives.abs_rpow_integrableOn_Ioo`.
 

@@ -3,7 +3,7 @@ Refutation for the standing assumption `Γ ≠ 0` of `P:occupation-physical-clas
 O), package theorem
 `StratonovichHAMSecondMoment.ClassOBridge.occupation_physical_class_whole_paper`.
 
-Manuscript side: `notes/integrated_spatial_occupation.tex` (revision 39f2597a) assumes a nonzero
+Manuscript side: `notes/integrated_spatial_occupation.tex` (revision edf7085f) assumes a nonzero
 covariance (lines 4-5) and states `0 < 𝓔_⋆^𝒪` (`E:occupation-own-energy`, lines 516-520); the
 remark of lines 577-582 says that for zero covariance the occupation energy is zero.
 

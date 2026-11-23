@@ -1,7 +1,7 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.HigherRieszThree.higher_riesz_three`
 read as "some smaller constant also works" (manuscript `L:higher-riesz`, main TeX
-lines 6105-6106 and 6186-6189 at 39f2597a: `M_3` is the OPTIMAL uniform
+lines 6105-6106 and 6186-6189 at edf7085f: `M_3` is the OPTIMAL uniform
 constant).
 
 Wrong variant: Hypothesis `H:spatial-maximum` in `d = 3` for `γ = |x|^{-3/2}`

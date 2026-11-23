@@ -1,7 +1,7 @@
 /-
 Refutation for the pair integral `∫_{[0,t]²} |s-r|^{-α₀} ds dr = Z t^{2-α₀}`,
 `Z = 2/((1-α₀)(2-α₀))` (main TeX lines 5495-5497 and `E:d1-constants`,
-line 5325, at 39f2597a).  Package theorem
+line 5325, at edf7085f).  Package theorem
 `StratonovichHAMSecondMoment.TwoSimplexTime.lintegral_timeCov_square` (moved from
 `D1Upper` at the L13 integration).
 

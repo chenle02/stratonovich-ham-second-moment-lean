@@ -1,6 +1,6 @@
 /-
 Refutation for the separate chain roots in the positions form of the spatial
-integral (main TeX lines 811-813 and 818-822 at 39f2597a: "at each first vertex
+integral (main TeX lines 811-813 and 818-822 at edf7085f: "at each first vertex
 set `(s_{p(l)}, y_{p(l)}) = (0, 0)`.  Thus, the second chain has its own root,
 rather than the last vertex of the first chain"), package theorem
 `StratonovichHAMSecondMoment.DiagramBridge.spatial_waveGreen_one_eq_spatialPos`

@@ -1,6 +1,6 @@
 /-
 Refutation for the power structure of the partial-sum comparison of `L:terminal-wick` (main TeX
-lines 4331-4333, proof 4404-4406 at 39f2597a), package theorem
+lines 4331-4333, proof 4404-4406 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.TerminalWickComplete.norm_sq_partial_le`.
 
 Wrong variant: the comparison for arbitrary real weights, `‖Σ_{n∈s} a_n Y_n‖² ≤ ‖Σ_{n∈s} a_n

@@ -7,7 +7,7 @@ public import Mathlib
 
 Source: `notes/integrated_compact_gaussian.tex` at commit `ba01d98`, Lemma
 `L:gaussian-scalar-powers` (statement lines 13--28, proof lines 30--48); at the
-manuscript release revision `39f2597a`: statement lines 14--28, proof lines 30--65.
+manuscript release revision `edf7085f`: statement lines 14--28, proof lines 30--65.
 
 * `weighted_power`     -- (E:gaussian-weighted-power), weighted AM--GM.
 * `integer_power`      -- (E:gaussian-integer-power), natural-number powers.

@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.WhiteModel
 /-!
 Refutation for `StratonovichHAMSecondMoment.WhiteModel.white_homogCovariance` (part (a) of
 `white_model_paper`): white noise satisfies `H:homog` only with `α = d = 1`
-(main TeX lines 395-400; `notes/integrated_white_evaluation.tex`, 39f2597a, line 4).
+(main TeX lines 395-400; `notes/integrated_white_evaluation.tex`, edf7085f, line 4).
 
 Wrong variant: the white model with scaling exponent `α = 1/2` (an exponent in the open
 range `0 < α < d`).  Counterexample: `c = 1`, `a = 1/4`, `A = {0}`, scale `2`:

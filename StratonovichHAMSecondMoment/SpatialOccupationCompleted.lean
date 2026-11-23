@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Integration of wave L6 for Section `S:spatial-occupation-foundation` of
-`notes/integrated_spatial_occupation.tex` (revision 39f2597a): the named
+`notes/integrated_spatial_occupation.tex` (revision edf7085f): the named
 inputs `SpatialStaticControls.RayleighFloor` and
 `SpatialSmoothRatio.StaticControls` are discharged under the section's
 standing assumptions (lines 4-10: a nonzero covariance satisfying `H:homog`,

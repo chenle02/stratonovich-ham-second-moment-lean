@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:uniform-series-tail` (Uniform series tails from scaled moments) of
 `notes/notes_stratonovich_ham_second_moment.tex`, statement lines 4419-4443 and
-proof lines 4445-4464 at manuscript revision 39f2597a.
+proof lines 4445-4464 at manuscript revision edf7085f.
 
 How the proof obtains `‖Y_n‖₂ ≤ B_r^{1/2} r^{-n}` (TeX lines 4446-4449): neither
 orthogonality, nor coefficient extraction in `r`, nor scaling of the field.  It
@@ -226,7 +226,7 @@ theorem integral_sq_eq_norm_sq (f : Lp ℝ 2 μ) :
   ext ω
   simp [sq]
 
-/-- Supplied input from `L:terminal-wick` (TeX lines 4291-4336 at 39f2597a; the two facts at 4329-4335), for
+/-- Supplied input from `L:terminal-wick` (TeX lines 4291-4336 at edf7085f; the two facts at 4329-4335), for
 one regularized family of terms `Y_n ∈ L²(Ω)` and the given real `r`: absolute
 `L²` convergence of `Σ r^n Y_n` (the lemma's last sentence, which gives it for
 every real or complex `r`) and nonnegativity of every mixed moment
@@ -245,7 +245,7 @@ theorem eventually_pos_pair :
   filter_upwards [h] with p hp
   exact ⟨hp.1, hp.2⟩
 
-/-- `L:uniform-series-tail` (TeX lines 4419-4443, proof 4445-4464 at 39f2597a),
+/-- `L:uniform-series-tail` (TeX lines 4419-4443, proof 4445-4464 at edf7085f),
 exact-hypothesis wrapper in `L²(Ω, μ)` for a probability measure `μ`.
 Regularized terms `Y ε δ n` for `ε, δ > 0`; `u^{ε,δ}(r) = Σ r^n Y^{ε,δ}_n`.
 Hypotheses: `r > 1`; for every `ε, δ > 0` the `L:terminal-wick` input
@@ -295,7 +295,7 @@ theorem uniform_series_tail_paper [IsProbabilityMeasure μ]
     fun ε δ hε hδ => (tail_bound (Y ε δ) _ r hr (hYb ε δ hε hδ)).1⟩
 
 /-- The last sentence of `L:uniform-series-tail` (TeX lines 4441-4442; proof
-line 4462 at 39f2597a), exact-hypothesis wrapper: under the hypotheses of
+line 4462 at edf7085f), exact-hypothesis wrapper: under the hypotheses of
 `uniform_series_tail_paper`, if also `E|u^{ε,δ}(1)|² ≤ B₁` for all `ε, δ > 0`,
 then `E|u|² ≤ B₁` for `u = Σ X_n`.  `IsProbabilityMeasure μ` is not used. -/
 theorem uniform_series_tail_second_moment_paper [IsProbabilityMeasure μ]

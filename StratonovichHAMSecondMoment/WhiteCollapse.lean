@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The white-noise collapse of the `d = 1` two-chain diagrams (wave L13 item D6,
 part 1; the analytic half of `P:white-four`).  Main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a:
+`notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f:
 * the diagram integral `E:mixed-diagram` (lines 808-824) and its
   regularization convention (lines 825-832), modelled by
   `DiagramModel.diagramLim` (the limit, as the noise width `ε ↓ 0`, of the

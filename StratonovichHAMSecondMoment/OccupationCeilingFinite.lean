@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Wave item L8-c2: the deterministic discharge of the named input `VariationalRate.S1Bdd`
 (the boundedness claim of `P:variational-positive-scores`,
-`notes/integrated_unmasked_variational.tex` lines 372-374 at revision 39f2597a) and the
+`notes/integrated_unmasked_variational.tex` lines 372-374 at revision edf7085f) and the
 occupation ceiling of `T:intrinsic-occupation-ceiling` (`notes/integrated_occupation_ceiling.tex`
 lines 249-264, proof 266-316) with the constant `K_0 R_sp` in the place of `C_occ`
 (`P:raw-occupation-energy`, line 115: `C_occ ≤ K_0 R_sp`, `K_0 = 2^a/(1-a)`), over one named
@@ -922,7 +922,7 @@ theorem score_le_ceiling {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
 /-! ### The manuscript's statements over the named input `SpaceTimeCS` -/
 
 /-- **`T:intrinsic-occupation-ceiling`, `E:occupation-score-ceiling` with `C_occ` replaced by
-`K_0 R_sp`** (`integrated_occupation_ceiling.tex` lines 249-264 at 39f2597a; `K_0 R_sp` is the
+`K_0 R_sp`** (`integrated_occupation_ceiling.tex` lines 249-264 at edf7085f; `K_0 R_sp` is the
 upper bound of `C_occ` in `P:raw-occupation-energy`, line 115), under the section's standing
 assumptions (lines 4-21: `H:homog`, `a = α₀`, `Γ ≠ 0`) and the named input
 `SpaceTimeCS α₀ Γ`: for every `c > 0` and `Ψ ∈ C_pos`,
@@ -944,7 +944,7 @@ theorem occupation_ceiling_K0_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)
   exact score_le_ceiling hH hΓ0 hST hc hΨ
 
 /-- **`P:variational-positive-scores`, the boundedness claim** (`S1Bdd`,
-`integrated_unmasked_variational.tex` lines 372-374 at 39f2597a), proved deterministically under
+`integrated_unmasked_variational.tex` lines 372-374 at edf7085f), proved deterministically under
 the standing assumptions (`H:homog`, `Γ ≠ 0`, `a = α₀`) and the named input `SpaceTimeCS α₀ Γ`:
 the coefficient-one set `{I_Ψ - v_Ψ/2}` is bounded above by `U_1` (with `K_0 R_0`).  Route
 difference: the TeX's proof (lines 430-446) is stochastic (`T:full-upper` and
@@ -974,7 +974,7 @@ theorem occupation_ceiling_sSup_K0_paper {alpha alpha0 : ℝ} {Γ μ : Measure (
   exact ⟨hne, ⟨_, hb⟩, csSup_le hne hb⟩
 
 /-- **`P:variational-positive-scores`, supremum part, without `S1Bdd`**
-(`integrated_unmasked_variational.tex` lines 372-377 and 452-457 at 39f2597a):
+(`integrated_unmasked_variational.tex` lines 372-377 and 452-457 at edf7085f):
 `VariationalRate.variational_positive_scores_sSup_paper` with `S1Bdd` discharged by
 `s1Bdd_paper` over the named input `SpaceTimeCS α₀ Γ`.  `S_1^pos > 0` and for every `c > 0`
 the value set is nonempty, bounded above, with `S_c^pos = c^{(4-α)/(3-α)} S_1^pos > 0`.
@@ -988,7 +988,7 @@ theorem variational_positive_scores_sSup_st_paper {alpha alpha0 : ℝ} {Γ μ : 
   VariationalRate.variational_positive_scores_sSup_paper hH hΓ0 (s1Bdd_paper hH hΓ0 hST)
 
 /-- `E:spatial-static-score` in the `sSup` form (`integrated_spatial_occupation.tex` lines 52-55
-at 39f2597a): `SpatialStaticControls.spatial_static_score_sSup_paper` with `S1Bdd` discharged
+at edf7085f): `SpatialStaticControls.spatial_static_score_sSup_paper` with `S1Bdd` discharged
 over `SpaceTimeCS α₀ Γ`: `S_1^pos ≥ λ_z(1) - (M_a/2) B_Γ(z,z)` for every nonnegative nonzero
 test function `z`. -/
 theorem spatial_static_score_sSup_st_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
@@ -1001,7 +1001,7 @@ theorem spatial_static_score_sSup_st_paper {alpha alpha0 : ℝ} {Γ μ : Measure
     hzne
 
 /-- `E:spatial-smooth-score` in the `sSup` form (`integrated_spatial_occupation.tex` lines
-228-233 at 39f2597a): `SpatialOccupationCompleted.spatial_smooth_score_sSup_completed_paper` with
+228-233 at edf7085f): `SpatialOccupationCompleted.spatial_smooth_score_sSup_completed_paper` with
 `S1Bdd` discharged over `SpaceTimeCS α₀ Γ`: `S_1^pos ≥ k [R(g) α^{α/2}/(8 M_a q^{q/2})]^{1/k}` for
 every real unit test `g`. -/
 theorem spatial_smooth_score_sSup_st_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
@@ -1024,7 +1024,7 @@ theorem R0_le_of_st_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   SpatialOccupationCompleted.R0_finite_of_S1Bdd_completed_paper hH hΓ0 (s1Bdd_paper hH hΓ0 hST)
 
 /-- `E:spatial-static-energy-score` in the `sSup` form (`integrated_spatial_occupation.tex`
-lines 421-427 at 39f2597a):
+lines 421-427 at edf7085f):
 `SpatialOccupationL7Completed.spatial_static_energy_score_sSup_paper_completed` with `S1Bdd`
 discharged over `SpaceTimeCS α₀ Γ`: `S_1^pos ≥ M_a^{-1/k} F₀(𝓔_sp)`. -/
 theorem spatial_static_energy_score_sSup_st_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}

@@ -187,11 +187,47 @@ definition `Σ_{m=0}^{2k} E[X_m X_{2k-m}]` (main TeX line 5448). -/
 def coeffALim (d : ℕ) (Γ : Measure (Rd d)) (α₀ : ℝ) (k : ℕ) (t : ℝ) : ℝ≥0∞ :=
   ∑ m ∈ Finset.range (2 * k + 1), ∑ D ∈ Pi2 m (2 * k - m), diagramLim d Γ α₀ m (2 * k - m) D t
 
+/-! ### The spectral form -/
+
+/-- The frequency carried by the increment at label `l` in the spectral form:
+with one frequency `ξ_e` per pair `e = (j, h)`, `j < h`,
+`η_l = Σ_e ξ_e (1[l ≤ j, same chain] - 1[l ≤ h, same chain])`, because
+`Σ_e ξ_e · (y_j - y_h) = Σ_l η_l · w_l` when `y = pos w` (the sum over the pairs `e`). -/
+def freq (m : ℕ) {d N : ℕ} (D : Fin N → Fin N) (ξ : openers D → Rd d) (l : Fin N) : Rd d :=
+  ∑ e : openers D,
+    ((if SameChain m l (e : Fin N) ∧ l ≤ (e : Fin N) then (1 : ℝ) else 0) -
+      (if SameChain m l (D e) ∧ l ≤ D e then (1 : ℝ) else 0)) • ξ e
+
+/-- The spectral form of the spatial part at noise width `ε` for a covariance
+with spectral measure `μ` (`Γ = ∫ e^{iξ·x} μ(dξ)`, `H:homog`):
+`∫ ∏_e e^{-ε|ξ_e|²/2} ∏_l Ĝ_{h_l}(η_l) μ^{⊗k}(dξ)`, with
+`Ĝ_h(ξ) = sin(h|ξ|)/|ξ|` (`WaveKernel.waveHat`).  Its identity with
+`spatial (waveGreen d) (covEps Γ ε)` is the statement `SpectralSpatial`, not
+proved here (proved in wave L18: `WickSpectral.spectralSpatial_homog`).  At
+`ε = 0` the integrand need not be absolutely integrable (for white noise a
+self-pair at adjacent labels gives `∫ |sin(h|ξ|)/|ξ|| dξ = ∞`), so zero-width
+integrability is not guaranteed and the general results are stated for `ε > 0`. -/
+def spatialSpec {d : ℕ} (μ : Measure (Rd d)) (ε : ℝ) (m : ℕ) {N : ℕ} (D : Fin N → Fin N)
+    (h : Fin N → ℝ) : ℝ :=
+  ∫ ξ, (∏ e, gaussFactor ε (ξ e)) * ∏ l, waveHat (h l) (freq m D ξ l)
+    ∂(Measure.pi fun _ : openers D => μ)
+
+/-- The spectral identity of the smoothed spatial part (a TRUE statement for
+`Γ`, `μ` as in `H:homog`, `ε > 0`, `h ≥ 0`, `d ∈ {1,2,3}`, by
+`γ_ε(x) = ∫ e^{iξ·x} e^{-ε|ξ|²/2} μ(dξ)` (`LowAlphaConvolution.gammaEps_spectral`),
+Fubini and `∫ e^{iη·w} G_h(dw) = Ĝ_h(η)`).  Recorded for the later items that
+use the spectral form; no theorem of this module assumes it.  Proved in wave L18 under
+`H:homog`: `WickSpectral.spectralSpatial_homog`. -/
+def SpectralSpatial (d : ℕ) (Γ μ : Measure (Rd d)) : Prop :=
+  ∀ (ε : ℝ), 0 < ε → ∀ (m : ℕ) {N : ℕ} (D : Fin N → Fin N), D ∈ pairings Finset.univ →
+    ∀ h : Fin N → ℝ, (∀ i, 0 ≤ h i) →
+      spatial (waveGreen d) (covEps Γ ε) m D h = ENNReal.ofReal (spatialSpec μ ε m D h)
+
 /-! ### The supplied input `MixedMoment` -/
 
 /-- **Supplied input `MixedMoment`** (`P:mixed`, main TeX lines 834-849, with
-`E:mixed-moment` and `E:full-second`; blocker D5, the Stratonovich chaos
-expansion of the solution).  For random variables `X n` (the chaos terms
+`E:mixed-moment` and `E:full-second`; blocker D5 when this module was written,
+the Stratonovich chaos expansion of the solution).  For random variables `X n` (the chaos terms
 `X_n(t,x) = S_n(g_n(·,t,x))`, main TeX line 796) and `u` (the solution
 `u(t,x)`) on `(Ω, P)`, for the covariance `|s - r|^{-α₀} Γ` in dimension `d`:
 1. every diagram has a finite limit as the noise width tends to zero (part of
@@ -203,8 +239,11 @@ expansion of the solution).  For random variables `X n` (the chaos terms
 3. `u²` is integrable and `E u² = Σ_k A_k(t)` with
    `A_k(t) = Σ_{m=0}^{2k} Σ_D J_{m,2k-m,D}(t)` (`E:full-second`), a convergent
    series of nonnegative terms.
-TRUE for the solution of the model under `H:homog` (`P:mixed`); assumed, not
-proved. -/
+TRUE for the solution of the model under `H:homog` (`P:mixed`); assumed here.
+Discharged in wave L19 for the chaos terms `srcX` and their series `srcU` on
+every source field under `H:homog`, for `t > 0` and every `x` (model M9):
+`SourceFinal.mixed_terms_l19`
+(`SourceFinal.mixedMoment_m9_l19` at the constructed `m9`). -/
 def MixedMoment (d : ℕ) (α₀ : ℝ) (Γ : Measure (Rd d)) {Ω : Type*} [MeasurableSpace Ω]
     (P : Measure Ω) (X : ℕ → Ω → ℝ) (u : Ω → ℝ) (t : ℝ) : Prop :=
   (∀ (m n : ℕ) (D : Fin (m + n) → Fin (m + n)), D ∈ Pi2 m n →
@@ -239,6 +278,12 @@ reverses each chain, turning the terminal chains of `E:expansion` into initial
 chains rooted at `(0, 0)`. -/
 def rev (m n : ℕ) (i : Fin (m + n)) : Fin (m + n) :=
   if h : (i : ℕ) < m then ⟨m - 1 - i, by omega⟩ else ⟨2 * m + n - 1 - i, by omega⟩
+
+/-- `ρ` is an involution. -/
+theorem rev_rev (m n : ℕ) (i : Fin (m + n)) : rev m n (rev m n i) = i := by
+  have := i.isLt
+  unfold rev
+  split_ifs with h1 h2 h2 <;> (ext; simp only at h1 h2 ⊢; omega)
 
 /-- The pairing bijection `D ↦ {{ρ(a), ρ(b)} : {a,b} ∈ D}` (main TeX lines
 902-903): as an involution, `ρ ∘ D ∘ ρ`. -/

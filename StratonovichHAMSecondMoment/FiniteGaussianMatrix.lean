@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Finite slice of Section `S:compact-gaussian` of
-`notes/integrated_compact_gaussian.tex` (commit `39f2597a`): Lemma
+`notes/integrated_compact_gaussian.tex` (commit `edf7085f`): Lemma
 `L:gaussian-trace-bounds` (lines 68--129), Proposition `P:finite-gaussian-matrix`
 (lines 138--249, including the Hermitian core `E:finite-hermitian-gaussian`,
 line 215, and the Hermitian dilation, lines 224--241) and Remark

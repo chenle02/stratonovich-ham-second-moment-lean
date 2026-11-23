@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.CameronProducts.cameron_fractional_products

@@ -3,7 +3,7 @@ Refutation for the second identity of `E:occupation-raw-identities`, package the
 `StratonovichHAMSecondMoment.OccupationCompletion.inner_incl_rho_mean` and
 `occupation_raw_square_paper` (`⟨Ψ, ρ_g⟩_{H_I} = ∫_I ∫ h_{Ψ,s}(x) g_s(x)² dx ds` for
 `Ψ ∈ C_pos`, `g ∈ 𝒪`; `L:occupation-raw-square`, `integrated_occupation_ceiling.tex` lines
-34-38 and 96-105 at 39f2597a).
+34-38 and 96-105 at edf7085f).
 
 Wrong variant (class (a), manuscript-claim perturbation in the manuscript domain): the identity
 with a factor `2` (a polarization normalization slip, `⟨Ψ, ρ_g⟩ = 2 ∫_I ∫ h_{Ψ,s} g_s²`).

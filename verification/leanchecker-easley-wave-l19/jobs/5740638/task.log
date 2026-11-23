@@ -1,0 +1,13 @@
+node=node849 job=5740638 array=5740635_3 mode=fresh target=StratonovichHAMSecondMoment.SourceFeatures start=2026-11-22T18:30:04-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=fe9f1de63d87a96443eafb5979a63c334808241c TREE=e7faafb1d463a4a1cda54a7627cba536e08df95e MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1360 waited_s=0
+REPLAY_STARTED 2026-11-22T18:32:09-0600
+BEGIN fresh StratonovichHAMSecondMoment.SourceFeatures 18:32:10
+END fresh StratonovichHAMSecondMoment.SourceFeatures	0	0:42:12.90	7660552	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2534 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.SourceFeatures
+PROCESS_EXIT=0 end=2026-11-22T19:14:23-0600

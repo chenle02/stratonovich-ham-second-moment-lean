@@ -1,6 +1,6 @@
 /-
 Refutation for the order-two Riesz diagram limit (the formerly supplied input
-`RieszDiagramLimit`, main TeX lines 825-832 and 5129-5134 at 39f2597a: the TeX's
+`RieszDiagramLimit`, main TeX lines 825-832 and 5129-5134 at edf7085f: the TeX's
 `J_{2,0,D}(t)` for `Γ(dy) = c|y|^{-α} dy` is the density diagram, value
 `c t^β/((1-α)(2-α-α₀)(3-α-α₀)(4-α-α₀))`), package theorems
 `StratonovichHAMSecondMoment.RieszFourDiagrams.rieszDiagramLimit` and

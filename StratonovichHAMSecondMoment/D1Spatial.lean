@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `L:d1-spatial` (Spatial estimate) of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a (wave L13
+`notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f (wave L13
 item D1): statement at main TeX lines 5359-5379 (`E:d1-spatial-product`, lines
 5364-5373, and `E:d1-spatial-max`, lines 5374-5378), proof at lines 5381-5442;
 the covariances `E:d1-covariances` (lines 5317-5322), the constant `K_sp` of

@@ -2,7 +2,7 @@
 Refutation for the resolvent scaling with `R_α`, package theorem
 `StratonovichHAMSecondMoment.SpectralMassIdentity.resolvent_eq_ralpha`
 (`R_Γ(q) = q^{α-2} R_α`; the display of the proof of `L:spatial-fourier-bound`,
-`notes/integrated_spatial_occupation.tex` lines 200-206 at 39f2597a).
+`notes/integrated_spatial_occupation.tex` lines 200-206 at edf7085f).
 
 Wrong variant: the exponent `2 - α` in place of `α - 2`, same binders and
 hypotheses.  Witness: `d = 1`, `μ` = Lebesgue measure on `ℝ¹` (degree `1`),

@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Propositions `P:spatial-four-linear` (The physical four-linear extension, lines 297-398) and
 `P:spatial-energy-map` (The spatial energy and static lower variational expression, lines
-405-461) of `notes/integrated_spatial_occupation.tex` (revision 39f2597a), on real `H¹`
+405-461) of `notes/integrated_spatial_occupation.tex` (revision edf7085f), on real `H¹`
 profiles, under the section's standing assumptions (lines 4-10: a nonzero covariance satisfying
 `H:homog`, `a = α₀`).
 

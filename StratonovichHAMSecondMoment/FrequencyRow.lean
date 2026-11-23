@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Proposition `P:frequency-row` (Uniform scalar row, TeX lines 48-165) and
 Corollary `C:frequency-time` (A time exponent above one half, TeX lines
-172-199) of `notes/integrated_wave_variance.tex` (revision 39f2597a), with the
+172-199) of `notes/integrated_wave_variance.tex` (revision edf7085f), with the
 definitions `E:variance-scale-profile` (l. 12-20), `E:frequency-row-kernel` and
 `E:frequency-row-integral` (l. 33-42).
 

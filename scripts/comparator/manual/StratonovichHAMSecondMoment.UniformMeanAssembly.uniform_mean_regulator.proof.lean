@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.UniformMeanAssembly.uniform_mean_regulator

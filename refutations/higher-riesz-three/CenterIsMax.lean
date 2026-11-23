@@ -1,7 +1,7 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.HigherRieszThree.F3w_unit` read as
 "the maximum of `F_3` is its value at the center" (manuscript `L:higher-riesz`,
-main TeX lines 6140-6146 at 39f2597a: the maximum is at `|w| = 1`, not at
+main TeX lines 6140-6146 at edf7085f: the maximum is at `|w| = 1`, not at
 `w = 0`).
 
 Wrong variant: `F_3(w) ≤ F_3(0) = 1` for every `w`, at `α = 3/2`.

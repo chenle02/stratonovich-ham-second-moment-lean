@@ -1,6 +1,6 @@
 /-
 Refutation for the increment-sum bound used by `P:low-alpha-upper` (through the
-proof of `P:d1-upper`, main TeX lines 5483-5485 at 39f2597a: "the increments sum
+proof of `P:d1-upper`, main TeX lines 5483-5485 at edf7085f: "the increments sum
 to the two terminal times and therefore to at most `2t`").  Package theorem
 `StratonovichHAMSecondMoment.TwoSimplexTime.sum_incr_le`.
 

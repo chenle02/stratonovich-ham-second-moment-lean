@@ -4,8 +4,8 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The three dimension-three endpoint lemmas of Section `S:three-endpoints` of the main TeX
-file `notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a (all line numbers
-below are at 39f2597a): `L:product-endpoints` (statement lines 7170-7204, proof 7206-7280),
+file `notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f (all line numbers
+below are at edf7085f): `L:product-endpoints` (statement lines 7170-7204, proof 7206-7280),
 `L:plane-endpoints` (statement 7316-7332, proof 7334-7415) and `L:endpoint-closure`
 (statement 7418-7424, proof 7426-7495), with Hypothesis `H:three-endpoints` (lines
 7296-7309) and the parameters `E:three-parameters` (lines 7282-7292).

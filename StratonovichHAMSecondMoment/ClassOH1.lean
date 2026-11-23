@@ -6,7 +6,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 Wave L14, item O (part 1): the real Sobolev space `H¹(ℝ^d;ℝ)` as a topological space, and the
 topological joint continuity of the four-linear pairing of Proposition `P:spatial-four-linear`
 (`notes/integrated_spatial_occupation.tex`, statement lines 297-315, proof lines 317-398, at
-revision 39f2597a; the continuity sentence is lines 307-308, its proof lines 374-376).
+revision edf7085f; the continuity sentence is lines 307-308, its proof lines 374-376).
 
 The space.  `H1R d` is the graph `{(f, ∇f)}` of the weak gradient inside
 `L²(ℝ^d;ℝ) × L²(ℝ^d;ℝ^d)` (Mathlib's `Lp` classes), with the subspace topology of the product.

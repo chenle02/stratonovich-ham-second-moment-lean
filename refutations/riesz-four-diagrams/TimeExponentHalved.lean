@@ -1,6 +1,6 @@
 /-
 Refutation for the time exponent of `E:riesz-four` (main TeX lines 5158-5160 and
-5206-5208 at 39f2597a: "scaling time and space by `t` contributes `t^8` ... and
+5206-5208 at edf7085f: "scaling time and space by `t` contributes `t^8` ... and
 `t^{-2α-2α₀}` ..., giving `t^{2β}`"), package theorem
 `StratonovichHAMSecondMoment.RieszFourDiagrams.riesz_four`.
 

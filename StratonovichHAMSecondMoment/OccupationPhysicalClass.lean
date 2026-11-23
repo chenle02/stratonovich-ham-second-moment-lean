@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Proposition `P:occupation-physical-class` (The full physical occupation class) of
-`notes/integrated_spatial_occupation.tex` (revision 39f2597a): the class `𝒪` (lines 497-500),
+`notes/integrated_spatial_occupation.tex` (revision edf7085f): the class `𝒪` (lines 497-500),
 the statement (lines 503-521: displays `E:occupation-physical-bound`, lines 512-514, and
 `E:occupation-own-energy`, lines 516-520) and its proof (lines 523-575), under the section's
 standing assumptions (lines 4-10: a nonzero covariance satisfying `H:homog`, `a = α₀`,

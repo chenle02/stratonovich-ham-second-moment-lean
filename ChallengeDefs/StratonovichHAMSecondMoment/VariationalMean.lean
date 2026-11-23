@@ -28,7 +28,7 @@ open MeasureTheory Set
 namespace StratonovichHAMSecondMoment.VariationalMean
 
 open HomogHypothesis (Rd HomogCovariance IsTempered IsSpectralMeasure)
-open MaskedSpectralGrowth (integrable_gauss_of_tempered)
+open MaskedSpectralGrowth (integrable_gauss_of_tempered integrable_gauss_zero spectral_translated_gauss)
 open VariationalDilation (CPos conv mean)
 
 variable {d : ℕ}

@@ -1,6 +1,6 @@
 /-
 Refutation for the first display of `E:riesz-two` (main TeX lines 5131-5134 at
-39f2597a: `E X_2 = c_α t^β/((1-α)(2-α-α₀)(3-α-α₀)(4-α-α₀))`), package theorem
+edf7085f: `E X_2 = c_α t^β/((1-α)(2-α-α₀)(3-α-α₀)(4-α-α₀))`), package theorem
 `StratonovichHAMSecondMoment.OrderTwoDiagrams.riesz_self_two_zero`.
 
 Wrong variant: the static (`α₀ = 0`) denominators `(1-α)(2-α)(3-α)(4-α)` kept

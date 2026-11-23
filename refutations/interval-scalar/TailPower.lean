@@ -1,6 +1,6 @@
 /-
 Refutation for the higher-order tail step of `C:static-interaction` (main TeX
-lines 3303-3310 at revision 39f2597a), package theorem
+lines 3303-3310 at revision edf7085f), package theorem
 `StratonovichHAMSecondMoment.IntervalScalar.tail_series_le`
 (`∑_{k≥2} x^k/(k!)^γ ≤ x² e^{γ x^{1/γ}}`).
 

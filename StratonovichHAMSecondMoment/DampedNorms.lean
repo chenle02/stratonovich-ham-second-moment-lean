@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The damped norms `N₁, N₂` of `E:damped-norm-definitions` (line 988) and the
 finiteness part of `L:damped-homogeneous-norms` (lines 1010-1154) of the main
-TeX file `notes/notes_stratonovich_ham_second_moment.tex` (revision 39f2597a).
+TeX file `notes/notes_stratonovich_ham_second_moment.tex` (revision edf7085f).
 
 Definitions:
 * `N2sq a θ μ` is `N₂(θ)²` with temporal exponent `a`:

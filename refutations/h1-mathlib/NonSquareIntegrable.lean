@@ -1,6 +1,6 @@
 /-
 Refutation for the square-integrability clause of `H^1(ℝ^d; ℝ)` (main TeX
-lines 748-750 at 39f2597a: "the real Sobolev space of square-integrable
+lines 748-750 at edf7085f: "the real Sobolev space of square-integrable
 functions with square-integrable first weak derivatives"), package
 definition `StratonovichHAMSecondMoment.WeakSobolev.MemH1` and the
 identification `StratonovichHAMSecondMoment.H1Mathlib.memH1_iff_memSobolev`

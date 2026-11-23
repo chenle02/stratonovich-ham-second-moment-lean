@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.UniformMeanCutoff.integrable_Msigma_integrand

@@ -1,7 +1,7 @@
 /-
 Refutation for
 `StratonovichHAMSecondMoment.MaskedContinuousWave.frequencyPair_shift_le`
-(`L:masked-continuous-wave`, TeX lines 552-554 at 39f2597a: "the changes in
+(`L:masked-continuous-wave`, TeX lines 552-554 at edf7085f: "the changes in
 `h(r±ρ)` have magnitude at most two, since `h ≤ 1`").
 
 Wrong variant: `frequencyPair_shift_le` with the hypothesis `h ≤ 1` dropped.

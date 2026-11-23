@@ -1,7 +1,7 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.HigherRieszThree.F3w_le` (manuscript
 `L:higher-riesz`, dimension three, main TeX lines 6104-6106 and 6140-6146 at
-39f2597a): the uniform bound `F_3 ≤ 2^{1-α}/(2-α)` needs `α > 1`.
+edf7085f): the uniform bound `F_3 ≤ 2^{1-α}/(2-α)` needs `α > 1`.
 
 Wrong variant: `F_3(w) ≤ 2^{1-α}/(2-α)` for every `0 < α < 2` and every `w`
 (`1 < α` dropped).  Counterexample: `α = 1/2`, `w = 0`, where `F_3(0) = 1`

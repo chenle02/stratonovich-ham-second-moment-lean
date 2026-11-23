@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `P:d1-upper` (One-dimensional upper bound) of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a (wave L13
+`notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f (wave L13
 item D2): statement at main TeX lines 5454-5468 (`E:d1-coefficient`, lines
 5458-5462, and `E:d1-upper`, lines 5464-5467), proof at lines 5478-5550; the
 covariances `E:d1-covariances` (lines 5317-5322), the constants `b`, `q`, `β`,
@@ -94,9 +94,13 @@ both covariance cases).  Inputs-supplied: the coefficient display for the limit
 `A_k(t)` in the Riesz case (needs `DiagramLimits`, the limit existence of
 `L:joint-fixed-order`; in the white case it is proved, `d1_upper_paper_white'`)
 and in the TeX's form `Σ_m E[X_m X_{2k-m}]` (needs `MixedMoment`).  Narrower:
-`E:d1-upper` is about `u`, which is not constructed (blocker D5); it is proved
-for any random variable `u` satisfying `MixedMoment` (split modelled-object
-rule).
+`E:d1-upper` is about `u`; here it is proved for any random variable `u`
+satisfying `MixedMoment` (split modelled-object rule; blocker D5 when this
+module was written).  Wave L19 discharges `MixedMoment` for the chaos terms
+`srcX` and their series `srcU` on every source field
+(`SourceFinal.mixed_terms_l19`); the Riesz-case wrapper for them is
+`SourceFinal.d1_upper_paper_l19`, with the Riesz instance of `H:homog` as the
+explicit hypothesis `hH`.
 
 Lemmas marked "Auxiliary" serve only the Lean route.
 -/
@@ -301,7 +305,9 @@ lines 1853-1966, invoked by the proof of `P:d1-upper` at line 5534; the first
 clause of `DiagramModel.MixedMoment`): every diagram of the covariance `Γ` in
 dimension `d` converges, as the noise width `ε ↓ 0`, to its limit `diagramLim`
 (the TeX's `J_{m,n,D}(t)`).  TRUE under `H:homog` by `L:joint-fixed-order`;
-assumed, not proved. -/
+assumed here.  Discharged in wave L18 for every `H:homog` covariance in d = 1, 2, 3 and every
+horizon `t > 0` by `WickFinal.diagramLimits_l18` (the Riesz case in d = 1, `0 ≤ c`,
+`0 ≤ α < 1`, `0 ≤ α₀ < 1`, every `t ≥ 0`, also by `RieszDiagramLimits.diagramLimits_riesz`). -/
 def DiagramLimits (d : ℕ) (Γ : Measure (Rd d)) (α₀ t : ℝ) : Prop :=
   ∀ (m n : ℕ) (D : Fin (m + n) → Fin (m + n)), D ∈ Pi2 m n →
     Tendsto (fun ε => diagram (waveGreen d) (covEps Γ ε) α₀ m n D t) (𝓝[>] 0)

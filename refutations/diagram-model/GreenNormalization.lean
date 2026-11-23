@@ -1,6 +1,6 @@
 /-
 Refutation for the `d = 1` Green-kernel normalization of `DiagramModel` (main
-TeX line 952 at 39f2597a: `G(s,y) = ½ 1_{|y|<s}`, of mass `s`), package
+TeX line 952 at edf7085f: `G(s,y) = ½ 1_{|y|<s}`, of mass `s`), package
 definitions `StratonovichHAMSecondMoment.DiagramModel.green1` and theorem
 `waveGreen_one_eq`.
 

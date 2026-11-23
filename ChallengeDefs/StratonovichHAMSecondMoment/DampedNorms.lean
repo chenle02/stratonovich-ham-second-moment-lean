@@ -54,6 +54,11 @@ def FK (a θ : ℝ) (z : ℝ × (Rd d × (ℝ × ℝ))) : ℝ :=
   (Real.Gamma a)⁻¹ * |z.1| ^ (a - 1) * twoTimeR θ |z.1| z.2.2 *
     (waveHat z.2.2.1 z.2.1 * waveHat z.2.2.2 z.2.1)
 
+/-! ### Almost-everywhere facts (auxiliary) -/
+
+/-- Auxiliary to the Lean proof route. -/
+theorem ae_L0_pos : ∀ᵐ l ∂L0, 0 < l := ae_restrict_mem measurableSet_Ioi
+
 /-! ### Domination of the subordinated integrand -/
 
 /-- The dominating function (auxiliary). -/

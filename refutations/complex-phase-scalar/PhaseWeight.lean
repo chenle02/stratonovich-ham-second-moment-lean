@@ -1,6 +1,6 @@
 /-
 Refutation for the phase-weight change of `L:interval-complex` (main TeX lines
-3556-3560 at 39f2597a), package theorem
+3556-3560 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.ComplexPhaseScalar.phase_weight_change`
 (`(ρ_new²+x)⁻¹ ≤ max{1, ρ_old/ρ_new}² (ρ_old²+x)⁻¹`, the multiplier form of
 `‖z‖_{ρ_new} ≤ max{1, ρ_old/ρ_new} ‖z‖_{ρ_old}` for squared norms).

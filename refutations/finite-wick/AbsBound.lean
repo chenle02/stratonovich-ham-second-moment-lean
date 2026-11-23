@@ -1,6 +1,6 @@
 /-
 Refutation for the pairing-sum bound of `FiniteWick` (behind the moment bound
-of `L:terminal-wick`, main TeX lines 4351-4356 at 39f2597a), package theorem
+of `L:terminal-wick`, main TeX lines 4351-4356 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.FiniteWick.wickSum_abs_le`.
 
 Wrong variant: `|Σ_D ∏ c| ≤ V^k` for a `2k`-set when `|c| ≤ V` (dropping the

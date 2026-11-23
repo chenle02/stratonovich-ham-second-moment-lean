@@ -1,6 +1,6 @@
 /-
 Refutation for the length-substitution step of `P:interval-coefficients`
-(main TeX lines 4183-4215 at revision 39f2597a), package theorem
+(main TeX lines 4183-4215 at revision edf7085f), package theorem
 `StratonovichHAMSecondMoment.IntervalScalar.singleton_weight_le`, which needs
 `L ≥ 1` (the TeX's reduction `L ↦ max{1, L}`, lines 4079-4082).
 

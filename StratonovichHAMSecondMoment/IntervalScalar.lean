@@ -6,7 +6,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 Deterministic scalar steps of `C:static-interaction` (Summable static
 interaction bounds) and `P:interval-coefficients` (Uniform interval
 coefficients) of `notes/notes_stratonovich_ham_second_moment.tex` (main TeX
-file; line numbers at revision 39f2597a).  Both results are operator and
+file; line numbers at revision edf7085f).  Both results are operator and
 stochastic statements; this module formalizes the scalar, combinatorial and
 Hilbert-space deductions inside their proofs.  Every theorem here is a STEP of
 those results (class: inputs supplied, conclusion weaker than the labelled

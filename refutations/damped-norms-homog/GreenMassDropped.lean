@@ -1,6 +1,6 @@
 /-
 Refutation for `L:damped-homogeneous-norms` (main TeX
-`notes/notes_stratonovich_ham_second_moment.tex`, revision 39f2597a, lines
+`notes/notes_stratonovich_ham_second_moment.tex`, revision edf7085f, lines
 1016-1017 and 1104), package theorem
 `StratonovichHAMSecondMoment.DampedNormsHomog.N0_eq`.
 

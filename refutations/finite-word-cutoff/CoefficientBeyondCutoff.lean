@@ -1,6 +1,6 @@
 /-
 Refutation for the count condition `r_i ≤ N_i` in the identification of the
-selected coefficients (main TeX lines 4163-4170 at 39f2597a: "truncate the Hermite
+selected coefficients (main TeX lines 4163-4170 at edf7085f: "truncate the Hermite
 degree of color `i` at `N_i = 2k_i`. A word contributing to `U_r` has `r_i ≤ 2k_i`
 insertions"), package theorem
 `StratonovichHAMSecondMoment.FiniteWordCutoff.coef_cutoff_eq` and the supplied input

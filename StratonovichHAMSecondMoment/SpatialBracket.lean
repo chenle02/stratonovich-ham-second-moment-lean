@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Corollary `C:intrinsic-spatial-bracket` (A common spatial-energy bracket) of
-`notes/integrated_occupation_ceiling.tex` at revision 39f2597a (statement lines 319-333, proof
+`notes/integrated_occupation_ceiling.tex` at revision edf7085f (statement lines 319-333, proof
 lines 335-371), together with the scalar map `E:occupation-scalar-map` (lines 238-246) and the
 second form of `E:occupation-score-ceiling` (lines 252-260), stated for the variational value
 `S_2^pos` (not for `C_2`).

@@ -1,6 +1,6 @@
 /-
 Refutation for the hypothesis `Σ_l h_l ≤ 2t` of `E:d1-spatial-max`
-(`L:d1-spatial`, main TeX lines 5372-5374 at 39f2597a; proof lines 5417-5432).
+(`L:d1-spatial`, main TeX lines 5372-5374 at edf7085f; proof lines 5417-5432).
 Package theorem `StratonovichHAMSecondMoment.D1Spatial.d1_spatial_white_max`.
 
 Wrong variant: `E:d1-spatial-max` without the hypothesis on the sum of the

@@ -1,7 +1,7 @@
 /-
 Refutation for the finite Gaussian comparison of `P:masked-noise-completion`
 (`notes/integrated_covariance_foundation.tex` lines 262-266 and 320-327 at
-39f2597a), package theorem
+edf7085f), package theorem
 `StratonovichHAMSecondMoment.GaussianComparison.gaussian_seminorm_moment_le`.
 
 Wrong variant: the comparison in the reversed direction, i.e. for `A` and

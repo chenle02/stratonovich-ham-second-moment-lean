@@ -1,7 +1,7 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.HigherRieszTwo.F3_num_le`
 (auxiliary to the Lean proof route of the `d = 3` maximum in `L:higher-riesz`,
-main TeX lines 6134-6146 at 39f2597a, where `v = 2 - α ∈ (0,1)`): the chord
+main TeX lines 6134-6146 at edf7085f, where `v = 2 - α ∈ (0,1)`): the chord
 bound `(1+ρ)^v - |1-ρ|^v ≤ 2^v ρ` needs `v < 1` (i.e. `α > 1`).
 
 Wrong variant: the bound for every `v > 0` (`v < 1` dropped).

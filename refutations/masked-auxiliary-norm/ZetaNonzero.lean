@@ -1,6 +1,6 @@
 /-
 Refutation for `L > 0` (`notes/integrated_covariance_foundation.tex`
-lines 96-99 at 39f2597a, part of the setup of `P:masked-auxiliary-norm`),
+lines 96-99 at edf7085f, part of the setup of `P:masked-auxiliary-norm`),
 package theorem `StratonovichHAMSecondMoment.MaskedAuxiliaryNorm.Lz_pos`.
 
 Wrong variant: the hypothesis `ζ ≠ 0` ("a real nonzero Schwartz function",

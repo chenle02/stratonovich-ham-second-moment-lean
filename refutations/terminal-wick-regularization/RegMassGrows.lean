@@ -1,6 +1,6 @@
 /-
 Refutation for the masses of the regularized terminal-chain measures (main TeX line 4393 at
-39f2597a, "Those positive measures have the same masses"), package theorem
+edf7085f, "Those positive measures have the same masses"), package theorem
 `StratonovichHAMSecondMoment.TerminalWickRegularization.chainMeasureReg_univ`.
 
 Wrong variant: the Gaussian smoothing adds mass, `g_1^{T,x,η}(total) = T²/2 + η`.

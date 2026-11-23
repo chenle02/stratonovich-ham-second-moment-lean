@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Spectral homogeneity under `H:homog`, from the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` (revision 39f2597a): the
+`notes/notes_stratonovich_ham_second_moment.tex` (revision edf7085f): the
 first paragraph of the proof of `L:damped-homogeneous-norms` (lines 1067-1076)
 and the facts about `h_Γ` and `R_Γ` stated before
 `P:clock-copy-obstruction` (lines 8993-9002); the same derivation appears in the proof of

@@ -1,6 +1,6 @@
 /-
 Refutation for the root bound of `L:complex-phase` (main TeX lines 2874-2875 at
-39f2597a), package theorem
+edf7085f), package theorem
 `StratonovichHAMSecondMoment.ComplexPhaseScalar.im_root_le`
 (`r² = w`, `|w| ≤ Re w + 2λ²` give `|Im r| ≤ λ`).
 

@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `P:masked-auxiliary-norm` (Auxiliary mask norm) of
-`notes/integrated_covariance_foundation.tex` (revision 39f2597a): statement
+`notes/integrated_covariance_foundation.tex` (revision edf7085f): statement
 lines 106-118, proof lines 120-180, with the definitions of lines 96-103
 (`ζ_R`, `k_R`, `L`, `E:masked-auxiliary-measure`) and the unitary Fourier
 transform of lines 10-14.

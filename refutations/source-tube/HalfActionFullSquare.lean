@@ -1,6 +1,6 @@
 /-
 Refutation for `L:tube-half-action`
-(`notes/integrated_gaussian_tubes.tex` lines 581-597 at 39f2597a), package
+(`notes/integrated_gaussian_tubes.tex` lines 581-597 at edf7085f), package
 theorem `StratonovichHAMSecondMoment.SourceTube.tube_half_action`.
 
 Class (a): manuscript-claim perturbation in the manuscript domain.

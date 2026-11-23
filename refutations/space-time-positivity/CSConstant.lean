@@ -3,7 +3,7 @@ Refutation for the Cauchy-Schwarz bound of the space-time form, package theorem
 `StratonovichHAMSecondMoment.SpaceTimePositivity.stForm_sq_le`
 (`F(Ψ,G)² ≤ F(Ψ,Ψ) F(G,G)`; step (c) of the S1Bdd route, auxiliary; the bound
 `⟨Ψ,ρ_g⟩ ≤ √(v_Ψ A(g))` of `L:occupation-raw-square`,
-`integrated_occupation_ceiling.tex` line 41 at 39f2597a, rests on it).
+`integrated_occupation_ceiling.tex` line 41 at edf7085f, rests on it).
 
 Wrong variant: a better constant, `F(Ψ,G)² ≤ (1/2) F(Ψ,Ψ) F(G,G)`, under all hypotheses of
 the package theorem.  Counterexample: `d = 1`, `Γ` = Lebesgue measure (locally finite, even,

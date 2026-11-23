@@ -4,7 +4,7 @@ import StratonovichHAMSecondMoment.FockColumnBound
 Refutation for the orthonormality hypothesis of
 `StratonovichHAMSecondMoment.FockColumnBound.sum_conv_le` (Bessel's inequality for the modes:
 `∑_i |⟪ψ_i, k⟫|² ≤ ‖k‖²`, the step replacing the Gaussian isometry of main TeX lines 3437-3445
-at 39f2597a).
+at edf7085f).
 
 Wrong variant: unit vectors without orthogonality.  Counterexample: in `ℂ`, two copies of the
 unit vector `1` and `k = 1`: the sum is `2 > 1 = ‖k‖²`.  No junk-value reliance.

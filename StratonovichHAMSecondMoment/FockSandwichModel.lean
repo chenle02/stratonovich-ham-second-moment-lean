@@ -6,7 +6,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 Wave L12 item F1: the supplied input `StaticInteractionCompleted.FockSandwich`
 (`E:fock-sandwich` of `L:fock-form`) is discharged on a concrete model of the cutoff Hilbert
 space, in `notes/notes_stratonovich_ham_second_moment.tex` (main TeX; line numbers at
-revision 39f2597a).
+revision edf7085f).
 
 `L:fock-form` (statement lines 2960-2977, proof 2979-3028) works "on the joint range" of
 `P_N` (Hermite degrees at most `N`) and `S_b` (spatial Fourier band `|η| ≤ b`), where

@@ -1,6 +1,6 @@
 /-
 Refutation for the monotonicity of the masks of `P:variational-remove-mask`
-(`notes/integrated_unmasked_variational.tex` line 257 at 39f2597a), package
+(`notes/integrated_unmasked_variational.tex` line 257 at edf7085f), package
 theorem `StratonovichHAMSecondMoment.RemoveMask.mask_mono`
 (`m_R ≤ m_{R'}` for `0 < R ≤ R'`).
 

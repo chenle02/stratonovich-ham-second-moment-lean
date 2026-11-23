@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.WhiteMomentBounds
 /-!
 Refutation for the closed forms of `StratonovichHAMSecondMoment.WhiteMomentBounds.
 white_moment_bounds_paper` (`E:white-moment-bounds`, `notes/integrated_white_evaluation.tex`,
-39f2597a, lines 143-144, 159-161): the bounds scale as `√c`, because `𝓔_sp = c²/6` enters `F₀`
+edf7085f, lines 143-144, 159-161): the bounds scale as `√c`, because `𝓔_sp = c²/6` enters `F₀`
 through `(2𝓔_sp)^{1/4}`.
 
 Wrong variant: the upper formula is linear in the covariance mass,

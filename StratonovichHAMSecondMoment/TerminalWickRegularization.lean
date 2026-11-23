@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Wave L11, item K4 (ii): the Green-regularization paragraph of the proof of `L:terminal-wick`
 (The finite terminal-chain Wick formula) of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a, lines 4392-4398:
+`notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f, lines 4392-4398:
 "In dimension three one may first replace `G` by `p_η*G`.  Those positive measures have the
 same masses and converge weakly to `G`.  Off the finitely many time cut points, all finite
 Gaussian moments are bounded continuous functions of the spatial variables.  Dominated
@@ -346,7 +346,7 @@ end Convergence
 /-! ### Wrappers -/
 
 /-- The Green-regularization paragraph of the proof of `L:terminal-wick` (main TeX lines
-4392-4398 at 39f2597a), exact-hypothesis wrapper.  Hypotheses: those of `L:terminal-wick`
+4392-4398 at edf7085f), exact-hypothesis wrapper.  Hypotheses: those of `L:terminal-wick`
 (`d ∈ {1,2,3}`, `T > 0`, the terminal point `x`, a centered Gaussian field with
 `V = sup K(p,p) < ∞` and mean-square continuity on the open cells of a finite partition).
 Conclusions, for the regularized terminal-chain measures `g_n^{T,x,η}` (Green measures `G`

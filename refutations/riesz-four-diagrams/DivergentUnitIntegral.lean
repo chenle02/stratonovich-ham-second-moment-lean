@@ -1,6 +1,6 @@
 /-
 Refutation for the finiteness clause of `E:riesz-four` (main TeX line 5169 at
-39f2597a: "This is a finite nonnegative integral", proof lines 5213-5219), package
+edf7085f: "This is a finite nonnegative integral", proof lines 5213-5219), package
 theorems `StratonovichHAMSecondMoment.RieszFourDiagrams.rieszUnit_ne_top` and
 `diagram_riesz_ne_top`.
 

@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Time-fractional ingredients of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` (revision 39f2597a) used by
+`notes/notes_stratonovich_ham_second_moment.tex` (revision edf7085f) used by
 `P:clock-copy-obstruction` (lines 9033-9208) and by the finiteness part of
 `L:damped-homogeneous-norms` (lines 1010-1154).
 

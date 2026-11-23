@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Proposition `P:variational-remove-mask` (Monotone rates and the original
 point moment) of `notes/integrated_unmasked_variational.tex` at revision
-39f2597a: statement TeX lines 227-238, proof lines 240-302, display
+edf7085f: statement TeX lines 227-238, proof lines 240-302, display
 `E:variational-unmasked-point-lower` lines 234-237.  The section's standing
 assumption (line 4) is a nonzero covariance satisfying `H:homog` with
 `a = α₀`; the wrappers carry it as `HomogHypothesis.HomogCovariance`,
@@ -50,7 +50,7 @@ Supplied input (named, one): `RawBlockOriginalLower a Γ Ψ v L`, for all large
 `R`, `2 ∫_0^1 λ_{R,s} ds - v/2 ≤ liminf_{T→∞} L(T)` in `EReal`, where `L(T)`
 stands for `T^{-κ} log E|u(T,x)|²` at a fixed `x`.  It is
 `E:raw-block-original-lower` (`P:raw-block-original-lower`,
-`notes/integrated_raw_block_lower.tex` lines 739-747 at 39f2597a) applied with
+`notes/integrated_raw_block_lower.tex` lines 739-747 at edf7085f) applied with
 the mask `m_R`, which is eligible there (even, `[0,1]`-valued, one on `B_R`,
 supported in the closed ball of radius `2R`, lines 7-8 of that file) for `R`
 at least the radius of `P:compact-original-common-trial`, read with two
@@ -574,7 +574,7 @@ theorem le_liminf_of_tendsto {J : ℝ → ℝ} {I v : ℝ} {L : ℝ → ℝ}
 
 /-- The named input for `E:variational-unmasked-point-lower`
 (`P:raw-block-original-lower`, `notes/integrated_raw_block_lower.tex` lines
-739-747 at 39f2597a, applied with the mask `m_R` and read with the
+739-747 at edf7085f, applied with the mask `m_R` and read with the
 identification of its ground rate with `maskedRate`; in the wrapper `v` is
 `rawCost`, the integral form of `v_Ψ`): for all large `R`,
 `liminf_{T→∞} L(T) ≥ 2 ∫_0^1 λ_{R,s} ds - v/2` in `EReal`, where `L(T)`
@@ -621,7 +621,7 @@ theorem mask_family :
     fun R R' hR hRR x => mask_mono hR hRR x, mask_tendsto⟩
 
 /-- **`P:variational-remove-mask`, rate part** (TeX lines 227-233 and
-240-289 of `notes/integrated_unmasked_variational.tex` at 39f2597a), with the
+240-289 of `notes/integrated_unmasked_variational.tex` at edf7085f), with the
 section's standing hypotheses (line 4: a nonzero covariance satisfying
 `H:homog`, `a = α₀`) and `Ψ ∈ C_pos`, `I = [0,1]`; no supplied input.  The
 masks (`mask_family`) and, with `λ_{R,s}` DEFINED as the square root of the
@@ -686,7 +686,7 @@ theorem variational_remove_mask_rates_paper {alpha alpha0 : ℝ} {Γ μ : Measur
       hH.alpha0_pos.le hH.alpha0_lt_one hΨ⟩
 
 /-- **`P:variational-remove-mask`** (TeX lines 227-302 of
-`notes/integrated_unmasked_variational.tex` at 39f2597a), with the section's
+`notes/integrated_unmasked_variational.tex` at edf7085f), with the section's
 standing hypotheses (line 4: a nonzero covariance satisfying `H:homog`,
 `a = α₀`), `Ψ ∈ C_pos`, `I = [0,1]`, and the named input
 `RawBlockOriginalLower` (see its doc comment) for a function `L`, where

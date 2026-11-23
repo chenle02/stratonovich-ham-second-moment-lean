@@ -3,7 +3,8 @@ module
 /-
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
-Wave L14, item K1b.  TeX at revision 39f2597a (checked with `git show`):
+Wave L14, item K1b.  TeX at revision 39f2597a (checked with `git show`;
+the numbers are unchanged at edf7085f):
 * `L:source-spatial-heat` (Original spatial space and heat),
   `notes/integrated_source_convergence.tex` lines 169-202 (statement 169-182, display 171-174,
   `E:source-heat-definition` 176-179, proof 184-202); standing hypotheses of the section
@@ -130,7 +131,7 @@ variable {d : ℕ}
 
 /-- Auxiliary to the Lean proof route: the cross-correlation
 `c_{F,G}(y) = ∫ F(x) G(x - y) dx`, the inner integral of `B_Γ(F,G)` (TeX line 172 at
-39f2597a, `integrated_source_convergence.tex`). -/
+edf7085f, `integrated_source_convergence.tex`). -/
 def crossCorr (F G : Rd d → ℝ) (y : Rd d) : ℝ := ∫ x, F x * G (x - y)
 
 /-- Auxiliary: `B_Γ(F,G) = ∫ c_{F,G} dΓ` (definitional). -/
@@ -217,7 +218,7 @@ theorem fourier_crossCorr {F G : Rd d → ℝ} (hF : Continuous F) (hFc : HasCom
   rfl
 
 /-- The spectral form of the physical pairing on tests (the second equality of the display of
-`L:source-spatial-heat`, `integrated_source_convergence.tex` lines 171-173 at 39f2597a, in the
+`L:source-spatial-heat`, `integrated_source_convergence.tex` lines 171-173 at edf7085f, in the
 transform `fourierQ F ξ = ∫ F(x) e^{iξ·x} dx`): for real tests `F`, `G` and a spectral measure
 `μ` of `Γ` in the manuscript's convention,
 `B_Γ(F,G) = ∫ F̂(ξ) conj(Ĝ(ξ)) μ(dξ)` (Bochner integrals; integrability of the right side is
@@ -1087,7 +1088,7 @@ theorem tendsto_heatH {Γ : Measure (Rd d)} (hΓ : IsTempered Γ) (hμ : IsTempe
 
 /-! ### The TeX's unitary normalization of the pairing -/
 
-/-- The unitary transform of `integrated_covariance_foundation.tex` lines 11-13 at 39f2597a:
+/-- The unitary transform of `integrated_covariance_foundation.tex` lines 11-13 at edf7085f:
 `\hat f(ξ) = (2π)^{-d/2} ∫ e^{-iξ·x} f(x) dx`. -/
 def texHat (f : Rd d → ℝ) (ξ : Rd d) : ℂ :=
   (((2 * Real.pi) ^ (-((d : ℝ) / 2)) : ℝ) : ℂ) *
@@ -1129,7 +1130,7 @@ open SpaceTimePositivity (timeMeasure timeMeasure_eq_Icc)
 open TimeSchur (kern kern_nonneg measurable_kern kern_sub_comm)
 
 /-- The kernel parameter: `a = α₀` with `0 < a < 1` (TeX: `integrated_intrinsic_constant.tex`
-line 5 at 39f2597a, `K(s,t) = |s-t|^{-a}` on `I = (0,1)`).  Integration (wave L14): this is
+line 5 at edf7085f, `K(s,t) = |s-t|^{-a}` on `I = (0,1)`).  Integration (wave L14): this is
 `OccupationCompletion.TParams`, the single temporal parameter of `H_I` in the companion. -/
 abbrev KernParams := OccupationCompletion.TParams
 
@@ -1337,7 +1338,7 @@ theorem gram_posSemidef {ι : Type*} [Fintype ι] {E : Type*} [NormedAddCommGrou
 
 /-! ### The manuscript wrappers -/
 
-/-- **`L:source-spatial-heat`** (`integrated_source_convergence.tex` lines 169-202 at 39f2597a),
+/-- **`L:source-spatial-heat`** (`integrated_source_convergence.tex` lines 169-202 at edf7085f),
 with the section's standing hypotheses (`H:homog`; `Γ ≠ 0`, carried, unused).  `H_Γ` is the
 closure of the vectors of the real tests in `L²(μ; ℂ)` (`HGamma`, the null-quotient
 completion through the isometry `vec`), and `C_ε = heatH Γ μ ε`.
@@ -1376,7 +1377,7 @@ theorem source_spatial_heat_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
     SpatialFourLinear.spatialPair_comm hH.Γ_even hf.1.continuous hg.1.continuous hg.2]
 
 /-- **`L:positive-physical-gram`, narrower** (`integrated_intrinsic_constant.tex` lines 143-196
-at 39f2597a), with the section's standing hypotheses (`H:homog`, `a = α₀`, `Γ ≠ 0`) and the
+at edf7085f), with the section's standing hypotheses (`H:homog`, `a = α₀`, `Γ ≠ 0`) and the
 lemma's own data: cells `A_i` (measurable, inside `I = (0,1)`, nonempty, disjoint, lengths
 `ℓ_i > 0` summing to one), real tests `f_i` with `‖f_i‖₂ = 1`, and the mask
 `m_R(x) = η(x/R)²` of the fixed cutoff `η` (smooth, `0 ≤ η ≤ 1`, one on the unit ball, zero

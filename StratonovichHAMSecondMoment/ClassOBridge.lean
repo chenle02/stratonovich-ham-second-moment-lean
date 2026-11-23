@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Wave L14, item O (part 2): the class `𝒪` of strongly `H¹`-measurable fields and its bridge to
 joint representatives (debt D3), with the results that range over `𝒪` re-issued on the class
-itself, and their zero-covariance cases.  Revision 39f2597a:
+itself, and their zero-covariance cases.  Revision edf7085f:
 * `notes/integrated_spatial_occupation.tex`: the class `𝒪` (lines 497-500), Proposition
   `P:occupation-physical-class` (statement 503-521, proof 523-575; the joint representatives are
   constructed in lines 534-540), the zero-covariance remark (577-582);

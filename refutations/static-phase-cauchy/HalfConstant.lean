@@ -2,7 +2,7 @@ import StratonovichHAMSecondMoment.StaticPhaseCauchy
 
 /-!
 Refutation for `StratonovichHAMSecondMoment.StaticPhaseCauchy.all_orders_arith` (the
-scalar arithmetic of `P:static-phase-all-orders`, main TeX lines 3149-3163 at 39f2597a).
+scalar arithmetic of `P:static-phase-all-orders`, main TeX lines 3149-3163 at edf7085f).
 
 Wrong variant: the constant `A = 400 √2 e²/δ` of `E:all-static-phase-orders` replaced by
 a quarter of it, `100 √2 e²/δ` (the factor `100 n ≤ 200^n` of line 3162 dropped).

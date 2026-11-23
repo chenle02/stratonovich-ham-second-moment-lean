@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The damped occupation kernel and its exact row maximum, from
-`notes/integrated_spatial_occupation.tex` (revision 39f2597a):
+`notes/integrated_spatial_occupation.tex` (revision edf7085f):
 the kernel `K_⋆` of `E:occupation-damped-kernel` (lines 465-472) and
 Lemma `L:occupation-kernel-row` (lines 477-495, display
 `E:occupation-kernel-row`, lines 481-484).

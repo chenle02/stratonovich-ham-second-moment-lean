@@ -1,7 +1,7 @@
 /-
 Refutation for `L:masked-continuous-wave` in the concrete `H_a`
 (`notes/integrated_covariance_foundation.tex` lines 494-506, display 501-505 at
-39f2597a), package theorem
+edf7085f), package theorem
 `StratonovichHAMSecondMoment.MaskedContinuousWaveCompleted.masked_continuous_wave_completed_paper`.
 
 Wrong variant: the power `h^{2-a}` replaced by `h^{3-a}` (one more factor of `h`), i.e.

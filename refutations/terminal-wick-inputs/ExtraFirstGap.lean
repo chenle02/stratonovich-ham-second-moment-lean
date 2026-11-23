@@ -1,6 +1,6 @@
 /-
 Refutation for the time density of the terminal-chain measure
-(`E:terminal-chain-measure`, main TeX lines 4276-4282 at 39f2597a: the product
+(`E:terminal-chain-measure`, main TeX lines 4276-4282 at edf7085f: the product
 `∏_{j=1}^n G_{s_{j+1}-s_j}` has `n` factors, with `s_{n+1} = T` and no factor
 for the first time), package theorem
 `StratonovichHAMSecondMoment.TerminalWickInputs.chainWeightReal_eq_ite`.

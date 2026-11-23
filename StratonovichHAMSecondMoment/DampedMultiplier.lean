@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The parts of `L:damped-homogeneous-norms` (Homogeneous damped norms and
 temporal tails) of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` (revision 39f2597a) that
+`notes/notes_stratonovich_ham_second_moment.tex` (revision edf7085f) that
 `DampedNormsHomog` left out: the lower bounds of
 `E:damped-multiplier-comparison` (display at main TeX lines 1043-1048, the class
 of multipliers and Laplace domains at 1033-1041) and the smoothing assertions at

@@ -1,6 +1,7 @@
-# Labels refer to manuscript revision 39f2597a (see provenance/manuscript-anchor.json).
-# 2239 further claims check computations with no direct manuscript label; see docs/statement-ledger.md.
-# The rows name the claims of the 1553 theorems of comparator.json; the other 2100 compared theorems
+# Labels refer to manuscript revision edf7085f (book 1.1.3; see provenance/manuscript-anchor.json). Current TeX
+# locators are at edf7085f; explicitly historical statements keep their revisions.
+# 3500 further claims check computations with no direct manuscript label; see docs/statement-ledger.md.
+# The rows name the claims of the 2056 theorems of comparator.json; the other 3270 compared theorems
 # (comparator-helpers.json, a smoke check in lean-pkg-signoff.json) are credited to no row.
 schema: coverage/1
 package: stratonovich-ham-second-moment-lean
@@ -8,19 +9,15 @@ kind: paper
 stack: lts-2026.10
 manuscript:
   title: "Stratonovich Waves Driven by Space-Time Gaussian Noise: Second Moment and Exact Asymptotics"
-  version: "arXiv:2611.23014v1"
-summary: "With the manuscript's hypotheses, 48 labelled results are formalized in full and 16 with a narrower conclusion; P:tube-rayleigh-transfer in full with two inputs supplied; steps, parts or narrower forms of 34 further labelled results; the entries distinguish supplied hypotheses, where present, from analytic work left outside Lean; T:full-upper and T:intrinsic-second-moment are outside Lean."
+  version: unposted
+summary: "With the manuscript's hypotheses, 59 labelled results are formalized in full, as are three displays and a remark (63 full rows), and 22 with a narrower conclusion; P:tube-rayleigh-transfer in full with one input supplied; steps, parts or narrower forms of 30 further results with inputs supplied; T:full-upper and T:intrinsic-second-moment are outside Lean."
 rows:
 - paper:
     number: Corollary C:d1-first-calibration
     title: First-moment calibration
     label: C:d1-first-calibration
-  class: inputs-supplied
-  conclusion: weaker
-  conclusion_scope: Lean proves C_(1,*) = C_(2,*)/2^((4-alpha)/(3-alpha)) and 2C_(1,*) < C_(2,*) with nothing supplied, E:d1-first-calibration
-    for random variables with the supplied mixed-moment expansion of P:mixed and the supplied first-moment series of the chaos
-    expansion (solution not constructed), and the conditional rate clause for an abstract first moment; the P:Jensen comparison
-    is commentary.
+  class: same-assumptions
+  conclusion: full
   claims:
   - stratonovich-ham-second-moment-lean/low-alpha-upper-first-calibration-paper
   - stratonovich-ham-second-moment-lean/low-alpha-upper-first-calibration-riesz-paper
@@ -37,15 +34,33 @@ rows:
   - stratonovich-ham-second-moment-lean/low-alpha-upper-spatial-max-white
   - stratonovich-ham-second-moment-lean/two-simplex-time-one-chain-le
   - stratonovich-ham-second-moment-lean/two-simplex-time-sum-incr-le-one
-  inputs:
-  - 'MixedMoment: the statement of P:mixed (main TeX lines 834-849); here it gives E X_n = sum_D J_(n,0,D)(t) (with X_0 =
-    1), the odd terms zero and the diagram limits; TRUE for the solution under H:homog'
-  - 'FirstMomentSeries: X_0 = 1, u integrable and E u = sum_n E X_n (main TeX line 796 and lines 5856-5857, "the L^2 expansion
-    permits taking expectations of partial sums"); TRUE for the solution and its chaos terms'
-  note: Wrappers LowAlphaUpper.first_calibration_paper (K_sp^gen, H:homog, alpha <= 1, V > 0), first_calibration_riesz_paper
-    and first_calibration_white_paper (K_sp, d = 1; 0 < alpha_0 carried unused). The conditional clause is lower_rate_le,
-    with "lower rate at least L" read as "for every L' < L, eventually E u(t) >= exp(L' t^kappa)". Models M4 (and M1 in d
-    = 3).
+  - stratonovich-ham-second-moment-lean/source-interface-src-x
+  - stratonovich-ham-second-moment-lean/source-interface-src-u
+  - stratonovich-ham-second-moment-lean/source-interface-first-moment-series-target
+  - stratonovich-ham-second-moment-lean/source-expansion-first-moment-series
+  - stratonovich-ham-second-moment-lean/source-final-first-moment-series-l19
+  - stratonovich-ham-second-moment-lean/source-final-first-moment-series-m9-l19
+  - stratonovich-ham-second-moment-lean/source-final-first-calibration-paper-l19
+  - stratonovich-ham-second-moment-lean/source-final-first-calibration-riesz-paper-l19
+  - stratonovich-ham-second-moment-lean/source-final-first-calibration-white-paper-l19
+  - stratonovich-ham-second-moment-lean/mild-interface-first-mean
+  - stratonovich-ham-second-moment-lean/mild-interface-riesz-instance-target
+  - stratonovich-ham-second-moment-lean/mild-interface-first-calibration-riesz-target
+  - stratonovich-ham-second-moment-lean/mild-interface-first-calibration-rate-target
+  - stratonovich-ham-second-moment-lean/mild-interface-first-calibration-rate-white-target
+  - stratonovich-ham-second-moment-lean/mild-interface-first-calibration-rate-riesz-target
+  - stratonovich-ham-second-moment-lean/riesz-instance-one-riesz-posdef-one
+  - stratonovich-ham-second-moment-lean/riesz-instance-one-is-spectral-measure-riesz
+  - stratonovich-ham-second-moment-lean/riesz-instance-one-riesz-homog-covariance-one-spectral
+  - stratonovich-ham-second-moment-lean/riesz-instance-one-riesz-homog-covariance-one
+  - stratonovich-ham-second-moment-lean/cleanup-wrappers-first-calibration-riesz-paper-l20
+  - stratonovich-ham-second-moment-lean/cleanup-wrappers-first-calibration-rate-l20
+  - stratonovich-ham-second-moment-lean/cleanup-wrappers-first-calibration-rate-white-l20
+  - stratonovich-ham-second-moment-lean/cleanup-wrappers-first-calibration-rate-riesz-l20
+  - stratonovich-ham-second-moment-lean/cleanup-wrappers-riesz-instance-l20
+  - stratonovich-ham-second-moment-lean/cleanup-wrappers-first-calibration-riesz-paper-closed-l20
+  - stratonovich-ham-second-moment-lean/cleanup-wrappers-first-calibration-rate-riesz-closed-l20
+  note: 'Wrappers SourceFinal.first_calibration_paper_l19, _white_paper_l19, CleanupWrappers.first_calibration_riesz_paper_closed_l20; rate clause for the constructed u: first_calibration_rate_l20, _white_l20, _riesz_closed_l20. Retained: LowAlphaUpper forms MixedMoment and FirstMomentSeries, lower_rate_le conditional, SourceExpansion steps item targets (proved), _l19 Riesz hH, _l20 hR. M9, M4, M1.'
 - paper:
     number: Corollary C:frequency-time
     title: A time exponent above one half
@@ -304,6 +319,38 @@ rows:
     bound for the norm in the completion H_a (TimeCompletion.emb_norm_sq_le) and for its continuous extension on
     L^2 classes.
 - paper:
+    number: Lemma L:cameron-fractional-products
+    title: Fractional covariance products
+    label: L:cameron-fractional-products
+  class: same-assumptions
+  conclusion: full
+  claims:
+  - stratonovich-ham-second-moment-lean/cameron-final-fractional-products-all
+  - stratonovich-ham-second-moment-lean/cameron-products-nnorm-band-sq-le
+  - stratonovich-ham-second-moment-lean/cameron-products-band-a-le
+  - stratonovich-ham-second-moment-lean/cameron-products-sum-band-b-le
+  - stratonovich-ham-second-moment-lean/cameron-products-sum-nnorm-band-le
+  - stratonovich-ham-second-moment-lean/cameron-products-tendsto-sum-band
+  - stratonovich-ham-second-moment-lean/cameron-products-test-absolute
+  - stratonovich-ham-second-moment-lean/cameron-products-phys-absolute
+  - stratonovich-ham-second-moment-lean/cameron-products-dense-range-to-hsob-l
+  - stratonovich-ham-second-moment-lean/cameron-products-exists-product-map
+  - stratonovich-ham-second-moment-lean/cameron-products-inner-product-eq-c4
+  - stratonovich-ham-second-moment-lean/cameron-products-core-bounds
+  - stratonovich-ham-second-moment-lean/cameron-products-cameron-fractional-products
+  - stratonovich-ham-second-moment-lean/cameron-interface-hsob
+  - stratonovich-ham-second-moment-lean/cameron-interface-to-hsob
+  - stratonovich-ham-second-moment-lean/cameron-interface-is-phys-rep
+  - stratonovich-ham-second-moment-lean/cameron-interface-is-frac-product
+  - stratonovich-ham-second-moment-lean/cameron-interface-fractional-products-target
+  - stratonovich-ham-second-moment-lean/cameron-products-lp-psi
+  - stratonovich-ham-second-moment-lean/cameron-products-band
+  - stratonovich-ham-second-moment-lean/cameron-products-cs
+  note: CameronProducts.cameron_fractional_products and CameronFinal.fractional_products_all (wave L16, A2); TeX lines
+    at edf7085f. Smooth Littlewood-Paley bands replace the sharp dyadic bands, so C_s (CameronProducts.Cs) is
+    2^(alpha/4) times the sharp-band value; it depends on (alpha, s) only. Gamma = 0 included. Pairings and
+    E:cameron-fractional-absolute for physical functions (IsPhysRep).
+- paper:
     number: Lemma L:complex-phase
     title: A complex phase bound
     label: L:complex-phase
@@ -412,6 +459,81 @@ rows:
     3 via toSphere, Le's decision 4), p_eps of covariance eps I, G_(h,eta) = N(0, eta I) * G_h, sigma a measure on R^d carried
     by the unit sphere. Fourier Fubini and lines 5614-5618 are proved, not imported. Integrability of the pairing integrand
     is part of the wrappers' conclusions.
+- paper:
+    number: Lemma L:crude-corrected
+    title: Corrected crude estimate
+    label: L:crude-corrected
+  class: same-assumptions
+  conclusion: full
+  claims:
+  - stratonovich-ham-second-moment-lean/pairing-interface-smooth-spec
+  - stratonovich-ham-second-moment-lean/pairing-interface-damp
+  - stratonovich-ham-second-moment-lean/pairing-interface-m4-chain
+  - stratonovich-ham-second-moment-lean/pairing-interface-m4-bridge-target
+  - stratonovich-ham-second-moment-lean/pairing-interface-green2
+  - stratonovich-ham-second-moment-lean/pairing-interface-wave-green-two-eq
+  - stratonovich-ham-second-moment-lean/pairing-interface-m4-chain-wf
+  - stratonovich-ham-second-moment-lean/pairing-bridge-kappa-ioi
+  - stratonovich-ham-second-moment-lean/pairing-bridge-is-finite-measure-smooth-spec
+  - stratonovich-ham-second-moment-lean/pairing-bridge-spec-nonneg-smooth-spec
+  - stratonovich-ham-second-moment-lean/pairing-bridge-gamma-of-smooth-spec
+  - stratonovich-ham-second-moment-lean/pairing-bridge-smooth-edge
+  - stratonovich-ham-second-moment-lean/pairing-bridge-damp-prod-ge
+  - stratonovich-ham-second-moment-lean/pairing-bridge-diagram-le-pairing-integral
+  - stratonovich-ham-second-moment-lean/pairing-bridge-m4-bridge-of-ne-top
+  - stratonovich-ham-second-moment-lean/pairing-bridge-m4-bridge
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-green-density
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-green-density-one
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-green-density-two
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-n0-damp
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-lap-four-damp
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-n1-damp-le
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-lintegral-double-spatial
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-ql-damp-eq
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-n2-damp-sq-le
+  - stratonovich-ham-second-moment-lean/crude-corrected-theta-envelope-diagrams
+  - stratonovich-ham-second-moment-lean/crude-corrected-card-pi2-le
+  - stratonovich-ham-second-moment-lean/crude-corrected-crude-corrected-diagrams
+  - stratonovich-ham-second-moment-lean/crude-corrected-sq-sum-sqrt-le
+  - stratonovich-ham-second-moment-lean/crude-corrected-second-moment-le-crude
+  - stratonovich-ham-second-moment-lean/crude-corrected-crude-corrected-paper
+  - stratonovich-ham-second-moment-lean/envelope-final-theta-envelope-diagrams-l17
+  - stratonovich-ham-second-moment-lean/envelope-final-crude-corrected-diagrams-l17
+  - stratonovich-ham-second-moment-lean/envelope-final-crude-corrected-paper-l17
+  - stratonovich-ham-second-moment-lean/green-smoothed3-green3s
+  - stratonovich-ham-second-moment-lean/green-smoothed3-measurable-green3s
+  - stratonovich-ham-second-moment-lean/green-smoothed3-green3s-ne-top
+  - stratonovich-ham-second-moment-lean/green-smoothed3-smoothed-green-three-eq
+  - stratonovich-ham-second-moment-lean/green-smoothed3-smoothed-green-three-mass
+  - stratonovich-ham-second-moment-lean/green-smoothed3-char-fun-smoothed-green-three
+  - stratonovich-ham-second-moment-lean/pairing-smoothed-norms-smooth-density
+  - stratonovich-ham-second-moment-lean/pairing-smoothed-norms-n0-damp
+  - stratonovich-ham-second-moment-lean/pairing-smoothed-norms-n1-damp-le
+  - stratonovich-ham-second-moment-lean/pairing-smoothed-norms-n2-damp-sq-le
+  - stratonovich-ham-second-moment-lean/envelope-d3-smooth-density-three
+  - stratonovich-ham-second-moment-lean/envelope-d3-kernel-hyp-damp
+  - stratonovich-ham-second-moment-lean/envelope-d3-theta-envelope-diagrams-three
+  - stratonovich-ham-second-moment-lean/envelope-d3-crude-corrected-diagrams-three
+  - stratonovich-ham-second-moment-lean/envelope-d3-diagram-le-pairing-integral-three
+  - stratonovich-ham-second-moment-lean/envelope-d3-final-theta-envelope-diagrams-three-l17
+  - stratonovich-ham-second-moment-lean/envelope-d3-final-crude-corrected-diagrams-three-l17
+  - stratonovich-ham-second-moment-lean/wick-interface-theta-envelope-three-target
+  - stratonovich-ham-second-moment-lean/wick-interface-crude-corrected-three-target
+  - stratonovich-ham-second-moment-lean/envelope-d3-wave-tendsto-spatial-spec-w
+  - stratonovich-ham-second-moment-lean/envelope-d3-wave-tendsto-wick-j-green-s
+  - stratonovich-ham-second-moment-lean/envelope-d3-wave-diagram-three-le
+  - stratonovich-ham-second-moment-lean/envelope-d3-wave-theta-envelope-diagrams-three-prime
+  - stratonovich-ham-second-moment-lean/envelope-d3-wave-crude-corrected-diagrams-three-prime
+  - stratonovich-ham-second-moment-lean/wick-final-theta-envelope-diagrams-three-l18
+  - stratonovich-ham-second-moment-lean/wick-final-crude-corrected-diagrams-three-l18
+  - stratonovich-ham-second-moment-lean/source-expansion-crude-diagrams
+  - stratonovich-ham-second-moment-lean/source-expansion-sum-diagram-lim-le
+  - stratonovich-ham-second-moment-lean/source-expansion-summable-sqrt-pow-div-factorial
+  - stratonovich-ham-second-moment-lean/source-final-crude-moments-of-diagrams
+  - stratonovich-ham-second-moment-lean/source-final-crude-corrected-paper-l19
+  note: 'Wrapper SourceFinal.crude_corrected_paper_l19 (d = 1, 2, 3; X_n, u of every source field, H:homog). Retained CrudeCorrected.crude_corrected_paper, secondMoment_le_crude,
+    EnvelopeFinal.crude_corrected_paper_l17 take MixedMoment for abstract X, u; L17/L18 steps take hPE or hB (proved); SourceFinal.crude_moments_of_diagrams takes MixedMoment
+    and a diagram bound. M9, M4, M7, M8, M1.'
 - paper:
     number: Lemma L:d1-spatial
     title: Spatial estimate
@@ -1021,6 +1143,102 @@ rows:
     (1 + v_i z + sum_{l>=2} b_{i,l} z^l) <= C^k/(k!)^nu for every M and k >= 1, with the explicit C = 4 exp(K(alpha,
     alpha0)), independent of M and k.
 - paper:
+    number: Lemma L:joint-fixed-order
+    title: Joint diagram limits and fixed-order construction
+    label: L:joint-fixed-order
+  class: same-assumptions
+  conclusion: full
+  claims:
+  - stratonovich-ham-second-moment-lean/wick-interface-width-filter
+  - stratonovich-ham-second-moment-lean/wick-interface-edge-max
+  - stratonovich-ham-second-moment-lean/wick-interface-cap-set
+  - stratonovich-ham-second-moment-lean/wick-interface-cap-dom
+  - stratonovich-ham-second-moment-lean/wick-interface-ker-a
+  - stratonovich-ham-second-moment-lean/wick-interface-pair-time
+  - stratonovich-ham-second-moment-lean/wick-interface-wick-f
+  - stratonovich-ham-second-moment-lean/wick-interface-green-s
+  - stratonovich-ham-second-moment-lean/wick-interface-wick-edge
+  - stratonovich-ham-second-moment-lean/wick-interface-m8-m7-bridge-target
+  - stratonovich-ham-second-moment-lean/wick-interface-m8-m4-identity-target
+  - stratonovich-ham-second-moment-lean/wick-interface-joint-temporal-tail-target
+  - stratonovich-ham-second-moment-lean/wick-interface-joint-temporal-tail
+  - stratonovich-ham-second-moment-lean/wick-interface-joint-diagram-limit-target
+  - stratonovich-ham-second-moment-lean/wick-interface-diagram-limits-homog-target
+  - stratonovich-ham-second-moment-lean/riesz-diagram-limits-tendsto-diagram-riesz
+  - stratonovich-ham-second-moment-lean/riesz-diagram-limits-diagram-limits-riesz
+  - stratonovich-ham-second-moment-lean/riesz-diagram-limits-homog-diagram-limits-homog-one
+  - stratonovich-ham-second-moment-lean/wick-bridge-wick-j-eq-of-density
+  - stratonovich-ham-second-moment-lean/wick-bridge-measure-preserving-incr
+  - stratonovich-ham-second-moment-lean/wick-bridge-integrand-eq
+  - stratonovich-ham-second-moment-lean/wick-bridge-m8-m7-bridge
+  - stratonovich-ham-second-moment-lean/joint-fixed-order-wick-f-le-zero
+  - stratonovich-ham-second-moment-lean/joint-fixed-order-wick-f-const-le
+  - stratonovich-ham-second-moment-lean/joint-fixed-order-m8-m4-identity
+  - stratonovich-ham-second-moment-lean/joint-fixed-order-cap-mult
+  - stratonovich-ham-second-moment-lean/joint-fixed-order-wick-f-const-eq-of-real
+  - stratonovich-ham-second-moment-lean/joint-fixed-order-squeeze-limit
+  - stratonovich-ham-second-moment-lean/joint-fixed-order-tendsto-tail-err
+  - stratonovich-ham-second-moment-lean/joint-fixed-order-joint-limit-aux
+  - stratonovich-ham-second-moment-lean/joint-fixed-order-joint-diagram-limit
+  - stratonovich-ham-second-moment-lean/joint-fixed-order-diagram-limits-homog
+  - stratonovich-ham-second-moment-lean/envelope-d3-wave-tendsto-spatial-spec-w
+  - stratonovich-ham-second-moment-lean/envelope-d3-wave-tendsto-wick-j-green-s
+  - stratonovich-ham-second-moment-lean/joint-tail-n2-damp-tail-sq-le
+  - stratonovich-ham-second-moment-lean/joint-tail-n1-damp-tail-le
+  - stratonovich-ham-second-moment-lean/joint-tail-n2-damp-tail-sq-le-smooth
+  - stratonovich-ham-second-moment-lean/joint-tail-n1-damp-tail-le-smooth
+  - stratonovich-ham-second-moment-lean/joint-tail-prod-add-le
+  - stratonovich-ham-second-moment-lean/joint-tail-ker-a-ioi-split
+  - stratonovich-ham-second-moment-lean/joint-tail-pair-time-zero-le
+  - stratonovich-ham-second-moment-lean/joint-tail-prod-p-marked-le
+  - stratonovich-ham-second-moment-lean/joint-tail-unmarked-le
+  - stratonovich-ham-second-moment-lean/joint-tail-marked-le
+  - stratonovich-ham-second-moment-lean/joint-tail-horizon-le-pairing-integral
+  - stratonovich-ham-second-moment-lean/joint-tail-joint-temporal-tail-of-density
+  - stratonovich-ham-second-moment-lean/joint-tail-tail-abstract
+  - stratonovich-ham-second-moment-lean/joint-tail-joint-temporal-tail-of-le-two
+  - stratonovich-ham-second-moment-lean/joint-tail-wick-f-three-le-liminf
+  - stratonovich-ham-second-moment-lean/joint-tail-tendsto-wick-f-three
+  - stratonovich-ham-second-moment-lean/joint-tail-unmarked-le-smooth
+  - stratonovich-ham-second-moment-lean/joint-tail-marked-le-smooth
+  - stratonovich-ham-second-moment-lean/joint-tail-joint-temporal-tail-three
+  - stratonovich-ham-second-moment-lean/joint-tail-joint-temporal-tail
+  - stratonovich-ham-second-moment-lean/wick-final-joint-temporal-tail-l18
+  - stratonovich-ham-second-moment-lean/wick-final-joint-diagram-limit-l18
+  - stratonovich-ham-second-moment-lean/wick-final-diagram-limits-homog-l18
+  - stratonovich-ham-second-moment-lean/wick-final-diagram-limits-l18
+  - stratonovich-ham-second-moment-lean/source-interface-pos-w
+  - stratonovich-ham-second-moment-lean/source-interface-pos-w-eps
+  - stratonovich-ham-second-moment-lean/source-interface-pos-w-del
+  - stratonovich-ham-second-moment-lean/source-interface-src-pt
+  - stratonovich-ham-second-moment-lean/source-interface-src-cov
+  - stratonovich-ham-second-moment-lean/source-interface-source-field
+  - stratonovich-ham-second-moment-lean/source-interface-attach
+  - stratonovich-ham-second-moment-lean/source-interface-ya
+  - stratonovich-ham-second-moment-lean/source-interface-ya-reg
+  - stratonovich-ham-second-moment-lean/source-interface-pos-w-fn
+  - stratonovich-ham-second-moment-lean/source-interface-yw
+  - stratonovich-ham-second-moment-lean/source-interface-ycom
+  - stratonovich-ham-second-moment-lean/source-interface-strat-int
+  - stratonovich-ham-second-moment-lean/source-interface-xl2
+  - stratonovich-ham-second-moment-lean/source-interface-terminal-mixed-moment-target
+  - stratonovich-ham-second-moment-lean/source-interface-fixed-order-l2-target
+  - stratonovich-ham-second-moment-lean/source-interface-green-first-target
+  - stratonovich-ham-second-moment-lean/source-interface-diagram-lim-ident-target
+  - stratonovich-ham-second-moment-lean/source-interface-tendsto-unique-widths
+  - stratonovich-ham-second-moment-lean/source-fixed-order-exists-gram-limit
+  - stratonovich-ham-second-moment-lean/source-fixed-order-tendsto-norm-sub
+  - stratonovich-ham-second-moment-lean/source-fixed-order-fixed-order-l2
+  - stratonovich-ham-second-moment-lean/source-green-first-vfield-var-le
+  - stratonovich-ham-second-moment-lean/source-green-first-norm-prod-l2-attach-le
+  - stratonovich-ham-second-moment-lean/source-green-first-continuous-prod-l2-attach
+  - stratonovich-ham-second-moment-lean/source-green-first-green-first
+  - stratonovich-ham-second-moment-lean/source-final-fixed-order-l2-l19
+  - stratonovich-ham-second-moment-lean/source-final-green-first-l19
+  note: 'L^2 half: SourceFinal.fixed_order_l2_l19 (Y_n^a -> X_n in L^2 at arbitrary rates; X_n = S_n(g_n)), green_first_l19 (d = 1, 2, 3), every source field. Joint limits
+    WickFinal.joint_diagram_limit_l18 (M8), diagramLimits_homog_l18 (M4). Steps: fixed_order_l2 takes C (terminal_mixed_moment_l19), green_first B continuity
+    (source_cov_continuous); L18 steps their item targets and hB.'
+- paper:
     number: Lemma L:low-alpha-convolution
     title: Low-alpha convolution bound
     label: L:low-alpha-convolution
@@ -1233,6 +1451,98 @@ rows:
     Borel selection; int int h g^2 <= sqrt(v_Psi A(g)) from the continuous case by dominated convergence, not through Q and
     rho_g; the field is moved into O by ClassOBridge.classO_of_isOccField (wave L14).'
 - paper:
+    number: Lemma L:pairing-product-envelope
+    title: Pairing product envelope
+    label: L:pairing-product-envelope
+  class: same-assumptions
+  conclusion: full
+  claims:
+  - stratonovich-ham-second-moment-lean/pairing-interface-kernel
+  - stratonovich-ham-second-moment-lean/pairing-interface-edge-data
+  - stratonovich-ham-second-moment-lean/pairing-interface-nu-e
+  - stratonovich-ham-second-moment-lean/pairing-interface-kappa
+  - stratonovich-ham-second-moment-lean/pairing-interface-edge-data-cap
+  - stratonovich-ham-second-moment-lean/pairing-interface-capped-on
+  - stratonovich-ham-second-moment-lean/pairing-interface-n0
+  - stratonovich-ham-second-moment-lean/pairing-interface-lap-four
+  - stratonovich-ham-second-moment-lean/pairing-interface-n1
+  - stratonovich-ham-second-moment-lean/pairing-interface-n2
+  - stratonovich-ham-second-moment-lean/pairing-interface-conv
+  - stratonovich-ham-second-moment-lean/pairing-interface-list-pred
+  - stratonovich-ham-second-moment-lean/pairing-interface-two-chain
+  - stratonovich-ham-second-moment-lean/pairing-interface-two-chain-labels
+  - stratonovich-ham-second-moment-lean/pairing-interface-two-chain-wf
+  - stratonovich-ham-second-moment-lean/pairing-interface-two-chain-pred
+  - stratonovich-ham-second-moment-lean/pairing-interface-two-chain-pred-time
+  - stratonovich-ham-second-moment-lean/pairing-interface-two-chain-pred-pos
+  - stratonovich-ham-second-moment-lean/pairing-interface-two-chain-pos-simplex
+  - stratonovich-ham-second-moment-lean/pairing-interface-two-chain-is-endpoint
+  - stratonovich-ham-second-moment-lean/pairing-interface-edge-weight
+  - stratonovich-ham-second-moment-lean/pairing-interface-integrand
+  - stratonovich-ham-second-moment-lean/pairing-interface-pairing-integral
+  - stratonovich-ham-second-moment-lean/pairing-interface-region-integral
+  - stratonovich-ham-second-moment-lean/pairing-interface-adm
+  - stratonovich-ham-second-moment-lean/pairing-interface-prod-p
+  - stratonovich-ham-second-moment-lean/pairing-interface-env
+  - stratonovich-ham-second-moment-lean/pairing-interface-kernel-hyp
+  - stratonovich-ham-second-moment-lean/pairing-interface-convolution-norms-target
+  - stratonovich-ham-second-moment-lean/pairing-interface-convolution-norms
+  - stratonovich-ham-second-moment-lean/pairing-interface-capped-envelope-at
+  - stratonovich-ham-second-moment-lean/pairing-interface-regional-half-bound-target
+  - stratonovich-ham-second-moment-lean/pairing-interface-regional-half-bound
+  - stratonovich-ham-second-moment-lean/pairing-interface-pairing-envelope-target
+  - stratonovich-ham-second-moment-lean/pairing-interface-gamma-of-spec
+  - stratonovich-ham-second-moment-lean/pairing-interface-envelope-zero
+  - stratonovich-ham-second-moment-lean/pairing-interface-adm-of-wf
+  - stratonovich-ham-second-moment-lean/pairing-interface-adm-nonempty
+  - stratonovich-ham-second-moment-lean/pairing-convolution-n0-conv
+  - stratonovich-ham-second-moment-lean/pairing-convolution-enorm-lap-four-le
+  - stratonovich-ham-second-moment-lean/pairing-convolution-lap-four-conv
+  - stratonovich-ham-second-moment-lean/pairing-convolution-n1-conv-le
+  - stratonovich-ham-second-moment-lean/pairing-convolution-nu-e-ioc-lt-top
+  - stratonovich-ham-second-moment-lean/pairing-convolution-ql-conv-eq
+  - stratonovich-ham-second-moment-lean/pairing-convolution-ql-conv-le
+  - stratonovich-ham-second-moment-lean/pairing-convolution-nc-conv-le
+  - stratonovich-ham-second-moment-lean/pairing-convolution-n2-conv-le
+  - stratonovich-ham-second-moment-lean/pairing-convolution-convolution-norms
+  - stratonovich-ham-second-moment-lean/pairing-regional-del2
+  - stratonovich-ham-second-moment-lean/pairing-regional-wf-del2
+  - stratonovich-ham-second-moment-lean/pairing-regional-pred-del2
+  - stratonovich-ham-second-moment-lean/pairing-regional-adm-extend
+  - stratonovich-ham-second-moment-lean/pairing-regional-prod-p-extend
+  - stratonovich-ham-second-moment-lean/pairing-regional-prod-p-update-le
+  - stratonovich-ham-second-moment-lean/pairing-regional-env-on-terminal
+  - stratonovich-ham-second-moment-lean/pairing-regional-env-on-fused
+  - stratonovich-ham-second-moment-lean/pairing-regional-kappa-anti
+  - stratonovich-ham-second-moment-lean/pairing-regional-lintegral-shift-n0
+  - stratonovich-ham-second-moment-lean/pairing-regional-lintegral-shift-conv
+  - stratonovich-ham-second-moment-lean/pairing-regional-inner-le-lap-four
+  - stratonovich-ham-second-moment-lean/pairing-regional-endpoint-le-n1
+  - stratonovich-ham-second-moment-lean/pairing-regional-regional-half-bound
+  - stratonovich-ham-second-moment-lean/pairing-cap-removal-n1-cap-le
+  - stratonovich-ham-second-moment-lean/pairing-cap-removal-n2-cap-le
+  - stratonovich-ham-second-moment-lean/pairing-cap-removal-env-cap-le
+  - stratonovich-ham-second-moment-lean/pairing-cap-removal-kappa-cap-i-sup
+  - stratonovich-ham-second-moment-lean/pairing-cap-removal-pairing-integral-le-i-sup-cap
+  - stratonovich-ham-second-moment-lean/pairing-cap-removal-cap-removal
+  - stratonovich-ham-second-moment-lean/pairing-envelope-chain-le-pred-time
+  - stratonovich-ham-second-moment-lean/pairing-envelope-pairing-integral-le-add
+  - stratonovich-ham-second-moment-lean/pairing-envelope-add-le-of-halves
+  - stratonovich-ham-second-moment-lean/pairing-envelope-region-props
+  - stratonovich-ham-second-moment-lean/pairing-envelope-same-chain-bound
+  - stratonovich-ham-second-moment-lean/pairing-envelope-cross-pairs-bound
+  - stratonovich-ham-second-moment-lean/pairing-envelope-nu-e-ioc-lt-top
+  - stratonovich-ham-second-moment-lean/pairing-envelope-adm-pair-q2
+  - stratonovich-ham-second-moment-lean/pairing-envelope-prod-p-pair-q2
+  - stratonovich-ham-second-moment-lean/pairing-envelope-terminal-pair-bound
+  - stratonovich-ham-second-moment-lean/pairing-envelope-capped-step
+  - stratonovich-ham-second-moment-lean/pairing-envelope-capped-envelope
+  - stratonovich-ham-second-moment-lean/pairing-envelope-pairing-product-envelope-of
+  - stratonovich-ham-second-moment-lean/pairing-envelope-pairing-product-envelope-of-cap-removal
+  - stratonovich-ham-second-moment-lean/pairing-envelope-pairing-product-envelope
+  - stratonovich-ham-second-moment-lean/envelope-final-h-pe
+  note: 'PairingEnvelope.pairing_product_envelope (wave L17, items B, C, D; TeX 1434-1639 at edf7085f), nothing supplied, every d and label type, on the label-set model M7; the max over A_D is the supremum over admissible assignments (finitely many product values; nonempty, adm_nonempty). Step 1 by a Tonelli expansion, not Minkowski. Fallback inputs unused. Also credited: EnvelopeFinal.hPE.'
+- paper:
     number: Lemma L:phase-bessel
     title: Hilbert-valued finite Bessel inequality
     label: L:phase-bessel
@@ -1359,10 +1669,7 @@ rows:
     title: Inclusion into the covariance space and the smooth mean
     label: L:positive-raw-embedding
   class: same-assumptions
-  conclusion: weaker
-  conclusion_scope: Lean proves E:positive-bochner-inclusion for every real Hilbert G (H_t (x) G the kernel completion of
-    L^2(I;G), M5), the inclusion of C_pos in H_I with ||Psi||^2 = v_Psi, the variance identity in integral form and the row
-    and Schur bounds; the mean identity of E:positive-raw-mean and the canonical versions are not formalized.
+  conclusion: full
   claims:
   - stratonovich-ham-second-moment-lean/occupation-completion-positive-raw-embedding-paper
   - stratonovich-ham-second-moment-lean/occupation-completion-positive-bochner-inclusion
@@ -1386,10 +1693,30 @@ rows:
   - stratonovich-ham-second-moment-lean/occupation-ceiling-finite-k0
   - stratonovich-ham-second-moment-lean/occupation-completion-schur-k0
   - stratonovich-ham-second-moment-lean/occupation-completion-slice-field-continuous-bdd
-  note: Wrapper OccupationCompletion.positive_raw_embedding_paper (wave L14 K1a), nothing supplied, Gamma != 0 carried unused.
-    Kernel-form positivity on G-valued L^2 fields by Gamma-subordination; J_G defined on all of L^2(I;G). Integral forms in
-    SpaceTimePositivity, row and Schur bounds in OccupationCeilingFinite. The mean identity needs the uniform E mean (L15-UM,
-    not started).
+  - stratonovich-ham-second-moment-lean/positive-raw-mean-clm-eq-zero-of-tensor
+  - stratonovich-ham-second-moment-lean/positive-raw-mean-inner-k-bochner-to-hsp
+  - stratonovich-ham-second-moment-lean/positive-raw-mean-k-bochner
+  - stratonovich-ham-second-moment-lean/positive-raw-mean-incl-two
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-mean-op
+  - stratonovich-ham-second-moment-lean/uniform-mean-foundation-inner-to-hmhalf-lam
+  - stratonovich-ham-second-moment-lean/uniform-mean-foundation-is-multiplier-unique
+  - stratonovich-ham-second-moment-lean/uniform-mean-foundation-exists-is-multiplier
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-m-r-eq
+  - stratonovich-ham-second-moment-lean/uniform-mean-foundation-be-apply
+  - stratonovich-ham-second-moment-lean/cameron-final-positive-raw-embedding-paper-l16
+  - stratonovich-ham-second-moment-lean/cameron-interface-positive-raw-mean-for
+  - stratonovich-ham-second-moment-lean/cameron-interface-positive-raw-embedding-target
+  - stratonovich-ham-second-moment-lean/uniform-mean-assembly-inner-u-j
+  - stratonovich-ham-second-moment-lean/uniform-mean-assembly-u-incl-ae
+  - stratonovich-ham-second-moment-lean/uniform-mean-assembly-t-eq-be
+  - stratonovich-ham-second-moment-lean/uniform-mean-assembly-t-k-bochner-eq
+  - stratonovich-ham-second-moment-lean/uniform-mean-assembly-positive-raw-mean-for
+  - stratonovich-ham-second-moment-lean/uniform-mean-assembly-positive-raw-embedding-constructed
+  - stratonovich-ham-second-moment-lean/uniform-mean-discharge-positive-raw-embedding-of-products
+  note: 'Full by Le''s 2026-11-20 decision. Credits results needing no named input (headlines: none supplied;
+    intermediates take specs or proved outputs), chiefly OccupationCompletion.positive_raw_embedding_paper (variance
+    identity; H_I: M5) and CameronFinal.positive_raw_embedding_paper_l16 (mean identity, T_R, U built to meet
+    IsSpatialMeanMap, UTensorSpec; not identified in Lean with the section''s maps).'
 - paper:
     number: Lemma L:positive-series-type
     title: Type of a positive coefficient series
@@ -1683,6 +2010,96 @@ rows:
     and supremum form; positivity uses the dilation floor of VariationalFloor, a different route from TeX lines
     68-73.
 - paper:
+    number: Lemma L:spatial-wick-measures
+    title: Positive spatial Wick-measure limit
+    label: L:spatial-wick-measures
+  class: same-assumptions
+  conclusion: full
+  claims:
+  - stratonovich-ham-second-moment-lean/wick-interface-pos-orthant
+  - stratonovich-ham-second-moment-lean/wick-interface-width-filter
+  - stratonovich-ham-second-moment-lean/wick-interface-gap-time
+  - stratonovich-ham-second-moment-lean/wick-interface-ell1
+  - stratonovich-ham-second-moment-lean/wick-interface-ell2
+  - stratonovich-ham-second-moment-lean/wick-interface-horizon
+  - stratonovich-ham-second-moment-lean/wick-interface-edge-width
+  - stratonovich-ham-second-moment-lean/wick-interface-cov-w
+  - stratonovich-ham-second-moment-lean/wick-interface-wick-j
+  - stratonovich-ham-second-moment-lean/wick-interface-wick-rho
+  - stratonovich-ham-second-moment-lean/wick-interface-wick-nu
+  - stratonovich-ham-second-moment-lean/wick-interface-wick-l
+  - stratonovich-ham-second-moment-lean/wick-interface-rho-lim
+  - stratonovich-ham-second-moment-lean/wick-interface-spatial-spec-w
+  - stratonovich-ham-second-moment-lean/wick-interface-laplace-rhs
+  - stratonovich-ham-second-moment-lean/wick-interface-spectral-spatial-wtarget
+  - stratonovich-ham-second-moment-lean/wick-interface-spatial-positive-laplace-target
+  - stratonovich-ham-second-moment-lean/wick-interface-smoothed-laplace-target
+  - stratonovich-ham-second-moment-lean/wick-interface-spatial-positive-laplace
+  - stratonovich-ham-second-moment-lean/wick-interface-wick-mass-bound-target
+  - stratonovich-ham-second-moment-lean/wick-interface-wick-mass-bound
+  - stratonovich-ham-second-moment-lean/wick-interface-rho-scaling-target
+  - stratonovich-ham-second-moment-lean/wick-interface-m8-m7-bridge-target
+  - stratonovich-ham-second-moment-lean/wick-interface-spatial-wick-weak-limit-target
+  - stratonovich-ham-second-moment-lean/wick-interface-spatial-wick-weak-limit
+  - stratonovich-ham-second-moment-lean/wick-interface-spatial-wick-measures-target
+  - stratonovich-ham-second-moment-lean/wick-spectral-char-fun-green-s
+  - stratonovich-ham-second-moment-lean/wick-spectral-phase-eq
+  - stratonovich-ham-second-moment-lean/wick-spectral-spatial-spec-w-eq-integral
+  - stratonovich-ham-second-moment-lean/wick-spectral-wick-j-green-s-eq
+  - stratonovich-ham-second-moment-lean/wick-spectral-wick-l-green-s-eq
+  - stratonovich-ham-second-moment-lean/wick-spectral-spectral-spatial-w
+  - stratonovich-ham-second-moment-lean/wick-spectral-smoothed-laplace
+  - stratonovich-ham-second-moment-lean/wick-spectral-spatial-positive-laplace
+  - stratonovich-ham-second-moment-lean/wick-spectral-spectral-spatial-homog
+  - stratonovich-ham-second-moment-lean/wick-spectral-wick-l-anti-width
+  - stratonovich-ham-second-moment-lean/wick-bridge-wick-j-eq-of-density
+  - stratonovich-ham-second-moment-lean/wick-bridge-measure-preserving-incr
+  - stratonovich-ham-second-moment-lean/wick-bridge-integrand-eq
+  - stratonovich-ham-second-moment-lean/wick-bridge-m8-m7-bridge
+  - stratonovich-ham-second-moment-lean/wick-mass-ker-a-ioc-ge
+  - stratonovich-ham-second-moment-lean/wick-mass-pair-time-ge
+  - stratonovich-ham-second-moment-lean/wick-mass-pairing-integral-wick-edge-le
+  - stratonovich-ham-second-moment-lean/wick-mass-wick-l-zero-le-of-density
+  - stratonovich-ham-second-moment-lean/wick-mass-wick-l-zero-le-green
+  - stratonovich-ham-second-moment-lean/wick-mass-wick-l-zero-le-three
+  - stratonovich-ham-second-moment-lean/wick-mass-wick-l-zero-le-of-smoothed
+  - stratonovich-ham-second-moment-lean/wick-mass-wick-mass-bound
+  - stratonovich-ham-second-moment-lean/wick-mass-wick-mass-bound-of-le-two
+  - stratonovich-ham-second-moment-lean/wick-scaling-cov-eps-smul
+  - stratonovich-ham-second-moment-lean/wick-scaling-wave-green-mul
+  - stratonovich-ham-second-moment-lean/wick-scaling-cov-w-smul
+  - stratonovich-ham-second-moment-lean/wick-scaling-wick-j-smul
+  - stratonovich-ham-second-moment-lean/wick-scaling-rho-scaling
+  - stratonovich-ham-second-moment-lean/wick-step4-ext-of-moments
+  - stratonovich-ham-second-moment-lean/wick-step4-tendsto-of-moments
+  - stratonovich-ham-second-moment-lean/wick-step4-tendsto-integral-of-null
+  - stratonovich-ham-second-moment-lean/wick-step4-exp-neg
+  - stratonovich-ham-second-moment-lean/wick-step4-log-neg
+  - stratonovich-ham-second-moment-lean/wick-step4-ext-of-laplace
+  - stratonovich-ham-second-moment-lean/wick-step4-step4
+  - stratonovich-ham-second-moment-lean/wick-measures-lap-int
+  - stratonovich-ham-second-moment-lean/wick-measures-lim-int
+  - stratonovich-ham-second-moment-lean/wick-measures-lim-l
+  - stratonovich-ham-second-moment-lean/wick-measures-lap-int-le
+  - stratonovich-ham-second-moment-lean/wick-measures-lim-l-zero-le
+  - stratonovich-ham-second-moment-lean/wick-measures-tendsto-wick-l
+  - stratonovich-ham-second-moment-lean/wick-measures-tendsto-lim-l-diag
+  - stratonovich-ham-second-moment-lean/wick-measures-tendsto-lim-l-single
+  - stratonovich-ham-second-moment-lean/wick-measures-spatial-wick-weak-limit
+  - stratonovich-ham-second-moment-lean/wick-measures-rho-lim-locally-finite
+  - stratonovich-ham-second-moment-lean/wick-measures-level-null
+  - stratonovich-ham-second-moment-lean/wick-measures-nu-d-supp
+  - stratonovich-ham-second-moment-lean/wick-measures-nu-d-ex
+  - stratonovich-ham-second-moment-lean/wick-measures-nu-d-zero-face
+  - stratonovich-ham-second-moment-lean/wick-measures-rho-lim-hom
+  - stratonovich-ham-second-moment-lean/wick-measures-tendsto-horizon
+  - stratonovich-ham-second-moment-lean/wick-measures-spatial-wick-measures-of-weak
+  - stratonovich-ham-second-moment-lean/wick-measures-spatial-wick-measures
+  - stratonovich-ham-second-moment-lean/wick-final-spatial-wick-measures-l18
+  note: 'WickFinal.spatial_wick_measures_l18 (TeX 1679-1694, proof 1696-1848), nothing supplied, d = 1, 2, 3, on M8. Credited steps take item targets proved by the
+    item modules (ledger, WickInterface section) and discharged by the WickFinal wrappers. Steps 2-3 by route (b) (decision 4: cap (0,1/(2k)], damping 1/2, envelope,
+    damped norms); Steps 4-5 route differences in the ledger. Fallbacks unused.'
+- paper:
     number: Lemma L:symplectic-free
     title: Free wave form and compact Young baseline
     label: L:symplectic-free
@@ -1829,6 +2246,62 @@ rows:
     a common noise, factors p_eta*G_h one at a time; unformalized: that measure as the TeX product, its last clause, symmetrization,
     d = 1, 2 density remark. P unused.'
 - paper:
+    number: Lemma L:translated-covariance-CS
+    title: Translated covariance Cauchy-Schwarz
+    label: L:translated-covariance-CS
+  class: same-assumptions
+  conclusion: full
+  claims:
+  - stratonovich-ham-second-moment-lean/pairing-interface-spec-nonneg
+  - stratonovich-ham-second-moment-lean/pairing-interface-gamma-of
+  - stratonovich-ham-second-moment-lean/pairing-interface-kappa-cap
+  - stratonovich-ham-second-moment-lean/pairing-interface-n0
+  - stratonovich-ham-second-moment-lean/pairing-interface-zero-ext
+  - stratonovich-ham-second-moment-lean/pairing-interface-transl
+  - stratonovich-ham-second-moment-lean/pairing-interface-ql
+  - stratonovich-ham-second-moment-lean/pairing-interface-q
+  - stratonovich-ham-second-moment-lean/pairing-interface-nc
+  - stratonovich-ham-second-moment-lean/pairing-interface-translated-cstarget
+  - stratonovich-ham-second-moment-lean/pairing-interface-translated-cscapped-target
+  - stratonovich-ham-second-moment-lean/pairing-interface-gamma-of-spec
+  - stratonovich-ham-second-moment-lean/pairing-interface-nc-sq
+  - stratonovich-ham-second-moment-lean/pairing-translated-cs-feat
+  - stratonovich-ham-second-moment-lean/pairing-translated-cs-lintegral-feat-mul
+  - stratonovich-ham-second-moment-lean/pairing-translated-cs-kappa-cap-eq
+  - stratonovich-ham-second-moment-lean/pairing-translated-cs-bsp
+  - stratonovich-ham-second-moment-lean/pairing-translated-cs-fhat
+  - stratonovich-ham-second-moment-lean/pairing-translated-cs-integral-fhat-mul-conj
+  - stratonovich-ham-second-moment-lean/pairing-translated-cs-bsp-self
+  - stratonovich-ham-second-moment-lean/pairing-translated-cs-bsp-le
+  - stratonovich-ham-second-moment-lean/pairing-translated-cs-qlf-eq-lintegral-bsp
+  - stratonovich-ham-second-moment-lean/pairing-translated-cs-qlf-cs
+  - stratonovich-ham-second-moment-lean/pairing-translated-cs-ql-transl
+  - stratonovich-ham-second-moment-lean/pairing-translated-cs-translated-covariance-cs-capped
+  - stratonovich-ham-second-moment-lean/pairing-translated-cs-translated-covariance-cs
+  note: 'PairingTranslatedCS.translated_covariance_cs (wave L17, item A; TeX 1156-1297 at edf7085f), nothing supplied, every d; zero norms and measures included. Route (decision 4): scalar Fubini into L^2(nu x mu x dr) instead of the Bochner integral of Phi_L, same feature space; the truncations G_(i,M) are not needed. Kernels may take the value infinity.'
+- paper:
+    number: Lemma L:tube-closed-geometry
+    title: Compact images and attained tube radii
+    label: L:tube-closed-geometry
+  class: same-assumptions
+  conclusion: weaker
+  conclusion_scope: Lean proves, with the lemma's hypotheses and nothing supplied, that every T_r, r >= 0, is closed, the
+    first identity {d_delta <= r} = T_r of E:tube-attained-radius, and that d_delta is lower semicontinuous; the Gaussian
+    tail P(d_delta(X) > r) <= e^(-r^2/(2 delta)) and the almost sure finiteness of d_delta(X) are not formalized.
+  claims:
+  - stratonovich-ham-second-moment-lean/source-tube-attained-tube-closed-geometry-closed-paper
+  - stratonovich-ham-second-moment-lean/source-tube-attained-lower-semicontinuous-tube-radius-paper-tube
+  - stratonovich-ham-second-moment-lean/source-tube-attained-tube-attained-paper-tube
+  - stratonovich-ham-second-moment-lean/source-tube-attained-tube-attained-add-image
+  - stratonovich-ham-second-moment-lean/source-tube-attained-is-compact-image-closed-ball-of-is-compact-operator
+  - stratonovich-ham-second-moment-lean/source-tube-attained-is-closed-image-closed-ball
+  - stratonovich-ham-second-moment-lean/source-tube-paper-tube
+  - stratonovich-ham-second-moment-lean/source-tube-tube-radius
+  - stratonovich-ham-second-moment-lean/source-tube-tube-attained
+  note: Wrappers SourceTubeAttained.tube_closed_geometry_closed_paper (gaussian_tubes.tex 150-165, Step 1 174-193; only H
+    complete and M_delta compact used) and lowerSemicontinuous_tubeRadius_paperTube (line 164). Closed images by Banach-Alaoglu
+    without separability; attainment by rescaling. The tail (Step 2, Borell) stays the input TubeTail of P:tube-rayleigh-transfer.
+- paper:
     number: Lemma L:tube-half-action
     title: Supremum with the Gaussian quadratic cost
     label: L:tube-half-action
@@ -1856,6 +2329,102 @@ rows:
   conclusion: weaker
   conclusion_scope: Lean proves the bound with integrability and the finite head integral; the "In particular" application
     to the coarse-envelope bound of another proposition is not formalized.
+- paper:
+    number: Lemma L:uniform-E-lift
+    title: Unique potential and fixed-radius lift
+    label: L:uniform-E-lift
+  class: same-assumptions
+  conclusion: weaker
+  conclusion_scope: Lean proves, for every covariance and cutoff profile with nothing supplied, that for every
+    R >= 1 each L in V_(E,R) is B_E(M) with ||L|| = ||M||, the unique real potential V in H^(-1/2) supported in
+    supp m_R with M u = V u on tests, and E:uniform-E-pairing with its symmetry for real states; the lift L_F and the
+    Hermitian extension to complex states are not formalized.
+  claims:
+  - stratonovich-ham-second-moment-lean/uniform-e-lift-uniform-e-lift-paper
+  - stratonovich-ham-second-moment-lean/uniform-e-lift-uniform-e-lift
+  - stratonovich-ham-second-moment-lean/uniform-e-lift-uniform-e-pairing
+  - stratonovich-ham-second-moment-lean/uniform-e-lift-ver-eq
+  - stratonovich-ham-second-moment-lean/uniform-e-lift-potential-unique
+  - stratonovich-ham-second-moment-lean/uniform-mean-foundation-norm-be
+  - stratonovich-ham-second-moment-lean/uniform-mean-foundation-be-injective
+  - stratonovich-ham-second-moment-lean/uniform-mean-foundation-be-apply
+  - stratonovich-ham-second-moment-lean/uniform-mean-foundation-dpair-to-hmhalf-to-hhalf
+  - stratonovich-ham-second-moment-lean/uniform-mean-foundation-dense-range-to-hhalf
+  - stratonovich-ham-second-moment-lean/uniform-mean-foundation-dense-range-to-hmhalf
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-ver
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-uniform-e-lift-target
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-uniform-e-pairing-target
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-be
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-is-multiplier
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-v-pair
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-supported-in
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-acts-as
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-hhalf
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-hmhalf
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-e
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-dpair
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-lam
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-m-r
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-cutoff-profile
+  - stratonovich-ham-second-moment-lean/uniform-e-lift-gen-set
+  - stratonovich-ham-second-moment-lean/uniform-e-lift-chi-bump
+  note: Wrappers UniformMeanInterface.uniform_E_lift and uniform_E_pairing (any SpData) and uniform_E_lift_paper
+    (H:homog), wave L15-UM; TeX lines at edf7085f (book 1.1.3); item R1 of wave L16 moved them from c3c2431d to 0788ddee, whose numbers they keep. Book
+    v1.0.2 left the tie M u = V u to the proof; Lean states it (ActsAs), and book 1.1.0 states it (lines 35-38).
+    V_(E,R) is the closure in L(E).
+- paper:
+    number: Lemma L:uniform-mean-cutoff
+    title: Uniform cutoff and physical mean
+    label: L:uniform-mean-cutoff
+  class: same-assumptions
+  conclusion: weaker
+  conclusion_scope: Lean proves, for every real sigma and R >= 1, a bounded operator on H^sigma agreeing with
+    multiplication by eta_R on real tests, of norm at most M_sigma (uniqueness not stated; tests are proved dense for
+    sigma <= 1, covering the case sigma = 1/2 used), the embedding H^s -> H^t of norm at most one for t <= s, and
+    E:uniform-spatial-mean for every T with the row at all states.
+  claims:
+  - stratonovich-ham-second-moment-lean/uniform-mean-cutoff-weight-peetre
+  - stratonovich-ham-second-moment-lean/uniform-mean-cutoff-fourier-eta-r-mul
+  - stratonovich-ham-second-moment-lean/uniform-mean-cutoff-norm-coord-eta-r-mul-le
+  - stratonovich-ham-second-moment-lean/uniform-mean-cutoff-exists-ext-of-bound
+  - stratonovich-ham-second-moment-lean/uniform-mean-cutoff-uniform-cutoff
+  - stratonovich-ham-second-moment-lean/uniform-mean-cutoff-sobolev-embed
+  - stratonovich-ham-second-moment-lean/uniform-mean-cutoff-uniform-spatial-mean
+  - stratonovich-ham-second-moment-lean/cameron-interface-hsob
+  - stratonovich-ham-second-moment-lean/cameron-interface-to-hsob
+  - stratonovich-ham-second-moment-lean/cameron-interface-hhalf-equiv
+  - stratonovich-ham-second-moment-lean/cameron-interface-hmhalf-equiv
+  - stratonovich-ham-second-moment-lean/cameron-interface-is-sobolev-embed
+  - stratonovich-ham-second-moment-lean/cameron-interface-is-cutoff-mul
+  - stratonovich-ham-second-moment-lean/cameron-interface-msigma
+  - stratonovich-ham-second-moment-lean/cameron-interface-uniform-cutoff-target
+  - stratonovich-ham-second-moment-lean/cameron-interface-sobolev-embed-target
+  - stratonovich-ham-second-moment-lean/cameron-interface-uniform-spatial-mean-target
+  note: UniformMeanCutoff.uniform_cutoff, sobolev_embed and uniform_spatial_mean (wave L16 item A1), nothing supplied;
+    TeX lines at edf7085f (book 1.1.3). M_sigma is Msigma, the TeX constant written with Mathlib's Fourier transform.
+    The operator is the bounded extension from the closure of the test classes composed with the orthogonal projection
+    onto that closure.
+- paper:
+    number: Lemma L:uniform-mean-tensor
+    title: Dimension-free Hilbert tensor extension
+    label: L:uniform-mean-tensor
+  class: same-assumptions
+  conclusion: weaker
+  conclusion_scope: Lean proves the bound on finite tensors sum_j f_j (x) e_j with orthonormal e_j, for complete real
+    Hilbert spaces H_0, G and 2 <= r < infinity (Gaussian route, Step 1 by Parseval and Minkowski), and the
+    non-compactness sentence as the identity ||F_i - F_j|| = sqrt 2 ||A f||; the extension of A (x) I_G to the completed
+    tensor product is not stated (Mathlib has no completed Hilbert tensor product).
+  claims:
+  - stratonovich-ham-second-moment-lean/uniform-mean-tensor-lintegral-sum-gauss
+  - stratonovich-ham-second-moment-lean/uniform-mean-tensor-lintegral-norm-sum-gauss-le
+  - stratonovich-ham-second-moment-lean/uniform-mean-tensor-tensor-extension-bound
+  - stratonovich-ham-second-moment-lean/uniform-mean-tensor-tensor-noncompact
+  - stratonovich-ham-second-moment-lean/uniform-mean-tensor-uniform-mean-tensor
+  - stratonovich-ham-second-moment-lean/cameron-interface-tensor-extension-target
+  - stratonovich-ham-second-moment-lean/cameron-interface-tensor-noncompact-target
+  - stratonovich-ham-second-moment-lean/uniform-mean-tensor-gauss-moment
+  note: UniformMeanTensor.uniform_mean_tensor (wave L16 item D), nothing supplied; TeX lines at edf7085f (book 1.1.3).
+    No other L16 result uses it (P:cameron-full-mean's bound is proved by kernel positivity).
 - paper:
     number: Lemma L:uniform-series-tail
     title: Uniform series tails from scaled moments
@@ -1954,6 +2523,34 @@ rows:
     and of the spectral integral as integrability conclusions; the identity uses one Gaussian test of the spectral
     convention, not distribution uniqueness, and does not need evenness of mu.
 - paper:
+    number: Lemma L:vertex-crude
+    title: Uniform vertexwise regularization bound
+    label: L:vertex-crude
+  class: same-assumptions
+  conclusion: full
+  claims:
+  - stratonovich-ham-second-moment-lean/source-interface-source-field
+  - stratonovich-ham-second-moment-lean/source-interface-xl2
+  - stratonovich-ham-second-moment-lean/source-interface-qn
+  - stratonovich-ham-second-moment-lean/source-interface-vertex-diagram-target
+  - stratonovich-ham-second-moment-lean/source-interface-vertex-crude-target
+  - stratonovich-ham-second-moment-lean/source-interface-qn-zero
+  - stratonovich-ham-second-moment-lean/source-vertex-crude-n1-le-smooth-edge
+  - stratonovich-ham-second-moment-lean/source-vertex-crude-n2-le-smooth-edge
+  - stratonovich-ham-second-moment-lean/source-vertex-crude-prod-p-le-of-edges
+  - stratonovich-ham-second-moment-lean/source-vertex-crude-horizon-le-damped
+  - stratonovich-ham-second-moment-lean/source-vertex-crude-wick-f-le-of-density
+  - stratonovich-ham-second-moment-lean/source-vertex-crude-wick-f-le-homog
+  - stratonovich-ham-second-moment-lean/source-vertex-crude-qn-sq
+  - stratonovich-ham-second-moment-lean/source-vertex-crude-step2-le
+  - stratonovich-ham-second-moment-lean/source-vertex-crude-vertex-diagram
+  - stratonovich-ham-second-moment-lean/source-vertex-crude-summable-sqrt-qn
+  - stratonovich-ham-second-moment-lean/source-vertex-crude-vertex-crude
+  - stratonovich-ham-second-moment-lean/source-final-vertex-crude-l19
+  note: 'Wrapper SourceFinal.vertex_crude_l19 (C, theta0 > 0 chosen first; E:vertex-crude for Y_n^a at all positive vertexwise widths and X_n of every source field;
+    E:vertex-summability for every real T). Deterministic half SourceVertexCrude.vertex_diagram (d = 3 by Fatou); vertex_crude takes the C and D targets, discharged in
+    SourceFinal. M9, M8, M7.'
+- paper:
     number: Lemma L:white-clock-laplace
     title: White-space low-order Laplace transforms
     label: L:white-clock-laplace
@@ -1975,12 +2572,8 @@ rows:
     number: Lemma L:white-test
     title: White-space test
     label: L:white-test
-  class: inputs-supplied
-  conclusion: weaker
-  conclusion_scope: Lean proves, with nothing supplied, every value of E:white-test and A_1(t) = 2 c_0 t^(3-alpha0) for the
-    diagram integrals of the model M4 (white noise, d = 1, alpha0 < 1); the statements about E X_1^2, E X_2 and the contribution
-    to E:full-second follow from the supplied mixed-moment expansion of P:mixed for random variables standing for the chaos
-    terms of the solution, which is not constructed.
+  class: same-assumptions
+  conclusion: full
   claims:
   - stratonovich-ham-second-moment-lean/order-two-diagrams-white-test-paper
   - stratonovich-ham-second-moment-lean/order-two-diagrams-white-cross
@@ -1999,13 +2592,10 @@ rows:
   - stratonovich-ham-second-moment-lean/order-two-diagrams-lintegral-g1
   - stratonovich-ham-second-moment-lean/order-two-diagrams-lintegral-g1-mul
   - stratonovich-ham-second-moment-lean/order-two-diagrams-c0-pos
-  inputs:
-  - 'MixedMoment: the statement of P:mixed (main TeX lines 834-849, E:mixed-moment and E:full-second): the diagram limits
-    exist and are finite, E[X_m X_n] = sum_D J_(m,n,D)(t) with the products integrable, u^2 integrable and E u^2 = sum_k A_k(t);
-    true for the solution under H:homog, not proved'
-  note: Wrapper OrderTwoDiagrams.white_test_paper (wave L13 item D4), with H:homog for d = alpha = 1, Gamma = delta_0 (only
-    alpha0 < 1 used) and X_0 = 1 (the TeX's convention, line 796). The eps -> 0+ limits of the smoothed white diagrams are
-    WhiteCollapse.tendsto_diagram_white (item D6). The diagram values hold for alpha0 < 1, t >= 0.
+  - stratonovich-ham-second-moment-lean/source-final-white-test-paper-l19
+  note: 'Wrapper SourceFinal.white_test_paper_l19 (Gamma = delta_0, 0 < alpha0 < 1, t > 0; H:homog by white_homog; X_n of every source field). Retained
+    OrderTwoDiagrams.white_test_paper takes MixedMoment for abstract X, u, X_0 = 1 and a white H:homog witness (t >= 0). eps -> 0+ limits WhiteCollapse.tendsto_diagram_white.
+    M9, M4.'
 - paper:
     number: Proposition P:actual-wave-form
     title: Form and phase kernel
@@ -2021,6 +2611,149 @@ rows:
   - stratonovich-ham-second-moment-lean/dimensional-matrix-full-interaction
   inputs:
   - "none beyond the paper's hypotheses: the checked Lean statements assume only parameter conditions; the analytic and probabilistic facts of the proof are outside Lean (see docs/statement-ledger.md, section DimensionalMatrix)"
+- paper:
+    number: Proposition P:cameron-full-mean
+    title: The compact time-space mean
+    label: P:cameron-full-mean
+  class: same-assumptions
+  conclusion: weaker
+  conclusion_scope: 'Lean proves only the map U, with nothing supplied, for 2 < r < 2/a (H_I the kernel completion,
+    M5), in two statements: for each temporal core a bounded U : H_I -> L^r(I; H_sp) with U(f (x) q)(s) = (K f)(s) q
+    a.e. for time tests f and ||U|| <= ||C_t||; separately, such a U with ||U|| <= ||K_a||_(r/2)^(1/2). The compactness
+    of T, its multiplier formula and E:cameron-compact-tail are not formalized.'
+  claims:
+  - stratonovich-ham-second-moment-lean/cameron-u-map-e-lp-norm-k-bochner-le
+  - stratonovich-ham-second-moment-lean/cameron-u-map-dual-bound-of-kform-abs
+  - stratonovich-ham-second-moment-lean/cameron-u-map-u-map
+  - stratonovich-ham-second-moment-lean/cameron-u-map-exists-u-tensor-spec-of-kform-abs
+  - stratonovich-ham-second-moment-lean/uniform-mean-discharge-u-map-paper
+  - stratonovich-ham-second-moment-lean/cameron-interface-kform-abs-target
+  - stratonovich-ham-second-moment-lean/cameron-interface-u-tensor-spec
+  - stratonovich-ham-second-moment-lean/cameron-interface-u-map-target
+  - stratonovich-ham-second-moment-lean/cameron-u-map-umap
+  note: CameronUMap.u_map and exists_uTensorSpec_of_kformAbs, UniformMeanDischarge.u_map_paper (wave L16 item D); TeX
+    lines at edf7085f (book 1.1.3). The dimension-free bound is proved by the kernel-positivity route (decisions 4 and 5
+    of wave L16), not through L:uniform-mean-tensor.
+- paper:
+    number: Proposition P:cameron-spatial-map
+    title: Compact spatial mean map
+    label: P:cameron-spatial-map
+  class: inputs-supplied
+  conclusion: weaker
+  conclusion_scope: 'Lean proves under H:homog, for a cutoff profile eta and every R > 0 with nothing supplied, the
+    bounded map T_R : H_sp -> L(E) with T_R [q] = B_E(M), M the multiplier by m_R (Gamma * q), and E:cameron-spatial-row
+    at c_1 = 0 at all states for alpha/4 < s < 1/2; with CutoffCompact, that T_R and its values are compact; the F
+    columns (c_1 eta_R, B_F, K(F)) are not formalized.'
+  claims:
+  - stratonovich-ham-second-moment-lean/cameron-final-spatial-mean-map-paper
+  - stratonovich-ham-second-moment-lean/cameron-final-cameron-spatial-map-paper
+  - stratonovich-ham-second-moment-lean/compact-operator-foundation-is-compact-operator-of-tendsto-finite-rank
+  - stratonovich-ham-second-moment-lean/compact-operator-foundation-is-compact-operator-adjoint
+  - stratonovich-ham-second-moment-lean/cameron-spatial-smooth-formula
+  - stratonovich-ham-second-moment-lean/cameron-spatial-spatial-row-all-mean-map
+  - stratonovich-ham-second-moment-lean/cameron-spatial-spatial-mean-map-at
+  - stratonovich-ham-second-moment-lean/cameron-spatial-spatial-mean-map-of-one-le
+  - stratonovich-ham-second-moment-lean/cameron-spatial-spatial-mean-map
+  - stratonovich-ham-second-moment-lean/cameron-spatial-is-compact-operator-riesz-map
+  - stratonovich-ham-second-moment-lean/cameron-spatial-is-compact-operator-embed-cutoff
+  - stratonovich-ham-second-moment-lean/cameron-spatial-is-compact-operator-mean-map-apply
+  - stratonovich-ham-second-moment-lean/cameron-spatial-cameron-spatial-map
+  - stratonovich-ham-second-moment-lean/cameron-interface-is-spatial-mean-map
+  - stratonovich-ham-second-moment-lean/cameron-interface-spatial-row-all
+  - stratonovich-ham-second-moment-lean/cameron-interface-cameron-spatial-target
+  - stratonovich-ham-second-moment-lean/cameron-interface-spatial-mean-map-target
+  - stratonovich-ham-second-moment-lean/cameron-spatial-mean-map
+  - stratonovich-ham-second-moment-lean/cameron-interface-cutoff-compact
+  - stratonovich-ham-second-moment-lean/cameron-interface-cutoff-compact-target
+  - stratonovich-ham-second-moment-lean/cameron-interface-k-row
+  - stratonovich-ham-second-moment-lean/cameron-spatial-k-row-l
+  - stratonovich-ham-second-moment-lean/positive-raw-mean-t-eq-be
+  - stratonovich-ham-second-moment-lean/positive-raw-mean-t-k-bochner-eq
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-cameron-spatial-map
+  inputs:
+  -  'CutoffCompact d: compactness sentence of P:cutoff-singular-values (compact_gaussian 469-472, Step 1 487-519, at
+    edf7085f): for real compact smooth chi, real sigma, gamma > 0, a compact bounded H^(sigma+gamma) -> H^sigma
+    agreeing with multiplication by chi on real tests exists, and any two bounded operators agreeing with it on real
+    tests are equal; TRUE; no singular-value rate or Schatten class'
+  note: 'CameronSpatial.spatial_mean_map, cameron_spatial_map (wave L16, B2); CameronFinal.spatial_mean_map_paper
+    (nothing supplied), cameron_spatial_map_paper (CutoffCompact); TeX at edf7085f. Constructs L15''s
+    CameronSpatialMap, compact by CutoffCompact. Also credited: the CameronSpatialMap structure and L15''s
+    PositiveRawMean.T_eq_BE, T_kBochner_eq (a CameronSpatialMap parameter).'
+- paper:
+    number: Proposition P:cameron-temporal-map
+    title: The compact temporal mean, without trace class
+    label: P:cameron-temporal-map
+  class: same-assumptions
+  conclusion: weaker
+  conclusion_scope: 'Lean proves, with nothing supplied, for 2 < r < 2/a: K is bounded, positive, strictly positive,
+    injective and compact; a positive square root K^(1/2) is compact; iota : H_t -> L^2(I) is onto and isometric with
+    iota [f] = K^(1/2) f; C_t = K^(1/2) iota is compact into L^r(I), C_t f = K f on tests. Not trace class and not
+    Hilbert-Schmidt are stated as cell-sum identities (decision 7).'
+  claims:
+  - stratonovich-ham-second-moment-lean/compact-operator-foundation-is-compact-operator-of-adjoint-comp-self
+  - stratonovich-ham-second-moment-lean/compact-operator-foundation-is-compact-operator-of-l2-kernel
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-schur-sq
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-mem-lp-kfun
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-norm-k-op-le
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-schur-kernel-kern
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-is-time-kernel-op-k-op-k
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-inner-k-eq-kform
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-is-positive-of-is-time-kernel-op
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-kern-mixture-ae
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-kform-eq-mixture
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-kform-pos
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-inner-pos-of-is-time-kernel-op
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-injective-of-is-time-kernel-op
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-schur-kernel-kdiag
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-mem-lp-ktr
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-is-compact-operator-k-op-k
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-is-compact-operator-of-is-time-kernel-op
+  - stratonovich-ham-second-moment-lean/cameron-temporal-young-young-split
+  - stratonovich-ham-second-moment-lean/cameron-temporal-young-young
+  - stratonovich-ham-second-moment-lean/cameron-temporal-young-lintegral-ka-e-rpow
+  - stratonovich-ham-second-moment-lean/cameron-temporal-young-kform-abs
+  - stratonovich-ham-second-moment-lean/cameron-temporal-sqrt-exists-eigen-hilbert-basis
+  - stratonovich-ham-second-moment-lean/cameron-temporal-sqrt-exists-is-positive-sqrt
+  - stratonovich-ham-second-moment-lean/cameron-temporal-map-e-lp-norm-le-of-dual
+  - stratonovich-ham-second-moment-lean/cameron-temporal-map-norm-eq-of-is-pos-sqrt
+  - stratonovich-ham-second-moment-lean/cameron-temporal-map-dense-range-of-is-pos-sqrt
+  - stratonovich-ham-second-moment-lean/cameron-temporal-map-surjective-iota-i
+  - stratonovich-ham-second-moment-lean/cameron-temporal-map-iota-e-j
+  - stratonovich-ham-second-moment-lean/cameron-temporal-map-e-lp-norm-sqrt-le
+  - stratonovich-ham-second-moment-lean/cameron-temporal-map-exists-temporal-mean-core
+  - stratonovich-ham-second-moment-lean/cameron-temporal-map-temporal-mean-core-ct-test
+  - stratonovich-ham-second-moment-lean/cameron-temporal-target-is-compact-operator-of-le-rpow
+  - stratonovich-ham-second-moment-lean/cameron-temporal-target-e-lp-norm-interpolate
+  - stratonovich-ham-second-moment-lean/cameron-temporal-target-is-compact-operator-sqrt
+  - stratonovich-ham-second-moment-lean/cameron-temporal-target-is-compact-operator-sqrt-lr
+  - stratonovich-ham-second-moment-lean/cameron-temporal-target-orthonormal-cell-l
+  - stratonovich-ham-second-moment-lean/cameron-temporal-target-kform-cell
+  - stratonovich-ham-second-moment-lean/cameron-temporal-target-not-trace
+  - stratonovich-ham-second-moment-lean/cameron-temporal-target-cameron-temporal-map
+  - stratonovich-ham-second-moment-lean/cameron-temporal-target-temporal-compact
+  - stratonovich-ham-second-moment-lean/cameron-interface-l2-i
+  - stratonovich-ham-second-moment-lean/cameron-interface-is-time-kernel-op
+  - stratonovich-ham-second-moment-lean/cameron-interface-is-pos-sqrt
+  - stratonovich-ham-second-moment-lean/cameron-interface-temporal-mean-core
+  - stratonovich-ham-second-moment-lean/cameron-interface-cell
+  - stratonovich-ham-second-moment-lean/cameron-interface-temporal-not-trace-target
+  - stratonovich-ham-second-moment-lean/cameron-interface-temporal-map-target
+  - stratonovich-ham-second-moment-lean/cameron-interface-temporal-compact
+  - stratonovich-ham-second-moment-lean/cameron-interface-ka-norm
+  - stratonovich-ham-second-moment-lean/cameron-interface-young-target
+  - stratonovich-ham-second-moment-lean/cameron-interface-kform-abs-target
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-k-op-k
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-ktr
+  - stratonovich-ham-second-moment-lean/cameron-temporal-kernel-kdiag
+  - stratonovich-ham-second-moment-lean/cameron-temporal-young-ka-e
+  - stratonovich-ham-second-moment-lean/cameron-temporal-map-iota-e
+  - stratonovich-ham-second-moment-lean/cameron-temporal-map-sqrt-lr
+  - stratonovich-ham-second-moment-lean/cameron-temporal-map-core-of
+  - stratonovich-ham-second-moment-lean/cameron-temporal-target-cell-l
+  note: 'CameronTemporal.cameron_temporal_map (wave L16, C), hypothesis-free; temporalCompact proves the fallback
+    TemporalCompact, which no theorem takes. TeX lines at edf7085f. Cell sums: sum_j <K e_j, e_j> = sum_j ||C_t
+    iota^(-1) e_j||^2 = 2N^a/((1-a)(2-a)); Mathlib has no trace class. Route: Gamma-subordination mixture, compact
+    spectral theorem, duality, interpolation. Stated for each r.'
 - paper:
     number: Proposition P:clock-copy-obstruction
     title: Obstruction to unweighted constant-correlation clock copying
@@ -2059,12 +2792,8 @@ rows:
     number: Proposition P:d1-upper
     title: One-dimensional upper bound
     label: P:d1-upper
-  class: inputs-supplied
-  conclusion: weaker
-  conclusion_scope: 'Lean proves E:d1-coefficient on the model M4 at every noise width, uniformly, with nothing supplied, and
-    for the limit coefficients (Riesz case: the supplied convergence of every diagram as the noise width tends to zero (L:joint-fixed-order));
-    the form sum_m E[X_m X_(2k-m)] and E:d1-upper hold for random variables with the supplied mixed-moment expansion of P:mixed
-    (solution not constructed).'
+  class: same-assumptions
+  conclusion: full
   claims:
   - stratonovich-ham-second-moment-lean/d1-upper-d1-upper-paper-riesz
   - stratonovich-ham-second-moment-lean/d1-upper-d1-upper-paper-white
@@ -2106,17 +2835,107 @@ rows:
   - stratonovich-ham-second-moment-lean/two-simplex-time-pair-int-le
   - stratonovich-ham-second-moment-lean/two-simplex-time-sum-inv-factorial-gen
   - stratonovich-ham-second-moment-lean/two-simplex-time-diagram-le
-  inputs:
-  - 'MixedMoment: the statement of P:mixed (main TeX lines 834-849, proof 861-927): every diagram limit exists and is finite,
-    E[X_m X_n] = sum_D J_(m,n,D)(t), u^2 integrable and E u^2 = sum_k A_k(t); TRUE for the solution under H:homog; about random
-    variables standing for the unconstructed solution and chaos terms'
-  - 'DiagramLimits (Riesz case only): every model diagram converges to diagramLim as eps -> 0+; part of L:joint-fixed-order
-    (main TeX lines 1853-1966), invoked at line 5534; TRUE under H:homog; proved for white noise (D1Upper.diagramLimits_white)
-    and implied by MixedMoment'
-  note: Wrappers D1Upper.d1_upper_paper_riesz, d1_upper_paper_white (MixedMoment supplied) and d1_upper_paper_white' (white
-    case, displays on the model, nothing supplied); 0 < alpha_0 carried unused. Model M4 (one common noise width, exact time
-    kernel). E:d1-time-symmetry proved as the inequality the proof uses; the L^2/L^1 limit step is replaced by the convergence
-    of each diagram.
+  - stratonovich-ham-second-moment-lean/riesz-diagram-limits-cov-eps-riesz-le
+  - stratonovich-ham-second-moment-lean/riesz-diagram-limits-tendsto-cov-eps-riesz
+  - stratonovich-ham-second-moment-lean/riesz-diagram-limits-cov-weight-cov-eps-le
+  - stratonovich-ham-second-moment-lean/riesz-diagram-limits-tendsto-cov-weight
+  - stratonovich-ham-second-moment-lean/riesz-diagram-limits-spatial-cov-eps-le
+  - stratonovich-ham-second-moment-lean/riesz-diagram-limits-tendsto-spatial
+  - stratonovich-ham-second-moment-lean/riesz-diagram-limits-spatial-riesz-le-csp
+  - stratonovich-ham-second-moment-lean/riesz-diagram-limits-tendsto-diagram-riesz
+  - stratonovich-ham-second-moment-lean/riesz-diagram-limits-diagram-limits-riesz
+  - stratonovich-ham-second-moment-lean/riesz-diagram-limits-coeff-alim-riesz-le-prime
+  - stratonovich-ham-second-moment-lean/riesz-diagram-limits-d1-upper-paper-riesz-prime
+  - stratonovich-ham-second-moment-lean/source-final-d1-upper-paper-l19
+  - stratonovich-ham-second-moment-lean/mild-interface-riesz-instance-target
+  - stratonovich-ham-second-moment-lean/mild-interface-d1-upper-white-target
+  - stratonovich-ham-second-moment-lean/mild-interface-d1-upper-riesz-target
+  - stratonovich-ham-second-moment-lean/riesz-instance-one-riesz-posdef-one
+  - stratonovich-ham-second-moment-lean/riesz-instance-one-is-spectral-measure-riesz
+  - stratonovich-ham-second-moment-lean/riesz-instance-one-riesz-homog-covariance-one-spectral
+  - stratonovich-ham-second-moment-lean/riesz-instance-one-riesz-homog-covariance-one
+  - stratonovich-ham-second-moment-lean/cleanup-wrappers-d1-upper-paper-white-l20
+  - stratonovich-ham-second-moment-lean/cleanup-wrappers-d1-upper-paper-l20
+  - stratonovich-ham-second-moment-lean/cleanup-wrappers-riesz-instance-l20
+  - stratonovich-ham-second-moment-lean/cleanup-wrappers-d1-upper-paper-closed-l20
+  note: 'Wrappers CleanupWrappers.d1_upper_paper_white_l20 (white) and d1_upper_paper_closed_l20 (Riesz; hH by riesz_homogCovariance_one), every source field, nothing supplied; model displays D1Upper.d1_upper_paper_white'', RieszDiagramLimits.d1_upper_paper_riesz''. Retained: D1Upper moment forms MixedMoment, unprimed coeffALim_* DiagramLimits (proved), d1_upper_paper_l19 hH, _l20 hR. M9, M4.'
+- paper:
+    number: Proposition P:envelope
+    title: The uniform pairing estimate
+    label: P:envelope
+  class: same-assumptions
+  conclusion: full
+  claims:
+  - stratonovich-ham-second-moment-lean/pairing-interface-smooth-spec
+  - stratonovich-ham-second-moment-lean/pairing-interface-damp
+  - stratonovich-ham-second-moment-lean/pairing-interface-m4-chain
+  - stratonovich-ham-second-moment-lean/pairing-interface-m4-bridge-target
+  - stratonovich-ham-second-moment-lean/pairing-interface-green2
+  - stratonovich-ham-second-moment-lean/pairing-interface-wave-green-two-eq
+  - stratonovich-ham-second-moment-lean/pairing-interface-m4-chain-wf
+  - stratonovich-ham-second-moment-lean/pairing-bridge-diagram-le-pairing-integral
+  - stratonovich-ham-second-moment-lean/pairing-bridge-m4-bridge-of-ne-top
+  - stratonovich-ham-second-moment-lean/pairing-bridge-m4-bridge
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-green-density
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-green-density-one
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-green-density-two
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-n0-damp
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-lap-four-damp
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-n1-damp-le
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-lintegral-double-spatial
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-ql-damp-eq
+  - stratonovich-ham-second-moment-lean/pairing-damped-norms-n2-damp-sq-le
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-prod-p-const-le
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-khom
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-kernel-hyp-damp
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-norms-le-homog
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-diagram-le-homog
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-homogeneous-envelope-diagrams
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-term-bk
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-bk
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-i-inf-exp-rpow
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-double-factorial-bounds
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-pow-self-le-exp-mul-factorial
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-two-mul-add-one-le-three-pow
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-term-bk-eq
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-term-bk-le
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-term-bk-ge
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-summable-term-bk-and-le
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-envelope-growth
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-moment-le-of-diagrams
+  - stratonovich-ham-second-moment-lean/homogeneous-envelope-envelope-paper
+  - stratonovich-ham-second-moment-lean/envelope-final-homogeneous-envelope-diagrams-l17
+  - stratonovich-ham-second-moment-lean/envelope-final-envelope-paper-l17
+  - stratonovich-ham-second-moment-lean/green-smoothed3-green3s
+  - stratonovich-ham-second-moment-lean/green-smoothed3-measurable-green3s
+  - stratonovich-ham-second-moment-lean/green-smoothed3-green3s-ne-top
+  - stratonovich-ham-second-moment-lean/green-smoothed3-smoothed-green-three-eq
+  - stratonovich-ham-second-moment-lean/green-smoothed3-smoothed-green-three-mass
+  - stratonovich-ham-second-moment-lean/green-smoothed3-char-fun-smoothed-green-three
+  - stratonovich-ham-second-moment-lean/pairing-smoothed-norms-smooth-density
+  - stratonovich-ham-second-moment-lean/pairing-smoothed-norms-n0-damp
+  - stratonovich-ham-second-moment-lean/pairing-smoothed-norms-n1-damp-le
+  - stratonovich-ham-second-moment-lean/pairing-smoothed-norms-n2-damp-sq-le
+  - stratonovich-ham-second-moment-lean/envelope-d3-smooth-density-three
+  - stratonovich-ham-second-moment-lean/envelope-d3-kernel-hyp-damp
+  - stratonovich-ham-second-moment-lean/envelope-d3-norms-le-homog
+  - stratonovich-ham-second-moment-lean/envelope-d3-diagram-le-homog
+  - stratonovich-ham-second-moment-lean/envelope-d3-homogeneous-envelope-diagrams-three
+  - stratonovich-ham-second-moment-lean/envelope-d3-final-homogeneous-envelope-diagrams-three-l17
+  - stratonovich-ham-second-moment-lean/wick-interface-homog-envelope-three-target
+  - stratonovich-ham-second-moment-lean/envelope-d3-wave-tendsto-spatial-spec-w
+  - stratonovich-ham-second-moment-lean/envelope-d3-wave-tendsto-wick-j-green-s
+  - stratonovich-ham-second-moment-lean/envelope-d3-wave-diagram-three-le
+  - stratonovich-ham-second-moment-lean/envelope-d3-wave-homogeneous-envelope-diagrams-three-prime
+  - stratonovich-ham-second-moment-lean/wick-final-homogeneous-envelope-diagrams-three-l18
+  - stratonovich-ham-second-moment-lean/source-final-envelope-moments-of-diagrams
+  - stratonovich-ham-second-moment-lean/source-final-homogeneous-diagrams
+  - stratonovich-ham-second-moment-lean/source-final-envelope-paper-l19
+  - stratonovich-ham-second-moment-lean/mild-interface-rho-gt-kappa-target
+  - stratonovich-ham-second-moment-lean/mild-interface-envelope-target
+  - stratonovich-ham-second-moment-lean/cleanup-wrappers-rho-gt-kappa-l20
+  - stratonovich-ham-second-moment-lean/cleanup-wrappers-envelope-paper-l20
+  note: 'Wrapper CleanupWrappers.envelope_paper_l20 (d = 1, 2, 3; K before t and the field): E:homogeneous-envelope, every source field, E u^2 <= B_K(t), E:envelope-growth, rho > kappa. Predecessor SourceFinal.envelope_paper_l19. Retained: envelope_paper MixedMoment and hPE (proved), _l17 MixedMoment; diagram steps hPE or hB; envelope_moments_of_diagrams MixedMoment and a diagram bound. M9, M4, M7, M8, M1.'
 - paper:
     number: Proposition P:finite-gaussian-matrix
     title: Finite Gaussian matrix moment
@@ -2269,12 +3088,8 @@ rows:
     number: Proposition P:low-alpha-upper
     title: Upper bound for alpha <= 1
     label: P:low-alpha-upper
-  class: inputs-supplied
-  conclusion: weaker
-  conclusion_scope: Lean proves, under H:homog with d in {1,2,3}, alpha <= 1 and V > 0, both inequalities of E:low-alpha-coefficient
-    on the diagram model at every noise width eps > 0 with nothing supplied; the first inequality for A_k(t) = sum_m E[X_m X_(2k-m)]
-    and E u^2 <= exp(C_dir^gen t^kappa) are proved for random variables with the supplied mixed-moment expansion of P:mixed (solution
-    not constructed).
+  class: same-assumptions
+  conclusion: full
   claims:
   - stratonovich-ham-second-moment-lean/low-alpha-upper-low-alpha-upper-paper
   - stratonovich-ham-second-moment-lean/low-alpha-upper-low-alpha-upper-moment-paper
@@ -2297,14 +3112,10 @@ rows:
   - stratonovich-ham-second-moment-lean/low-alpha-upper-c2
   - stratonovich-ham-second-moment-lean/low-alpha-upper-kappa
   - stratonovich-ham-second-moment-lean/two-simplex-time-coeff-a-le
-  inputs:
-  - 'MixedMoment: the statement of P:mixed (main TeX lines 834-849): the diagram limits exist and are finite (the TeX proves
-    them by L:joint-fixed-order and the eta-limit paragraph, lines 5785-5802), E[X_m X_n] is the sum of the diagram limits,
-    E u^2 = sum_k A_k(t); TRUE for the solution under H:homog'
-  note: Wrappers LowAlphaUpper.low_alpha_upper_paper (nothing supplied, model) and low_alpha_upper_moment_paper (MixedMoment).
-    Models M4 and M1 (d = 3); the TeX's Green smoothing G_(h,eta) and its limit are not needed (the convolution lemmas at
-    eta = 0). V > 0 carried unused; t > 0 used as t >= 0; H:homog fields alpha0_pos, Gamma_radon, Gamma_posdef, mu_even, threshold
-    unused.
+  - stratonovich-ham-second-moment-lean/source-final-low-alpha-upper-moment-paper-l19
+  - stratonovich-ham-second-moment-lean/mild-interface-low-alpha-upper-target
+  - stratonovich-ham-second-moment-lean/cleanup-wrappers-low-alpha-upper-moment-paper-l20
+  note: 'Wrappers LowAlphaUpper.low_alpha_upper_paper (M4 model, nothing supplied) and CleanupWrappers.low_alpha_upper_moment_paper_l20 (X_n, u of every source field: both inequalities of E:low-alpha-coefficient, E u^2 <= exp(C_dir^gen t^kappa)); SourceFinal _l19 the first inequality. Retained moment lemmas take MixedMoment, steps SpatialMax and hlim. V > 0 unused. M9, M4, M1.'
 - paper:
     number: Proposition P:masked-auxiliary-norm
     title: Auxiliary mask norm
@@ -2432,12 +3243,8 @@ rows:
     number: Proposition P:mild-construction
     title: Mild construction from the fixed-order limits
     label: P:mild-construction
-  class: inputs-supplied
-  conclusion: weaker
-  conclusion_scope: Lean proves only the multiplication bound E:occupied-multiplication of the proof, for F a real polynomial
-    of total degree at most n in finitely many independent standard Gaussians and H a real combination of them; its extension
-    to the closed space of degree at most n, the almost-sure identification and the mild-solution statement E:mild-construction
-    are not formalized.
+  class: same-assumptions
+  conclusion: full
   claims:
   - stratonovich-ham-second-moment-lean/fock-form-occupied-multiplication-paper
   - stratonovich-ham-second-moment-lean/fock-form-occupied-multiplication
@@ -2445,12 +3252,149 @@ rows:
   - stratonovich-ham-second-moment-lean/gaussian-hermite-monomial-mem-hermite-span
   - stratonovich-ham-second-moment-lean/hermite-fock-gaussian-field-bound
   - stratonovich-ham-second-moment-lean/hermite-fock-vacuum-insertion-isometry
-  inputs:
-  - 'the closure step of E:occupied-multiplication (lines 2197-2201: approximation in P_(<=n), the L^2 Cauchy property of
-    the products and the almost-sure identification of the limit with HF); not formalized'
-  - the fixed-order limits X_n in P_(<=n) (lines 2181-2185) and the proof of E:mild-construction (from line 2211); not formalized
-  note: E:occupied-multiplication for finite-coordinate polynomials is proved with nothing supplied, by the spanning step
-    and the Gaussian Fock bound with X = C; F may depend on H. H:homog plays no role in that display and is not carried.
+  - stratonovich-ham-second-moment-lean/mild-interface-poly-gen
+  - stratonovich-ham-second-moment-lean/mild-interface-poly-le
+  - stratonovich-ham-second-moment-lean/mild-interface-lin-g
+  - stratonovich-ham-second-moment-lean/mild-interface-mul-l2
+  - stratonovich-ham-second-moment-lean/mild-interface-to-pos-w
+  - stratonovich-ham-second-moment-lean/mild-interface-wa
+  - stratonovich-ham-second-moment-lean/mild-interface-yf
+  - stratonovich-ham-second-moment-lean/mild-interface-xf
+  - stratonovich-ham-second-moment-lean/mild-interface-uf
+  - stratonovich-ham-second-moment-lean/mild-interface-mild-measure
+  - stratonovich-ham-second-moment-lean/mild-interface-mild-measure-reg
+  - stratonovich-ham-second-moment-lean/mild-interface-mild-int
+  - stratonovich-ham-second-moment-lean/mild-interface-mild-int-reg
+  - stratonovich-ham-second-moment-lean/mild-interface-ina
+  - stratonovich-ham-second-moment-lean/mild-interface-ia
+  - stratonovich-ham-second-moment-lean/mild-interface-va
+  - stratonovich-ham-second-moment-lean/mild-interface-occupied-mult-target
+  - stratonovich-ham-second-moment-lean/mild-interface-poly-mem-target
+  - stratonovich-ham-second-moment-lean/mild-interface-joint-meas-target
+  - stratonovich-ham-second-moment-lean/mild-interface-field-cont-target
+  - stratonovich-ham-second-moment-lean/mild-interface-field-meas-target
+  - stratonovich-ham-second-moment-lean/mild-interface-joint-measurability
+  - stratonovich-ham-second-moment-lean/mild-interface-terminal-fubini-target
+  - stratonovich-ham-second-moment-lean/mild-interface-terminal-fubini
+  - stratonovich-ham-second-moment-lean/mild-interface-partial-vertex-target
+  - stratonovich-ham-second-moment-lean/mild-interface-green-width-mild-target
+  - stratonovich-ham-second-moment-lean/mild-interface-external-vertex-target
+  - stratonovich-ham-second-moment-lean/mild-interface-mild-construction-target
+  - stratonovich-ham-second-moment-lean/mild-interface-mild-construction-m9
+  - stratonovich-ham-second-moment-lean/mild-interface-poly-le-mono
+  - stratonovich-ham-second-moment-lean/mild-interface-va-eq-src-cov
+  - stratonovich-ham-second-moment-lean/mild-occupied-occupied-field
+  - stratonovich-ham-second-moment-lean/mild-occupied-occupied-span
+  - stratonovich-ham-second-moment-lean/mild-occupied-ae-limit
+  - stratonovich-ham-second-moment-lean/mild-occupied-mul-closed
+  - stratonovich-ham-second-moment-lean/mild-occupied-occupied-poly-le
+  - stratonovich-ham-second-moment-lean/mild-occupied-occupied-closed
+  - stratonovich-ham-second-moment-lean/mild-occupied-occupied-mult
+  - stratonovich-ham-second-moment-lean/mild-poly-mem-ya-mem
+  - stratonovich-ham-second-moment-lean/mild-poly-mem-strat-int-zero-time
+  - stratonovich-ham-second-moment-lean/mild-poly-mem-xl2-mem
+  - stratonovich-ham-second-moment-lean/mild-poly-mem-poly-mem
+  - stratonovich-ham-second-moment-lean/mild-poly-mem-occupied-xl2
+  - stratonovich-ham-second-moment-lean/mild-poly-mem-occupied-partial-sum
+  - stratonovich-ham-second-moment-lean/mild-fields-continuous-ya
+  - stratonovich-ham-second-moment-lean/mild-fields-inner-ya-shift
+  - stratonovich-ham-second-moment-lean/mild-fields-norm-sub-ya-shift
+  - stratonovich-ham-second-moment-lean/mild-fields-ya-time-zero
+  - stratonovich-ham-second-moment-lean/mild-fields-xl2-time-zero
+  - stratonovich-ham-second-moment-lean/mild-fields-ya-eq-integral
+  - stratonovich-ham-second-moment-lean/mild-fields-strongly-measurable-yrep
+  - stratonovich-ham-second-moment-lean/mild-fields-strongly-measurable-yf
+  - stratonovich-ham-second-moment-lean/mild-fields-strongly-measurable-wa
+  - stratonovich-ham-second-moment-lean/mild-fields-joint-meas
+  - stratonovich-ham-second-moment-lean/mild-fields-field-cont
+  - stratonovich-ham-second-moment-lean/mild-fields-field-meas
+  - stratonovich-ham-second-moment-lean/mild-terminal-fubini-lintegral-chain-measure-raw-succ
+  - stratonovich-ham-second-moment-lean/mild-terminal-fubini-chain-measure-raw-succ-eq
+  - stratonovich-ham-second-moment-lean/mild-terminal-fubini-integral-chain-measure-raw-succ
+  - stratonovich-ham-second-moment-lean/mild-terminal-fubini-mul-ya-eq
+  - stratonovich-ham-second-moment-lean/mild-terminal-fubini-terminal-fubini
+  - stratonovich-ham-second-moment-lean/mild-partial-vertex-tendsto-mul-l2
+  - stratonovich-ham-second-moment-lean/mild-partial-vertex-xl2-time-zero
+  - stratonovich-ham-second-moment-lean/mild-partial-vertex-partial-vertex
+  - stratonovich-ham-second-moment-lean/mild-green-width-continuous-mul-p
+  - stratonovich-ham-second-moment-lean/mild-green-width-mild-reg-limit
+  - stratonovich-ham-second-moment-lean/mild-green-width-green-width-mild
+  - stratonovich-ham-second-moment-lean/mild-construction-has-sum-mul-l2
+  - stratonovich-ham-second-moment-lean/mild-construction-prod-has-sum
+  - stratonovich-ham-second-moment-lean/mild-construction-external-vertex
+  - stratonovich-ham-second-moment-lean/mild-construction-mild-construction-of
+  - stratonovich-ham-second-moment-lean/mild-construction-mild-construction
+  - stratonovich-ham-second-moment-lean/mild-final-occupied-mult-l20
+  - stratonovich-ham-second-moment-lean/mild-final-poly-mem-l20
+  - stratonovich-ham-second-moment-lean/mild-final-field-meas-l20
+  - stratonovich-ham-second-moment-lean/mild-final-terminal-fubini-l20
+  - stratonovich-ham-second-moment-lean/mild-final-partial-vertex-l20
+  - stratonovich-ham-second-moment-lean/mild-final-green-width-mild-l20
+  - stratonovich-ham-second-moment-lean/mild-final-external-vertex-l20
+  - stratonovich-ham-second-moment-lean/mild-final-mild-construction-l20
+  - stratonovich-ham-second-moment-lean/mild-final-mild-construction-m9-l20
+  note: 'Wrappers MildFinal.mild_construction_l20 (E:mild-construction, every source field, H:homog, t > 0, every x, eps, delta -> 0+ at arbitrary rates; decision 2) and mild_construction_m9_l20 (at m9); d = 3 Green-width sentence green_width_mild_l20 (d = 1, 2, 3). Credited steps (MildOccupied to MildConstruction) take item targets, proved and discharged in MildFinal (ledger). No uniqueness. M9, M1.'
+- paper:
+    number: Proposition P:mixed
+    title: Mixed terms
+    label: P:mixed
+  class: same-assumptions
+  conclusion: full
+  claims:
+  - stratonovich-ham-second-moment-lean/source-interface-source-field
+  - stratonovich-ham-second-moment-lean/source-interface-xl2
+  - stratonovich-ham-second-moment-lean/source-interface-u-l2
+  - stratonovich-ham-second-moment-lean/source-interface-src-x
+  - stratonovich-ham-second-moment-lean/source-interface-src-u
+  - stratonovich-ham-second-moment-lean/source-interface-eps-v
+  - stratonovich-ham-second-moment-lean/source-interface-del-v
+  - stratonovich-ham-second-moment-lean/source-interface-src-pairing
+  - stratonovich-ham-second-moment-lean/source-interface-terminal-wick-w-target
+  - stratonovich-ham-second-moment-lean/source-interface-terminal-reversal-target
+  - stratonovich-ham-second-moment-lean/source-interface-terminal-reversal
+  - stratonovich-ham-second-moment-lean/source-interface-terminal-mixed-moment-target
+  - stratonovich-ham-second-moment-lean/source-interface-diagram-lim-ident-target
+  - stratonovich-ham-second-moment-lean/source-interface-expansion-l2-target
+  - stratonovich-ham-second-moment-lean/source-interface-mixed-terms-target
+  - stratonovich-ham-second-moment-lean/source-interface-ya-zero
+  - stratonovich-ham-second-moment-lean/source-wick-continuous-prod-l2-attach
+  - stratonovich-ham-second-moment-lean/source-wick-norm-prod-l2-attach-le
+  - stratonovich-ham-second-moment-lean/source-wick-integrable-prod-l2-attach
+  - stratonovich-ham-second-moment-lean/source-wick-integrable-pair-weight-src
+  - stratonovich-ham-second-moment-lean/source-wick-terminal-wick-w
+  - stratonovich-ham-second-moment-lean/source-reversal-refl
+  - stratonovich-ham-second-moment-lean/source-reversal-measure-preserving-refl
+  - stratonovich-ham-second-moment-lean/source-reversal-incr-refl-rev
+  - stratonovich-ham-second-moment-lean/source-reversal-mem-two-simplex-refl-iff-open
+  - stratonovich-ham-second-moment-lean/source-reversal-rho-n-eq
+  - stratonovich-ham-second-moment-lean/source-reversal-pos-refl
+  - stratonovich-ham-second-moment-lean/source-reversal-prod-openers-rev-pairing
+  - stratonovich-ham-second-moment-lean/source-reversal-integrand-eq
+  - stratonovich-ham-second-moment-lean/source-reversal-lhs-lintegral
+  - stratonovich-ham-second-moment-lean/source-reversal-rhs-lintegral
+  - stratonovich-ham-second-moment-lean/source-reversal-lintegral-reversal
+  - stratonovich-ham-second-moment-lean/source-reversal-terminal-reversal
+  - stratonovich-ham-second-moment-lean/source-reversal-terminal-mixed-moment
+  - stratonovich-ham-second-moment-lean/source-mixed-diagram-lim-ident
+  - stratonovich-ham-second-moment-lean/source-mixed-inner-ycom
+  - stratonovich-ham-second-moment-lean/source-mixed-ycom-zero
+  - stratonovich-ham-second-moment-lean/source-mixed-tendsto-ycom-xl2
+  - stratonovich-ham-second-moment-lean/source-mixed-inner-xl2-zero
+  - stratonovich-ham-second-moment-lean/source-mixed-inner-xl2
+  - stratonovich-ham-second-moment-lean/source-mixed-mixed-moment-src-x
+  - stratonovich-ham-second-moment-lean/source-expansion-has-sum-inner-antidiagonal
+  - stratonovich-ham-second-moment-lean/source-expansion-norm-xl2-le
+  - stratonovich-ham-second-moment-lean/source-expansion-expansion-l2
+  - stratonovich-ham-second-moment-lean/source-expansion-has-sum-coeff-a-lim
+  - stratonovich-ham-second-moment-lean/source-expansion-mixed-terms
+  - stratonovich-ham-second-moment-lean/source-final-terminal-wick-w-l19
+  - stratonovich-ham-second-moment-lean/source-final-terminal-mixed-moment-l19
+  - stratonovich-ham-second-moment-lean/source-final-expansion-l2-l19
+  - stratonovich-ham-second-moment-lean/source-final-mixed-terms-l19
+  - stratonovich-ham-second-moment-lean/source-final-mixed-moment-m9-l19
+  note: 'Wrappers SourceFinal.mixed_terms_l19 (MixedMoment for srcX, srcU of every source field, H:homog, t > 0), mixedMoment_m9_l19. Steps: SourceWick takes B continuity
+    (source_cov_continuous); SourceMixed, SourceExpansion take C and D (terminal_mixed_moment_l19, fixed_order_l2_l19), norm_XL2_le also hdiag; discharged in SourceFinal. M9,
+    M8, M4.'
 - paper:
     number: Proposition P:moment-growth-logconvex
     title: Log-convexity of the upper growth type
@@ -2614,12 +3558,10 @@ rows:
     number: Proposition P:riesz-small
     title: Riesz finite coefficients
     label: P:riesz-small
-  class: inputs-supplied
+  class: same-assumptions
   conclusion: weaker
-  conclusion_scope: Lean proves, with nothing supplied, E:riesz-two and A_1 = J_(1,1) + 2 J_(2,0) for the diagram integrals
-    of M4, and E:riesz-four with finiteness for all splits and pairings; the order-two statements about E X_2, E X_1^2 follow
-    from the supplied mixed-moment expansion of P:mixed (solution not constructed); that the total coefficient uses the multiplicities
-    of E:total-four is not formalized.
+  conclusion_scope: Lean proves, with nothing supplied, E:riesz-two and the total E X_1^2 + 2 E X_2 for the chaos terms of every source field, E:riesz-two and A_1 = J_(1,1) + 2 J_(2,0)
+    for the M4 diagrams, and E:riesz-four with finiteness for all splits and pairings (density diagrams, equal to the limit diagrams); the multiplicities of E:total-four are not formalized.
   claims:
   - stratonovich-ham-second-moment-lean/riesz-four-diagrams-riesz-small-paper-prime
   - stratonovich-ham-second-moment-lean/riesz-four-diagrams-riesz-four-paper
@@ -2662,14 +3604,18 @@ rows:
   - stratonovich-ham-second-moment-lean/riesz-four-diagrams-inst-is-probability-measure-unif-law
   - stratonovich-ham-second-moment-lean/riesz-four-diagrams-pi-wave-green-eq-smul-map
   - stratonovich-ham-second-moment-lean/riesz-four-diagrams-spatial-riesz-smul
-  inputs:
-  - 'MixedMoment: the statement of P:mixed (main TeX lines 834-849): the diagram limits exist and are finite, E[X_m X_n] =
-    sum_D J_(m,n,D)(t) with the products integrable, u^2 integrable and E u^2 = sum_k A_k(t); true for the solution under
-    H:homog, not proved (order-two wrapper riesz_small_paper'' only)'
-  note: Wrappers RieszFourDiagrams.riesz_small_paper' (order two; RieszDiagramLimit proved there by rieszDiagramLimit) and
-    riesz_four_paper (order four, nothing supplied); H:homog carried unused. OrderTwoDiagrams.riesz_small_paper (RieszDiagramLimit
-    as input) is superseded. E:riesz-four is for the density diagrams; their identification with diagramLim at order four
-    is not proved.
+  - stratonovich-ham-second-moment-lean/riesz-diagram-limits-diagram-lim-riesz-eq
+  - stratonovich-ham-second-moment-lean/source-final-riesz-small-paper-l19
+  - stratonovich-ham-second-moment-lean/mild-interface-riesz-instance-target
+  - stratonovich-ham-second-moment-lean/mild-interface-riesz-small-target
+  - stratonovich-ham-second-moment-lean/riesz-instance-one-riesz-posdef-one
+  - stratonovich-ham-second-moment-lean/riesz-instance-one-is-spectral-measure-riesz
+  - stratonovich-ham-second-moment-lean/riesz-instance-one-riesz-homog-covariance-one-spectral
+  - stratonovich-ham-second-moment-lean/riesz-instance-one-riesz-homog-covariance-one
+  - stratonovich-ham-second-moment-lean/cleanup-wrappers-riesz-small-paper-l20
+  - stratonovich-ham-second-moment-lean/cleanup-wrappers-riesz-instance-l20
+  - stratonovich-ham-second-moment-lean/cleanup-wrappers-riesz-small-paper-closed-l20
+  note: 'Wrapper CleanupWrappers.riesz_small_paper_closed_l20 (order two, X_n of every source field, t > 0); order four, nothing supplied: RieszFourDiagrams.riesz_four, riesz_coeffA_two. Retained: riesz_small_paper'' (order two; MixedMoment, X_0 = 1, unused hH), riesz_four_paper (unused hH), OrderTwoDiagrams.riesz_small_paper (MixedMoment, RieszDiagramLimit, X_0 = 1, unused hH), _l19 hH, _l20 hR. M9, M4.'
 - paper:
     number: Proposition P:signed-closed-form
     title: Closed form and quarter-power phase
@@ -2884,6 +3830,8 @@ rows:
   class: inputs-supplied
   conclusion: full
   claims:
+  - stratonovich-ham-second-moment-lean/source-tube-attained-tube-rayleigh-transfer-paper-l21
+  - stratonovich-ham-second-moment-lean/source-tube-attained-tube-attained-paper-tube
   - stratonovich-ham-second-moment-lean/source-tube-tube-rayleigh-transfer-paper
   - stratonovich-ham-second-moment-lean/source-tube-tube-rayleigh-transfer-zero-paper
   - stratonovich-ham-second-moment-lean/source-tube-tube-rayleigh-transfer
@@ -2903,13 +3851,53 @@ rows:
   - stratonovich-ham-second-moment-lean/source-tube-tail-to-real-ge
   - stratonovich-ham-second-moment-lean/source-tube-ae-tube-radius-lt-top
   inputs:
-  - 'TubeAttained: every tube T_r is closed and {d_delta <= r} = T_r (first part of E:tube-attained-radius of L:tube-closed-geometry,
-    gaussian_tubes.tex lines 158-161, proved there from the compactness of M_delta; nonzero law only)'
   - 'TubeTail: P(d_delta(X) > r) <= e^(-r^2/(2 delta)) for r >= 0 (second part of E:tube-attained-radius, lines 161-162, proved
     there from the imported Gaussian isoperimetric theorem of Borell and Sudakov-Tsirelson; nonzero law only)'
-  note: Wrappers SourceTube.tube_rayleigh_transfer_paper (nonzero law, the inputs at the manuscript tubes; compactness, delta
-    < 1, E|X|^2 < infinity, the nonzero law and the measurability of F, G unused; the Gaussian hypotheses on X enter only
-    through the inputs) and tube_rayleigh_transfer_zero_paper (zero law, nothing supplied). Lower integrals in [0, infinity].
+  note: Wrappers SourceTubeAttained.tube_rayleigh_transfer_paper_l21 (nonzero law, only TubeTail supplied; TubeAttained discharged
+    by tubeAttained_paperTube, wave L21) and SourceTube.tube_rayleigh_transfer_zero_paper (zero law, nothing supplied). Retained
+    SourceTube.tube_rayleigh_transfer_paper, tube_rayleigh_transfer and measurable_tubeRadius take TubeAttained. Lower integrals
+    in [0, infinity].
+- paper:
+    number: Proposition P:uniform-mean-regulator
+    title: Uniform approximation of the completed mean
+    label: P:uniform-mean-regulator
+  class: inputs-supplied
+  conclusion: weaker
+  conclusion_scope: 'Lean constructs, with CutoffCompact supplied, under H:homog, Gamma != 0, 2 < r < 2/alpha0, L15''s
+    UniformMeanRegulator: T_R (R >= 1), C_t compact into L^r(I), C_t f = K f on tests, U with its tensor formula and
+    ||U|| <= ||C_t||, and ||T_R U|| <= M_0 c_t uniformly in R >= 1; its mean has compact values a.e. The projections
+    P_ret, Q_(J,K), eps_J -> 0 and the tail bound are not formalized.'
+  claims:
+  - stratonovich-ham-second-moment-lean/cameron-final-uniform-mean-regulator-paper
+  - stratonovich-ham-second-moment-lean/cameron-final-positive-raw-mean-paper-l16
+  - stratonovich-ham-second-moment-lean/cameron-u-map-dual-bound-of-core
+  - stratonovich-ham-second-moment-lean/uniform-mean-assembly-uniform-mean-regulator
+  - stratonovich-ham-second-moment-lean/uniform-mean-assembly-mean-compact-values
+  - stratonovich-ham-second-moment-lean/uniform-mean-discharge-uniform-mean-regulator-of
+  - stratonovich-ham-second-moment-lean/cameron-interface-u-tensor-spec
+  - stratonovich-ham-second-moment-lean/cameron-interface-u-map-target
+  - stratonovich-ham-second-moment-lean/cameron-interface-uniform-mean-regulator-target
+  - stratonovich-ham-second-moment-lean/cameron-interface-mean-compact-values-target
+  - stratonovich-ham-second-moment-lean/cameron-interface-cutoff-compact
+  - stratonovich-ham-second-moment-lean/cameron-interface-cutoff-compact-target
+  - stratonovich-ham-second-moment-lean/positive-raw-mean-positive-raw-mean-paper
+  - stratonovich-ham-second-moment-lean/positive-raw-mean-positive-raw-mean-paper-of-um0
+  - stratonovich-ham-second-moment-lean/positive-raw-mean-positive-raw-mean-of
+  - stratonovich-ham-second-moment-lean/positive-raw-mean-u-incl-ae
+  - stratonovich-ham-second-moment-lean/positive-raw-mean-inner-u-j
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-positive-raw-mean-target
+  - stratonovich-ham-second-moment-lean/uniform-mean-interface-uniform-mean-regulator
+  - stratonovich-ham-second-moment-lean/uniform-mean-assembly-positive-raw-mean-of-items
+  - stratonovich-ham-second-moment-lean/uniform-mean-discharge-positive-raw-mean-of
+  inputs:
+  -  'CutoffCompact d: compactness sentence of P:cutoff-singular-values (compact_gaussian 469-472, Step 1 487-519, at
+    edf7085f): for real compact smooth chi, real sigma, gamma > 0, a compact bounded H^(sigma+gamma) -> H^sigma
+    agreeing with multiplication by chi on real tests exists, and any two bounded operators agreeing with it on real
+    tests are equal; TRUE; no singular-value rate or Schatten class'
+  note: 'UniformMeanAssembly.uniform_mean_regulator, mean_compact_values; CameronFinal.uniform_mean_regulator_paper;
+    TeX at edf7085f. Some M_0 >= 0 (proof: A_s M_(1/2)^2). Also credited: E:positive-raw-mean for a regulator''s mean
+    (L15''s PositiveRawMean, regulator a parameter) and for the constructed one (positive_raw_mean_of_items; with
+    CutoffCompact positive_raw_mean_of, positive_raw_mean_paper_l16).'
 - paper:
     number: Proposition P:variational-positive-scores
     title: Intrinsic variational lower bounds

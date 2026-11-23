@@ -1,6 +1,6 @@
 /-
 Refutation for the scalar maximum behind `E:spatial-energy-map`
-(`notes/integrated_spatial_occupation.tex` lines 414-419 and 439-444 at 39f2597a), package
+(`notes/integrated_spatial_occupation.tex` lines 414-419 and 439-444 at edf7085f), package
 theorem `StratonovichHAMSecondMoment.SpatialFourLinear.young_bound`
 (`R β^{α/2} - β/2 ≤ (2-α)/2 · α^{α/(2-α)} · R^{2/(2-α)}`).
 

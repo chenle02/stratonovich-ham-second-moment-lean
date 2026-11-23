@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The spectral-mass constant `R_α` of `E:intro-spectral-mass` (main TeX
-`notes/notes_stratonovich_ham_second_moment.tex`, revision 39f2597a, lines
+`notes/notes_stratonovich_ham_second_moment.tex`, revision edf7085f, lines
 691-697: `B_1` the unit ball of `ℝ^d` and
 `R_α = απ μ(B_1)/(2 sin(πα/2))`) is the resolvent at `1`:
 
@@ -13,7 +13,7 @@ The spectral-mass constant `R_α` of `E:intro-spectral-mass` (main TeX
 for a locally finite spectral measure `μ` with `μ(cA) = c^α μ(A)` and
 `0 < α < 2` (`resolvent_one_eq_ralpha`, `resolvent_eq_ralpha`).  The second
 identity is the display of the proof of `L:spatial-fourier-bound`
-(`notes/integrated_spatial_occupation.tex`, lines 200-206 at 39f2597a), which
+(`notes/integrated_spatial_occupation.tex`, lines 200-206 at edf7085f), which
 cites "the deterministic resolvent calculation in the proof of
 `L:damped-homogeneous-norms`" (main TeX lines 1057-1076:
 `∫ μ(dξ)/(a²+|ξ|²) = αV a^{α-2} ∫_0^∞ u^{α-1}/(1+u²) du`, `V = μ(B_1)`)
@@ -257,7 +257,7 @@ theorem hRdef_iff_resolvent_paper {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   rw [(resolvent_eq_ralpha_paper hH).1, ralpha]
 
 /-- **`L:spatial-fourier-bound` with the manuscript's constant `R_α`**
-(`integrated_spatial_occupation.tex` lines 121-131 at 39f2597a, display
+(`integrated_spatial_occupation.tex` lines 121-131 at edf7085f, display
 `E:spatial-fourier-bound` at lines 126-129; `R_α` of `E:intro-spectral-mass`,
 main TeX lines 691-697), under the lemma's hypothesis `H:homog`
 (`HomogCovariance`, allowing `Γ = 0`; no `Γ ≠ 0` assumed), for every real unit

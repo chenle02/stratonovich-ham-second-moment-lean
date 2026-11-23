@@ -1,7 +1,7 @@
 /-
 Refutation for the role of the positive floor in the rate Lipschitz bound of
 `P:variational-unmasked-rate` (`notes/integrated_unmasked_variational.tex`
-lines 207-213 at 39f2597a), package theorem
+lines 207-213 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.VariationalRate.abs_sqrt_sub_le`, which needs
 `a, b ≥ ε > 0`.
 

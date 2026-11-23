@@ -1,0 +1,13 @@
+node=node845 job=5740994 array=5740994_1 mode=fresh target=StratonovichHAMSecondMoment start=2026-11-23T05:04:51-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=38a3e00f9fc70b847b442c658ba1dc2d47b462fc TREE=4c9c0b2119e8f4bf79a7c3a1439b66416f8aef50 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1320 waited_s=0
+REPLAY_STARTED 2026-11-23T05:06:34-0600
+BEGIN fresh StratonovichHAMSecondMoment 05:06:35
+END fresh StratonovichHAMSecondMoment	0	0:45:15.20	7870872	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2716 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment
+PROCESS_EXIT=0 end=2026-11-23T05:51:50-0600

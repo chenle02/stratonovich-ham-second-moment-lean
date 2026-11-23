@@ -1,6 +1,6 @@
 /-
 Refutation for `P:masked-quotient-obstruction`
-(`notes/integrated_covariance_foundation.tex` lines 339-382 at 39f2597a), package
+(`notes/integrated_covariance_foundation.tex` lines 339-382 at edf7085f), package
 theorem
 `StratonovichHAMSecondMoment.QuotientObstruction.masked_quotient_obstruction_paper`.
 

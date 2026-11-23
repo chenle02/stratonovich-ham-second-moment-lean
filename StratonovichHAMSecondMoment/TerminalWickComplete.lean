@@ -4,12 +4,12 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Wave L12, item TW: the two parts of `L:terminal-wick` (The finite terminal-chain Wick formula)
-of the main TeX file `notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a
+of the main TeX file `notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f
 (statement lines 4291-4336, proof 4338-4410) that `TerminalWick` and `TerminalWickInputs` left
 narrower, for the constructed terminal-chain measures `g_n^{T,x}` of
 `E:terminal-chain-measure` (lines 4275-4288, `TerminalWickInputs.chainMeasure`).
 
-What the TeX claims (read at 39f2597a):
+What the TeX claims (read at 39f2597a; the same lines at edf7085f):
 * Lines 4331-4333: "If `K ≥ 0`, every integral above is nonnegative.  Consequently, entrywise
   comparison `0 ≤ K₁ ≤ K₂` compares all finite partial-order second moments in the same
   direction."  The proof (lines 4404-4406) compares the covariance products pairing by pairing,
@@ -222,7 +222,7 @@ theorem summable_constructed {Ω : Type*} [MeasurableSpace Ω] (P : Measure Ω)
   (terminal_wick_constructed_paper P d hd T hT x W K hW hVfin hcell).2.2.2.2.2.2.2.1 ρ
 
 /-- The partial-sum comparison of `L:terminal-wick` (main TeX lines 4331-4333, proof 4404-4406
-at 39f2597a) for the constructed terminal-chain measures `g_n^{T,x}`, with the full-series
+at edf7085f) for the constructed terminal-chain measures `g_n^{T,x}`, with the full-series
 comparison as a Lean-side corollary (not a sentence of the TeX).
 Hypotheses, all the TeX's (those of `terminal_wick_mono_constructed_paper`): `d ∈ {1,2,3}`,
 `T > 0`, `x ∈ ℝ^d`; two centered real Gaussian fields on `[0,T] × ℝ^d` with covariances `K₁`,
@@ -264,7 +264,7 @@ theorem partial_sum_mono_constructed_paper {Ω₁ Ω₂ : Type*} [MeasurableSpac
       (summable_constructed P₂ d hd T hT x W₂ K₂ hW₂ hV₂fin hcell₂ r).of_norm
 
 /-- The complex-`r` sentence of `L:terminal-wick` (main TeX lines 4333-4335, proof 4406-4409 at
-39f2597a) for the constructed terminal-chain measures `g_n^{T,x}`, under the hypotheses of the
+edf7085f) for the constructed terminal-chain measures `g_n^{T,x}`, under the hypotheses of the
 lemma for one field.  Conclusions, for every complex `r`: `Σ_n r^n Y_n` converges absolutely,
 hence converges, in the complex `L²(Ω)` (the TeX's sentence); and (Lean-side addition, not a
 TeX sentence) `E|Σ_{n≤N} r^n Y_n|² = Σ_{m,n≤N} r^m conj(r)^n E[Y_m Y_n]` for every `N`, with
@@ -296,7 +296,7 @@ theorem terminal_wick_complex_constructed_paper {Ω : Type*} [MeasurableSpace Ω
     simp_rw [mixed_moment_eq_inner]
     exact tendsto_norm_sq_tsum_toC _ r (hs ‖r‖)
 
-/-- `L:terminal-wick` (main TeX lines 4291-4336, proof 4338-4410 at 39f2597a) in full, for the
+/-- `L:terminal-wick` (main TeX lines 4291-4336, proof 4338-4410 at edf7085f) in full, for the
 terminal-chain measures `g_n^{T,x}` of `E:terminal-chain-measure` (lines 4275-4288) constructed
 in `TerminalWickInputs`.  Hypotheses, all the TeX's: `d ∈ {1,2,3}`, `T > 0`, `x ∈ ℝ^d`; a
 centered real Gaussian field `W₁` on `[0,T] × ℝ^d` with covariance `K₁` (lines 4292-4293),

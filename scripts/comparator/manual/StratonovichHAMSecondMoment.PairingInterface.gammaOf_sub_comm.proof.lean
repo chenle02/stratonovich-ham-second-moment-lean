@@ -1,0 +1,2 @@
+  set_option smartUnfolding false in
+  bridge_auto _root_.StratonovichHAMSecondMoment.PairingInterface.gammaOf_sub_comm

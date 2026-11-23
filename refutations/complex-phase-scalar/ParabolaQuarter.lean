@@ -1,6 +1,6 @@
 /-
 Refutation for the parabola constant of `L:complex-phase` (main TeX lines
-2867-2868 at 39f2597a), package theorem
+2867-2868 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.ComplexPhaseScalar.parabola_coeff_le`
 (`4δ²/(1-δ) ≤ 1/3` for `0 ≤ δ ≤ 1/4`).
 

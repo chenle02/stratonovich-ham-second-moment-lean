@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 In-domain control for the Gaussian Fourier pairing step of
 `L:phase-contractions` (main TeX file `notes/notes_stratonovich_ham_second_moment.tex`
-at revision 39f2597a: the lemma at lines 2509-2523, the pairing display at lines
+at revision edf7085f: the lemma at lines 2509-2523, the pairing display at lines
 2534-2542, the standing assumptions of `S:static-phase` at lines 2490-2493).
 
 The pairing step is the inequality `∫ e^{-s|q+ξ|²} μ(dξ) ≤ ∫ e^{-s|ξ|²} μ(dξ)`
@@ -152,7 +152,7 @@ theorem integral_gauss_homog {μ : Measure (Rd d)} {alpha : ℝ}
   ring
 
 /-- **In-domain failure of shift invariance** (control for the pairing step of
-`L:phase-contractions`, main TeX lines 2534-2542 at 39f2597a).  Let `μ` be a
+`L:phase-contractions`, main TeX lines 2534-2542 at edf7085f).  Let `μ` be a
 nonzero, locally finite, tempered measure on `ℝ^d` with `μ(cA) = c^α μ(A)` and
 `α < d`, and let `s > 0`.  Then `q ↦ ∫ e^{-s|q+ξ|²} μ(dξ)` is not constant:
 the comparison `≤` of `gauss_shift_le` cannot be an equality for every `q`.
@@ -226,7 +226,7 @@ theorem not_gauss_shift_invariant {μ : Measure (Rd d)} [IsLocallyFiniteMeasure 
   linarith
 
 /-- The in-domain specialization: for every covariance of the class of
-`S:static-phase` (`PhaseCovariance`, main TeX lines 2490-2493 at 39f2597a:
+`S:static-phase` (`PhaseCovariance`, main TeX lines 2490-2493 at edf7085f:
 `d = 3`, `0 < α < 2`, `Γ(rA) = r^{3-α} Γ(A)`, `μ` the tempered spectral measure)
 with `μ ≠ 0`, and every `s > 0`, the map `q ↦ ∫ e^{-s|q+ξ|²} μ(dξ)` is not
 constant.  The homogeneity of `μ` is `spectralHomogeneous_of_scaling`.  Fields

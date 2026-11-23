@@ -1,6 +1,6 @@
 /-
 Refutation for `P:tube-rayleigh-transfer`
-(`notes/integrated_gaussian_tubes.tex` lines 225-271 at 39f2597a), package
+(`notes/integrated_gaussian_tubes.tex` lines 225-271 at edf7085f), package
 theorem `StratonovichHAMSecondMoment.SourceTube.tube_rayleigh_transfer_zero`.
 
 Class (a): manuscript-claim perturbation in the manuscript domain.

@@ -2,7 +2,7 @@
 Refutation for the hypothesis range of `L:spatial-fourier-bound` with the
 constant `R_α` (package theorem
 `StratonovichHAMSecondMoment.SpectralMassIdentity.spatial_fourier_bound_ralpha_paper`;
-`notes/integrated_spatial_occupation.tex` lines 121-131 at 39f2597a, `R_α` of
+`notes/integrated_spatial_occupation.tex` lines 121-131 at edf7085f, `R_α` of
 `E:intro-spectral-mass`, main TeX lines 691-697).
 
 Wrong variant: the `R_α` form `A_sp(g) ≤ 2^{1+α} R_α b(g)^{α/2}` under the

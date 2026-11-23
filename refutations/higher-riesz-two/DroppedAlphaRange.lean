@@ -1,7 +1,7 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.HigherRieszTwo.M2_pos` and hence
 for the range `α < 3/2` in `higher_riesz_two` (manuscript `L:higher-riesz`,
-dimension two, main TeX lines 6106-6111 at 39f2597a): Hypothesis
+dimension two, main TeX lines 6106-6111 at edf7085f): Hypothesis
 `H:spatial-maximum` asks for `M > 0`, and the displayed `M_2` is not positive
 outside the stated range.
 

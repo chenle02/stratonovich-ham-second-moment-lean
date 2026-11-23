@@ -1,6 +1,6 @@
 /-
 Refutation for the mask profile of `P:variational-remove-mask`
-(`notes/integrated_unmasked_variational.tex` lines 250-255 at 39f2597a),
+(`notes/integrated_unmasked_variational.tex` lines 250-255 at edf7085f),
 package theorem `StratonovichHAMSecondMoment.RemoveMask.chi_eq_one`
 (`χ = 1` on `r ≤ 1`).
 

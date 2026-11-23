@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Section `S:temporal-type-continuity` (Temporal interpolation of the full
 moment) of `notes/notes_stratonovich_ham_second_moment.tex` (main TeX file;
-line numbers at revision 39f2597a), together with the lemma it uses from the
+line numbers at revision edf7085f), together with the lemma it uses from the
 preceding section `S:near-static-lower`:
 
 * `L:positive-series-type` (Type of a positive coefficient series; lines

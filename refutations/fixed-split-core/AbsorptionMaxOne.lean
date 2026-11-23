@@ -1,6 +1,6 @@
 /-
 Refutation for the absorption into `C_split` (`E:split-explicit-constant`,
-main TeX lines 4043-4046 at 39f2597a), package theorem
+main TeX lines 4043-4046 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.FixedSplitCore.beforeFactor_le`
 (`beforeFactor ≤ (max{1, 12δ^{-2}} R)^{k_i} splitFactor`).
 

@@ -33,7 +33,7 @@ open WaveGreen (waveGreen)
 open DiagramModel
 open FiniteWick (pairings mem_pairings)
 open D1Spatial (closers spatialPair Ksp)
-open LowAlphaConvolution (heatDens gammaEps specV)
+open LowAlphaConvolution (heatDens gammaEps specV heatDens_nonneg gammaEps_nonneg)
 open TwoSimplexTime (Zc)
 
 /-! ### Constants -/
@@ -71,8 +71,11 @@ def SpatialMax (d : ℕ) (Γ : Measure (Rd d)) (K b : ℝ) : Prop :=
 lines 5856-5857, "the `L²` expansion permits taking expectations of partial
 sums"): `X_0 = 1`, `u` is integrable and `E u = Σ_n E X_n`.  TRUE for the
 solution `u(t,x)` and its chaos terms `X_n(t,x)` (`L²` convergence of the chaos
-series implies convergence of the expectations); assumed, not proved (the
-solution is not constructed, blocker D5). -/
+series implies convergence of the expectations); assumed here (blocker D5 when
+this module was written).  Discharged in wave L19 for the chaos terms `srcX` and
+their series `srcU` on every source field under `H:homog`, for `t > 0` and every `x`:
+`SourceFinal.first_moment_series_l19`
+(`SourceFinal.firstMomentSeries_m9_l19` at the constructed `m9`). -/
 def FirstMomentSeries {Ω : Type*} [MeasurableSpace Ω] (P : Measure Ω) (X : ℕ → Ω → ℝ)
     (u : Ω → ℝ) : Prop :=
   (∀ ω, X 0 ω = 1) ∧ Integrable u P ∧ HasSum (fun n => ∫ ω, X n ω ∂P) (∫ ω, u ω ∂P)

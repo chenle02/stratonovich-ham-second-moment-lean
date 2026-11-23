@@ -1,6 +1,6 @@
 /-
 Refutation for the hypothesis `q ≥ 1` of the scalar series inequality
-(proof of `P:d1-upper`, main TeX lines 5540-5545 at 39f2597a, used by
+(proof of `P:d1-upper`, main TeX lines 5540-5545 at edf7085f, used by
 `P:low-alpha-upper` and `C:d1-first-calibration`).  Package theorem
 `StratonovichHAMSecondMoment.TwoSimplexTime.sum_div_factorial_rpow_le`.
 

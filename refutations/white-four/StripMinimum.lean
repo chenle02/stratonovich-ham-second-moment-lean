@@ -1,6 +1,6 @@
 /-
 Refutation for the row `(0,4), B` of `E:white-four-table` (main TeX lines
-4956-4959 and 4996-4998 at 39f2597a: "`(x,y,x,y)` ... areas are `4ac`,
+4956-4959 and 4996-4998 at edf7085f: "`(x,y,x,y)` ... areas are `4ac`,
 `4a min(b,c,d)` and `4a min(b,d)`"), package theorem
 `StratonovichHAMSecondMoment.WhiteFour.whiteSpatial_04B`.
 

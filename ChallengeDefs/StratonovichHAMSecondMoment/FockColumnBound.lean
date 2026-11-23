@@ -410,7 +410,7 @@ open SpectralMassIdentity (ralpha)
 open HermiteFock (Supp degLE fieldOp iota)
 
 /-- The spectral measure `μ_ε(dξ) = e^{-ε|ξ|²} μ(dξ)` of the smoothed covariance
-`Γ_ε = p_{2ε} * Γ` (main TeX lines 2505-2506 and 3392-3394 at 39f2597a; the factor
+`Γ_ε = p_{2ε} * Γ` (main TeX lines 2505-2506 and 3392-3394 at edf7085f; the factor
 `e^{-ε|ξ|²}` is the one in `J_{ρ,ε}`, lines 2995-2999). -/
 def nuEps (μ : Measure (Rd d)) (ε : ℝ) : Measure (Rd d) :=
   μ.withDensity fun ξ => ENNReal.ofReal (Real.exp (-(ε * ‖ξ‖ ^ 2)))

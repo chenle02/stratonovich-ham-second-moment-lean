@@ -2,7 +2,7 @@ import StratonovichHAMSecondMoment.L10Completed
 
 /-!
 Refutation for the sign condition of `E:alpha-one-convolution` after integration against `σ`
-(`L:alpha-one-convolution`, main TeX lines 5635-5643 and 5702-5704 at 39f2597a; the lemma
+(`L:alpha-one-convolution`, main TeX lines 5635-5643 and 5702-5704 at edf7085f; the lemma
 assumes `h > 0`), package theorem
 `StratonovichHAMSecondMoment.L10Completed.alpha_one_convolution_completed` (hypothesis
 `0 < h`), whose conclusion equates the pairing with `∫ I_a(h,θ·z) σ(dθ)` and bounds it below

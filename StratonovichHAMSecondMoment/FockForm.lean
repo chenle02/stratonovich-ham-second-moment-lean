@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Consumers of the Hermite/Fock foundation (`GaussianHermite`, `HermiteFock`) in
 `notes/notes_stratonovich_ham_second_moment.tex` (main TeX; line numbers at
-revision 39f2597a).
+revision edf7085f).
 
 Formalized:
 * `L:fock-form` (statement lines 2960-2977, `E:fock-sandwich` 2972-2976, proof

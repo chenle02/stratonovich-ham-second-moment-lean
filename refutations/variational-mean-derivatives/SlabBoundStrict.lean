@@ -1,7 +1,7 @@
 /-
 Refutation for the truncation of the time kernel in the first sentence of
 `L:variational-global-mean` (`notes/integrated_unmasked_variational.tex` lines
-111-112 at 39f2597a: "For `s` in a compact interval the relevant `r` lie in a
+111-112 at edf7085f: "For `s` in a compact interval the relevant `r` lie in a
 fixed bounded interval"), package theorem
 `StratonovichHAMSecondMoment.VariationalMeanDerivatives.slab_bound`.
 

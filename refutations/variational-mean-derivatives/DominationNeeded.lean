@@ -1,7 +1,7 @@
 /-
 Refutation for the domination hypothesis of the Lean engine that differentiates
 under the integral sign (TeX lines 103-104 and 111-114 of
-`notes/integrated_unmasked_variational.tex` at 39f2597a: the integrals are
+`notes/integrated_unmasked_variational.tex` at edf7085f: the integrals are
 finite because the integrands are dominated by integrable functions), package
 theorem `StratonovichHAMSecondMoment.VariationalMeanDerivatives.integrable_tInt`.
 

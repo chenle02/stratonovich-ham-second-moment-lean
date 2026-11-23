@@ -7,7 +7,7 @@ Gaussian Hermite polynomials (a reusable foundation; no manuscript label of its
 own).
 
 Source: `notes/notes_stratonovich_ham_second_moment.tex` (main TeX) at commit
-`39f2597a`.  The proof of `L:fock-form` (lines 3016-3018) and the proof of
+`edf7085f`.  The proof of `L:fock-form` (lines 3016-3018) and the proof of
 `E:occupied-multiplication` inside `P:mild-construction` (lines 2192-2197) use
 "normalized Hermite polynomials", for which multiplication by the coordinate
 `g_i` acts by `g_i h_k = √(k_i+1) h_{k+e_i} + √(k_i) h_{k-e_i}`, and the

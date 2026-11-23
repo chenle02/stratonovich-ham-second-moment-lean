@@ -1,6 +1,6 @@
 /-
 Refutation for the support of the masks of `P:variational-remove-mask`
-(`notes/integrated_unmasked_variational.tex` lines 251-255 at 39f2597a),
+(`notes/integrated_unmasked_variational.tex` lines 251-255 at edf7085f),
 package theorem `StratonovichHAMSecondMoment.RemoveMask.mask_eq_zero`
 (`m_R = 0` on `|x| ≥ 2R`).
 

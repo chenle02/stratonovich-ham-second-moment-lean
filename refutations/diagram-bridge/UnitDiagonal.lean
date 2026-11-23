@@ -1,6 +1,6 @@
 /-
 Lean-route control for the determinant-one step of `DiagramBridge` (main TeX
-line 5341 at 39f2597a: "The spatial change of variables has determinant one"),
+line 5341 at edf7085f: "The spatial change of variables has determinant one"),
 package theorem
 `StratonovichHAMSecondMoment.DiagramBridge.measurePreserving_incrMatrix`.
 

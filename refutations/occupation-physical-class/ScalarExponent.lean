@@ -1,6 +1,6 @@
 /-
 Refutation for the scalar maximum in the proof of `P:occupation-physical-class`
-(`notes/integrated_spatial_occupation.tex` lines 564-566 at 39f2597a), package theorem
+(`notes/integrated_spatial_occupation.tex` lines 564-566 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.OccupationPhysicalClass.scalar_max`.
 
 Wrong variant: the exponent `2/(2-α)` of `c` dropped, i.e. (at `α = 1`)

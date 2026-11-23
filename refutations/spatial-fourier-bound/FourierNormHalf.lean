@@ -4,7 +4,7 @@ package theorem
 `StratonovichHAMSecondMoment.SpatialFourierBound.norm_fourierQ_le`
 (`|Q̂(ξ)| ≤ ‖Q‖₁`, the first pointwise bound behind `|Q̂|² ≤ min(1, 4b/|ξ|²)`
 in the deterministic bound for `P:spatial-smooth-ratio`,
-`notes/integrated_spatial_occupation.tex` lines 223-227 at 39f2597a).
+`notes/integrated_spatial_occupation.tex` lines 223-227 at edf7085f).
 
 Wrong variant: `|Q̂(ξ)| ≤ ‖Q‖₁/2` for every real `Q` and `ξ`.
 Counterexample: `d = 1`, `Q = g²` for a real unit test `g` (a normalized bump,

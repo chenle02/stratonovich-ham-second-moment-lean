@@ -8,7 +8,7 @@ Wave L8, item L8-c1: step (c) of the deterministic discharge of `S1Bdd`
 route of feasibility report R2 (finite hat partition in place of the countable selection;
 decision 3 of wave L8).  Everything here is a route step, auxiliary to the Lean route, except
 where a doc comment names a TeX display it formalizes in narrower form.  TeX at revision
-39f2597a:
+edf7085f:
 * `notes/integrated_occupation_ceiling.tex` (whole section lines 1-386): standing
   assumptions lines 4-21 (`a = α₀`, `K(s,t) = |s-t|^{-a}` on `I = (0,1)`, `Γ ≠ 0`); the
   form `A(g)` of `E:raw-occupation-definitions` (lines 10-18); `L:occupation-raw-square`

@@ -1,0 +1,433 @@
+node=node862 job=5740982 array=5740981_0 mode=default target=ALL start=2026-11-23T02:59:20-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=5cdd49359fa093549572a890e68a7d25f412733e TREE=cfcb9596b53f9a56fb5da24922f3bb98f9094608 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=211
+PRE_REPLAY file-nr=1440 waited_s=0
+REPLAY_STARTED 2026-11-23T03:00:54-0600
+BEGIN default StratonovichHAMAudit.ActualEvent 03:00:55
+END default StratonovichHAMAudit.ActualEvent	0	0:00:07.92	1412400	0
+BEGIN default StratonovichHAMAudit.AllAlphaMoment 03:01:03
+END default StratonovichHAMAudit.AllAlphaMoment	0	0:00:06.60	1413592	0
+BEGIN default StratonovichHAMAudit.ClockFilter 03:01:10
+END default StratonovichHAMAudit.ClockFilter	0	0:00:06.67	1463832	0
+BEGIN default StratonovichHAMAudit.DampedLower 03:01:16
+END default StratonovichHAMAudit.DampedLower	0	0:00:06.67	1445620	0
+BEGIN default StratonovichHAMAudit.DimensionalMatrix 03:01:23
+END default StratonovichHAMAudit.DimensionalMatrix	0	0:00:06.64	1414868	0
+BEGIN default StratonovichHAMAudit.DirectEvent 03:01:30
+END default StratonovichHAMAudit.DirectEvent	0	0:00:06.69	1415872	0
+BEGIN default StratonovichHAMAudit.FiniteYoung 03:01:36
+END default StratonovichHAMAudit.FiniteYoung	0	0:00:06.54	1412868	0
+BEGIN default StratonovichHAMAudit.GaussianTail 03:01:43
+END default StratonovichHAMAudit.GaussianTail	0	0:00:06.59	1413148	0
+BEGIN default StratonovichHAMAudit.GlobalOmega 03:01:50
+END default StratonovichHAMAudit.GlobalOmega	0	0:00:07.39	1455396	0
+BEGIN default StratonovichHAMAudit.HermiteWord 03:01:57
+END default StratonovichHAMAudit.HermiteWord	0	0:00:04.83	444096	0
+BEGIN default StratonovichHAMAudit.HermiteWordConsumer 03:02:02
+END default StratonovichHAMAudit.HermiteWordConsumer	0	0:00:04.97	444076	0
+BEGIN default StratonovichHAMAudit.HermiteWordFock 03:02:07
+END default StratonovichHAMAudit.HermiteWordFock	0	0:00:08.78	2695776	0
+BEGIN default StratonovichHAMAudit.InteractionDriver 03:02:16
+END default StratonovichHAMAudit.InteractionDriver	0	0:00:06.57	1414168	0
+BEGIN default StratonovichHAMAudit.JointTilt 03:02:22
+END default StratonovichHAMAudit.JointTilt	0	0:00:06.47	1412316	0
+BEGIN default StratonovichHAMAudit.LocalFlow 03:02:29
+END default StratonovichHAMAudit.LocalFlow	0	0:00:06.49	1412496	0
+BEGIN default StratonovichHAMAudit.MiddleCross 03:02:35
+END default StratonovichHAMAudit.MiddleCross	0	0:00:24.53	2360260	0
+BEGIN default StratonovichHAMAudit.MovingCone 03:03:00
+END default StratonovichHAMAudit.MovingCone	0	0:00:06.50	1413556	0
+BEGIN default StratonovichHAMAudit.OccupationForm 03:03:06
+END default StratonovichHAMAudit.OccupationForm	0	0:00:06.48	1415164	0
+BEGIN default StratonovichHAMAudit.PhaseResponse 03:03:13
+END default StratonovichHAMAudit.PhaseResponse	0	0:00:06.55	1414140	0
+BEGIN default StratonovichHAMAudit.PositiveGram 03:03:19
+END default StratonovichHAMAudit.PositiveGram	0	0:00:06.47	1414728	0
+BEGIN default StratonovichHAMAudit.ProjectionResidual 03:03:26
+END default StratonovichHAMAudit.ProjectionResidual	0	0:00:06.50	1413736	0
+BEGIN default StratonovichHAMAudit.RawValueCeiling 03:03:32
+END default StratonovichHAMAudit.RawValueCeiling	0	0:00:06.53	1442760	0
+BEGIN default StratonovichHAMAudit.RawVariational 03:03:39
+END default StratonovichHAMAudit.RawVariational	0	0:00:06.48	1414184	0
+BEGIN default StratonovichHAMAudit.TerminalCross 03:03:45
+END default StratonovichHAMAudit.TerminalCross	0	0:00:06.84	1439440	0
+BEGIN default StratonovichHAMAudit.WhiteCDF 03:03:52
+END default StratonovichHAMAudit.WhiteCDF	0	0:00:06.49	1412704	0
+BEGIN default StratonovichHAMSecondMoment.AlphaOneConvolution 03:03:59
+END default StratonovichHAMSecondMoment.AlphaOneConvolution	0	0:00:09.28	2713276	0
+BEGIN default StratonovichHAMSecondMoment.Axioms 03:04:08
+END default StratonovichHAMSecondMoment.Axioms	0	0:00:08.79	2737472	0
+BEGIN default StratonovichHAMSecondMoment.CameronFinal 03:04:17
+END default StratonovichHAMSecondMoment.CameronFinal	0	0:00:08.82	2705080	0
+BEGIN default StratonovichHAMSecondMoment.CameronInterface 03:04:25
+END default StratonovichHAMSecondMoment.CameronInterface	0	0:00:11.54	2718156	0
+BEGIN default StratonovichHAMSecondMoment.CameronProducts 03:04:37
+END default StratonovichHAMSecondMoment.CameronProducts	0	0:00:10.91	2728136	0
+BEGIN default StratonovichHAMSecondMoment.CameronSpatial 03:04:48
+END default StratonovichHAMSecondMoment.CameronSpatial	0	0:00:10.22	2752508	0
+BEGIN default StratonovichHAMSecondMoment.CameronTemporalKernel 03:04:58
+END default StratonovichHAMSecondMoment.CameronTemporalKernel	0	0:00:09.17	2715288	0
+BEGIN default StratonovichHAMSecondMoment.CameronTemporalMap 03:05:07
+END default StratonovichHAMSecondMoment.CameronTemporalMap	0	0:00:09.22	2715216	0
+BEGIN default StratonovichHAMSecondMoment.CameronTemporalSqrt 03:05:17
+END default StratonovichHAMSecondMoment.CameronTemporalSqrt	0	0:00:08.93	2703896	0
+BEGIN default StratonovichHAMSecondMoment.CameronTemporalTarget 03:05:25
+END default StratonovichHAMSecondMoment.CameronTemporalTarget	0	0:00:09.08	2718000	0
+BEGIN default StratonovichHAMSecondMoment.CameronTemporalYoung 03:05:35
+END default StratonovichHAMSecondMoment.CameronTemporalYoung	0	0:00:08.89	2710592	0
+BEGIN default StratonovichHAMSecondMoment.CameronUMap 03:05:43
+END default StratonovichHAMSecondMoment.CameronUMap	0	0:00:09.35	2717540	0
+BEGIN default StratonovichHAMSecondMoment.ClassOBridge 03:05:53
+END default StratonovichHAMSecondMoment.ClassOBridge	0	0:00:09.66	2721840	0
+BEGIN default StratonovichHAMSecondMoment.ClassOH1 03:06:02
+END default StratonovichHAMSecondMoment.ClassOH1	0	0:00:09.64	2716360	0
+BEGIN default StratonovichHAMSecondMoment.CleanupWrappers 03:06:12
+END default StratonovichHAMSecondMoment.CleanupWrappers	0	0:00:08.90	2720316	0
+BEGIN default StratonovichHAMSecondMoment.ClockCopy 03:06:21
+END default StratonovichHAMSecondMoment.ClockCopy	0	0:00:09.39	2711608	0
+BEGIN default StratonovichHAMSecondMoment.ClockCopyHomog 03:06:30
+END default StratonovichHAMSecondMoment.ClockCopyHomog	0	0:00:08.71	2695824	0
+BEGIN default StratonovichHAMSecondMoment.CompactOperatorFoundation 03:06:39
+END default StratonovichHAMSecondMoment.CompactOperatorFoundation	0	0:00:09.17	2706836	0
+BEGIN default StratonovichHAMSecondMoment.ComplexPhaseScalar 03:06:48
+END default StratonovichHAMSecondMoment.ComplexPhaseScalar	0	0:00:11.19	2724984	0
+BEGIN default StratonovichHAMSecondMoment.CrudeCorrected 03:06:59
+END default StratonovichHAMSecondMoment.CrudeCorrected	0	0:00:08.90	2711700	0
+BEGIN default StratonovichHAMSecondMoment.D1Spatial 03:07:08
+END default StratonovichHAMSecondMoment.D1Spatial	0	0:00:09.21	2710784	0
+BEGIN default StratonovichHAMSecondMoment.D1Upper 03:07:18
+END default StratonovichHAMSecondMoment.D1Upper	0	0:00:08.92	2707172	0
+BEGIN default StratonovichHAMSecondMoment.DampedMultiplier 03:07:27
+END default StratonovichHAMSecondMoment.DampedMultiplier	0	0:00:08.90	2702176	0
+BEGIN default StratonovichHAMSecondMoment.DampedNorms 03:07:35
+END default StratonovichHAMSecondMoment.DampedNorms	0	0:00:08.90	2702832	0
+BEGIN default StratonovichHAMSecondMoment.DampedNormsHomog 03:07:44
+END default StratonovichHAMSecondMoment.DampedNormsHomog	0	0:00:08.99	2702236	0
+BEGIN default StratonovichHAMSecondMoment.DampedSmoothing 03:07:53
+END default StratonovichHAMSecondMoment.DampedSmoothing	0	0:00:08.94	2706304	0
+BEGIN default StratonovichHAMSecondMoment.DiagramBridge 03:08:02
+END default StratonovichHAMSecondMoment.DiagramBridge	0	0:00:08.98	2704448	0
+BEGIN default StratonovichHAMSecondMoment.DiagramModel 03:08:11
+END default StratonovichHAMSecondMoment.DiagramModel	0	0:00:09.17	2703004	0
+BEGIN default StratonovichHAMSecondMoment.DriverParameters 03:08:20
+END default StratonovichHAMSecondMoment.DriverParameters	0	0:00:06.49	1412996	0
+BEGIN default StratonovichHAMSecondMoment.EndpointCorollaries 03:08:27
+END default StratonovichHAMSecondMoment.EndpointCorollaries	0	0:00:08.99	2705824	0
+BEGIN default StratonovichHAMSecondMoment.EndpointLemmas 03:08:36
+END default StratonovichHAMSecondMoment.EndpointLemmas	0	0:00:10.14	2726564	0
+BEGIN default StratonovichHAMSecondMoment.EnvelopeD3 03:08:46
+END default StratonovichHAMSecondMoment.EnvelopeD3	0	0:00:08.83	2709312	0
+BEGIN default StratonovichHAMSecondMoment.EnvelopeD3Final 03:08:55
+END default StratonovichHAMSecondMoment.EnvelopeD3Final	0	0:00:08.70	2706496	0
+BEGIN default StratonovichHAMSecondMoment.EnvelopeD3Wave 03:09:04
+END default StratonovichHAMSecondMoment.EnvelopeD3Wave	0	0:00:08.81	2713632	0
+BEGIN default StratonovichHAMSecondMoment.EnvelopeFinal 03:09:12
+END default StratonovichHAMSecondMoment.EnvelopeFinal	0	0:00:08.72	2706700	0
+BEGIN default StratonovichHAMSecondMoment.FiniteGaussianMatrix 03:09:21
+END default StratonovichHAMSecondMoment.FiniteGaussianMatrix	0	0:00:09.95	2713288	0
+BEGIN default StratonovichHAMSecondMoment.FiniteWick 03:09:31
+END default StratonovichHAMSecondMoment.FiniteWick	0	0:00:09.31	2708036	0
+BEGIN default StratonovichHAMSecondMoment.FiniteWordCutoff 03:09:40
+END default StratonovichHAMSecondMoment.FiniteWordCutoff	0	0:00:08.87	2702676	0
+BEGIN default StratonovichHAMSecondMoment.FixedSplit 03:09:49
+END default StratonovichHAMSecondMoment.FixedSplit	0	0:00:09.40	2712280	0
+BEGIN default StratonovichHAMSecondMoment.FixedSplitCore 03:09:59
+END default StratonovichHAMSecondMoment.FixedSplitCore	0	0:00:09.42	2707612	0
+BEGIN default StratonovichHAMSecondMoment.FockColumnBound 03:10:08
+END default StratonovichHAMSecondMoment.FockColumnBound	0	0:00:43.24	2895440	0
+BEGIN default StratonovichHAMSecondMoment.FockForm 03:10:51
+END default StratonovichHAMSecondMoment.FockForm	0	0:00:08.91	2702928	0
+BEGIN default StratonovichHAMSecondMoment.FockSandwichModel 03:11:00
+END default StratonovichHAMSecondMoment.FockSandwichModel	0	0:00:12.51	2736216	0
+BEGIN default StratonovichHAMSecondMoment.FrequencyRow 03:11:13
+END default StratonovichHAMSecondMoment.FrequencyRow	0	0:00:09.11	2709212	0
+BEGIN default StratonovichHAMSecondMoment.GaussianComparison 03:11:22
+END default StratonovichHAMSecondMoment.GaussianComparison	0	0:00:08.84	2701760	0
+BEGIN default StratonovichHAMSecondMoment.GaussianHermite 03:11:31
+END default StratonovichHAMSecondMoment.GaussianHermite	0	0:00:08.98	2701056	0
+BEGIN default StratonovichHAMSecondMoment.GaussianIBP 03:11:40
+END default StratonovichHAMSecondMoment.GaussianIBP	0	0:00:08.90	2700452	0
+BEGIN default StratonovichHAMSecondMoment.GaussianScalarPowers 03:11:49
+END default StratonovichHAMSecondMoment.GaussianScalarPowers	0	0:00:08.72	2698104	0
+BEGIN default StratonovichHAMSecondMoment.GaussianTest 03:11:57
+END default StratonovichHAMSecondMoment.GaussianTest	0	0:00:08.92	2704088	0
+BEGIN default StratonovichHAMSecondMoment.GramScalarAlgebra 03:12:06
+END default StratonovichHAMSecondMoment.GramScalarAlgebra	0	0:00:06.48	1413340	0
+BEGIN default StratonovichHAMSecondMoment.GreenSmoothed3 03:12:13
+END default StratonovichHAMSecondMoment.GreenSmoothed3	0	0:00:08.96	2714448	0
+BEGIN default StratonovichHAMSecondMoment.H1Density 03:12:22
+END default StratonovichHAMSecondMoment.H1Density	0	0:00:09.76	2720680	0
+BEGIN default StratonovichHAMSecondMoment.H1Mathlib 03:12:31
+END default StratonovichHAMSecondMoment.H1Mathlib	0	0:00:10.92	2722428	0
+BEGIN default StratonovichHAMSecondMoment.HermiteFock 03:12:42
+END default StratonovichHAMSecondMoment.HermiteFock	0	0:00:09.06	2701168	0
+BEGIN default StratonovichHAMSecondMoment.HigherRieszThree 03:12:51
+END default StratonovichHAMSecondMoment.HigherRieszThree	0	0:00:08.93	2705504	0
+BEGIN default StratonovichHAMSecondMoment.HigherRieszTwo 03:13:00
+END default StratonovichHAMSecondMoment.HigherRieszTwo	0	0:00:09.55	2718924	0
+BEGIN default StratonovichHAMSecondMoment.HomogHypothesis 03:13:10
+END default StratonovichHAMSecondMoment.HomogHypothesis	0	0:00:08.73	2696424	0
+BEGIN default StratonovichHAMSecondMoment.HomogeneousEnvelope 03:13:19
+END default StratonovichHAMSecondMoment.HomogeneousEnvelope	0	0:00:09.05	2713020	0
+BEGIN default StratonovichHAMSecondMoment.IndexedCone 03:13:28
+END default StratonovichHAMSecondMoment.IndexedCone	0	0:00:10.06	2712684	0
+BEGIN default StratonovichHAMSecondMoment.IntervalScalar 03:13:38
+END default StratonovichHAMSecondMoment.IntervalScalar	0	0:00:09.50	2710796	0
+BEGIN default StratonovichHAMSecondMoment.IntervalScalarCompleted 03:13:47
+END default StratonovichHAMSecondMoment.IntervalScalarCompleted	0	0:00:08.71	2696204	0
+BEGIN default StratonovichHAMSecondMoment.InventoryProduct 03:13:56
+END default StratonovichHAMSecondMoment.InventoryProduct	0	0:00:09.09	2707168	0
+BEGIN default StratonovichHAMSecondMoment.JointFixedOrder 03:14:05
+END default StratonovichHAMSecondMoment.JointFixedOrder	0	0:00:09.01	2714748	0
+BEGIN default StratonovichHAMSecondMoment.JointTail 03:14:14
+END default StratonovichHAMSecondMoment.JointTail	0	0:00:09.15	2719728	0
+BEGIN default StratonovichHAMSecondMoment.KappaRange 03:14:23
+END default StratonovichHAMSecondMoment.KappaRange	0	0:00:06.43	1412208	0
+BEGIN default StratonovichHAMSecondMoment.L10Completed 03:14:30
+END default StratonovichHAMSecondMoment.L10Completed	0	0:00:08.69	2698768	0
+BEGIN default StratonovichHAMSecondMoment.L8Completed 03:14:38
+END default StratonovichHAMSecondMoment.L8Completed	0	0:00:09.01	2713160	0
+BEGIN default StratonovichHAMSecondMoment.L9Completed 03:14:47
+END default StratonovichHAMSecondMoment.L9Completed	0	0:00:08.70	2698540	0
+BEGIN default StratonovichHAMSecondMoment.LowAlphaConvolution 03:14:56
+END default StratonovichHAMSecondMoment.LowAlphaConvolution	0	0:00:09.02	2706060	0
+BEGIN default StratonovichHAMSecondMoment.LowAlphaUpper 03:15:05
+END default StratonovichHAMSecondMoment.LowAlphaUpper	0	0:00:09.06	2711508	0
+BEGIN default StratonovichHAMSecondMoment.MaskedAuxiliaryNorm 03:15:14
+END default StratonovichHAMSecondMoment.MaskedAuxiliaryNorm	0	0:00:10.19	2710860	0
+BEGIN default StratonovichHAMSecondMoment.MaskedAuxiliaryReal 03:15:24
+END default StratonovichHAMSecondMoment.MaskedAuxiliaryReal	0	0:00:09.22	2704468	0
+BEGIN default StratonovichHAMSecondMoment.MaskedContinuousWave 03:15:34
+END default StratonovichHAMSecondMoment.MaskedContinuousWave	0	0:00:08.86	2703984	0
+BEGIN default StratonovichHAMSecondMoment.MaskedContinuousWaveCompleted 03:15:42
+END default StratonovichHAMSecondMoment.MaskedContinuousWaveCompleted	0	0:00:08.69	2697612	0
+BEGIN default StratonovichHAMSecondMoment.MaskedModulation 03:15:51
+END default StratonovichHAMSecondMoment.MaskedModulation	0	0:00:09.22	2714356	0
+BEGIN default StratonovichHAMSecondMoment.MaskedSpectralGrowth 03:16:00
+END default StratonovichHAMSecondMoment.MaskedSpectralGrowth	0	0:00:09.12	2706464	0
+BEGIN default StratonovichHAMSecondMoment.MaskedTrigProducts 03:16:09
+END default StratonovichHAMSecondMoment.MaskedTrigProducts	0	0:00:08.82	2699320	0
+BEGIN default StratonovichHAMSecondMoment.MildConstruction 03:16:18
+END default StratonovichHAMSecondMoment.MildConstruction	0	0:00:08.98	2727436	0
+BEGIN default StratonovichHAMSecondMoment.MildFields 03:16:27
+END default StratonovichHAMSecondMoment.MildFields	0	0:00:09.05	2727364	0
+BEGIN default StratonovichHAMSecondMoment.MildFinal 03:16:36
+END default StratonovichHAMSecondMoment.MildFinal	0	0:00:08.73	2718532	0
+BEGIN default StratonovichHAMSecondMoment.MildGreenWidth 03:16:45
+END default StratonovichHAMSecondMoment.MildGreenWidth	0	0:00:09.70	2733432	0
+BEGIN default StratonovichHAMSecondMoment.MildInterface 03:16:55
+END default StratonovichHAMSecondMoment.MildInterface	0	0:00:08.99	2719076	0
+BEGIN default StratonovichHAMSecondMoment.MildOccupied 03:17:04
+END default StratonovichHAMSecondMoment.MildOccupied	0	0:00:09.15	2733276	0
+BEGIN default StratonovichHAMSecondMoment.MildPartialVertex 03:17:13
+END default StratonovichHAMSecondMoment.MildPartialVertex	0	0:00:08.98	2730900	0
+BEGIN default StratonovichHAMSecondMoment.MildPolyMem 03:17:22
+END default StratonovichHAMSecondMoment.MildPolyMem	0	0:00:08.86	2719700	0
+BEGIN default StratonovichHAMSecondMoment.MildTerminalFubini 03:17:31
+END default StratonovichHAMSecondMoment.MildTerminalFubini	0	0:00:09.09	2726980	0
+BEGIN default StratonovichHAMSecondMoment.OccupationCeilingExact 03:17:40
+END default StratonovichHAMSecondMoment.OccupationCeilingExact	0	0:00:09.14	2719016	0
+BEGIN default StratonovichHAMSecondMoment.OccupationCeilingFinite 03:17:49
+END default StratonovichHAMSecondMoment.OccupationCeilingFinite	0	0:00:09.44	2718256	0
+BEGIN default StratonovichHAMSecondMoment.OccupationCompletion 03:17:58
+END default StratonovichHAMSecondMoment.OccupationCompletion	0	0:00:10.29	2720548	0
+BEGIN default StratonovichHAMSecondMoment.OccupationKernelRow 03:18:09
+END default StratonovichHAMSecondMoment.OccupationKernelRow	0	0:00:08.97	2701720	0
+BEGIN default StratonovichHAMSecondMoment.OccupationPhysicalClass 03:18:18
+END default StratonovichHAMSecondMoment.OccupationPhysicalClass	0	0:00:09.39	2712316	0
+BEGIN default StratonovichHAMSecondMoment.OrderTwoDiagrams 03:18:27
+END default StratonovichHAMSecondMoment.OrderTwoDiagrams	0	0:00:09.55	2715428	0
+BEGIN default StratonovichHAMSecondMoment.PairingBridge 03:18:37
+END default StratonovichHAMSecondMoment.PairingBridge	0	0:00:09.23	2714576	0
+BEGIN default StratonovichHAMSecondMoment.PairingCapRemoval 03:18:46
+END default StratonovichHAMSecondMoment.PairingCapRemoval	0	0:00:08.85	2702288	0
+BEGIN default StratonovichHAMSecondMoment.PairingConvolution 03:18:55
+END default StratonovichHAMSecondMoment.PairingConvolution	0	0:00:09.35	2708212	0
+BEGIN default StratonovichHAMSecondMoment.PairingDampedNorms 03:19:04
+END default StratonovichHAMSecondMoment.PairingDampedNorms	0	0:00:09.26	2716664	0
+BEGIN default StratonovichHAMSecondMoment.PairingEnvelope 03:19:13
+END default StratonovichHAMSecondMoment.PairingEnvelope	0	0:00:08.95	2710876	0
+BEGIN default StratonovichHAMSecondMoment.PairingInterface 03:19:22
+END default StratonovichHAMSecondMoment.PairingInterface	0	0:00:09.00	2704168	0
+BEGIN default StratonovichHAMSecondMoment.PairingRegional 03:19:31
+END default StratonovichHAMSecondMoment.PairingRegional	0	0:00:09.25	2714492	0
+BEGIN default StratonovichHAMSecondMoment.PairingSmoothedNorms 03:19:41
+END default StratonovichHAMSecondMoment.PairingSmoothedNorms	0	0:00:09.21	2716728	0
+BEGIN default StratonovichHAMSecondMoment.PairingTranslatedCS 03:19:50
+END default StratonovichHAMSecondMoment.PairingTranslatedCS	0	0:00:09.31	2710188	0
+BEGIN default StratonovichHAMSecondMoment.PhaseBessel 03:19:59
+END default StratonovichHAMSecondMoment.PhaseBessel	0	0:00:08.84	2701968	0
+BEGIN default StratonovichHAMSecondMoment.PhaseContractions 03:20:08
+END default StratonovichHAMSecondMoment.PhaseContractions	0	0:00:09.38	2713004	0
+BEGIN default StratonovichHAMSecondMoment.PhaseShiftControl 03:20:17
+END default StratonovichHAMSecondMoment.PhaseShiftControl	0	0:00:08.92	2705224	0
+BEGIN default StratonovichHAMSecondMoment.PositiveRawMean 03:20:26
+END default StratonovichHAMSecondMoment.PositiveRawMean	0	0:00:09.47	2727828	0
+BEGIN default StratonovichHAMSecondMoment.QuotientObstruction 03:20:36
+END default StratonovichHAMSecondMoment.QuotientObstruction	0	0:00:09.33	2712228	0
+BEGIN default StratonovichHAMSecondMoment.RadiusMeanAnchor 03:20:45
+END default StratonovichHAMSecondMoment.RadiusMeanAnchor	0	0:00:08.93	2700260	0
+BEGIN default StratonovichHAMSecondMoment.RawOccupationEnergy 03:20:54
+END default StratonovichHAMSecondMoment.RawOccupationEnergy	0	0:00:09.10	2709944	0
+BEGIN default StratonovichHAMSecondMoment.RayleighTail 03:21:03
+END default StratonovichHAMSecondMoment.RayleighTail	0	0:00:08.78	2701464	0
+BEGIN default StratonovichHAMSecondMoment.RemoveMask 03:21:12
+END default StratonovichHAMSecondMoment.RemoveMask	0	0:00:08.99	2708228	0
+BEGIN default StratonovichHAMSecondMoment.ResolventForm 03:21:21
+END default StratonovichHAMSecondMoment.ResolventForm	0	0:00:14.13	2729444	0
+BEGIN default StratonovichHAMSecondMoment.RieszDiagramLimits 03:21:35
+END default StratonovichHAMSecondMoment.RieszDiagramLimits	0	0:00:09.08	2712872	0
+BEGIN default StratonovichHAMSecondMoment.RieszDiagramLimitsHomog 03:21:44
+END default StratonovichHAMSecondMoment.RieszDiagramLimitsHomog	0	0:00:08.92	2711468	0
+BEGIN default StratonovichHAMSecondMoment.RieszFourDiagrams 03:21:53
+END default StratonovichHAMSecondMoment.RieszFourDiagrams	0	0:00:09.69	2716400	0
+BEGIN default StratonovichHAMSecondMoment.RieszInstanceOne 03:22:03
+END default StratonovichHAMSecondMoment.RieszInstanceOne	0	0:00:09.47	2716344	0
+BEGIN default StratonovichHAMSecondMoment.RieszPositiveDefinite 03:22:12
+END default StratonovichHAMSecondMoment.RieszPositiveDefinite	0	0:00:09.39	2717996	0
+BEGIN default StratonovichHAMSecondMoment.SeriesType 03:22:22
+END default StratonovichHAMSecondMoment.SeriesType	0	0:00:08.88	2698192	0
+BEGIN default StratonovichHAMSecondMoment.SourceExpansion 03:22:30
+END default StratonovichHAMSecondMoment.SourceExpansion	0	0:00:08.77	2719560	0
+BEGIN default StratonovichHAMSecondMoment.SourceFeatures 03:22:39
+END default StratonovichHAMSecondMoment.SourceFeatures	0	0:00:08.88	2720224	0
+BEGIN default StratonovichHAMSecondMoment.SourceFinal 03:22:48
+END default StratonovichHAMSecondMoment.SourceFinal	0	0:00:08.92	2719980	0
+BEGIN default StratonovichHAMSecondMoment.SourceFixedOrder 03:22:57
+END default StratonovichHAMSecondMoment.SourceFixedOrder	0	0:00:08.80	2716396	0
+BEGIN default StratonovichHAMSecondMoment.SourceGreenFirst 03:23:06
+END default StratonovichHAMSecondMoment.SourceGreenFirst	0	0:00:08.76	2716512	0
+BEGIN default StratonovichHAMSecondMoment.SourceHeatGram 03:23:15
+END default StratonovichHAMSecondMoment.SourceHeatGram	0	0:00:11.25	2725244	0
+BEGIN default StratonovichHAMSecondMoment.SourceInterface 03:23:26
+END default StratonovichHAMSecondMoment.SourceInterface	0	0:00:08.87	2717284	0
+BEGIN default StratonovichHAMSecondMoment.SourceIsonormal 03:23:35
+END default StratonovichHAMSecondMoment.SourceIsonormal	0	0:00:09.06	2725932	0
+BEGIN default StratonovichHAMSecondMoment.SourceMixed 03:23:44
+END default StratonovichHAMSecondMoment.SourceMixed	0	0:00:08.82	2716004	0
+BEGIN default StratonovichHAMSecondMoment.SourceReversal 03:23:53
+END default StratonovichHAMSecondMoment.SourceReversal	0	0:00:09.23	2722160	0
+BEGIN default StratonovichHAMSecondMoment.SourceTube 03:24:02
+END default StratonovichHAMSecondMoment.SourceTube	0	0:00:09.13	2710988	0
+BEGIN default StratonovichHAMSecondMoment.SourceVertexCrude 03:24:11
+END default StratonovichHAMSecondMoment.SourceVertexCrude	0	0:00:08.89	2722432	0
+BEGIN default StratonovichHAMSecondMoment.SourceWick 03:24:20
+END default StratonovichHAMSecondMoment.SourceWick	0	0:00:08.94	2718760	0
+BEGIN default StratonovichHAMSecondMoment.SpaceTimePositivity 03:24:29
+END default StratonovichHAMSecondMoment.SpaceTimePositivity	0	0:00:09.48	2711788	0
+BEGIN default StratonovichHAMSecondMoment.SpatialBracket 03:24:38
+END default StratonovichHAMSecondMoment.SpatialBracket	0	0:00:08.93	2705080	0
+BEGIN default StratonovichHAMSecondMoment.SpatialFourLinear 03:24:47
+END default StratonovichHAMSecondMoment.SpatialFourLinear	0	0:00:10.29	2715508	0
+BEGIN default StratonovichHAMSecondMoment.SpatialFourierBound 03:24:58
+END default StratonovichHAMSecondMoment.SpatialFourierBound	0	0:00:09.60	2711948	0
+BEGIN default StratonovichHAMSecondMoment.SpatialOccupationCompleted 03:25:07
+END default StratonovichHAMSecondMoment.SpatialOccupationCompleted	0	0:00:08.74	2699496	0
+BEGIN default StratonovichHAMSecondMoment.SpatialOccupationL7Completed 03:25:16
+END default StratonovichHAMSecondMoment.SpatialOccupationL7Completed	0	0:00:08.79	2700448	0
+BEGIN default StratonovichHAMSecondMoment.SpatialSmoothRatio 03:25:25
+END default StratonovichHAMSecondMoment.SpatialSmoothRatio	0	0:00:09.22	2710952	0
+BEGIN default StratonovichHAMSecondMoment.SpatialStaticControls 03:25:34
+END default StratonovichHAMSecondMoment.SpatialStaticControls	0	0:00:09.53	2711500	0
+BEGIN default StratonovichHAMSecondMoment.SpectralHomog 03:25:43
+END default StratonovichHAMSecondMoment.SpectralHomog	0	0:00:08.97	2705536	0
+BEGIN default StratonovichHAMSecondMoment.SpectralMassIdentity 03:25:52
+END default StratonovichHAMSecondMoment.SpectralMassIdentity	0	0:00:08.80	2703336	0
+BEGIN default StratonovichHAMSecondMoment.StaticInteractionCompleted 03:26:01
+END default StratonovichHAMSecondMoment.StaticInteractionCompleted	0	0:00:09.18	2710732	0
+BEGIN default StratonovichHAMSecondMoment.StaticPhaseCauchy 03:26:10
+END default StratonovichHAMSecondMoment.StaticPhaseCauchy	0	0:00:09.08	2707536	0
+BEGIN default StratonovichHAMSecondMoment.SymplecticFree 03:26:19
+END default StratonovichHAMSecondMoment.SymplecticFree	0	0:00:09.31	2706632	0
+BEGIN default StratonovichHAMSecondMoment.TemporalEquilibrium 03:26:29
+END default StratonovichHAMSecondMoment.TemporalEquilibrium	0	0:00:09.13	2705000	0
+BEGIN default StratonovichHAMSecondMoment.TerminalWick 03:26:38
+END default StratonovichHAMSecondMoment.TerminalWick	0	0:00:09.06	2707200	0
+BEGIN default StratonovichHAMSecondMoment.TerminalWickComplete 03:26:47
+END default StratonovichHAMSecondMoment.TerminalWickComplete	0	0:00:09.17	2712516	0
+BEGIN default StratonovichHAMSecondMoment.TerminalWickInputs 03:26:56
+END default StratonovichHAMSecondMoment.TerminalWickInputs	0	0:00:09.03	2711708	0
+BEGIN default StratonovichHAMSecondMoment.TerminalWickRegularization 03:27:05
+END default StratonovichHAMSecondMoment.TerminalWickRegularization	0	0:00:09.98	2729568	0
+BEGIN default StratonovichHAMSecondMoment.TimeCompletion 03:27:15
+END default StratonovichHAMSecondMoment.TimeCompletion	0	0:00:09.51	2709912	0
+BEGIN default StratonovichHAMSecondMoment.TimeFractional 03:27:25
+END default StratonovichHAMSecondMoment.TimeFractional	0	0:00:08.89	2702040	0
+BEGIN default StratonovichHAMSecondMoment.TimeSchur 03:27:34
+END default StratonovichHAMSecondMoment.TimeSchur	0	0:00:08.79	2700444	0
+BEGIN default StratonovichHAMSecondMoment.TwoSimplexTime 03:27:42
+END default StratonovichHAMSecondMoment.TwoSimplexTime	0	0:00:09.07	2709348	0
+BEGIN default StratonovichHAMSecondMoment.TypeContinuity 03:27:51
+END default StratonovichHAMSecondMoment.TypeContinuity	0	0:00:09.00	2703840	0
+BEGIN default StratonovichHAMSecondMoment.UniformELift 03:28:00
+END default StratonovichHAMSecondMoment.UniformELift	0	0:00:09.05	2708780	0
+BEGIN default StratonovichHAMSecondMoment.UniformMeanAssembly 03:28:09
+END default StratonovichHAMSecondMoment.UniformMeanAssembly	0	0:00:09.51	2734188	0
+BEGIN default StratonovichHAMSecondMoment.UniformMeanCutoff 03:28:19
+END default StratonovichHAMSecondMoment.UniformMeanCutoff	0	0:00:09.46	2721400	0
+BEGIN default StratonovichHAMSecondMoment.UniformMeanDischarge 03:28:28
+END default StratonovichHAMSecondMoment.UniformMeanDischarge	0	0:00:08.73	2704028	0
+BEGIN default StratonovichHAMSecondMoment.UniformMeanFoundation 03:28:37
+END default StratonovichHAMSecondMoment.UniformMeanFoundation	0	0:00:10.92	2724044	0
+BEGIN default StratonovichHAMSecondMoment.UniformMeanInterface 03:28:48
+END default StratonovichHAMSecondMoment.UniformMeanInterface	0	0:00:16.00	2740992	0
+BEGIN default StratonovichHAMSecondMoment.UniformMeanTensor 03:29:04
+END default StratonovichHAMSecondMoment.UniformMeanTensor	0	0:00:09.03	2719504	0
+BEGIN default StratonovichHAMSecondMoment.UniformSeriesTail 03:29:13
+END default StratonovichHAMSecondMoment.UniformSeriesTail	0	0:00:08.88	2700544	0
+BEGIN default StratonovichHAMSecondMoment.VariationalDilation 03:29:22
+END default StratonovichHAMSecondMoment.VariationalDilation	0	0:00:09.05	2701784	0
+BEGIN default StratonovichHAMSecondMoment.VariationalFloor 03:29:31
+END default StratonovichHAMSecondMoment.VariationalFloor	0	0:00:09.67	2719936	0
+BEGIN default StratonovichHAMSecondMoment.VariationalMean 03:29:41
+END default StratonovichHAMSecondMoment.VariationalMean	0	0:00:09.18	2704416	0
+BEGIN default StratonovichHAMSecondMoment.VariationalMeanDerivatives 03:29:50
+END default StratonovichHAMSecondMoment.VariationalMeanDerivatives	0	0:00:09.11	2708732	0
+BEGIN default StratonovichHAMSecondMoment.VariationalRate 03:29:59
+END default StratonovichHAMSecondMoment.VariationalRate	0	0:00:09.28	2708108	0
+BEGIN default StratonovichHAMSecondMoment.WaveGreen 03:30:08
+END default StratonovichHAMSecondMoment.WaveGreen	0	0:00:09.39	2711168	0
+BEGIN default StratonovichHAMSecondMoment.WaveGreenFourier 03:30:18
+END default StratonovichHAMSecondMoment.WaveGreenFourier	0	0:00:09.59	2713772	0
+BEGIN default StratonovichHAMSecondMoment.WaveKernel 03:30:27
+END default StratonovichHAMSecondMoment.WaveKernel	0	0:00:08.89	2703572	0
+BEGIN default StratonovichHAMSecondMoment.WaveTwoVariances 03:30:36
+END default StratonovichHAMSecondMoment.WaveTwoVariances	0	0:00:09.47	2713964	0
+BEGIN default StratonovichHAMSecondMoment.WeakSobolev 03:30:46
+END default StratonovichHAMSecondMoment.WeakSobolev	0	0:00:09.10	2704756	0
+BEGIN default StratonovichHAMSecondMoment.WhiteClockLaplace 03:30:55
+END default StratonovichHAMSecondMoment.WhiteClockLaplace	0	0:00:08.92	2699180	0
+BEGIN default StratonovichHAMSecondMoment.WhiteCollapse 03:31:04
+END default StratonovichHAMSecondMoment.WhiteCollapse	0	0:00:09.02	2712536	0
+BEGIN default StratonovichHAMSecondMoment.WhiteFour 03:31:13
+END default StratonovichHAMSecondMoment.WhiteFour	0	0:00:09.51	2717024	0
+BEGIN default StratonovichHAMSecondMoment.WhiteModel 03:31:22
+END default StratonovichHAMSecondMoment.WhiteModel	0	0:00:09.16	2708728	0
+BEGIN default StratonovichHAMSecondMoment.WhiteMomentBounds 03:31:31
+END default StratonovichHAMSecondMoment.WhiteMomentBounds	0	0:00:08.79	2705180	0
+BEGIN default StratonovichHAMSecondMoment.WhiteRelativeWidth 03:31:40
+END default StratonovichHAMSecondMoment.WhiteRelativeWidth	0	0:00:08.81	2697440	0
+BEGIN default StratonovichHAMSecondMoment.WickBridge 03:31:49
+END default StratonovichHAMSecondMoment.WickBridge	0	0:00:08.90	2711924	0
+BEGIN default StratonovichHAMSecondMoment.WickFinal 03:31:58
+END default StratonovichHAMSecondMoment.WickFinal	0	0:00:08.73	2708768	0
+BEGIN default StratonovichHAMSecondMoment.WickInterface 03:32:07
+END default StratonovichHAMSecondMoment.WickInterface	0	0:00:08.86	2709104	0
+BEGIN default StratonovichHAMSecondMoment.WickMass 03:32:15
+END default StratonovichHAMSecondMoment.WickMass	0	0:00:08.88	2715164	0
+BEGIN default StratonovichHAMSecondMoment.WickMeasures 03:32:24
+END default StratonovichHAMSecondMoment.WickMeasures	0	0:00:09.00	2716800	0
+BEGIN default StratonovichHAMSecondMoment.WickScaling 03:32:33
+END default StratonovichHAMSecondMoment.WickScaling	0	0:00:08.88	2712600	0
+BEGIN default StratonovichHAMSecondMoment.WickSpectral 03:32:42
+END default StratonovichHAMSecondMoment.WickSpectral	0	0:00:08.93	2715672	0
+BEGIN default StratonovichHAMSecondMoment.WickStep4 03:32:51
+END default StratonovichHAMSecondMoment.WickStep4	0	0:00:08.97	2707464	0
+BEGIN default StratonovichHAMSecondMoment 03:33:00
+END default StratonovichHAMSecondMoment	0	0:19:11.36	21629344	0
+REPLAY_DEFAULT pass=211 fail=0 total=211
+PHASE replay_default_s=3078 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=default target=ALL
+PROCESS_EXIT=0 end=2026-11-23T03:52:12-0600

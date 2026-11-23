@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Wave item L10-W1: Theorem `T:white-moment-bounds` (Explicit white moment bounds) of
-`notes/integrated_white_evaluation.tex` at revision 39f2597a (statement lines 140-151, proof
+`notes/integrated_white_evaluation.tex` at revision edf7085f (statement lines 140-151, proof
 lines 153-167), stated for the variational value `S_2^pos` (not for `C_2(c,a)`), on the
 spatial white-noise model of the same section (lines 4-9: `d = α = 1`, `Γ = c δ₀`, temporal
 kernel `|s-t|^{-a}`, `0 < a < 1`).
@@ -94,7 +94,7 @@ variable {d : ℕ}
 /-! ### The named input -/
 
 /-- Supplied input (`P:white-spatial-energy`, `integrated_white_evaluation.tex` lines 79-133 at
-39f2597a, reserved as package B9 and not proved here): the spatial energy of the white
+edf7085f, reserved as package B9 and not proved here): the spatial energy of the white
 covariance is `𝓔_sp(c δ₀) = c²/6`. -/
 def WhiteSpatialEnergy (c : ℝ) : Prop := Esp (whiteCov c) = c ^ 2 / 6
 
@@ -147,7 +147,7 @@ theorem ceilingValue_mono {alpha c C D : ℝ} (ha0 : 0 < alpha) (ha2 : alpha < 2
 /-! ### The two halves -/
 
 /-- **Lower half of `E:white-moment-bounds` for `S_2^pos`** (`integrated_white_evaluation.tex`
-lines 143, 153-163 at 39f2597a), on the lower half `c²/6 ≤ 𝓔_sp` of the input: for `c > 0`,
+lines 143, 153-163 at edf7085f), on the lower half `c²/6 ≤ 𝓔_sp` of the input: for `c > 0`,
 `0 < a < 1`, `(2/3)√(c/M_a) ≤ S_2^pos`.  Narrower: `S_2^pos`, not `C_2`. -/
 theorem white_moment_lower_of_ge {c a : ℝ} (hc : 0 < c) (ha0 : 0 < a) (ha1 : a < 1)
     (hge : c ^ 2 / 6 ≤ Esp (whiteCov c)) :
@@ -163,7 +163,7 @@ theorem white_moment_lower_of_ge {c a : ℝ} (hc : 0 < c) (ha0 : 0 < a) (ha1 : a
     (rpow_nonneg zero_le_two _)
 
 /-- **Upper half of `E:white-moment-bounds` for `S_2^pos`** (`integrated_white_evaluation.tex`
-lines 144, 153-163 at 39f2597a), on the upper half `𝓔_sp ≤ c²/6` of the input: for `c > 0`,
+lines 144, 153-163 at edf7085f), on the upper half `𝓔_sp ≤ c²/6` of the input: for `c > 0`,
 `0 < a < 1`, the coefficient-two value set is bounded above and
 `S_2^pos ≤ (2/3)√(c K₀(a))`.  Narrower: `S_2^pos`, not `C_2`. -/
 theorem white_moment_upper_of_le {c a : ℝ} (hc : 0 < c) (ha0 : 0 < a) (ha1 : a < 1)
@@ -184,7 +184,7 @@ theorem white_moment_upper_of_le {c a : ℝ} (hc : 0 < c) (ha0 : 0 < a) (ha1 : a
 /-! ### The theorem -/
 
 /-- **`T:white-moment-bounds` for `S_2^pos`** (`integrated_white_evaluation.tex` lines 140-151,
-proof 153-167, at 39f2597a): for the white model `Γ = c δ₀` (`d = α = 1`) with `c > 0`,
+proof 153-167, at edf7085f): for the white model `Γ = c δ₀` (`d = α = 1`) with `c > 0`,
 `0 < a < 1`, and the supplied input `WhiteSpatialEnergy c` (`𝓔_sp = c²/6`,
 `P:white-spatial-energy`), the coefficient-two value set is bounded above,
 `(2/3)√(c/M_a) ≤ S_2^pos ≤ (2/3)√(c K₀(a))` with `K₀(a) = 2^a/(1-a)` and

@@ -1,6 +1,6 @@
 /-
 Refutation for "no unlisted pairing or multiplicity" (main TeX line 5001 at
-39f2597a) and the three pairings `A, B, C` (lines 4911-4916), package theorem
+edf7085f) and the three pairings `A, B, C` (lines 4911-4916), package theorem
 `StratonovichHAMSecondMoment.WhiteFour.pairings_four`.
 
 Wrong variant: `Π_2` on four labels contains a fourth pairing (for instance

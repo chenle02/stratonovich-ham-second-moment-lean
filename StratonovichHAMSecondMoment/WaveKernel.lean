@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The Fourier transform of the wave kernel, from the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` (revision 39f2597a),
+`notes/notes_stratonovich_ham_second_moment.tex` (revision edf7085f),
 Section "Recovering the quadratic-exponential bound" (lines 981-1002) and the
 proof of `L:damped-homogeneous-norms` (lines 1010-1154).
 

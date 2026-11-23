@@ -1,7 +1,7 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.EndpointCorollaries.midTheta_mem` (manuscript
 `C:three-product-riesz` and `C:three-finite-images`, main TeX lines 7946, 7962-7965 at
-39f2597a): the midpoint `θ = (α₀ + 2 - α)/2` lies in `(α₀, 2 - α)` only because
+edf7085f): the midpoint `θ = (α₀ + 2 - α)/2` lies in `(α₀, 2 - α)` only because
 `α < 2 - α₀`.
 
 Wrong variant: `θ < 2 - α` for all `0 < α₀ < 1` and `1 < α < 2` (the bound `α < 2 - α₀`

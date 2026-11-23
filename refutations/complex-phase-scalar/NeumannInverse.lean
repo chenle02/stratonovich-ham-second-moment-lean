@@ -1,6 +1,6 @@
 /-
 Refutation for the Neumann bound of `L:interval-complex` (main TeX lines
-3521-3522 at 39f2597a), package theorem
+3521-3522 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.ComplexPhaseScalar.neumann_root_comparison`
 (`‖Q - 1‖ ≤ 1/6` gives `‖Q⁻¹‖ ≤ 6/5`).
 

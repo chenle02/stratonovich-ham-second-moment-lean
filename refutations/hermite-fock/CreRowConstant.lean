@@ -2,7 +2,7 @@ import StratonovichHAMSecondMoment.HermiteFock
 
 /-!
 Refutation for `StratonovichHAMSecondMoment.HermiteFock.creRow_bound` (the creation row from
-degrees `≤ N` to `≤ N+1` has norm `√(N+1)`, main TeX lines 3018-3020 at 39f2597a).
+degrees `≤ N` to `≤ N+1` has norm `√(N+1)`, main TeX lines 3018-3020 at edf7085f).
 
 Wrong variant: the constant `N` in place of `N+1`.  Counterexample: `N = 0`, `X = ℂ`, one mode,
 `u_0 = 1 ⊗ 1` (the vacuum): `a_0^* u_0` has norm `1`, the wrong bound is `0`.

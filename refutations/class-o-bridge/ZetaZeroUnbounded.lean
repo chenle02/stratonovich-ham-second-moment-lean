@@ -2,7 +2,7 @@
 Refutation for the penalty range `ζ > 0` of `P:raw-occupation-energy` (wave L14, item O),
 package theorem `StratonovichHAMSecondMoment.ClassOBridge.raw_occupation_energy_whole_paper`.
 
-Manuscript side: `notes/integrated_occupation_ceiling.tex` (revision 39f2597a) defines
+Manuscript side: `notes/integrated_occupation_ceiling.tex` (revision edf7085f) defines
 `𝓔_ζ^𝒪 = sup_{g ∈ 𝒪} {A(g) - ζ T(g)}` for `ζ > 0` (`E:raw-occupation-definitions`, lines
 10-18) and states that it is finite (lines 129-130).
 

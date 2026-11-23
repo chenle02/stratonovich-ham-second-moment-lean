@@ -4,11 +4,11 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:higher-riesz` (Riesz spatial maxima) of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a
+`notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f
 (statement lines 6103-6112, proof 6114-6190), the dimension-three clause in full,
 and the combined lemma in both of its dimensions; Hypothesis `H:spatial-maximum`
 (lines 5919-5929) is `HigherRieszTwo.SpatialMaximum`.  All main-TeX line numbers
-below are at 39f2597a.  The dimension-two clause and the shared steps are in
+below are at edf7085f.  The dimension-two clause and the shared steps are in
 `HigherRieszTwo` (wave L10-R2); this module reuses them unchanged.
 
 Definitions (new): `F3w α w = ∫ G_1^{(3)}(dy) |y + w|^{-α}` (the `F_3(w)` of

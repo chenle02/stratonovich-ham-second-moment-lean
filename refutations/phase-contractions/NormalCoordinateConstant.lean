@@ -1,6 +1,6 @@
 /-
 Refutation for the one-dimensional integral behind the sphere convolution
-formula of `L:phase-contractions` (main TeX lines 2573-2579 at 39f2597a),
+formula of `L:phase-contractions` (main TeX lines 2573-2579 at edf7085f),
 package theorem
 `StratonovichHAMSecondMoment.PhaseContractions.integral_normal_coordinate`.
 

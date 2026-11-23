@@ -1,6 +1,6 @@
 /-
 Refutation for `E:spatial-dilation` (`notes/integrated_spatial_occupation.tex`
-lines 254-260 at 39f2597a), package theorem
+lines 254-260 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.SpatialSmoothRatio.spatialEnergy_dilL2`
 (`A_sp(U_ℓ g) = ℓ^α A_sp(g)` under `Γ(cA) = c^{d-α}Γ(A)`).
 

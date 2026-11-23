@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.UniformMeanDischarge.positive_raw_mean_of

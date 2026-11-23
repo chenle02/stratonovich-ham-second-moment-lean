@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.PhaseBessel
 /-!
 Refutation for `StratonovichHAMSecondMoment.PhaseBessel.phase_bessel`
 (manuscript `L:phase-bessel`, display `E:phase-bessel`,
-`notes/integrated_wave_variance.tex` 426-435 at 39f2597a): the square on the
+`notes/integrated_wave_variance.tex` 426-435 at edf7085f): the square on the
 left-hand norm cannot be dropped.
 
 The wrong variant is the package statement with `∑ k, ‖x k‖` (exponent `1`)

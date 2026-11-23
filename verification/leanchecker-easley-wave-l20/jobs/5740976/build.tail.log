@@ -1,0 +1,60 @@
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5129:0: 'StratonovichHAMSecondMoment.RieszInstanceOne.riesz_posdef_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5130:0: 'StratonovichHAMSecondMoment.RieszInstanceOne.riesz_tempered' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5131:0: 'StratonovichHAMSecondMoment.RieszInstanceOne.spectralDensity_lt_top' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5132:0: 'StratonovichHAMSecondMoment.RieszInstanceOne.step_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5133:0: 'StratonovichHAMSecondMoment.RieszInstanceOne.step_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5134:0: 'StratonovichHAMSecondMoment.RieszInstanceOne.step_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5135:0: 'StratonovichHAMSecondMoment.RieszInstanceOne.wt_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5136:0: 'StratonovichHAMSecondMoment.RieszInstanceOne.wt_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5137:0: 'StratonovichHAMSecondMoment.CleanupWrappers.d1_upper_paper_closed_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5138:0: 'StratonovichHAMSecondMoment.CleanupWrappers.d1_upper_paper_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5139:0: 'StratonovichHAMSecondMoment.CleanupWrappers.d1_upper_paper_white_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5140:0: 'StratonovichHAMSecondMoment.CleanupWrappers.envelope_paper_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5141:0: 'StratonovichHAMSecondMoment.CleanupWrappers.first_calibration_rate_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5142:0: 'StratonovichHAMSecondMoment.CleanupWrappers.first_calibration_rate_riesz_closed_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5143:0: 'StratonovichHAMSecondMoment.CleanupWrappers.first_calibration_rate_riesz_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5144:0: 'StratonovichHAMSecondMoment.CleanupWrappers.first_calibration_rate_white_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5145:0: 'StratonovichHAMSecondMoment.CleanupWrappers.first_calibration_riesz_paper_closed_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5146:0: 'StratonovichHAMSecondMoment.CleanupWrappers.first_calibration_riesz_paper_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5147:0: 'StratonovichHAMSecondMoment.CleanupWrappers.low_alpha_upper_moment_paper_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5148:0: 'StratonovichHAMSecondMoment.CleanupWrappers.rho_gt_kappa_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5149:0: 'StratonovichHAMSecondMoment.CleanupWrappers.riesz_instance_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5150:0: 'StratonovichHAMSecondMoment.CleanupWrappers.riesz_small_paper_closed_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5151:0: 'StratonovichHAMSecondMoment.CleanupWrappers.riesz_small_paper_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Build completed successfully (9258 jobs).

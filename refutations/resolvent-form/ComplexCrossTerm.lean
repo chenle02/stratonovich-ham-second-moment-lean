@@ -3,7 +3,7 @@ Refutation for the real-cross-term hypothesis of the real/complex reduction (wav
 package theorem `StratonovichHAMSecondMoment.ResolventForm.re_diag_split`.
 
 Manuscript side: `L:signed-spectral-wave` (`notes/integrated_signed_static.tex`, line 164 at
-39f2597a): "a complex diagonal splits into the two real diagonals" for `u = x + i y` with `x, y`
+edf7085f): "a complex diagonal splits into the two real diagonals" for `u = x + i y` with `x, y`
 real.
 
 Wrong variant: the diagonal of every Hermitian form splits at `x + i y` for arbitrary vectors

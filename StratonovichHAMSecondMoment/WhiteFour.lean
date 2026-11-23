@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The nine order-four white-noise diagram integrals (wave L13 item D6, part 2:
 `P:white-four`).  Main TeX file `notes/notes_stratonovich_ham_second_moment.tex`
-at revision 39f2597a:
+at revision edf7085f:
 * the pairings `A = {(1,2),(3,4)}`, `B = {(1,3),(2,4)}`, `C = {(1,4),(2,3)}`
   and the Green normalization `G(s,y) = ½ 1_{|y|<s}` (lines 4911-4919);
 * `E:interval-area`: `F(a,b,c) = 4ab - (a+b-c)_+² + (|a-b|-c)_+²`, the area of

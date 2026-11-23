@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The first sentence of `L:variational-global-mean` (global regularity of the
 original mean; statement lines 85-95, proof 97-118 of
-`notes/integrated_unmasked_variational.tex` at revision 39f2597a): "Every mixed
+`notes/integrated_unmasked_variational.tex` at revision edf7085f): "Every mixed
 time and space derivative of `h_s` is globally bounded in space, uniformly on
 compact time intervals" (lines 87-88).  `VariationalMean` formalizes the
 displayed consequence `E:variational-global-mean`; this module adds the

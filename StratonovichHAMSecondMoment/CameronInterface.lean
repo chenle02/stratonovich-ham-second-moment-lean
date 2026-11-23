@@ -1,0 +1,518 @@
+module
+
+/-
+Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
+
+Wave L16, item L16-0 (interface; approved by Le on 2026-11-20 with the default answers to all
+twelve decisions: scope = core + R1, anchor = book 1.1.0, E part of `P:cameron-spatial-map`
+only, the projection/tail half of `P:uniform-mean-regulator` out).  The frozen Lean objects and
+statement shapes for the item agents A1, A2, B1, B2, C and D, who discharge the two named
+inputs `CameronSpatialMap` and `UniformMeanRegulator` of L15 (`UniformMeanInterface`, unchanged)
+through the Cameron-map chain.  Nothing in this module proves an item target.
+
+TeX anchors: all at revision 0788ddee (book 1.1.0; the same line numbers at edf7085f, book 1.1.3),
+read with `git show 0788ddee:notes/<file>.tex`:
+* `integrated_cameron_mean.tex`: setup lines 4-21; `L:cameron-fractional-products` statement
+  29-42, proof 44-99; `P:cameron-spatial-map` statement 104-119 (`E:cameron-spatial-row`
+  113-118), proof 121-186; `P:cameron-temporal-map` statement 225-237, proof 239-314;
+  `P:cameron-full-mean` statement 322-342 (the map `𝒰` lines 324-330), proof 344-408.
+* `integrated_uniform_mean.tex`: setup 4-32 (the `E` inner product 11-17,
+  `E:uniform-mean-row` 22-27 and the rough-state sentence 28-32); `L:uniform-mean-cutoff`
+  statement 40-53, proof 55-73; `L:uniform-mean-tensor` statement 198-206, proof 208-255; the
+  objects `U`, `c_t`, `𝒯_R` 257-270; `P:uniform-mean-regulator` statement 272-288, proof
+  290-334.
+* `integrated_compact_gaussian.tex`: conventions 275-281; `P:cutoff-singular-values`
+  statement 469-479, proof 481-557 (compactness sentence; Step 1, lines 487-519).
+* `integrated_intrinsic_constant.tex`: `L:positive-raw-embedding` statement 22-40, proof 42-132.
+
+Objects (new):
+* `Hsob d s` (`H^s(ℝ^d)`, real, every real `s`): the Fourier-coordinate space `HR d` of L15,
+  read through the coordinate `u ↦ ⟨2πξ⟩^s 𝓕u`; `toHsob s φ` the class of a real test.  The
+  identifications `hhalfEquiv : Hhalf ≃ Hsob (1/2)`, `hmhalfEquiv : Hmhalf ≃ Hsob (-1/2)`.
+* Specifications (each determines its operator by density of test coordinates):
+  `IsSobolevEmbed s t ι` (`H^s ↪ H^t`), `IsCutoffMul σ τ χ L` (multiplication by `χ`,
+  `H^σ → H^τ`), `IsFracProduct S s P` (the product map `H^s × H^s → H_sp`), `IsPhysRep s u f`
+  (`f ∈ L²(ℝ^d)` is the physical function of `u ∈ H^s`).
+* `Msigma η σ` (the constant `M_σ` of `L:uniform-mean-cutoff`), `kRow` (the rough-state row
+  `k_R(z,w)` of `E:uniform-mean-row`).
+* `IsSpatialMeanMap` (the non-compactness fields of `CameronSpatialMap`), `SpatialRowAll`
+  (`E:uniform-mean-row` for all `z, w ∈ E`).
+* Temporal: `L2I = L²(I)`, `IsTimeKernelOp p K` (`K` has kernel `|s-t|^{-a}`), `IsPosSqrt K S`
+  (`S` is the positive square root of `K`), `TemporalMeanCore p r` (`K`, `K^{1/2}`, `ι`, `C_t`
+  with their specifications; no compactness field), `cell N j` (the cell indicators),
+  `KaNorm a r` (`‖K_a‖_{L^{r/2}}`).
+* `UTensorSpec` (the defining formula of `U = C_t ⊗ I` on single smooth tensors),
+  `PositiveRawMeanFor` (`PositiveRawMeanTarget` for bare maps `T_R`, `U`).
+
+True named inputs (fallbacks; each is the exact TeX sentence, used only if an item lands
+narrower): `CutoffCompact d` (the compactness sentence of `P:cutoff-singular-values`),
+`TemporalCompact p` (the compactness of `K` and of `C_t` into `L^r`, `P:cameron-temporal-map`).
+
+Target statement shapes (`def ... : Prop`, proved by the item agents): see the section headers
+and `docs/l16/INTERFACE.md`.
+
+Proved here (interface sanity only): `coord_mem_HR'`, `hhalfEquiv_toHhalf`,
+`hmhalfEquiv_toHmhalf`, `CameronSpatialMap.isSpatialMeanMap`, `positiveRawMeanTarget_iff`,
+`kRow_test` (the rough row restricts to `rowTest` on test states).
+-/
+public import Mathlib
+public import StratonovichHAMSecondMoment.UniformMeanInterface
+public import StratonovichHAMSecondMoment.UniformMeanFoundation
+public import StratonovichHAMSecondMoment.PositiveRawMean
+public import StratonovichHAMSecondMoment.SpatialFourLinear
+
+@[expose] public section
+
+noncomputable section
+
+set_option autoImplicit false
+
+open MeasureTheory Set Filter Topology FourierTransform
+open scoped ENNReal ContDiff RealInnerProductSpace Real
+
+namespace StratonovichHAMSecondMoment.CameronInterface
+
+open HomogHypothesis (Rd HomogCovariance)
+open WeakSobolev (IsTestFunction)
+open OccupationCompletion (TParams SpData Hsp toHsp Ht HI J incl)
+open VariationalDilation (CPos conv mean)
+open SpaceTimePositivity (timeMeasure)
+open TimeSchur (kern)
+open OccupationKernelRow (pairMeasure)
+open SpatialFourLinear (C4 Rsp)
+open UniformMeanInterface
+
+variable {d : ℕ}
+
+/-! ### The Sobolev scale `H^s(ℝ^d)` on Fourier coordinates -/
+
+/-- Auxiliary: every coordinate `coord σ φ` lies in `HR d` (it is `0` off the tests). -/
+theorem coord_mem_HR' (σ : ℝ) (φ : Rd d → ℝ) : coord σ φ ∈ HR d := by
+  by_cases hφ : IsTestFunction φ
+  · exact coord_mem_HR σ hφ
+  · simp [coord, hφ]
+
+/-- **`H^s(ℝ^d)` (real), every real `s`** (`integrated_compact_gaussian.tex` lines 275-277 at
+revision edf7085f (book 1.1.3): the norm of `H^r` is `‖⟨ξ⟩^r û‖₂`, `û` unitary),
+realized, as `Hhalf`/`Hmhalf` of L15, on the Hermitian Fourier-coordinate space `HR d` through
+`u ↦ ⟨2πξ⟩^s 𝓕u` (`msWeight s · 𝓕u`).  A type synonym per exponent. -/
+def Hsob (d : ℕ) (_s : ℝ) : Type := HR d
+
+/-- `Hsob d s` is a normed group (that of `HR d`). -/
+instance instNormedAddCommGroupHsob (s : ℝ) : NormedAddCommGroup (Hsob d s) :=
+  inferInstanceAs (NormedAddCommGroup (HR d))
+/-- `Hsob d s` is a real inner product space (that of `HR d`). -/
+instance instInnerProductSpaceHsob (s : ℝ) : InnerProductSpace ℝ (Hsob d s) :=
+  inferInstanceAs (InnerProductSpace ℝ (HR d))
+/-- `Hsob d s` is complete. -/
+instance instCompleteSpaceHsob (s : ℝ) : CompleteSpace (Hsob d s) :=
+  inferInstanceAs (CompleteSpace (HR d))
+
+/-- The class in `H^s` of a real test function: coordinate `⟨2πξ⟩^s 𝓕φ` (`0` off the tests). -/
+def toHsob (s : ℝ) (φ : Rd d → ℝ) : Hsob d s := (⟨coord s φ, coord_mem_HR' s φ⟩ : HR d)
+
+/-- `H^{1/2}` of L15 is `Hsob d (1/2)` (identity on coordinates). -/
+def hhalfEquiv : Hhalf d ≃ₗᵢ[ℝ] Hsob d (1 / 2) := LinearIsometryEquiv.refl ℝ (HR d)
+
+/-- `H^{-1/2}` of L15 is `Hsob d (-1/2)` (identity on coordinates). -/
+def hmhalfEquiv : Hmhalf d ≃ₗᵢ[ℝ] Hsob d (-1 / 2) := LinearIsometryEquiv.refl ℝ (HR d)
+
+/-- Auxiliary: `hhalfEquiv` maps the `H^{1/2}` class of a test to its `Hsob (1/2)` class. -/
+theorem hhalfEquiv_toHhalf {φ : Rd d → ℝ} (hφ : IsTestFunction φ) :
+    hhalfEquiv (toHhalf φ) = toHsob (1 / 2) φ := by
+  show (show HR d from toHhalf φ) = (⟨coord (1 / 2) φ, coord_mem_HR' _ φ⟩ : HR d)
+  exact Subtype.ext (toHhalf_coe hφ)
+
+/-- Auxiliary: `hmhalfEquiv` maps the `H^{-1/2}` class of a test to its `Hsob (-1/2)` class. -/
+theorem hmhalfEquiv_toHmhalf {φ : Rd d → ℝ} (hφ : IsTestFunction φ) :
+    hmhalfEquiv (toHmhalf φ) = toHsob (-1 / 2) φ := by
+  show (show HR d from toHmhalf φ) = (⟨coord (-1 / 2) φ, coord_mem_HR' _ φ⟩ : HR d)
+  exact Subtype.ext (toHmhalf_coe hφ)
+
+/-- **`ι` is the embedding `H^s ↪ H^t`**: identity on the classes of real tests. -/
+def IsSobolevEmbed (s t : ℝ) (ι : Hsob d s →L[ℝ] Hsob d t) : Prop :=
+  ∀ φ : Rd d → ℝ, IsTestFunction φ → ι (toHsob s φ) = toHsob t φ
+
+/-- **`L` is multiplication by `χ`, `H^σ → H^τ`**: `L [φ] = [χ φ]` for real tests `φ` (for
+smooth `χ` the product `χ φ` is a test). -/
+def IsCutoffMul (σ τ : ℝ) (χ : Rd d → ℝ) (L : Hsob d σ →L[ℝ] Hsob d τ) : Prop :=
+  ∀ φ : Rd d → ℝ, IsTestFunction φ → L (toHsob σ φ) = toHsob τ (fun x => χ x * φ x)
+
+/-- **`f` is the physical function of `u ∈ H^s`**: `f ∈ L²(ℝ^d)` (real) and the coordinate of
+`u` is `⟨2πξ⟩^s 𝓕f` a.e., with `𝓕` the `L²` Fourier transform (`Lp.fourierTransformₗᵢ`). -/
+def IsPhysRep (s : ℝ) (u : Hsob d s) (f : Rd d → ℝ) : Prop :=
+  ∃ hf : MemLp (fun x => (f x : ℂ)) 2 (volume : Measure (Rd d)),
+    ∀ᵐ ξ, ((show HR d from u) : Lp ℂ 2 (volume : Measure (Rd d))) ξ =
+      msWeight s ξ * ((𝓕 (hf.toLp _) : Lp ℂ 2 (volume : Measure (Rd d))) : Rd d → ℂ) ξ
+
+/-! ### B1: compactness of whole-space cutoffs (`P:cutoff-singular-values`, compactness) -/
+
+/-- **B1 target, the compactness sentence of `P:cutoff-singular-values`**
+(`integrated_compact_gaussian.tex` lines 469-472, proof Step 1 lines 487-519, at revision
+edf7085f (book 1.1.3)): `K_{χ,σ,γ} = Λ^σ χ Λ^{-σ-γ}` extends uniquely to a compact
+operator on `L²(ℝ^d)`.  In Fourier coordinates `Λ^r` is unitary from `H^r` to `L²`, so this is:
+multiplication by `χ` from `H^{σ+γ}` to `H^σ` exists as a compact operator, and is unique
+among bounded operators agreeing with it on test classes.  The singular-value rate and the
+Schatten membership are not part of the target (decision: compactness only). -/
+def CutoffCompactTarget (χ : Rd d → ℝ) (σ γ : ℝ) : Prop :=
+  (∃ K : Hsob d (σ + γ) →L[ℝ] Hsob d σ, IsCutoffMul (σ + γ) σ χ K ∧ IsCompactOperator K) ∧
+    ∀ K K' : Hsob d (σ + γ) →L[ℝ] Hsob d σ,
+      IsCutoffMul (σ + γ) σ χ K → IsCutoffMul (σ + γ) σ χ K' → K = K'
+
+/-- **Named input (fallback for B1): the compactness sentence of `P:cutoff-singular-values`**
+(`integrated_compact_gaussian.tex` lines 469-472 at revision edf7085f (book 1.1.3))
+for every real compact smooth `χ`, real `σ` and `γ > 0`.  True (it is the TeX statement); used
+only if B1 lands narrower. -/
+structure CutoffCompact (d : ℕ) : Prop where
+  compact : ∀ (χ : Rd d → ℝ) (σ γ : ℝ), IsTestFunction χ → 0 < γ → CutoffCompactTarget χ σ γ
+
+/-! ### A1: `L:uniform-mean-cutoff` -/
+
+/-- **The constant `M_σ`** of `L:uniform-mean-cutoff` (`integrated_uniform_mean.tex` lines
+41-46 at revision edf7085f (book 1.1.3)),
+`M_σ = 2^{|σ|/2} (2π)^{-d/2} ∫ |η̂(p)| ⟨p⟩^{|σ|} dp` with the unitary `η̂`.  Substituting
+`η̂(p) = (2π)^{-d/2} 𝓕η(p/2π)` (Mathlib's `𝓕`) and `p = 2πξ` gives exactly
+`M_σ = 2^{|σ|/2} ∫ |𝓕η(ξ)| ⟨2πξ⟩^{|σ|} dξ`, the form used here. -/
+def Msigma (η : CutoffProfile d) (σ : ℝ) : ℝ :=
+  2 ^ (|σ| / 2) *
+    ∫ ξ : Rd d, ‖𝓕 (fun x => (η.η x : ℂ)) ξ‖ * (1 + ‖(2 * π) • ξ‖ ^ 2) ^ (|σ| / 2)
+
+/-- **A1 target, first sentence of `L:uniform-mean-cutoff`** (`integrated_uniform_mean.tex`
+lines 41-47 at revision edf7085f (book 1.1.3)): for every real `σ` and `R ≥ 1`,
+multiplication by `η_R` on `H^σ` exists with norm at most `M_σ`. -/
+def UniformCutoffTarget (η : CutoffProfile d) : Prop :=
+  ∀ σ R : ℝ, 1 ≤ R →
+    ∃ L : Hsob d σ →L[ℝ] Hsob d σ, IsCutoffMul σ σ (etaR η R) L ∧ ‖L‖ ≤ Msigma η σ
+
+/-- **A1 target, the embedding `H^s ↪ H^t` of norm at most one for `t ≤ s`** (used with
+`s = 1/2`: "`H^{1/2} ↪ H^s` has norm one", `integrated_uniform_mean.tex` lines 66-67 at
+revision edf7085f (book 1.1.3)). -/
+def SobolevEmbedTarget (d : ℕ) : Prop :=
+  ∀ s t : ℝ, t ≤ s → ∃ ι : Hsob d s →L[ℝ] Hsob d t, IsSobolevEmbed s t ι ∧ ‖ι‖ ≤ 1
+
+/-- **The row `k_R(z,w) = (η_R z₁)(η_R Λ⁻¹ w₂)` at rough states** (`E:uniform-mean-row`,
+`integrated_uniform_mean.tex` lines 22-32 at revision edf7085f (book 1.1.3)), from a
+product map `P : H^s × H^s → H_sp`, the embedding `ι : H^{1/2} ↪ H^s` and the cutoff
+multiplier `Lη` by `η_R` on `H^{1/2}`. -/
+def kRow (S : SpData d) {s : ℝ} (P : Hsob d s →L[ℝ] Hsob d s →L[ℝ] Hsp S)
+    (ι : Hsob d (1 / 2) →L[ℝ] Hsob d s) (Lη : Hsob d (1 / 2) →L[ℝ] Hsob d (1 / 2))
+    (z w : E d) : Hsp S :=
+  P (ι (Lη (hhalfEquiv (eEquiv z).1))) (ι (Lη (hhalfEquiv (lam.symm (eEquiv w).2))))
+
+/-- **A1 target, `E:uniform-spatial-mean`** (`integrated_uniform_mean.tex` lines 47-52 and
+proof lines 65-70 at revision edf7085f (book 1.1.3)), with `A` a product constant
+(`A_s`), `M` a cutoff bound (`M = M_{1/2}`) and `M_0 = A M²`: the row bound, and the operator
+bound for any `T` satisfying the row identity at all states. -/
+def UniformSpatialMeanTarget (S : SpData d) : Prop :=
+  ∀ (s A M : ℝ) (P : Hsob d s →L[ℝ] Hsob d s →L[ℝ] Hsp S) (ι : Hsob d (1 / 2) →L[ℝ] Hsob d s)
+    (Lη : Hsob d (1 / 2) →L[ℝ] Hsob d (1 / 2)), 0 ≤ A →
+    (∀ u v, ‖P u v‖ ≤ A * ‖u‖ * ‖v‖) → ‖ι‖ ≤ 1 → ‖Lη‖ ≤ M →
+    (∀ z w, ‖kRow S P ι Lη z w‖ ≤ A * M ^ 2 * ‖z‖ * ‖w‖) ∧
+    ∀ T : Hsp S →L[ℝ] (E d →L[ℝ] E d),
+      (∀ q z w, ⟪T q z, w⟫ = ⟪q, kRow S P ι Lη z w⟫) → ‖T‖ ≤ A * M ^ 2
+
+/-! ### A2: `L:cameron-fractional-products` -/
+
+/-- **`P` is the product map `H^s × H^s → H_sp`**: `P([f],[g]) = [f g]` for real tests. -/
+def IsFracProduct (S : SpData d) (s : ℝ) (P : Hsob d s →L[ℝ] Hsob d s →L[ℝ] Hsp S) : Prop :=
+  ∀ f g : Rd d → ℝ, IsTestFunction f → IsTestFunction g →
+    P (toHsob s f) (toHsob s g) = toHsp S (fun x => f x * g x)
+
+/-- **A2 target, `L:cameron-fractional-products`** (`integrated_cameron_mean.tex` lines 29-42,
+proof 44-99, at revision edf7085f (book 1.1.3)) at one `s` (`α/4 < s < 1/2` is the
+hypothesis of the A2 theorem): there is `C_s ≥ 0`, depending on `α` and `s` only, such that
+for every covariance of `H:homog` with spatial exponent `α`, the product map exists, is unique,
+satisfies `E:cameron-fractional-product` with `R_sp = SpatialFourLinear.Rsp Γ α`, its Hilbert
+pairings equal the physical integrals `C₄` of the physical functions, and
+`E:cameron-fractional-absolute` holds.  (`C_s` is not defined in the statement; the proof
+defines it in Step 2, line 70.) -/
+def FractionalProductsTarget (d : ℕ) (alpha s : ℝ) : Prop :=
+  ∃ Cs : ℝ, 0 ≤ Cs ∧ ∀ (alpha0 : ℝ) (Γ μ : Measure (Rd d))
+    (hH : HomogCovariance d alpha alpha0 Γ μ),
+    ∃ P : Hsob d s →L[ℝ] Hsob d s →L[ℝ] Hsp (SpData.ofHomog hH),
+      IsFracProduct (SpData.ofHomog hH) s P ∧
+      (∀ P' : Hsob d s →L[ℝ] Hsob d s →L[ℝ] Hsp (SpData.ofHomog hH),
+        IsFracProduct (SpData.ofHomog hH) s P' → P' = P) ∧
+      (∀ u v, ‖P u v‖ ≤ Cs ^ 2 * √(Rsp Γ alpha) * ‖u‖ * ‖v‖) ∧
+      ∀ (u₁ u₂ u₃ u₄ : Hsob d s) (f₁ f₂ f₃ f₄ : Rd d → ℝ), IsPhysRep s u₁ f₁ →
+        IsPhysRep s u₂ f₂ → IsPhysRep s u₃ f₃ → IsPhysRep s u₄ f₄ →
+        ⟪P u₁ u₂, P u₃ u₄⟫ = C4 Γ f₁ f₂ f₃ f₄ ∧
+        ∫⁻ p, ‖f₁ p.1 * f₂ p.1 * f₃ (p.1 - p.2) * f₄ (p.1 - p.2)‖ₑ ∂(pairMeasure Γ) ≤
+          ENNReal.ofReal (Cs ^ 4 * Rsp Γ alpha * (‖u₁‖ * ‖u₂‖ * ‖u₃‖ * ‖u₄‖))
+
+/-! ### B2: `P:cameron-spatial-map`, `E` part -/
+
+variable {p : TParams} {S : SpData d}
+
+/-- **The non-compactness fields of `CameronSpatialMap`**: the smooth-test formula and the row
+on the dense test states (`integrated_cameron_mean.tex` lines 105-118 at revision edf7085f
+(book 1.1.3)).  D's decoupled `E:positive-raw-mean` uses only these. -/
+def IsSpatialMeanMap (S : SpData d) (η : CutoffProfile d) (R : ℝ)
+    (T : Hsp S →L[ℝ] (E d →L[ℝ] E d)) : Prop :=
+  (∀ q : Rd d → ℝ, IsTestFunction q →
+    ∃ M : Hhalf d →L[ℝ] Hmhalf d, IsMultiplier (fun x => mR η R x * conv S.Γ q x) M ∧
+      T (toHsp S q) = BE M) ∧
+  ∀ (q : Hsp S) (f g : Rd d → ℝ), IsTestFunction f → IsTestFunction g →
+    ∀ (z₂ : Hmhalf d) (w₁ : Hhalf d),
+      ⟪T q (toE (toHhalf f) z₂), toE w₁ (lam (toHhalf g))⟫ = ⟪q, rowTest S η R f g⟫
+
+/-- Auxiliary: a `CameronSpatialMap` satisfies `IsSpatialMeanMap`. -/
+theorem CameronSpatialMap.isSpatialMeanMap {η : CutoffProfile d} {R : ℝ}
+    (C : CameronSpatialMap S η R) : IsSpatialMeanMap S η R C.T :=
+  ⟨C.smooth, C.row⟩
+
+/-- **`E:uniform-mean-row` at all states `z, w ∈ E`** (`integrated_uniform_mean.tex` lines
+22-32 at revision edf7085f (book 1.1.3); `E:cameron-spatial-row` at `c₁ = 0`,
+`integrated_cameron_mean.tex` lines 113-118), for every product map, embedding and cutoff
+multiplier meeting their specifications (these are unique, so this is the TeX's row). -/
+def SpatialRowAll (S : SpData d) (η : CutoffProfile d) (R s : ℝ)
+    (T : Hsp S →L[ℝ] (E d →L[ℝ] E d)) : Prop :=
+  ∀ (P : Hsob d s →L[ℝ] Hsob d s →L[ℝ] Hsp S) (ι : Hsob d (1 / 2) →L[ℝ] Hsob d s)
+    (Lη : Hsob d (1 / 2) →L[ℝ] Hsob d (1 / 2)), IsFracProduct S s P →
+    IsSobolevEmbed (1 / 2) s ι → IsCutoffMul (1 / 2) (1 / 2) (etaR η R) Lη →
+    ∀ q z w, ⟪T q z, w⟫ = ⟪q, kRow S P ι Lη z w⟫
+
+/-- **B2 target, `P:cameron-spatial-map`, `E` part** (`integrated_cameron_mean.tex` lines
+104-119, proof 121-186, at revision edf7085f (book 1.1.3)), at every radius `R > 0`
+(cameron section lines 15-21): a `CameronSpatialMap` (compact map, compact values,
+smooth-test formula, test-state row) whose row holds at all states for every
+`α/4 < s < 1/2`.  The `F` columns (`c₁ η_R`, `B_F`) are not part of the target (decision 8). -/
+def CameronSpatialTarget {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
+    (hH : HomogCovariance d alpha alpha0 Γ μ) (η : CutoffProfile d) : Prop :=
+  ∀ R : ℝ, 0 < R → ∃ C : CameronSpatialMap (SpData.ofHomog hH) η R,
+    ∀ s : ℝ, alpha / 4 < s → s < 1 / 2 → SpatialRowAll (SpData.ofHomog hH) η R s C.T
+
+/-- **B2 target without compactness** (the part D needs): a map with the smooth-test formula,
+the test-state row and the all-state row (`integrated_cameron_mean.tex` Step 1, lines
+128-140, at revision edf7085f (book 1.1.3)). -/
+def SpatialMeanMapTarget {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
+    (hH : HomogCovariance d alpha alpha0 Γ μ) (η : CutoffProfile d) : Prop :=
+  ∀ R : ℝ, 0 < R → ∃ T : Hsp (SpData.ofHomog hH) →L[ℝ] (E d →L[ℝ] E d),
+    IsSpatialMeanMap (SpData.ofHomog hH) η R T ∧
+      ∀ s : ℝ, alpha / 4 < s → s < 1 / 2 → SpatialRowAll (SpData.ofHomog hH) η R s T
+
+/-! ### C: `P:cameron-temporal-map` -/
+
+/-- `L²(I)`, `I = (0,1)` (real). -/
+abbrev L2I : Type := Lp ℝ 2 timeMeasure
+
+/-- **`K` is the operator on `L²(I)` with kernel `|s-t|^{-a}`** (`integrated_cameron_mean.tex`
+line 227 at revision edf7085f (book 1.1.3)). -/
+def IsTimeKernelOp (p : TParams) (K : L2I →L[ℝ] L2I) : Prop :=
+  ∀ f : L2I, (K f : ℝ → ℝ) =ᵐ[timeMeasure] kMean p.a (f : ℝ → ℝ)
+
+/-- **`S` is the positive square root `K^{1/2}` of `K`**: `S` is positive (symmetric with
+`⟪S x, x⟫ ≥ 0`) and `S ∘ S = K`.  (Mathlib has no continuous functional calculus for real
+operators; C builds `S` from the compact spectral theorem.) -/
+def IsPosSqrt (K S : L2I →L[ℝ] L2I) : Prop := S.IsPositive ∧ S ∘L S = K
+
+/-- **The temporal mean data of `P:cameron-temporal-map`** (`integrated_cameron_mean.tex` lines
+225-237, proof 239-298, at revision edf7085f (book 1.1.3)), with every
+specification and no compactness field:
+* `K` on `L²(I)` with kernel `|s-t|^{-a}`; self-adjoint and positive (`IsPositive`), strictly
+  positive and injective (line 227-228);
+* `S = K^{1/2}` (`IsPosSqrt`);
+* `ι : H_t ≅ L²(I)` (isometric, onto) with `ι [f] = K^{1/2} f` (lines 228-229; stated for every
+  `f ∈ L²(I)`, which by continuity of `J` and `S` is the TeX's statement on tests);
+* `C_t : H_t → L^r(I)` bounded with `L²` meaning `K^{1/2} ι` (`E:cameron-temporal-map`,
+  lines 230-234). -/
+structure TemporalMeanCore (p : TParams) (r : ℝ≥0∞) [Fact (1 ≤ r)] where
+  two_lt_r : 2 < r
+  r_lt : r < ENNReal.ofReal (2 / p.a)
+  /-- the kernel operator `K`. -/
+  K : L2I →L[ℝ] L2I
+  K_kernel : IsTimeKernelOp p K
+  K_pos : K.IsPositive
+  K_strict : ∀ f : L2I, f ≠ 0 → 0 < ⟪K f, f⟫
+  K_injective : Function.Injective K
+  /-- the square root `K^{1/2}`. -/
+  S : L2I →L[ℝ] L2I
+  S_sqrt : IsPosSqrt K S
+  /-- the isometry `ι : H_t → L²(I)`, onto. -/
+  ι : Ht p ≃ₗᵢ[ℝ] L2I
+  ι_J : ∀ f : L2I, ι (J p ℝ f) = S f
+  /-- the temporal mean `C_t = K^{1/2} ι : H_t → L^r(I)`. -/
+  Ct : Ht p →L[ℝ] Lp ℝ r timeMeasure
+  Ct_L2 : ∀ h : Ht p, (Ct h : ℝ → ℝ) =ᵐ[timeMeasure] (S (ι h) : ℝ → ℝ)
+
+/-- The normalized cell indicator `N^{1/2} 1_{(j/N,(j+1)/N)}` (`integrated_cameron_mean.tex`
+line 303 at revision edf7085f (book 1.1.3)). -/
+def cell (N j : ℕ) : ℝ → ℝ :=
+  Set.indicator (Ioo ((j : ℝ) / N) (((j : ℝ) + 1) / N)) fun _ => √(N : ℝ)
+
+/-- **C target, "not trace class / not Hilbert-Schmidt"** of `P:cameron-temporal-map`
+(lines 235-236, proof Step 4 lines 302-312, at revision edf7085f (book 1.1.3)), in
+the form of decision 7 (Mathlib has no trace class): for every `N ≥ 1` the cell indicators are
+orthonormal in `L²(I)`, their `K` quadratic forms sum to `2N^a/((1-a)(2-a))`, which equals
+the Hilbert-Schmidt sum `∑ ‖K^{1/2} e_j‖² = ∑ ‖C_t ι⁻¹ e_j‖²_{L²}` over the orthonormal family
+`ι⁻¹ e_j` of `H_t`; these sums tend to infinity. -/
+def TemporalNotTraceTarget {r : ℝ≥0∞} [Fact (1 ≤ r)] (T : TemporalMeanCore p r) : Prop :=
+  ∀ N : ℕ, 0 < N → ∃ e : Fin N → L2I, Orthonormal ℝ e ∧
+    (∀ j : Fin N, (e j : ℝ → ℝ) =ᵐ[timeMeasure] cell N j) ∧
+    ∑ j, ⟪T.K (e j), e j⟫ = 2 * (N : ℝ) ^ p.a / ((1 - p.a) * (2 - p.a)) ∧
+    ∑ j, ‖T.S (T.ι (T.ι.symm (e j)))‖ ^ 2 = 2 * (N : ℝ) ^ p.a / ((1 - p.a) * (2 - p.a))
+
+/-- **C target, `P:cameron-temporal-map`** (`integrated_cameron_mean.tex` lines 225-237, proof
+239-314, at revision edf7085f (book 1.1.3)): for `2 < r < 2/a` (fields of the core)
+the data exist with `K`, `K^{1/2}` and `C_t : H_t → L^r(I)` compact, and not trace class in the
+form of `TemporalNotTraceTarget`. -/
+def TemporalMapTarget (p : TParams) (r : ℝ≥0∞) [Fact (1 ≤ r)] : Prop :=
+  ∃ T : TemporalMeanCore p r, IsCompactOperator T.K ∧ IsCompactOperator T.S ∧
+    IsCompactOperator T.Ct ∧ TemporalNotTraceTarget T
+
+/-- **Named input (fallback for C): the compactness sentences of `P:cameron-temporal-map`**
+(`integrated_cameron_mean.tex` lines 227 and 233, at revision edf7085f (book
+1.1.3)): the kernel operator `K` is compact, and `C_t` is compact into `L^r(I)` for every
+`2 < r < 2/a`.  True (TeX statement); used only if C lands narrower. -/
+structure TemporalCompact (p : TParams) : Prop where
+  K_compact : ∀ K : L2I →L[ℝ] L2I, IsTimeKernelOp p K → IsCompactOperator K
+  Ct_compact : ∀ (r : ℝ≥0∞) [Fact (1 ≤ r)] (T : TemporalMeanCore p r), IsCompactOperator T.Ct
+
+/-- `‖K_a‖_{L^{r/2}(ℝ)}` for `K_a(v) = |v|^{-a} 1_{|v| ≤ 1}` (`integrated_cameron_mean.tex`
+lines 282-286 at revision edf7085f (book 1.1.3)). -/
+def KaNorm (a r : ℝ) : ℝ := (∫ v in Icc (-1 : ℝ) 1, |v| ^ (-(a * r / 2))) ^ (2 / r)
+
+/-- **Shared lemma (C owns, D uses): the three-exponent Young inequality**
+(`integrated_cameron_mean.tex` lines 288-292 at revision edf7085f (book 1.1.3)), in
+`ℝ≥0∞` form: `‖f * h‖_r ≤ ‖f‖_u ‖h‖_v` for `1/u + 1/v = 1 + 1/r`. -/
+def YoungTarget : Prop :=
+  ∀ u v r : ℝ, 1 ≤ u → 1 ≤ v → 1 ≤ r → 1 / u + 1 / v = 1 + 1 / r →
+    ∀ f h : ℝ → ℝ≥0∞, Measurable f → Measurable h →
+      (∫⁻ x, (∫⁻ y, f y * h (x - y)) ^ r) ^ (1 / r) ≤
+        (∫⁻ x, f x ^ u) ^ (1 / u) * (∫⁻ x, h x ^ v) ^ (1 / v)
+
+/-- **Shared lemma (C owns, D uses): `‖g‖²_{H_t} ≤ ‖K_a‖_{r/2} ‖g‖²_{r'}`** with absolute values
+(`integrated_cameron_mean.tex` lines 283-287 at revision edf7085f (book 1.1.3);
+`integrated_cameron_mean.tex` lines 355-358 use it for `‖g_s‖`). -/
+def KformAbsTarget (p : TParams) : Prop :=
+  ∀ r : ℝ, 2 < r → r < 2 / p.a → ∀ F : ℝ → ℝ, AEStronglyMeasurable F timeMeasure →
+    ∫⁻ s, ∫⁻ t, ENNReal.ofReal (kern p.a (s - t)) * ‖F s‖ₑ * ‖F t‖ₑ ∂timeMeasure ∂timeMeasure ≤
+      ENNReal.ofReal (KaNorm p.a r) * eLpNorm F (ENNReal.ofReal (r / (r - 1))) timeMeasure ^ 2
+
+/-! ### D: `L:uniform-mean-tensor`, `U`, `P:uniform-mean-regulator`, `L:positive-raw-embedding` -/
+
+/-- **D target, `L:uniform-mean-tensor`, the bound** (`integrated_uniform_mean.tex` lines
+198-204, proof 214-249, at revision edf7085f (book 1.1.3)), on finite tensors
+`∑_j f_j ⊗ e_j` with orthonormal `e_j` (squared norm `∑ ‖f_j‖²`, line 218): the field
+`t ↦ ∑_j (A f_j)(t) e_j` has `L^r(I; G)` norm at most `‖A‖ (∑ ‖f_j‖²)^{1/2}`.  (No completed
+Hilbert tensor product exists in Mathlib; the extension to the completion is the unique
+bounded extension, used for `U` below.) -/
+def TensorExtensionTarget : Prop :=
+  ∀ (H0 G : Type) [NormedAddCommGroup H0] [InnerProductSpace ℝ H0] [CompleteSpace H0]
+    [NormedAddCommGroup G] [InnerProductSpace ℝ G] [CompleteSpace G]
+    (r : ℝ≥0∞) [Fact (1 ≤ r)], 2 ≤ r → r ≠ ⊤ →
+    ∀ (A : H0 →L[ℝ] Lp ℝ r timeMeasure) (n : ℕ) (f : Fin n → H0) (e : Fin n → G),
+      Orthonormal ℝ e → ∀ F : Lp G r timeMeasure,
+        (F : ℝ → G) =ᵐ[timeMeasure] (fun t => ∑ j, (A (f j) : ℝ → ℝ) t • e j) →
+        ‖F‖ ≤ ‖A‖ * √(∑ j, ‖f j‖ ^ 2)
+
+/-- **D target, `L:uniform-mean-tensor`, the non-compactness sentence** (lines 205 and 250-253
+at revision edf7085f (book 1.1.3)): the images of `f ⊗ e_j`, `e_j` orthonormal, have
+pairwise distance `√2 ‖A f‖_{L^r}`. -/
+def TensorNoncompactTarget : Prop :=
+  ∀ (H0 G : Type) [NormedAddCommGroup H0] [InnerProductSpace ℝ H0] [CompleteSpace H0]
+    [NormedAddCommGroup G] [InnerProductSpace ℝ G] [CompleteSpace G]
+    (r : ℝ≥0∞) [Fact (1 ≤ r)], r ≠ ⊤ →
+    ∀ (A : H0 →L[ℝ] Lp ℝ r timeMeasure) (f : H0) (e : ℕ → G), Orthonormal ℝ e →
+      ∀ F : ℕ → Lp G r timeMeasure,
+        (∀ j, (F j : ℝ → G) =ᵐ[timeMeasure] fun t => (A f : ℝ → ℝ) t • e j) →
+        ∀ i j, i ≠ j → ‖F i - F j‖ = √2 * ‖A f‖
+
+/-- **The defining formula of `U = C_t ⊗ I_{H_sp}` on single smooth tensors**
+(`integrated_uniform_mean.tex` lines 257-261; `𝒰` of `P:cameron-full-mean`,
+`integrated_cameron_mean.tex` lines 324-328, at revision edf7085f (book 1.1.3)):
+`U(f ⊗ q)(s) = (Kf)(s) q`.  The field `U_tensor` of `UniformMeanRegulator`. -/
+def UTensorSpec (p : TParams) (S : SpData d) (r : ℝ≥0∞) [Fact (1 ≤ r)]
+    (U : HI p S →L[ℝ] Lp (Hsp S) r timeMeasure) : Prop :=
+  ∀ f : ℝ → ℝ, IsTimeTest f → ∀ q : Hsp S,
+    ∀ hF : MemLp (fun t => f t • q) 2 timeMeasure,
+      (U (J p (Hsp S) (hF.toLp fun t => f t • q)) : ℝ → Hsp S) =ᵐ[timeMeasure]
+        fun s => kMean p.a f s • q
+
+/-- **D target, `U` and `‖U‖ ≤ ‖C_t‖`** (`P:cameron-full-mean` Step 1, lines 352-369 of
+`integrated_cameron_mean.tex`; `L:uniform-mean-tensor` with `A = C_t`, line 312-313 of
+`integrated_uniform_mean.tex`, at revision edf7085f (book 1.1.3)). -/
+def UMapTarget (p : TParams) (S : SpData d) (r : ℝ≥0∞) [Fact (1 ≤ r)] : Prop :=
+  ∀ T : TemporalMeanCore p r, ∃ U : HI p S →L[ℝ] Lp (Hsp S) r timeMeasure,
+    UTensorSpec p S r U ∧ ‖U‖ ≤ ‖T.Ct‖
+
+/-- **D target, `P:uniform-mean-regulator`, first bound and value class** (lines 272-288,
+proof Step 2 lines 310-318, at revision edf7085f (book 1.1.3)) under `H:homog`:
+the named input `UniformMeanRegulator` of L15 is constructed (no field supplied).  The
+projection/tail half is out (decision 9). -/
+def UniformMeanRegulatorTarget {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
+    (hH : HomogCovariance d alpha alpha0 Γ μ) (η : CutoffProfile d) (r : ℝ≥0∞)
+    [Fact (1 ≤ r)] : Prop :=
+  2 < r → r < ENNReal.ofReal (2 / alpha0) →
+    Nonempty (UniformMeanRegulator (TParams.ofHomog hH) (SpData.ofHomog hH) η r)
+
+/-- **D target, the value class of `P:uniform-mean-regulator`** (line 279-280 at revision
+edf7085f (book 1.1.3): "a strongly measurable `L^r(I; 𝒦(E))` field"): for every
+`Φ ∈ H_I` and `R ≥ 1`, the mean `𝒯_R Φ` takes compact values a.e.  (Strong measurability is
+automatic for an element of `Lp`.) -/
+def MeanCompactValuesTarget {η : CutoffProfile d} {r : ℝ≥0∞} [Fact (1 ≤ r)]
+    (Ureg : UniformMeanRegulator p S η r) : Prop :=
+  ∀ R (hR : 1 ≤ R) (Φ : HI p S), ∀ᵐ s ∂timeMeasure,
+    IsCompactOperator ((meanOp (Ureg.Tsp R hR).T Ureg.U Φ : ℝ → E d →L[ℝ] E d) s)
+
+/-- **`PositiveRawMeanTarget` for bare maps** `T_R` (`R ≥ 1`) and `U`: the mean identity of
+`E:positive-raw-mean` and the canonical version (`integrated_intrinsic_constant.tex` lines
+32-39 at revision edf7085f (book 1.1.3)). -/
+def PositiveRawMeanFor (η : CutoffProfile d) {r : ℝ≥0∞} [Fact (1 ≤ r)]
+    (T : ∀ R : ℝ, 1 ≤ R → Hsp S →L[ℝ] (E d →L[ℝ] E d))
+    (U : HI p S →L[ℝ] Lp (Hsp S) r timeMeasure) : Prop :=
+  ∀ Ψ ∈ CPos d, ∀ R : ℝ, ∀ hR : 1 ≤ R,
+    (∀ᵐ s ∂timeMeasure, ∃ M : Hhalf d →L[ℝ] Hmhalf d,
+        IsMultiplier (fun x => mR η R x * mean p.a S.Γ Ψ s x) M ∧
+        (meanOp (T R hR) U (incl p S Ψ) : ℝ → E d →L[ℝ] E d) s = BE M) ∧
+    ∃ Mf : ℝ → (Hhalf d →L[ℝ] Hmhalf d),
+      (∀ s ∈ Ioo (0 : ℝ) 1, IsMultiplier (fun x => mR η R x * mean p.a S.Γ Ψ s x) (Mf s)) ∧
+      (meanOp (T R hR) U (incl p S Ψ) : ℝ → E d →L[ℝ] E d) =ᵐ[timeMeasure]
+        fun s => BE (Mf s)
+
+/-- Auxiliary: L15's `PositiveRawMeanTarget` is `PositiveRawMeanFor` of the regulator's maps. -/
+theorem positiveRawMeanTarget_iff {η : CutoffProfile d} {r : ℝ≥0∞} [Fact (1 ≤ r)]
+    (Ureg : UniformMeanRegulator p S η r) :
+    PositiveRawMeanTarget Ureg ↔ PositiveRawMeanFor η (fun R hR => (Ureg.Tsp R hR).T) Ureg.U :=
+  Iff.rfl
+
+/-- **D target, `L:positive-raw-embedding` for the constructed maps, decoupled from
+compactness** (`integrated_intrinsic_constant.tex` lines 22-40, proof 42-132, at revision
+edf7085f (book 1.1.3)): under `H:homog`, for `2 < r < 2/a`, there are maps `T_R`
+(smooth-test formula and test-state row, which determine them) and `U` (defining formula on
+smooth tensors, which determines it) satisfying the mean identity and the canonical version.
+With `OccupationCompletion.positive_bochner_inclusion` and `norm_incl_sq` this is the whole
+lemma. -/
+def PositiveRawEmbeddingTarget {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
+    (hH : HomogCovariance d alpha alpha0 Γ μ) (η : CutoffProfile d) (r : ℝ≥0∞)
+    [Fact (1 ≤ r)] : Prop :=
+  2 < r → r < ENNReal.ofReal (2 / alpha0) →
+    ∃ (T : ∀ R : ℝ, 1 ≤ R → Hsp (SpData.ofHomog hH) →L[ℝ] (E d →L[ℝ] E d))
+      (U : HI (TParams.ofHomog hH) (SpData.ofHomog hH) →L[ℝ]
+        Lp (Hsp (SpData.ofHomog hH)) r timeMeasure),
+      (∀ R hR, IsSpatialMeanMap (SpData.ofHomog hH) η R (T R hR)) ∧
+      UTensorSpec (TParams.ofHomog hH) (SpData.ofHomog hH) r U ∧
+      PositiveRawMeanFor (p := TParams.ofHomog hH) η T U
+
+/-! ### Sanity: the rough row restricts to `rowTest` on test states -/
+
+/-- Auxiliary (interface sanity): for a product map, embedding and cutoff multiplier meeting
+their specifications, `k_R` at the test states `z = (f, z₂)`, `w = (w₁, Λ g)` is
+`rowTest S η R f g`, the row carried by L15's `CameronSpatialMap`. -/
+theorem kRow_test {η : CutoffProfile d} {R s : ℝ}
+    {P : Hsob d s →L[ℝ] Hsob d s →L[ℝ] Hsp S} {ι : Hsob d (1 / 2) →L[ℝ] Hsob d s}
+    {Lη : Hsob d (1 / 2) →L[ℝ] Hsob d (1 / 2)} (hP : IsFracProduct S s P)
+    (hι : IsSobolevEmbed (1 / 2) s ι) (hL : IsCutoffMul (1 / 2) (1 / 2) (etaR η R) Lη)
+    {f g : Rd d → ℝ} (hf : IsTestFunction f) (hg : IsTestFunction g) (z₂ : Hmhalf d)
+    (w₁ : Hhalf d) :
+    kRow S P ι Lη (toE (toHhalf f) z₂) (toE w₁ (lam (toHhalf g))) = rowTest S η R f g := by
+  have hηf : IsTestFunction fun x => etaR η R x * f x :=
+    isTest_smooth_mul (PositiveRawMean.etaR_contDiff η R) hf
+  have hηg : IsTestFunction fun x => etaR η R x * g x :=
+    isTest_smooth_mul (PositiveRawMean.etaR_contDiff η R) hg
+  simp only [kRow, eEquiv_toE, LinearIsometryEquiv.symm_apply_apply,
+    hhalfEquiv_toHhalf hf, hhalfEquiv_toHhalf hg, hL f hf, hL g hg, hι _ hηf, hι _ hηg,
+    hP _ _ hηf hηg]
+  rfl
+
+end StratonovichHAMSecondMoment.CameronInterface

@@ -1,7 +1,7 @@
 /-
 Refutation for the strict comparison of `C:intrinsic-spatial-bracket`, package theorem
 `StratonovichHAMSecondMoment.SpatialBracket.F0_lt_Fa`
-(`integrated_occupation_ceiling.tex` lines 328-332 and 357 at 39f2597a: `F_0(z) < F_a(z)`).
+(`integrated_occupation_ceiling.tex` lines 328-332 and 357 at edf7085f: `F_0(z) < F_a(z)`).
 
 Wrong variant: the comparison in the other direction, `F_a(z) ≤ F_0(z)` for every `z > 0`
 (at `α = 1`, `a = 1/2`).  Counterexample: `z = 1`, where the package gives `F_0(1) < F_a(1)`.

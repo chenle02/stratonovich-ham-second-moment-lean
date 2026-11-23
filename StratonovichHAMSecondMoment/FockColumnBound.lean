@@ -7,7 +7,7 @@ Wave L11 item K2: the named input `FockForm.FockColumn` (the spatial column boun
 `FockForm.fock_form_paper` (`L:fock-form`) and `FockForm.interval_contractions_paper`
 (`L:interval-contractions`, display `E:interval-column`) is proved on a concrete `L²` model,
 in `notes/notes_stratonovich_ham_second_moment.tex` (main TeX; line numbers at revision
-39f2597a).  The abstract wrappers of `FockForm` are unchanged; the `_completed` theorems here
+edf7085f).  The abstract wrappers of `FockForm` are unchanged; the `_completed` theorems here
 are those wrappers instantiated at the concrete operators, with every operator input proved.
 
 The concrete model (Fourier side).  Spatial `L²(ℝ^d)` enters through its Fourier image: the
@@ -658,7 +658,7 @@ theorem enorm_wt_sq {ρ : ℝ} (hρ : 0 < ρ) (η : Rd d) :
     sq_abs, wt_sq hρ]
 
 /-- **The column bound `E:interval-column` on the concrete model** (main TeX lines 3388-3391;
-proof 3406-3442 at 39f2597a, there with the full mode family): for a finite measure `ν`, an
+proof 3406-3442 at edf7085f, there with the full mode family): for a finite measure `ν`, an
 orthonormal family `ψ_1, …, ψ_m` in `L²(ν)`, `ρ > 0` and `c ≥ 0` with the resolvent bound
 `∫ ν(dξ)/(ρ² + |q+ξ|²) ≤ c` for all `q`,
 `∑_i ‖A_ρ^{-1/2} M_{ψ_i} f‖² ≤ c ‖f‖²` on `L²(dη)`.  Proof: Bessel's inequality in
@@ -739,7 +739,7 @@ open SpectralMassIdentity (ralpha)
 open HermiteFock (Supp degLE fieldOp iota)
 
 /-- The spectral measure `μ_ε(dξ) = e^{-ε|ξ|²} μ(dξ)` of the smoothed covariance
-`Γ_ε = p_{2ε} * Γ` (main TeX lines 2505-2506 and 3392-3394 at 39f2597a; the factor
+`Γ_ε = p_{2ε} * Γ` (main TeX lines 2505-2506 and 3392-3394 at edf7085f; the factor
 `e^{-ε|ξ|²}` is the one in `J_{ρ,ε}`, lines 2995-2999). -/
 def nuEps (μ : Measure (Rd d)) (ε : ℝ) : Measure (Rd d) :=
   μ.withDensity fun ξ => ENNReal.ofReal (Real.exp (-(ε * ‖ξ‖ ^ 2)))
@@ -807,7 +807,7 @@ theorem rpow_sub_two_mul_inv_sq (R alpha : ℝ) {ρ : ℝ} (hρ : 0 < ρ) :
 /-! ### The completed wrappers -/
 
 /-- **`E:interval-column` on the concrete model, under `H:homog`** (main TeX lines 3388-3391,
-proof 3416-3445 at 39f2597a): for `ε, ρ > 0` and an orthonormal family `ψ_1, …, ψ_m` in
+proof 3416-3445 at edf7085f): for `ε, ρ > 0` and an orthonormal family `ψ_1, …, ψ_m` in
 `L²(μ_ε)`, `∑_i ‖A_ρ^{-1/2} M_{e_i} f‖² ≤ R_α ρ^{α-2} ‖f‖²` on the Fourier side `L²(dη)`.
 The `FockColumn` input of `FockForm.interval_contractions_paper`, proved. -/
 theorem interval_column_completed {d : ℕ} {alpha alpha0 R ε ρ : ℝ} {Γ μ : Measure (Rd d)}
@@ -832,7 +832,7 @@ theorem interval_column_completed {d : ℕ} {alpha alpha0 R ε ρ : ℝ} {Γ μ 
   exact nuEps_resolvent hH.μ_tempered hH.spectral hH.scaling hα0 hα2 hε.le hρ q
 
 /-- **The spatial half of `L:fock-form` on the concrete model** (main TeX lines 2987-3008 at
-39f2597a): under the class of `S:static-phase` (`PhaseCovariance`), for `ε, ρ > 0` and an
+edf7085f): under the class of `S:static-phase` (`PhaseCovariance`), for `ε, ρ > 0` and an
 orthonormal family `ψ_1, …, ψ_m` in `L²(μ_ε)` of real modes (`ψ_i(-ξ) = conj ψ_i(ξ)`
 `μ_ε`-a.e.), the sandwiches `H_i = A_ρ^{-1/2} M_{e_i} A_ρ^{-1/2}` are self-adjoint and
 `∑_i ‖H_i f‖² ≤ R_α ρ^{α-4} ‖f‖²`. -/
@@ -867,7 +867,7 @@ theorem fock_column_completed {alpha R ε ρ : ℝ} {Γ μ : Measure (Rd 3)}
     exact column_sandwich hfin ψ hψ hρ hc0 hcol
 
 /-- **`L:fock-form` on the concrete model, with the spatial half proved** (main TeX lines
-2960-2977, proof 2979-3028 at 39f2597a).  `FockForm.fock_form_paper` for `X = L²(dη)` (the
+2960-2977, proof 2979-3028 at edf7085f).  `FockForm.fock_form_paper` for `X = L²(dη)` (the
 Fourier side of spatial `L²(ℝ³)`), `H_i = A_ρ^{-1/2} M_{e_i} A_ρ^{-1/2}` built from an
 orthonormal family of real modes `ψ_i ∈ L²(μ_ε)`, and the band projection `P = S_b`
 (`bandProj b`, `|η| ≤ b`), with the inputs `hH` (self-adjointness), `hcol` (`FockColumn`),
@@ -902,7 +902,7 @@ theorem fock_form_paper_completed {alpha R ε ρ b : ℝ} {Γ μ : Measure (Rd 3
     P (bandProj_isSelfAdjoint b) (bandProj_idem b) N hv
 
 /-- **`L:interval-contractions` on the concrete model, with `E:interval-column` proved**
-(main TeX lines 3384-3404, proof 3406-3470 at 39f2597a).
+(main TeX lines 3384-3404, proof 3406-3470 at edf7085f).
 `FockForm.interval_contractions_paper` for `X = L²(dη)` (the Fourier side of spatial
 `L²(ℝ^d)`), `S = A_ρ^{-1/2}` (`sqrtResolvent ρ`), `M_i = M_{e_i}` built from an orthonormal
 family of real modes `ψ_i ∈ L²(μ_ε)`, and `P = S_b` (`bandProj b`), with every operator input

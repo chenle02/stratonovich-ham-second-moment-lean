@@ -1,6 +1,6 @@
 /-
 Refutation for the chain-orientation step of `DiagramModel` (proof of `P:mixed`,
-main TeX lines 883-903 at 39f2597a: reversing both terminal chains by the vertex
+main TeX lines 883-903 at edf7085f: reversing both terminal chains by the vertex
 involution `ρ` "induces the pairing bijection
 `D ↦ {{ρ(a), ρ(b)} : {a,b} ∈ D}`"), package definitions
 `StratonovichHAMSecondMoment.DiagramModel.rev`, `revPairing` and theorem

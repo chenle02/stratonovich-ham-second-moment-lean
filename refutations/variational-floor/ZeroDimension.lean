@@ -2,7 +2,7 @@
 Refutation for (F5) of wave L6, package theorem
 `StratonovichHAMSecondMoment.VariationalFloor.ae_eq_zero_of_hasWeakGradient_zero`
 ("zero weak gradient implies zero", used in `P:spatial-smooth-ratio`,
-`notes/integrated_spatial_occupation.tex` lines 245-247 at 39f2597a).
+`notes/integrated_spatial_occupation.tex` lines 245-247 at edf7085f).
 
 Wrong variant: the hypothesis `d ≥ 1` dropped.  Counterexample: `d = 0`.
 `ℝ⁰` is one point of Lebesgue measure `1`; the constant `1` lies in `L²`, has

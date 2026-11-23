@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.WhiteMomentBounds
 /-!
 Refutation for the use of the named input `StratonovichHAMSecondMoment.WhiteMomentBounds.
 WhiteSpatialEnergy` (`𝓔_sp = c²/6`, `P:white-spatial-energy`,
-`notes/integrated_white_evaluation.tex`, 39f2597a, lines 79-133) in
+`notes/integrated_white_evaluation.tex`, edf7085f, lines 79-133) in
 `white_moment_bounds_paper`: the closed form `2^m F₀(𝓔_sp) = (2/3)√c` (lines 159-161) pins the
 energy normalization.
 

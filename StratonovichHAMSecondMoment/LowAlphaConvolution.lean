@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `L:low-alpha-convolution` (Low-`α` convolution bound) of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` (revision 39f2597a): statement
+`notes/notes_stratonovich_ham_second_moment.tex` (revision edf7085f): statement
 at main TeX lines 5566-5580 (displays `E:low-alpha-radial`, lines 5568-5572,
 and `E:low-alpha-convolution`, lines 5574-5578), proof at lines 5582-5631,
 standing assumptions of the subsection at lines 5554-5563.

@@ -1,0 +1,38 @@
+{
+  "schema": "lower-receipt/1",
+  "commit": "18c5c1db0ed716310f893be0e53ce41e90f964a3",
+  "lean_toolchain": "leanprover/lean4:v4.35.0",
+  "mathlib_rev": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "sorry_count": 0,
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "report_sha256": "545b0342cb8c28e97503b661ec16c1e23f2ae8536396b9fe090c0de7bc7b6786",
+  "job_id": "systemd-user:stratonovich-ham-second-moment-lean-verify-l15b.service:185e68d906a2413ab50489480e0c4c00@h-2db2e0fa6029",
+  "checker": "verify.sh (lake build StratonovichHAMSecondMoment StratonovichHAMSecondMoment.Axioms; #print axioms)",
+  "generated_at": "2026-11-20T09:50:42Z",
+  "job_stdout_sha256": "96841c4a8b3cd4fadcc8a9208aa755b943a6a4fe196f8ec548813e82e82fb1c7",
+  "manifest_sha256": "9b7a4fffce481cf565a90ecbcd125a9c4ac345736fb168b3b00fcba6969d3b2a",
+  "log_commit_bound": true,
+  "claim_axioms": {
+    "checked": 4705,
+    "nonstandard": [],
+    "missing": []
+  },
+  "producer": {
+    "lean_pkg": "0.29.0",
+    "install": "installed",
+    "commit": null,
+    "dirty": null,
+    "sources_sha256": "5363e09a087a522c76f0b085d5bec52a60734169e5049637518ead6ca35f5f47",
+    "source_files": 99,
+    "python": "3.12.3",
+    "bytecode_tag": "cpython-312",
+    "bytecode_files": 84,
+    "bytecode_sha256": "80dbab539861b5dd6baf0bf065e47d920b5547d2aad603ed7eed0e92c3d80df9",
+    "other_bytecode_files": 0
+  },
+  "unit_properties_sha256": "e630c75169c8af06817d3c9ebde86b863e7789b606ee1bfdecccdbc911c67b6c"
+}

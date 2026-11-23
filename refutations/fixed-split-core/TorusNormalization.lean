@@ -1,6 +1,6 @@
 /-
 Refutation for the torus extraction `E:split-vector-cauchy` (main TeX lines
-3973-3984 at 39f2597a), package theorem
+3973-3984 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.FixedSplitCore.torus_coefficient`.
 
 Wrong variant: the unnormalized angular measure (`dθ` instead of

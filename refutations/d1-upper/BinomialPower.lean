@@ -1,6 +1,6 @@
 /-
 Refutation for the binomial identity of the proof of `P:d1-upper` (main TeX
-line 5515 at 39f2597a): `Σ_{m=0}^{2k} 1/(m!(2k-m)!) = 2^{2k}/(2k)!`.  Package
+line 5515 at edf7085f): `Σ_{m=0}^{2k} 1/(m!(2k-m)!) = 2^{2k}/(2k)!`.  Package
 theorem `StratonovichHAMSecondMoment.TwoSimplexTime.sum_inv_factorial_gen`
 (moved from `D1Upper.sum_inv_factorial` at the L13 integration).
 

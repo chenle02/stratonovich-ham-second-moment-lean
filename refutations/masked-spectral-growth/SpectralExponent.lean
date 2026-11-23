@@ -1,7 +1,7 @@
 /-
 Refutation for the derived spectral homogeneity, package theorem
 `StratonovichHAMSecondMoment.MaskedSpectralGrowth.spectralHomogeneous_of_scaling`
-(main TeX lines 1067-1068 at 39f2597a: `μ(cA) = c^α μ(A)`).
+(main TeX lines 1067-1068 at edf7085f: `μ(cA) = c^α μ(A)`).
 
 Wrong variant: the spectral measure inherits the exponent of `Γ`, i.e.
 `Γ(cA) = c^{d-α}Γ(A)` implies `μ(cA) = c^{d-α}μ(A)`.  Counterexample: `d = 1`,

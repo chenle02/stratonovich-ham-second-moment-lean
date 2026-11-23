@@ -4,8 +4,8 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The two dimension-three corollaries of Section `S:three-endpoints` of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a (all line numbers below
-are at 39f2597a): `C:three-product-riesz` (statement lines 7944-7959, proof 7961-7988) and
+`notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f (all line numbers below
+are at edf7085f): `C:three-product-riesz` (statement lines 7944-7959, proof 7961-7988) and
 `C:three-finite-images` (statement 7991-8010, proof 8012-8035), assembled from the endpoint
 lemmas of `EndpointLemmas` (wave L14-3D) and the conditional transfer `P:three-transfer`
 (statement lines 7536-7556), which is supplied, not formalized.

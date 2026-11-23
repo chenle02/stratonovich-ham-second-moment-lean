@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `P:clock-copy-obstruction` (Obstruction to unweighted constant-correlation
 clock copying), main TeX file `notes/notes_stratonovich_ham_second_moment.tex`
-(revision 39f2597a), lines 9033-9208, with its objects defined at lines
+(revision edf7085f), lines 9033-9208, with its objects defined at lines
 8977-9041: `Ψ_a` (`E:averaged-clock-kernel`, in `TimeFractional`),
 `h_Γ` and `R_Γ` (in `SpectralHomog`), `K_Γ(θ) = N₂(θ)²` (in `DampedNorms`),
 `v_ρ` and the candidate `J_{Γ,ρ}` (`E:naive-clock-candidate`), and the weight

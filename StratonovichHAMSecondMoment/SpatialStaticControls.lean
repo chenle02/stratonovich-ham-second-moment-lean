@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:spatial-static-controls` (Smooth temporal controls) of
-`notes/integrated_spatial_occupation.tex` at revision 39f2597a: statement TeX
+`notes/integrated_spatial_occupation.tex` at revision edf7085f: statement TeX
 lines 42-56 (the definition of `λ_z(c)²`, lines 44-48; display
 `E:spatial-static-score`, lines 52-55), proof lines 58-115.  Standing
 assumptions of the section (lines 4-10): a nonzero original covariance from

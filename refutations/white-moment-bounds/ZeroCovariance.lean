@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.WhiteMomentBounds
 /-!
 Refutation for the range `c > 0` of `StratonovichHAMSecondMoment.WhiteMomentBounds.
 white_moment_bounds_paper` (`T:white-moment-bounds`, `notes/integrated_white_evaluation.tex`,
-39f2597a, lines 140-167): the case `c = 0` is out (decision 4 of wave L10).
+edf7085f, lines 140-167): the case `c = 0` is out (decision 4 of wave L10).
 
 Wrong variant: "the standing assumption `Γ ≠ 0` of the bracket
 (`integrated_occupation_ceiling.tex` lines 20-21) holds for every `c ≥ 0`", which would let

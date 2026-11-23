@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The assembly of `L:fixed-split` (A fixed degree-split estimate) of
 `notes/notes_stratonovich_ham_second_moment.tex` (main TeX file; all line
-numbers below are at revision 39f2597a): statement lines 3675-3716
+numbers below are at revision edf7085f): statement lines 3675-3716
 (`E:fixed-split-bound`, 3702-3713), proof 3718-4051.  Wave item L10-FS1, on
 the model-free core `FixedSplitCore` (L10-FS0) and the Fock layer
 `HermiteFock`/`FockForm` (L9-H).

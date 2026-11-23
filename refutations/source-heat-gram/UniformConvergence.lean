@@ -4,7 +4,7 @@ import StratonovichHAMSecondMoment.SourceHeatGram
 Refutation for the strong (not uniform) convergence `C_ε → I` of
 `StratonovichHAMSecondMoment.SourceHeatGram.source_spatial_heat_paper` (item 5; manuscript
 label `L:source-spatial-heat`, TeX line 181 of `integrated_source_convergence.tex` at
-39f2597a, "C_ε → I strongly").
+edf7085f, "C_ε → I strongly").
 
 Class (b): Lean-route-only control.  The Lean route proves strong convergence from the
 pointwise limit `1 - m_ε(ξ) → 0` (dominated convergence).  The wrong variant "uniformly in

@@ -1,7 +1,7 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.EndpointCorollaries.wsum_ne_zero` as used in
 `three_finite_images_paper` (manuscript `C:three-finite-images`, main TeX lines 8000-8001 and
-8030-8031 at 39f2597a: "The target is nonzero because ... some weight is positive").
+8030-8031 at edf7085f: "The target is nonzero because ... some weight is positive").
 
 Wrong variant: the target `Σ w_i Γ_i` is nonzero for all nonnegative weights (the hypothesis
 `Σ w_i > 0` dropped).  Counterexample: one component, weight `0`.  Control of the broader

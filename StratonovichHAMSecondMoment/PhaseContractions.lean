@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `L:phase-contractions` (Two static contraction bounds) of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a: the
+`notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f: the
 statement at lines 2509-2523 (displays `E:phase-resolvent`, `E:phase-trace` and
 the definition of `T_ε`), its proof at lines 2525-2586, the standing
 assumptions of Section `S:static-phase` at lines 2490-2493 and the constants of
@@ -113,7 +113,7 @@ open HomogHypothesis SpectralHomog MaskedSpectralGrowth SpectralMassIdentity Wav
 /-! ### The section's covariance class and constants -/
 
 /-- The standing assumptions of Section `S:static-phase` (main TeX lines
-2490-2493 at 39f2597a): `0 < α < 2`; `Γ` a nonnegative, even,
+2490-2493 at edf7085f): `0 < α < 2`; `Γ` a nonnegative, even,
 positive-definite, tempered Radon measure on `ℝ³` with `Γ(rA) = r^{3-α}Γ(A)`
 (Borel `A`, `r > 0`); `μ` its spectral measure in the convention
 `Γ = ∫ e^{iξ·x} μ(dξ)` (`HomogHypothesis.IsSpectralMeasure`), a positive even
@@ -271,7 +271,7 @@ theorem lintegral_shift_resolvent_le {d : ℕ} {Γ μ : Measure (Rd d)} [SFinite
   refine setLIntegral_mono' measurableSet_Ioi fun s hs => ?_
   exact mul_le_mul_of_nonneg_left (ENNReal.ofReal_le_ofReal (gauss_shift_le hsp s hs q)) (zero_le)
 
-/-- **`E:phase-resolvent`** (main TeX lines 2512-2514 at 39f2597a, proof
+/-- **`E:phase-resolvent`** (main TeX lines 2512-2514 at edf7085f, proof
 2533-2549), general
 form in every dimension `d`: for a locally finite tempered `μ` with the
 spectral convention `IsSpectralMeasure Γ μ`, the scaling
@@ -1051,7 +1051,7 @@ theorem traceT_fourier (hW : WaveFourierThree) {Γ μ : Measure (Rd 3)} [IsLocal
 /-! ### `L:phase-contractions` -/
 
 /-- **`L:phase-contractions`** (Two static contraction bounds; main TeX lines
-2509-2523, proof 2525-2586, at 39f2597a), with the section's standing
+2509-2523, proof 2525-2586, at edf7085f), with the section's standing
 assumptions (`PhaseCovariance`, main TeX lines 2490-2493) and the constants of
 `E:phase-constants` (lines 2494-2503), for `G_a = WaveGreen.waveGreen 3 a`, given the two supplied
 inputs `WaveFourierThree` (the d = 3 wave Green Fourier identity) and

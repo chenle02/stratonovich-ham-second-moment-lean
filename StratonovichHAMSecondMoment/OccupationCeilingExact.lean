@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Wave item L9-A2: Lemma `L:occupation-rayleigh-selection` (Countable Rayleigh
-near-occupations; `notes/integrated_occupation_ceiling.tex` at revision 39f2597a, statement
+near-occupations; `notes/integrated_occupation_ceiling.tex` at revision edf7085f, statement
 lines 180-188, proof lines 190-236) and Theorem `T:intrinsic-occupation-ceiling` (The computed
 occupation ceiling; statement lines 249-264, proof lines 266-316) with the EXACT constant
 `C_occ` of `P:raw-occupation-energy` (module `RawOccupationEnergy`, item L9-A1), in both forms,
@@ -501,7 +501,7 @@ theorem step_mean_le_sqrt {alpha a : ℝ} {Γ μ : Measure (Rd d)}
 /-! ### `L:occupation-rayleigh-selection` -/
 
 /-- **`L:occupation-rayleigh-selection`** (`integrated_occupation_ceiling.tex` lines 180-188,
-proof 190-236, at 39f2597a), under the section's standing assumptions (lines 4-21: `H:homog`
+proof 190-236, at edf7085f), under the section's standing assumptions (lines 4-21: `H:homog`
 with `a = α₀`, `Γ ≠ 0`): for `Ψ ∈ C_pos` and `ε > 0` there is a field `g_ε` of `𝒪`
 (`IsOccField`) with `I_Ψ² + T(g_ε) ≤ √(v_Ψ A(g_ε)) + ε` (`E:occupation-rayleigh-selection`),
 `A` the ORIGINAL-kernel form of `RawOccupationEnergy`.  The field is a finite-cell field
@@ -729,7 +729,7 @@ theorem score_le_ceiling_Cocc {alpha a : ℝ} {Γ μ : Measure (Rd d)}
   nlinarith [mul_le_mul_of_nonneg_left hIle hc.le]
 
 /-- **`T:intrinsic-occupation-ceiling`** (`integrated_occupation_ceiling.tex` lines 249-264,
-proof 266-316, at 39f2597a) with the EXACT constant `C_occ` (`RawOccupationEnergy.Cocc`), both
+proof 266-316, at edf7085f) with the EXACT constant `C_occ` (`RawOccupationEnergy.Cocc`), both
 forms, for the variational values `S_c^pos = sSup (VariationalRate.scoreSet α₀ Γ c)`, under the
 section's standing assumptions (lines 4-21: `H:homog` with `a = α₀`, `Γ ≠ 0`).  For every
 `c > 0`: the value set is nonempty and bounded above, every `Ψ ∈ C_pos` has
@@ -768,7 +768,7 @@ theorem intrinsic_occupation_ceiling_paper {alpha a : ℝ} {Γ μ : Measure (Rd 
   exact SpatialBracket.ceilingValue_eq_zeta ha0 ha2 hC.le hζ
 
 /-- **The comparison of `C:intrinsic-spatial-bracket`** (`integrated_occupation_ceiling.tex`
-lines 328-332, proof 346-361, at 39f2597a), for the variational value `S_2^pos`, with the exact
+lines 328-332, proof 346-361, at edf7085f), for the variational value `S_2^pos`, with the exact
 `𝓔_{1/2}^𝒪`: under the section's standing assumptions (`H:homog` with `a = α₀`, `Γ ≠ 0`),
 the value set at `c = 2` is nonempty and bounded above, and
 `S_2^pos ≤ 2^m F_0(𝓔_{1/2}^𝒪) < 2^m F_a(𝓔_{1/2}^𝒪)` (`F_a = SpatialBracket.Fb α a`).

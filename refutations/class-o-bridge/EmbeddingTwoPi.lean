@@ -3,7 +3,7 @@ Refutation for the constants of the embedding of `H¹` into Mathlib's `H^{1}` (w
 package theorem `StratonovichHAMSecondMoment.ClassOH1.norm_toMH1_sub_sq`.
 
 Manuscript side: the TeX's `H¹` norm is `‖f‖₂² + ‖∇f‖₂²` (main TeX lines 748-750;
-`notes/integrated_signed_static.tex` line 85 at revision 39f2597a) and the TeX identifies `H¹`
+`notes/integrated_signed_static.tex` line 85 at revision edf7085f) and the TeX identifies `H¹`
 with the graph `f ↦ (f, ∇f)` in `L²` (`integrated_spatial_occupation.tex` lines 356-358).
 
 Wrong variant: `toMH1 : H1R → H^{1}` is an isometry for the manuscript norm,

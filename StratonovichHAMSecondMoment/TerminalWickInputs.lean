@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Wave L11, item K4: two of the inputs that `TerminalWick` (wave L8-f) left supplied in
 `L:terminal-wick` (The finite terminal-chain Wick formula) of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a: the terminal-chain
+`notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f: the terminal-chain
 measure `E:terminal-chain-measure` (lines 4275-4288), the statement (lines 4291-4336) and
 the proof (lines 4338-4410).
 
@@ -386,7 +386,7 @@ theorem mixed_moment_eq_sum_pairings_of_cell {Ω : Type*} [MeasurableSpace Ω]
   exact integral_finsetSum _ fun D _ =>
     integrable_pairWeight_of_cell hW hcell ν hν V (fun x y => hW.abs_le V hV x y) m n D
 
-/-- `L:terminal-wick` (main TeX lines 4291-4336, proof 4338-4410 at 39f2597a) for chain
+/-- `L:terminal-wick` (main TeX lines 4291-4336, proof 4338-4410 at edf7085f) for chain
 measures without time atoms, with the strong measurability `hmeas` of
 `TerminalWick.terminal_wick_paper` proved (`aestronglyMeasurable_prodL2_of_cell`) from the
 lemma's cell continuity, and WITHOUT the measurability `hK` of `K` (an added hypothesis of
@@ -736,7 +736,7 @@ theorem timeAtomless_chainMeasure (d : ℕ) (T : ℝ) (hT : 0 ≤ T) (x : Rd d) 
     Measure.map_apply (measurable_chainMap T x) ((measurable_toPt hT) hset), hpre,
     Measure.prod_prod, htime, zero_mul]
 
-/-- `L:terminal-wick` (main TeX lines 4291-4336, proof 4338-4410 at 39f2597a) for the
+/-- `L:terminal-wick` (main TeX lines 4291-4336, proof 4338-4410 at edf7085f) for the
 terminal-chain measures `g_n^{T,x}` of `E:terminal-chain-measure` (lines 4275-4288),
 constructed here (`chainMeasure`).  Hypotheses: `d ∈ {1,2,3}`, `T > 0`, a terminal point
 `x ∈ ℝ^d`; a centered real Gaussian field on `[0,T] × ℝ^d` with covariance `K`;
@@ -818,7 +818,7 @@ theorem uniform_series_tail_terminal_wick_constructed_paper {d : ℕ} {Ω : Type
     hKpos X r B hr hB hX
 
 /-- The comparison sentence of `L:terminal-wick` (main TeX lines 4331-4333, proof 4404-4406 at
-39f2597a) for the constructed terminal-chain measures `g_n^{T,x}` of
+edf7085f) for the constructed terminal-chain measures `g_n^{T,x}` of
 `E:terminal-chain-measure` (lines 4275-4288): this is `TerminalWick.terminal_wick_mono_paper`
 with `ν n = g_n^{T,x}`, its mass input `hmass` discharged by `chainMeasure_univ_eq_chainMass`
 and its strong measurability inputs `hmeas₁`, `hmeas₂` discharged by
@@ -854,7 +854,7 @@ theorem terminal_wick_mono_constructed_paper {Ω₁ Ω₂ : Type*} [MeasurableSp
     h0 h12 m n
 
 /-- The last sentence of `L:uniform-series-tail` (main TeX lines 4441-4442, proof line 4462 at
-39f2597a) for chain integrals over the constructed terminal-chain measures `g_n^{T,x}`: this is
+edf7085f) for chain integrals over the constructed terminal-chain measures `g_n^{T,x}`: this is
 `UniformSeriesTail.uniform_series_tail_second_moment_paper` with
 `Y^{ε,δ}_n = ∫ ∏_j W^{ε,δ}(z_j) g_n^{T,x}(dz)`, its supplied `L:terminal-wick` input
 `TerminalWickInput` discharged by `terminal_wick_constructed_paper` (last conclusion: absolute

@@ -521,7 +521,7 @@ theorem exists_test_approx {f : Rd d → ℝ} {g : Rd d → Rd d} (hf : MemLp f 
 
 /-- **Density of `C_c^∞` in the weak-gradient `H^1`** (half (a) of the
 D8-lite foundation; `notes/integrated_spatial_occupation.tex`, proof of
-`P:spatial-four-linear`, lines 352-356 at 39f2597a), for every dimension `d`.
+`P:spatial-four-linear`, lines 352-356 at edf7085f), for every dimension `d`.
 Lean proof route: mollification first (with an `L²` contraction and density
 of `C_c` in `L²` in place of the TeX's translation continuity), then the
 TeX's cutoff estimate; see the module doc comment. -/

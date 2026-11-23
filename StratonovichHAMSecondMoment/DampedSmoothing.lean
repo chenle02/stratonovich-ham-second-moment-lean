@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The covariance-smoothing assertion of `L:damped-homogeneous-norms` (Homogeneous
 damped norms and temporal tails) of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` (revision 39f2597a): statement at
+`notes/notes_stratonovich_ham_second_moment.tex` (revision edf7085f): statement at
 main TeX lines 1010-1055, proof at lines 1057-1154.  The sentence "Spatial Gaussian
 smoothing and Gaussian smoothing of the Green kernel give multipliers in this
 class" (lines 1052-1053) and its proof "Gaussian spatial and Green smoothing

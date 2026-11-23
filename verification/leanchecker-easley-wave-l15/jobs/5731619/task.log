@@ -1,0 +1,13 @@
+node=node837 job=5731619 array=5731617_2 mode=fresh target=StratonovichHAMSecondMoment.UniformELift start=2026-11-20T01:29:14-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=315a3327dfc8acc964a874962756fbcc28ff1687 TREE=5abf7fdde0d2f2940d50d340ae0f095c9bbd150e MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1440 waited_s=0
+REPLAY_STARTED 2026-11-20T01:31:13-0600
+BEGIN fresh StratonovichHAMSecondMoment.UniformELift 01:31:14
+END fresh StratonovichHAMSecondMoment.UniformELift	0	0:43:48.89	7614364	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2630 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.UniformELift
+PROCESS_EXIT=0 end=2026-11-20T02:15:03-0600

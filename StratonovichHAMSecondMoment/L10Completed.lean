@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Integration of wave item L10-A1 (`AlphaOneConvolution`) with wave items L9-L
 (`LowAlphaConvolution`) and L9-G (`WaveGreenFourier`) for the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` (line numbers at revision 39f2597a).  This
+`notes/notes_stratonovich_ham_second_moment.tex` (line numbers at revision edf7085f).  This
 module discharges the two supplied inputs of `AlphaOneConvolution.alpha_one_convolution_paper`
 (`L:alpha-one-convolution`, statement lines 5635-5643, proof lines 5645-5708); it defines no new
 object.
@@ -60,7 +60,7 @@ open AlphaOneConvolution (Ia sphereMeasure SpectralPairing)
 
 /-- **The supplied input `AlphaOneConvolution.SpectralPairing Γ μ` holds** for tempered `Γ`,
 `μ` with `IsSpectralMeasure Γ μ` (`μ` s-finite), in every dimension: the "Fourier Fubini" step
-of main TeX lines 5610-5612 (used at line 5673) at 39f2597a, by
+of main TeX lines 5610-5612 (used at line 5673) at edf7085f, by
 `LowAlphaConvolution.smoothed_pairing_spectral` for the finite measure `G_{h,η}`. -/
 theorem spectralPairing_holds {d : ℕ} {Γ μ : Measure (Rd d)} [SFinite μ]
     (hΓt : IsTempered Γ) (hμt : IsTempered μ) (hsp : IsSpectralMeasure Γ μ) :
@@ -76,7 +76,7 @@ theorem spectralPairing_holds {d : ℕ} {Γ μ : Measure (Rd d)} [SFinite μ]
 
 /-- **The supplied input `AlphaOneConvolution.WaveGreenFourier d` holds** for `d ∈ {1,2,3}`:
 `∫ e^{iξ·y} G_s(dy) = sin(s|ξ|)/|ξ|` (value `s` at `ξ = 0`) for `s > 0` (main TeX lines
-5614-5618 at 39f2597a), by `WaveGreenFourier.waveGreen_fourier` (wave L9-G). -/
+5614-5618 at edf7085f), by `WaveGreenFourier.waveGreen_fourier` (wave L9-G). -/
 theorem waveGreenFourier_holds (d : ℕ) (hd : d = 1 ∨ d = 2 ∨ d = 3) :
     AlphaOneConvolution.WaveGreenFourier d :=
   fun s hs ξ => (WaveGreenFourier.waveGreen_fourier d hd s hs ξ).2
@@ -84,7 +84,7 @@ theorem waveGreenFourier_holds (d : ℕ) (hd : d = 1 ∨ d = 2 ∨ d = 3) :
 /-! ### `L:alpha-one-convolution` without supplied inputs -/
 
 /-- **`L:alpha-one-convolution`, general form, nothing supplied** (main TeX lines 5635-5708 at
-39f2597a): `AlphaOneConvolution.alpha_one_convolution` with `SpectralPairing Γ μ` and
+edf7085f): `AlphaOneConvolution.alpha_one_convolution` with `SpectralPairing Γ μ` and
 `WaveGreenFourier d` discharged.  Hypotheses: `d ∈ {1,2,3}`, `μ` locally finite with
 `μ(cA) = cμ(A)`, `Γ` and `μ` tempered, `IsSpectralMeasure Γ μ`.  Conclusions: `V < ∞`, and for
 `h > 0`, `ε > 0`, `η ≥ 0`, `z`, with `a = (ε+η)/2`: `y ↦ γ_ε(y+z)` is `G_{h,η}`-integrable, the
@@ -108,7 +108,7 @@ theorem alpha_one_convolution_completed {d : ℕ} (hd : d = 1 ∨ d = 2 ∨ d = 
     (waveGreenFourier_holds d hd)
 
 /-- **`L:alpha-one-convolution`** (Degree-one convolution bound; main TeX lines 5635-5643,
-proof 5645-5708 at 39f2597a) under `H:homog` with `α = 1` alone
+proof 5645-5708 at edf7085f) under `H:homog` with `α = 1` alone
 (`HomogCovariance d 1 α₀ Γ μ`; no `Γ ≠ 0`, as in the TeX), for `G_h = waveGreen d h`,
 `γ_ε = Γ * p_ε` and `G_{h,η} = p_η * G_h`: `AlphaOneConvolution.alpha_one_convolution_paper`
 with `SpectralPairing Γ μ` (wave L9-L) and `WaveGreenFourier d` (wave L9-G) discharged.  Same

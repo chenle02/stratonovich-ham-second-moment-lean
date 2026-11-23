@@ -1,6 +1,6 @@
 /-
 Refutation for the range `α₀ < 1` of the closed forms of `L:white-test` (main TeX
-lines 941-942 at 39f2597a: `c_0 = ((1-α₀)(2-α₀)(3-α₀))^{-1}`), package definition
+lines 941-942 at edf7085f: `c_0 = ((1-α₀)(2-α₀)(3-α₀))^{-1}`), package definition
 `StratonovichHAMSecondMoment.OrderTwoDiagrams.c0` and theorem `c0_pos`.
 
 Wrong variant: the constant is positive also at `α₀ = 1`.  In Lean

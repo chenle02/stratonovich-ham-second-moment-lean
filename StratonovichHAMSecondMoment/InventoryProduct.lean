@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:inventory-product` (A coefficient bound for a product with
 nonnegative coefficients) of `notes/notes_stratonovich_ham_second_moment.tex`
-(main TeX file; line numbers at revision 39f2597a): statement lines 3581-3593,
+(main TeX file; line numbers at revision edf7085f): statement lines 3581-3593,
 equation `E:inventory-product` at 3589-3592, proof lines 3595-3661. The
 section `S:interval-upper` (line 3353) fixes at lines 3359-3362
 `ν = 3 - α > 1`, `β = 4 - α - α₀ > 2`, `p = 2 - α₀ > 1`, under the standing

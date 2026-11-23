@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.StaticInteractionCompleted
 /-!
 Refutation for `StratonovichHAMSecondMoment.StaticInteractionCompleted.transported_le` (the
 transported order bound in the proof of `C:static-interaction`, main TeX lines 3272-3292 at
-39f2597a).
+edf7085f).
 
 Wrong variant: the conclusion `‖T x‖ ≤ √e · a · N` without the comparison factor `1/(λh)`,
 while the hypotheses keep `‖x‖ ≤ (λh)⁻¹ z`.  Counterexample: `E = ℝ`, `T = id`, `x = 2`,

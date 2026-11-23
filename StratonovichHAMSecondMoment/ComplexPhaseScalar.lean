@@ -6,7 +6,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 Scalar steps of `L:complex-phase` (A complex phase bound) and of
 `L:interval-complex` (Complex sums and changing phase weights) of
 `notes/notes_stratonovich_ham_second_moment.tex` (main TeX file; line numbers
-at revision 39f2597a).  `L:complex-phase`: statement lines 2751-2773, proof
+at revision edf7085f).  `L:complex-phase`: statement lines 2751-2773, proof
 2775-2952.  `L:interval-complex`: statement lines 3473-3491, proof 3493-3572.
 
 Class: inputs supplied, conclusion weaker than the labelled statements.  Both

@@ -1,6 +1,6 @@
 /-
 Control for the square map `Q : H¹ → H_sp` of `L:occupation-raw-square`
-(`integrated_occupation_ceiling.tex` lines 26-30 at 39f2597a), package theorems
+(`integrated_occupation_ceiling.tex` lines 26-30 at edf7085f), package theorems
 `StratonovichHAMSecondMoment.OccupationCompletion.Q_of_test`, `toHsp_smul` and
 `occupation_raw_square_paper` (`‖Q(f)‖² = A_sp(f)`).
 

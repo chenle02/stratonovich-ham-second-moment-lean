@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The real-Hilbert-space clause of `P:masked-auxiliary-norm` (Auxiliary mask
-norm) of `notes/integrated_covariance_foundation.tex` (revision 39f2597a):
+norm) of `notes/integrated_covariance_foundation.tex` (revision edf7085f):
 statement lines 106-118, the clause being line 117, "For a real `H`, the same
 assertion holds after complexification".
 

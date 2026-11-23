@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.CameronUMap.exists_uTensorSpec_of_kformAbs

@@ -1,6 +1,6 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.EndpointLemmas.plane_exponents` (manuscript
-`L:plane-endpoints`, main TeX lines 7343-7347 at 39f2597a): the static plane exponents
+`L:plane-endpoints`, main TeX lines 7343-7347 at edf7085f): the static plane exponents
 `v_j = a_j/(1 - θ)` stay below one only because `θ < 2 - α = 1 - (a₁ + a₂)`.
 
 Wrong variant: `v_j < 1` for all `1 < α < 2`, `a_j ≥ 0`, `a₁ + a₂ = α - 1` and `0 < θ < 1`.

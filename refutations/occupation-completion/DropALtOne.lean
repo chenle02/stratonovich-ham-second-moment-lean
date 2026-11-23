@@ -3,7 +3,7 @@ Refutation for the absolute convergence in `E:positive-bochner-inclusion`, packa
 `StratonovichHAMSecondMoment.OccupationCompletion.kform_integrable` (the integrand
 `|s-t|^{-a} ⟨F(s), F'(t)⟩` is integrable on `I²` for `0 ≤ a < 1`, `F, F' ∈ L²(I; G)`;
 `L:positive-raw-embedding`, `integrated_intrinsic_constant.tex` lines 27-31 and 52-57 at
-39f2597a, where `a = α₀ < 1`).
+edf7085f, where `a = α₀ < 1`).
 
 Wrong variant (class (c), a broader Lean generalization outside the manuscript domain): the
 hypothesis `a < 1` dropped.  Counterexample: `a = 1`, `G = ℝ`, `F = F' = 1`: the integrand is

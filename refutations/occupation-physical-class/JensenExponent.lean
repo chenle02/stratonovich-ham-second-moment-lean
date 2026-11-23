@@ -1,6 +1,6 @@
 /-
 Refutation for the auxiliary Jensen step of `P:occupation-physical-class`
-(`notes/integrated_spatial_occupation.tex` lines 553-555 at 39f2597a: concavity of `x^{α/2}`
+(`notes/integrated_spatial_occupation.tex` lines 553-555 at edf7085f: concavity of `x^{α/2}`
 for `0 < α/2 < 1`), package theorem
 `StratonovichHAMSecondMoment.OccupationPhysicalClass.lintegral_rpow_le`
 (`∫_0^1 f^p ≤ (∫_0^1 f)^p` for `0 < p < 1`).

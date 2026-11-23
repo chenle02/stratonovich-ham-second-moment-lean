@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The spatial white-noise model of Section `S:intrinsic-white-evaluation` of
-`notes/integrated_white_evaluation.tex` (revision 39f2597a, lines 1-11): `d = α = 1`,
+`notes/integrated_white_evaluation.tex` (revision edf7085f, lines 1-11): `d = α = 1`,
 `Γ = c δ₀` with `c ≥ 0`, temporal kernel `|s-t|^{-a}` with `0 < a < 1`.  This module
 formalizes the prerequisites of `T:white-moment-bounds` (statement lines 140-151, proof
 lines 153-167 of `integrated_white_evaluation.tex`) that do not use the spatial energy

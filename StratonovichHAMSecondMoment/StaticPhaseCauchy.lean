@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Cauchy and scalar steps of `P:static-phase-all-orders` (All regularized static
 phase orders) of `notes/notes_stratonovich_ham_second_moment.tex` (main TeX
-file; line numbers at revision 39f2597a; statement lines 3087-3115, proof
+file; line numbers at revision edf7085f; statement lines 3087-3115, proof
 3117-3211).  The proposition is an operator and stochastic statement; this
 module formalizes the complex-analytic, scalar and Banach-space deductions of
 its proof.  Every result here is a STEP of the proposition (class: inputs

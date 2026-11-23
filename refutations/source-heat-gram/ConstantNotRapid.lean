@@ -4,7 +4,7 @@ import StratonovichHAMSecondMoment.SourceHeatGram
 Refutation for the decay hypothesis of
 `StratonovichHAMSecondMoment.SourceHeatGram.rapid_mem_HGamma` (the Lean route to the
 "includes Schwartz tests" conclusion of `L:source-spatial-heat`,
-`integrated_source_convergence.tex` lines 175 and 189-192 at 39f2597a).
+`integrated_source_convergence.tex` lines 175 and 189-192 at edf7085f).
 
 Class (b): Lean-route-only control.  The route needs `IsRapid` (smooth and rapidly
 decreasing); a smooth function without decay, the constant `1`, is not in this class, so the

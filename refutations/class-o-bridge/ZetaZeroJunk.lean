@@ -3,7 +3,7 @@ Refutation for the totalized supremum at `ζ = 0` (wave L14, item O), package th
 `StratonovichHAMSecondMoment.ClassOBridge.raw_occupation_energy_whole_paper` (the conjunct
 `0 < 𝓔_ζ^𝒪`, stated for `ζ > 0`).
 
-Manuscript side: `notes/integrated_occupation_ceiling.tex` (revision 39f2597a), lines 10-18 and
+Manuscript side: `notes/integrated_occupation_ceiling.tex` (revision edf7085f), lines 10-18 and
 129-130: `𝓔_ζ^𝒪` is defined and positive for `ζ > 0` only.
 
 Wrong variant: `0 < 𝓔_0^𝒪` (the Lean object `EOO a Γ 0`). Lean's `sSup` of a set that is not

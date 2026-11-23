@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:terminal-wick` (The finite terminal-chain Wick formula) of the main TeX
-file `notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a:
+file `notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f:
 the terminal-chain measure `E:terminal-chain-measure` (lines 4275-4288), the
 statement (lines 4291-4336) and the proof (lines 4338-4410).  Built on the
 finite Wick foundation `FiniteWick`.
@@ -598,7 +598,7 @@ theorem supVar_nonneg {Ω : Type*} [MeasurableSpace Ω] {P : Measure Ω} {d : �
   simp at h1
   exact h1.trans (le_ciSup hVfin _)
 
-/-- `L:terminal-wick` (main TeX lines 4291-4336, proof 4338-4410 at 39f2597a),
+/-- `L:terminal-wick` (main TeX lines 4291-4336, proof 4338-4410 at edf7085f),
 wrapper.  Hypotheses: `d ∈ {1,2,3}`, `T > 0`; a centered real
 Gaussian field `W` on `[0,T] × ℝ^d` with covariance `K`; `V = sup_p K(p,p) < ∞`
 (`BddAbove`); mean-square continuity on the open cells of a finite partition
@@ -661,7 +661,7 @@ theorem terminal_wick_paper {Ω : Type*} [MeasurableSpace Ω] (P : Measure Ω)
   · exact fun hpos r => terminalWickInput_of_nonneg ν hW V hV0 hV hmeas T hmassR hpos r
 
 /-- The comparison sentence of `L:terminal-wick` (main TeX lines 4331-4333,
-proof 4404-4406 at 39f2597a), exact-hypothesis wrapper: two centered real
+proof 4404-4406 at edf7085f), exact-hypothesis wrapper: two centered real
 Gaussian fields on `[0,T] × ℝ^d` with covariances `0 ≤ K₁ ≤ K₂` (entrywise),
 each under the hypotheses of `terminal_wick_paper`, and the same chain measures;
 then `E[Y¹_m Y¹_n] ≤ E[Y²_m Y²_n]` for all `m, n`.  Carried, unused: `d ∈ {1,2,3}`,

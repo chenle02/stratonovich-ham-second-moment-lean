@@ -102,6 +102,15 @@ proof route). -/
 def FKS (a θ : ℝ) (S : Set ℝ) : ℝ × (Rd d × (ℝ × ℝ)) → ℝ :=
   (Prod.fst ⁻¹' S).indicator (FK a θ)
 
+/-! ### Elementary facts -/
+
+/-- `0 ≤ K_S(r)` (line 1120 for `S = (M,∞)`). -/
+theorem KS_nonneg (a : ℝ) (S : Set ℝ) (r : ℝ) (ha : 0 < a) : 0 ≤ KS a S r := by
+  have := Real.Gamma_pos_of_pos ha
+  refine mul_nonneg (by positivity) (integral_nonneg_of_ae ?_)
+  filter_upwards [ae_restrict_of_ae ae_L0_pos] with l hl
+  exact subKernel_nonneg a |r| l hl.le
+
 end StratonovichHAMSecondMoment.DampedNormsHomog
 
 end StratonovichHamSecondMomentLeanDefs

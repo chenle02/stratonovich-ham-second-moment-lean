@@ -1,0 +1,2 @@
+  set_option smartUnfolding false in
+  bridge_auto _root_.StratonovichHAMSecondMoment.WickFinal.theta_envelope_diagrams_three_l18

@@ -1,0 +1,14 @@
+index=12
+mode=fresh
+target=StratonovichHAMSecondMoment.PairingEnvelope
+rc=0
+commit=68d0c5e6fd03b0dcb925e637152db199682ce18b
+tree=9ae2829d6e18d02c219c3c9dfa7eaa13ffffde4e
+inputs_sha256=79bbd36cba15f87846e95e63e96e253f950c5eef6c940c530fe37bd4a58ebc5d
+ws_tar_sha256=7d0943da3b755edf1b4e838e121df69d47aa5ea56c9cc28b1531f9b4644368c3
+leanchecker_sha256=12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6
+node=node970
+job=5734713
+array_job=5734701
+start=2026-11-20T19:46:07-0600
+end=2026-11-20T20:32:38-0600

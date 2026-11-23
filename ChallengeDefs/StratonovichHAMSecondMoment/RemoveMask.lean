@@ -68,7 +68,7 @@ def maskedIntegratedRate (a : ℝ) (Γ : Measure (Rd d)) (Ψ : ℝ × Rd d → �
 
 /-- The named input for `E:variational-unmasked-point-lower`
 (`P:raw-block-original-lower`, `notes/integrated_raw_block_lower.tex` lines
-739-747 at 39f2597a, applied with the mask `m_R` and read with the
+739-747 at edf7085f, applied with the mask `m_R` and read with the
 identification of its ground rate with `maskedRate`; in the wrapper `v` is
 `rawCost`, the integral form of `v_Ψ`): for all large `R`,
 `liminf_{T→∞} L(T) ≥ 2 ∫_0^1 λ_{R,s} ds - v/2` in `EReal`, where `L(T)`

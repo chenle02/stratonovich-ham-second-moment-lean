@@ -1,7 +1,7 @@
 /-
 Refutation for the norm of the complexification used in the real-`H` clause
 of `P:masked-auxiliary-norm` (`notes/integrated_covariance_foundation.tex`,
-line 117 at 39f2597a, "after complexification"), package theorem
+line 117 at edf7085f, "after complexification"), package theorem
 `StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.norm_sq_eq`
 (`‖x + iy‖² = ‖x‖² + ‖y‖²`).
 

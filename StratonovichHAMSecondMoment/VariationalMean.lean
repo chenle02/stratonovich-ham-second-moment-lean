@@ -7,7 +7,7 @@ Lemmas `L:variational-heat-envelope` (Gaussian envelope for the original
 covariance; statement TeX lines 28-40, proof 42-82) and
 `L:variational-global-mean` (global regularity of the original mean;
 statement 85-95, proof 97-118) of `notes/integrated_unmasked_variational.tex`
-at revision 39f2597a.  The section's standing assumption (line 4) is a nonzero
+at revision edf7085f.  The section's standing assumption (line 4) is a nonzero
 covariance satisfying `H:homog` with `a = α₀`; the wrappers carry it as
 `HomogHypothesis.HomogCovariance`, `Γ ≠ 0`, and the mean is taken with
 exponent `α₀`.  Definitions reused: `VariationalDilation.conv`

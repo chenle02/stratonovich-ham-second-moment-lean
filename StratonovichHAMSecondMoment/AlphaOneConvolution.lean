@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `L:alpha-one-convolution` (Degree-one convolution bound) of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a: statement lines
+`notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f: statement lines
 5635-5643, proof lines 5645-5708, with the section's standing assumptions (lines
 5552-5563: `H:homog`, `d ∈ {1,2,3}`, `μ` the spectral measure in the convention
 `γ(x) = ∫ e^{iξ·x} μ(dξ)`, `V = μ{|ξ| ≤ 1}`, `G_h` the wave Green measure,

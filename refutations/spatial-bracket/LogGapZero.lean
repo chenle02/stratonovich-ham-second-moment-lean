@@ -1,7 +1,7 @@
 /-
 Refutation for the log gap of `C:intrinsic-spatial-bracket`, package theorem
 `StratonovichHAMSecondMoment.SpatialBracket.logGap_pos`
-(`integrated_occupation_ceiling.tex` lines 346-354 at 39f2597a: `Δ > 0` for `a > 0`,
+(`integrated_occupation_ceiling.tex` lines 346-354 at edf7085f: `Δ > 0` for `a > 0`,
 `q - 2a > 0`).
 
 Wrong variant: the hypothesis `a > 0` is dropped (`Δ > 0` whenever `q - 2a > 0`).

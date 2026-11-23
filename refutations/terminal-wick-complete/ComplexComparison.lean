@@ -1,6 +1,6 @@
 /-
 Refutation for the partial-sum comparison of `L:terminal-wick` (main TeX lines 4331-4333, proof
-4404-4406 at 39f2597a), package theorem
+4404-4406 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.TerminalWickComplete.norm_sq_partial_le` (used by
 `partial_sum_mono_constructed_paper` and `terminal_wick_full_constructed_paper`).
 

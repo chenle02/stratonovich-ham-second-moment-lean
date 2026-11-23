@@ -1,6 +1,6 @@
 /-
 Refutation for the row-maximum part of `L:occupation-kernel-row`
-(`notes/integrated_spatial_occupation.tex`, lines 477-495 at 39f2597a, display
+(`notes/integrated_spatial_occupation.tex`, lines 477-495 at edf7085f, display
 `E:occupation-kernel-row`, lines 481-484), package theorem
 `StratonovichHAMSecondMoment.OccupationKernelRow.occupation_kernel_row` and
 package definitions `Kstar`, `row`, `Rstar`, `Phi`.

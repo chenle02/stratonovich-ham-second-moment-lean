@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The `d = 1` positions/increments bridge for the two-chain diagram model (wave
 L13 item DM0b; a foundation for `DiagramModel`).  Main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a:
+`notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f:
 * the diagram integral `E:mixed-diagram` (lines 808-824) in the position
   variables `y_l`, with the Green factors `G(s_l - s_{p(l)}, y_l - y_{p(l)})`
   and a separate root `(0, 0)` for each chain (lines 811-813);

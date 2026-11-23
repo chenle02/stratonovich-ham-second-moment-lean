@@ -2,7 +2,7 @@
 Refutation for the density theorem of `H1Density`, package theorem
 `StratonovichHAMSecondMoment.H1Density.h1TestDense` (density of `C_c^∞` in
 the weak-gradient `H^1`; `notes/integrated_spatial_occupation.tex`, proof of
-`P:spatial-four-linear`, lines 352-356 at 39f2597a).
+`P:spatial-four-linear`, lines 352-356 at edf7085f).
 
 Wrong variant: drop the hypothesis that `g` is a weak gradient of `f`, i.e.
 every pair `f, g ∈ L²` would be an `L²` graph limit of test functions.

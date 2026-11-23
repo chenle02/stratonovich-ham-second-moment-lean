@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Proposition `P:spatial-smooth-ratio` (The finite smooth spatial ratio) of
-`notes/integrated_spatial_occupation.tex` (revision 39f2597a, lines 223-290),
+`notes/integrated_spatial_occupation.tex` (revision edf7085f, lines 223-290),
 under the section's standing assumptions (lines 4-10: a nonzero covariance
 satisfying `H:homog`, `a = α₀`).
 

@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:masked-continuous-wave` (Continuous sine factors) of
-`notes/integrated_covariance_foundation.tex` at revision 39f2597a (statement TeX
+`notes/integrated_covariance_foundation.tex` at revision edf7085f (statement TeX
 lines 494-506, display `E:masked-continuous-wave` 501-505, proof 508-558), re-issued
 with NOTHING supplied, in the concrete temporal completion `H_a` of
 `L:masked-time-completion` (`TimeCompletion`).

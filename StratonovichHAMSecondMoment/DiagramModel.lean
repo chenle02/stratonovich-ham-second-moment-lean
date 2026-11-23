@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Deterministic two-chain diagram model behind `P:mixed` (a foundation; wave
 L13 item DM0).  Main TeX file `notes/notes_stratonovich_ham_second_moment.tex`
-at revision 39f2597a:
+at revision edf7085f:
 * chaos terms `X_n = S_n(g_n(·,t,x))`, `X_0 = 1`, and `P_k = #Π_k =
   (2k)!/(2^k k!)` with its count (lines 796-804);
 * the complete two-chain expansion: chains `I_1, I_2`, self- and cross-pairings
@@ -75,17 +75,22 @@ Readings and model choices (for the fidelity review):
   immaterial).
 * The simplices are open and `|0|^{-α₀} = ∞` (`ℝ≥0∞` power); both choices
   change only null sets.
-* `X n` and `u` in `MixedMoment` are arbitrary real random variables: the
-  solution and its chaos terms are not constructed (blocker D5), so results
+* `X n` and `u` in `MixedMoment` are arbitrary real random variables, so results
   about them are narrower by the split modelled-object rule; results stated on
-  `diagram`, `diagramLim`, `coeffA`, `coeffALim` are about the model.
+  `diagram`, `diagramLim`, `coeffA`, `coeffALim` are about the model.  (When this
+  module was written the solution and its chaos terms were not constructed,
+  blocker D5; wave L19 constructs the chaos terms `srcX` and their series `srcU`
+  on every source field and discharges `MixedMoment` for them,
+  `SourceFinal.mixed_terms_l19`.)
 
 Supplied input (named; assumed only by `mixed_moment_paper` and the
 `MixedMoment.*` consequences): `MixedMoment d α₀ Γ P X u t`, the statement of
 `P:mixed`: every diagram limit exists and is finite, `E[X_m X_n] = Σ_{D ∈ Π}
 J_{m,n,D}(t)` with the product integrable (odd case and `m = n = 0` included),
 `u²` integrable and `E u² = Σ_k A_k(t)`.  TRUE for the solution under `H:homog`
-(`P:mixed`); not proved.
+(`P:mixed`); not proved in this module.  Discharged in wave L19 for the chaos
+terms `srcX` and their series `srcU` on every source field
+(`SourceFinal.mixed_terms_l19`).
 
 Formalized (all proved, nothing else supplied):
 * chains and simplices: `pred_eq_none_iff`, `pred_eq_some`, `pred_second_root`
@@ -312,9 +317,10 @@ with spectral measure `μ` (`Γ = ∫ e^{iξ·x} μ(dξ)`, `H:homog`):
 `∫ ∏_e e^{-ε|ξ_e|²/2} ∏_l Ĝ_{h_l}(η_l) μ^{⊗k}(dξ)`, with
 `Ĝ_h(ξ) = sin(h|ξ|)/|ξ|` (`WaveKernel.waveHat`).  Its identity with
 `spatial (waveGreen d) (covEps Γ ε)` is the statement `SpectralSpatial`, not
-proved here.  At `ε = 0` the integrand need not be absolutely integrable (for
-white noise a self-pair at adjacent labels gives `∫ |sin(h|ξ|)/|ξ|| dξ = ∞`), so
-only `ε > 0` is meaningful as a Bochner integral. -/
+proved here (proved in wave L18: `WickSpectral.spectralSpatial_homog`).  At
+`ε = 0` the integrand need not be absolutely integrable (for white noise a
+self-pair at adjacent labels gives `∫ |sin(h|ξ|)/|ξ|| dξ = ∞`), so zero-width
+integrability is not guaranteed and the general results are stated for `ε > 0`. -/
 def spatialSpec {d : ℕ} (μ : Measure (Rd d)) (ε : ℝ) (m : ℕ) {N : ℕ} (D : Fin N → Fin N)
     (h : Fin N → ℝ) : ℝ :=
   ∫ ξ, (∏ e, gaussFactor ε (ξ e)) * ∏ l, waveHat (h l) (freq m D ξ l)
@@ -324,7 +330,8 @@ def spatialSpec {d : ℕ} (μ : Measure (Rd d)) (ε : ℝ) (m : ℕ) {N : ℕ} (
 `Γ`, `μ` as in `H:homog`, `ε > 0`, `h ≥ 0`, `d ∈ {1,2,3}`, by
 `γ_ε(x) = ∫ e^{iξ·x} e^{-ε|ξ|²/2} μ(dξ)` (`LowAlphaConvolution.gammaEps_spectral`),
 Fubini and `∫ e^{iη·w} G_h(dw) = Ĝ_h(η)`).  Recorded for the later items that
-use the spectral form; no theorem of this module assumes it. -/
+use the spectral form; no theorem of this module assumes it.  Proved in wave L18 under
+`H:homog`: `WickSpectral.spectralSpatial_homog`. -/
 def SpectralSpatial (d : ℕ) (Γ μ : Measure (Rd d)) : Prop :=
   ∀ (ε : ℝ), 0 < ε → ∀ (m : ℕ) {N : ℕ} (D : Fin N → Fin N), D ∈ pairings Finset.univ →
     ∀ h : Fin N → ℝ, (∀ i, 0 ≤ h i) →
@@ -333,8 +340,8 @@ def SpectralSpatial (d : ℕ) (Γ μ : Measure (Rd d)) : Prop :=
 /-! ### The supplied input `MixedMoment` -/
 
 /-- **Supplied input `MixedMoment`** (`P:mixed`, main TeX lines 834-849, with
-`E:mixed-moment` and `E:full-second`; blocker D5, the Stratonovich chaos
-expansion of the solution).  For random variables `X n` (the chaos terms
+`E:mixed-moment` and `E:full-second`; blocker D5 when this module was written,
+the Stratonovich chaos expansion of the solution).  For random variables `X n` (the chaos terms
 `X_n(t,x) = S_n(g_n(·,t,x))`, main TeX line 796) and `u` (the solution
 `u(t,x)`) on `(Ω, P)`, for the covariance `|s - r|^{-α₀} Γ` in dimension `d`:
 1. every diagram has a finite limit as the noise width tends to zero (part of
@@ -346,8 +353,11 @@ expansion of the solution).  For random variables `X n` (the chaos terms
 3. `u²` is integrable and `E u² = Σ_k A_k(t)` with
    `A_k(t) = Σ_{m=0}^{2k} Σ_D J_{m,2k-m,D}(t)` (`E:full-second`), a convergent
    series of nonnegative terms.
-TRUE for the solution of the model under `H:homog` (`P:mixed`); assumed, not
-proved. -/
+TRUE for the solution of the model under `H:homog` (`P:mixed`); assumed here.
+Discharged in wave L19 for the chaos terms `srcX` and their series `srcU` on
+every source field under `H:homog`, for `t > 0` and every `x` (model M9):
+`SourceFinal.mixed_terms_l19`
+(`SourceFinal.mixedMoment_m9_l19` at the constructed `m9`). -/
 def MixedMoment (d : ℕ) (α₀ : ℝ) (Γ : Measure (Rd d)) {Ω : Type*} [MeasurableSpace Ω]
     (P : Measure Ω) (X : ℕ → Ω → ℝ) (u : Ω → ℝ) (t : ℝ) : Prop :=
   (∀ (m n : ℕ) (D : Fin (m + n) → Fin (m + n)), D ∈ Pi2 m n →

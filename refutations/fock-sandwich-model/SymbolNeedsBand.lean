@@ -2,7 +2,7 @@ import StratonovichHAMSecondMoment.FockSandwichModel
 
 /-!
 Refutation for `StratonovichHAMSecondMoment.FockSandwichModel.abs_symA_le` (the symbol
-`|η|² 1_{|η| ≤ b}` of `A_0` is bounded by `b²`; main TeX lines 3025-3026 at 39f2597a:
+`|η|² 1_{|η| ≤ b}` of `A_0` is bounded by `b²`; main TeX lines 3025-3026 at edf7085f:
 "Boundedness of `-Δ` on `S_b` is explicit").
 
 Wrong variant: drop the band `S_b` and claim the symbol `|η|²` of `-Δ` is bounded.

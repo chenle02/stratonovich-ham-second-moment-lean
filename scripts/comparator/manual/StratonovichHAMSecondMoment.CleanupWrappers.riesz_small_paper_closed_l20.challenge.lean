@@ -1,0 +1,18 @@
+-- Printed type replaced by the source's statement in its scope (the printed type drops the universe of the .{u} targets, so it does not elaborate to the claimed type).
+namespace StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.CleanupWrappers
+set_option autoImplicit false
+open MeasureTheory Set Filter Topology
+open scoped ENNReal Real Nat
+universe u
+open HomogHypothesis (Rd HomogCovariance)
+open LowAlphaConvolution (specV)
+open SourceInterface
+open HomogeneousEnvelope (BK)
+open LowAlphaUpper (C1 C2 Kgen kappa)
+open TwoSimplexTime (Zc)
+open D1Spatial (Ksp)
+open MildInterface
+/-- RieszSmallTarget, nothing supplied: the order-two part E:riesz-two of P:riesz-small for every source field under c > 0, 0 < alpha < 1, 0 < alpha0 < 1, t > 0 only (TeX 5125-5172, 5129-5142); hR discharged. -/
+theorem _root_.StratonovichHamSecondMomentLeanAudit.StratonovichHAMSecondMoment.CleanupWrappers.riesz_small_paper_closed_l20 : RieszSmallTarget.{u} := by
+  sorry
+end StratonovichHamSecondMomentLeanDefs.StratonovichHAMSecondMoment.CleanupWrappers

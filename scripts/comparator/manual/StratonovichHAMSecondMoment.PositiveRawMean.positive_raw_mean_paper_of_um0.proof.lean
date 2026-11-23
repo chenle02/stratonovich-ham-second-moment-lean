@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.PositiveRawMean.positive_raw_mean_paper_of_um0

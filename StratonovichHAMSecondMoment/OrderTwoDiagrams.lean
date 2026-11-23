@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Order-two closed forms of the two-chain diagram integrals in `d = 1` (wave
 L13 item D4).  Main TeX file `notes/notes_stratonovich_ham_second_moment.tex` at
-revision 39f2597a:
+revision edf7085f:
 * `L:white-test` (statement lines 940-949, proof 951-964): for `d = α = 1`,
   `γ = δ₀`, `c_0 = ((1-α₀)(2-α₀)(3-α₀))^{-1}`, `E X_1² = c_0 t^{3-α₀}`,
   `E X_2 = c_0 t^{3-α₀}/2`, and the total-order-two contribution to
@@ -42,7 +42,10 @@ Formalized (all proved; the only supplied inputs are named below):
 
 Supplied inputs (named):
 * `DiagramModel.MixedMoment` (`P:mixed`), in both wrappers: the identification
-  `E[X_m X_n] = Σ_D J_{m,n,D}(t)`.  TRUE (`P:mixed`); not proved (blocker D5).
+  `E[X_m X_n] = Σ_D J_{m,n,D}(t)`.  TRUE (`P:mixed`); not proved here (blocker D5
+  when this module was written); discharged in wave L19 for the source-field chaos
+  terms (`SourceFinal.mixed_terms_l19`; wrappers `SourceFinal.white_test_paper_l19`,
+  `SourceFinal.riesz_small_paper_l19`).
 * `RieszDiagramLimit` (this module), in `riesz_small_paper` only: at total
   order two, the model's `diagramLim` for `Γ(dy) = c|y|^{-α} dy` equals the
   literal diagram with the density.  TRUE (see its doc comment); not proved in

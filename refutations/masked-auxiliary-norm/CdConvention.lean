@@ -1,6 +1,6 @@
 /-
 Refutation for the normalization of the unitary Fourier transform of
-`notes/integrated_covariance_foundation.tex` (lines 10-14 at 39f2597a, used in
+`notes/integrated_covariance_foundation.tex` (lines 10-14 at edf7085f, used in
 the Fourier inversion of the proof of `P:masked-auxiliary-norm`, line 161),
 package theorem `StratonovichHAMSecondMoment.MaskedAuxiliaryNorm.cd_sq_mul`
 (`c_d² (2π)^d = 1` for `c_d = (2π)^{-d/2}`; auxiliary to the Lean proof

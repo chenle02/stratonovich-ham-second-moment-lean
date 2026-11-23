@@ -2,7 +2,7 @@ import StratonovichHAMSecondMoment.L10Completed
 
 /-!
 Refutation for the constant of `E:alpha-one-convolution` (`L:alpha-one-convolution`, main TeX
-lines 5635-5643 and 5702-5704 at 39f2597a), package theorem
+lines 5635-5643 and 5702-5704 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.L10Completed.alpha_one_convolution_completed`, whose conclusion
 equates the pairing with the spectral side `∫ I_a(h,θ·z) σ(dθ)` (`E:alpha-one-polar`) and
 bounds it by `πV/2`.

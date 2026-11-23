@@ -1,7 +1,7 @@
 /-
 Refutation for the total mass of the constructed terminal-chain measure
 `g_n^{T,x}` (`E:terminal-chain-measure`, main TeX lines 4275-4288, mass lines
-4348-4351 at 39f2597a), package theorem
+4348-4351 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.TerminalWickInputs.chainMeasureRaw_univ`.
 
 Wrong variant: `g_n^{T,x}(total) = T^n/n!`, the volume of the ordered simplex,

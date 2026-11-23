@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The finite Gaussian comparison used in the proof of
 `P:masked-noise-completion` (Completion on the same noise) of
-`notes/integrated_covariance_foundation.tex` (revision 39f2597a; statement
+`notes/integrated_covariance_foundation.tex` (revision edf7085f; statement
 lines 249-267, the comparison sentence lines 262-266; proof lines 269-328, the
 comparison argument lines 320-327).
 
@@ -141,7 +141,7 @@ theorem convexOn_seminorm_rpow (N : Seminorm ℝ (EuclideanSpace ℝ ι))
   exact (Real.rpow_le_rpow (apply_nonneg N _) h1 (by linarith)).trans h2
 
 /-- The finite Gaussian comparison in the proof of `P:masked-noise-completion`
-(`notes/integrated_covariance_foundation.tex`, 39f2597a, lines 320-327; stated in
+(`notes/integrated_covariance_foundation.tex`, edf7085f, lines 320-327; stated in
 lines 262-266).  For real `ι × ι` matrices with `A` and `B - A` positive
 semidefinite, every seminorm `N` on `ℝ^ι` and every real `p ≥ 1`: `N(x)^p` is
 integrable against `N(0,A)` and `N(0,B)`, and
@@ -181,7 +181,7 @@ theorem gaussian_seminorm_moment_le {A B : Matrix ι ι ℝ} (hA : A.PosSemidef)
   exact hJ
 
 /-- `P:masked-noise-completion`, finite comparison step
-(`notes/integrated_covariance_foundation.tex`, 39f2597a, statement lines 262-266,
+(`notes/integrated_covariance_foundation.tex`, edf7085f, statement lines 262-266,
 proof lines 320-327), with the hypotheses of that step: `A` is a covariance
 matrix (positive semidefinite) and `A ≤ B` in positive semidefinite order
 (`(B - A).PosSemidef`, i.e. `bᵀAb ≤ bᵀBb` for every real `b`, lines 321-322).  For

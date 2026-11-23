@@ -1,0 +1,14 @@
+index=4
+mode=fresh
+target=StratonovichHAMSecondMoment.UniformMeanInterface
+rc=0
+commit=315a3327dfc8acc964a874962756fbcc28ff1687
+tree=5abf7fdde0d2f2940d50d340ae0f095c9bbd150e
+inputs_sha256=41637394614d46e010ff96f1e470b9c60ef9478d88d513f8b8fbea4949a92008
+ws_tar_sha256=c245e2e74ebfdc108b3e9e6baf8f4382f55e3250a19137087e83e0607d1c4bea
+leanchecker_sha256=12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6
+node=node839
+job=5731617
+array_job=5731617
+start=2026-11-20T01:29:14-0600
+end=2026-11-20T02:16:01-0600

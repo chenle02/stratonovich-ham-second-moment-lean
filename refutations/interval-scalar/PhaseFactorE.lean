@@ -1,6 +1,6 @@
 /-
 Refutation for the summation step of `P:interval-coefficients`
-(`E:interval-phase-bound`, main TeX lines 4260-4269 at revision 39f2597a),
+(`E:interval-phase-bound`, main TeX lines 4260-4269 at revision edf7085f),
 package theorem
 `StratonovichHAMSecondMoment.IntervalScalar.interval_phase_bound_of_coefficients`.
 

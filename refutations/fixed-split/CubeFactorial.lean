@@ -1,6 +1,6 @@
 /-
 Refutation for the simplex count of `E:interval-cross-vector` (main TeX
-lines 3954-3967 at 39f2597a: "There is no factor `m!` or `1/m!` in this
+lines 3954-3967 at edf7085f: "There is no factor `m!` or `1/m!` in this
 estimate"), package theorem
 `StratonovichHAMSecondMoment.FixedSplit.sum_volume_simplex_le`.
 

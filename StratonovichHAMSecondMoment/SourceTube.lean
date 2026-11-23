@@ -3,7 +3,7 @@ module
 /-
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
-Three labelled results at manuscript revision 39f2597a.
+Three labelled results at manuscript revision edf7085f.
 
 1. `L:source-finite-comparison` (Finite Gaussian linear images) of
    `notes/integrated_source_convergence.tex` (statement lines 21-29, proof
@@ -217,7 +217,7 @@ theorem map_gaussian_eq {P : Measure Ω} (ξ : ι → Ω → ℝ)
   simp [hmean]
 
 /-- `L:source-finite-comparison` (`notes/integrated_source_convergence.tex`,
-39f2597a, lines 21-45), random-variable form.  `ξ = (ξⱼ)` is a centered Gaussian
+edf7085f, lines 21-45), random-variable form.  `ξ = (ξⱼ)` is a centered Gaussian
 vector of `ℝ^N` on `(Ω, P)` whose covariance matrix is bounded by `C I`
 (Loewner order), `C ≥ 0`; `g = (gⱼ)` are independent standard real Gaussians on
 `(Ω', Q)`; `vⱼ` lie in a real normed space; `p ≥ 1`.  Then both moments are
@@ -293,7 +293,7 @@ theorem ballSup_le (J : H → ℝ) {r B : ℝ} (hr : 0 ≤ r) (hB : ∀ h : H, �
   csSup_le ⟨J 0, 0, by simpa using hr, rfl⟩ fun _ ⟨h, hh, he⟩ =>
     he ▸ hB h (mem_closedBall_zero_iff.1 hh)
 
-/-- `L:tube-half-action` (`notes/integrated_gaussian_tubes.tex`, 39f2597a, lines
+/-- `L:tube-half-action` (`notes/integrated_gaussian_tubes.tex`, edf7085f, lines
 581-597): for `J : H → ℝ` bounded above on every closed ball about `0`, in the
 extended reals
 `sup_{r ≥ 0} {g_J(r) - r²/2} = sup_{h ∈ H} {J(h) - ‖h‖²/2}`.
@@ -652,7 +652,7 @@ def paperTube {Ω : Type*} [MeasurableSpace Ω] (P : Measure Ω) (X : Ω → �
     (M : H →L[ℝ] 𝔅) (r : ℝ) : Set 𝔅 :=
   {x ∈ closure (Set.range M) | ‖x‖ ≤ 2 * ∫ ω, ‖X ω‖ ∂P} + M '' Metric.closedBall 0 r
 
-/-- `P:tube-rayleigh-transfer` (`notes/integrated_gaussian_tubes.tex`, 39f2597a,
+/-- `P:tube-rayleigh-transfer` (`notes/integrated_gaussian_tubes.tex`, edf7085f,
 lines 225-271), nonzero law, with the manuscript's hypotheses and the two supplied
 inputs of `L:tube-closed-geometry` at the manuscript's tubes (whole result,
 inputs supplied).  `𝔅` real separable Banach with its Borel sets, `H` real

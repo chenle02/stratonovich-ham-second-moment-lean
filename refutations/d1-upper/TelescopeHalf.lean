@@ -1,6 +1,6 @@
 /-
 Refutation for the increment sum on the time simplices used in the proof of
-`P:d1-upper` (main TeX lines 5486-5487 at 39f2597a: "the increments sum to the
+`P:d1-upper` (main TeX lines 5486-5487 at edf7085f: "the increments sum to the
 two terminal times and therefore to at most `2t`").  Package theorem
 `StratonovichHAMSecondMoment.TwoSimplexTime.sum_incr_le` (shared with
 `P:low-alpha-upper` since the L13 integration; used by `D1Upper`).

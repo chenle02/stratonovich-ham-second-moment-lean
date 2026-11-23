@@ -7,7 +7,7 @@ The form layer on `H^1(ℝ^d)` (wave L13, item K5b): complex Lax-Milgram, the sh
 Schrödinger form `q_V + c` and its bounded resolvent `R_V = (H_V + c)⁻¹` on `L²`.  A narrower
 result for `P:signed-closed-form` (inputs supplied): no manuscript label becomes whole here.
 
-Manuscript anchors (revision 39f2597a, `notes/integrated_signed_static.tex`):
+Manuscript anchors (revision edf7085f, `notes/integrated_signed_static.tex`):
 * `L:signed-limiting-multiplier` (lines 11-19), display `E:signed-multiplier-form`
   (`|v_V(u,w)| ≤ k ‖u‖_{H^{1/2}} ‖w‖_{H^{1/2}}`, lines 16-18).  Here it is a hypothesis
   (`SignedMultiplierForm`), not proved: the lemma that produces `V` is not formalized.

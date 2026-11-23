@@ -42,7 +42,7 @@ variable {d : ℕ}
 /-! ### The named input -/
 
 /-- Supplied input (`P:white-spatial-energy`, `integrated_white_evaluation.tex` lines 79-133 at
-39f2597a, reserved as package B9 and not proved here): the spatial energy of the white
+edf7085f, reserved as package B9 and not proved here): the spatial energy of the white
 covariance is `𝓔_sp(c δ₀) = c²/6`. -/
 def WhiteSpatialEnergy (c : ℝ) : Prop := Esp (whiteCov c) = c ^ 2 / 6
 

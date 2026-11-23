@@ -1,6 +1,6 @@
 /-
 Refutation for the empty-chain convention of `DiagramModel` (main TeX lines 825
-and 843 at 39f2597a: "An empty chain contributes the factor one", "the case
+and 843 at edf7085f: "An empty chain contributes the factor one", "the case
 `m = n = 0` equals one"; `A_0(t) = 1`, line 5448), package theorems
 `StratonovichHAMSecondMoment.DiagramModel.diagramLim_zero_zero` and
 `coeffALim_zero`.

@@ -37,9 +37,14 @@ It shows that `log E[u(t,x)²]` grows on the scale `t^κ`, with
 
 > [!IMPORTANT]
 > **This is a partial formalization.** Lean checks the steps listed below. It
-> does not check the paper end to end. The SPDE, its solution, the
-> Stratonovich integrals, the Gaussian noise and the analytic estimates are
-> outside Lean. Where a checked step needs such a fact, the Lean statement takes
+> does not check the paper end to end. The SPDE, the identification of its
+> mild solution with the chaos series, the Gaussian noise of the source and
+> most analytic estimates are outside Lean. Since wave L19 a centered Gaussian
+> field with the source's positive-width covariance, the fixed-order
+> Stratonovich integrals as `L^2` limits and the `L^2` series `u = sum_n X_n`
+> are constructed in Lean (model M9), and since wave L20 this `u` satisfies the
+> mild equation `E:mild-construction` (`P:mild-construction`, for every source
+> field; no uniqueness). Where a checked step needs such a fact, the Lean statement takes
 > it as an explicit hypothesis, and the paper's proof supplies it.
 >
 > The correspondence between the Lean statements and the paper was checked by
@@ -115,17 +120,21 @@ commits of the development repository.
 
 ## What is checked
 
-24 modules in `StratonovichHAMAudit/`, each one step of the paper's proofs
+24 step modules in `StratonovichHAMAudit/` (the 25th file there,
+`HermiteWordConsumer`, has no public declaration: private definitions and
+`example`s that exercise `HermiteWord`, so it is not counted as a step),
+each one step of the paper's proofs
 (one of them, `HermiteWordFock`, applies a step to the Fock model and gives
-the one-mode special case of a labelled result), and 115 modules in
+the one-mode special case of a labelled result), and 185 modules in
 `StratonovichHAMSecondMoment/`. Counted by labelled result (Theorem,
-Proposition, Lemma, Corollary), they give 44 whole results, in which every
+Proposition, Lemma, Corollary), they give 59 whole results, in which every
 conclusion is a Lean conclusion under the manuscript's hypotheses alone; one
-whole result with two named inputs supplied (`P:tube-rayleigh-transfer`); 16
-narrower results with the manuscript's hypotheses, each with its missing
-part stated; and steps, parts or narrower forms of 34 further results with
-named inputs supplied. Counted by module, the ledger marks 40 modules "whole
-result", 48 "narrower result" and 27 "foundation" or "proof steps" (the
+whole result with inputs supplied (`P:tube-rayleigh-transfer`, one named
+input since wave L21); 22 narrower results with the manuscript's hypotheses, each with its
+missing part stated; and steps, parts or narrower forms of 30 further results
+with inputs supplied. Counted by module, the
+ledger marks 49 modules "whole result", 69 "narrower result" and 67
+"foundation" or "proof steps" (the
 foundations: a wave-kernel and time-fractional covariance slice with spectral
 homogeneity and the damped-norm finiteness, finite Gaussian integration by
 parts, a Gaussian Schwartz test, weak gradients and a variational floor,
@@ -140,7 +149,30 @@ from waves L13 and L14 the deterministic two-chain diagram model and its
 `d = 1` positions form, the time integrals of the diagram bounds, the
 white-noise limit of the `d = 1` diagrams, an in-domain control of a
 phase-contraction step, and the weak-gradient `H^1` identified with
-Mathlib's Sobolev space).
+Mathlib's Sobolev space; from wave L15 the phase space `H^(1/2) x
+H^(-1/2)` on the manuscript's Fourier norm, with the density of real tests,
+the duality on tests and the multipliers of bounded smooth functions; from
+wave L16 the Sobolev scale `H^s` on Fourier coordinates with the statement
+shapes of the Cameron-map chain, compactness of finite-rank limits, adjoints
+and `L^2`-kernel operators, the compact spectral theorem with positive
+square roots, and the proof steps of the temporal mean; from wave L17 the
+label-set two-chain model M7 of the pairing envelope with the statement
+shapes of the pairing-envelope chain, the density of the Green-smoothed
+`d = 3` wave kernel, and the proof steps of the envelope (convolution norms,
+regional half-bound, cap removal) and of its application (the bridge from
+the diagram model M4 and the edge norms of damped and smoothed Green
+kernels); from wave L18 the gap-coordinate Wick-measure model M8 with the
+statement shapes of the Wick-measure chain, and the proof steps of the
+spatial Wick measures (the spectral form and positive Laplace formula, the
+per-edge bridge to M7, the uniform mass bound by the envelope route, the
+scaling, the finite-measure Laplace argument) and of the joint temporal
+tail); from wave L19 the source-field model M9 with the statement shapes of
+the source-field chain, the isonormal Gaussian field on a real Hilbert space
+and the feature map of the source covariance (the constructed instance), and
+the proof steps of `P:mixed` (the positive-width Wick formula for two width
+families, the chain reversal, the fixed-order mixed moments at common
+widths) and of `L:joint-fixed-order` (the `L^2` construction and the Green
+width removed first)).
 
 <details>
 <summary><b>With the paper's own hypotheses, nothing supplied</b> (list)</summary>
@@ -243,12 +275,20 @@ Mathlib's Sobolev space).
     integrals `J_(m,n,D)(t)` with the Green factors as measures of the
     increments and, for a covariance measure, the limit of common-width
     smoothings; its identification with the positions form is proved in
-    `d = 1` only, and its identification with the TeX's joint limit at
-    arbitrary vertexwise widths is not proved; the common-width convergence
-    of the diagrams is the named input `DiagramLimits` and, with the
-    finiteness of the limits, a clause of `MixedMoment`; the diagram limits
-    are proved for white noise in `d = 1` and the order-two Riesz limit in
-    `RieszFourDiagrams`, while `MixedMoment` itself remains supplied;
+    `d = 1` (`DiagramBridge`) and, for a measurable covariance and Green
+    measures with a finite jointly measurable density, in every dimension (`PairingBridge`, wave L17; not
+    for the `d = 3` sphere measure); the TeX's joint limit at arbitrary
+    vertexwise widths is formalized on M8 (wave L18), and M4's common-width
+    limit follows from its full-kernel limit (temporal width `0`,
+    `JointFixedOrder.joint_limit_aux`) at common vertex width `eps/2` through
+    the identity `JointFixedOrder.m8_m4_identity`; the
+    common-width convergence of the diagrams was the named input
+    `DiagramLimits` and, with the finiteness of the limits, is a clause of
+    `MixedMoment`; the diagram limits are proved for white noise in `d = 1`,
+    the order-two Riesz limit in `RieszFourDiagrams`, and, in wave L18, for
+    every `H:homog` covariance in `d = 1, 2, 3` (`DiagramLimits`
+    discharged), and `MixedMoment` is discharged in wave L19 for the chaos
+    terms of every source field (model M9);
     `L:d1-spatial` and `P:white-four` use it. M5 (wave L14; accepted by the
     author on 2026-11-13) realizes the completion spaces `H_t (x) G`, `H_t`,
     `H_I` and `H_Gamma` as `L^2` completions under the kernel and covariance
@@ -350,11 +390,78 @@ Mathlib's Sobolev space).
     row bound `int_I |s-t|^(-a) dt <= K_0` and the scalar Schur bound; in
     wave L14 `E:positive-bochner-inclusion` for every real Hilbert space,
     with `H_t (x) G` the kernel completion of model choice M5, and
-    `||Psi||^2_(H_I) = v_Psi`; the mean identity for the uniform `E` mean and
-    the canonical versions are not formalized) and `L:occupation-raw-square`
+    `||Psi||^2_(H_I) = v_Psi`; the a.e. mean identity for the uniform `E` mean and
+    a canonical version agreeing a.e., proved in wave L15 for a supplied
+    regulator and in wave L16 with nothing supplied for maps `T_R` and `U`
+    constructed in Lean to meet the frozen specifications `IsSpatialMeanMap`
+    and `UTensorSpec`; conclusion full by the author's decision of
+    2026-11-20, with this scope: no Lean theorem identifies these maps with
+    the section's `T_R` and `C_t (x) I` or with a regulator's maps, and
+    `H_I` is the kernel completion M5) and
+    `L:occupation-raw-square`
     (wave L14: the square map `Q` into `H_sp`, continuous on `H^1`, and
     `rho_g` in `H_I` with both identities, for fields of `O` modelled by
     joint representatives; narrower: not restated on `O` itself).
+  - `L:uniform-E-lift` (wave L15, every covariance and cutoff profile: each
+    `L` in `V_(E,R)` is `B_E(M)` with `||L|| = ||M||`, the unique potential
+    `V` with `M u = V u` on tests, and `E:uniform-E-pairing` with the symmetry
+    of the pairing for real states; narrower: the lift `L_F` into the signed-static class and
+    the Hermitian extension to complex states are not formalized).
+  - The Cameron-map chain (wave L16, TeX lines at book 1.1.3):
+    `L:cameron-fractional-products` (a whole result, with smooth
+    Littlewood-Paley bands, so the constant `C_s` differs from the proof's
+    sharp-band constant and depends on `(alpha, s)` only);
+    `L:uniform-mean-cutoff` (the cutoff multiplier for every real `sigma`
+    with norm at most `M_sigma`, its uniqueness not stated, and
+    `E:uniform-spatial-mean`); `P:cameron-temporal-map` (every clause, with
+    "not trace class" and "not Hilbert-Schmidt" as the divergent cell sums of
+    decision 7); `L:uniform-mean-tensor` on finite tensors; and the map `U`
+    of `P:cameron-full-mean` with `||U|| <= ||C_t||` (kernel-positivity
+    route; the compactness of the full mean and its tail not formalized).
+  - The pairing-envelope chain (wave L17, TeX lines at book 1.1.3):
+    `L:translated-covariance-CS` (every dimension, zero norms and measures
+    included; a whole result) and `L:pairing-product-envelope` (on the
+    label-set two-chain model M7, every dimension and label type; a whole
+    result).
+  - The Wick-measure chain (wave L18, TeX lines at book 1.1.3):
+    `L:spatial-wick-measures` (on the gap-coordinate model M8, `d = 1, 2,
+    3`, nothing supplied; Steps 2-3 by the envelope route (b) instead of
+    Brownian occupation moments; a whole result) and the deterministic half
+    of `L:joint-fixed-order` (finite joint diagram limits at arbitrary
+    vertexwise spatial and temporal rates in `d = 1, 2, 3` with
+    `E:joint-temporal-tail`).
+  - The source-field chain (wave L19, TeX lines at book 1.1.3), for every
+    source field of the model M9 (the positive-width fields of
+    `E:pairing-source-covariance` on any probability space; non-vacuous at
+    the constructed instance `m9`), `d = 1, 2, 3`: `L:joint-fixed-order` (now
+    a whole result: the `L^2` limit `X_n` of `Y_n^a` at arbitrary vertexwise
+    rates, equal to the common-width limit `S_n(g_n)`, and Green smoothing
+    removed first), `P:mixed` (a whole result, `t > 0`: `E:mixed-moment`
+    and `E:full-second`), `L:vertex-crude` (a whole result), and with
+    `MixedMoment` and `FirstMomentSeries` thereby discharged for these chaos
+    terms and this solution (the earlier wrappers for abstract random
+    variables, still credited, keep them as inputs)
+    `L:crude-corrected` and `L:white-test` (whole results, `d = 3` included
+    for `L:crude-corrected`), `P:envelope` and `P:low-alpha-upper` (narrower
+    at the L19 gate, whole since wave L20).
+  - The mild construction (wave L20, TeX lines at book 1.1.3), for every
+    source field of M9 under `H:homog`, `d = 1, 2, 3`:
+    `P:mild-construction` (a whole result: `E:mild-construction`, the
+    integral of `u W_(eps,delta)` against `G(t-s, x-dy) ds` tends to
+    `u(t,x) - 1` in `L^2` as `eps, delta -> 0` at arbitrary rates, for
+    `t > 0` and every `x`; in `d = 3` the Green-width limit first, by the
+    common-noise route; non-vacuous at `m9`; no uniqueness), with
+    `E:occupied-multiplication` on the closed polynomial spaces of any
+    centered Gaussian field, `X_n(s,y)` in `P_(<=n)`, joint measurability,
+    spatial `L^2` continuity, the terminal-kernel Fubini and the partial and
+    external vertex limits; the Riesz instance of `H:homog` in `d = 1`
+    (`E:d1-covariances`, the spectral measure a Gaussian mixture); and the
+    deferred wrappers, so that `P:d1-upper` (white and Riesz cases),
+    `C:d1-first-calibration` (with the conditional rate clause for the
+    constructed solution), `P:low-alpha-upper` (both inequalities) and
+    `P:envelope` (with `rho > kappa`) are whole results with the
+    manuscript's hypotheses, and `P:riesz-small` has the manuscript's
+    hypotheses with a narrower conclusion (the multiplicity sentence).
   - `L:d1-spatial` (wave L13: the `d = 1` spatial estimate on the diagram
     model M4, both covariances, every split and pairing, a width per pair;
     a whole result) and `P:white-four` (wave L13: the nine order-four white
@@ -399,6 +506,11 @@ Mathlib's Sobolev space).
     independent standard Gaussians, with both moments finite).
   - `L:tube-half-action` (wave L12: the supremum identity with the Gaussian
     quadratic cost, in the extended reals).
+  - `L:tube-closed-geometry` (wave L21: every tube `T_r` is closed,
+    `{d_delta <= r} = T_r` (the first identity of `E:tube-attained-radius`) and
+    `d_delta` is lower semicontinuous; narrower: the Gaussian tail and the
+    almost sure finiteness, which rest on the imported Borell isoperimetric
+    theorem, are not formalized).
   - `L:fock-form` and `L:interval-contractions` (wave L11: the Gaussian
     cutoff bound, `E:interval-column`, the band compression, the vacuum
     phase insertion and `E:interval-fock`, with nothing supplied, for
@@ -411,26 +523,25 @@ Mathlib's Sobolev space).
 
 </details>
 
-- **Whole result with named inputs supplied**:
+- **Whole results with inputs supplied**:
   - `P:tube-rayleigh-transfer` (wave L12: the comparison with the Rayleigh
     integral, with jumps of `G` and infinite expectations allowed; in the
-    nonzero-law case the closed tubes with least-radius attainment and the
-    Gaussian tail of `L:tube-closed-geometry`, which rest on the imported
-    Borell isoperimetric theorem, are supplied; the zero-law case needs no
-    input).
-- **Narrower results with named inputs** (waves L13, L14; the solution is
-  not constructed, so statements about it rest on the statement of
-  `P:mixed`, the named input `MixedMoment`, or of `P:three-transfer`,
-  `ThreeTransfer`):
-  - `P:d1-upper`, `P:low-alpha-upper` and `C:d1-first-calibration` (the
-    coefficient bounds proved on the diagram model M4 at every noise width,
-    the calibration constants with nothing supplied; the moment bounds from
-    `MixedMoment`, with `DiagramLimits` in the Riesz case of `P:d1-upper`
-    and `FirstMomentSeries` for the first moment).
-  - `L:white-test` and `P:riesz-small` (the order-two and order-four
-    diagram values on M4 with nothing supplied; the statements about the
-    chaos terms from `MixedMoment`; the multiplicity sentence of
-    `P:riesz-small` not formalized).
+    nonzero-law case the Gaussian tail of `L:tube-closed-geometry`, which
+    rests on the imported Borell isoperimetric theorem, is supplied (the
+    closed tubes with least-radius attainment were supplied too until wave
+    L21, which proves them); the zero-law case needs no input).
+- **Narrower results with inputs supplied** (waves L13, L14, L16, L17, L18;
+  statements about an abstract model rest on the statement of
+  `P:three-transfer`, `ThreeTransfer`; in wave L16 the compactness sentence
+  of `P:cutoff-singular-values` is the named input `CutoffCompact`):
+  - `P:cameron-spatial-map` (wave L16, `E` part: the bounded map, its
+    smooth-test formula and its row at all states with nothing supplied; the
+    compactness of the map and of its values from `CutoffCompact`; the `F`
+    columns not formalized) and `P:uniform-mean-regulator` (wave L16: the
+    regulator of wave L15, `UniformMeanRegulator`, constructed with
+    `CutoffCompact` as its only input, with the first bound of
+    `E:uniform-completed-mean` and compact values; the projection and tail
+    half not formalized).
   - `C:three-product-riesz` and `C:three-finite-images` (the endpoint
     hypotheses discharged; the moment and asymptotic bounds from
     `ThreeTransfer` for an abstract moment model, the asymptotic clause only
@@ -528,23 +639,28 @@ Mathlib's Sobolev space).
 
 Counts:
 
-- **3654 public theorems** and **962 public definitions** (counted from the
+- **5330 public theorems** and **1425 public definitions** (counted from the
   elaborated environment: every non-private `def`, `abbrev`, `instance`,
   `structure` and `inductive` written in the source, not the declarations
   Lean generates, such as projections or a derived `DecidableEq` instance).
-  3653 of the 3654 theorems (all but `MaskedAuxiliaryReal.Cx.ext_iff`,
-  which `@[ext]` generates; 1492 reusable, 2161 helper lemmas marked
-  `internal`) and 849 of the definitions are the checked facts listed in
-  `claims.yaml`.
-- The comparator checks all 3653 theorem claims against their restatements
+  5326 of the 5330 theorems (all but `MaskedAuxiliaryReal.Cx.ext_iff`,
+  which `@[ext]` generates, and the three anonymous `CompleteSpace`
+  instances of `UniformMeanInterface`, whose names Lean generates; 1995
+  reusable, 3331 helper lemmas marked `internal`) and 1306 of the definitions
+  are the checked facts listed in `claims.yaml` (the six other anonymous
+  instances of `UniformMeanInterface` are not claimed for the same reason;
+  all nine are compiled and kernel-checked with their module).
+- The comparator checks all 5326 theorem claims against their restatements
   in `Challenge.lean`, in two configurations. `comparator.json` holds the
-  1553 theorems credited to a manuscript result, each the declaration of a
+  2056 theorems credited to a manuscript result, each the declaration of a
   claim that a row of `coverage.yaml` names: the 1134 that the rows named at
   the wave-L13/L14 gate (reviewed with their waves; 243 of them have a "no
   direct label" ledger cell or only labels without a coverage row, and are
   named by the row whose result they serve), and 419 more credited in
   v0.10.0 by a rule: the row of a direct manuscript label in the label cell
-  of their ledger row. `comparator-helpers.json` holds the other 2100, which
+  of their ledger row, 24 of wave L15, 100 of wave L16, 121 of wave L17,
+  104 of wave L18, 76 of wave L19, 71 of wave L20 and 7 of wave L21 by the
+  same rule. `comparator-helpers.json` holds the other 3270, which
   neither applies to; `lean-pkg-signoff.json` declares it a smoke check, so
   these theorems are compared but credited to no result (see the ledger's
   comparator accounting).
@@ -576,13 +692,20 @@ scope.
 
 ## What is not checked
 
-- the existence, uniqueness and chaos expansion of the solution;
-- Stratonovich integrals, Wick pairings beyond finite families of Gaussian
-  values, and the Gaussian noise measure (only finitely many independent
-  standard Gaussians, the finite-dimensional centered Gaussian laws of
-  `GaussianComparison` and `SourceTube`, the finite Wick formula of `FiniteWick` and the
-  finite Hermite and Fock layer of `GaussianHermite` and `HermiteFock` are in
-  Lean);
+- the uniqueness of the solution of the SPDE, and the identification of the
+  `L^2` series `u = sum_n X_n` of wave L19 (a mild solution in the sense of
+  `E:mild-construction` since wave L20, `P:mild-construction`) with an
+  independently specified solution;
+- the Gaussian noise measure of the source and Wick pairings beyond finite
+  families of Gaussian values (in Lean: finitely many independent standard
+  Gaussians, the finite-dimensional centered Gaussian laws of
+  `GaussianComparison` and `SourceTube`, the finite Wick formula of
+  `FiniteWick`, the finite Hermite and Fock layer of `GaussianHermite` and
+  `HermiteFock`, and, since wave L19, an isonormal Gaussian field on a real
+  Hilbert space (covariance the inner product) and its pullback along the
+  feature map of the source covariance (covariance `srcCov`), the
+  fixed-order Stratonovich integrals `X_n` as `L^2` limits and the `L^2`
+  series `u`, model M9);
 - the imported bounds from the earlier literature;
 - the Laplace-transform-to-time growth conversion and the variational
   asymptotics;
@@ -601,7 +724,7 @@ Mathlib `56a005855ea17e0b0958f73ec801ae140b0a1679`. Transitive pins are in
 
 ```sh
 lake exe cache get        # Mathlib build cache
-lake build                # all 139 modules (umbrella: StratonovichHAMSecondMoment)
+lake build                # the umbrella StratonovichHAMSecondMoment (it imports 210 modules: 185 library, 25 StratonovichHAMAudit) and the Axioms module
 lake build StratonovichHAMSecondMoment.Axioms   # axioms of every public declaration
 scripts/check-controls.sh # all negative controls must be rejected
 ```
@@ -622,8 +745,8 @@ rev = "v0.10.0"
 
 | Path | Contents |
 |---|---|
-| `StratonovichHAMAudit/` | the 24 step modules |
-| `StratonovichHAMSecondMoment/` | the 115 library modules (whole results, narrower results, foundations and proof steps) |
+| `StratonovichHAMAudit/` | the 24 step modules and `HermiteWordConsumer` (private checks of `HermiteWord`, not a step) |
+| `StratonovichHAMSecondMoment/` | the 185 library modules (whole results, narrower results, foundations and proof steps) |
 | `StratonovichHAMSecondMoment.lean` | umbrella module importing all of them |
 | `StratonovichHAMSecondMoment/Axioms.lean` | `#print axioms` for every public declaration |
 | `controls/` | negative controls, one directory per module |
@@ -867,6 +990,149 @@ human verification, and they do not check the analytic inputs that stay
 outside Lean. A later change to the ledger or to a cited label needs a new
 review.
 
+Wave L15 (item L15-UM, scope (a), approved by the author on 2026-11-19, which
+reopened the Lean work for this item) was gated on 2026-11-20 (tag
+`L15-gate`): four modules (`UniformMeanInterface`, `UniformMeanFoundation`,
+`UniformELift`, `PositiveRawMean`), the coverage row `L:uniform-E-lift`, the
+changed row `L:positive-raw-embedding` and the named inputs
+`CameronSpatialMap` and `UniformMeanRegulator`. Its TeX citations, first at
+revision `c3c2431d` (book v1.0.2), were moved to `0788ddee` (book 1.1.0) by
+item R1 of wave L16; among the files cited by wave L15, only
+`integrated_uniform_mean.tex` and `integrated_uniform_products.tex` changed
+between the two (seven other TeX files of the book changed).
+
+Wave L16 (approved by the author on 2026-11-20, the Cameron-map chain) was
+gated on 2026-11-20 (tag `L16-gate`, commit `ebac849`): fifteen modules
+(`CameronInterface`, `CompactOperatorFoundation`, `UniformMeanCutoff`,
+`CameronProducts`, `CameronSpatial`, `CameronTemporalKernel`,
+`CameronTemporalYoung`, `CameronTemporalSqrt`, `CameronTemporalMap`,
+`CameronTemporalTarget`, `CameronUMap`, `UniformMeanTensor`,
+`UniformMeanAssembly`, `UniformMeanDischarge`, `CameronFinal`), 429 ledger
+rows citing TeX lines at revision `0788ddee` (book 1.1.0), seven new
+coverage rows, the changed row `L:positive-raw-embedding` (now with nothing
+supplied) and the named input `CutoffCompact` (the compactness sentence of
+`P:cutoff-singular-values`, kept a named input by the author's decision of
+2026-11-20). L15's named inputs `CameronSpatialMap` and
+`UniformMeanRegulator` are constructed, with `CutoffCompact` as the only
+input; the fallback `TemporalCompact` is proved. Its statements and
+documentation were reviewed, its receipts cut and its modules replayed on
+Easley before the gate (see `COMPLETION.md`). No refutation or audit files
+were written for wave L16.
+
+Wave L17 (approved by the author on 2026-11-20, the pairing-envelope chain)
+was closed by the author on 2026-11-21 (tag `L17-gate`): fifteen
+modules (`PairingInterface`, `PairingTranslatedCS`, `PairingConvolution`,
+`PairingRegional`, `PairingCapRemoval`, `PairingEnvelope`, `PairingBridge`,
+`PairingDampedNorms`, `HomogeneousEnvelope`, `CrudeCorrected`,
+`EnvelopeFinal`, `GreenSmoothed3`, `PairingSmoothedNorms`, `EnvelopeD3`,
+`EnvelopeD3Final`), 508 ledger rows (their TeX citations at revision
+`0788ddee`, book 1.1.0), four new coverage rows (`L:translated-covariance-CS` and
+`L:pairing-product-envelope` in full; `L:crude-corrected` and `P:envelope`
+narrower with the named input `MixedMoment`) and the model choice M7 (the
+label-set two-chain model, with a bridge from M4). No new named input; the
+fallbacks `ConvolutionNorms` and `RegionalHalfBound` are used nowhere. Its
+statements and documentation were reviewed, its receipts cut and its modules
+replayed on Easley before the gate (see `COMPLETION.md`). No refutation or
+audit files were written for wave L17.
+
+Wave L18 (approved by the author on 2026-11-21, the Wick-measure chain and the
+discharge of `DiagramLimits`) was integrated on branch `wave-l18/int`; the
+author closed its gate on 2026-11-21 (tag `L18-gate`): thirteen modules (`WickInterface`, `RieszDiagramLimits`,
+`RieszDiagramLimitsHomog`, `WickSpectral`, `WickBridge`, `WickMass`,
+`WickScaling`, `WickStep4`, `WickMeasures`, `JointFixedOrder`,
+`EnvelopeD3Wave`, `JointTail`, `WickFinal`), 380 ledger rows (TeX citations
+at `0788ddee`), two new coverage rows (`L:spatial-wick-measures` in full;
+`L:joint-fixed-order` narrower, its deterministic half), four extended rows
+(`P:d1-upper`, `P:riesz-small`, `L:crude-corrected`, `P:envelope`; classes
+unchanged) and the model choice M8 (the gap-coordinate Wick-measure model;
+under `H:homog`, for `D in Pi2 m n` and `t > 0`, M4's diagram at pair width
+`eps > 0` equals M8's at vertex width `eps/2` and temporal width `0`; under
+`H:homog`, for `D in Pi2 m n`, positive vertexwise widths, a Green family
+`G_s = g(s, .) dy` with `g` finite and jointly measurable, measurable Laplace
+domains in `(0, infinity)` and damping `theta >= 0`, M8's damped integral is
+at most M7's pairing integral with the per-edge data `wickEdge`, `<=` only). The named input `DiagramLimits` is discharged; besides
+it, the ledger Scope lists seven named inputs of waves L13 to L16
+(`MixedMoment`, `FirstMomentSeries`, `SignedMultiplierForm`, `ThreeTransfer`,
+`CameronSpatialMap`, `UniformMeanRegulator`, `CutoffCompact`), five of them
+open (the two map inputs are constructed in wave L16); the four fallback
+named inputs of the wave are used nowhere. Its statements and documentation
+were reviewed, its receipts cut and its modules replayed on Easley before the
+gate (see `COMPLETION.md`). No refutation or audit files were written for
+wave L18.
+
+Wave L19 (approved by the author on 2026-11-21, the source-field chain: the
+`L^2` construction of `L:joint-fixed-order`, `P:mixed`, `L:vertex-crude`, and
+the discharge of `MixedMoment` and `FirstMomentSeries`) was integrated on
+branch `wave-l19/int`; the author closed its gate on 2026-11-22 (tag
+`L19-gate`): eleven modules
+(`SourceInterface`, `SourceIsonormal`, `SourceFeatures`, `SourceWick`,
+`SourceReversal`, `SourceFixedOrder`, `SourceGreenFirst`,
+`SourceVertexCrude`, `SourceMixed`, `SourceExpansion`, `SourceFinal`), 292
+ledger rows (TeX citations at `0788ddee`), two new coverage rows (`P:mixed`
+and `L:vertex-crude`, both in full), `L:joint-fixed-order` now in full, the
+seven consumer rows updated (`L:crude-corrected` and `L:white-test` full
+with the manuscript's hypotheses; `P:envelope` and `P:low-alpha-upper` with
+the manuscript's hypotheses and a narrower conclusion;
+`C:d1-first-calibration`, `P:d1-upper` and `P:riesz-small` with inputs
+supplied and a narrower conclusion), and the model choice M9 (the
+source fields of `E:pairing-source-covariance` on any probability space,
+with the constructed instance `m9`; no M4 diagram is realized at positive
+widths, each positive-width pairing integral is an M8 diagram after the
+chain reversal, with the reversed pairing, and M4 enters through the limits
+and through the regularized diagram bounds). The three Riesz consumer
+rows keep the Riesz instance of `H:homog` as the explicit hypothesis `hH`
+(the author's decision of 2026-11-22): it is true, but not formalized in the
+library. The ledger Scope lists five named inputs of waves L13 to L16 besides
+`DiagramLimits` and the two wave-L15 data structures (`MixedMoment` and
+`FirstMomentSeries`, discharged in wave L19; `SignedMultiplierForm`,
+`ThreeTransfer` and `CutoffCompact`, open); the two fallback named inputs of
+the wave (`SourceNoise`, `TerminalReversal`) are used nowhere. The documentation
+review's accepted findings were repaired in docs-only commits (the
+author's decisions of 2026-11-22). No refutation or
+audit files were written for wave L19.
+
+Wave L20 (approved by the author on 2026-11-22 with the default answers to
+its thirteen decisions: `P:mild-construction` for every source field, the
+Riesz instance of `H:homog` in `d = 1`, the deferred wrappers and a
+comment-only docstring pass) was integrated on branch `wave-l20/int`
+and gated (below): eleven modules (`MildInterface`, `MildOccupied`,
+`MildPolyMem`, `MildFields`, `MildTerminalFubini`, `MildPartialVertex`,
+`MildGreenWidth`, `MildConstruction`, `MildFinal`, `RieszInstanceOne`,
+`CleanupWrappers`), 306 ledger rows (TeX citations at `0788ddee`), six
+coverage rows updated (`P:mild-construction`, `P:d1-upper`,
+`C:d1-first-calibration`, `P:low-alpha-upper` and `P:envelope` in full with
+the manuscript's hypotheses; `P:riesz-small` with the manuscript's
+hypotheses and a narrower conclusion), no new model choice (M9 extended by
+the mild integral), and the comment-only docstring pass over 39 earlier
+library modules and 16 of their `ChallengeDefs/` mirrors (55 files). The Riesz `hH` and the
+white-case `MixedMoment` of `P:d1-upper` are gone from the headline theorems
+of every row (retained L19 wrappers that the rows credit keep `hH`, and
+retained forms for abstract random variables keep `MixedMoment`). The named
+inputs still supplied at wave L20 were `SignedMultiplierForm`, `ThreeTransfer`,
+`CutoffCompact`, `TubeAttained` (discharged in wave L21, the end point
+the author set on 2026-11-23, below) and `TubeTail`; the two fallback named inputs
+of the wave (`JointMeasurability`, `TerminalFubini`) are used nowhere. The
+author closed the wave-L20 gate on 2026-11-23 (tag `L20-gate` on `5cdd493`): Lean statements
+reviewed by DeepSeek V4 Pro (eight scopes, no MAJOR or CRITICAL finding), documentation by
+GPT-6.2-Sol (repaired docs-only), receipts `4842df8`, external kernel replay
+`verification/leanchecker-easley-wave-l20/` (below). No refutation or audit files were written for wave L20.
+
+Wave L21 (the author's end point of 2026-11-23: "Close the Lean companion after L20 plus
+TubeAttained as an item in L21") closed its gate on 2026-11-23 (tag `L21-gate` on `38a3e00`): one module, `SourceTubeAttained`, discharges the named input `TubeAttained` at the
+manuscript's tubes (closed images of Hilbert balls under a bounded map by Banach-Alaoglu, without
+separability; least-radius attainment by rescaling a near-optimal control), 12 ledger rows (TeX
+citations of `integrated_gaussian_tubes.tex` at `0788ddee`), one new coverage row
+(`L:tube-closed-geometry` with the manuscript's hypotheses and a narrower conclusion: the
+Gaussian tail and the almost sure finiteness are not formalized) and one updated
+(`P:tube-rayleigh-transfer`, still a whole result with inputs supplied, now `TubeTail` only), and
+the comment-only Lean docstring corrections deferred from the wave-L20 reviews. The named inputs
+still supplied, at the end point, are `SignedMultiplierForm`, `ThreeTransfer`, `TubeTail` and
+`CutoffCompact`. The statement review of the module (DeepSeek V4 Pro: PASS_WITH_NOTES, high, no
+MAJOR or CRITICAL finding, citation notes repaired comment-only) and the documentation review
+(GPT-6.2-Sol, repaired docs-only) are done; receipts `39c4365`; external kernel replay
+`verification/leanchecker-easley-wave-l21/` (below). With wave L21 the Lean work reaches the
+author's end point: no further proof waves are planned. No refutation or audit files were written for wave L21.
+
 The ledger was then re-anchored to manuscript revision `39f2597a`, which adds
 front matter and appendices. It renames the appendix-local direct-bound constant
 `C_2` to `C_dir`. It clarifies the attribution of the quoted source result
@@ -881,6 +1147,18 @@ the same text (except 1 range whose words are kept but re-wrapped around
 inserted explanatory sentences); locators resolved by hand were read and cite
 the same object, whose wording may have changed. The file of every locator was
 checked against the cited labels.
+
+For release v0.11.0 the companion was re-anchored again, to manuscript revision
+`edf7085f` (book 1.1.3). Until then the citations of waves up to L14 were at
+`39f2597a` and those of waves L15 to L21 at `0788ddee` (book 1.1.0). Previously
+correct locators keep their numbers: the lines cited at `39f2597a` have the same
+numbers at `edf7085f`, and between `0788ddee` and `edf7085f` the book changed only
+version numbers, dates and links in place, on no cited line. Five stale scaffold
+docstrings and their five `Challenge.lean` copies, which carried line numbers of
+book v1.0.2 (`c3c2431d`), now match `claims.yaml`. Current locators read
+`edf7085f` (book 1.1.3); explicitly historical statements (gate and wave records,
+checks and readings at a revision, the frozen interface records under `docs/`)
+keep their revisions.
 
 </details>
 
@@ -914,7 +1192,8 @@ self-consistency; it does not by itself establish that the statements
 match the paper (see Trust).
 
 Since release v0.10.0 the theorem claims are compared in two
-configurations: `comparator.json` (the 1553 theorems credited to rows of
+configurations (the counts here are those of v0.10.0; the current ones are
+under Counts): `comparator.json` (the 1553 theorems credited to rows of
 `coverage.yaml`: 1134 named at the wave-L13/L14 gate, 419 added by the
 direct-label rule) and `comparator-helpers.json` (the 2100 helper theorems,
 declared a smoke check in `lean-pkg-signoff.json`); `CheckFidelity.lean`
@@ -999,6 +1278,74 @@ the 18 of them that were `reusable` (the fields of `EndpointLemmas.IsCov`,
 `EndpointPair` and `ProductParams`, and of `ClassOBridge.IsClassO`) are
 `internal`; the helper accounting above credits
 or declares every compared theorem.
+A thirteenth gate replayed commit `315a332`, where wave L15 was integrated:
+the four new modules `UniformMeanInterface`, `UniformMeanFoundation`,
+`UniformELift` and `PositiveRawMean` `--fresh` (4/4 pass), and a
+default-mode replay of all 146 targets (pass;
+`verification/leanchecker-easley-wave-l15/`). The other 142 modules have
+not been replayed `--fresh` at `315a332`; 111 of them differ from `8f51004`
+only in comments with unchanged line counts, the umbrella changed (it imports
+the four new modules) and `Axioms` imports it.
+A fourteenth gate replayed commit `ebac849`, the wave-L16 gate commit: the
+fifteen new modules `CameronInterface`, `CompactOperatorFoundation`,
+`UniformMeanCutoff`, `CameronProducts`, `CameronSpatial`,
+`CameronTemporalYoung`, `CameronTemporalKernel`, `CameronTemporalSqrt`,
+`CameronTemporalMap`, `CameronTemporalTarget`, `CameronUMap`,
+`UniformMeanTensor`, `UniformMeanAssembly`, `UniformMeanDischarge` and
+`CameronFinal`, and the umbrella, `--fresh` (16/16 pass), and a default-mode
+replay of all 161 targets (pass;
+`verification/leanchecker-easley-wave-l16/`). The umbrella's `--fresh` run
+re-checks every library module except `Axioms` as an import; `Axioms`, which
+imports the umbrella, is replayed in default mode only. The other 145 modules
+are byte-identical to `315a332`.
+A fifteenth gate replayed commit `68d0c5e`, the wave-L17 gate commit: the
+fifteen new modules `PairingInterface`, `PairingTranslatedCS`,
+`PairingConvolution`, `PairingCapRemoval`, `PairingRegional`,
+`PairingEnvelope`, `PairingBridge`, `PairingDampedNorms`,
+`HomogeneousEnvelope`, `CrudeCorrected`, `EnvelopeFinal`, `GreenSmoothed3`,
+`PairingSmoothedNorms`, `EnvelopeD3` and `EnvelopeD3Final`, and the umbrella,
+`--fresh` (16/16 pass), and a default-mode replay of all 176 targets (pass;
+`verification/leanchecker-easley-wave-l17/`). The umbrella's `--fresh` run
+re-checks every library module except `Axioms` as an import; `Axioms`, which
+imports the umbrella, is replayed in default mode only. The other 160 modules
+are byte-identical to `ebac849`.
+A sixteenth gate replayed commit `6e4644d`, the wave-L18 gate commit: the
+thirteen new modules `WickInterface`, `RieszDiagramLimits`,
+`RieszDiagramLimitsHomog`, `WickSpectral`, `WickBridge`, `WickMass`,
+`WickScaling`, `WickStep4`, `WickMeasures`, `JointFixedOrder`,
+`EnvelopeD3Wave`, `JointTail` and `WickFinal`, and the umbrella, `--fresh`
+(14/14 pass), and a default-mode replay of all 189 targets (pass;
+`verification/leanchecker-easley-wave-l18/`). The umbrella's `--fresh` run
+re-checks every library module except `Axioms` as an import; `Axioms`, which
+imports the umbrella, is replayed in default mode only. The other 175 modules
+are byte-identical to `68d0c5e`.
+A seventeenth gate replayed commit `fe9f1de`, the wave-L19 gate commit: the
+eleven new modules `SourceInterface`, `SourceIsonormal`, `SourceFeatures`,
+`SourceWick`, `SourceReversal`, `SourceFixedOrder`, `SourceGreenFirst`,
+`SourceVertexCrude`, `SourceMixed`, `SourceExpansion` and `SourceFinal`, and
+the umbrella, `--fresh` (12/12 pass), and a default-mode replay of all 200
+targets (pass; `verification/leanchecker-easley-wave-l19/`). The umbrella's
+`--fresh` run re-checks every library module except `Axioms` as an import;
+`Axioms`, which imports the umbrella, is replayed in default mode only. The
+other 188 modules are byte-identical to `6e4644d`.
+An eighteenth gate replayed commit `5cdd493`, the wave-L20 gate commit: the
+eleven new modules `MildInterface`, `MildOccupied`, `MildPolyMem`,
+`MildFields`, `MildTerminalFubini`, `MildPartialVertex`, `MildGreenWidth`,
+`MildConstruction`, `MildFinal`, `RieszInstanceOne` and `CleanupWrappers`,
+and the umbrella, `--fresh` (12/12 pass), and a default-mode replay of all
+211 targets (pass; `verification/leanchecker-easley-wave-l20/`). The
+umbrella's `--fresh` run re-checks every library module except `Axioms` as an
+import; `Axioms`, which imports the umbrella, is replayed in default mode
+only. Of the other 198 modules, 159 are byte-identical to `fe9f1de` and 39
+differ from it only in comments.
+A nineteenth gate replayed commit `38a3e00`, the wave-L21 gate commit: the
+new module `SourceTubeAttained` and the umbrella, `--fresh` (2/2 pass), and a
+default-mode replay of all 212 targets (pass;
+`verification/leanchecker-easley-wave-l21/`). The umbrella's `--fresh` run
+re-checks every library module except `Axioms` as an import; `Axioms`, which
+imports the umbrella, is replayed in default mode only. Of the other 209
+modules, 189 are byte-identical to `5cdd493` and 20 differ from it only in
+comments.
 
 ## Citation
 

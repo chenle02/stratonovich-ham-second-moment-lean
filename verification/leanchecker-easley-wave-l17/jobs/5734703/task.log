@@ -1,0 +1,13 @@
+node=node879 job=5734703 array=5734701_2 mode=fresh target=StratonovichHAMSecondMoment.CrudeCorrected start=2026-11-20T19:46:07-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=68d0c5e6fd03b0dcb925e637152db199682ce18b TREE=9ae2829d6e18d02c219c3c9dfa7eaa13ffffde4e MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1760 waited_s=0
+REPLAY_STARTED 2026-11-20T19:48:09-0600
+BEGIN fresh StratonovichHAMSecondMoment.CrudeCorrected 19:48:10
+END fresh StratonovichHAMSecondMoment.CrudeCorrected	0	0:45:30.70	7619972	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2732 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.CrudeCorrected
+PROCESS_EXIT=0 end=2026-11-20T20:33:41-0600

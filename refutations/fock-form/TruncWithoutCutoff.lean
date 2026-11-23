@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.FockForm
 /-!
 Refutation for `StratonovichHAMSecondMoment.FockForm.truncC_eq` (hypothesis `hP` of
 `HermiteWord.cut_eq_raw`: the cutoff fixes vectors whose color degrees are within the cutoffs;
-`L:finite-word-cutoff`, main TeX lines 3036-3075 at 39f2597a).
+`L:finite-word-cutoff`, main TeX lines 3036-3075 at edf7085f).
 
 Wrong variant: the truncation fixes every degree-supported vector, without `d ≤ N`.
 Counterexample: one color, cutoff `N = 0`, degree `d = 1`, `v_k = 1` for `k_0 ≤ 1`: the

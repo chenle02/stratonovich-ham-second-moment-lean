@@ -1,7 +1,7 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.HigherRieszTwo.M2_pos` and the
 hypothesis `c > 0` of `higher_riesz_two` (manuscript `L:higher-riesz`, main
-TeX line 6104 at 39f2597a, "`γ(x) = c|x|^{-α}`, `c > 0`"): Hypothesis
+TeX line 6104 at edf7085f, "`γ(x) = c|x|^{-α}`, `c > 0`"): Hypothesis
 `H:spatial-maximum` asks for `M > 0`, and `M_2 = c{...}` vanishes at `c = 0`.
 
 Wrong variant: `0 < M_2(c, α)` for every `c ≥ 0` and `0 < α < 3/2`

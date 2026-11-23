@@ -1,0 +1,13 @@
+node=node847 job=5733054 array=5733054_1 mode=fresh target=StratonovichHAMSecondMoment start=2026-11-20T12:19:31-0600
+tmp_avail_G=891
+VERIFIED_COMMIT=ebac849d61e539a125de6d920c1c2b29255ca671 TREE=411f45b32cb77ef271136fd5dfa0fbe3c9254715 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1280 waited_s=0
+REPLAY_STARTED 2026-11-20T12:21:12-0600
+BEGIN fresh StratonovichHAMSecondMoment 12:21:12
+END fresh StratonovichHAMSecondMoment	0	0:44:02.24	7842756	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2642 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment
+PROCESS_EXIT=0 end=2026-11-20T13:05:15-0600

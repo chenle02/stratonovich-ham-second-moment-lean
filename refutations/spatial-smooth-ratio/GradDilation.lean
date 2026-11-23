@@ -1,6 +1,6 @@
 /-
 Refutation for the second identity of `E:spatial-dilation`
-(`notes/integrated_spatial_occupation.tex` line 257 at 39f2597a), package theorem
+(`notes/integrated_spatial_occupation.tex` line 257 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.SpatialSmoothRatio.gradEnergy_dilL2`
 (`b(U_ℓ g) = ℓ² b(g)`).
 

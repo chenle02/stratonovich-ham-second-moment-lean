@@ -1,6 +1,6 @@
 /-
 Refutation for `L:source-finite-comparison`
-(`notes/integrated_source_convergence.tex` lines 21-45 at 39f2597a), package
+(`notes/integrated_source_convergence.tex` lines 21-45 at edf7085f), package
 theorem `StratonovichHAMSecondMoment.SourceTube.source_finite_comparison_law`.
 
 Class (a): manuscript-claim perturbation in the manuscript domain.

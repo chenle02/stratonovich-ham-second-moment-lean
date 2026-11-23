@@ -6,7 +6,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 Gaussian Schwartz test functions, built by hand (Mathlib has no Gaussian
 `SchwartzMap`).  This module has no manuscript label of its own: it is the
 foundation for `P:masked-spectral-growth`
-(`notes/integrated_covariance_foundation.tex`, revision 39f2597a, lines 37-94),
+(`notes/integrated_covariance_foundation.tex`, revision edf7085f, lines 37-94),
 whose proof (lines 68-78) applies the spectral convention
 `E:masked-spectral-convention` (lines 17-21) "to the single Schwartz test
 `e^{-r²|x|²/4} e^{-iy·x}`" and uses the Gaussian Fourier integral of

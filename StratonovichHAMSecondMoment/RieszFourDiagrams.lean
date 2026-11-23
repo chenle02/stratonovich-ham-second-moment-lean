@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The Riesz diagrams in `d = 1`: the order-two diagram limit and the order-four
 unit-domain representation (wave L13 item D4, follow-up).  Main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a:
+`notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f:
 * `P:riesz-small` (statement lines 5125-5172, proof 5174-5220): the order-two part
   `E:riesz-two` (lines 5129-5142; formalized in `OrderTwoDiagrams`), and the
   order-four part: the domain `H_m` (lines 5144-5150), the chain sums `S_l` and
@@ -55,8 +55,10 @@ Formalized (all proved):
 * `diagram_riesz_pos` (auxiliary, for non-vacuous refutations): `J_{m,n,D}(t) > 0`
   for `c > 0`, `α₀ ≥ 0`, `t > 0`.
 
-Supplied inputs: only `DiagramModel.MixedMoment` (`P:mixed`, blocker D5), in
-`riesz_small_paper'` (through `riesz_small_paper`).  Nothing else.
+Supplied inputs: only `DiagramModel.MixedMoment` (`P:mixed`; blocker D5 when this module was
+written, discharged in wave L19 for the source-field chaos terms by
+`SourceFinal.mixed_terms_l19`), in `riesz_small_paper'` (through `riesz_small_paper`).  Nothing
+else.
 
 Hypotheses: the diagram results need `c ≥ 0`, `0 ≤ α < 1`, `0 ≤ α₀ < 1` (broader
 than the TeX's strict inequalities).  The wrappers carry the TeX's hypotheses:

@@ -1,7 +1,7 @@
 /-
 Refutation for the real embedding of the real-`H` clause of
 `P:masked-auxiliary-norm` (`notes/integrated_covariance_foundation.tex`,
-line 117 at 39f2597a), package definition
+line 117 at edf7085f), package definition
 `StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.ofRealCLM`
 (`ι v = v + 0i`, real linear and isometric, `norm_ofReal`).
 

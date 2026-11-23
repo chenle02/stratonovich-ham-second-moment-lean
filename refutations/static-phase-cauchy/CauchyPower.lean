@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.StaticPhaseCauchy
 /-!
 Refutation for `StratonovichHAMSecondMoment.StaticPhaseCauchy.norm_taylorCoeff_le` (Cauchy's
 estimate in the proof of `P:static-phase-all-orders`, main TeX lines 3134-3142 at
-39f2597a).
+edf7085f).
 
 Wrong variant: the coefficient bound with `ρ^(n+1)` in place of `ρ^n` (an off-by-one in
 the power of the radius).  Counterexample: `F = 1` (constant, values in `ℂ`), `n = 0`,

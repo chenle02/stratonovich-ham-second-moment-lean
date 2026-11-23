@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.StaticInteractionCompleted
 /-!
 Refutation for
 `StratonovichHAMSecondMoment.StaticInteractionCompleted.static_interaction_orders`
-(`E:static-interaction`, main TeX lines 3238-3240, proof 3264-3311 at 39f2597a).
+(`E:static-interaction`, main TeX lines 3238-3240, proof 3264-3311 at edf7085f).
 
 Wrong variant: the bound `‖I‖² ≤ 𝓔(h,σ,λ) ‖(f,g)‖²` without the free term `1`.
 Counterexample: `E = ℝ`, `T = S = id`, `(f,g) = 1`, `Z = (1, 0, 0, …)` (no interaction),

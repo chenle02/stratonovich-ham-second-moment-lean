@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `L:finite-word-cutoff` (Exact cutoffs for finite Gaussian words) of
 `notes/notes_stratonovich_ham_second_moment.tex` (main TeX file; all line
-numbers below are at revision 39f2597a): statement lines 3036-3058 (display
+numbers below are at revision edf7085f): statement lines 3036-3058 (display
 `E:finite-word-cutoff`, lines 3048-3055), proof lines 3060-3076, in its
 multi-mode form (several Gaussian modes per color, the cutoff on the TOTAL
 Hermite degree of each color), and its use in `P:interval-coefficients`

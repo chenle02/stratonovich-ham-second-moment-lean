@@ -1,6 +1,6 @@
 /-
 Refutation for the general telescoping lemma `E:interval-copy-metric` (main
-TeX lines 3809-3837 at 39f2597a), package theorem
+TeX lines 3809-3837 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.FixedSplitCore.metric_telescoping`.
 
 Wrong variant: dropping the order-convexity hypothesis (each color active on

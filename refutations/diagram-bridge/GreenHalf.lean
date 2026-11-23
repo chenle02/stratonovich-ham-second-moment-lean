@@ -1,6 +1,6 @@
 /-
 Refutation for the `d = 1` Green normalization in the positions/increments
-bridge of `DiagramBridge` (main TeX lines 952 and 5351-5355 at 39f2597a:
+bridge of `DiagramBridge` (main TeX lines 952 and 5351-5355 at edf7085f:
 `G(h, y) = ½ 1_{|y|<h}`), package theorem
 `StratonovichHAMSecondMoment.DiagramBridge.spatial_waveGreen_one_eq_spatialPos`.
 

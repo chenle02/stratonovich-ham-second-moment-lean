@@ -1,0 +1,2 @@
+  set_option smartUnfolding false in
+  bridge_auto _root_.StratonovichHAMSecondMoment.EnvelopeD3.homogeneous_envelope_diagrams_three

@@ -1,6 +1,6 @@
 /-
 Refutation for the separate chain roots in the positions/increments change of
-variables of `DiagramBridge` (main TeX lines 811-813 and 5339-5341 at 39f2597a:
+variables of `DiagramBridge` (main TeX lines 811-813 and 5339-5341 at edf7085f:
 "with a separate root zero in each chain.  Thus, `x_l` is the sum of
 increments in its own chain up to label `l`"), package definitions
 `StratonovichHAMSecondMoment.DiagramBridge.incrOfPos` and

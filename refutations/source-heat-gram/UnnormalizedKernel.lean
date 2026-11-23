@@ -2,7 +2,7 @@ import StratonovichHAMSecondMoment.SourceHeatGram
 
 /-!
 Refutation for the normalization of `E:source-heat-definition`
-(`integrated_source_convergence.tex` lines 176-179 at 39f2597a), on which the contraction
+(`integrated_source_convergence.tex` lines 176-179 at edf7085f), on which the contraction
 conclusions of `StratonovichHAMSecondMoment.SourceHeatGram.source_spatial_heat_paper`
 (item 4) rest.
 

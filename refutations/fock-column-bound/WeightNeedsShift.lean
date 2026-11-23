@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.FockColumnBound
 /-!
 Refutation for `StratonovichHAMSecondMoment.FockColumnBound.abs_wt_le` (the multiplier
 `w_ρ(η) = (ρ² + |η|²)^{-1/2}` of `A_ρ^{-1/2}` is bounded by `ρ^{-1}`, used for
-`‖A_ρ^{-1/2}‖ ≤ ρ^{-1}` and the substitution of main TeX lines 3455-3459 at 39f2597a).
+`‖A_ρ^{-1/2}‖ ≤ ρ^{-1}` and the substitution of main TeX lines 3455-3459 at edf7085f).
 
 Wrong variant: drop the shift (`ρ = 0`, the operator `(-Δ)^{-1/2}`) and claim the multiplier is
 bounded by some constant.  Counterexample in `d = 1`: at `|η| = 1/(|C| + 1) > 0` the multiplier

@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Propositions `P:variational-unmasked-rate` (TeX lines 126-139; proof 141-217)
 and `P:variational-positive-scores` (TeX lines 370-384; proof 386-462) of
-`notes/integrated_unmasked_variational.tex` at revision 39f2597a.  The
+`notes/integrated_unmasked_variational.tex` at revision edf7085f.  The
 section's standing assumption (line 4) is a nonzero covariance satisfying
 `H:homog` with `a = α₀`; the wrappers carry it as
 `HomogHypothesis.HomogCovariance`, `Γ ≠ 0`, `a = α₀`.  Definitions reused
@@ -595,7 +595,7 @@ def testRadius (alpha a : ℝ) (Γ : Measure (Rd d)) (Ψ₀ : ℝ × Rd d → �
 /-- The named input `S1Bdd`: the coefficient-one variational value set
 `{I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` is bounded above.  This is word for word the
 boundedness claim of `P:variational-positive-scores` for `c = 1`
-(`notes/integrated_unmasked_variational.tex` lines 372-374 at 39f2597a).  Its
+(`notes/integrated_unmasked_variational.tex` lines 372-374 at edf7085f).  Its
 manuscript proof (lines 430-446) is stochastic: it combines the moment upper
 bound of `T:full-upper` (`E|u(T,0)|² ≤ e(T+2)^d e^{C_up T^κ}`) with the point
 lower bound `E:variational-unmasked-point-lower` of
@@ -711,7 +711,7 @@ theorem alpha_lt_two {alpha alpha0 : ℝ} {Γ μ : Measure (Rd d)}
   linarith [hH.threshold, hH.alpha0_pos]
 
 /-- **`P:variational-unmasked-rate`, Rayleigh-form part** (TeX lines 126-139
-at 39f2597a) with the section's standing hypotheses (lines 4-5: a nonzero
+at edf7085f) with the section's standing hypotheses (lines 4-5: a nonzero
 covariance satisfying `H:homog`, `a = α₀`) and `Ψ ∈ C_pos`, `I = [0,1]`.
 With `λ_{Ψ,s}` DEFINED as the square root of the real Rayleigh supremum
 `E:variational-real-rayleigh` (`VariationalDilation.rate`): there are reals
@@ -762,7 +762,7 @@ theorem variational_unmasked_rate_paper {alpha alpha0 : ℝ} {Γ μ : Measure (R
     hH.alpha0_pos.le hH.alpha0_lt_one hΨ
 
 /-- **`P:variational-positive-scores`, input-free part** (TeX lines 370-462 at
-39f2597a, without `S1Bdd`) with the section's standing hypotheses (lines 4-5: a
+edf7085f, without `S1Bdd`) with the section's standing hypotheses (lines 4-5: a
 nonzero covariance satisfying `H:homog`, `a = α₀`); `k = 3 - α`,
 `q = 4 - α`.  The value sets `{c I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` are nonempty; every
 value is genuine (for each `Ψ ∈ C_pos`: `λ` integrable on `(0,1)`, every
@@ -805,7 +805,7 @@ theorem variational_positive_scores_paper {alpha alpha0 : ℝ} {Γ μ : Measure 
     hΓ0 hH.alpha0_pos.le hH.alpha0_lt_one
 
 /-- **`P:variational-positive-scores`, supremum part, over the named input
-`S1Bdd`** (TeX lines 372-377 and 452-457 at 39f2597a) with the section's
+`S1Bdd`** (TeX lines 372-377 and 452-457 at edf7085f) with the section's
 standing hypotheses (nonzero covariance satisfying `H:homog`, `a = α₀`):
 given `S1Bdd` (the boundedness claim of lines 372-374 for `c = 1`; its
 manuscript proof at lines 430-446 goes through `T:full-upper` and

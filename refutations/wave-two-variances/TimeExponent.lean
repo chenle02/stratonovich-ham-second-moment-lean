@@ -1,6 +1,6 @@
 /-
 Refutation for the time exponent of `E:variance-kernel-time-bound`
-(`notes/integrated_wave_variance.tex` at 39f2597a, lines 481-484:
+(`notes/integrated_wave_variance.tex` at edf7085f, lines 481-484:
 `‖1_I 𝒦_ij(·;ξ,η)‖²_{H_a} ≤ A_T h^{2-a} Φ_h(ξ,η)`), package theorems
 `StratonovichHAMSecondMoment.WaveTwoVariances.norm_kerH_sq_le` and
 `StratonovichHAMSecondMoment.WaveTwoVariances.kerH_eq_smul_emb`.

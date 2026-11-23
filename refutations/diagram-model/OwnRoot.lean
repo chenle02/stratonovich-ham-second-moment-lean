@@ -1,6 +1,6 @@
 /-
 Refutation for the chain-root convention of `DiagramModel` (main TeX lines
-811-813 at 39f2597a: "at each first vertex set `(s_{p(l)}, y_{p(l)}) = (0,0)`.
+811-813 at edf7085f: "at each first vertex set `(s_{p(l)}, y_{p(l)}) = (0,0)`.
 Thus, the second chain has its own root, rather than the last vertex of the
 first chain"), package definitions
 `StratonovichHAMSecondMoment.DiagramModel.pred` and `twoSimplex`.

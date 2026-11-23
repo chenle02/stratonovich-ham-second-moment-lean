@@ -2,7 +2,7 @@
 Refutation for the Schur bound of `E:positive-bochner-inclusion`, package theorem
 `StratonovichHAMSecondMoment.OccupationCompletion.positive_bochner_inclusion` (third conclusion,
 `‖J_G F‖² ≤ K_0 ‖F‖²`, `K_0 = 2^a/(1-a)`; `L:positive-raw-embedding`,
-`integrated_intrinsic_constant.tex` lines 27-31 at 39f2597a).
+`integrated_intrinsic_constant.tex` lines 27-31 at edf7085f).
 
 Wrong variant (class (a), manuscript-claim perturbation in the manuscript domain): the constant
 `K_0` replaced by `1`.  Counterexample: `G = ℝ`, `F = 1` on `I = (0,1)`, any `0 < a < 1`:

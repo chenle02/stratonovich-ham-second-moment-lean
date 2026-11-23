@@ -1,7 +1,7 @@
 /-
 Refutation for the auxiliary kernel lower bound of the positivity step of
 `P:occupation-physical-class` (`notes/integrated_spatial_occupation.tex` lines 567-572 at
-39f2597a), package theorem `StratonovichHAMSecondMoment.OccupationPhysicalClass.Kstar_one_le`
+edf7085f), package theorem `StratonovichHAMSecondMoment.OccupationPhysicalClass.Kstar_one_le`
 (`K_⋆(1) ≤ K_⋆(s-t)` for distinct `s, t ∈ (0,1)`).
 
 Wrong variant: the hypothesis `t ≠ s` dropped.  Counterexample: `a = 1/2`, `D = 1`,

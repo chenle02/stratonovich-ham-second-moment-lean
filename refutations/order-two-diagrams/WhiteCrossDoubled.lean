@@ -1,6 +1,6 @@
 /-
 Refutation for the cross diagram of `L:white-test` (main TeX lines 940-949 and
-952-958 at 39f2597a: "`∫ G(s,y) G(r,y) dy = min(s,r)/2`. The `(1,1)` integral is
+952-958 at edf7085f: "`∫ G(s,y) G(r,y) dy = min(s,r)/2`. The `(1,1)` integral is
 `c_0 t^{3-α₀}`"), package theorem
 `StratonovichHAMSecondMoment.OrderTwoDiagrams.white_cross`.
 

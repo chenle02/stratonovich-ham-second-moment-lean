@@ -1,0 +1,2 @@
+  set_option smartUnfolding false in
+  bridge_auto _root_.StratonovichHAMSecondMoment.HomogeneousEnvelope.two_card_Q1_add_card_Q2

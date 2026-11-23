@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `P:low-alpha-upper` (Upper bound for `α ≤ 1`) and `C:d1-first-calibration`
 (First-moment calibration) of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a (wave L13
+`notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f (wave L13
 item D3): `P:low-alpha-upper` statement at main TeX lines 5711-5733 (constants
 `E:low-alpha-constants`, lines 5714-5725; displays `E:low-alpha-coefficient`,
 lines 5727-5732), proof at lines 5736-5807; `C:d1-first-calibration` statement
@@ -54,7 +54,9 @@ Formalized (all proved):
   and the conditional rate statement `lower_rate_le`.
 
 Supplied inputs (named; both TRUE):
-* `DiagramModel.MixedMoment d α₀ Γ P X u t` (`P:mixed`; existing, blocker D5):
+* `DiagramModel.MixedMoment d α₀ Γ P X u t` (`P:mixed`; existing; blocker D5 when this module
+  was written, discharged in wave L19 for the source-field chaos terms by
+  `SourceFinal.mixed_terms_l19`):
   used for the diagram limits (`A_k(t)` as a limit of the regularized
   coefficients, the TeX's limit paragraph lines 5785-5802 and `L:joint-fixed-order`)
   and for `E u² = Σ_k A_k(t)`;
@@ -62,7 +64,9 @@ Supplied inputs (named; both TRUE):
   `E u = Σ_n E X_n` (main TeX lines 796 and 5856-5857, "the `L²` expansion
   permits taking expectations of partial sums").  TRUE for the solution and its
   chaos terms (`L²` convergence of the chaos series implies `L¹` convergence);
-  not proved (the solution is not constructed, blocker D5).
+  not proved here (blocker D5 when this module was written); discharged in wave L19 for the
+  chaos terms `srcX` and their series `srcU` on every source field by
+  `SourceFinal.first_moment_series_l19`.
 
 Wrappers with the manuscript's hypotheses: `low_alpha_upper_paper`,
 `low_alpha_upper_moment_paper` (`P:low-alpha-upper`), `first_calibration_paper`,
@@ -85,9 +89,12 @@ Differences from the TeX (statements):
   `E u(t) ≥ exp(L' t^κ)`.  The comparison with `P:Jensen` is commentary and not
   stated.
 
-Category: narrower result for both labels.  Missing: the solution `u` and its
-chaos terms are not constructed (moment displays rest on `MixedMoment` and, for
-the first moment, `FirstMomentSeries`, split modelled-object rule); the
+Category: narrower result for both labels.  Missing here: the solution `u` and
+its chaos terms (blocker D5 when this module was written; moment displays rest on
+`MixedMoment` and, for the first moment, `FirstMomentSeries`, split
+modelled-object rule; both discharged in wave L19 for the chaos terms `srcX` and
+their series `srcU` on every source field, `SourceFinal.mixed_terms_l19` and
+`SourceFinal.first_moment_series_l19`); the
 existence of the diagram limits for `A_k(t)` is part of `MixedMoment`.  Whole on
 the model: the regularized coefficient bounds, the factorial step, the
 calibration constants (`C1_eq`, `two_C1_lt_C2`) and the conditional rate
@@ -464,8 +471,11 @@ theorem secondMoment_le {d : ℕ} {Γ : Measure (Rd d)} {K b α₀ : ℝ} (hS : 
 lines 5856-5857, "the `L²` expansion permits taking expectations of partial
 sums"): `X_0 = 1`, `u` is integrable and `E u = Σ_n E X_n`.  TRUE for the
 solution `u(t,x)` and its chaos terms `X_n(t,x)` (`L²` convergence of the chaos
-series implies convergence of the expectations); assumed, not proved (the
-solution is not constructed, blocker D5). -/
+series implies convergence of the expectations); assumed here (blocker D5 when
+this module was written).  Discharged in wave L19 for the chaos terms `srcX` and
+their series `srcU` on every source field under `H:homog`, for `t > 0` and every `x`:
+`SourceFinal.first_moment_series_l19`
+(`SourceFinal.firstMomentSeries_m9_l19` at the constructed `m9`). -/
 def FirstMomentSeries {Ω : Type*} [MeasurableSpace Ω] (P : Measure Ω) (X : ℕ → Ω → ℝ)
     (u : Ω → ℝ) : Prop :=
   (∀ ω, X 0 ω = 1) ∧ Integrable u P ∧ HasSum (fun n => ∫ ω, X n ω ∂P) (∫ ω, u ω ∂P)

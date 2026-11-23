@@ -1,6 +1,6 @@
 /-
 Refutation for the form of the cutoff in the multi-mode `L:finite-word-cutoff`
-(main TeX lines 3036-3058 at 39f2597a: "`P` projects each color onto total Hermite
+(main TeX lines 3036-3058 at edf7085f: "`P` projects each color onto total Hermite
 degree at most `N_i`", line 3046-3047; the cutoff `P = ⊗_i P_{N_i}` of
 `L:fixed-split`, lines 3680-3682), package definitions
 `StratonovichHAMSecondMoment.FixedSplit.cutIdx` and

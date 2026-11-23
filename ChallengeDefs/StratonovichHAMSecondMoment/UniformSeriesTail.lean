@@ -34,7 +34,7 @@ section L2
 
 variable {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω}
 
-/-- Supplied input from `L:terminal-wick` (TeX lines 4291-4336 at 39f2597a; the two facts at 4329-4335), for
+/-- Supplied input from `L:terminal-wick` (TeX lines 4291-4336 at edf7085f; the two facts at 4329-4335), for
 one regularized family of terms `Y_n ∈ L²(Ω)` and the given real `r`: absolute
 `L²` convergence of `Σ r^n Y_n` (the lemma's last sentence, which gives it for
 every real or complex `r`) and nonnegativity of every mixed moment

@@ -4,11 +4,11 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:higher-riesz` (Riesz spatial maxima) of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a
+`notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f
 (statement lines 6103-6112, proof 6114-6190), the dimension-two clause in full
 and the steps shared with dimension three; and Hypothesis `H:spatial-maximum`
 (lines 5919-5929, with the section's notation, lines 5912-5917).  All main-TeX
-line numbers below are at 39f2597a.
+line numbers below are at edf7085f.
 
 Definitions (new; `heatK` is `VariationalMean.heatK`, `G_h` is
 `WaveGreen.waveGreen d h`):

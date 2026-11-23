@@ -1,6 +1,6 @@
 /-
 Refutation for the layer-cake identity of `E:low-alpha-radial` (main TeX
-lines 5570-5572 at 39f2597a), package theorem
+lines 5570-5572 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.LowAlphaConvolution.integral_lowKernel`.
 
 Wrong variant: writing `min{h, |ξ|^{-1}}` naively as `min h ‖ξ‖⁻¹`, which by

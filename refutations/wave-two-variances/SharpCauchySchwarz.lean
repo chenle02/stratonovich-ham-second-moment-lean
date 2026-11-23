@@ -1,6 +1,6 @@
 /-
 Refutation for the constant `4` of the two-component Cauchy-Schwarz step in the proof
-of `P:wave-two-variances` (`notes/integrated_wave_variance.tex` at 39f2597a, lines
+of `P:wave-two-variances` (`notes/integrated_wave_variance.tex` at edf7085f, lines
 516-524: `∑_j ‖g_j‖² ≤ 2 ∑_{i,j} |V_i|² ‖𝒦_ij‖² ≤ 4 A_T h^{2-a} Φ_h ∑_i |V_i|²`), package
 theorem `StratonovichHAMSecondMoment.WaveTwoVariances.sum_norm_sq_le`.
 

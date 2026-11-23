@@ -1,0 +1,13 @@
+node=node835 job=5731612 array=5731612_1 mode=fresh target=StratonovichHAMSecondMoment.PositiveRawMean start=2026-11-20T01:25:44-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=315a3327dfc8acc964a874962756fbcc28ff1687 TREE=5abf7fdde0d2f2940d50d340ae0f095c9bbd150e MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1360 waited_s=0
+REPLAY_STARTED 2026-11-20T01:27:47-0600
+BEGIN fresh StratonovichHAMSecondMoment.PositiveRawMean 01:27:48
+END fresh StratonovichHAMSecondMoment.PositiveRawMean	0	0:43:09.98	7616068	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2591 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.PositiveRawMean
+PROCESS_EXIT=0 end=2026-11-20T02:10:58-0600

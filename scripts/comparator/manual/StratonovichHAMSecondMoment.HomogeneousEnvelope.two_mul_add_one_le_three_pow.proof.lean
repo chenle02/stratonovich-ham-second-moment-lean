@@ -1,0 +1,2 @@
+  set_option smartUnfolding false in
+  bridge_auto _root_.StratonovichHAMSecondMoment.HomogeneousEnvelope.two_mul_add_one_le_three_pow

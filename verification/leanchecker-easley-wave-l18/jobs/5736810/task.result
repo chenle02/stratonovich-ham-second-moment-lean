@@ -1,0 +1,14 @@
+index=8
+mode=fresh
+target=StratonovichHAMSecondMoment.WickFinal
+rc=0
+commit=6e4644d52192a0a43c69201fac3a08a1d9d49190
+tree=a5f01fbdf23bf39583c9ae0782a84001c92c254a
+inputs_sha256=abca6a2889de456edaa8ba0efbecf2c01a51defaef8d152209e69e2b0d509765
+ws_tar_sha256=342649660e44234189017804a56d4ef219d5bfae230305d9df449299630812f8
+leanchecker_sha256=12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6
+node=node873
+job=5736810
+array_job=5736802
+start=2026-11-21T09:18:55-0600
+end=2026-11-21T10:05:38-0600

@@ -2,7 +2,7 @@ import StratonovichHAMSecondMoment.GaussianHermite
 
 /-!
 Refutation for `StratonovichHAMSecondMoment.GaussianHermite.mul_hn` (the recurrence
-`x hn_n = √(n+1) hn_{n+1} + √n hn_{n-1}`, main TeX lines 3016-3018 at 39f2597a).
+`x hn_n = √(n+1) hn_{n+1} + √n hn_{n-1}`, main TeX lines 3016-3018 at edf7085f).
 
 Wrong variant: multiplication by `x` as pure creation, `x hn_n = √(n+1) hn_{n+1}` (the
 annihilation term dropped).  Counterexample: `n = 1`, `x = 0`: the package recurrence gives

@@ -1,7 +1,7 @@
 /-
 Refutation for the temporal kernel of `DiagramModel` (the factor
 `∏_{(j,h) ∈ D} |s_j - s_h|^{-α₀}` of `E:mixed-diagram`, main TeX line 822 at
-39f2597a, from the temporal covariance `|s - t|^{-α₀}` of `E:cov`, line 379),
+edf7085f, from the temporal covariance `|s - t|^{-α₀}` of `E:cov`, line 379),
 package definitions `StratonovichHAMSecondMoment.DiagramModel.timeCov` and
 `timeWeight`.
 

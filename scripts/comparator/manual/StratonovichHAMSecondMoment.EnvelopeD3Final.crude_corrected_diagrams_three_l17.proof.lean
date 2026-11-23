@@ -1,0 +1,2 @@
+  set_option smartUnfolding false in
+  bridge_auto _root_.StratonovichHAMSecondMoment.EnvelopeD3Final.crude_corrected_diagrams_three_l17

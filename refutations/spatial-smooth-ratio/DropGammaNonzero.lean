@@ -1,6 +1,6 @@
 /-
 Refutation for the positivity part of `P:spatial-smooth-ratio`
-(`notes/integrated_spatial_occupation.tex` lines 225-227 and 251-252 at 39f2597a),
+(`notes/integrated_spatial_occupation.tex` lines 225-227 and 251-252 at edf7085f),
 package theorem `StratonovichHAMSecondMoment.SpatialSmoothRatio.R0_pos_finite`
 (`0 < R_0`, under `Γ ≠ 0`, the section's standing assumption, line 4).
 

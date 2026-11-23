@@ -5,7 +5,7 @@ Refutation for the deterministic Fourier bound, package theorem
 `E:spatial-fourier-bound` in `L:spatial-fourier-bound`, which the manuscript
 uses for "`R_0` finite" of `P:spatial-smooth-ratio`;
 `notes/integrated_spatial_occupation.tex` lines 121-131 and 250-253 at
-39f2597a).
+edf7085f).
 
 Wrong variant: the constant `2^{α-1}` instead of `2^{1+α}`, i.e. under the
 hypotheses of the general theorem `A_sp(g) ≤ 2^{α-1} R_Γ(1) b(g)^{α/2}`.

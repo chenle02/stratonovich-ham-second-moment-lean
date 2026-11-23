@@ -1,0 +1,60 @@
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5145:0: 'StratonovichHAMSecondMoment.CleanupWrappers.first_calibration_riesz_paper_closed_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5146:0: 'StratonovichHAMSecondMoment.CleanupWrappers.first_calibration_riesz_paper_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5147:0: 'StratonovichHAMSecondMoment.CleanupWrappers.low_alpha_upper_moment_paper_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5148:0: 'StratonovichHAMSecondMoment.CleanupWrappers.rho_gt_kappa_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5149:0: 'StratonovichHAMSecondMoment.CleanupWrappers.riesz_instance_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5150:0: 'StratonovichHAMSecondMoment.CleanupWrappers.riesz_small_paper_closed_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5151:0: 'StratonovichHAMSecondMoment.CleanupWrappers.riesz_small_paper_l20' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5152:0: 'StratonovichHAMSecondMoment.SourceTubeAttained.add_image_mono' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5153:0: 'StratonovichHAMSecondMoment.SourceTubeAttained.apply_toDual_symm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5154:0: 'StratonovichHAMSecondMoment.SourceTubeAttained.isClosed_add_image' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5155:0: 'StratonovichHAMSecondMoment.SourceTubeAttained.isClosed_image_closedBall' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5156:0: 'StratonovichHAMSecondMoment.SourceTubeAttained.isClosed_paperBase' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5157:0: 'StratonovichHAMSecondMoment.SourceTubeAttained.isCompact_image_closedBall_of_isCompactOperator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5158:0: 'StratonovichHAMSecondMoment.SourceTubeAttained.lowerSemicontinuous_tubeRadius_paperTube' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5159:0: 'StratonovichHAMSecondMoment.SourceTubeAttained.mem_add_image_of_forall' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5160:0: 'StratonovichHAMSecondMoment.SourceTubeAttained.tubeAttained_add_image' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5161:0: 'StratonovichHAMSecondMoment.SourceTubeAttained.tubeAttained_paperTube' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5162:0: 'StratonovichHAMSecondMoment.SourceTubeAttained.tube_closed_geometry_closed_paper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:5163:0: 'StratonovichHAMSecondMoment.SourceTubeAttained.tube_rayleigh_transfer_paper_l21' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Build completed successfully (9259 jobs).

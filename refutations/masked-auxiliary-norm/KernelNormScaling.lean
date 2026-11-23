@@ -1,6 +1,6 @@
 /-
 Refutation for `‖k_R‖₁ = L` (`notes/integrated_covariance_foundation.tex`
-lines 97-99 at 39f2597a, the reason the ball bound `E:masked-auxiliary-growth`
+lines 97-99 at edf7085f, the reason the ball bound `E:masked-auxiliary-growth`
 of `P:masked-auxiliary-norm`, lines 108-111, is uniform in `R`), package theorem
 `StratonovichHAMSecondMoment.MaskedAuxiliaryNorm.integral_norm_kR`.
 

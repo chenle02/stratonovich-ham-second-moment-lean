@@ -1,0 +1,171 @@
+old 8f51004c412ac618f4be6a5f4a42c7cc78188638
+new 315a3327dfc8acc964a874962756fbcc28ff1687
+modules: 142 at old, 146 at new
+removed: 0 
+
+new: 4
+  StratonovichHAMSecondMoment.PositiveRawMean
+  StratonovichHAMSecondMoment.UniformELift
+  StratonovichHAMSecondMoment.UniformMeanFoundation
+  StratonovichHAMSecondMoment.UniformMeanInterface
+
+content: 1
+  StratonovichHAMSecondMoment
+
+comment-only: 111
+  StratonovichHAMAudit.HermiteWordFock  (line count unchanged)
+  StratonovichHAMSecondMoment.AlphaOneConvolution  (line count unchanged)
+  StratonovichHAMSecondMoment.ClassOBridge  (line count unchanged)
+  StratonovichHAMSecondMoment.ClassOH1  (line count unchanged)
+  StratonovichHAMSecondMoment.ClockCopy  (line count unchanged)
+  StratonovichHAMSecondMoment.ClockCopyHomog  (line count unchanged)
+  StratonovichHAMSecondMoment.ComplexPhaseScalar  (line count unchanged)
+  StratonovichHAMSecondMoment.D1Spatial  (line count unchanged)
+  StratonovichHAMSecondMoment.D1Upper  (line count unchanged)
+  StratonovichHAMSecondMoment.DampedMultiplier  (line count unchanged)
+  StratonovichHAMSecondMoment.DampedNorms  (line count unchanged)
+  StratonovichHAMSecondMoment.DampedNormsHomog  (line count unchanged)
+  StratonovichHAMSecondMoment.DampedSmoothing  (line count unchanged)
+  StratonovichHAMSecondMoment.DiagramBridge  (line count unchanged)
+  StratonovichHAMSecondMoment.DiagramModel  (line count unchanged)
+  StratonovichHAMSecondMoment.EndpointCorollaries  (line count unchanged)
+  StratonovichHAMSecondMoment.EndpointLemmas  (line count unchanged)
+  StratonovichHAMSecondMoment.FiniteGaussianMatrix  (line count unchanged)
+  StratonovichHAMSecondMoment.FiniteWick  (line count unchanged)
+  StratonovichHAMSecondMoment.FiniteWordCutoff  (line count unchanged)
+  StratonovichHAMSecondMoment.FixedSplit  (line count unchanged)
+  StratonovichHAMSecondMoment.FixedSplitCore  (line count unchanged)
+  StratonovichHAMSecondMoment.FockColumnBound  (line count unchanged)
+  StratonovichHAMSecondMoment.FockForm  (line count unchanged)
+  StratonovichHAMSecondMoment.FockSandwichModel  (line count unchanged)
+  StratonovichHAMSecondMoment.FrequencyRow  (line count unchanged)
+  StratonovichHAMSecondMoment.GaussianComparison  (line count unchanged)
+  StratonovichHAMSecondMoment.GaussianHermite  (line count unchanged)
+  StratonovichHAMSecondMoment.GaussianIBP  (line count unchanged)
+  StratonovichHAMSecondMoment.GaussianScalarPowers  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.GaussianTest  (line count unchanged)
+  StratonovichHAMSecondMoment.H1Density  (line count unchanged)
+  StratonovichHAMSecondMoment.H1Mathlib  (line count unchanged)
+  StratonovichHAMSecondMoment.HermiteFock  (line count unchanged)
+  StratonovichHAMSecondMoment.HigherRieszThree  (line count unchanged)
+  StratonovichHAMSecondMoment.HigherRieszTwo  (line count unchanged)
+  StratonovichHAMSecondMoment.IndexedCone  (line count unchanged)
+  StratonovichHAMSecondMoment.IntervalScalar  (line count unchanged)
+  StratonovichHAMSecondMoment.IntervalScalarCompleted  (line count unchanged)
+  StratonovichHAMSecondMoment.InventoryProduct  (line count unchanged)
+  StratonovichHAMSecondMoment.L10Completed  (line count unchanged)
+  StratonovichHAMSecondMoment.L8Completed  (line count unchanged)
+  StratonovichHAMSecondMoment.L9Completed  (line count unchanged)
+  StratonovichHAMSecondMoment.LowAlphaConvolution  (line count unchanged)
+  StratonovichHAMSecondMoment.LowAlphaUpper  (line count unchanged)
+  StratonovichHAMSecondMoment.MaskedAuxiliaryNorm  (line count unchanged)
+  StratonovichHAMSecondMoment.MaskedAuxiliaryReal  (line count unchanged)
+  StratonovichHAMSecondMoment.MaskedContinuousWave  (line count unchanged)
+  StratonovichHAMSecondMoment.MaskedContinuousWaveCompleted  (line count unchanged)
+  StratonovichHAMSecondMoment.MaskedModulation  (line count unchanged)
+  StratonovichHAMSecondMoment.MaskedSpectralGrowth  (line count unchanged)
+  StratonovichHAMSecondMoment.MaskedTrigProducts  (line count unchanged)
+  StratonovichHAMSecondMoment.OccupationCeilingExact  (line count unchanged)
+  StratonovichHAMSecondMoment.OccupationCeilingFinite  (line count unchanged)
+  StratonovichHAMSecondMoment.OccupationCompletion  (line count unchanged)
+  StratonovichHAMSecondMoment.OccupationKernelRow  (line count unchanged)
+  StratonovichHAMSecondMoment.OccupationPhysicalClass  (line count unchanged)
+  StratonovichHAMSecondMoment.OrderTwoDiagrams  (line count unchanged)
+  StratonovichHAMSecondMoment.PhaseBessel  (line count unchanged)
+  StratonovichHAMSecondMoment.PhaseContractions  (line count unchanged)
+  StratonovichHAMSecondMoment.PhaseShiftControl  (line count unchanged)
+  StratonovichHAMSecondMoment.QuotientObstruction  (line count unchanged)
+  StratonovichHAMSecondMoment.RadiusMeanAnchor  (line count unchanged)
+  StratonovichHAMSecondMoment.RawOccupationEnergy  (line count unchanged)
+  StratonovichHAMSecondMoment.RemoveMask  (line count unchanged)
+  StratonovichHAMSecondMoment.ResolventForm  (line count unchanged)
+  StratonovichHAMSecondMoment.RieszFourDiagrams  (line count unchanged)
+  StratonovichHAMSecondMoment.RieszPositiveDefinite  (line count unchanged)
+  StratonovichHAMSecondMoment.SeriesType  (line count unchanged)
+  StratonovichHAMSecondMoment.SourceHeatGram  (line count unchanged)
+  StratonovichHAMSecondMoment.SourceTube  (line count unchanged)
+  StratonovichHAMSecondMoment.SpaceTimePositivity  (line count unchanged)
+  StratonovichHAMSecondMoment.SpatialBracket  (line count unchanged)
+  StratonovichHAMSecondMoment.SpatialFourLinear  (line count unchanged)
+  StratonovichHAMSecondMoment.SpatialFourierBound  (line count unchanged)
+  StratonovichHAMSecondMoment.SpatialOccupationCompleted  (line count unchanged)
+  StratonovichHAMSecondMoment.SpatialOccupationL7Completed  (line count unchanged)
+  StratonovichHAMSecondMoment.SpatialSmoothRatio  (line count unchanged)
+  StratonovichHAMSecondMoment.SpatialStaticControls  (line count unchanged)
+  StratonovichHAMSecondMoment.SpectralHomog  (line count unchanged)
+  StratonovichHAMSecondMoment.SpectralMassIdentity  (line count unchanged)
+  StratonovichHAMSecondMoment.StaticInteractionCompleted  (line count unchanged)
+  StratonovichHAMSecondMoment.StaticPhaseCauchy  (line count unchanged)
+  StratonovichHAMSecondMoment.SymplecticFree  (line count unchanged)
+  StratonovichHAMSecondMoment.TemporalEquilibrium  (line count unchanged)
+  StratonovichHAMSecondMoment.TerminalWick  (line count unchanged)
+  StratonovichHAMSecondMoment.TerminalWickComplete  (line count unchanged)
+  StratonovichHAMSecondMoment.TerminalWickInputs  (line count unchanged)
+  StratonovichHAMSecondMoment.TerminalWickRegularization  (line count unchanged)
+  StratonovichHAMSecondMoment.TimeCompletion  (line count unchanged)
+  StratonovichHAMSecondMoment.TimeFractional  (line count unchanged)
+  StratonovichHAMSecondMoment.TimeSchur  (line count unchanged)
+  StratonovichHAMSecondMoment.TwoSimplexTime  (line count unchanged)
+  StratonovichHAMSecondMoment.TypeContinuity  (line count unchanged)
+  StratonovichHAMSecondMoment.UniformSeriesTail  (line count unchanged)
+  StratonovichHAMSecondMoment.VariationalDilation  (line count unchanged)
+  StratonovichHAMSecondMoment.VariationalFloor  (line count unchanged)
+  StratonovichHAMSecondMoment.VariationalMean  (line count unchanged)
+  StratonovichHAMSecondMoment.VariationalMeanDerivatives  (line count unchanged)
+  StratonovichHAMSecondMoment.VariationalRate  (line count unchanged)
+  StratonovichHAMSecondMoment.WaveGreen  (line count unchanged)
+  StratonovichHAMSecondMoment.WaveGreenFourier  (line count unchanged)
+  StratonovichHAMSecondMoment.WaveKernel  (line count unchanged)
+  StratonovichHAMSecondMoment.WaveTwoVariances  (line count unchanged)
+  StratonovichHAMSecondMoment.WeakSobolev  (line count unchanged)
+  StratonovichHAMSecondMoment.WhiteClockLaplace  (line count unchanged)
+  StratonovichHAMSecondMoment.WhiteCollapse  (line count unchanged)
+  StratonovichHAMSecondMoment.WhiteFour  (line count unchanged)
+  StratonovichHAMSecondMoment.WhiteModel  (line count unchanged)
+  StratonovichHAMSecondMoment.WhiteMomentBounds  (line count unchanged)
+  StratonovichHAMSecondMoment.WhiteRelativeWidth  (line count unchanged)
+
+identical: 30
+  StratonovichHAMAudit.ActualEvent
+  StratonovichHAMAudit.AllAlphaMoment
+  StratonovichHAMAudit.ClockFilter
+  StratonovichHAMAudit.DampedLower
+  StratonovichHAMAudit.DimensionalMatrix
+  StratonovichHAMAudit.DirectEvent
+  StratonovichHAMAudit.FiniteYoung
+  StratonovichHAMAudit.GaussianTail
+  StratonovichHAMAudit.GlobalOmega
+  StratonovichHAMAudit.HermiteWord
+  StratonovichHAMAudit.HermiteWordConsumer
+  StratonovichHAMAudit.InteractionDriver
+  StratonovichHAMAudit.JointTilt
+  StratonovichHAMAudit.LocalFlow
+  StratonovichHAMAudit.MiddleCross
+  StratonovichHAMAudit.MovingCone
+  StratonovichHAMAudit.OccupationForm
+  StratonovichHAMAudit.PhaseResponse
+  StratonovichHAMAudit.PositiveGram
+  StratonovichHAMAudit.ProjectionResidual
+  StratonovichHAMAudit.RawValueCeiling
+  StratonovichHAMAudit.RawVariational
+  StratonovichHAMAudit.TerminalCross
+  StratonovichHAMAudit.WhiteCDF
+  StratonovichHAMSecondMoment.Axioms
+  StratonovichHAMSecondMoment.DriverParameters
+  StratonovichHAMSecondMoment.GramScalarAlgebra
+  StratonovichHAMSecondMoment.HomogHypothesis
+  StratonovichHAMSecondMoment.KappaRange
+  StratonovichHAMSecondMoment.RayleighTail
+
+project imports that are not modules of the two libraries: 0 
+
+import-closure gaps (identical or comment-only module importing a new or content-changed module):
+  StratonovichHAMSecondMoment.Axioms -> StratonovichHAMSecondMoment StratonovichHAMSecondMoment.PositiveRawMean StratonovichHAMSecondMoment.UniformELift StratonovichHAMSecondMoment.UniformMeanFoundation StratonovichHAMSecondMoment.UniformMeanInterface
+  total 1
+
+direct importers of each new or content-changed module:
+  StratonovichHAMSecondMoment: StratonovichHAMSecondMoment.Axioms
+  StratonovichHAMSecondMoment.PositiveRawMean: StratonovichHAMSecondMoment
+  StratonovichHAMSecondMoment.UniformELift: StratonovichHAMSecondMoment
+  StratonovichHAMSecondMoment.UniformMeanFoundation: StratonovichHAMSecondMoment
+  StratonovichHAMSecondMoment.UniformMeanInterface: StratonovichHAMSecondMoment

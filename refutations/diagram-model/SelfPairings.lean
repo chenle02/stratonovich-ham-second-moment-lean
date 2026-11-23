@@ -1,6 +1,6 @@
 /-
 Refutation for the self-pairing convention of `DiagramModel` (`Π_k` of
-`E:mixed-diagram` and `E:mixed-moment`, main TeX lines 808-810 at 39f2597a: "A
+`E:mixed-diagram` and `E:mixed-moment`, main TeX lines 808-810 at edf7085f: "A
 self-pairing has both endpoints in one chain; a cross-pairing has one endpoint
 in each chain. Both are included in `Π_k`."), package definition
 `StratonovichHAMSecondMoment.DiagramModel.Pi2` and theorem `card_Pi2_two_zero`.

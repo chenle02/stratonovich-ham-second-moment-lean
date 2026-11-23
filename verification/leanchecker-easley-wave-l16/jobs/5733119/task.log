@@ -1,0 +1,13 @@
+node=node856 job=5733119 array=5733116_3 mode=fresh target=StratonovichHAMSecondMoment.CameronInterface start=2026-11-20T12:23:25-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=ebac849d61e539a125de6d920c1c2b29255ca671 TREE=411f45b32cb77ef271136fd5dfa0fbe3c9254715 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1560 waited_s=0
+REPLAY_STARTED 2026-11-20T12:25:30-0600
+BEGIN fresh StratonovichHAMSecondMoment.CameronInterface 12:25:30
+END fresh StratonovichHAMSecondMoment.CameronInterface	0	0:42:08.61	7617036	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2529 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.CameronInterface
+PROCESS_EXIT=0 end=2026-11-20T13:07:39-0600

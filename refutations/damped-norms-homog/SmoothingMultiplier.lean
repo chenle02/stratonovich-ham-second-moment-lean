@@ -1,7 +1,7 @@
 /-
 Refutation for the multiplier part of `E:damped-multiplier-comparison` in
 `L:damped-homogeneous-norms` (main TeX
-`notes/notes_stratonovich_ham_second_moment.tex`, revision 39f2597a, lines
+`notes/notes_stratonovich_ham_second_moment.tex`, revision edf7085f, lines
 1033-1054 and 1147-1151), package theorem
 `StratonovichHAMSecondMoment.DampedNormsHomog.resolvent_smoothed_le`
 (`R_{gμ}(q) ≤ R_μ(q)` for a measurable multiplier `g` with values in `[0,1]`).

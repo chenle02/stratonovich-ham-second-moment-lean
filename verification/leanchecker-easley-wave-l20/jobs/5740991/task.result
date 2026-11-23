@@ -1,0 +1,14 @@
+index=10
+mode=fresh
+target=StratonovichHAMSecondMoment.MildPolyMem
+rc=0
+commit=5cdd49359fa093549572a890e68a7d25f412733e
+tree=cfcb9596b53f9a56fb5da24922f3bb98f9094608
+inputs_sha256=71b21467a82ab69a90fd0233032d0cc6a4d4dc1e260abe1a3aba643c68a96862
+ws_tar_sha256=222e009800a2166dee94a1a2135ee970f93cf9dcb7e83a8a26e0a97887af2ac0
+leanchecker_sha256=12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6
+node=node907
+job=5740991
+array_job=5740981
+start=2026-11-23T02:59:20-0600
+end=2026-11-23T03:46:07-0600

@@ -1,7 +1,7 @@
 /-
 Refutation for the `ζ = 1` remark of `C:intrinsic-spatial-bracket`, package theorem
 `StratonovichHAMSecondMoment.SpatialBracket.counterexample_ratio`
-(`integrated_occupation_ceiling.tex` lines 361-369 at 39f2597a).
+(`integrated_occupation_ceiling.tex` lines 361-369 at edf7085f).
 
 Wrong variant: the strict comparison of lines 328-332 holds at every `ζ > 0`, i.e.
 `U_𝔠[C] < 𝔠^m F_a(D_ζ C^{2/(2-α)})` for all `𝔠, C, ζ > 0` (at `α = 5/4`, `a = 1/2`).

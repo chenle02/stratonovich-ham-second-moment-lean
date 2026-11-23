@@ -31,7 +31,7 @@ namespace StratonovichHAMSecondMoment.SourceHeatGram
 open HomogHypothesis (Rd HomogCovariance IsSpectralMeasure IsEven IsTempered)
 open WeakSobolev (IsTestFunction)
 open SpatialFourierBound (spatialPair fourierQ ex ex_continuous norm_ex ex_sub)
-open LowAlphaConvolution (heatDens gaussFactor gaussFactor_pos gaussFactor_le_one)
+open LowAlphaConvolution (heatDens gaussFactor gaussFactor_pos gaussFactor_le_one heatDens_nonneg)
 
 variable {d : ℕ}
 
@@ -39,7 +39,7 @@ variable {d : ℕ}
 
 /-- Auxiliary to the Lean proof route: the cross-correlation
 `c_{F,G}(y) = ∫ F(x) G(x - y) dx`, the inner integral of `B_Γ(F,G)` (TeX line 172 at
-39f2597a, `integrated_source_convergence.tex`). -/
+edf7085f, `integrated_source_convergence.tex`). -/
 def crossCorr (F G : Rd d → ℝ) (y : Rd d) : ℝ := ∫ x, F x * G (x - y)
 
 /-- Auxiliary: `B_Γ(F,G) = ∫ c_{F,G} dΓ` (definitional). -/
@@ -126,7 +126,7 @@ theorem fourier_crossCorr {F G : Rd d → ℝ} (hF : Continuous F) (hFc : HasCom
   rfl
 
 /-- The spectral form of the physical pairing on tests (the second equality of the display of
-`L:source-spatial-heat`, `integrated_source_convergence.tex` lines 171-173 at 39f2597a, in the
+`L:source-spatial-heat`, `integrated_source_convergence.tex` lines 171-173 at edf7085f, in the
 transform `fourierQ F ξ = ∫ F(x) e^{iξ·x} dx`): for real tests `F`, `G` and a spectral measure
 `μ` of `Γ` in the manuscript's convention,
 `B_Γ(F,G) = ∫ F̂(ξ) conj(Ĝ(ξ)) μ(dξ)` (Bochner integrals; integrability of the right side is
@@ -833,7 +833,7 @@ end HeatOnHGamma
 
 /-! ### The TeX's unitary normalization of the pairing -/
 
-/-- The unitary transform of `integrated_covariance_foundation.tex` lines 11-13 at 39f2597a:
+/-- The unitary transform of `integrated_covariance_foundation.tex` lines 11-13 at edf7085f:
 `\hat f(ξ) = (2π)^{-d/2} ∫ e^{-iξ·x} f(x) dx`. -/
 def texHat (f : Rd d → ℝ) (ξ : Rd d) : ℂ :=
   (((2 * Real.pi) ^ (-((d : ℝ) / 2)) : ℝ) : ℂ) *
@@ -845,7 +845,7 @@ open SpaceTimePositivity (timeMeasure timeMeasure_eq_Icc)
 open TimeSchur (kern kern_nonneg measurable_kern kern_sub_comm)
 
 /-- The kernel parameter: `a = α₀` with `0 < a < 1` (TeX: `integrated_intrinsic_constant.tex`
-line 5 at 39f2597a, `K(s,t) = |s-t|^{-a}` on `I = (0,1)`).  Integration (wave L14): this is
+line 5 at edf7085f, `K(s,t) = |s-t|^{-a}` on `I = (0,1)`).  Integration (wave L14): this is
 `OccupationCompletion.TParams`, the single temporal parameter of `H_I` in the companion. -/
 abbrev KernParams := OccupationCompletion.TParams
 

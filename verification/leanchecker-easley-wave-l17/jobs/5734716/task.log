@@ -1,0 +1,13 @@
+node=node978 job=5734716 array=5734701_15 mode=fresh target=StratonovichHAMSecondMoment.PairingSmoothedNorms start=2026-11-20T19:46:07-0600
+tmp_avail_G=891
+VERIFIED_COMMIT=68d0c5e6fd03b0dcb925e637152db199682ce18b TREE=9ae2829d6e18d02c219c3c9dfa7eaa13ffffde4e MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1760 waited_s=0
+REPLAY_STARTED 2026-11-20T19:50:28-0600
+BEGIN fresh StratonovichHAMSecondMoment.PairingSmoothedNorms 19:50:28
+END fresh StratonovichHAMSecondMoment.PairingSmoothedNorms	0	0:42:31.23	7616620	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2551 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.PairingSmoothedNorms
+PROCESS_EXIT=0 end=2026-11-20T20:33:00-0600

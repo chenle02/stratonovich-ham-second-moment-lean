@@ -4,7 +4,7 @@ K5a), package theorem `StratonovichHAMSecondMoment.H1Mathlib.norm_toH1_sq`.
 
 Manuscript side: the manuscript's `H^1` norm is `‖u‖₂² + ‖∇u‖₂²`
 (`notes/integrated_signed_static.tex`, `P:signed-closed-form`, line 85 at
-39f2597a: `q_V = z² - b² - v_V(u,u)` with `z = ‖u‖_{H^1}`, `b = ‖u‖₂`, i.e.
+edf7085f: `q_V = z² - b² - v_V(u,u)` with `z = ‖u‖_{H^1}`, `b = ‖u‖₂`, i.e.
 `‖∇u‖₂² = z² - b²`), on the real profiles of the main TeX lines 748-750.
 
 Wrong variant: Mathlib's bundled `H^{1}(ℝ^d)` norm is the manuscript norm,

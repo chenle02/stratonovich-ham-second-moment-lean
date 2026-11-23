@@ -1,6 +1,6 @@
 /-
 Refutation for the total-order-four coefficient (main TeX lines 5163, 5169-5171
-and 5446-5451 at 39f2597a: `A_2(t) = Σ_{m=0}^{4} E[X_m X_{4-m}]`, all five splits),
+and 5446-5451 at edf7085f: `A_2(t) = Σ_{m=0}^{4} E[X_m X_{4-m}]`, all five splits),
 package theorem `StratonovichHAMSecondMoment.RieszFourDiagrams.riesz_coeffA_two`.
 
 Wrong variant: only the diagonal split counts, `A_2(t) = Σ_D J_{2,2,D}(t)`

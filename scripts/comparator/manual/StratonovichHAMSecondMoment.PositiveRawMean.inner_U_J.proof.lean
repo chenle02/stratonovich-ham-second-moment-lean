@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.PositiveRawMean.inner_U_J

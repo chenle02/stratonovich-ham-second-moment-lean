@@ -1,7 +1,7 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.HigherRieszThree.M3_pos` and the
 range `α < 2` of `higher_riesz_three` (manuscript `L:higher-riesz`, dimension
-three, main TeX lines 6104-6106 at 39f2597a): Hypothesis `H:spatial-maximum`
+three, main TeX lines 6104-6106 at edf7085f): Hypothesis `H:spatial-maximum`
 asks for `M > 0`, and `M_3 = c 2^{1-α}/(2-α)` is negative for `α > 2`.
 
 Wrong variant: `0 < M_3(1, α)` for every `α > 1` (`α < 2` dropped).

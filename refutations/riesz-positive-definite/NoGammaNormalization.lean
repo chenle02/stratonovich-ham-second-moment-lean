@@ -1,7 +1,7 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.RieszPositiveDefinite.mixOne_spec` (the Gaussian
 mixture `|u|^{-e} = Γ(e/2)^{-1} ∫_0^∞ s^{e/2-1} e^{-su²} ds` of main TeX lines 7255-7258,
-7361-7364 and 7975-7978 at 39f2597a).
+7361-7364 and 7975-7978 at edf7085f).
 
 Wrong variant: the mixture formula with the normalization `Γ(e/2)^{-1}` dropped,
 `∫_0^∞ s^{e/2-1} e^{-su²} ds = |u|^{-e}` for all `u ≠ 0`, at `e = 1`.  Counterexample:

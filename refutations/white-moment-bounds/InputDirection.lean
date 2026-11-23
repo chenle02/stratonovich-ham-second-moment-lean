@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.WhiteMomentBounds
 /-!
 Refutation for the one-sided use of the named input in `StratonovichHAMSecondMoment.
 WhiteMomentBounds.white_moment_lower_of_ge` and `white_moment_upper_of_le`
-(`T:white-moment-bounds`, `notes/integrated_white_evaluation.tex`, 39f2597a, lines 140-167):
+(`T:white-moment-bounds`, `notes/integrated_white_evaluation.tex`, edf7085f, lines 140-167):
 the lower bound needs `c²/6 ≤ 𝓔_sp` and the upper bound `𝓔_sp ≤ c²/6`, because `F₀` is
 increasing (`WhiteMomentBounds.F0_mono`).
 

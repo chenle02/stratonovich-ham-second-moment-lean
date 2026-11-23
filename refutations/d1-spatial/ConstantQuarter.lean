@@ -1,6 +1,6 @@
 /-
 Refutation for the white constant `(c_δ/2)^k` of `E:d1-spatial-product`
-(`L:d1-spatial`, main TeX lines 5359-5371 at 39f2597a; the convolution bound
+(`L:d1-spatial`, main TeX lines 5359-5371 at edf7085f; the convolution bound
 `sup_z ∫ G(h,y) γ_ε(y+z) dy ≤ c_δ/2` of lines 5381-5392).  Package theorem
 `StratonovichHAMSecondMoment.D1Spatial.d1_spatial_white`.
 

@@ -1,6 +1,6 @@
 /-
 Refutation for the height monotonicity behind `E:split-fresh-insertion`
-(main TeX lines 3890-3894 at 39f2597a: `Λ(t_i)^{(α-2)/2} ≤ λ^{(α-2)/2}`),
+(main TeX lines 3890-3894 at edf7085f: `Λ(t_i)^{(α-2)/2} ≤ λ^{(α-2)/2}`),
 package theorem `StratonovichHAMSecondMoment.FixedSplit.fock_insertion_bound`
 (insertion bound `‖J_i x‖_ρ ≤ c_i ‖x‖_ρ` for `ρ ≥ λ` only).
 

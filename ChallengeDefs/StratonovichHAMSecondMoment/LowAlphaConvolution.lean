@@ -31,7 +31,7 @@ namespace StratonovichHAMSecondMoment.LowAlphaConvolution
 
 open HomogHypothesis (Rd HomogCovariance IsTempered IsSpectralMeasure)
 open SpectralHomog (SpectralHomogeneous)
-open MaskedSpectralGrowth (integrable_gauss_of_tempered)
+open MaskedSpectralGrowth (integrable_gauss_of_tempered integrable_gauss_zero spectral_translated_gauss)
 open WaveKernel (waveHat)
 open WaveGreen (waveGreen)
 open DampedMultiplier (gaussKernel GreenFourier)
@@ -66,6 +66,17 @@ def gaussFactor (ε : ℝ) (ξ : Rd d) : ℝ := Real.exp (-(ε * ‖ξ‖ ^ 2 / 
 /-! ### Elementary facts -/
 
 /-- Auxiliary to the Lean proof route. -/
+theorem heatDens_nonneg {ε : ℝ} (hε : 0 ≤ ε) (w : Rd d) : 0 ≤ heatDens ε w := by
+  unfold heatDens
+  exact mul_nonneg (Real.rpow_nonneg (by positivity) _) (Real.exp_pos _).le
+
+/-- `γ_ε ≥ 0` for `ε ≥ 0` (main TeX line 5626): the smoothed covariance of a
+(positive) measure `Γ` is nonnegative, since `p_ε ≥ 0`. -/
+theorem gammaEps_nonneg (Γ : Measure (Rd d)) {ε : ℝ} (hε : 0 ≤ ε) (x : Rd d) :
+    0 ≤ gammaEps Γ ε x :=
+  integral_nonneg fun _ => heatDens_nonneg hε _
+
+/-- Auxiliary to the Lean proof route. -/
 theorem gaussFactor_pos (ε : ℝ) (ξ : Rd d) : 0 < gaussFactor ε ξ := Real.exp_pos _
 
 /-- Auxiliary to the Lean proof route. -/
@@ -74,6 +85,49 @@ theorem gaussFactor_le_one {ε : ℝ} (hε : 0 ≤ ε) (ξ : Rd d) : gaussFactor
   rw [Real.exp_le_one_iff]
   have : 0 ≤ ε * ‖ξ‖ ^ 2 / 2 := by positivity
   linarith
+
+/-- Auxiliary to the Lean proof route.  `e^{-ε|ξ|²/2}` is integrable against a
+tempered measure for `ε > 0`. -/
+theorem integrable_gaussFactor {μ : Measure (Rd d)} (hμt : IsTempered μ) {ε : ℝ}
+    (hε : 0 < ε) : Integrable (gaussFactor ε) μ := by
+  have h := integrable_gauss_zero hμt (c := ε / 2) (by positivity)
+  refine h.congr (Eventually.of_forall fun ξ => ?_)
+  simp only [gaussFactor]
+  ring_nf
+
+/-! ### The Gaussian spectral representation -/
+
+/-- The pointwise Gaussian spectral representation of the smoothed covariance
+(part of the Fourier Fubini step invoked at main TeX lines 5610-5612):
+for `ε > 0`, `γ_ε(x) = ∫ e^{iξ·x} e^{-ε|ξ|²/2} μ(dξ)`, where `μ` is the
+spectral measure of `Γ` (`IsSpectralMeasure Γ μ`). -/
+theorem gammaEps_spectral {Γ μ : Measure (Rd d)} (hsp : IsSpectralMeasure Γ μ) {ε : ℝ}
+    (hε : 0 < ε) (x : Rd d) :
+    (gammaEps Γ ε x : ℂ) =
+      ∫ ξ, Complex.exp (Complex.I * (inner ℝ ξ x : ℝ)) * (gaussFactor ε ξ : ℂ) ∂μ := by
+  have hs : 0 < 1 / (2 * ε) := by positivity
+  have h := spectral_translated_gauss hsp (1 / (2 * ε)) hs x
+  have hL : (gammaEps Γ ε x : ℂ) = (((2 * π * ε) ^ (-((d : ℝ) / 2)) : ℝ) : ℂ) *
+      ∫ y, (Real.exp (-(1 / (2 * ε) * ‖y - x‖ ^ 2)) : ℂ) ∂Γ := by
+    have h1 : (∫ y, (Real.exp (-(1 / (2 * ε) * ‖y - x‖ ^ 2)) : ℂ) ∂Γ) =
+        ((∫ y, Real.exp (-(1 / (2 * ε) * ‖y - x‖ ^ 2)) ∂Γ : ℝ) : ℂ) := integral_ofReal
+    have h2 : gammaEps Γ ε x = (2 * π * ε) ^ (-((d : ℝ) / 2)) *
+        ∫ y, Real.exp (-(1 / (2 * ε) * ‖y - x‖ ^ 2)) ∂Γ := by
+      rw [gammaEps, ← integral_const_mul]
+      refine integral_congr_ae (Eventually.of_forall fun y => ?_)
+      simp only [heatDens]
+      rw [norm_sub_rev]
+      congr 2
+      field_simp
+    rw [h1, h2, Complex.ofReal_mul]
+  have hpi : π / (1 / (2 * ε)) = 2 * π * ε := by field_simp
+  rw [hL, h, hpi, ← mul_assoc, ← Complex.ofReal_mul, ← Real.rpow_add (by positivity),
+    neg_add_cancel, Real.rpow_zero, Complex.ofReal_one, one_mul]
+  refine integral_congr_ae (Eventually.of_forall fun ξ => ?_)
+  simp only [gaussFactor]
+  congr 3
+  field_simp
+  ring
 
 end StratonovichHAMSecondMoment.LowAlphaConvolution
 

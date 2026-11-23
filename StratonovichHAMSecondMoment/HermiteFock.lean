@@ -7,7 +7,7 @@ The finite Gaussian Fock layer (a reusable foundation; no manuscript label of
 its own).
 
 Source: `notes/notes_stratonovich_ham_second_moment.tex` (main TeX) at commit
-`39f2597a`: the Fock half of the proof of `L:fock-form` (lines 3016-3027), the
+`edf7085f`: the Fock half of the proof of `L:fock-form` (lines 3016-3027), the
 Fock sentences of the proof of `L:interval-contractions` (lines 3460-3464), the
 phase insertion on a vacuum color (lines 3394-3397, 3447-3449) and the Hermite
 step of `E:occupied-multiplication` (lines 2192-2197).  The TeX cites Janson

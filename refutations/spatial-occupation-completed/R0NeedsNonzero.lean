@@ -2,7 +2,7 @@
 Refutation for `spatial_smooth_ratio_completed_paper` of the integration module
 `StratonovichHAMSecondMoment.SpatialOccupationCompleted`
 (`P:spatial-smooth-ratio`, `notes/integrated_spatial_occupation.tex` lines
-223-233 at 39f2597a: "`R_0` is a positive finite real number").
+223-233 at edf7085f: "`R_0` is a positive finite real number").
 
 Wrong variant: the hypothesis `Γ ≠ 0` dropped, i.e. `R_0 > 0` under `H:homog`
 alone.  Counterexample: `d = 1`, `α = α₀ = 1/2`, `Γ = μ = 0` (in `H:homog`);

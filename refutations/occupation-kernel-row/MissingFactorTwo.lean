@@ -1,6 +1,6 @@
 /-
 Refutation for the constant in `E:occupation-kernel-row`
-(`notes/integrated_spatial_occupation.tex`, lines 481-484 at 39f2597a), package
+(`notes/integrated_spatial_occupation.tex`, lines 481-484 at edf7085f), package
 theorem `StratonovichHAMSecondMoment.OccupationKernelRow.occupation_kernel_row`
 and package definitions `row`, `Rstar`.
 

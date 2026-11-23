@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `L:spatial-fourier-bound` (Deterministic Fourier bound for the spatial
-energy) of `notes/integrated_spatial_occupation.tex` (revision 39f2597a;
+energy) of `notes/integrated_spatial_occupation.tex` (revision edf7085f;
 statement lines 121-131, display `E:spatial-fourier-bound` at lines 126-129,
 proof lines 133-215), for the quantities `A_sp(g) = B_Γ(g², g²)` and
 `b(g) = ‖∇g‖₂²` of lines 36-39 (with `B_Γ` of `E:spatial-physical-pair`,
@@ -13,7 +13,7 @@ lines 13-18).  This module proves `b(g) > 0` and the bound
   `0 ≤ A_sp(g) ≤ 2^{1+α} R_Γ(1) b(g)^{α/2}`  for every real unit `g ∈ C_c^∞(ℝ^d)`,
 
 with `R_Γ(1) = ∫ μ(dξ)/(1+|ξ|²)` (`SpectralHomog.resolvent μ 1`; main TeX
-lines 8992-9001 at 39f2597a), under `H:homog` for every covariance it allows,
+lines 8992-9001 at edf7085f), under `H:homog` for every covariance it allows,
 including `Γ = 0` and singular ones, as in the lemma
 (`spatial_fourier_bound_paper`).  The lemma writes the constant as `R_α` of
 `E:intro-spectral-mass` (main TeX line 696) and uses `R_Γ(q) = q^{α-2} R_α`

@@ -1,0 +1,14 @@
+index=11
+mode=fresh
+target=StratonovichHAMSecondMoment.SourceVertexCrude
+rc=0
+commit=fe9f1de63d87a96443eafb5979a63c334808241c
+tree=e7faafb1d463a4a1cda54a7627cba536e08df95e
+inputs_sha256=05d9c584f95f9909ce6e8ad315f88f9249f5b9ab65832a35600e038dad50a8a2
+ws_tar_sha256=f56cf664a946c327d70fe5fb342975075eb33539b7357e015d70b03eb67bba0c
+leanchecker_sha256=12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6
+node=node881
+job=5740646
+array_job=5740635
+start=2026-11-22T18:30:04-0600
+end=2026-11-22T19:18:18-0600

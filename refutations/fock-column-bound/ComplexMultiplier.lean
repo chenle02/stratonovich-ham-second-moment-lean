@@ -4,7 +4,7 @@ import StratonovichHAMSecondMoment.FockColumnBound
 Refutation for the reality hypotheses behind
 `StratonovichHAMSecondMoment.FockColumnBound.mulOp_isSelfAdjoint` and
 `modeOp_isSelfAdjoint` (multiplication by a real function, and by a real mode `e_i`, is
-self-adjoint; main TeX line 2990 at 39f2597a: "each multiplication `M_{e_i}` is bounded and
+self-adjoint; main TeX line 2990 at edf7085f: "each multiplication `M_{e_i}` is bounded and
 selfadjoint").
 
 Wrong variant: multiplication by a complex constant is self-adjoint.  Counterexample: on

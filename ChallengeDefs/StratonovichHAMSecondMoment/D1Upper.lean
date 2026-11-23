@@ -43,7 +43,9 @@ lines 1853-1966, invoked by the proof of `P:d1-upper` at line 5534; the first
 clause of `DiagramModel.MixedMoment`): every diagram of the covariance `Γ` in
 dimension `d` converges, as the noise width `ε ↓ 0`, to its limit `diagramLim`
 (the TeX's `J_{m,n,D}(t)`).  TRUE under `H:homog` by `L:joint-fixed-order`;
-assumed, not proved. -/
+assumed here.  Discharged in wave L18 for every `H:homog` covariance in d = 1, 2, 3 and every
+horizon `t > 0` by `WickFinal.diagramLimits_l18` (the Riesz case in d = 1, `0 ≤ c`,
+`0 ≤ α < 1`, `0 ≤ α₀ < 1`, every `t ≥ 0`, also by `RieszDiagramLimits.diagramLimits_riesz`). -/
 def DiagramLimits (d : ℕ) (Γ : Measure (Rd d)) (α₀ t : ℝ) : Prop :=
   ∀ (m n : ℕ) (D : Fin (m + n) → Fin (m + n)), D ∈ Pi2 m n →
     Tendsto (fun ε => diagram (waveGreen d) (covEps Γ ε) α₀ m n D t) (𝓝[>] 0)

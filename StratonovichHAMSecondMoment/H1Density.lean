@@ -8,7 +8,7 @@ Density of smooth compactly supported functions in the weak-gradient `H^1`
 
 Foundation item with no manuscript label of its own.  The fact is stated in
 one sentence in the proof of Proposition `P:spatial-four-linear` of
-`notes/integrated_spatial_occupation.tex` at revision 39f2597a, lines 352-356
+`notes/integrated_spatial_occupation.tex` at revision edf7085f, lines 352-356
 ("Smooth compact functions are dense in `H^1`. Cutoffs equal to one on the
 radius-`R` ball, vanishing beyond `2R` and with gradient at most `C/R`,
 converge ... Mollification then converges in `H^1` by `L^2` translation
@@ -568,7 +568,7 @@ theorem exists_test_approx {f : Rd d → ℝ} {g : Rd d → Rd d} (hf : MemLp f 
 
 /-- **Density of `C_c^∞` in the weak-gradient `H^1`** (half (a) of the
 D8-lite foundation; `notes/integrated_spatial_occupation.tex`, proof of
-`P:spatial-four-linear`, lines 352-356 at 39f2597a), for every dimension `d`.
+`P:spatial-four-linear`, lines 352-356 at edf7085f), for every dimension `d`.
 Lean proof route: mollification first (with an `L²` contraction and density
 of `C_c` in `L²` in place of the TeX's translation continuity), then the
 TeX's cutoff estimate; see the module doc comment. -/

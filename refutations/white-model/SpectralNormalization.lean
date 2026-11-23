@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.WhiteModel
 /-!
 Refutation for `StratonovichHAMSecondMoment.WhiteModel.whiteSpectral_isSpectral` (and so for
 `white_homogCovariance`, `white_model_paper`): the white model of
-`notes/integrated_white_evaluation.tex` (39f2597a, lines 4-9) under `H:homog`.
+`notes/integrated_white_evaluation.tex` (edf7085f, lines 4-9) under `H:homog`.
 
 Wrong variant: the spectral measure of `c δ₀` taken as `c · Lebesgue`, forgetting the factor
 `1/(2π)` of the convention `Γ = ∫ e^{iξx} μ(dξ)`.  Counterexample: `c = 1` and a smooth bump

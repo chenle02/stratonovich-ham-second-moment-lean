@@ -1,0 +1,60 @@
+info: StratonovichHAMSecondMoment/Axioms.lean:4804:0: 'StratonovichHAMSecondMoment.ClassOBridge.classO_of_isOccField' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4805:0: 'StratonovichHAMSecondMoment.ClassOBridge.dilL2_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4806:0: 'StratonovichHAMSecondMoment.ClassOBridge.energySetO_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4807:0: 'StratonovichHAMSecondMoment.ClassOBridge.exists_aesm_of_joint' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4808:0: 'StratonovichHAMSecondMoment.ClassOBridge.exists_classO_small' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4809:0: 'StratonovichHAMSecondMoment.ClassOBridge.exists_joint' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4810:0: 'StratonovichHAMSecondMoment.ClassOBridge.exists_joint_of_bounded' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4811:0: 'StratonovichHAMSecondMoment.ClassOBridge.integral_norm_grad_sq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4812:0: 'StratonovichHAMSecondMoment.ClassOBridge.intrinsic_occupation_ceiling_classO_paper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4813:0: 'StratonovichHAMSecondMoment.ClassOBridge.intrinsic_spatial_comparison_classO_paper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4814:0: 'StratonovichHAMSecondMoment.ClassOBridge.isFiniteMeasure_volI' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4815:0: 'StratonovichHAMSecondMoment.ClassOBridge.isOccField_of_classO' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4816:0: 'StratonovichHAMSecondMoment.ClassOBridge.lintegral_rpow_two_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4817:0: 'StratonovichHAMSecondMoment.ClassOBridge.lintegral_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4818:0: 'StratonovichHAMSecondMoment.ClassOBridge.memLp_two_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4819:0: 'StratonovichHAMSecondMoment.ClassOBridge.occupation_physical_class_whole_paper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4820:0: 'StratonovichHAMSecondMoment.ClassOBridge.occupation_rayleigh_selection_whole_paper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4821:0: 'StratonovichHAMSecondMoment.ClassOBridge.pairing_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4822:0: 'StratonovichHAMSecondMoment.ClassOBridge.ratioSetO_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4823:0: 'StratonovichHAMSecondMoment.ClassOBridge.ratioSetO_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4824:0: 'StratonovichHAMSecondMoment.ClassOBridge.rawEnergySetO_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4825:0: 'StratonovichHAMSecondMoment.ClassOBridge.raw_occupation_energy_whole_paper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4826:0: 'StratonovichHAMSecondMoment.ClassOBridge.sSup_eq_zero_of_small' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4827:0: 'StratonovichHAMSecondMoment.ClassOBridge.sqPair_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4828:0: 'StratonovichHAMSecondMoment.ClassOBridge.stronglyMeasurable_simple_joint' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4829:0: 'StratonovichHAMSecondMoment.ClassOBridge.values_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: StratonovichHAMSecondMoment/Axioms.lean:4830:0: 'StratonovichHAMSecondMoment.ClassOBridge.zero_covariance_paper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Build completed successfully (9223 jobs).

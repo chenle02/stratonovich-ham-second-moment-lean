@@ -1,6 +1,6 @@
 /-
 Refutation for the count hypothesis `r_i ≤ N_i` of `L:finite-word-cutoff`
-(main TeX lines 3036-3058 at 39f2597a, `E:finite-word-cutoff` 3048-3055), package
+(main TeX lines 3036-3058 at edf7085f, `E:finite-word-cutoff` 3048-3055), package
 theorem `StratonovichHAMSecondMoment.FiniteWordCutoff.finite_word_cutoff`.
 
 Wrong variant: the compressed word equals the uncompressed word at every cutoff.

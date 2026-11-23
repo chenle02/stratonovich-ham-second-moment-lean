@@ -1,6 +1,6 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.HigherRieszTwo.F3_max` (manuscript
-`L:higher-riesz`, main TeX lines 6134-6146 at 39f2597a): the maximum of the
+`L:higher-riesz`, main TeX lines 6134-6146 at edf7085f): the maximum of the
 `d = 3` closed form is not its limit value `1` at `ρ = 0` (the TeX notes the
 formula is continuous at zero; the maximum sits at `ρ = 1`).
 

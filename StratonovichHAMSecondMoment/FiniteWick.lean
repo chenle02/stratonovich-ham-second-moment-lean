@@ -7,7 +7,7 @@ Finite Wick (Isserlis) formula: a reusable foundation (a D1 slice; no manuscript
 label of its own; nothing supplied).
 
 Source: the Wick step of the proof of `L:terminal-wick` in the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a (lemma
+`notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f (lemma
 statement lines 4291-4336, the formula `E:terminal-wick-formula` at 4310-4313,
 "each pairing has coefficient one" and "if `m+n` is odd, the expectation is
 zero" at 4329; proof lines 4365-4378 for the Wick step, 4351-4356 for the moment

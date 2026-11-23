@@ -1,6 +1,6 @@
 /-
 Refutation for `P:masked-quotient-obstruction`
-(`notes/integrated_covariance_foundation.tex` lines 374-375 at 39f2597a:
+(`notes/integrated_covariance_foundation.tex` lines 374-375 at edf7085f:
 "integration by parts gives the masked marginal `-I_χ χ(x₁)²`"), package theorem
 `StratonovichHAMSecondMoment.QuotientObstruction.integral_chi_mul_chi2`.
 

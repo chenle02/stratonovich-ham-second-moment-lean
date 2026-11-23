@@ -1,0 +1,13 @@
+node=node907 job=5740991 array=5740981_10 mode=fresh target=StratonovichHAMSecondMoment.MildPolyMem start=2026-11-23T02:59:20-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=5cdd49359fa093549572a890e68a7d25f412733e TREE=cfcb9596b53f9a56fb5da24922f3bb98f9094608 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1440 waited_s=0
+REPLAY_STARTED 2026-11-23T03:02:42-0600
+BEGIN fresh StratonovichHAMSecondMoment.MildPolyMem 03:02:43
+END fresh StratonovichHAMSecondMoment.MildPolyMem	0	0:43:22.24	7669620	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2603 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.MildPolyMem
+PROCESS_EXIT=0 end=2026-11-23T03:46:07-0600

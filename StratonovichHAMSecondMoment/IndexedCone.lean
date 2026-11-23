@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:raw-block-indexed-cone` (Indexed cone and terminal displacement) of
 `notes/integrated_raw_block_lower.tex` (TeX lines 316--455 at revision
-39f2597a), with its display `E:raw-block-positive-product`.
+edf7085f), with its display `E:raw-block-positive-product`.
 
 Class: inputs-supplied.  The lemma uses only the outputs of Section
 `S:compact-mean-family` (`notes/integrated_compact_mean_family.tex`) for the

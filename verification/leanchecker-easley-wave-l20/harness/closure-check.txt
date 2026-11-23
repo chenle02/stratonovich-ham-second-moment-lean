@@ -1,0 +1,243 @@
+old fe9f1de63d87a96443eafb5979a63c334808241c
+new 5cdd49359fa093549572a890e68a7d25f412733e
+modules: 200 at old, 211 at new
+removed: 0 
+
+new: 11
+  StratonovichHAMSecondMoment.CleanupWrappers
+  StratonovichHAMSecondMoment.MildConstruction
+  StratonovichHAMSecondMoment.MildFields
+  StratonovichHAMSecondMoment.MildFinal
+  StratonovichHAMSecondMoment.MildGreenWidth
+  StratonovichHAMSecondMoment.MildInterface
+  StratonovichHAMSecondMoment.MildOccupied
+  StratonovichHAMSecondMoment.MildPartialVertex
+  StratonovichHAMSecondMoment.MildPolyMem
+  StratonovichHAMSecondMoment.MildTerminalFubini
+  StratonovichHAMSecondMoment.RieszInstanceOne
+
+content: 2
+  StratonovichHAMSecondMoment
+  StratonovichHAMSecondMoment.Axioms
+
+comment-only: 39
+  StratonovichHAMSecondMoment.CameronFinal  (line count unchanged)
+  StratonovichHAMSecondMoment.CameronInterface  (line count unchanged)
+  StratonovichHAMSecondMoment.CameronProducts  (line count unchanged)
+  StratonovichHAMSecondMoment.CameronSpatial  (line count unchanged)
+  StratonovichHAMSecondMoment.CameronTemporalKernel  (line count unchanged)
+  StratonovichHAMSecondMoment.CameronTemporalMap  (line count unchanged)
+  StratonovichHAMSecondMoment.CameronTemporalSqrt  (line count unchanged)
+  StratonovichHAMSecondMoment.CameronTemporalTarget  (line count unchanged)
+  StratonovichHAMSecondMoment.CameronTemporalYoung  (line count unchanged)
+  StratonovichHAMSecondMoment.CameronUMap  (line count unchanged)
+  StratonovichHAMSecondMoment.CompactOperatorFoundation  (line count unchanged)
+  StratonovichHAMSecondMoment.D1Upper  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.DiagramModel  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.EnvelopeD3Final  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.EnvelopeD3Wave  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.EnvelopeFinal  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.GreenSmoothed3  (line count unchanged)
+  StratonovichHAMSecondMoment.HomogeneousEnvelope  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.LowAlphaUpper  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.OrderTwoDiagrams  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.PairingBridge  (line count unchanged)
+  StratonovichHAMSecondMoment.PairingDampedNorms  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.PairingInterface  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.PositiveRawMean  (line count unchanged)
+  StratonovichHAMSecondMoment.RieszDiagramLimitsHomog  (line count unchanged)
+  StratonovichHAMSecondMoment.RieszFourDiagrams  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.SourceExpansion  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.SourceFinal  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.UniformELift  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.UniformMeanAssembly  (line count unchanged)
+  StratonovichHAMSecondMoment.UniformMeanCutoff  (line count unchanged)
+  StratonovichHAMSecondMoment.UniformMeanDischarge  (line count unchanged)
+  StratonovichHAMSecondMoment.UniformMeanFoundation  (line count unchanged)
+  StratonovichHAMSecondMoment.UniformMeanInterface  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.UniformMeanTensor  (line count unchanged)
+  StratonovichHAMSecondMoment.WickBridge  (line count unchanged)
+  StratonovichHAMSecondMoment.WickFinal  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.WickInterface  (LINE COUNT CHANGED)
+  StratonovichHAMSecondMoment.WickMass  (LINE COUNT CHANGED)
+
+identical: 159
+  StratonovichHAMAudit.ActualEvent
+  StratonovichHAMAudit.AllAlphaMoment
+  StratonovichHAMAudit.ClockFilter
+  StratonovichHAMAudit.DampedLower
+  StratonovichHAMAudit.DimensionalMatrix
+  StratonovichHAMAudit.DirectEvent
+  StratonovichHAMAudit.FiniteYoung
+  StratonovichHAMAudit.GaussianTail
+  StratonovichHAMAudit.GlobalOmega
+  StratonovichHAMAudit.HermiteWord
+  StratonovichHAMAudit.HermiteWordConsumer
+  StratonovichHAMAudit.HermiteWordFock
+  StratonovichHAMAudit.InteractionDriver
+  StratonovichHAMAudit.JointTilt
+  StratonovichHAMAudit.LocalFlow
+  StratonovichHAMAudit.MiddleCross
+  StratonovichHAMAudit.MovingCone
+  StratonovichHAMAudit.OccupationForm
+  StratonovichHAMAudit.PhaseResponse
+  StratonovichHAMAudit.PositiveGram
+  StratonovichHAMAudit.ProjectionResidual
+  StratonovichHAMAudit.RawValueCeiling
+  StratonovichHAMAudit.RawVariational
+  StratonovichHAMAudit.TerminalCross
+  StratonovichHAMAudit.WhiteCDF
+  StratonovichHAMSecondMoment.AlphaOneConvolution
+  StratonovichHAMSecondMoment.ClassOBridge
+  StratonovichHAMSecondMoment.ClassOH1
+  StratonovichHAMSecondMoment.ClockCopy
+  StratonovichHAMSecondMoment.ClockCopyHomog
+  StratonovichHAMSecondMoment.ComplexPhaseScalar
+  StratonovichHAMSecondMoment.CrudeCorrected
+  StratonovichHAMSecondMoment.D1Spatial
+  StratonovichHAMSecondMoment.DampedMultiplier
+  StratonovichHAMSecondMoment.DampedNorms
+  StratonovichHAMSecondMoment.DampedNormsHomog
+  StratonovichHAMSecondMoment.DampedSmoothing
+  StratonovichHAMSecondMoment.DiagramBridge
+  StratonovichHAMSecondMoment.DriverParameters
+  StratonovichHAMSecondMoment.EndpointCorollaries
+  StratonovichHAMSecondMoment.EndpointLemmas
+  StratonovichHAMSecondMoment.EnvelopeD3
+  StratonovichHAMSecondMoment.FiniteGaussianMatrix
+  StratonovichHAMSecondMoment.FiniteWick
+  StratonovichHAMSecondMoment.FiniteWordCutoff
+  StratonovichHAMSecondMoment.FixedSplit
+  StratonovichHAMSecondMoment.FixedSplitCore
+  StratonovichHAMSecondMoment.FockColumnBound
+  StratonovichHAMSecondMoment.FockForm
+  StratonovichHAMSecondMoment.FockSandwichModel
+  StratonovichHAMSecondMoment.FrequencyRow
+  StratonovichHAMSecondMoment.GaussianComparison
+  StratonovichHAMSecondMoment.GaussianHermite
+  StratonovichHAMSecondMoment.GaussianIBP
+  StratonovichHAMSecondMoment.GaussianScalarPowers
+  StratonovichHAMSecondMoment.GaussianTest
+  StratonovichHAMSecondMoment.GramScalarAlgebra
+  StratonovichHAMSecondMoment.H1Density
+  StratonovichHAMSecondMoment.H1Mathlib
+  StratonovichHAMSecondMoment.HermiteFock
+  StratonovichHAMSecondMoment.HigherRieszThree
+  StratonovichHAMSecondMoment.HigherRieszTwo
+  StratonovichHAMSecondMoment.HomogHypothesis
+  StratonovichHAMSecondMoment.IndexedCone
+  StratonovichHAMSecondMoment.IntervalScalar
+  StratonovichHAMSecondMoment.IntervalScalarCompleted
+  StratonovichHAMSecondMoment.InventoryProduct
+  StratonovichHAMSecondMoment.JointFixedOrder
+  StratonovichHAMSecondMoment.JointTail
+  StratonovichHAMSecondMoment.KappaRange
+  StratonovichHAMSecondMoment.L10Completed
+  StratonovichHAMSecondMoment.L8Completed
+  StratonovichHAMSecondMoment.L9Completed
+  StratonovichHAMSecondMoment.LowAlphaConvolution
+  StratonovichHAMSecondMoment.MaskedAuxiliaryNorm
+  StratonovichHAMSecondMoment.MaskedAuxiliaryReal
+  StratonovichHAMSecondMoment.MaskedContinuousWave
+  StratonovichHAMSecondMoment.MaskedContinuousWaveCompleted
+  StratonovichHAMSecondMoment.MaskedModulation
+  StratonovichHAMSecondMoment.MaskedSpectralGrowth
+  StratonovichHAMSecondMoment.MaskedTrigProducts
+  StratonovichHAMSecondMoment.OccupationCeilingExact
+  StratonovichHAMSecondMoment.OccupationCeilingFinite
+  StratonovichHAMSecondMoment.OccupationCompletion
+  StratonovichHAMSecondMoment.OccupationKernelRow
+  StratonovichHAMSecondMoment.OccupationPhysicalClass
+  StratonovichHAMSecondMoment.PairingCapRemoval
+  StratonovichHAMSecondMoment.PairingConvolution
+  StratonovichHAMSecondMoment.PairingEnvelope
+  StratonovichHAMSecondMoment.PairingRegional
+  StratonovichHAMSecondMoment.PairingSmoothedNorms
+  StratonovichHAMSecondMoment.PairingTranslatedCS
+  StratonovichHAMSecondMoment.PhaseBessel
+  StratonovichHAMSecondMoment.PhaseContractions
+  StratonovichHAMSecondMoment.PhaseShiftControl
+  StratonovichHAMSecondMoment.QuotientObstruction
+  StratonovichHAMSecondMoment.RadiusMeanAnchor
+  StratonovichHAMSecondMoment.RawOccupationEnergy
+  StratonovichHAMSecondMoment.RayleighTail
+  StratonovichHAMSecondMoment.RemoveMask
+  StratonovichHAMSecondMoment.ResolventForm
+  StratonovichHAMSecondMoment.RieszDiagramLimits
+  StratonovichHAMSecondMoment.RieszPositiveDefinite
+  StratonovichHAMSecondMoment.SeriesType
+  StratonovichHAMSecondMoment.SourceFeatures
+  StratonovichHAMSecondMoment.SourceFixedOrder
+  StratonovichHAMSecondMoment.SourceGreenFirst
+  StratonovichHAMSecondMoment.SourceHeatGram
+  StratonovichHAMSecondMoment.SourceInterface
+  StratonovichHAMSecondMoment.SourceIsonormal
+  StratonovichHAMSecondMoment.SourceMixed
+  StratonovichHAMSecondMoment.SourceReversal
+  StratonovichHAMSecondMoment.SourceTube
+  StratonovichHAMSecondMoment.SourceVertexCrude
+  StratonovichHAMSecondMoment.SourceWick
+  StratonovichHAMSecondMoment.SpaceTimePositivity
+  StratonovichHAMSecondMoment.SpatialBracket
+  StratonovichHAMSecondMoment.SpatialFourLinear
+  StratonovichHAMSecondMoment.SpatialFourierBound
+  StratonovichHAMSecondMoment.SpatialOccupationCompleted
+  StratonovichHAMSecondMoment.SpatialOccupationL7Completed
+  StratonovichHAMSecondMoment.SpatialSmoothRatio
+  StratonovichHAMSecondMoment.SpatialStaticControls
+  StratonovichHAMSecondMoment.SpectralHomog
+  StratonovichHAMSecondMoment.SpectralMassIdentity
+  StratonovichHAMSecondMoment.StaticInteractionCompleted
+  StratonovichHAMSecondMoment.StaticPhaseCauchy
+  StratonovichHAMSecondMoment.SymplecticFree
+  StratonovichHAMSecondMoment.TemporalEquilibrium
+  StratonovichHAMSecondMoment.TerminalWick
+  StratonovichHAMSecondMoment.TerminalWickComplete
+  StratonovichHAMSecondMoment.TerminalWickInputs
+  StratonovichHAMSecondMoment.TerminalWickRegularization
+  StratonovichHAMSecondMoment.TimeCompletion
+  StratonovichHAMSecondMoment.TimeFractional
+  StratonovichHAMSecondMoment.TimeSchur
+  StratonovichHAMSecondMoment.TwoSimplexTime
+  StratonovichHAMSecondMoment.TypeContinuity
+  StratonovichHAMSecondMoment.UniformSeriesTail
+  StratonovichHAMSecondMoment.VariationalDilation
+  StratonovichHAMSecondMoment.VariationalFloor
+  StratonovichHAMSecondMoment.VariationalMean
+  StratonovichHAMSecondMoment.VariationalMeanDerivatives
+  StratonovichHAMSecondMoment.VariationalRate
+  StratonovichHAMSecondMoment.WaveGreen
+  StratonovichHAMSecondMoment.WaveGreenFourier
+  StratonovichHAMSecondMoment.WaveKernel
+  StratonovichHAMSecondMoment.WaveTwoVariances
+  StratonovichHAMSecondMoment.WeakSobolev
+  StratonovichHAMSecondMoment.WhiteClockLaplace
+  StratonovichHAMSecondMoment.WhiteCollapse
+  StratonovichHAMSecondMoment.WhiteFour
+  StratonovichHAMSecondMoment.WhiteModel
+  StratonovichHAMSecondMoment.WhiteMomentBounds
+  StratonovichHAMSecondMoment.WhiteRelativeWidth
+  StratonovichHAMSecondMoment.WickMeasures
+  StratonovichHAMSecondMoment.WickScaling
+  StratonovichHAMSecondMoment.WickSpectral
+  StratonovichHAMSecondMoment.WickStep4
+
+project imports that are not modules of the two libraries: 0 
+
+import-closure gaps (identical or comment-only module importing a new or content-changed module):
+  total 0
+
+direct importers of each new or content-changed module:
+  StratonovichHAMSecondMoment: StratonovichHAMSecondMoment.Axioms
+  StratonovichHAMSecondMoment.Axioms: -
+  StratonovichHAMSecondMoment.CleanupWrappers: StratonovichHAMSecondMoment
+  StratonovichHAMSecondMoment.MildConstruction: StratonovichHAMSecondMoment
+  StratonovichHAMSecondMoment.MildFields: StratonovichHAMSecondMoment
+  StratonovichHAMSecondMoment.MildFinal: StratonovichHAMSecondMoment
+  StratonovichHAMSecondMoment.MildGreenWidth: StratonovichHAMSecondMoment
+  StratonovichHAMSecondMoment.MildInterface: StratonovichHAMSecondMoment
+  StratonovichHAMSecondMoment.MildOccupied: StratonovichHAMSecondMoment
+  StratonovichHAMSecondMoment.MildPartialVertex: StratonovichHAMSecondMoment
+  StratonovichHAMSecondMoment.MildPolyMem: StratonovichHAMSecondMoment
+  StratonovichHAMSecondMoment.MildTerminalFubini: StratonovichHAMSecondMoment
+  StratonovichHAMSecondMoment.RieszInstanceOne: StratonovichHAMSecondMoment

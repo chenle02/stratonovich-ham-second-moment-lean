@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.PhaseBessel
 /-!
 Refutation for `StratonovichHAMSecondMoment.PhaseBessel.phase_bessel`
 (manuscript `L:phase-bessel`, `notes/integrated_wave_variance.tex` 426-435 at
-39f2597a): orthogonality alone does not suffice; the normalization
+edf7085f): orthogonality alone does not suffice; the normalization
 `∫ ∑ j, |u k j|² = 1` cannot be dropped.
 
 The wrong variant replaces `IsOrthonormalL2 μ u` by `L²` membership plus

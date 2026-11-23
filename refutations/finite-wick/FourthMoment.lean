@@ -1,6 +1,6 @@
 /-
 Refutation for the Wick formula of `FiniteWick` (`E:terminal-wick-formula`'s
-Gaussian step, main TeX lines 4365-4376 at 39f2597a), package theorem
+Gaussian step, main TeX lines 4365-4376 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.FiniteWick.wick_multivariateGaussian`.
 
 Wrong variant: `E x⁴ = (E x²)² = 1` for `x ~ N(0,1)` (one pairing per

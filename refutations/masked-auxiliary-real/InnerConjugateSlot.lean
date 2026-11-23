@@ -1,7 +1,7 @@
 /-
 Refutation for the inner product of the complexification in the real-`H`
 clause of `P:masked-auxiliary-norm` (`notes/integrated_covariance_foundation.tex`,
-line 117 at 39f2597a), package definition
+line 117 at edf7085f), package definition
 `StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.cxInner`
 (conjugate linear in the first slot, Mathlib's convention, which the
 `InnerProductSpace ℂ (Cx H)` instance certifies).

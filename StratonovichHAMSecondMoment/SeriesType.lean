@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Scalar series and factorial foundation used by the coefficient-type arguments
 of `notes/notes_stratonovich_ham_second_moment.tex` (main TeX file; line
-numbers at revision 39f2597a). The manuscript uses each of these elementary
+numbers at revision edf7085f). The manuscript uses each of these elementary
 facts inline, inside the proofs of labelled results, except `gamma_mid_sq_le`,
 a standalone tool for which no manuscript line is claimed; none is a labelled
 result itself. Formalized here, each in full and with nothing supplied:

@@ -36,8 +36,8 @@ namespace StratonovichHAMSecondMoment.DampedSmoothing
 open HomogHypothesis (Rd HomogCovariance IsTempered IsSpectralMeasure)
 open TimeFractional SpectralHomog DampedNorms ClockCopy DampedNormsHomog WaveKernel WaveGreen
   DampedMultiplier
-
-open LowAlphaConvolution (gammaEps gaussFactor gaussFactor_pos)
+open MaskedSpectralGrowth (integrable_gauss_zero)
+open LowAlphaConvolution (gammaEps gaussFactor gammaEps_spectral gammaEps_nonneg integrable_gaussFactor gaussFactor_pos)
 
 variable {d : ℕ}
 

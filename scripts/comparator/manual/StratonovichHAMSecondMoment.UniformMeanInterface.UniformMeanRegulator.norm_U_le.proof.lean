@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.UniformMeanInterface.UniformMeanRegulator.norm_U_le

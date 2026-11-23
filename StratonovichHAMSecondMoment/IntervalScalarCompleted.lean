@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Integration of wave items L7-a (`InventoryProduct`) and L7-f (`IntervalScalar`)
 for `notes/notes_stratonovich_ham_second_moment.tex` (main TeX file; line
-numbers at revision 39f2597a).  This module discharges the
+numbers at revision edf7085f).  This module discharges the
 `L:inventory-product` input of the `IntervalScalar` step rows of
 `P:interval-coefficients` (statement lines 4054-4066, proof 4068-4271).
 

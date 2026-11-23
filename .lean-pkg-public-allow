@@ -29,3 +29,10 @@ allow: site/index.md: ^arXiv:2611\.23014$
 allow: index.html: ^arXiv:2611\.23014$
 allow: coverage.html: ^arXiv:2611\.23014v1$
 allow: verification.html: ^arXiv:2611\.23014v1$
+allow: verification/leanchecker-easley-wave-l15/harness/*: ^stratonovich-ham-second-momen[t]-lean-dev$
+allow: verification/leanchecker-easley-wave-l16/harness/*: ^stratonovich-ham-second-momen[t]-lean-dev$
+allow: verification/leanchecker-easley-wave-l17/harness/*: ^stratonovich-ham-second-momen[t]-lean-dev$
+allow: verification/leanchecker-easley-wave-l18/harness/*: ^stratonovich-ham-second-momen[t]-lean-dev$
+allow: verification/leanchecker-easley-wave-l19/harness/*: ^stratonovich-ham-second-momen[t]-lean-dev$
+allow: verification/leanchecker-easley-wave-l20/harness/*: ^stratonovich-ham-second-momen[t]-lean-dev$
+allow: verification/leanchecker-easley-wave-l21/harness/*: ^stratonovich-ham-second-momen[t]-lean-dev$

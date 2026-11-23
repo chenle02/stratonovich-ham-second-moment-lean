@@ -1,7 +1,7 @@
 /-
 Refutation for the tail bound of `L:uniform-series-tail`
 (`notes/notes_stratonovich_ham_second_moment.tex` lines 4434-4439 and 4450-4452
-at 39f2597a), package theorem
+at edf7085f), package theorem
 `StratonovichHAMSecondMoment.UniformSeriesTail.tail_bound`.
 
 Wrong variant: the tail bound without the geometric factor `1/(1 - r^{-1})`,

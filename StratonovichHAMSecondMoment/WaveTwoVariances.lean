@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Proposition `P:wave-two-variances` (Both variance directions) of
-`notes/integrated_wave_variance.tex` at revision 39f2597a: statement TeX lines 452-467
+`notes/integrated_wave_variance.tex` at revision edf7085f: statement TeX lines 452-467
 (displays `E:wave-input-variance` 458-460 and `E:wave-output-variance` 461-463), proof
 lines 469-563 (displays `E:variance-kernel-time-bound` 481-484 and
 `E:variance-actual-row-bound` 489-492). Also used: the section's standing assumptions

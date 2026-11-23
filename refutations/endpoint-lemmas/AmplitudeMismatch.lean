@@ -1,7 +1,7 @@
 /-
 Refutation for the common-amplitude requirement of the comparison in
 `StratonovichHAMSecondMoment.EndpointLemmas.product_comparison` (manuscript
-`L:product-endpoints`, main TeX lines 7267-7279 at 39f2597a: "The amplitude remains
+`L:product-endpoints`, main TeX lines 7267-7279 at edf7085f: "The amplitude remains
 `c^θ c^{1-θ} = c`").
 
 Wrong variant: the Gaussian comparison with endpoints of a different amplitude, here the

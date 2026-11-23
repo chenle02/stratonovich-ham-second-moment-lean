@@ -1,0 +1,13 @@
+node=node865 job=5733128 array=5733116_12 mode=fresh target=StratonovichHAMSecondMoment.CompactOperatorFoundation start=2026-11-20T12:23:25-0600
+tmp_avail_G=890
+VERIFIED_COMMIT=ebac849d61e539a125de6d920c1c2b29255ca671 TREE=411f45b32cb77ef271136fd5dfa0fbe3c9254715 MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1360 waited_s=0
+REPLAY_STARTED 2026-11-20T12:27:19-0600
+BEGIN fresh StratonovichHAMSecondMoment.CompactOperatorFoundation 12:27:21
+END fresh StratonovichHAMSecondMoment.CompactOperatorFoundation	0	0:42:56.56	7571028	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2579 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.CompactOperatorFoundation
+PROCESS_EXIT=0 end=2026-11-20T13:10:18-0600

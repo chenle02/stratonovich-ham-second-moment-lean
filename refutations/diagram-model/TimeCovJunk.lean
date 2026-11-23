@@ -5,7 +5,7 @@ kernel `|s_j - s_h|^{-α₀}` is `TimeKernelExponent.lean`.
 
 Control of Lean's totalized arithmetic for the temporal covariance of
 `DiagramModel` (`|s_j - s_h|^{-α₀}` in `E:mixed-diagram`, main TeX line 822 at
-39f2597a), package definition `StratonovichHAMSecondMoment.DiagramModel.timeCov`
+edf7085f), package definition `StratonovichHAMSecondMoment.DiagramModel.timeCov`
 and theorem `timeCov_self`.
 
 Wrong variant: the temporal covariance at equal times is `0` (Lean's real

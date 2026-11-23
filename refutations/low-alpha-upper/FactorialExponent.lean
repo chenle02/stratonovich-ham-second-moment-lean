@@ -1,6 +1,6 @@
 /-
 Refutation for the factorial step of `E:low-alpha-coefficient` (second
-inequality; main TeX lines 5537-5538 and 5727-5730 at 39f2597a:
+inequality; main TeX lines 5537-5538 and 5727-5730 at edf7085f:
 `k! k^{bk} ≥ (k!)^{b+1} = (k!)^q`).  Package theorem
 `StratonovichHAMSecondMoment.LowAlphaUpper.coeff_factorial_le`.
 

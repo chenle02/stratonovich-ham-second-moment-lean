@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:white-clock-laplace` (White-space low-order Laplace transforms) of
-`notes/notes_stratonovich_ham_second_moment.tex` at revision `39f2597a`
+`notes/notes_stratonovich_ham_second_moment.tex` at revision `edf7085f`
 (section `S:two-clock-screen`): statement lines 8914--8940, with the displays
 `E:white-cross-clock-transform` (lines 8917--8928), the diagonal value (lines
 8929--8930) and `E:white-self-clock-transform` (lines 8932--8939); proof lines

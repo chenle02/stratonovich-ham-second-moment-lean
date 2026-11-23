@@ -1,6 +1,6 @@
 /-
 Refutation for the pairing count of `FiniteWick` (the coefficient of the Wick
-formula in `L:terminal-wick`, main TeX lines 4373-4376 at 39f2597a: "orientations
+formula in `L:terminal-wick`, main TeX lines 4373-4376 at edf7085f: "orientations
 and orderings of the `k` pairs cancel the exponential's `2^k k!` denominator"),
 package theorem `StratonovichHAMSecondMoment.FiniteWick.card_pairings_even`.
 

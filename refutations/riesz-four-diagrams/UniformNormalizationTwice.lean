@@ -1,6 +1,6 @@
 /-
 Refutation for the normalization of `E:riesz-four` (main TeX lines 5157-5163 and
-5201-5204 at 39f2597a: "the factors `1/16` are already incorporated in the four
+5201-5204 at edf7085f: "the factors `1/16` are already incorporated in the four
 uniform probability laws"), package theorems
 `StratonovichHAMSecondMoment.RieszFourDiagrams.riesz_four` and `diagram_riesz_eq`.
 

@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.StaticInteractionCompleted
 /-!
 Refutation for
 `StratonovichHAMSecondMoment.StaticInteractionCompleted.independent_static_blocks_operator`
-(`E:independent-static-blocks`, main TeX lines 3248-3256, proof 3332-3339 at 39f2597a).
+(`E:independent-static-blocks`, main TeX lines 3248-3256, proof 3332-3339 at edf7085f).
 
 Wrong variant: the block bound without the adaptation hypothesis `hadapt` (the per-block
 interaction bound `hI` is only known on phases adapted to the past, i.e. independent of the

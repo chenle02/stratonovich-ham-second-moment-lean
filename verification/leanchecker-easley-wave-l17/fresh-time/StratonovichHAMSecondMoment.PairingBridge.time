@@ -1,0 +1,9 @@
+Command: timeout -k 30s 14400s lake env leanchecker --fresh StratonovichHAMSecondMoment.PairingBridge
+Exit status: 0
+Elapsed wall (s): 2576.32
+Elapsed wall (h:mm:ss): 0:42:56.32
+User CPU (s): 2536.31
+System CPU (s): 39.72
+Peak RSS of largest waited descendant (KiB): 7615512
+Output bytes: 0
+Host: node956  Job: NA

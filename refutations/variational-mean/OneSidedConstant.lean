@@ -1,6 +1,6 @@
 /-
 Refutation for the time-kernel constant used in `L:variational-global-mean`
-(`notes/integrated_unmasked_variational.tex` lines 106-113 at 39f2597a: the
+(`notes/integrated_unmasked_variational.tex` lines 106-113 at edf7085f: the
 change `r = s - t` integrates over both signs of `r`), package theorem
 `StratonovichHAMSecondMoment.VariationalMean.abs_rpow_integral`.
 

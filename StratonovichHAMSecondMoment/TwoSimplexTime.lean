@@ -8,7 +8,7 @@ integrals of the diagram model, as used in the proof of `P:d1-upper` and, by
 reference ("the temporal symmetry, cube integral and split count ... do not
 involve the spatial dimension"), in the proofs of `P:low-alpha-upper` and
 `C:d1-first-calibration`.  Main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` at revision 39f2597a:
+`notes/notes_stratonovich_ham_second_moment.tex` at revision edf7085f:
 * the increments of a time vector in `[0,t]^m_< × [0,t]^{2k-m}_<` sum to at most
   `2t` (lines 5484-5485), and to at most `t` for one chain (line 5845);
 * `F_k(s) = Σ_{D ∈ Π_k} ∏_{(i,j) ∈ D} |s_i - s_j|^{-α₀}` is symmetric under every

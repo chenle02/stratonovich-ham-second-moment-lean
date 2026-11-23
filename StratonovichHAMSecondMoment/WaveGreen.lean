@@ -4,10 +4,10 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The wave Green measures `G_s` of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` (revision 39f2597a), and
+`notes/notes_stratonovich_ham_second_moment.tex` (revision edf7085f), and
 `L:damped-homogeneous-norms` (lines 1010-1154) with nothing supplied.
 
-Sources at 39f2597a:
+Sources at edf7085f:
 * `d = 1`: `G(s,y) = ½ 1_{|y|<s}` (line 952, proof of `L:white-test`; again at
   lines 4913 and 8910);
 * `d = 2, 3`: the proof of `L:higher-riesz` (lines 6124-6132), quoting

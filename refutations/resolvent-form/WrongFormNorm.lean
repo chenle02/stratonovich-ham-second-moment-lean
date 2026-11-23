@@ -3,7 +3,7 @@ Refutation for the norm used in the form bounds (wave L13, item K5b), package th
 `StratonovichHAMSecondMoment.ResolventForm.msNormSq_toH1` and `signed_form_bounds`.
 
 Manuscript side: `E:signed-form-bounds` (`notes/integrated_signed_static.tex`, lines 58-59 at
-39f2597a) is stated in the manuscript norm `z² = ‖u‖₂² + ‖∇u‖₂²` (line 85), not in Mathlib's
+edf7085f) is stated in the manuscript norm `z² = ‖u‖₂² + ‖∇u‖₂²` (line 85), not in Mathlib's
 `H^{1}` norm (wave L13 decision 5).
 
 Wrong variant: the manuscript norm `msNormSq` of a real `H^1` profile equals Mathlib's

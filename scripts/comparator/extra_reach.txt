@@ -16,3 +16,15 @@ StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.neg_re
 StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.neg_im
 StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.sub_re
 StratonovichHAMSecondMoment.MaskedAuxiliaryReal.Cx.sub_im
+# wave L17: lemmas the copied proofs use by name (PairingBridge.listPred_ofFn)
+StratonovichHAMSecondMoment.PairingBridge.listPred_cons'
+StratonovichHAMSecondMoment.PairingInterface.gammaOf_spec
+StratonovichHAMSecondMoment.PairingEnvelope.listPred_cons'
+StratonovichHAMSecondMoment.PairingInterface.listPred_eq_none_of_notMem_tail
+# wave L18: lemmas the copied proofs use by name
+StratonovichHAMSecondMoment.WickInterface.capDom_mk
+# wave L19: instances the copied statements need (instance resolution, not by name) and names a restated scope opens
+StratonovichHAMSecondMoment.SourceInterface.instMeasurableSpaceSourceModel
+StratonovichHAMSecondMoment.SourceInterface.instIsProbabilitySourceModel
+StratonovichHAMSecondMoment.HomogeneousEnvelope.Khom_pos
+StratonovichHAMSecondMoment.HomogeneousEnvelope.one_le_Khom

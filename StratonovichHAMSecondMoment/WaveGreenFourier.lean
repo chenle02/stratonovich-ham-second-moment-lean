@@ -5,11 +5,11 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The Fourier identities of the wave Green measures `G_s` in `d = 2, 3`, of the
 main TeX file `notes/notes_stratonovich_ham_second_moment.tex` (revision
-39f2597a), Archimedes' law for the sphere measure, and the extension of the
+edf7085f), Archimedes' law for the sphere measure, and the extension of the
 Green-smoothing identification of `L:damped-homogeneous-norms` (L8-b,
 `DampedMultiplier`) to every `d ∈ {1,2,3}`.
 
-Sources at 39f2597a (main TeX):
+Sources at edf7085f (main TeX):
 * `Ĝ_s(ξ) = sin(s|ξ|)/|ξ|`, value `s` at `ξ = 0` (lines 983-984, before
   `E:damped-norm-definitions`);
 * the display `Ĝ_h(ξ) = sin(h|ξ|)/|ξ|`, `G_h(ℝ^d) = h` (lines 5612-5618, in

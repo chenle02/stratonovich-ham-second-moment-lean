@@ -1,6 +1,6 @@
 /-
 Refutation for the parity hypotheses of the partial-sum comparison of `L:terminal-wick` (main
-TeX lines 4329 and 4331-4333, proof 4404-4406 at 39f2597a), package theorem
+TeX lines 4329 and 4331-4333, proof 4404-4406 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.TerminalWickComplete.norm_sq_partial_le`.
 
 Wrong variant: the partial-sum comparison from the entrywise comparison of the Gram entries

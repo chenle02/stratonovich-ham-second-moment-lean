@@ -1,6 +1,6 @@
 /-
 Refutation for the masses of the regularized terminal-chain measures (main TeX lines 4393 and
-4348-4351 at 39f2597a), package theorem
+4348-4351 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.TerminalWickRegularization.chainMeasureReg_univ`.
 
 Wrong variant: the regularized measure built from the unit Green variables `V ~ G_1` alone

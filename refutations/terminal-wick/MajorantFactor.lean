@@ -1,6 +1,6 @@
 /-
 Refutation for the comparison behind the absolute convergence in
-`L:terminal-wick` (main TeX lines 4333-4335 and 4406-4409 at 39f2597a), package
+`L:terminal-wick` (main TeX lines 4333-4335 and 4406-4409 at edf7085f), package
 theorem `StratonovichHAMSecondMoment.TerminalWick.sqrt_doubleFactorial_div_le`
 (auxiliary: `√((2n-1)!!)/(2n)! ≤ 1/n!`).
 

@@ -1,6 +1,6 @@
 /-
 Refutation for the Lipschitz claim of part (i) of `L:spatial-static-controls`
-(`notes/integrated_spatial_occupation.tex` lines 49-50 at 39f2597a: "`λ_z` is
+(`notes/integrated_spatial_occupation.tex` lines 49-50 at edf7085f: "`λ_z` is
 Lipschitz on every compact positive `c` interval"), package theorem
 `StratonovichHAMSecondMoment.SpatialStaticControls.lam_lipschitzOn`.
 

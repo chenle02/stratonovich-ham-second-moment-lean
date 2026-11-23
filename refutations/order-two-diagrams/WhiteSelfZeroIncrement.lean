@@ -1,7 +1,7 @@
 /-
 Refutation for the positive-increment hypothesis of the Lean lemma
 `StratonovichHAMSecondMoment.OrderTwoDiagrams.whiteSpatial_self`
-(main TeX lines 959-962 at 39f2597a: "the first factor `G_r` has spatial mass `r`,
+(main TeX lines 959-962 at edf7085f: "the first factor `G_r` has spatial mass `r`,
 while `G_{s-r}(0) = 1/2`", used only for `s > r`).
 
 Wrong variant: the collapsed white self-pairing spatial part is `h_0/2` also

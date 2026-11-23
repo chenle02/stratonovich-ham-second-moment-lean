@@ -1,6 +1,6 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.RieszPositiveDefinite.prod_mixture` and
-`riesz_mixture` (the Gaussian mixtures of main TeX lines 7255-7260, 7975-7978 at 39f2597a):
+`riesz_mixture` (the Gaussian mixtures of main TeX lines 7255-7260, 7975-7978 at edf7085f):
 the Lean mixture identities hold only off the null sets `{u = 0}` (coordinate hyperplanes,
 resp. the origin), and are stated almost everywhere.
 

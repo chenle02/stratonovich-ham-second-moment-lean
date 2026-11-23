@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `P:masked-quotient-obstruction` (A physical mask need not preserve noise-null
-tests) of `notes/integrated_covariance_foundation.tex` (revision 39f2597a;
+tests) of `notes/integrated_covariance_foundation.tex` (revision edf7085f;
 statement lines 339-345, proof lines 347-382).
 
 Formalized:
@@ -29,7 +29,7 @@ Formalized:
 
 Definitional boundary (D1).  The noise `W` is not constructed.  `E W(F)²` is
 read as the covariance functional of `E:cov` (main TeX
-`notes/notes_stratonovich_ham_second_moment.tex`, 39f2597a, lines 378-381):
+`notes/notes_stratonovich_ham_second_moment.tex`, edf7085f, lines 378-381):
 `covW a Γ F = ∫∫ |t-s|^{-a} ∫ Γ(dz) ∫ F(t,x) F(s,x-z) dx dt ds`, an iterated
 Bochner integral with time integrals over `ℝ` (equal to `[0,T]²` for the tests
 used).  The theorems prove integrability of the integrands they evaluate, so the
@@ -584,7 +584,7 @@ theorem homogCovariance_Gamma0 {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) :
 /-! ### The covariance functional and its factorization on tensors -/
 
 /-- The noise covariance functional of `E:cov` (main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex`, 39f2597a, lines 378-381) read as
+`notes/notes_stratonovich_ham_second_moment.tex`, edf7085f, lines 378-381) read as
 `E W(F)² = ∫∫ |t-s|^{-a} ∫ Γ(dz) ∫ F(t,x) F(s,x-z) dx dt ds` for a real test `F`
 (a definitional D1 reading; `W` itself is not constructed).  Time integrals run over
 `ℝ`; for tests supported in `(0,T)` this is the integral over `[0,T]²`.  An
@@ -913,7 +913,7 @@ def zeta (x : Rd 2) : ℝ := chi (x 0) * chi (x 1)
 def gtest (x : Rd 2) : ℝ := chi (x 0) * chi2 (x 1)
 
 /-- `P:masked-quotient-obstruction`, the computation of its proof
-(`notes/integrated_covariance_foundation.tex`, 39f2597a, lines 347-382), with
+(`notes/integrated_covariance_foundation.tex`, edf7085f, lines 347-382), with
 `Γ = δ₀(dx₁) dx₂` and the covariance functional `covW` (`E:cov` read as a
 covariance functional; D1).  For `0 < a < 1` and `T > 0` there are a nonnegative
 nonzero smooth `τ` supported in `(0,T)` and the explicit `ζ = χ ⊗ χ`,
@@ -977,7 +977,7 @@ theorem masked_quotient_obstruction {a : ℝ} (ha0 : 0 < a) (ha1 : a < 1) {T : �
   exact mul_pos hTpos (mul_pos Jchi_pos (pow_pos Ichi_pos 2))
 
 /-- `P:masked-quotient-obstruction` (A physical mask need not preserve noise-null
-tests), `notes/integrated_covariance_foundation.tex`, 39f2597a, statement lines
+tests), `notes/integrated_covariance_foundation.tex`, edf7085f, statement lines
 339-345, proof lines 347-382, with the manuscript's hypotheses: `d = 2`, `α = 1`,
 `0 < a < 1` (`a = α₀`), `Γ = δ₀(dx₁) dx₂` and the section's `T > 0`.  Conclusions:
 `Γ` with `μ = (2π)^{-1} dξ₁ δ₀(dξ₂)` satisfies `H:homog` (TeX lines 353-357) and

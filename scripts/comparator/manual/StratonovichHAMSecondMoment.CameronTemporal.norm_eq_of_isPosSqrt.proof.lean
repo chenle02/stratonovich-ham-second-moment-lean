@@ -1,0 +1,1 @@
+  bridge_auto _root_.StratonovichHAMSecondMoment.CameronTemporal.norm_eq_of_isPosSqrt

@@ -1,6 +1,6 @@
 /-
 Refutation for the attained scalar maximum of `E:spatial-energy-map`
-(`notes/integrated_spatial_occupation.tex` lines 439-444 at 39f2597a: the maximum of
+(`notes/integrated_spatial_occupation.tex` lines 439-444 at edf7085f: the maximum of
 `ℓ^α A - ℓ² b/2` is at `ℓ^{2-α} = αA/b`), package theorem
 `StratonovichHAMSecondMoment.SpatialFourLinear.energy_attain` (maximiser
 `β = (αR)^{2/(2-α)}`).

@@ -6,7 +6,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 Foundations for the variational rates of
 `notes/integrated_unmasked_variational.tex` (Section
 `S:unmasked-variational`) and of `notes/integrated_spatial_occupation.tex`
-(Section `S:spatial-occupation-foundation`), at revision 39f2597a.  These are
+(Section `S:spatial-occupation-foundation`), at revision edf7085f.  These are
 the five deterministic foundations of wave L6 (item L6-d); they carry no
 manuscript label of their own and are stated as general lemmas with every
 hypothesis explicit.  Exported for use (as hypotheses, instantiated at
@@ -637,7 +637,7 @@ theorem moll_const {f : Rd d → ℝ} (hf : LocallyIntegrable f volume) (h0 : Ha
 /-- **(F5) Zero weak gradient implies zero** (half (b) of the D8-lite
 foundation): for `d ≥ 1`, an `f ∈ L²(ℝ^d)` whose weak gradient is `0` is zero
 almost everywhere.  This is the fact used in `P:spatial-smooth-ratio`
-(`notes/integrated_spatial_occupation.tex`, lines 245-247 at 39f2597a: "a nonzero
+(`notes/integrated_spatial_occupation.tex`, lines 245-247 at edf7085f: "a nonzero
 `L²` function with zero weak gradient would have Fourier transform supported
 only at zero, and hence would vanish").  Lean proof route (different from the
 TeX's Fourier argument): the mollifications `ρ_n ⋆ f` are smooth with

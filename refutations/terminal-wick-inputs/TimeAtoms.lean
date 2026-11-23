@@ -1,7 +1,7 @@
 /-
 Refutation for the hypothesis `TimeAtomless` of the strong-measurability theorem
 `StratonovichHAMSecondMoment.TerminalWickInputs.aestronglyMeasurable_prodL2_of_cell`
-(`L:terminal-wick`, main TeX lines 4357-4359 at 39f2597a: "the product is strongly
+(`L:terminal-wick`, main TeX lines 4357-4359 at edf7085f: "the product is strongly
 measurable in `L²` on the stated pieces", which needs the cut times to be null for
 the chain measure).
 

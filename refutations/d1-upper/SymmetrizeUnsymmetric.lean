@@ -1,6 +1,6 @@
 /-
 Control for the symmetry hypothesis of the Lean form of `E:d1-time-symmetry`
-(main TeX lines 5500-5507 at 39f2597a; the TeX stresses that "this symmetry is
+(main TeX lines 5500-5507 at edf7085f; the TeX stresses that "this symmetry is
 applied to the *sum* of pairings ..., not to an individual temporally weighted
 diagram").  Package theorem
 `StratonovichHAMSecondMoment.D1Upper.card_mul_lintegral_twoSimplex_le`.

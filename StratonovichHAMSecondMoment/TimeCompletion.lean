@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:masked-time-completion` (Temporal covariance completion) of
-`notes/integrated_covariance_foundation.tex` at revision 39f2597a (statement TeX lines
+`notes/integrated_covariance_foundation.tex` at revision edf7085f (statement TeX lines
 188-204, display `E:masked-time-schur` 197-200, proof 206-241), with the completion
 `H_a` constructed, and Lemma `L:masked-trig-products` (TeX lines 459-489) re-issued
 with nothing supplied.

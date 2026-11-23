@@ -34,7 +34,7 @@ open HomogHypothesis SpectralHomog MaskedSpectralGrowth SpectralMassIdentity Wav
 /-! ### The section's covariance class and constants -/
 
 /-- The standing assumptions of Section `S:static-phase` (main TeX lines
-2490-2493 at 39f2597a): `0 < α < 2`; `Γ` a nonnegative, even,
+2490-2493 at edf7085f): `0 < α < 2`; `Γ` a nonnegative, even,
 positive-definite, tempered Radon measure on `ℝ³` with `Γ(rA) = r^{3-α}Γ(A)`
 (Borel `A`, `r > 0`); `μ` its spectral measure in the convention
 `Γ = ∫ e^{iξ·x} μ(dξ)` (`HomogHypothesis.IsSpectralMeasure`), a positive even

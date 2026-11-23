@@ -76,7 +76,7 @@ def testRadius (alpha a : ℝ) (Γ : Measure (Rd d)) (Ψ₀ : ℝ × Rd d → �
 /-- The named input `S1Bdd`: the coefficient-one variational value set
 `{I_Ψ - v_Ψ/2 : Ψ ∈ C_pos}` is bounded above.  This is word for word the
 boundedness claim of `P:variational-positive-scores` for `c = 1`
-(`notes/integrated_unmasked_variational.tex` lines 372-374 at 39f2597a).  Its
+(`notes/integrated_unmasked_variational.tex` lines 372-374 at edf7085f).  Its
 manuscript proof (lines 430-446) is stochastic: it combines the moment upper
 bound of `T:full-upper` (`E|u(T,0)|² ≤ e(T+2)^d e^{C_up T^κ}`) with the point
 lower bound `E:variational-unmasked-point-lower` of

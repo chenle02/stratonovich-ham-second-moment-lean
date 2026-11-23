@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The remaining parts of `L:damped-homogeneous-norms` (Homogeneous damped norms
 and temporal tails) of the main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex` (revision 39f2597a): the
+`notes/notes_stratonovich_ham_second_moment.tex` (revision edf7085f): the
 definitions `E:damped-norm-definitions` (lines 988-998), the lemma (lines
 1010-1055, tails `E:damped-tail-norms` at lines 1029-1032, multiplier comparison
 `E:damped-multiplier-comparison` with its definitions at lines 1033-1054, display

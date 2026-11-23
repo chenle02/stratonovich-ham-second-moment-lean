@@ -1,6 +1,6 @@
 /-
 Refutation for the term bound of `L:uniform-series-tail`
-(`notes/notes_stratonovich_ham_second_moment.tex` lines 4419-4449 at 39f2597a),
+(`notes/notes_stratonovich_ham_second_moment.tex` lines 4419-4449 at edf7085f),
 package theorem `StratonovichHAMSecondMoment.UniformSeriesTail.term_bound`.
 
 Wrong variant: the term bound `‖Y_n‖ ≤ B^{1/2} r^{-n}` without the

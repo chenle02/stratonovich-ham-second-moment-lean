@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Lemma `L:phase-bessel` (Hilbert-valued finite Bessel inequality), display
 `E:phase-bessel`, of `notes/integrated_wave_variance.tex`, lines 426-449 at
-revision 39f2597a (statement 426-435, proof 437-449). The lemma cites no labels.
+revision edf7085f (statement 426-435, proof 437-449). The lemma cites no labels.
 The section's standing assumptions (H:homog, `a = α₀`, the range of `γ`, lines
 5-8) are not used by this lemma and are not carried.
 
@@ -246,7 +246,7 @@ theorem phase_bessel_conj {u : ι → J → X → ℂ} {g : J → X → H}
   phase_bessel (isOrthonormalL2_conj hu) hg
 
 /-- `L:phase-bessel` with the manuscript's own hypotheses
-(`notes/integrated_wave_variance.tex` 426-435 at 39f2597a): `H` a separable
+(`notes/integrated_wave_variance.tex` 426-435 at edf7085f): `H` a separable
 complex Hilbert space, `{u_k}_{k < K}` a finite orthonormal family in
 `L²(ℝ^d; ℂ²)` (encoded by `IsOrthonormalL2` on `Rd d = EuclideanSpace ℝ (Fin d)`
 with Lebesgue measure `volume`), and `g = (g₁, g₂) ∈ L²(ℝ^d; H²)`. Conclusion:

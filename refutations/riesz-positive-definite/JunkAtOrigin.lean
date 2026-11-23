@@ -1,7 +1,7 @@
 /-
 Refutation for the junk-value convention of `StratonovichHAMSecondMoment.EndpointLemmas
 .prodRieszReal`, used by `RieszPositiveDefinite.prodRiesz_mixture` (the product density
-`c ∏_j |x_j|^{-e_j}` of main TeX lines 7188-7195 at 39f2597a, infinite on the coordinate
+`c ∏_j |x_j|^{-e_j}` of main TeX lines 7188-7195 at edf7085f, infinite on the coordinate
 planes for active exponents).
 
 Wrong variant: the Lean density is positive everywhere for `c > 0` (as the TeX density is,

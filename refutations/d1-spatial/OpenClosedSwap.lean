@@ -1,6 +1,6 @@
 /-
 Refutation for the roles of the opening and closing label sets in
-`E:d1-spatial-product` (`L:d1-spatial`, main TeX lines 5359-5371 at 39f2597a; proof
+`E:d1-spatial-product` (`L:d1-spatial`, main TeX lines 5359-5371 at edf7085f; proof
 lines 5394-5415: the opening increment is free and contributes `h_i`, the closing
 increment carries its pair's covariance).  Package theorem
 `StratonovichHAMSecondMoment.D1Spatial.d1_spatial_white`.

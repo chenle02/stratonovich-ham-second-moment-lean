@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 The wrappers of `P:clock-copy-obstruction` (main TeX file
-`notes/notes_stratonovich_ham_second_moment.tex`, revision 39f2597a, lines
+`notes/notes_stratonovich_ham_second_moment.tex`, revision edf7085f, lines
 9033-9208) and of the finiteness and nonnegativity parts of
 `L:damped-homogeneous-norms` (lines 1010-1154), re-issued with the
 manuscript's hypotheses only: the supplied input

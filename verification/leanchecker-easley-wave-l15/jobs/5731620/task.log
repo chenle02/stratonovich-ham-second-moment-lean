@@ -1,0 +1,13 @@
+node=node838 job=5731620 array=5731617_3 mode=fresh target=StratonovichHAMSecondMoment.UniformMeanFoundation start=2026-11-20T01:29:14-0600
+tmp_avail_G=891
+VERIFIED_COMMIT=315a3327dfc8acc964a874962756fbcc28ff1687 TREE=5abf7fdde0d2f2940d50d340ae0f095c9bbd150e MATHLIB=56a005855ea17e0b0958f73ec801ae140b0a1679
+OLEANS_PRESENT=1
+PRE_REPLAY file-nr=1360 waited_s=0
+REPLAY_STARTED 2026-11-20T01:31:23-0600
+BEGIN fresh StratonovichHAMSecondMoment.UniformMeanFoundation 01:31:24
+END fresh StratonovichHAMSecondMoment.UniformMeanFoundation	0	0:43:39.29	7613704	0
+REPLAY_FRESH pass=1 fail=0 total=1
+PHASE replay_fresh_s=2620 rc=0
+SOURCE_UNCHANGED_AFTER_REPLAY
+TASK_PASS mode=fresh target=StratonovichHAMSecondMoment.UniformMeanFoundation
+PROCESS_EXIT=0 end=2026-11-20T02:15:03-0600

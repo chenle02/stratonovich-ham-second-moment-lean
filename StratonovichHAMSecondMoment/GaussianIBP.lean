@@ -6,7 +6,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 Finite Gaussian integration by parts (a reusable foundation; no direct
 manuscript label of its own).
 
-Source: `notes/integrated_compact_gaussian.tex` at commit `39f2597a`, proof of
+Source: `notes/integrated_compact_gaussian.tex` at commit `edf7085f`, proof of
 Proposition `P:finite-gaussian-matrix` (lines 167--172: "Componentwise
 integration by parts against the product Gaussian density gives
 `E[g_k P(g)] = E[∂_k P(g)]`, with zero boundary terms ... absolute polynomial

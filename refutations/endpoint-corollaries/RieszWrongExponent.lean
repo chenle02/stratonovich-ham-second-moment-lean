@@ -1,7 +1,7 @@
 /-
 Refutation for the affine identity behind
 `StratonovichHAMSecondMoment.EndpointCorollaries.riesz_comparison` (manuscript
-`C:three-product-riesz`, main TeX lines 7981-7985 at 39f2597a: `α = θ + (1 - θ)χ` gives
+`C:three-product-riesz`, main TeX lines 7981-7985 at edf7085f: `α = θ + (1 - θ)χ` gives
 `γ_α = γ_1^θ γ_χ^{1-θ}`).
 
 Wrong variant: the factorization with a static exponent violating the affine identity, here

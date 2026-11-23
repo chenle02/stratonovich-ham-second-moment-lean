@@ -2,7 +2,7 @@ import StratonovichHAMSecondMoment.L10Completed
 
 /-!
 Refutation for the lower bound `0 ≤ ∫ G_{h,η}(dy) γ_ε(y+z)` of `E:alpha-one-convolution`
-(`L:alpha-one-convolution`, main TeX lines 5635-5643 at 39f2597a; the lemma has no `Γ ≠ 0`),
+(`L:alpha-one-convolution`, main TeX lines 5635-5643 at edf7085f; the lemma has no `Γ ≠ 0`),
 package theorem
 `StratonovichHAMSecondMoment.L10Completed.alpha_one_convolution_paper_completed`.
 

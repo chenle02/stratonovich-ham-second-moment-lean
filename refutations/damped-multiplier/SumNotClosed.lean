@@ -1,6 +1,6 @@
 /-
 Refutation for `L:damped-homogeneous-norms` (main TeX
-`notes/notes_stratonovich_ham_second_moment.tex`, revision 39f2597a, lines
+`notes/notes_stratonovich_ham_second_moment.tex`, revision edf7085f, lines
 1033 and 1150-1151: multipliers with values in `[0,1]`, closed under PRODUCTS),
 package theorem `StratonovichHAMSecondMoment.DampedMultiplier.IsMultiplier.mul`.
 

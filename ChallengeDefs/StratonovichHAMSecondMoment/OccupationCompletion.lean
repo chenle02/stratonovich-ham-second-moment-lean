@@ -36,7 +36,7 @@ open OccupationCeilingFinite (K0 K0_pos)
 /-! ### The temporal Schur bound with the sharp constant `K_0` -/
 
 /-- Auxiliary to the Lean proof route (the Schur step of `L:positive-raw-embedding`,
-`integrated_intrinsic_constant.tex` lines 52-59 at 39f2597a, in Tonelli form): for
+`integrated_intrinsic_constant.tex` lines 52-59 at edf7085f, in Tonelli form): for
 `0 ≤ a < 1` and an a.e.-measurable `g : ℝ → [0,∞]` on `I = (0,1)`,
 `∫∫_{I²} g(s) g(t) |s-t|^{-a} ≤ K_0 ∫_I g²`, `K_0 = 2^a/(1-a)`. -/
 theorem schur_K0 {a : ℝ} (ha0 : 0 ≤ a) (ha1 : a < 1) (g : ℝ → ℝ≥0∞)
@@ -111,7 +111,7 @@ section KernelForm
 variable {G : Type*} [NormedAddCommGroup G] [InnerProductSpace ℝ G]
 
 /-- The kernel form `∫∫_{I²} |s-t|^{-a} ⟨F(s), F'(t)⟩_G ds dt` of
-`E:positive-bochner-inclusion` (`integrated_intrinsic_constant.tex` lines 27-31 at 39f2597a),
+`E:positive-bochner-inclusion` (`integrated_intrinsic_constant.tex` lines 27-31 at edf7085f),
 for functions `F, F' : ℝ → G`, as a Bochner integral over `I² = (0,1)²`.  It is the
 manuscript's integral where the integrand is integrable; `kform_integrable` proves this for
 `F, F' ∈ L²(I; G)`. -/
@@ -355,7 +355,7 @@ theorem mixProfile_le (w : ℝ × ℝ) {t : ℝ} (ht : t ∈ Ioo (0 : ℝ) 1) :
 
 /-- **Positivity of the kernel form on `L²(I; G)`** (the positivity half of the construction of
 `H_t ⊗ G` in `L:positive-raw-embedding`, `integrated_intrinsic_constant.tex` lines 52-64 at
-39f2597a; the TeX proves positivity on scalar tests and passes to finite tensors and Bochner
+edf7085f; the TeX proves positivity on scalar tests and passes to finite tensors and Bochner
 fields): for `0 < a < 1` and `F ∈ L²(I; G)`, `∫∫_{I²} |s-t|^{-a} ⟨F(s), F(t)⟩ ≥ 0`.  Route:
 the Gamma-subordination mixture `TimeCompletion.kern_eq_mixture` and
 `inner_form_nonneg_of_mixture`. -/
@@ -394,7 +394,7 @@ end KernelForm
 /-! ### The completion `H_t ⊗ G` and the map `J_G` -/
 
 /-- The standing temporal parameter of `L:positive-raw-embedding`: `a = α₀` with `0 < a < 1`
-(`integrated_intrinsic_constant.tex` lines 4-5 at 39f2597a; `H:homog` gives `0 < α₀ < 1`). -/
+(`integrated_intrinsic_constant.tex` lines 4-5 at edf7085f; `H:homog` gives `0 < α₀ < 1`). -/
 structure TParams where
   /-- the exponent `a = α₀`. -/
   a : ℝ
@@ -453,11 +453,15 @@ instance instInnerKPre [CompleteSpace G] : InnerProductSpace ℝ (KPre p G) :=
   InnerProductSpace.ofCore (kcore p G)
 
 /-- **The completion `H_t ⊗ G`** of `L:positive-raw-embedding` (`integrated_intrinsic_constant.tex`
-lines 23-26 at 39f2597a), built as the `L²` completion of decision 4 of waves L9 and L14: the
+lines 23-26 at edf7085f), built as the `L²` completion of decision 4 of waves L9 and L14: the
 (Hausdorff) completion of `L²(I; G)` for the seminorm `(∫∫ |s-t|^{-a} ⟨F(s), F(t)⟩)^{1/2}`.  It is a
 real Hilbert space (Mathlib instances).  No identification with an algebraic or Hilbert tensor
 product `H_t ⊗ G` is made (decision 4); for `G = ℝ` it is `H_t` (`Ht`). -/
 abbrev HK [CompleteSpace G] := UniformSpace.Completion (KPre p G)
+
+/-- `H_t` (`integrated_cameron_mean.tex` lines 8-11 at edf7085f: the completion of `C_c^∞(I)` with
+the time kernel `|s-t|^{-a}`), built here as the completion of `L²(I; ℝ)` under the same form. -/
+abbrev Ht := HK p ℝ
 
 /-- Auxiliary: the linear map `L²(I; G) → H_t ⊗ G`. -/
 def Jlin [CompleteSpace G] : Lp G 2 timeMeasure →ₗ[ℝ] HK p G :=
@@ -501,12 +505,32 @@ theorem norm_Jlin_le [CompleteSpace G] (F : Lp G 2 timeMeasure) :
 variable (p G)
 
 /-- **The bounded map `J_G : L²(I; G) → H_t ⊗ G`** of `L:positive-raw-embedding`
-(`integrated_intrinsic_constant.tex` lines 25-31 at 39f2597a), a continuous linear map of norm at
+(`integrated_intrinsic_constant.tex` lines 25-31 at edf7085f), a continuous linear map of norm at
 most `√K_0` (`norm_J_sq_le`), defined on Bochner `L²` classes. -/
 def J [CompleteSpace G] : Lp G 2 timeMeasure →L[ℝ] HK p G :=
   (Jlin p G).mkContinuous (Real.sqrt (K0 p.a)) norm_Jlin_le
 
 variable {p G}
+
+/-- Auxiliary: `J` agrees with `Jlin`. -/
+theorem J_apply [CompleteSpace G] (F : Lp G 2 timeMeasure) : J p G F = Jlin p G F := rfl
+
+/-- **`E:positive-bochner-inclusion`** (`integrated_intrinsic_constant.tex` lines 27-31 at
+edf7085f): for a real Hilbert space `G` and `F ∈ L²(I; G)`, the integrand
+`|s-t|^{-a} ⟨F(s), F(t)⟩_G` is integrable on `I²`,
+`‖J_G F‖² = ∫∫_{I²} |s-t|^{-a} ⟨F(s), F(t)⟩_G ds dt ≤ K_0 ‖F‖²_{L²(I;G)}`,
+`K_0 = 2^a/(1-a)`; more generally `⟨J_G F, J_G F'⟩ = ∫∫ |s-t|^{-a} ⟨F(s), F'(t)⟩`. -/
+theorem positive_bochner_inclusion [CompleteSpace G] (F : Lp G 2 timeMeasure) :
+    Integrable (fun q : ℝ × ℝ => kern p.a (q.1 - q.2) * ⟪F q.1, F q.2⟫)
+        (timeMeasure.prod timeMeasure) ∧
+      ‖J p G F‖ ^ 2 = ∫ q, kern p.a (q.1 - q.2) * ⟪F q.1, F q.2⟫
+        ∂(timeMeasure.prod timeMeasure) ∧
+      ‖J p G F‖ ^ 2 ≤ K0 p.a * ‖F‖ ^ 2 ∧
+      ∀ F' : Lp G 2 timeMeasure, ⟪J p G F, J p G F'⟫ = kform p.a ⇑F ⇑F' := by
+  refine ⟨kform_integrable p.ha0.le p.ha1 (Lp.memLp F) (Lp.memLp F), ?_, norm_Jlin_sq_le F,
+    fun F' => inner_Jlin F F'⟩
+  rw [J_apply, ← real_inner_self_eq_norm_sq, inner_Jlin]
+  rfl
 
 end Completion
 
@@ -614,7 +638,7 @@ instance instSeminormedSpPre : SeminormedAddCommGroup (SpPre S) :=
 instance instInnerSpPre : InnerProductSpace ℝ (SpPre S) := InnerProductSpace.ofCore (spcore S)
 
 /-- **The spatial covariance space `H_sp`** (`integrated_cameron_mean.tex` lines 8-10 at
-39f2597a: "the real covariance-null completion of `C_c^∞(ℝ^d)` with inner product `B_Γ`"): the
+edf7085f: "the real covariance-null completion of `C_c^∞(ℝ^d)` with inner product `B_Γ`"): the
 (Hausdorff) completion of `C_c^∞(ℝ^d)` for the seminorm `B_Γ(φ,φ)^{1/2}`, a real Hilbert space. -/
 abbrev Hsp := UniformSpace.Completion (SpPre S)
 
@@ -658,7 +682,7 @@ theorem norm_toHsp_sq {φ : Rd d → ℝ} (hφ : IsTestFunction φ) :
 /-! #### Separability of `H_sp` -/
 
 /-- Auxiliary to the Lean proof route (a local `L²` bound in the spirit of
-`E:positive-local-spatial-bound`, `integrated_intrinsic_constant.tex` lines 86-94 at 39f2597a):
+`E:positive-local-spatial-bound`, `integrated_intrinsic_constant.tex` lines 86-94 at edf7085f):
 for a test function `q` vanishing for `|x| > R`,
 `B_Γ(q, q) ≤ Γ(B_{2R}) ∫ q²`. -/
 theorem spatialPair_self_le_L2 (Γ : Measure (Rd d)) [IsLocallyFiniteMeasure Γ] {q : Rd d → ℝ}
@@ -784,7 +808,7 @@ open VariationalDilation (CPos rawCost)
 
 variable {d : ℕ}
 
-/-- **The space `H_I`** of `integrated_intrinsic_constant.tex` line 5 at 39f2597a
+/-- **The space `H_I`** of `integrated_intrinsic_constant.tex` line 5 at edf7085f
 (`H_I = H_t ⊗ H_sp`), built under decision 4 as the kernel completion of `L²(I; H_sp)`
 (`HK p (Hsp S)`).  The TeX's identifications of `H_I` with the completion of space-time tests
 (`integrated_cameron_mean.tex` lines 11-13) and with the Hilbert tensor product
@@ -808,7 +832,7 @@ variable {S}
 
 /-- Auxiliary to the Lean proof route (the TeX's "`t ↦ Ψ_t` is continuous, bounded and compactly
 supported as an `H_sp`-valued field", `integrated_intrinsic_constant.tex` lines 94-96 at
-39f2597a): for a smooth compactly supported `Ψ`, `s ↦ [Ψ(s,·)]` is continuous into `H_sp` and
+edf7085f): for a smooth compactly supported `Ψ`, `s ↦ [Ψ(s,·)]` is continuous into `H_sp` and
 bounded. -/
 theorem sliceField_continuous_bdd {Ψ : ℝ × Rd d → ℝ} (hΨ : ContDiff ℝ ∞ Ψ)
     (hΨs : HasCompactSupport Ψ) :
@@ -870,7 +894,7 @@ theorem sliceField_memLp {Ψ : ℝ × Rd d → ℝ} (hΨ : ContDiff ℝ ∞ Ψ)
   exact MemLp.of_bound hc.aestronglyMeasurable C (ae_of_all _ hC)
 
 /-- **The natural inclusion `C_pos → H_I`** of `L:positive-raw-embedding`
-(`integrated_intrinsic_constant.tex` lines 32-33 and 95-97 at 39f2597a): `Ψ ↦ J_{H_sp}(s ↦ Ψ_s)`,
+(`integrated_intrinsic_constant.tex` lines 32-33 and 95-97 at edf7085f): `Ψ ↦ J_{H_sp}(s ↦ Ψ_s)`,
 the image of the `H_sp`-valued slice field; defined for smooth compactly supported fields (the
 value `0` is taken otherwise). -/
 def incl (p : TParams) (S : SpData d) (Ψ : ℝ × Rd d → ℝ) : HI p S :=
@@ -914,7 +938,7 @@ def approx (f : Rd d → ℝ) : ℕ → Rd d → ℝ :=
 variable (S)
 
 /-- **The square map `Q : H¹(ℝ^d;ℝ) → H_sp`** of `L:occupation-raw-square`
-(`integrated_occupation_ceiling.tex` lines 26-30 and 55-63 at 39f2597a): `Q(f) = lim [f_n²]` for
+(`integrated_occupation_ceiling.tex` lines 26-30 and 55-63 at edf7085f): `Q(f) = lim [f_n²]` for
 test functions `f_n → f` in `H¹`.  Defined on all functions (the limit of a fixed approximating
 sequence; junk off `H¹`); `tendsto_Q` shows that every approximating sequence gives the same
 limit. -/
@@ -944,14 +968,14 @@ open VariationalDilation (CPos rawCost)
 variable {d : ℕ} (S : SpData d)
 
 /-- The `H_sp`-valued field `F_g(s) = Q(g_s)` of `L:occupation-raw-square`
-(`integrated_occupation_ceiling.tex` line 72 at 39f2597a), for a field given by its joint
+(`integrated_occupation_ceiling.tex` line 72 at edf7085f), for a field given by its joint
 representative `G` (`g_s = G s`). -/
 def sqField (G : ℝ → Rd d → ℝ) (s : ℝ) : Hsp S := Q S (G s)
 
 variable {S}
 
 /-- **The occupation element `ρ_g = J_{H_sp}(s ↦ Q(g_s)) ∈ H_I`** of `L:occupation-raw-square`
-(`integrated_occupation_ceiling.tex` lines 32-33 and 79-80 at 39f2597a), for a field given by its
+(`integrated_occupation_ceiling.tex` lines 32-33 and 79-80 at edf7085f), for a field given by its
 joint representative `G`; the value `0` is taken when `s ↦ Q(g_s)` is not in `L²(I; H_sp)`
 (never on `𝒪`: `sqField_memLp`). -/
 def rho (p : TParams) (S : SpData d) (G : ℝ → Rd d → ℝ) : HI p S :=

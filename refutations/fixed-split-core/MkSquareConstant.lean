@@ -1,6 +1,6 @@
 /-
 Refutation for `E:split-explicit-constant` (main TeX lines 4037-4038 at
-39f2597a), package theorem
+edf7085f), package theorem
 `StratonovichHAMSecondMoment.FixedSplitCore.Mk_sq_le`
 (`M_k² ≤ (100^8 e^8)^k` for `k ≥ 1`).
 

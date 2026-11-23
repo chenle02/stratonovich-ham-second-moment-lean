@@ -2,7 +2,7 @@ import StratonovichHAMSecondMoment.FockForm
 
 /-!
 Refutation for `StratonovichHAMSecondMoment.FockForm.occupied_multiplication`
-(`E:occupied-multiplication`, `‖HF‖₂ ≤ 2√(n+1)‖H‖₂‖F‖₂`, main TeX lines 2189-2191 at 39f2597a).
+(`E:occupied-multiplication`, `‖HF‖₂ ≤ 2√(n+1)‖H‖₂‖F‖₂`, main TeX lines 2189-2191 at edf7085f).
 
 Wrong variant: the constant `n+1` in place of `4(n+1)` (i.e. `√(n+1)` in place of `2√(n+1)`,
 keeping only the creation part).  Counterexample: one coordinate, `H = F = g` (`n = 1`):

@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `C:static-interaction` (Summable static interaction bounds) of
 `notes/notes_stratonovich_ham_second_moment.tex` (main TeX file; line numbers at
-revision 39f2597a; statement lines 3216-3262, proof 3264-3341) re-issued with
+revision edf7085f; statement lines 3216-3262, proof 3264-3341) re-issued with
 fewer supplied inputs, using wave items L8-h (`StaticPhaseCauchy`), L9-H3
 (`ComplexPhaseScalar`) and L9-P (`PhaseContractions`, completed in `L9Completed`).
 

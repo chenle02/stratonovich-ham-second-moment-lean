@@ -64,6 +64,38 @@ theorem integrable_gauss_of_tempered {ν : Measure (Rd d)} (hν : IsTempered ν)
     _ = (1 + ‖w‖) ^ k * ((1 + ‖x - w‖) ^ k * Real.exp (-(b * ‖x - w‖ ^ 2))) := by ring
     _ ≤ K := mul_le_mul_of_nonneg_left h3 (by positivity)
 
+/-! ### The spectral convention applied to Gaussian tests -/
+
+/-- `E:masked-spectral-convention` (lines 17-21) applied to the Schwartz test
+`e^{-i⟨y,x⟩} e^{-s‖x-w‖²}`, with the inner Gaussian Fourier integral computed:
+`∫ test dΓ = ∫ (π/s)^{d/2} e^{i⟨ξ-y,w⟩} e^{-‖ξ-y‖²/(4s)} μ(dξ)`. Only the
+spectral convention is assumed. -/
+theorem spectral_gaussTest {Γ μ : Measure (Rd d)} (hsp : IsSpectralMeasure Γ μ) (s : ℝ)
+    (hs : 0 < s) (w y : Rd d) :
+    ∫ x, gaussTest s hs w y x ∂Γ =
+      ∫ ξ, ((Real.pi / s) ^ ((d : ℝ) / 2) : ℝ) *
+        Complex.exp (Complex.I * (inner ℝ (ξ - y) w : ℝ)) *
+          (Real.exp (-(‖ξ - y‖ ^ 2 / (4 * s))) : ℂ) ∂μ := by
+  rw [hsp]
+  exact integral_congr_ae (Filter.Eventually.of_forall fun ξ => gaussTest_fourier s hs w y ξ)
+
+/-- Auxiliary to the Lean proof route. The case `y = 0`: the translated
+Gaussian `e^{-s‖x-t‖²}` against `Γ` is `(π/s)^{d/2}` times the transform
+`∫ e^{i⟨ξ,t⟩} e^{-‖ξ‖²/(4s)} μ(dξ)`. -/
+theorem spectral_translated_gauss {Γ μ : Measure (Rd d)} (hsp : IsSpectralMeasure Γ μ) (s : ℝ)
+    (hs : 0 < s) (t : Rd d) :
+    ∫ x, (Real.exp (-(s * ‖x - t‖ ^ 2)) : ℂ) ∂Γ =
+      ((Real.pi / s) ^ ((d : ℝ) / 2) : ℝ) *
+        ∫ ξ, Complex.exp (Complex.I * (inner ℝ ξ t : ℝ)) *
+          (Real.exp (-(‖ξ‖ ^ 2 / (4 * s))) : ℂ) ∂μ := by
+  have h := spectral_gaussTest hsp s hs t 0
+  simp only [gaussTest_apply, inner_zero_left, Complex.ofReal_zero, mul_zero, neg_zero,
+    Complex.exp_zero, one_mul, sub_zero] at h
+  rw [h, ← integral_const_mul]
+  congr 1
+  funext ξ
+  ring
+
 /-! ### Spectral homogeneity from the scaling of `Γ` -/
 
 /-- Auxiliary to the Lean proof route. The Gaussian density `e^{-‖ξ‖²}` as an
@@ -77,6 +109,12 @@ def MGamma (Γ : Measure (Rd d)) : ℝ := ∫ x, Real.exp (-(‖x‖ ^ 2 / 4)) �
 
 /-- `C_Γ = e M_Γ/(2√π)^d` (line 41). -/
 def CGamma (Γ : Measure (Rd d)) : ℝ := Real.exp 1 * MGamma Γ / (2 * Real.sqrt Real.pi) ^ d
+
+/-- Auxiliary to the Lean proof route. Integrability of the centred Gaussian
+`e^{-c‖x‖²}` (`c > 0`) against a tempered measure. -/
+theorem integrable_gauss_zero {ν : Measure (Rd d)} (hν : IsTempered ν) {c : ℝ} (hc : 0 < c) :
+    Integrable (fun x : Rd d => Real.exp (-(c * ‖x‖ ^ 2))) ν := by
+  simpa using integrable_gauss_of_tempered hν hc 0
 
 end StratonovichHAMSecondMoment.MaskedSpectralGrowth
 

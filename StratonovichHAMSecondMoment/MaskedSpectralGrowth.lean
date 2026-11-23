@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `P:masked-spectral-growth` (Translated spectral mass) of
-`notes/integrated_covariance_foundation.tex` (revision 39f2597a, lines 37-94),
+`notes/integrated_covariance_foundation.tex` (revision edf7085f, lines 37-94),
 and the derivation of the spectral homogeneity `μ(cA) = c^α μ(A)` from the
 scaling of `Γ` (main TeX file `notes/notes_stratonovich_ham_second_moment.tex`,
 lines 1067-1068, proof of `L:damped-homogeneous-norms`), which discharges the one

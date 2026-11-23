@@ -4,7 +4,7 @@ import StratonovichHAMSecondMoment.WhiteModel
 /-!
 Operator-level refutation for the contraction conclusion of
 `StratonovichHAMSecondMoment.SourceHeatGram.source_spatial_heat_paper` (item 4; manuscript
-label `L:source-spatial-heat`, `integrated_source_convergence.tex` lines 180-181 at 39f2597a,
+label `L:source-spatial-heat`, `integrated_source_convergence.tex` lines 180-181 at edf7085f,
 "heat is a positive self-adjoint contraction on `H_Γ`").
 
 Class (a): manuscript-claim perturbation in the manuscript domain.  The TeX claims

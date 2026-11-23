@@ -1,7 +1,7 @@
 /-
 Refutation for
 `StratonovichHAMSecondMoment.MaskedContinuousWave.frequencyPair_shift_le`
-(`L:masked-continuous-wave`, TeX lines 552-554 at 39f2597a: shifted brackets
+(`L:masked-continuous-wave`, TeX lines 552-554 at edf7085f: shifted brackets
 cost a factor `3^{1-a}`).
 
 Wrong variant: the frequency comparison with the factor `3^{1-a}` dropped,

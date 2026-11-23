@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.WhiteModel
 /-!
 Refutation for `StratonovichHAMSecondMoment.WhiteModel.whiteSpectral_closedBall` (part (b) of
 `white_model_paper`): `V = μ{|ξ| ≤ 1} = c/π` for the white model
-(`notes/integrated_white_evaluation.tex`, 39f2597a, lines 4-9; `V` as at main TeX line 5559).
+(`notes/integrated_white_evaluation.tex`, edf7085f, lines 4-9; `V` as at main TeX line 5559).
 
 Wrong variant: `V = c/(2π)`, the spectral density alone, forgetting that the unit ball of
 `ℝ¹` has length `2`.  Counterexample: `c = 1`.  No junk-value reliance (`1/π ≠ 1/(2π)`,

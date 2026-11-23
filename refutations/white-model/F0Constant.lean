@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.WhiteModel
 /-!
 Refutation for `StratonovichHAMSecondMoment.WhiteModel.F0_white` (part of
 `white_score_arithmetic_paper`): `F₀(c²/6) = √c/(3√2)` at `α = 1`
-(`notes/integrated_white_evaluation.tex`, 39f2597a, lines 157-160).
+(`notes/integrated_white_evaluation.tex`, edf7085f, lines 157-160).
 
 Wrong variant: `F₀(c²/6) = √c/3` (the factor `1/√2` dropped, i.e. `2^m F₀ = (2/3)√c` read
 with `m = 1`).  Counterexample: `c = 1`: `1/(3√2) ≠ 1/3`.  No junk-value reliance.

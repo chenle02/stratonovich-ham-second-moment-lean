@@ -1,7 +1,7 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.HigherRieszTwo.F3_max` (manuscript
 `L:higher-riesz`, the value `F_3(e_1) = 2^{1-α}/(2-α)` of the `d = 3` closed
-form, main TeX lines 6134-6146 at 39f2597a).
+form, main TeX lines 6134-6146 at edf7085f).
 
 Wrong variant: the value without the factor `1/2` coming from the denominator
 `2vρ`, i.e. `F3 (2-α) 1 = 2^{2-α}/(2-α)` for all `1 < α < 2`.

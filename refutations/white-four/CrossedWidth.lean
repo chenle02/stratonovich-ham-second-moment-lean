@@ -1,6 +1,6 @@
 /-
 Refutation for the row `(2,2), C` of `E:white-four-table` (main TeX lines
-4966-4967 and 5000-5001 at 39f2597a: "`(x,y),(y,x)` for `C` ... `F(a,c,min(b,d))`"),
+4966-4967 and 5000-5001 at edf7085f: "`(x,y),(y,x)` for `C` ... `F(a,c,min(b,d))`"),
 package theorem `StratonovichHAMSecondMoment.WhiteFour.whiteSpatial_22C`.
 
 Wrong variant: the strip width `b + d` (adding the two closing widths) in

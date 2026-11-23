@@ -4,9 +4,9 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 `L:symplectic-free` (Free wave form and compact Young baseline) of
-`notes/integrated_symplectic_phase.tex` (revision 39f2597a; statement lines 31-61,
+`notes/integrated_symplectic_phase.tex` (revision edf7085f; statement lines 31-61,
 proof lines 63-160): the abstract core (wave L8, item L8-g).  All line numbers below
-refer to that file at 39f2597a.
+refer to that file at edf7085f.
 
 Formalized:
 * Per-frequency free matrix (proof lines 80-96).  `freeMatrix t k br` is the TeX's

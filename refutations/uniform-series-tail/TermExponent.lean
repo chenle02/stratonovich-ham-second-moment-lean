@@ -1,7 +1,7 @@
 /-
 Refutation for the term bound of `L:uniform-series-tail`
 (`notes/notes_stratonovich_ham_second_moment.tex` lines 4434-4436 and 4446-4449
-at 39f2597a), package theorem
+at edf7085f), package theorem
 `StratonovichHAMSecondMoment.UniformSeriesTail.term_bound`.
 
 Wrong variant: the exponent `r^{-n}` replaced by `r^{-2n}` (the square of the

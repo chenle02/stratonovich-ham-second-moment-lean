@@ -1,7 +1,7 @@
 /-
 Refutation for the Peetre inequality used in the temperedness part of
 `P:masked-auxiliary-norm` (`notes/integrated_covariance_foundation.tex`
-lines 106-118 at 39f2597a; the Lean route replaces the dyadic argument of
+lines 106-118 at edf7085f; the Lean route replaces the dyadic argument of
 lines 145-146), package theorem
 `StratonovichHAMSecondMoment.MaskedAuxiliaryNorm.peetre`
 (`(1+|η|)^{-N} ≤ (1+|ξ|)^{-N} (1+|ξ-η|)^N`; auxiliary to the Lean proof

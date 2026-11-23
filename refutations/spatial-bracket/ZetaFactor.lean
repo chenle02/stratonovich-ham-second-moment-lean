@@ -1,7 +1,7 @@
 /-
 Refutation for the second form of `E:occupation-score-ceiling`, package theorem
 `StratonovichHAMSecondMoment.SpatialBracket.ceilingValue_eq_zeta`
-(`integrated_occupation_ceiling.tex` lines 258-259 at 39f2597a:
+(`integrated_occupation_ceiling.tex` lines 258-259 at edf7085f:
 `U_𝔠 = 𝔠^m (2ζ)^{α/(2k)} F_0(D_ζ C^{2/(2-α)})`).
 
 Wrong variant: the factor `(2ζ)^{α/(2k)}` is dropped, `U_𝔠 = 𝔠^m F_0(D_ζ C^{2/(2-α)})` for

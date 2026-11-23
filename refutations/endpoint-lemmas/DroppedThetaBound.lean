@@ -1,7 +1,7 @@
 /-
 Refutation for `StratonovichHAMSecondMoment.EndpointLemmas.sum_lowEnd_lt` and the arithmetic of
 `product_arithmetic` (manuscript `L:product-endpoints`, main TeX lines 7171-7173 and 7220-7235
-at 39f2597a): `Σ L_j < 1` (hence `0 < Λ < 1`) needs `θ < 2 - α`.
+at edf7085f): `Σ L_j < 1` (hence `0 < Λ < 1`) needs `θ < 2 - α`.
 
 Wrong variant: `Σ_j L_j < 1` for all `0 ≤ a_j < 1` with `1 < α = Σ a_j < 2` and `0 < θ < 1`
 (the bound `θ < 2 - α` weakened to `θ < 1`).  Counterexample: `a = (9/10, 9/10, 0)`,

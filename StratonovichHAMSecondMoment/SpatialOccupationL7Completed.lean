@@ -5,7 +5,7 @@ Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Integration of wave items L7-c (`H1Density`), L7-d (`SpatialFourLinear`) and L7-e
 (`OccupationPhysicalClass`) for `notes/integrated_spatial_occupation.tex` (line numbers at
-revision 39f2597a).  This module discharges two cross-item inputs.
+revision edf7085f).  This module discharges two cross-item inputs.
 
 1. The density input `hdense` of `SpatialFourLinear`.  It stands for the sentence "Smooth
    compact functions are dense in `H¹`" in the proof of `P:spatial-four-linear` (TeX lines

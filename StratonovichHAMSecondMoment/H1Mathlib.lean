@@ -7,7 +7,7 @@ The package's weak-gradient `H^1(ℝ^d; ℝ)` identified with Mathlib's Bessel-p
 `H^{1,2}` (wave L13, item K5a; the D8-lite foundation). Foundation item: no manuscript label of
 its own.
 
-Manuscript anchors (revision 39f2597a):
+Manuscript anchors (revision edf7085f):
 * `notes/notes_stratonovich_ham_second_moment.tex`, lines 748-750: `H^1(ℝ^d; ℝ)` is "the real
   Sobolev space of square-integrable functions with square-integrable first weak derivatives".
   This is `WeakSobolev.MemH1`, reused here unchanged.
@@ -827,7 +827,7 @@ theorem integral_norm_grad_sq_pos {φ : Rd d → ℝ} (hφ : IsTestFunction φ) 
 /-! ### The wrapper with the manuscript's hypotheses -/
 
 /-- **K5a, manuscript form.** For a real square-integrable `f` on `ℝ^d` (the class of the main
-TeX lines 748-750 at 39f2597a):
+TeX lines 748-750 at edf7085f):
 1. `f ∈ H^1(ℝ^d; ℝ)` in the manuscript's weak-gradient sense iff its distribution lies in
    Mathlib's `H^{1,2}(ℝ^d; ℂ)`;
 2. for `f ∈ H^1` with weak gradient `g`, Mathlib's norm is

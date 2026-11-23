@@ -1,0 +1,4 @@
+StratonovichHAMSecondMoment.PositiveRawMean
+StratonovichHAMSecondMoment.UniformELift
+StratonovichHAMSecondMoment.UniformMeanFoundation
+StratonovichHAMSecondMoment.UniformMeanInterface

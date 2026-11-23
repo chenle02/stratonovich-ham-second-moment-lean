@@ -3,7 +3,7 @@ import StratonovichHAMSecondMoment.SourceHeatGram
 /-!
 Refutation for `StratonovichHAMSecondMoment.SourceHeatGram.heatMult` (the multiplier of `C_ε`
 in `source_spatial_heat_paper`, manuscript label `L:source-spatial-heat`, TeX line 193 of
-`integrated_source_convergence.tex` at 39f2597a).
+`integrated_source_convergence.tex` at edf7085f).
 
 Class (c): control of Lean's totalization outside the manuscript domain.  The TeX's
 multiplier `m_ε(ξ) = e^{-ε|ξ|²/2}` is used only for `ε > 0`; `heatMult` is totalized as `1`

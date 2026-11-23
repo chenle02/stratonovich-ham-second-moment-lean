@@ -1,6 +1,6 @@
 /-
 Refutation for the positivity clause of `L:variational-heat-envelope`
-(`notes/integrated_unmasked_variational.tex` line 39 at 39f2597a), package
+(`notes/integrated_unmasked_variational.tex` line 39 at edf7085f), package
 theorems `StratonovichHAMSecondMoment.VariationalMean.heat_conv_pos` and
 `variational_heat_envelope_paper`.
 

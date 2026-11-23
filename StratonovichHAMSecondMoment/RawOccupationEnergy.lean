@@ -4,7 +4,7 @@ module
 Copyright 2026 Le Chen. SPDX-License-Identifier: Apache-2.0
 
 Wave item L9-A1: Proposition `P:raw-occupation-energy` (Original occupation energy and
-dilation) of `notes/integrated_occupation_ceiling.tex` at revision 39f2597a (statement lines
+dilation) of `notes/integrated_occupation_ceiling.tex` at revision edf7085f (statement lines
 111-131, proof lines 133-177), with the objects of `E:raw-occupation-definitions` (lines 4-18).
 Standing assumptions of the section (lines 4-21): the original covariance under `H:homog`
 (`HomogHypothesis.HomogCovariance d α α₀ Γ μ`), `a = α₀`, the ORIGINAL kernel
@@ -684,7 +684,7 @@ theorem raw_occupation_energy {a alpha R : ℝ} (hd : 0 < d) (ha0 : 0 ≤ a) (ha
 /-! ### The manuscript's statement -/
 
 /-- **`P:raw-occupation-energy`** (`integrated_occupation_ceiling.tex` lines 111-131, proof
-133-177, at 39f2597a), under the section's standing assumptions (lines 4-21: the original
+133-177, at edf7085f), under the section's standing assumptions (lines 4-21: the original
 covariance under `H:homog` with `a = α₀`, `Γ ≠ 0`), with `K_0 = 2^a/(1-a)` and
 `R_sp = SpatialFourLinear.Rsp`:
 * `0 < C_occ ≤ K_0 R_sp`, the ratio set being nonempty and bounded above (a real number,

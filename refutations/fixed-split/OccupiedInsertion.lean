@@ -1,6 +1,6 @@
 /-
 Refutation for the vacuum insertion on coefficients `E:split-fresh-insertion`
-(main TeX lines 3861-3898 at 39f2597a), package theorem
+(main TeX lines 3861-3898 at edf7085f), package theorem
 `StratonovichHAMSecondMoment.FixedSplit.coef_insertion`.
 
 Wrong variant: the insertion bound without the vacuum hypothesis (an

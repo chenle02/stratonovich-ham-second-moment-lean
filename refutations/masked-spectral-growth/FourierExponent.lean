@@ -1,7 +1,7 @@
 /-
 Refutation for the Gaussian Fourier integral of `GaussianTest`, package
 theorem `StratonovichHAMSecondMoment.GaussianTest.gaussTest_fourier`
-(`notes/integrated_covariance_foundation.tex` lines 73-76 at 39f2597a, constant
+(`notes/integrated_covariance_foundation.tex` lines 73-76 at edf7085f, constant
 `(2√π/r)^d = (π/s)^{d/2}` with `s = r²/4`), package definition
 `StratonovichHAMSecondMoment.GaussianTest.gaussTest`.
 
