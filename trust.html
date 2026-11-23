@@ -92,7 +92,7 @@ separate question. The statement ledger answers it row by row and is meant
 to be read next to the paper. Lean does not check that correspondence.</p>
 <p><strong>Correspondence review, in short.</strong> Each wave's ledger rows were reviewed
 against the manuscript by AI models from a different family than the ledger's
-author, and the author accepted every wave, the last two at the wave-L13 and wave-L14 gates. The
+author, and the author accepted every wave, the last at the wave-L21 gate. The
 full record follows.</p>
 <details>
 <summary><b>Correspondence review record, wave by wave</b></summary>
@@ -260,6 +260,142 @@ models from a different family than the ledger's author; they are not a
 human verification, and they do not check the analytic inputs that stay
 outside Lean. A later change to the ledger or to a cited label needs a new
 review.</p>
+<p>Wave L15 (item L15-UM, scope (a), approved by the author on 2026-11-19, which
+reopened the Lean work for this item) was gated on 2026-11-20 (tag
+<code>L15-gate</code>): four modules (<code>UniformMeanInterface</code>, <code>UniformMeanFoundation</code>,
+<code>UniformELift</code>, <code>PositiveRawMean</code>), the coverage row <code>L:uniform-E-lift</code>, the
+changed row <code>L:positive-raw-embedding</code> and the named inputs
+<code>CameronSpatialMap</code> and <code>UniformMeanRegulator</code>. Its TeX citations, first at
+revision <code>c3c2431d</code> (book v1.0.2), were moved to <code>0788ddee</code> (book 1.1.0) by
+item R1 of wave L16; among the files cited by wave L15, only
+<code>integrated_uniform_mean.tex</code> and <code>integrated_uniform_products.tex</code> changed
+between the two (seven other TeX files of the book changed).</p>
+<p>Wave L16 (approved by the author on 2026-11-20, the Cameron-map chain) was
+gated on 2026-11-20 (tag <code>L16-gate</code>, commit <code>ebac849</code>): fifteen modules
+(<code>CameronInterface</code>, <code>CompactOperatorFoundation</code>, <code>UniformMeanCutoff</code>,
+<code>CameronProducts</code>, <code>CameronSpatial</code>, <code>CameronTemporalKernel</code>,
+<code>CameronTemporalYoung</code>, <code>CameronTemporalSqrt</code>, <code>CameronTemporalMap</code>,
+<code>CameronTemporalTarget</code>, <code>CameronUMap</code>, <code>UniformMeanTensor</code>,
+<code>UniformMeanAssembly</code>, <code>UniformMeanDischarge</code>, <code>CameronFinal</code>), 429 ledger
+rows citing TeX lines at revision <code>0788ddee</code> (book 1.1.0), seven new
+coverage rows, the changed row <code>L:positive-raw-embedding</code> (now with nothing
+supplied) and the named input <code>CutoffCompact</code> (the compactness sentence of
+<code>P:cutoff-singular-values</code>, kept a named input by the author's decision of
+2026-11-20). L15's named inputs <code>CameronSpatialMap</code> and
+<code>UniformMeanRegulator</code> are constructed, with <code>CutoffCompact</code> as the only
+input; the fallback <code>TemporalCompact</code> is proved. Its statements and
+documentation were reviewed, its receipts cut and its modules replayed on
+Easley before the gate (see <code>COMPLETION.md</code>). No refutation or audit files
+were written for wave L16.</p>
+<p>Wave L17 (approved by the author on 2026-11-20, the pairing-envelope chain)
+was closed by the author on 2026-11-21 (tag <code>L17-gate</code>): fifteen
+modules (<code>PairingInterface</code>, <code>PairingTranslatedCS</code>, <code>PairingConvolution</code>,
+<code>PairingRegional</code>, <code>PairingCapRemoval</code>, <code>PairingEnvelope</code>, <code>PairingBridge</code>,
+<code>PairingDampedNorms</code>, <code>HomogeneousEnvelope</code>, <code>CrudeCorrected</code>,
+<code>EnvelopeFinal</code>, <code>GreenSmoothed3</code>, <code>PairingSmoothedNorms</code>, <code>EnvelopeD3</code>,
+<code>EnvelopeD3Final</code>), 508 ledger rows (their TeX citations at revision
+<code>0788ddee</code>, book 1.1.0), four new coverage rows (<code>L:translated-covariance-CS</code> and
+<code>L:pairing-product-envelope</code> in full; <code>L:crude-corrected</code> and <code>P:envelope</code>
+narrower with the named input <code>MixedMoment</code>) and the model choice M7 (the
+label-set two-chain model, with a bridge from M4). No new named input; the
+fallbacks <code>ConvolutionNorms</code> and <code>RegionalHalfBound</code> are used nowhere. Its
+statements and documentation were reviewed, its receipts cut and its modules
+replayed on Easley before the gate (see <code>COMPLETION.md</code>). No refutation or
+audit files were written for wave L17.</p>
+<p>Wave L18 (approved by the author on 2026-11-21, the Wick-measure chain and the
+discharge of <code>DiagramLimits</code>) was integrated on branch <code>wave-l18/int</code>; the
+author closed its gate on 2026-11-21 (tag <code>L18-gate</code>): thirteen modules (<code>WickInterface</code>, <code>RieszDiagramLimits</code>,
+<code>RieszDiagramLimitsHomog</code>, <code>WickSpectral</code>, <code>WickBridge</code>, <code>WickMass</code>,
+<code>WickScaling</code>, <code>WickStep4</code>, <code>WickMeasures</code>, <code>JointFixedOrder</code>,
+<code>EnvelopeD3Wave</code>, <code>JointTail</code>, <code>WickFinal</code>), 380 ledger rows (TeX citations
+at <code>0788ddee</code>), two new coverage rows (<code>L:spatial-wick-measures</code> in full;
+<code>L:joint-fixed-order</code> narrower, its deterministic half), four extended rows
+(<code>P:d1-upper</code>, <code>P:riesz-small</code>, <code>L:crude-corrected</code>, <code>P:envelope</code>; classes
+unchanged) and the model choice M8 (the gap-coordinate Wick-measure model;
+under <code>H:homog</code>, for <code>D in Pi2 m n</code> and <code>t &gt; 0</code>, M4's diagram at pair width
+<code>eps &gt; 0</code> equals M8's at vertex width <code>eps/2</code> and temporal width <code>0</code>; under
+<code>H:homog</code>, for <code>D in Pi2 m n</code>, positive vertexwise widths, a Green family
+<code>G_s = g(s, .) dy</code> with <code>g</code> finite and jointly measurable, measurable Laplace
+domains in <code>(0, infinity)</code> and damping <code>theta &gt;= 0</code>, M8's damped integral is
+at most M7's pairing integral with the per-edge data <code>wickEdge</code>, <code>&lt;=</code> only). The named input <code>DiagramLimits</code> is discharged; besides
+it, the ledger Scope lists seven named inputs of waves L13 to L16
+(<code>MixedMoment</code>, <code>FirstMomentSeries</code>, <code>SignedMultiplierForm</code>, <code>ThreeTransfer</code>,
+<code>CameronSpatialMap</code>, <code>UniformMeanRegulator</code>, <code>CutoffCompact</code>), five of them
+open (the two map inputs are constructed in wave L16); the four fallback
+named inputs of the wave are used nowhere. Its statements and documentation
+were reviewed, its receipts cut and its modules replayed on Easley before the
+gate (see <code>COMPLETION.md</code>). No refutation or audit files were written for
+wave L18.</p>
+<p>Wave L19 (approved by the author on 2026-11-21, the source-field chain: the
+<code>L^2</code> construction of <code>L:joint-fixed-order</code>, <code>P:mixed</code>, <code>L:vertex-crude</code>, and
+the discharge of <code>MixedMoment</code> and <code>FirstMomentSeries</code>) was integrated on
+branch <code>wave-l19/int</code>; the author closed its gate on 2026-11-22 (tag
+<code>L19-gate</code>): eleven modules
+(<code>SourceInterface</code>, <code>SourceIsonormal</code>, <code>SourceFeatures</code>, <code>SourceWick</code>,
+<code>SourceReversal</code>, <code>SourceFixedOrder</code>, <code>SourceGreenFirst</code>,
+<code>SourceVertexCrude</code>, <code>SourceMixed</code>, <code>SourceExpansion</code>, <code>SourceFinal</code>), 292
+ledger rows (TeX citations at <code>0788ddee</code>), two new coverage rows (<code>P:mixed</code>
+and <code>L:vertex-crude</code>, both in full), <code>L:joint-fixed-order</code> now in full, the
+seven consumer rows updated (<code>L:crude-corrected</code> and <code>L:white-test</code> full
+with the manuscript's hypotheses; <code>P:envelope</code> and <code>P:low-alpha-upper</code> with
+the manuscript's hypotheses and a narrower conclusion;
+<code>C:d1-first-calibration</code>, <code>P:d1-upper</code> and <code>P:riesz-small</code> with inputs
+supplied and a narrower conclusion), and the model choice M9 (the
+source fields of <code>E:pairing-source-covariance</code> on any probability space,
+with the constructed instance <code>m9</code>; no M4 diagram is realized at positive
+widths, each positive-width pairing integral is an M8 diagram after the
+chain reversal, with the reversed pairing, and M4 enters through the limits
+and through the regularized diagram bounds). The three Riesz consumer
+rows keep the Riesz instance of <code>H:homog</code> as the explicit hypothesis <code>hH</code>
+(the author's decision of 2026-11-22): it is true, but not formalized in the
+library. The ledger Scope lists five named inputs of waves L13 to L16 besides
+<code>DiagramLimits</code> and the two wave-L15 data structures (<code>MixedMoment</code> and
+<code>FirstMomentSeries</code>, discharged in wave L19; <code>SignedMultiplierForm</code>,
+<code>ThreeTransfer</code> and <code>CutoffCompact</code>, open); the two fallback named inputs of
+the wave (<code>SourceNoise</code>, <code>TerminalReversal</code>) are used nowhere. The documentation
+review's accepted findings were repaired in docs-only commits (the
+author's decisions of 2026-11-22). No refutation or
+audit files were written for wave L19.</p>
+<p>Wave L20 (approved by the author on 2026-11-22 with the default answers to
+its thirteen decisions: <code>P:mild-construction</code> for every source field, the
+Riesz instance of <code>H:homog</code> in <code>d = 1</code>, the deferred wrappers and a
+comment-only docstring pass) was integrated on branch <code>wave-l20/int</code>
+and gated (below): eleven modules (<code>MildInterface</code>, <code>MildOccupied</code>,
+<code>MildPolyMem</code>, <code>MildFields</code>, <code>MildTerminalFubini</code>, <code>MildPartialVertex</code>,
+<code>MildGreenWidth</code>, <code>MildConstruction</code>, <code>MildFinal</code>, <code>RieszInstanceOne</code>,
+<code>CleanupWrappers</code>), 306 ledger rows (TeX citations at <code>0788ddee</code>), six
+coverage rows updated (<code>P:mild-construction</code>, <code>P:d1-upper</code>,
+<code>C:d1-first-calibration</code>, <code>P:low-alpha-upper</code> and <code>P:envelope</code> in full with
+the manuscript's hypotheses; <code>P:riesz-small</code> with the manuscript's
+hypotheses and a narrower conclusion), no new model choice (M9 extended by
+the mild integral), and the comment-only docstring pass over 39 earlier
+library modules and 16 of their <code>ChallengeDefs/</code> mirrors (55 files). The Riesz <code>hH</code> and the
+white-case <code>MixedMoment</code> of <code>P:d1-upper</code> are gone from the headline theorems
+of every row (retained L19 wrappers that the rows credit keep <code>hH</code>, and
+retained forms for abstract random variables keep <code>MixedMoment</code>). The named
+inputs still supplied at wave L20 were <code>SignedMultiplierForm</code>, <code>ThreeTransfer</code>,
+<code>CutoffCompact</code>, <code>TubeAttained</code> (discharged in wave L21, the end point
+the author set on 2026-11-23, below) and <code>TubeTail</code>; the two fallback named inputs
+of the wave (<code>JointMeasurability</code>, <code>TerminalFubini</code>) are used nowhere. The
+author closed the wave-L20 gate on 2026-11-23 (tag <code>L20-gate</code> on <code>5cdd493</code>): Lean statements
+reviewed by DeepSeek V4 Pro (eight scopes, no MAJOR or CRITICAL finding), documentation by
+GPT-6.2-Sol (repaired docs-only), receipts <code>4842df8</code>, external kernel replay
+<code>verification/leanchecker-easley-wave-l20/</code> (below). No refutation or audit files were written for wave L20.</p>
+<p>Wave L21 (the author's end point of 2026-11-23: "Close the Lean companion after L20 plus
+TubeAttained as an item in L21") closed its gate on 2026-11-23 (tag <code>L21-gate</code> on <code>38a3e00</code>): one module, <code>SourceTubeAttained</code>, discharges the named input <code>TubeAttained</code> at the
+manuscript's tubes (closed images of Hilbert balls under a bounded map by Banach-Alaoglu, without
+separability; least-radius attainment by rescaling a near-optimal control), 12 ledger rows (TeX
+citations of <code>integrated_gaussian_tubes.tex</code> at <code>0788ddee</code>), one new coverage row
+(<code>L:tube-closed-geometry</code> with the manuscript's hypotheses and a narrower conclusion: the
+Gaussian tail and the almost sure finiteness are not formalized) and one updated
+(<code>P:tube-rayleigh-transfer</code>, still a whole result with inputs supplied, now <code>TubeTail</code> only), and
+the comment-only Lean docstring corrections deferred from the wave-L20 reviews. The named inputs
+still supplied, at the end point, are <code>SignedMultiplierForm</code>, <code>ThreeTransfer</code>, <code>TubeTail</code> and
+<code>CutoffCompact</code>. The statement review of the module (DeepSeek V4 Pro: PASS_WITH_NOTES, high, no
+MAJOR or CRITICAL finding, citation notes repaired comment-only) and the documentation review
+(GPT-6.2-Sol, repaired docs-only) are done; receipts <code>39c4365</code>; external kernel replay
+<code>verification/leanchecker-easley-wave-l21/</code> (below). With wave L21 the Lean work reaches the
+author's end point: no further proof waves are planned. No refutation or audit files were written for wave L21.</p>
 <p>The ledger was then re-anchored to manuscript revision <code>39f2597a</code>, which adds
 front matter and appendices. It renames the appendix-local direct-bound constant
 <code>C_2</code> to <code>C_dir</code>. It clarifies the attribution of the quoted source result
@@ -274,18 +410,31 @@ the same text (except 1 range whose words are kept but re-wrapped around
 inserted explanatory sentences); locators resolved by hand were read and cite
 the same object, whose wording may have changed. The file of every locator was
 checked against the cited labels.</p>
+<p>For release v0.11.0 the companion was re-anchored again, to manuscript revision
+<code>edf7085f</code> (book 1.1.3). Until then the citations of waves up to L14 were at
+<code>39f2597a</code> and those of waves L15 to L21 at <code>0788ddee</code> (book 1.1.0). Previously
+correct locators keep their numbers: the lines cited at <code>39f2597a</code> have the same
+numbers at <code>edf7085f</code>, and between <code>0788ddee</code> and <code>edf7085f</code> the book changed only
+version numbers, dates and links in place, on no cited line. Five stale scaffold
+docstrings and their five <code>Challenge.lean</code> copies, which carried line numbers of
+book v1.0.2 (<code>c3c2431d</code>), now match <code>claims.yaml</code>. Current locators read
+<code>edf7085f</code> (book 1.1.3); explicitly historical statements (gate and wave records,
+checks and readings at a revision, the frozen interface records under <code>docs/</code>)
+keep their revisions.</p>
 </details>
 <h2 id="verification-record">Verification record</h2>
 <p><strong>This repository.</strong> A receipt names the commit it binds, so the receipts
 for a release's tree commit cannot be part of that commit: a lower-tier
 receipt and a comparator receipt are cut at the tree commit and added, with
-nothing else, by the commit after it, which the release tag marks (<code>v0.9.0</code>,
-<code>v0.10.0</code>). For <code>v0.10.0</code> they are the files in <code>.lean-receipts/</code> whose 12-hex
-prefix is the parent of the commit that <code>v0.10.0</code> marks. The comparator
-receipt covers both configurations, <code>comparator.json</code> (1553 theorems credited
-to coverage rows) and <code>comparator-helpers.json</code> (2100 helper theorems, a
-smoke check). The other receipts in <code>.lean-receipts/</code> bind the <code>v0.9.0</code> root
-commit or commits of the development repository and are kept as evidence.</p>
+nothing else, by the commit after it; the release tag marks that commit or a
+documentation-only descendant of it. For <code>v0.11.0</code> they are the files in
+<code>.lean-receipts/</code> whose 12-hex prefix is <code>4d0e11cec4f6</code>, the release tree
+commit. The comparator receipt covers both configurations, <code>comparator.json</code>
+(2056 theorems credited to coverage rows) and <code>comparator-helpers.json</code>
+(3270 helper theorems, a smoke check). The receipts of <code>v0.10.0</code>'s tree
+commit (prefix <code>c8d8e0706afb</code>) and of the <code>v0.9.0</code> root commit (prefix
+<code>ed66b5bc05fe</code>) stay; the other receipts in <code>.lean-receipts/</code> bind commits
+of the development repository and are kept as evidence.</p>
 <p><strong>Development record.</strong></p>
 <p>Commit <code>8f51004</code> (the wave-L13 and wave-L14 gates) has both lean-pkg receipts in
 <code>.lean-receipts/</code> (earlier commits have their own): a lower-tier receipt (a
@@ -301,7 +450,8 @@ bound to it. A receipt records the build and the statements'
 self-consistency; it does not by itself establish that the statements
 match the paper (see Trust).</p>
 <p>Since release v0.10.0 the theorem claims are compared in two
-configurations: <code>comparator.json</code> (the 1553 theorems credited to rows of
+configurations (the counts here are those of v0.10.0; the current ones are
+under Counts): <code>comparator.json</code> (the 1553 theorems credited to rows of
 <code>coverage.yaml</code>: 1134 named at the wave-L13/L14 gate, 419 added by the
 direct-label rule) and <code>comparator-helpers.json</code> (the 2100 helper theorems,
 declared a smoke check in <code>lean-pkg-signoff.json</code>); <code>CheckFidelity.lean</code>
@@ -384,7 +534,75 @@ cannot be matched by it: they are compared in the helper configuration, and
 the 18 of them that were <code>reusable</code> (the fields of <code>EndpointLemmas.IsCov</code>,
 <code>EndpointPair</code> and <code>ProductParams</code>, and of <code>ClassOBridge.IsClassO</code>) are
 <code>internal</code>; the helper accounting above credits
-or declares every compared theorem.</p>
+or declares every compared theorem.
+A thirteenth gate replayed commit <code>315a332</code>, where wave L15 was integrated:
+the four new modules <code>UniformMeanInterface</code>, <code>UniformMeanFoundation</code>,
+<code>UniformELift</code> and <code>PositiveRawMean</code> <code>--fresh</code> (4/4 pass), and a
+default-mode replay of all 146 targets (pass;
+<code>verification/leanchecker-easley-wave-l15/</code>). The other 142 modules have
+not been replayed <code>--fresh</code> at <code>315a332</code>; 111 of them differ from <code>8f51004</code>
+only in comments with unchanged line counts, the umbrella changed (it imports
+the four new modules) and <code>Axioms</code> imports it.
+A fourteenth gate replayed commit <code>ebac849</code>, the wave-L16 gate commit: the
+fifteen new modules <code>CameronInterface</code>, <code>CompactOperatorFoundation</code>,
+<code>UniformMeanCutoff</code>, <code>CameronProducts</code>, <code>CameronSpatial</code>,
+<code>CameronTemporalYoung</code>, <code>CameronTemporalKernel</code>, <code>CameronTemporalSqrt</code>,
+<code>CameronTemporalMap</code>, <code>CameronTemporalTarget</code>, <code>CameronUMap</code>,
+<code>UniformMeanTensor</code>, <code>UniformMeanAssembly</code>, <code>UniformMeanDischarge</code> and
+<code>CameronFinal</code>, and the umbrella, <code>--fresh</code> (16/16 pass), and a default-mode
+replay of all 161 targets (pass;
+<code>verification/leanchecker-easley-wave-l16/</code>). The umbrella's <code>--fresh</code> run
+re-checks every library module except <code>Axioms</code> as an import; <code>Axioms</code>, which
+imports the umbrella, is replayed in default mode only. The other 145 modules
+are byte-identical to <code>315a332</code>.
+A fifteenth gate replayed commit <code>68d0c5e</code>, the wave-L17 gate commit: the
+fifteen new modules <code>PairingInterface</code>, <code>PairingTranslatedCS</code>,
+<code>PairingConvolution</code>, <code>PairingCapRemoval</code>, <code>PairingRegional</code>,
+<code>PairingEnvelope</code>, <code>PairingBridge</code>, <code>PairingDampedNorms</code>,
+<code>HomogeneousEnvelope</code>, <code>CrudeCorrected</code>, <code>EnvelopeFinal</code>, <code>GreenSmoothed3</code>,
+<code>PairingSmoothedNorms</code>, <code>EnvelopeD3</code> and <code>EnvelopeD3Final</code>, and the umbrella,
+<code>--fresh</code> (16/16 pass), and a default-mode replay of all 176 targets (pass;
+<code>verification/leanchecker-easley-wave-l17/</code>). The umbrella's <code>--fresh</code> run
+re-checks every library module except <code>Axioms</code> as an import; <code>Axioms</code>, which
+imports the umbrella, is replayed in default mode only. The other 160 modules
+are byte-identical to <code>ebac849</code>.
+A sixteenth gate replayed commit <code>6e4644d</code>, the wave-L18 gate commit: the
+thirteen new modules <code>WickInterface</code>, <code>RieszDiagramLimits</code>,
+<code>RieszDiagramLimitsHomog</code>, <code>WickSpectral</code>, <code>WickBridge</code>, <code>WickMass</code>,
+<code>WickScaling</code>, <code>WickStep4</code>, <code>WickMeasures</code>, <code>JointFixedOrder</code>,
+<code>EnvelopeD3Wave</code>, <code>JointTail</code> and <code>WickFinal</code>, and the umbrella, <code>--fresh</code>
+(14/14 pass), and a default-mode replay of all 189 targets (pass;
+<code>verification/leanchecker-easley-wave-l18/</code>). The umbrella's <code>--fresh</code> run
+re-checks every library module except <code>Axioms</code> as an import; <code>Axioms</code>, which
+imports the umbrella, is replayed in default mode only. The other 175 modules
+are byte-identical to <code>68d0c5e</code>.
+A seventeenth gate replayed commit <code>fe9f1de</code>, the wave-L19 gate commit: the
+eleven new modules <code>SourceInterface</code>, <code>SourceIsonormal</code>, <code>SourceFeatures</code>,
+<code>SourceWick</code>, <code>SourceReversal</code>, <code>SourceFixedOrder</code>, <code>SourceGreenFirst</code>,
+<code>SourceVertexCrude</code>, <code>SourceMixed</code>, <code>SourceExpansion</code> and <code>SourceFinal</code>, and
+the umbrella, <code>--fresh</code> (12/12 pass), and a default-mode replay of all 200
+targets (pass; <code>verification/leanchecker-easley-wave-l19/</code>). The umbrella's
+<code>--fresh</code> run re-checks every library module except <code>Axioms</code> as an import;
+<code>Axioms</code>, which imports the umbrella, is replayed in default mode only. The
+other 188 modules are byte-identical to <code>6e4644d</code>.
+An eighteenth gate replayed commit <code>5cdd493</code>, the wave-L20 gate commit: the
+eleven new modules <code>MildInterface</code>, <code>MildOccupied</code>, <code>MildPolyMem</code>,
+<code>MildFields</code>, <code>MildTerminalFubini</code>, <code>MildPartialVertex</code>, <code>MildGreenWidth</code>,
+<code>MildConstruction</code>, <code>MildFinal</code>, <code>RieszInstanceOne</code> and <code>CleanupWrappers</code>,
+and the umbrella, <code>--fresh</code> (12/12 pass), and a default-mode replay of all
+211 targets (pass; <code>verification/leanchecker-easley-wave-l20/</code>). The
+umbrella's <code>--fresh</code> run re-checks every library module except <code>Axioms</code> as an
+import; <code>Axioms</code>, which imports the umbrella, is replayed in default mode
+only. Of the other 198 modules, 159 are byte-identical to <code>fe9f1de</code> and 39
+differ from it only in comments.
+A nineteenth gate replayed commit <code>38a3e00</code>, the wave-L21 gate commit: the
+new module <code>SourceTubeAttained</code> and the umbrella, <code>--fresh</code> (2/2 pass), and a
+default-mode replay of all 212 targets (pass;
+<code>verification/leanchecker-easley-wave-l21/</code>). The umbrella's <code>--fresh</code> run
+re-checks every library module except <code>Axioms</code> as an import; <code>Axioms</code>, which
+imports the umbrella, is replayed in default mode only. Of the other 209
+modules, 189 are byte-identical to <code>5cdd493</code> and 20 differ from it only in
+comments.</p>
     </main>
   </div>
   <footer>

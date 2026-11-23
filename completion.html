@@ -70,7 +70,7 @@
     <main id="content">
 <h1>Completion record</h1>
 <h1 id="completion-record">Completion record</h1>
-<p>What the Lean companion verifies of the manuscript, kept current at every milestone. Every milestone is an annotated git tag on the commit where the author closed the gate. The tags and the commits in this file belong to the private development repository named in <code>provenance/DEVELOPMENT.md</code>; the public repository carries only the release tags <code>v0.9.0</code> (the wave-L9 gate) and <code>v0.10.0</code> (the wave-L13 and wave-L14 gates), whose Lean proof files are those of the gate (release documentation added, cluster evidence redacted; <code>v0.10.0</code> also drops two claims of Lean-generated declarations, splits the comparator configuration and marks the helper claims <code>internal</code>, see <code>provenance/DEVELOPMENT.md</code>). Claims count Lean declarations in <code>claims.yaml</code>; coverage rows count manuscript labelled results (see <code>coverage.yaml</code> for the exact scope of each). "Same" = formalized with the manuscript's hypotheses; "inputs" = analytic inputs supplied as named hypotheses. Correspondence was checked by AI reviews from a different model family, not by a human; supplied inputs are not verified.</p>
+<p>What the Lean companion verifies of the manuscript, kept current at every milestone. Every milestone is an annotated git tag on the commit where the author closed the gate. The tags and the commits in this file belong to the private development repository named in <code>provenance/DEVELOPMENT.md</code>; the public repository carries only the release tags <code>v0.9.0</code> (the wave-L9 gate), <code>v0.10.0</code> (the wave-L13 and wave-L14 gates) and <code>v0.11.0</code> (the wave-L15 to wave-L21 gates), whose Lean proof files are those of the gate up to comments (release documentation added, cluster evidence redacted; <code>v0.10.0</code> also drops two claims of Lean-generated declarations, splits the comparator configuration and marks the helper claims <code>internal</code>; <code>v0.11.0</code> re-anchors the line citations to <code>edf7085f</code>; see <code>provenance/DEVELOPMENT.md</code>). Claims count Lean declarations in <code>claims.yaml</code>; coverage rows count manuscript labelled results (see <code>coverage.yaml</code> for the exact scope of each). "Same" = formalized with the manuscript's hypotheses; "inputs" = analytic inputs supplied as named hypotheses. Correspondence was checked by AI reviews from a different model family, not by a human; supplied inputs are not verified.</p>
 <h2 id="milestones">Milestones</h2>
 <table>
 <thead>
@@ -256,12 +256,130 @@
 <td>101: 64 / 35 / 2</td>
 <td>waves L13 and L14, closed together (the occupation completion spaces, model choice M5, and H^1 as the weak-gradient graph, model choice M6, with the four-linear form, the occupation class and the raw occupation energy in full; the source spatial heat lemma in full; the d = 3 endpoint lemmas in full with the positive definiteness of the Riesz densities proved)</td>
 </tr>
+<tr>
+<td><code>L15-gate</code></td>
+<td><code>18c5c1d</code></td>
+<td>2026-11-20</td>
+<td><code>c3c2431d</code> (L15 citations; earlier rows stay on <code>39f2597a</code>, the same text)</td>
+<td>4705</td>
+<td>3803</td>
+<td>102: 64 / 36 / 2</td>
+<td>wave L15, item L15-UM in scope (a): the phase space <code>H^(1/2) x H^(-1/2)</code> with density of real tests, duality and multipliers; <code>L:uniform-E-lift</code> with nothing supplied (narrower: the lift <code>L_F</code> and the complex extension not formalized); the a.e. mean identity of <code>E:positive-raw-mean</code> and a canonical version agreeing a.e., for a supplied <code>UniformMeanRegulator</code>, so <code>L:positive-raw-embedding</code> is narrower with inputs supplied; closed by the author 2026-11-20</td>
+</tr>
+<tr>
+<td><code>L16-gate</code></td>
+<td><code>ebac849</code></td>
+<td>2026-11-20</td>
+<td><code>0788ddee</code> (book 1.1.0; the wave-L15 citations moved to it, earlier rows stay on <code>39f2597a</code>, the same text)</td>
+<td>5134</td>
+<td>4137</td>
+<td>109: 70 / 37 / 2</td>
+<td>wave L16, the Cameron-map chain: <code>L:cameron-fractional-products</code> in full; L15's named inputs <code>CameronSpatialMap</code> and <code>UniformMeanRegulator</code> constructed, with the named input <code>CutoffCompact</code> (the compactness sentence of <code>P:cutoff-singular-values</code>, kept by the author's decision); <code>L:positive-raw-embedding</code> with nothing supplied, conclusion full by the author's decision; <code>P:cameron-temporal-map</code> narrower; closed by the author 2026-11-20</td>
+</tr>
+<tr>
+<td><code>L17-gate</code></td>
+<td><code>68d0c5e</code></td>
+<td>2026-11-21</td>
+<td><code>0788ddee</code> (book 1.1.0)</td>
+<td>5642</td>
+<td>4555</td>
+<td>113: 72 / 39 / 2</td>
+<td>wave L17, the pairing-envelope chain: <code>L:translated-covariance-CS</code> and <code>L:pairing-product-envelope</code> in full with nothing supplied (label-set model M7, bridge from M4; interface amendment 1); <code>L:crude-corrected</code> and <code>P:envelope</code> narrower with <code>MixedMoment</code> supplied (diagram bounds in <code>d = 1, 2</code>, and <code>d = 3</code> for Green-smoothed kernels uniformly in <code>eta</code>; <code>E:envelope-growth</code> without the comparison <code>rho &gt; kappa</code>); closed by the author 2026-11-21</td>
+</tr>
+<tr>
+<td><code>L18-gate</code></td>
+<td><code>6e4644d</code></td>
+<td>2026-11-21</td>
+<td><code>0788ddee</code> (book 1.1.0)</td>
+<td>6022</td>
+<td>4862</td>
+<td>115: 74 / 39 / 2</td>
+<td>wave L18, spatial Wick measures and the deterministic half of <code>L:joint-fixed-order</code>: <code>L:spatial-wick-measures</code> in full with nothing supplied (model M8); <code>L:joint-fixed-order</code> narrower with nothing supplied (deterministic half; the L^2 construction not formalized); the named input <code>DiagramLimits</code> discharged for every <code>H:homog</code> covariance in <code>d = 1, 2, 3</code>; closed by the author 2026-11-21</td>
+</tr>
+<tr>
+<td><code>L19-gate</code></td>
+<td><code>fe9f1de</code></td>
+<td>2026-11-22</td>
+<td><code>0788ddee</code> (book 1.1.0)</td>
+<td>6314</td>
+<td>5077</td>
+<td>117: 80 / 35 / 2</td>
+<td>wave L19, the <code>L^2</code> construction on source fields (model M9): <code>P:mixed</code>, <code>L:vertex-crude</code> and <code>L:joint-fixed-order</code> with the manuscript's hypotheses; the named inputs <code>MixedMoment</code> and <code>FirstMomentSeries</code> discharged for the chaos terms and solution of every source field; closed by the author 2026-11-22</td>
+</tr>
+<tr>
+<td><code>L20-gate</code></td>
+<td><code>5cdd493</code></td>
+<td>2026-11-23</td>
+<td><code>0788ddee</code> (book 1.1.0)</td>
+<td>6620</td>
+<td>5314</td>
+<td>117: 84 / 31 / 2</td>
+<td>wave L20, the mild construction on source fields: <code>P:mild-construction</code> with the manuscript's hypotheses; the <code>d = 1</code> Riesz instance of <code>H:homog</code>, so the Riesz <code>hH</code> leaves three rows; <code>P:d1-upper</code>, <code>C:d1-first-calibration</code>, <code>P:low-alpha-upper</code> and <code>P:envelope</code> in full; comment-only docstring pass over 55 earlier files; closed by the author 2026-11-23</td>
+</tr>
+<tr>
+<td><code>L21-gate</code></td>
+<td><code>38a3e00</code></td>
+<td>2026-11-23</td>
+<td><code>0788ddee</code> (book 1.1.0)</td>
+<td>6632</td>
+<td>5326</td>
+<td>118: 85 / 31 / 2</td>
+<td>wave L21, the last proof wave of the author's end point: the named input <code>TubeAttained</code> discharged at the manuscript's tubes; <code>L:tube-closed-geometry</code> with the manuscript's hypotheses (narrower conclusion); <code>P:tube-rayleigh-transfer</code> with <code>TubeTail</code> the one input left; the deferred wave-L20 Lean-comment corrections; closed by the author 2026-11-23</td>
+</tr>
 </tbody>
 </table>
-<p>Every tagged commit carries lean-pkg receipts or is a docs-only descendant of one (see <code>.lean-receipts/</code> and the README verification record). External kernel replays (<code>leanchecker --fresh</code> on Easley) cover every library module through wave L14, all of them at <code>8f51004</code> (the wave-L13 and wave-L14 gates); see <code>verification/</code>.</p>
-<h2 id="lean-freeze-2026-11-13">Lean freeze (2026-11-13)</h2>
-<p>Wave L14 is the last Lean wave: the author froze the Lean work after it. No wave is in progress. The table by labelled result below is at the wave-L14 gate; the remaining results are left for future work or for the community.</p>
-<h2 id="completion-by-labelled-result-manuscript-39f2597a-companion-8f51004-gates-l13-gate-and-l14-gate">Completion by labelled result (manuscript 39f2597a, companion 8f51004, gates L13-gate and L14-gate)</h2>
+<p>Every tagged commit carries lean-pkg receipts or is a docs-only descendant of one (see <code>.lean-receipts/</code> and the README verification record). External kernel replays (<code>leanchecker --fresh</code> on Easley) cover every library module through wave L14 at <code>8f51004</code> (the wave-L13 and wave-L14 gates), the wave-L15 modules at <code>315a332</code> and the wave-L16 modules at <code>ebac849</code>, with default mode over all modules at each; see <code>verification/</code>.</p>
+<h2 id="lean-freeze-2026-11-13-and-wave-l15">Lean freeze (2026-11-13) and wave L15</h2>
+<p>Wave L14 was to be the last Lean wave: the author froze the Lean work after it. On 2026-11-19 the author approved one further item, L15-UM in scope (a) (the uniform <code>E</code> lift and the mean identity of <code>E:positive-raw-mean</code>, with the spatial and temporal mean maps supplied as named inputs). On 2026-11-20 the author approved wave L16 (the Cameron-map chain: the core items L16-0 to L16-D and the re-anchor R1, with the default answers to its twelve decisions), which constructs those two named inputs; the compactness sentence of <code>P:cutoff-singular-values</code> stays the named input <code>CutoffCompact</code> (the author's decision of 2026-11-20). The author closed the L16 gate on 2026-11-20 (tag <code>L16-gate</code>) and approved wave L17 (the pairing-envelope chain, default answers to its twelve decisions), launched after the L16 gate. The author closed the L17 gate on 2026-11-21 (tag <code>L17-gate</code>) and approved wave L18 the same day (the Wick-measure chain and the discharge of the named input <code>DiagramLimits</code>, with the default answers to its thirteen decisions); the author closed the L18 gate on 2026-11-21 (tag <code>L18-gate</code>) and approved wave L19 the same day (the <code>L^2</code> construction of <code>L:joint-fixed-order</code>, <code>P:mixed</code>, <code>L:vertex-crude</code> and the discharge of the named inputs <code>MixedMoment</code> and <code>FirstMomentSeries</code>, with the default answers to its thirteen decisions). The author closed the L19 gate on 2026-11-22 (tag <code>L19-gate</code>) and approved wave L20 the same day (<code>P:mild-construction</code> for every source field, the <code>d = 1</code> Riesz instance of <code>H:homog</code>, the deferred wrappers and a comment-only docstring pass, with the default answers to its thirteen decisions). On 2026-11-23 the author set the end point of the Lean work: the companion closes after wave L20 and wave L21 (the named input <code>TubeAttained</code> of <code>L:tube-closed-geometry</code>); <code>SignedMultiplierForm</code>, <code>ThreeTransfer</code>, <code>TubeTail</code> and <code>CutoffCompact</code> stay supplied. The author closed the L20 gate on 2026-11-23 (tag <code>L20-gate</code>). The author closed the L21 gate on 2026-11-23 (tag <code>L21-gate</code>). With it the Lean work reaches the author's end point: no further proof waves are planned; the named inputs <code>SignedMultiplierForm</code>, <code>ThreeTransfer</code>, <code>TubeTail</code> and <code>CutoffCompact</code> stay supplied.</p>
+<h2 id="waves-l15-to-l21-all-gates-closed-updated-2026-11-23">Waves L15 to L21 (all gates closed; updated 2026-11-23)</h2>
+<p>The milestone table above lists closed gates only. The table by labelled result below is at the L21 gate.</p>
+<table>
+<thead>
+<tr>
+<th>Wave</th>
+<th>State</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L15</td>
+<td>gate closed by the author 2026-11-20 at <code>18c5c1d</code> (tag <code>L15-gate</code>): item L15-UM (UM-0, UM-1, UM-2) merged on branch <code>wave-l15/int</code> (<code>04f106c</code>, <MACHINE> build clean, standard axioms only); Lean statements reviewed by a second model family (DeepSeek V4 Pro scopes 1-3: PASS and PASS_WITH_NOTES, notes documentation only); documentation reviewed by GPT-6.2-Sol (scope 4: first round FAIL on documentation only, all 18 findings repaired; confirmation 4a PASS_WITH_NOTES, 4b FAIL on one wording overstatement, repaired at <code>04f6b6a</code> without a further review round); documentation with TeX citations at <code>c3c2431d</code> (book v1.0.2); comparator extended to all 3803 theorem claims (1577 credited, 2226 helper smoke check; the nine claims naming Lean-generated instances of <code>UniformMeanInterface</code> dropped, 4705 claims); receipts at <code>18c5c1d</code> (lower tier: 0 sorry, standard axioms, 4705 claims; comparator: 1577 + 2226 pass); Easley <code>leanchecker --fresh</code> 4/4 new modules and default mode 146/146 at <code>315a332</code> (no library file changed after it)</td>
+<td>the phase space <code>H^(1/2) x H^(-1/2)</code> on the manuscript's Fourier norm, density of real tests, duality and multipliers (foundations); <code>L:uniform-E-lift</code> with nothing supplied (narrower: the lift <code>L_F</code> and the complex extension not formalized); the a.e. mean identity of <code>E:positive-raw-mean</code> and a canonical version agreeing a.e., for a supplied <code>UniformMeanRegulator</code> (named inputs <code>UniformMeanRegulator</code> and <code>CameronSpatialMap</code>), so <code>L:positive-raw-embedding</code> becomes a narrower result with inputs supplied</td>
+</tr>
+<tr>
+<td>L16</td>
+<td>gate closed by the author 2026-11-20 at <code>ebac849</code> (tag <code>L16-gate</code>): items L16-0 (interface), A1, A2, B1, B2, C and D merged on branch <code>wave-l16/int</code> (<code>1d9883a</code>: <MACHINE> build 9208 jobs, 0 warnings; the 29 headline theorems on the standard axioms only; lean-fence and lean-regress CLEAN against <code>09d3406</code>); item R1 (the wave-L15 TeX citations moved from <code>c3c2431d</code> to <code>0788ddee</code>, book 1.1.0) and the documentation at <code>0788ddee</code>; 429 new claims (334 theorems, 95 definitions; 5134 in all), comparator extended to all 4137 theorem claims (1677 credited, 2460 helper smoke check); Lean statements reviewed by DeepSeek V4 Pro (scopes S1-S4: PASS_WITH_NOTES, notes documentation only); documentation reviewed by GPT-6.2-Sol (first round FAIL on documentation only, all 19 findings repaired at <code>ca75d10</code>; one confirmation per packet on <code>108fa80</code>: no CRITICAL or MAJOR finding left after adjudication, six wording fixes applied at <code>5f0d8c8</code> without a further review round; four Lean docstring line numbers deferred to a later docs-only Lean pass); receipts at <code>ebac849</code> (lower tier: 0 sorry, standard axioms, 5134 claims; comparator: 1677 + 2460 pass); Easley <code>leanchecker --fresh</code> 16/16 (the 15 new modules and the umbrella) and default mode 161/161 at <code>ebac849</code></td>
+<td><code>L:cameron-fractional-products</code> in full; <code>L:uniform-mean-cutoff</code>, <code>P:cameron-temporal-map</code> (not trace class as the cell sums of decision 7), <code>L:uniform-mean-tensor</code> on finite tensors and the map <code>U</code> of <code>P:cameron-full-mean</code> narrower with nothing supplied; <code>P:cameron-spatial-map</code> (<code>E</code> part) and <code>P:uniform-mean-regulator</code> (the regulator with the first bound; a.e. compact values of its mean in the <code>L(E)</code>-valued <code>L^r</code> model, a separate result) with the named input <code>CutoffCompact</code> (the compactness sentence of <code>P:cutoff-singular-values</code>, not formalized); L15's named inputs <code>CameronSpatialMap</code> and <code>UniformMeanRegulator</code> constructed; <code>L:positive-raw-embedding</code> with nothing supplied, conclusion full by the author's decision of 2026-11-20 ("Upgrade L:positive-raw-embedding to full; keep P:cameron-temporal-map weaker."; the mean identity is proved for maps constructed to meet the frozen specifications, not identified in Lean with the section's maps)</td>
+</tr>
+<tr>
+<td>L17</td>
+<td>gate closed by the author 2026-11-21 at <code>68d0c5e</code> (tag <code>L17-gate</code>): items L17-0 (interface <code>PairingInterface</code>, with interface amendment 1 of 2026-11-20: <code>M4BridgeTarget</code> requires finite Green densities), A, B, C, D, E and the time-boxed item E3 (<code>d = 3</code>) merged on branch <code>wave-l17/int</code> (<code>f04817d</code>; <MACHINE> build of the umbrella and <code>Axioms</code>, 9223 jobs, 0 warnings; <code>#print axioms</code> on all 508 new declarations: standard axioms only; no anonymous instance; lean-fence and lean-regress CLEAN against <code>38ac748</code>); TeX citations at <code>0788ddee</code> (book 1.1.0); 508 new claims (418 theorems, 90 definitions; 5642 in all), comparator extended to all 4555 theorem claims (1798 credited, 2757 helper smoke check); gate commit <code>68d0c5e</code> (<MACHINE>: <code>Challenge</code> and <code>Solution</code> build clean, 9364 jobs; CheckFidelity 4555 of 4555 Challenge types equal, 0 problems; lean-fence and lean-regress CLEAN against <code>38ac748</code>, the <code>sorry</code> of <code>Challenge</code> and of its manual statement files exempt by design); Lean statements reviewed by DeepSeek V4 Pro (seven scopes: PASS_WITH_NOTES, high, no MAJOR or CRITICAL finding); documentation reviewed by GPT-6.2-Sol (first round FAIL on documentation only, all findings repaired at <code>a34a5eb</code>; one confirmation per packet: docs-b FAIL with three PARTIAL and three new MINOR items, docs-a FAIL with four PARTIAL and two new MINOR items, its report extracted from the reviewer's final message and not accepted by the runner, accepted by the author; the remainders applied at <code>be81d6e</code> without a further review round); receipts at <code>68d0c5e</code> (<code>d1a3a12</code>; lower tier: 0 sorry, standard axioms, 5642 claims; comparator: 1798 + 2757 pass); Easley <code>leanchecker --fresh</code> 16/16 (the 15 new modules and the umbrella) and default mode 176/176 at <code>68d0c5e</code> (<code>0bf7a39</code>); Lean docstring line numbers and wording deferred to a later docs-only Lean pass</td>
+<td><code>L:translated-covariance-CS</code> and <code>L:pairing-product-envelope</code> in full with nothing supplied (the latter on the label-set two-chain model, model choice M7, with a bridge from M4); <code>L:crude-corrected</code> and <code>P:envelope</code> on the diagram model M4: the diagram bounds at every noise width in <code>d = 1, 2</code>, and in <code>d = 3</code> for the Green-smoothed kernels uniformly in <code>eta &gt; 0</code> (the limit <code>eta -&gt; 0</code> not formalized), the moment sentences in <code>d = 1, 2</code> for random variables with the supplied input <code>MixedMoment</code> (narrower, inputs supplied); <code>E:envelope-growth</code> as the two-sided log-growth bound of the numerical majorant <code>B_K</code> with the exponent <code>rho = beta/(beta-1)</code> (the comparison <code>rho &gt; kappa</code> of its display not stated in Lean, the author's decision of 2026-11-20)</td>
+</tr>
+<tr>
+<td>L18</td>
+<td>gate closed by the author 2026-11-21 at <code>6e4644d</code> (tag <code>L18-gate</code>): items L18-0 (interface <code>WickInterface</code>, model M8), A (<code>RieszDiagramLimits</code>, with the decision-5 add-on <code>RieszDiagramLimitsHomog</code>), B (<code>WickSpectral</code>), C (<code>WickBridge</code>, <code>WickMass</code>, <code>WickScaling</code>), D (<code>WickStep4</code>, <code>WickMeasures</code>) and E (<code>JointFixedOrder</code>, <code>EnvelopeD3Wave</code>, <code>JointTail</code>) merged on branch <code>wave-l18/int</code> with the hypothesis-free wrappers <code>WickFinal</code> (<code>ae463de</code>; <MACHINE> build of the umbrella and <code>Axioms</code>, 9236 jobs, 0 warnings; <code>#print axioms</code> on all 380 new declarations: standard axioms only; no anonymous instance; no fallback named input used); TeX citations at <code>0788ddee</code> (book 1.1.0), docstring line numbers corrected comment-only before the gate; 380 new claims (307 theorems, 73 definitions; 6022 in all), comparator extended to all 4862 theorem claims (1902 credited, 2960 helper smoke check); gate commit <code>6e4644d</code> (<MACHINE>: <code>Challenge</code> and <code>Solution</code> build clean, 9386 jobs; CheckFidelity 4862 of 4862 Challenge types equal, 0 problems; lean-fence and lean-regress CLEAN against <code>02f922f</code>, the <code>sorry</code> of <code>Challenge</code> and of its manual statement files exempt by design); Lean statements reviewed by DeepSeek V4 Pro (eight scopes: PASS and PASS_WITH_NOTES, high, no MAJOR or CRITICAL finding; the route differences of items A, C, D and E judged valid proofs); documentation reviewed by GPT-6.2-Sol (first round FAIL on documentation only, two CRITICAL findings downgraded to MINOR by the author, all findings repaired at <code>a83c778</code>; one confirmation per packet with the broadened citation audit: FAIL with MINOR remainders, applied at <code>aad8b91</code> without a further review round); receipts at <code>6e4644d</code> (<code>afd018d</code>; lower tier: 0 sorry, standard axioms, 6022 claims; comparator: 1902 + 2960 pass); Easley <code>leanchecker --fresh</code> 14/14 (the 13 new modules and the umbrella) and default mode 189/189 at <code>6e4644d</code> (<code>eb19140</code>); Lean docstring line numbers and wording deferred to a later docs-only Lean pass</td>
+<td><code>L:spatial-wick-measures</code> in full with nothing supplied, <code>d = 1, 2, 3</code>, on the gap-coordinate model M8 (Steps 2-3 by the envelope route (b) instead of Brownian occupation moments); <code>L:joint-fixed-order</code> narrower: the deterministic half (finite joint diagram limits at arbitrary vertexwise spatial and temporal rates, with <code>E:joint-temporal-tail</code>), the <code>L^2</code> construction of <code>X_n</code> not formalized; the named input <code>DiagramLimits</code> discharged for every <code>H:homog</code> covariance in <code>d = 1, 2, 3</code> (in <code>d = 1</code> also by domination), so the limit-coefficient displays of <code>P:d1-upper</code> need no supplied input and the order-four identification of <code>P:riesz-small</code> is proved; the <code>d = 3</code> diagram halves of <code>L:crude-corrected</code> and <code>P:envelope</code> for the wave Green measure; <code>MixedMoment</code> stays supplied</td>
+</tr>
+<tr>
+<td>L19</td>
+<td>gate closed by the author 2026-11-22 at <code>fe9f1de</code> (tag <code>L19-gate</code>): items L19-0 (interface <code>SourceInterface</code>, model M9; M9 fidelity review by DeepSeek V4 Pro, three scopes PASS / PASS_WITH_NOTES, no interface defect, three documentation items done at the gate), A (<code>SourceIsonormal</code>), B (<code>SourceFeatures</code>), C (<code>SourceWick</code>, <code>SourceReversal</code>), D (<code>SourceFixedOrder</code>, <code>SourceGreenFirst</code>), E (<code>SourceMixed</code>, <code>SourceExpansion</code>) and G (<code>SourceVertexCrude</code>) merged on branch <code>wave-l19/int</code> with the hypothesis-free wrappers <code>SourceFinal</code> (<code>8e61d09</code>; <MACHINE> build of the umbrella and <code>Axioms</code>, 9247 jobs; <code>#print axioms</code> on all 294 new declarations: standard axioms only; four named instances, no anonymous instance; neither fallback named input (<code>SourceNoise</code>, <code>TerminalReversal</code>) used). Gate commit <code>fe9f1de</code> (the last commit changing Lean, claims or comparator files): claims 6314 (L19: 215 theorems, 77 definitions; all names resolve, 0 problems); comparator extended to all 5077 theorems (1978 credited, 3099 helpers; 46 statements restated from source; <MACHINE> <code>lake build Challenge Solution</code> clean, 9405 jobs; CheckFidelity 5077 of 5077 equal, 0 problems); lean-fence CLEAN against <code>470ee26</code> with <code>--check-inputs</code>, the 20 input records declared and the 21 interface names of the approved wave as approvals (<code>SourceField</code>, the 15 targets, <code>SourceModel</code>, <code>SourceNoise</code>, <code>TerminalReversal</code>, and the discharged <code>MixedMoment</code>, <code>FirstMomentSeries</code> as conclusions and in the generic moment-step lemmas); lean-regress CLEAN (build log and <code>#print axioms</code> of all 294 new declarations). Lean statements reviewed by DeepSeek V4 Pro (eight scopes: PASS and PASS_WITH_NOTES, no CRITICAL finding; the undisclosed <code>MixedMoment</code> hypotheses rated MAJOR by the author and disclosed); documentation reviewed by GPT-6.2-Sol (first round FAIL on documentation only, the accepted findings repaired at <code>e6e1cb1</code>; one confirmation per packet with the broadened citation audit, its wording fixes applied at <code>487872f</code> and <code>b994fc0</code> without a further review round, the author's decisions of 2026-11-22); receipts at <code>fe9f1de</code> (<code>5e2b86f</code>; lower tier: 0 sorry, standard axioms, 6314 claims; comparator: 1978 + 3099 pass, both configurations); Easley <code>leanchecker --fresh</code> 12/12 (the 11 new modules and the umbrella) and default mode 200/200 at <code>fe9f1de</code> (<code>a330722</code>); Lean docstring line numbers and wording deferred to the docs-only pass of wave L20.</td>
+<td><code>P:mixed</code>, <code>L:vertex-crude</code> and <code>L:joint-fixed-order</code> formalized with the manuscript's hypotheses (for every source field, model M9, non-vacuous at the constructed <code>m9</code>); <code>MixedMoment</code> and <code>FirstMomentSeries</code> discharged for the chaos terms and solution of every source field, so <code>L:crude-corrected</code> and <code>L:white-test</code> move to full with the manuscript's hypotheses, <code>P:envelope</code> and <code>P:low-alpha-upper</code> to the manuscript's hypotheses with a narrower conclusion, and <code>C:d1-first-calibration</code> to inputs supplied with a narrower conclusion (the conditional rate clause for the constructed <code>u</code> is not stated in Lean; the composed wrapper is deferred to the next Lean pass, the author's decision of 2026-11-22); the three Riesz consumer rows keep the Riesz instance of <code>H:homog</code> explicit (the author's decision of 2026-11-22).</td>
+</tr>
+<tr>
+<td>L20</td>
+<td>gate closed by the author 2026-11-23 at <code>5cdd493</code> (tag <code>L20-gate</code>; integration <code>1b3cb25</code>): items L20-0 (interface <code>MildInterface</code>; fidelity review by DeepSeek V4 Pro, PASS_WITH_NOTES, two NOTEs accepted without change), A (<code>MildOccupied</code>), B (<code>MildPolyMem</code>), C (<code>MildFields</code>), D (<code>MildTerminalFubini</code>, <code>MildPartialVertex</code>), E (<code>MildGreenWidth</code>), F (<code>MildConstruction</code>), the hypothesis-free wrappers <code>MildFinal</code>, R (<code>RieszInstanceOne</code>), W (<code>CleanupWrappers</code>) and DOC (comment-only docstring pass over 39 earlier library modules and 16 of their <code>ChallengeDefs/</code> mirrors, 55 files); <MACHINE> build of the umbrella and <code>Axioms</code> clean (9258 jobs); <code>#print axioms</code> on all 321 new declarations: standard axioms only; five named instances, no anonymous instance; neither fallback named input (<code>JointMeasurability</code>, <code>TerminalFubini</code>) used; docstring TeX citations at <code>0788ddee</code> corrected comment-only at the gate (<code>3d651aa</code>); gate commit <code>5cdd493</code> (the last commit changing Lean, claims or comparator files): claims 6620 (L20: 237 theorems, 69 definitions; all names resolve, 0 problems); comparator extended to all 5314 theorems (2049 credited, 3265 helpers; 83 statements restated from source; <MACHINE> <code>lake build Challenge Solution</code> clean, 9423 jobs; CheckFidelity 5314 of 5314 equal, 0 problems; every existing <code>ChallengeDefs</code> copy, DOC's comment-edited mirrors included, regenerated byte-identical); lean-fence CLEAN against <code>d813957</code> with <code>--check-inputs</code>, 22 input records declared and as approvals the 22 L20 targets it flags plus the Lean-route predicates <code>MildOccupied.RepOn</code> and <code>LinOn</code> (confirmed by the author 2026-11-23; the fallbacks <code>JointMeasurability</code>, <code>TerminalFubini</code> and the carried-over <code>SourceField</code>, <code>SourceModel</code> approved but not flagged); lean-regress CLEAN (build log and <code>#print axioms</code> of all 321 new declarations; no statement change in an earlier module; DOC's comment-stripped diff empty for all 55 earlier files it touched). Lean statements reviewed by DeepSeek V4 Pro (eight scopes: four PASS, four PASS_WITH_NOTES, high, no MAJOR or CRITICAL finding); documentation reviewed by GPT-6.2-Sol (first round FAIL on documentation only; docs-only repairs <code>d3b2f8e</code>, <code>9706469</code>, <code>4fe5c33</code>, <code>fdbb0ae</code> after one confirmation per packet and one narrow confirmation; the review decisions confirmed by the author 2026-11-23); receipts at <code>5cdd493</code> (<code>4842df8</code>; lower tier: 0 sorry, standard axioms, 6620 claims; comparator: 2049 + 3265 pass, both configurations); Easley <code>leanchecker --fresh</code> 12/12 (the 11 new modules and the umbrella) and default mode 211/211 at <code>5cdd493</code> (<code>1b94926</code>); 21 Lean-comment items from the reviews applied comment-only in the L21 gate commit</td>
+<td><code>P:mild-construction</code> formalized with the manuscript's hypotheses for every source field (<code>E:mild-construction</code> along arbitrary rates, decision 2; the <code>d = 3</code> Green-width sentence by the common-noise route, decision 3; non-vacuous at <code>m9</code>); the Riesz instance of <code>H:homog</code> in <code>d = 1</code> (<code>E:d1-covariances</code>) formalized, so the Riesz <code>hH</code> leaves <code>P:d1-upper</code>, <code>P:riesz-small</code> and <code>C:d1-first-calibration</code>; <code>P:d1-upper</code> (white wrapper), <code>C:d1-first-calibration</code> (conditional rate clause for the constructed <code>u</code>), <code>P:low-alpha-upper</code> (second inequality) and <code>P:envelope</code> (<code>rho &gt; kappa</code>) in full with the manuscript's hypotheses; <code>P:riesz-small</code> with the manuscript's hypotheses and a narrower conclusion (the multiplicities of <code>E:total-four</code>).</td>
+</tr>
+<tr>
+<td>L21</td>
+<td>gate closed by the author 2026-11-23 at <code>38a3e00</code> (tag <code>L21-gate</code>): the one item of the author's end point of 2026-11-23, <code>SourceTubeAttained</code> (<code>fcb3f58</code>, merged with the umbrella import last), and the comment-only Lean docstring corrections deferred from the wave-L20 reviews (C1-C19 of the GPT-6.2-Sol documentation review except C11, whose cited line 5534 is right at <code>0788ddee</code>, and the DeepSeek gate items g1.1 and g3.2: 20 library modules and 8 of their <code>ChallengeDefs/</code> mirrors, 28 files; every regenerated <code>ChallengeDefs</code> copy byte-identical); <MACHINE> build of the umbrella and <code>Axioms</code> clean (9259 jobs, 0 warnings); <code>#print axioms</code> on all 12 new declarations: standard axioms only; no instance declared; the statement review of the module (DeepSeek V4 Pro, one scope: PASS_WITH_NOTES, high, no MINOR, MAJOR or CRITICAL finding; seven citation notes repaired comment-only at <code>fcb3f58</code>); gate commit <code>38a3e00</code> (the last commit changing Lean, claims or comparator files): claims 6632 (L21: 12 theorems; all names resolve, 0 problems); comparator extended to all 5326 theorems (2056 credited, 3270 helpers; one statement restated from source, four under <code>open scoped Pointwise</code>; <MACHINE> <code>lake build Challenge Solution</code> clean, 9424 jobs; CheckFidelity 5326 of 5326 equal, 0 problems); lean-fence CLEAN against <code>5cdd493</code> with <code>--check-inputs</code>, the 22 input records of wave L20 and its two fallbacks declared, <code>TubeAttained</code> (the conclusion discharged) and <code>TubeTail</code> (the one input left) as approvals (confirmed by the author 2026-11-23); lean-regress CLEAN (build log and <code>#print axioms</code> of the 12 new declarations; no statement change in an earlier module; comment-stripped diff empty for all 28 earlier files changed); documentation reviewed by GPT-6.2-Sol (two packets: the L21 records PASS_WITH_NOTES, high; the comment-only commit FAIL on two wording findings rated MINOR under the author's delegation; docs-only repairs <code>adeac06</code>; four Lean-comment rewordings and two claim summaries deferred to the v0.11.0 release preparation; the review decisions confirmed by the author 2026-11-23); receipts at <code>38a3e00</code> (<code>39c4365</code>; lower tier: 0 sorry, standard axioms, 6632 claims; comparator: 2056 + 3270 pass, both configurations); Easley <code>leanchecker --fresh</code> 2/2 (<code>SourceTubeAttained</code> and the umbrella) and default mode 212/212 at <code>38a3e00</code> (<code>ade3f31</code>)</td>
+<td><code>TubeAttained</code> proved at the manuscript's tubes for a compact <code>M_delta</code> (closed images by Banach-Alaoglu without separability, attainment by rescaling); <code>L:tube-closed-geometry</code> with the manuscript's hypotheses and a narrower conclusion (every tube closed, <code>{d_delta &lt;= r} = T_r</code>, <code>d_delta</code> lower semicontinuous; the Gaussian tail and the almost sure finiteness not formalized); <code>P:tube-rayleigh-transfer</code> whole with one named input, <code>TubeTail</code>. At the end point the named inputs still supplied are <code>SignedMultiplierForm</code>, <code>ThreeTransfer</code>, <code>TubeTail</code> and <code>CutoffCompact</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="completion-by-labelled-result-manuscript-edf7085f-book-113-companion-the-l13l14-gate-commit-8f51004-plus-wave-l15-gate-18c5c1d-wave-l16-gate-ebac849-and-wave-l17-gate-68d0c5e-wave-l18-gate-6e4644d-wave-l19-gate-fe9f1de-and-wave-l20-gate-5cdd493-and-wave-l21-gate-38a3e00-gates-l13-gate-to-l21-gate-the-coordinates-in-this-table-were-re-anchored-from-39f2597a-rows-of-waves-through-l14-and-0788ddee-rows-of-waves-l15-to-l21-to-edf7085f-without-changing-their-tex-line-numbers">Completion by labelled result (manuscript edf7085f, book 1.1.3; companion: the L13/L14 gate commit 8f51004 plus wave L15 (gate <code>18c5c1d</code>), wave L16 (gate <code>ebac849</code>) and wave L17 (gate <code>68d0c5e</code>), wave L18 (gate <code>6e4644d</code>), wave L19 (gate <code>fe9f1de</code>) and wave L20 (gate <code>5cdd493</code>) and wave L21 (gate <code>38a3e00</code>), gates L13-gate to L21-gate; the coordinates in this table were re-anchored from 39f2597a (rows of waves through L14) and 0788ddee (rows of waves L15 to L21) to edf7085f without changing their TeX line numbers)</h2>
 <table>
 <thead>
 <tr>
@@ -273,13 +391,13 @@
 <tbody>
 <tr>
 <td>formalized, manuscript hypotheses</td>
-<td>44</td>
-<td>20%</td>
+<td>59</td>
+<td>27%</td>
 </tr>
 <tr>
 <td>formalized, manuscript hypotheses, narrower conclusion</td>
-<td>16</td>
-<td>7%</td>
+<td>22</td>
+<td>10%</td>
 </tr>
 <tr>
 <td>inputs supplied, every conclusion proved</td>
@@ -288,8 +406,8 @@
 </tr>
 <tr>
 <td>inputs supplied, steps/narrower</td>
-<td>34</td>
-<td>15%</td>
+<td>30</td>
+<td>14%</td>
 </tr>
 <tr>
 <td>outside Lean (main theorem)</td>
@@ -298,8 +416,8 @@
 </tr>
 <tr>
 <td>not formalized</td>
-<td>123</td>
-<td>56%</td>
+<td>106</td>
+<td>48%</td>
 </tr>
 <tr>
 <td>total labelled results (Theorem, Proposition, Lemma, Corollary)</td>
@@ -308,7 +426,7 @@
 </tr>
 </tbody>
 </table>
-<p>No theorem of the manuscript is verified end to end. Of the four main theorems, two (<code>T:full-upper</code> and <code>T:intrinsic-second-moment</code>) are recorded as outside Lean; <code>T:intrinsic-occupation-ceiling</code> is formalized in both forms with the exact constant <code>C_occ</code>, over the class <code>O</code> itself (wave L14), for <code>S_c^pos</code>, and its moment sentence <code>C_2 &lt;= U_2</code> is not formalized; <code>T:white-moment-bounds</code> is proved for the variational value <code>S_2^pos</code> in place of <code>C_2</code>, with the white-noise energy <code>E_sp = c^2/6</code> of <code>P:white-spatial-energy</code> supplied (reserved package B9), and its time exponent and the case <code>c = 0</code> are not formalized. The remaining work is dominated by foundations Mathlib lacks (Gaussian chaos, Cameron-Martin, the chaos expansion of the solution, Young integration of operator paths and self-adjoint operators).</p>
+<p>No theorem of the manuscript is verified end to end. Of the four main theorems, two (<code>T:full-upper</code> and <code>T:intrinsic-second-moment</code>) are recorded as outside Lean; <code>T:intrinsic-occupation-ceiling</code> is formalized in both forms with the exact constant <code>C_occ</code>, over the class <code>O</code> itself (wave L14), for <code>S_c^pos</code>, and its moment sentence <code>C_2 &lt;= U_2</code> is not formalized; <code>T:white-moment-bounds</code> is proved for the variational value <code>S_2^pos</code> in place of <code>C_2</code>, with the white-noise energy <code>E_sp = c^2/6</code> of <code>P:white-spatial-energy</code> supplied (reserved package B9), and its time exponent and the case <code>c = 0</code> are not formalized. The remaining work is dominated by foundations Mathlib lacks (Gaussian chaos, Cameron-Martin, the identification of the source-field <code>L^2</code> series constructed in wave L19 (a mild solution in the source's sense since wave L20, with no uniqueness assertion) with the solution of the SPDE, Young integration of operator paths and self-adjoint operators).</p>
 <h2 id="covered-displays-and-remarks-not-counted-above">Covered displays and remarks (not counted above)</h2>
 <p>Four coverage rows are for a displayed equation or a remark rather than a numbered result:</p>
 <table>
@@ -348,7 +466,7 @@
 <tr>
 <th>Label</th>
 <th>Kind</th>
-<th>File:line (39f2597a)</th>
+<th>File:line (edf7085f)</th>
 <th>Status</th>
 </tr>
 </thead>
@@ -387,13 +505,13 @@
 <td><code>P:mixed</code></td>
 <td>Proposition</td>
 <td>notes_stratonovich_ham_second_moment.tex:834</td>
-<td>not formalized</td>
+<td>formalized, manuscript hypotheses</td>
 </tr>
 <tr>
 <td><code>L:white-test</code></td>
 <td>Lemma</td>
 <td>notes_stratonovich_ham_second_moment.tex:940</td>
-<td>inputs supplied, steps/narrower</td>
+<td>formalized, manuscript hypotheses</td>
 </tr>
 <tr>
 <td><code>L:damped-homogeneous-norms</code></td>
@@ -405,49 +523,49 @@
 <td><code>L:translated-covariance-CS</code></td>
 <td>Lemma</td>
 <td>notes_stratonovich_ham_second_moment.tex:1187</td>
-<td>not formalized</td>
+<td>formalized, manuscript hypotheses</td>
 </tr>
 <tr>
 <td><code>L:pairing-product-envelope</code></td>
 <td>Lemma</td>
 <td>notes_stratonovich_ham_second_moment.tex:1489</td>
-<td>not formalized</td>
+<td>formalized, manuscript hypotheses</td>
 </tr>
 <tr>
 <td><code>L:spatial-wick-measures</code></td>
 <td>Lemma</td>
 <td>notes_stratonovich_ham_second_moment.tex:1679</td>
-<td>not formalized</td>
+<td>formalized, manuscript hypotheses</td>
 </tr>
 <tr>
 <td><code>L:joint-fixed-order</code></td>
 <td>Lemma</td>
 <td>notes_stratonovich_ham_second_moment.tex:1854</td>
-<td>not formalized</td>
+<td>formalized, manuscript hypotheses</td>
 </tr>
 <tr>
 <td><code>L:crude-corrected</code></td>
 <td>Lemma</td>
 <td>notes_stratonovich_ham_second_moment.tex:1978</td>
-<td>not formalized</td>
+<td>formalized, manuscript hypotheses</td>
 </tr>
 <tr>
 <td><code>L:vertex-crude</code></td>
 <td>Lemma</td>
 <td>notes_stratonovich_ham_second_moment.tex:2062</td>
-<td>not formalized</td>
+<td>formalized, manuscript hypotheses</td>
 </tr>
 <tr>
 <td><code>P:mild-construction</code></td>
 <td>Proposition</td>
 <td>notes_stratonovich_ham_second_moment.tex:2152</td>
-<td>inputs supplied, steps/narrower</td>
+<td>formalized, manuscript hypotheses</td>
 </tr>
 <tr>
 <td><code>P:envelope</code></td>
 <td>Proposition</td>
 <td>notes_stratonovich_ham_second_moment.tex:2352</td>
-<td>not formalized</td>
+<td>formalized, manuscript hypotheses</td>
 </tr>
 <tr>
 <td><code>L:phase-contractions</code></td>
@@ -555,7 +673,7 @@
 <td><code>P:riesz-small</code></td>
 <td>Proposition</td>
 <td>notes_stratonovich_ham_second_moment.tex:5125</td>
-<td>inputs supplied, steps/narrower</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
 </tr>
 <tr>
 <td><code>L:d1-spatial</code></td>
@@ -567,7 +685,7 @@
 <td><code>P:d1-upper</code></td>
 <td>Proposition</td>
 <td>notes_stratonovich_ham_second_moment.tex:5454</td>
-<td>inputs supplied, steps/narrower</td>
+<td>formalized, manuscript hypotheses</td>
 </tr>
 <tr>
 <td><code>L:low-alpha-convolution</code></td>
@@ -585,13 +703,13 @@
 <td><code>P:low-alpha-upper</code></td>
 <td>Proposition</td>
 <td>notes_stratonovich_ham_second_moment.tex:5711</td>
-<td>inputs supplied, steps/narrower</td>
+<td>formalized, manuscript hypotheses</td>
 </tr>
 <tr>
 <td><code>C:d1-first-calibration</code></td>
 <td>Corollary</td>
 <td>notes_stratonovich_ham_second_moment.tex:5830</td>
-<td>inputs supplied, steps/narrower</td>
+<td>formalized, manuscript hypotheses</td>
 </tr>
 <tr>
 <td><code>P:higher-transfer</code></td>
@@ -807,13 +925,13 @@
 <td><code>L:cameron-fractional-products</code></td>
 <td>Lemma</td>
 <td>integrated_cameron_mean.tex:30</td>
-<td>not formalized</td>
+<td>formalized, manuscript hypotheses</td>
 </tr>
 <tr>
 <td><code>P:cameron-spatial-map</code></td>
 <td>Proposition</td>
 <td>integrated_cameron_mean.tex:104</td>
-<td>not formalized</td>
+<td>inputs supplied, steps/narrower</td>
 </tr>
 <tr>
 <td><code>L:cameron-supported-tensor</code></td>
@@ -825,13 +943,13 @@
 <td><code>P:cameron-temporal-map</code></td>
 <td>Proposition</td>
 <td>integrated_cameron_mean.tex:226</td>
-<td>not formalized</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
 </tr>
 <tr>
 <td><code>P:cameron-full-mean</code></td>
 <td>Proposition</td>
 <td>integrated_cameron_mean.tex:322</td>
-<td>not formalized</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
 </tr>
 <tr>
 <td><code>L:cameron-actual-residual</code></td>
@@ -1059,7 +1177,7 @@
 <td><code>L:tube-closed-geometry</code></td>
 <td>Lemma</td>
 <td>integrated_gaussian_tubes.tex:151</td>
-<td>not formalized</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
 </tr>
 <tr>
 <td><code>P:tube-rayleigh-transfer</code></td>
@@ -1101,7 +1219,7 @@
 <td><code>L:positive-raw-embedding</code></td>
 <td>Lemma</td>
 <td>integrated_intrinsic_constant.tex:24</td>
-<td>formalized, manuscript hypotheses, narrower conclusion</td>
+<td>formalized, manuscript hypotheses</td>
 </tr>
 <tr>
 <td><code>L:positive-physical-gram</code></td>
@@ -1496,73 +1614,73 @@
 <tr>
 <td><code>L:uniform-mean-cutoff</code></td>
 <td>Lemma</td>
-<td>integrated_uniform_mean.tex:29</td>
-<td>not formalized</td>
+<td>integrated_uniform_mean.tex:40</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
 </tr>
 <tr>
 <td><code>L:uniform-mean-spatial-tails</code></td>
 <td>Lemma</td>
-<td>integrated_uniform_mean.tex:71</td>
+<td>integrated_uniform_mean.tex:82</td>
 <td>not formalized</td>
 </tr>
 <tr>
 <td><code>L:uniform-mean-tensor</code></td>
 <td>Lemma</td>
-<td>integrated_uniform_mean.tex:188</td>
-<td>not formalized</td>
+<td>integrated_uniform_mean.tex:199</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
 </tr>
 <tr>
 <td><code>P:uniform-mean-regulator</code></td>
 <td>Proposition</td>
-<td>integrated_uniform_mean.tex:262</td>
-<td>not formalized</td>
+<td>integrated_uniform_mean.tex:273</td>
+<td>inputs supplied, steps/narrower</td>
 </tr>
 <tr>
 <td><code>P:uniform-actual-cameron</code></td>
 <td>Proposition</td>
-<td>integrated_uniform_mean.tex:353</td>
+<td>integrated_uniform_mean.tex:364</td>
 <td>not formalized</td>
 </tr>
 <tr>
 <td><code>L:uniform-E-lift</code></td>
 <td>Lemma</td>
 <td>integrated_uniform_products.tex:33</td>
-<td>not formalized</td>
+<td>formalized, manuscript hypotheses, narrower conclusion</td>
 </tr>
 <tr>
 <td><code>P:uniform-E-spectral</code></td>
 <td>Proposition</td>
-<td>integrated_uniform_products.tex:69</td>
+<td>integrated_uniform_products.tex:71</td>
 <td>not formalized</td>
 </tr>
 <tr>
 <td><code>P:uniform-rate-averaging</code></td>
 <td>Proposition</td>
-<td>integrated_uniform_products.tex:246</td>
+<td>integrated_uniform_products.tex:248</td>
 <td>not formalized</td>
 </tr>
 <tr>
 <td><code>L:uniform-product-budgets</code></td>
 <td>Lemma</td>
-<td>integrated_uniform_products.tex:336</td>
+<td>integrated_uniform_products.tex:338</td>
 <td>not formalized</td>
 </tr>
 <tr>
 <td><code>P:uniform-mean-product</code></td>
 <td>Proposition</td>
-<td>integrated_uniform_products.tex:405</td>
+<td>integrated_uniform_products.tex:407</td>
 <td>not formalized</td>
 </tr>
 <tr>
 <td><code>C:uniform-polynomial-balls</code></td>
 <td>Corollary</td>
-<td>integrated_uniform_products.tex:504</td>
+<td>integrated_uniform_products.tex:506</td>
 <td>not formalized</td>
 </tr>
 <tr>
 <td><code>P:uniform-arbitrary-residual</code></td>
 <td>Proposition</td>
-<td>integrated_uniform_products.tex:547</td>
+<td>integrated_uniform_products.tex:549</td>
 <td>not formalized</td>
 </tr>
 <tr>

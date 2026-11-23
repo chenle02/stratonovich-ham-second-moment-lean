@@ -78,7 +78,7 @@
 <p>The book has its own site: <a href="https://chenle02.github.io/stratonovich-ham-second-moment/">https://chenle02.github.io/stratonovich-ham-second-moment/</a>.</p>
 <p><a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/lean-toolchain"><img alt="Lean" src="https://img.shields.io/badge/Lean-v4.35.0-153e63" /></a>
 <a href="https://github.com/leanprover-community/mathlib4/tree/56a005855ea17e0b0958f73ec801ae140b0a1679"><img alt="Mathlib" src="https://img.shields.io/badge/Mathlib-56a0058-153e63" /></a>
-<a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/releases/tag/v0.10.0"><img alt="Release" src="https://img.shields.io/badge/release-v0.10.0-153e63" /></a>
+<a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/releases/tag/v0.11.0"><img alt="Release" src="https://img.shields.io/badge/release-v0.11.0-153e63" /></a>
 <a href="https://doi.org/10.5281/zenodo.24199104"><img alt="DOI" src="https://zenodo.org/badge/DOI/10.5281/zenodo.24199104.svg" /></a>
 <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache--2.0-153e63" /></a>
 <a href="trust.html#verification-record"><img alt="sorry" src="https://img.shields.io/badge/library%20sorry-0-153e63" /></a>
@@ -89,9 +89,14 @@ It shows that <code>log E[u(t,x)²]</code> grows on the scale <code>t^κ</code>,
 <code>κ = (4-α-α₀)/(3-α)</code>, and identifies the limit by a variational formula.</p>
 <div class="boundary">
 <p><strong>This is a partial formalization.</strong> Lean checks the steps listed on the <a href="what-is-checked.html">What is checked</a> page. It
-does not check the paper end to end. The SPDE, its solution, the
-Stratonovich integrals, the Gaussian noise and the analytic estimates are
-outside Lean. Where a checked step needs such a fact, the Lean statement takes
+does not check the paper end to end. The SPDE, the identification of its
+mild solution with the chaos series, the Gaussian noise of the source and
+most analytic estimates are outside Lean. Since wave L19 a centered Gaussian
+field with the source's positive-width covariance, the fixed-order
+Stratonovich integrals as <code>L^2</code> limits and the <code>L^2</code> series <code>u = sum_n X_n</code>
+are constructed in Lean (model M9), and since wave L20 this <code>u</code> satisfies the
+mild equation <code>E:mild-construction</code> (<code>P:mild-construction</code>, for every source
+field; no uniqueness). Where a checked step needs such a fact, the Lean statement takes
 it as an explicit hypothesis, and the paper's proof supplies it.</p>
 <p>The correspondence between the Lean statements and the paper was checked by
 <strong>AI correspondence review</strong> (models from a different family than the
@@ -110,19 +115,19 @@ ledger's author), <strong>not by human verification</strong>; see <a href="trust
 <tbody>
 <tr>
 <td>Lean modules</td>
-<td>139 proof modules: 24 step modules in <code>StratonovichHAMAudit/</code> and 115 in <code>StratonovichHAMSecondMoment/</code> (besides these, the consumer <code>HermiteWordConsumer</code>, the axiom report <code>Axioms</code> and the umbrella)</td>
+<td>209 proof modules: 24 step modules in <code>StratonovichHAMAudit/</code> and 185 in <code>StratonovichHAMSecondMoment/</code> (besides these, the consumer <code>HermiteWordConsumer</code>, the axiom report <code>Axioms</code> and the umbrella)</td>
 </tr>
 <tr>
 <td>Labelled results of the manuscript (220)</td>
-<td>44 whole results; 1 whole result with two named inputs supplied; 16 narrower results; steps or parts of 34 further results; 2 main theorems outside Lean; 123 not formalized (<a href="completion.html">COMPLETION.md</a>)</td>
+<td>59 whole results; 1 whole result with one named input supplied; 22 narrower results; steps or parts of 30 further results; 2 main theorems outside Lean; 106 not formalized (<a href="completion.html">COMPLETION.md</a>)</td>
 </tr>
 <tr>
 <td>Public declarations</td>
-<td>3654 theorems and 962 definitions; 4502 checked facts in <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/claims.yaml"><code>claims.yaml</code></a> (3653 theorems, 849 definitions)</td>
+<td>5330 theorems and 1425 definitions; 6632 checked facts in <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/claims.yaml"><code>claims.yaml</code></a> (5326 theorems, 1306 definitions)</td>
 </tr>
 <tr>
 <td>Comparator</td>
-<td>all 3653 theorem claims compared with their restatements: 1553 credited to a manuscript result in <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/coverage.yaml"><code>coverage.yaml</code></a> (<code>comparator.json</code>: 1134 named by the rows at the wave-L13/L14 gate, 419 added in this release by the direct-label rule), 2100 helper theorems compared as a declared smoke check and credited to no result (<code>comparator-helpers.json</code>, <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/lean-pkg-signoff.json"><code>lean-pkg-signoff.json</code></a>)</td>
+<td>all 5326 theorem claims compared with their restatements: 2056 credited to a manuscript result in <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/coverage.yaml"><code>coverage.yaml</code></a> (<code>comparator.json</code>: 1134 named by the rows at the wave-L13/L14 gate, 419 added in v0.10.0 by the direct-label rule, 503 of waves L15 to L21 credited by the same rule), 3270 helper theorems compared as a declared smoke check and credited to no result (<code>comparator-helpers.json</code>, <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/lean-pkg-signoff.json"><code>lean-pkg-signoff.json</code></a>)</td>
 </tr>
 <tr>
 <td>Axioms</td>
@@ -138,7 +143,7 @@ ledger's author), <strong>not by human verification</strong>; see <a href="trust
 </tr>
 <tr>
 <td>Verified state</td>
-<td>the wave-L13 and wave-L14 gates (development commit <code>8f51004</code>, manuscript revision <code>a284420</code>), with every manuscript line citation re-anchored to manuscript revision <code>39f2597a</code>; the receipts that bind this release's tree commit are added by the commit after it</td>
+<td>the wave-L15 to wave-L21 gates (development commit <code>38a3e00</code>, the wave-L21 gate), with every manuscript line citation re-anchored to manuscript revision <code>edf7085f</code> (book 1.1.3); the receipts that bind this release's tree commit are added by the commit after it</td>
 </tr>
 <tr>
 <td>Correspondence to the paper</td>
@@ -147,50 +152,49 @@ ledger's author), <strong>not by human verification</strong>; see <a href="trust
 </tbody>
 </table>
 <h2 id="this-release">This release</h2>
-<p><code>v0.10.0</code> is the wave-L13 and wave-L14 gates (waves L10 to L14 since
-<code>v0.9.0</code>). Its tree is the tree of development commit <code>09cfc11</code> of the
-private development repository: the gate commit <code>8f51004</code> with its
-receipts, its Easley evidence and its gate record, two claims that named
-Lean-generated declarations dropped, the comparator split in two
-configurations (below), release documentation, and the re-anchor of every
-manuscript line citation to manuscript revision <code>39f2597a</code>, with the cluster
-evidence in <code>verification/</code> redacted; no Lean proof file changed after the
-gate except in comments (the re-anchored line citations). It
-is one commit on top of <code>v0.9.0</code>'s history, followed by a receipts commit.
-<a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/provenance/DEVELOPMENT.md">provenance/DEVELOPMENT.md</a> names the development
-repository and the commit, and lists every change.</p>
-<p>What is new besides waves L10 to L14: every compared theorem is accounted
-for. 1553 theorems are credited to rows of <code>coverage.yaml</code>: the 1134 that
-the rows named at the gate, and 419 whose statement-ledger label cell names
-a direct manuscript label with a coverage row (credited to that row in this
-release). The other 2100 helper theorems are compared in a separate
-configuration that <code>lean-pkg-signoff.json</code> declares a smoke check, and the
-491 of them that were marked <code>reusable</code> are now marked <code>internal</code> in
-<code>claims.yaml</code>. With that, lean-pkg renders the generated verification and
-coverage pages, which the
-<a href="https://chenle02.github.io/stratonovich-ham-second-moment-lean/">documentation site</a>
-now carries.</p>
-<p><strong>The book's release.</strong> The book is released as tag <code>v1.0.0</code> of the
-<a href="https://github.com/chenle02/stratonovich-ham-second-moment">book repository</a>,
-original-history revision <code>86cf977b</code> (public commit <code>51a02011ba40</code>; the
-tag's commit <code>643d1dcc8911</code> adds <code>history/commit-map.tsv</code> on top). The
-public history of that repository is rewritten, and its
-<code>history/commit-map.tsv</code> translates original-history revisions, including the
-manuscript revisions named in this README, to public commits. One of them,
-<code>39f2597a</code>, has no public commit: it is a merge that added only a private
-record to its first parent <code>74d2ec31</code>, so the public history keeps that parent
-(public commit <code>a6fc8b9baaca</code>) and drops the merge. Every TeX file of the
-manuscript is byte-identical in <code>39f2597a</code> and in <code>a6fc8b9baaca</code>, so the line
-citations anchored to <code>39f2597a</code> read the same in the public history. The
-book's front matter differs from <code>39f2597a</code>: a line under the title
-on the title page, and a new Preface paragraph on responsibility and
-authorship, with one figure moved. No line of the title page or the Preface
-is cited here. Every other change between the two revisions to a TeX file
-that this companion cites replaces lines one for one and touches no cited
-line. So every manuscript line citation here, anchored to <code>39f2597a</code>, cites
-the same line numbers and the same text in <code>86cf977b</code>. No Lean file, receipt
-or claim changed; <code>provenance/manuscript-anchor.json</code> keeps the file hashes
-of <code>39f2597a</code>.</p>
+<p><code>v0.11.0</code> is the wave-L15 to wave-L21 gates (waves L15 to L21 since
+<code>v0.10.0</code>), the end point of the Lean work: after wave L21 the author
+planned no further proof waves. Its tree is the tree of development commit
+<code>9534f89</code> of the private development repository: the wave-L21 gate commit
+<code>38a3e00</code> with the receipts, Easley evidence and gate records of waves L15
+to L21, the comment-only documentation repairs of the wave-L21 reviews and
+of the re-anchor reviews, and the re-anchor of every manuscript line citation to manuscript revision
+<code>edf7085f</code> (book 1.1.3), with the cluster evidence in <code>verification/</code>
+redacted; no Lean proof file changed after the gate except in comments. The
+interface records of waves L15 to L20 (<code>docs/l15/</code> to <code>docs/l20/</code>), which
+some module docstrings and the statement ledger name as design records, are
+working notes of the development repository and are not part of this tree.
+It is one commit on top of <code>v0.10.0</code>'s history, followed by a receipts
+commit. <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/provenance/DEVELOPMENT.md">provenance/DEVELOPMENT.md</a> names the
+development repository and the commit, and lists every change.</p>
+<p>What is new: waves L15 to L21 add 70 modules to
+<code>StratonovichHAMSecondMoment/</code>, 17 coverage rows (118 in all) and 2130
+claims (6632 in all). Wave L15 gives the phase space <code>H^(1/2) x H^(-1/2)</code>
+and <code>L:uniform-E-lift</code>; wave L16 the Cameron-map chain; wave L17 the
+pairing-envelope chain; wave L18 the spatial Wick measures and the
+deterministic half of <code>L:joint-fixed-order</code>; wave L19 the <code>L^2</code>
+construction on source fields (model M9: a centered Gaussian field with the
+source's positive-width covariance, the fixed-order Stratonovich integrals
+and the series <code>u</code>), with <code>P:mixed</code>, <code>L:vertex-crude</code> and
+<code>L:joint-fixed-order</code> whole; wave L20 the mild construction
+<code>P:mild-construction</code>; and wave L21 discharges the named input
+<code>TubeAttained</code> at the manuscript's tubes. The named inputs still supplied at
+this end point are <code>SignedMultiplierForm</code>, <code>ThreeTransfer</code>, <code>TubeTail</code> and
+<code>CutoffCompact</code>. Every compared theorem is credited to a coverage row or
+declared a helper, as in <code>v0.10.0</code>.</p>
+<p><strong>The book's release.</strong> The line citations are anchored to manuscript
+revision <code>edf7085f</code>, the book's release 1.1.3: tag <code>v1.1.3</code> of the
+<a href="https://github.com/chenle02/stratonovich-ham-second-moment">book repository</a>
+(public commit <code>18eef2e33331</code>; the tag's commit <code>4fa7e18a5b6d</code> adds the
+commit map on top). The public history of that repository is rewritten, and
+its <code>history/commit-map.tsv</code> translates original-history revisions,
+including the manuscript revisions named in this README, to public commits.
+Every TeX file of the manuscript (135 files) is byte-identical in <code>edf7085f</code>
+and in <code>18eef2e33331</code>, so the line citations read the same in the public
+history. Version 1 of the arXiv preprint 2611.23014 is the book's release
+1.0.0; <a href="https://github.com/chenle02/stratonovich-ham-second-moment-lean/blob/main/coverage.yaml">coverage.yaml</a> pins the release 1.1.3 that the
+citations follow (commit and SHA-256 of the book PDF at the tag).
+<code>provenance/manuscript-anchor.json</code> keeps the file hashes of <code>edf7085f</code>.</p>
 <p>Commit hashes in this README, in <a href="completion.html">COMPLETION.md</a>, in the
 <a href="statement-ledger.html">statement ledger</a> and in <code>verification/</code> are
 commits of the development repository.</p>

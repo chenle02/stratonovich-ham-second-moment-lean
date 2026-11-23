@@ -74,10 +74,20 @@
 <p>The paper bounds and identifies the growth of <code>log E[u(t,x)²]</code> for the
 Stratonovich hyperbolic Anderson model. The argument has three layers.</p>
 <ol>
-<li><strong>Stochastic and analytic layer.</strong> The chaos expansion, the two-chain
+<li><strong>Stochastic and analytic layer.</strong> The chaos expansion of the solution
+   (beyond the source-field model M9 of <code>SourceInterface</code>, wave L19: a
+   centered Gaussian field with the source's positive-width covariance, the
+   fixed-order Stratonovich integrals <code>X_n</code> as <code>L^2</code> limits and the <code>L^2</code>
+   series <code>u = sum_n X_n</code>, which since wave L20 satisfies the mild equation
+   <code>E:mild-construction</code> (<code>P:mild-construction</code>; no uniqueness, and no
+   identification with an independently specified solution of the SPDE)), the two-chain
    pairing integrals (beyond the deterministic diagram model <code>DiagramModel</code>,
-   register entry M4, and the diagram bounds built on it), Wick pairings (beyond finite families of Gaussian
-   values), Gaussian integration (beyond finitely many standard Gaussians),
+   register entry M4, the label-set model M7 of <code>PairingInterface</code>, the
+   gap-coordinate Wick-measure model M8 of <code>WickInterface</code>, the positive-width
+   pairing integrals of M9, and the diagram
+   bounds and deterministic diagram limits built on them), Wick pairings (beyond finite families of Gaussian
+   values), Gaussian integration (beyond finitely many standard Gaussians and
+   the isonormal field of <code>SourceIsonormal</code>),
    imported bounds,
    Laplace transforms and the variational asymptotics. <strong>Not in Lean</strong>,
    except a few slices: the Laplace transforms of the wave kernel and of
@@ -154,7 +164,12 @@ Stratonovich hyperbolic Anderson model. The argument has three layers.</p>
    <strong>These are what Lean checks.</strong></li>
 <li><strong>Assembly</strong> of the main theorems from the layers above. <strong>Not in Lean.</strong></li>
 </ol>
-<p>So each module checks one reduction in layer 2. Its hypotheses state the
+<p>So each module checks one reduction in layer 2, except that the wave-L19
+modules also construct, in Lean, the source-field series of model M9 (a
+slice of layer 1), and wave L20 proves that this series is a mild solution
+in the source's sense (<code>P:mild-construction</code>, read as <code>E:mild-construction</code>;
+no uniqueness is asserted, so its identification with a solution of the
+SPDE given otherwise stays open). A module's hypotheses state the
 facts that layer 1 supplies (for example positivity of a parameter,
 integrability of a function, or an inequality proved analytically in the
 paper). Its conclusion is the fact that the paper then uses.</p>
@@ -170,23 +185,23 @@ paper). Its conclusion is the fact that the paper then uses.</p>
 <tbody>
 <tr>
 <td>Whole result (ledger heading "whole result"), nothing supplied</td>
-<td>44 labelled results, <code>H:homog</code>, <code>E:kappa</code>, <code>E:driver-parameters</code>, <code>E:masked-time-schur</code> and <code>R:gaussian-one-variance-test</code>; 40 modules (one of which, <code>SourceTube</code>, also holds the whole result with inputs supplied below): 1022 theorems, 254 definitions</td>
+<td>59 labelled results (among them, from wave L20, <code>P:mild-construction</code> for every source field of M9 (non-vacuous at <code>m9</code>), <code>P:d1-upper</code>, <code>C:d1-first-calibration</code> (with the conditional rate clause for the constructed solution), <code>P:low-alpha-upper</code> and <code>P:envelope</code> (with <code>rho &gt; kappa</code>), the Riesz instance of <code>H:homog</code> in <code>d = 1</code> now proved; from wave L19, <code>P:mixed</code>, <code>L:vertex-crude</code>, <code>L:joint-fixed-order</code>, <code>L:crude-corrected</code> and <code>L:white-test</code>, stated for every source field of the source-field model M9 and non-vacuous at the constructed instance <code>m9</code>; from wave L18, <code>L:spatial-wick-measures</code> on the gap-coordinate Wick-measure model M8; from wave L17, <code>L:translated-covariance-CS</code> and <code>L:pairing-product-envelope</code>, the latter on the label-set model M7; from wave L16, <code>L:positive-raw-embedding</code>, whose conclusion is full by the author's decision of 2026-11-20: the mean identity for <code>T_R</code> and <code>U</code> constructed in Lean to meet the frozen specifications, not identified in Lean with the section's maps, <code>H_I</code> the kernel completion M5; its theorems sit in narrower-result modules, so it is not among the modules counted here), <code>H:homog</code>, <code>E:kappa</code>, <code>E:driver-parameters</code>, <code>E:masked-time-schur</code> and <code>R:gaussian-one-variance-test</code>; 49 modules (one of which, <code>SourceTube</code>, also holds a whole result with inputs supplied below): 1308 theorems, 282 definitions (public inventory; claims: 1307 theorems and 281 definitions, since <code>MaskedAuxiliaryReal.Cx.ext_iff</code>, generated by <code>@[ext]</code>, and the syntax constant <code>WhiteFour.tacticTw_close</code> have no claim)</td>
 <td>Every conclusion of the result is a Lean conclusion under the manuscript's hypotheses (<code>H:homog</code> modelled in full; most results via exact-hypothesis wrappers); coverage class same-assumptions, conclusion full</td>
 </tr>
 <tr>
 <td>Whole result, inputs supplied</td>
-<td>1 labelled result, <code>P:tube-rayleigh-transfer</code> (<code>SourceTube</code>, wave L12), with two named inputs from <code>L:tube-closed-geometry</code> (<code>TubeAttained</code>, <code>TubeTail</code>, true for the manuscript's tubes); the three results formerly here (<code>P:radius-mean-anchor</code>, <code>P:moment-growth-logconvex</code>, <code>C:static-moment-constant-continuity</code>) are proved for abstract objects whose construction is missing, so they are narrower results</td>
+<td>1 labelled result, <code>P:tube-rayleigh-transfer</code> (<code>SourceTube</code>, wave L12), since wave L21 with one named input from <code>L:tube-closed-geometry</code> (<code>TubeTail</code>, true for the manuscript's tubes; <code>TubeAttained</code>, the second input of wave L12, is proved at the manuscript's tubes by <code>SourceTubeAttained</code>, wave L21, and the wrapper <code>tube_rayleigh_transfer_paper_l21</code> takes only <code>TubeTail</code>); <code>C:d1-first-calibration</code>, counted here at the wave-L19 integration, was a narrower result at the L19 gate (the author's decision of 2026-11-22: its conditional rate clause was not stated for the constructed solution) and is a whole result with the manuscript's hypotheses since wave L20; the three results formerly here (<code>P:radius-mean-anchor</code>, <code>P:moment-growth-logconvex</code>, <code>C:static-moment-constant-continuity</code>) are proved for abstract objects whose construction is missing, so they are narrower results</td>
 <td>Every conclusion of the result is a Lean conclusion under the manuscript's hypotheses and the named inputs; coverage class inputs-supplied, conclusion full</td>
 </tr>
 <tr>
 <td>Narrower result (ledger heading "narrower result: ...", naming what is missing)</td>
-<td>16 results with the manuscript's hypotheses and steps, parts or narrower forms of 34 further results; 48 modules and the audit file <code>HermiteWordFock</code>: 1750 theorems, 421 definitions</td>
-<td>Kernel-checked; some conclusion of the result is not a Lean conclusion. The 16 with the manuscript's hypotheses (coverage same-assumptions, weaker): <code>P:masked-quotient-obstruction</code> for the covariance functional (the noise <code>W</code> not constructed), the Rayleigh lemma without its application, the dilation lemma for the integral-form cost, <code>P:variational-unmasked-rate</code> without its operator half, <code>L:spatial-static-controls</code>, <code>P:spatial-smooth-ratio</code> and <code>P:spatial-energy-map</code> for the Rayleigh-form rate and the integral-form cost, <code>P:variational-positive-scores</code> without <code>Q_2 &gt;= S_2^pos</code>, <code>T:intrinsic-occupation-ceiling</code> with the exact <code>C_occ</code> in both forms over the class <code>O</code> itself (wave L14), without <code>C_2 &lt;= U_2</code>, <code>C:intrinsic-spatial-bracket</code> for <code>S_2^pos</code> in place of <code>C_2</code>, <code>L:positive-raw-embedding</code> without the mean identity and the canonical versions (wave L14: the Bochner inclusion over the <code>L^2</code> completions of M5), <code>L:occupation-raw-square</code> over fields modelled by joint representatives (wave L14), <code>L:positive-physical-gram</code> without the label row and the entrywise order (wave L14), <code>L:occupation-rayleigh-selection</code> for the Rayleigh-form rate and the integral-form cost (over <code>O</code> itself since wave L14), and <code>L:fock-form</code> (also in operator form, <code>FockSandwichModel</code>) and <code>L:interval-contractions</code> on a Fourier-side model not identified with the physical-space operators. (<code>L:damped-homogeneous-norms</code> and <code>L:terminal-wick</code>, narrower until wave L11, are whole results since wave L12 (over M1; <code>L:damped-homogeneous-norms</code> over M1 and M3); <code>P:masked-auxiliary-norm</code>, <code>L:variational-global-mean</code>, <code>P:spatial-four-linear</code>, <code>P:occupation-physical-class</code> and <code>P:raw-occupation-energy</code> since waves L13 and L14.) The 34 further results (coverage inputs-supplied, weaker) have analytic inputs supplied or only some conclusions formalized: <code>P:radius-mean-anchor</code> for abstract random paths (the operator paths <code>M_R(Y_m)</code> not constructed), <code>P:moment-growth-logconvex</code> and <code>C:static-moment-constant-continuity</code> for an abstract moment function (the solution moments not constructed), <code>L:raw-block-indexed-cone</code> for an abstract ground family, the finite comparison of <code>P:masked-noise-completion</code>, <code>P:wave-two-variances</code> with named inputs (spectral core with none), <code>P:interval-coefficients</code> with named inputs, <code>P:variational-remove-mask</code> (rates with none, the point display over a named input), <code>L:symplectic-free</code> (free group and Young convergence supplied), the scalar steps of <code>L:complex-phase</code> and <code>L:interval-complex</code>, <code>L:fixed-split</code> on a finite Fock model (segment bound, Dyson cube identity, invariance of the cross subspaces, entire coefficients and the column bound supplied; the cutoff evolution and its coefficients not constructed), through which <code>P:interval-coefficients</code> takes, in place of the input <code>L:fixed-split</code>, the inputs of that lemma (and, in place of the added hypothesis <code>hQ</code> on <code>Q_(r,q)</code> that wave L10 needed, the Duhamel word expansion <code>DuhamelWords</code> of the coefficients), <code>C:static-interaction</code> with the order bounds and the identification of the interaction map proved (and, on the Fourier-side model of <code>FockSandwichModel</code>, the operator form of <code>E:fock-sandwich</code>), <code>T:white-moment-bounds</code> for <code>S_2^pos</code> in place of <code>C_2</code> (the energy value of <code>P:white-spatial-energy</code> supplied; the time exponent and <code>c = 0</code> not formalized), from wave L13 <code>P:d1-upper</code>, <code>P:low-alpha-upper</code>, <code>C:d1-first-calibration</code>, <code>L:white-test</code> and <code>P:riesz-small</code> (diagram values and coefficient bounds on the model M4 with nothing supplied; statements about the solution from the named input <code>MixedMoment</code> (the statement of <code>P:mixed</code>), and for <code>C:d1-first-calibration</code> also <code>FirstMomentSeries</code> (main TeX lines 796, 5856-5857)), <code>P:signed-closed-form</code> (the form bounds and the bounded resolvent of the form for an abstract Hermitian pairing, <code>E:signed-multiplier-form</code> supplied as <code>SignedMultiplierForm</code>; <code>H_V</code>, its domains, <code>E:signed-quarter-phase</code>, the dual completion and <code>L:signed-limiting-multiplier</code> not formalized), from wave L14 <code>C:three-product-riesz</code> and <code>C:three-finite-images</code> (moment bounds from <code>ThreeTransfer</code>, the statement of <code>P:three-transfer</code>, for an abstract model; the asymptotic clause only for a supplied spectral measure of the low endpoint), and the others listed in <code>coverage.yaml</code></td>
+<td>22 results with the manuscript's hypotheses and steps, parts or narrower forms of 30 further results; 69 modules and the audit file <code>HermiteWordFock</code>: 2106 theorems, 454 definitions</td>
+<td>Kernel-checked; some conclusion of the result is not a Lean conclusion. The 22 with the manuscript's hypotheses (coverage same-assumptions, weaker): from wave L21 <code>L:tube-closed-geometry</code> (every tube closed, <code>{d_delta &lt;= r} = T_r</code> and the lower semicontinuity of <code>d_delta</code>, nothing supplied; the Gaussian tail and the almost sure finiteness not formalized), from wave L20 <code>P:riesz-small</code> (<code>E:riesz-two</code> for the chaos terms of every source field and <code>E:riesz-four</code> on M4 with nothing supplied; the multiplicities of <code>E:total-four</code> not formalized; <code>P:envelope</code> and <code>P:low-alpha-upper</code>, narrower at the L19 gate, are whole since wave L20), <code>P:masked-quotient-obstruction</code> for the covariance functional (the noise <code>W</code> not constructed), the Rayleigh lemma without its application, the dilation lemma for the integral-form cost, <code>P:variational-unmasked-rate</code> without its operator half, <code>L:spatial-static-controls</code>, <code>P:spatial-smooth-ratio</code> and <code>P:spatial-energy-map</code> for the Rayleigh-form rate and the integral-form cost, <code>P:variational-positive-scores</code> without <code>Q_2 &gt;= S_2^pos</code>, <code>T:intrinsic-occupation-ceiling</code> with the exact <code>C_occ</code> in both forms over the class <code>O</code> itself (wave L14), without <code>C_2 &lt;= U_2</code>, <code>C:intrinsic-spatial-bracket</code> for <code>S_2^pos</code> in place of <code>C_2</code>, <code>L:uniform-E-lift</code> without the lift <code>L_F</code> and the complex extension (wave L15), from wave L16 <code>L:uniform-mean-cutoff</code> (uniqueness of the multiplier not stated), <code>P:cameron-temporal-map</code> (not trace class as the cell sums of decision 7), <code>L:uniform-mean-tensor</code> on finite tensors and the map <code>U</code> of <code>P:cameron-full-mean</code>, <code>L:occupation-raw-square</code> over fields modelled by joint representatives (wave L14), <code>L:positive-physical-gram</code> without the label row and the entrywise order (wave L14), <code>L:occupation-rayleigh-selection</code> for the Rayleigh-form rate and the integral-form cost (over <code>O</code> itself since wave L14), and <code>L:fock-form</code> (also in operator form, <code>FockSandwichModel</code>) and <code>L:interval-contractions</code> on a Fourier-side model not identified with the physical-space operators. (<code>L:damped-homogeneous-norms</code> and <code>L:terminal-wick</code>, narrower until wave L11, are whole results since wave L12 (over M1; <code>L:damped-homogeneous-norms</code> over M1 and M3); <code>P:masked-auxiliary-norm</code>, <code>L:variational-global-mean</code>, <code>P:spatial-four-linear</code>, <code>P:occupation-physical-class</code> and <code>P:raw-occupation-energy</code> since waves L13 and L14.) The 30 further results (coverage inputs-supplied, weaker) have analytic inputs supplied or only some conclusions formalized (<code>C:d1-first-calibration</code>, <code>P:d1-upper</code>, <code>P:riesz-small</code> and <code>P:mild-construction</code>, here at the L19 gate, left this class in wave L20): from wave L16 <code>P:cameron-spatial-map</code> (<code>E</code> part; compactness from the named input <code>CutoffCompact</code>) and <code>P:uniform-mean-regulator</code> (the regulator constructed with <code>CutoffCompact</code>, with the first bound of <code>E:uniform-completed-mean</code>; that its mean takes a.e. compact values in the <code>L(E)</code>-valued <code>L^r</code> model is a separate result; the projection and tail half not formalized), <code>P:radius-mean-anchor</code> for abstract random paths (the operator paths <code>M_R(Y_m)</code> not constructed), <code>P:moment-growth-logconvex</code> and <code>C:static-moment-constant-continuity</code> for an abstract moment function (the solution moments not constructed), <code>L:raw-block-indexed-cone</code> for an abstract ground family, the finite comparison of <code>P:masked-noise-completion</code>, <code>P:wave-two-variances</code> with named inputs (spectral core with none), <code>P:interval-coefficients</code> with named inputs, <code>P:variational-remove-mask</code> (rates with none, the point display over a named input), <code>L:symplectic-free</code> (free group and Young convergence supplied), the scalar steps of <code>L:complex-phase</code> and <code>L:interval-complex</code>, <code>L:fixed-split</code> on a finite Fock model (segment bound, Dyson cube identity, invariance of the cross subspaces, entire coefficients and the column bound supplied; the cutoff evolution and its coefficients not constructed), through which <code>P:interval-coefficients</code> takes, in place of the input <code>L:fixed-split</code>, the inputs of that lemma (and, in place of the added hypothesis <code>hQ</code> on <code>Q_(r,q)</code> that wave L10 needed, the Duhamel word expansion <code>DuhamelWords</code> of the coefficients), <code>C:static-interaction</code> with the order bounds and the identification of the interaction map proved (and, on the Fourier-side model of <code>FockSandwichModel</code>, the operator form of <code>E:fock-sandwich</code>), <code>T:white-moment-bounds</code> for <code>S_2^pos</code> in place of <code>C_2</code> (the energy value of <code>P:white-spatial-energy</code> supplied; the time exponent and <code>c = 0</code> not formalized), <code>P:signed-closed-form</code> (the form bounds and the bounded resolvent of the form for an abstract Hermitian pairing, <code>E:signed-multiplier-form</code> supplied as <code>SignedMultiplierForm</code>; <code>H_V</code>, its domains, <code>E:signed-quarter-phase</code>, the dual completion and <code>L:signed-limiting-multiplier</code> not formalized), from wave L14 <code>C:three-product-riesz</code> and <code>C:three-finite-images</code> (moment bounds from <code>ThreeTransfer</code>, the statement of <code>P:three-transfer</code>, for an abstract model; the asymptotic clause only for a supplied spectral measure of the low endpoint), and the others listed in <code>coverage.yaml</code></td>
 </tr>
 <tr>
 <td>Foundation or proof steps (ledger heading "foundation: ..." or "proof steps of ...")</td>
-<td>27 modules: 800 theorems, 169 definitions</td>
-<td>Kernel-checked facts used by labelled results, not a labelled result themselves: <code>WaveKernel</code>, <code>SpectralHomog</code>, <code>TimeFractional</code>, <code>DampedNorms</code>, <code>GaussianIBP</code>, <code>GaussianTest</code>, <code>WeakSobolev</code>, <code>VariationalFloor</code>, <code>SeriesType</code>, <code>H1Density</code>, <code>FiniteWick</code>, <code>GaussianHermite</code>, <code>HermiteFock</code>, <code>WaveGreen</code>, <code>WaveGreenFourier</code>, <code>SpaceTimePositivity</code>, and the proof steps <code>IntervalScalar</code> (the steps of <code>C:static-interaction</code>, with <code>E:static-block-series</code> in full) <code>StaticPhaseCauchy</code> (the Cauchy steps of <code>P:static-phase-all-orders</code>) and <code>FixedSplitCore</code> (the model-free steps of <code>L:fixed-split</code>, with the analytic bounds as premises), whose analytic inputs are supplied, the foundation <code>WhiteModel</code> (the white-noise model, <code>H:homog</code> with <code>alpha = d = 1</code> proved, and steps of <code>T:white-moment-bounds</code>), and the proof steps <code>TerminalWickRegularization</code> (nothing supplied: the mass and convergence facts of the Green-regularization paragraph of the proof of <code>L:terminal-wick</code> are proved for a common-noise construction whose factors are identified with <code>p_eta * G_h</code> one at a time; the identification of the whole regularized chain measure with the TeX's product, and the paragraph's last clause, are not formalized; in <code>d = 3</code> over the registered model choice M1); from waves L13 and L14 the foundations <code>DiagramModel</code> (the diagram model M4, <code>P:mixed</code> the named input <code>MixedMoment</code>), <code>DiagramBridge</code> (its <code>d = 1</code> positions form), and <code>H1Mathlib</code> (the weak-gradient <code>H^1</code> identified with Mathlib's Sobolev space), the control <code>PhaseShiftControl</code>, and the proof steps <code>TwoSimplexTime</code> and <code>WhiteCollapse</code></td>
+<td>67 modules: 1834 theorems, 571 definitions (public inventory; claims: 1831 theorems and 565 definitions, since the nine anonymous instances of <code>UniformMeanInterface</code>, whose names Lean generates (three <code>CompleteSpace</code> instances counted as theorems, six definitions), have no claim since wave L15)</td>
+<td>Kernel-checked facts used by labelled results, not a labelled result themselves: <code>WaveKernel</code>, <code>SpectralHomog</code>, <code>TimeFractional</code>, <code>DampedNorms</code>, <code>GaussianIBP</code>, <code>GaussianTest</code>, <code>WeakSobolev</code>, <code>VariationalFloor</code>, <code>SeriesType</code>, <code>H1Density</code>, <code>FiniteWick</code>, <code>GaussianHermite</code>, <code>HermiteFock</code>, <code>WaveGreen</code>, <code>WaveGreenFourier</code>, <code>SpaceTimePositivity</code>, and the proof steps <code>IntervalScalar</code> (the steps of <code>C:static-interaction</code>, with <code>E:static-block-series</code> in full) <code>StaticPhaseCauchy</code> (the Cauchy steps of <code>P:static-phase-all-orders</code>) and <code>FixedSplitCore</code> (the model-free steps of <code>L:fixed-split</code>, with the analytic bounds as premises), whose analytic inputs are supplied, the foundation <code>WhiteModel</code> (the white-noise model, <code>H:homog</code> with <code>alpha = d = 1</code> proved, and steps of <code>T:white-moment-bounds</code>), and the proof steps <code>TerminalWickRegularization</code> (nothing supplied: the mass and convergence facts of the Green-regularization paragraph of the proof of <code>L:terminal-wick</code> are proved for a common-noise construction whose factors are identified with <code>p_eta * G_h</code> one at a time; the identification of the whole regularized chain measure with the TeX's product, and the paragraph's last clause, are not formalized; in <code>d = 3</code> over the registered model choice M1); from waves L13 and L14 the foundations <code>DiagramModel</code> (the diagram model M4, <code>P:mixed</code> the named input <code>MixedMoment</code>), <code>DiagramBridge</code> (its <code>d = 1</code> positions form), and <code>H1Mathlib</code> (the weak-gradient <code>H^1</code> identified with Mathlib's Sobolev space), the control <code>PhaseShiftControl</code>, and the proof steps <code>TwoSimplexTime</code> and <code>WhiteCollapse</code>; from wave L15 the foundations <code>UniformMeanInterface</code> (the phase space <code>H^(1/2) x H^(-1/2)</code> on the manuscript's Fourier norm, <code>B_E</code>, multipliers, and the named inputs <code>CameronSpatialMap</code> and <code>UniformMeanRegulator</code>) and <code>UniformMeanFoundation</code> (density of real tests, duality on tests, multipliers); from wave L16 the foundations <code>CameronInterface</code> (the Sobolev scale <code>H^s</code>, specifications and statement shapes, the named input <code>CutoffCompact</code> and the proved fallback <code>TemporalCompact</code>), <code>CompactOperatorFoundation</code> (compactness of finite-rank limits, adjoints and <code>L^2</code>-kernel operators) and <code>CameronTemporalSqrt</code> (compact spectral theorem, positive square roots), and the proof steps <code>CameronTemporalKernel</code>, <code>CameronTemporalYoung</code> and <code>CameronTemporalMap</code> of <code>P:cameron-temporal-map</code>; from wave L17 the foundations <code>PairingInterface</code> (the label-set two-chain model M7, the statement shapes of the pairing-envelope chain, the fallback named inputs <code>ConvolutionNorms</code> and <code>RegionalHalfBound</code>, used nowhere) and <code>GreenSmoothed3</code> (the density of the Green-smoothed <code>d = 3</code> wave kernel), and the proof steps <code>PairingConvolution</code>, <code>PairingRegional</code> and <code>PairingCapRemoval</code> of <code>L:pairing-product-envelope</code> and <code>PairingBridge</code>, <code>PairingDampedNorms</code> and <code>PairingSmoothedNorms</code> of <code>L:crude-corrected</code> and <code>P:envelope</code>; from wave L18 the foundation <code>WickInterface</code> (the gap-coordinate Wick-measure model M8, the statement shapes of the wave and the fallback named inputs <code>SpatialPositiveLaplace</code>, <code>WickMassBound</code>, <code>SpatialWickWeakLimit</code> and <code>JointTemporalTail</code>, used nowhere), and the proof steps <code>WickSpectral</code>, <code>WickBridge</code>, <code>WickMass</code>, <code>WickScaling</code> and <code>WickStep4</code> of <code>L:spatial-wick-measures</code> and <code>JointTail</code> of <code>L:joint-fixed-order</code>; from wave L19 the foundations <code>SourceInterface</code> (the source-field model M9, the statement shapes of the wave and the fallback named inputs <code>SourceNoise</code> and <code>TerminalReversal</code>, used nowhere), <code>SourceIsonormal</code> (the isonormal Gaussian field, Mathlib only) and <code>SourceFeatures</code> (the feature map of the source covariance), and the proof steps <code>SourceWick</code>, <code>SourceReversal</code> and <code>SourceMixed</code> of <code>P:mixed</code> and <code>SourceFixedOrder</code> and <code>SourceGreenFirst</code> of <code>L:joint-fixed-order</code>; from wave L20 the foundations <code>MildInterface</code> (the mild integral on M9: total fields, the mild measures, <code>I_(n,a)</code>, <code>I_a</code>, the closed Gaussian polynomial spaces <code>PolyLE</code>/<code>LinG</code>, the statement shapes of the wave and the fallback named inputs <code>JointMeasurability</code> and <code>TerminalFubini</code>, used nowhere) and <code>RieszInstanceOne</code> (the Riesz instance of <code>H:homog</code> in <code>d = 1</code>), and the proof steps <code>MildOccupied</code>, <code>MildPolyMem</code>, <code>MildFields</code>, <code>MildTerminalFubini</code>, <code>MildPartialVertex</code>, <code>MildGreenWidth</code> and <code>MildConstruction</code> (Steps 5-6 and the assembly, with the item targets as hypotheses; discharged in <code>MildFinal</code>) of <code>P:mild-construction</code></td>
 </tr>
 <tr>
 <td>Checked step fact (<code>StratonovichHAMAudit/</code>, except <code>HermiteWordFock</code>)</td>
@@ -195,13 +210,13 @@ paper). Its conclusion is the fact that the paper then uses.</p>
 </tr>
 <tr>
 <td>of which helper lemmas (<code>internal</code>)</td>
-<td>2161 theorems, 141 definitions</td>
-<td>Kernel-checked; used inside one module, or (491 theorems since v0.10.0) compared in the helper configuration <code>comparator-helpers.json</code>, a smoke check credited to no manuscript result</td>
+<td>3331 theorems, 317 definitions</td>
+<td>Kernel-checked; used inside one module (the nine anonymous instances of <code>UniformMeanInterface</code>, whose names Lean generates, are kernel-checked but not claimed since wave L15), or (491 theorems since v0.10.0) compared in the helper configuration <code>comparator-helpers.json</code>, a smoke check credited to no manuscript result</td>
 </tr>
 <tr>
-<td>Other public definitions</td>
-<td>113</td>
-<td>Named quantities and measures used in the statements (107: 100 <code>def</code>, 7 <code>abbrev</code>), one structure (<code>FockColumnBound.L2Map</code>, a Lean-route data structure), four instances on <code>TimeCompletion.Pre</code>, and the syntax constant <code>WhiteFour.tacticTw_close</code> of a local tactic macro (no claim since v0.10.0); counted from the elaborated environment, source-written declarations only (no Lean-generated projection, constructor or derived instance)</td>
+<td>Other public definitions (in no module subtotal above)</td>
+<td>112</td>
+<td>Named quantities and measures used in the statements (107: 100 <code>def</code>, 7 <code>abbrev</code>), one structure (<code>FockColumnBound.L2Map</code>, a Lean-route data structure), and four instances on <code>TimeCompletion.Pre</code>; counted from the elaborated environment, source-written declarations only (no Lean-generated projection, constructor or derived instance). The other seven public definitions without a row or claim, <code>WhiteFour.tacticTw_close</code> and the six anonymous instances of <code>UniformMeanInterface</code>, are counted in their modules' subtotals above (119 public definitions without a row in all)</td>
 </tr>
 <tr>
 <td>Negative controls</td>
@@ -215,6 +230,15 @@ paper). Its conclusion is the fact that the paper then uses.</p>
 </tr>
 </tbody>
 </table>
+<p>The theorem and definition counts of the table are public-inventory counts:
+theorems 1308 + 2106 + 1834 + 82 = 5330 and definitions 282 + 454 + 571 + 6 +
+112 = 1425 (Lean-generated declarations such as the <code>noConfusion</code> of
+<code>SourceInterface.SourceModel</code> not counted). The claims of <code>claims.yaml</code> are 5326 theorems (5330 less
+<code>MaskedAuxiliaryReal.Cx.ext_iff</code> and the three anonymous <code>CompleteSpace</code>
+instances of <code>UniformMeanInterface</code>) and 1306 definitions (1425 less the 112
+other public definitions, <code>WhiteFour.tacticTw_close</code> and the six other
+anonymous instances of <code>UniformMeanInterface</code>), 6632 claims in all. The
+helper-lemma line counts claims.</p>
 <p>Heading categories (the same three are used for the statement ledger's
 section headings; its Index by label points from each label to those sections
 with their category, and states nothing per declaration). Labelling
@@ -238,12 +262,21 @@ author on 2026-11-13) is the deterministic two-chain diagram model
 <code>DiagramModel</code> (diagram integrals with the Green factors as measures of the
 increments, and for a covariance measure the limit of common-width
 smoothings); its identification with the positions form is proved in
-<code>d = 1</code> only, and its identification with the TeX's joint limit at
-arbitrary vertexwise widths is not proved; the common-width convergence of
-the diagrams is the named input <code>DiagramLimits</code> and, with the finiteness of
-the limits, a clause of the named input <code>MixedMoment</code> (the statement of
-<code>P:mixed</code>); the diagram limits are proved for white noise in <code>d = 1</code> and the
-order-two Riesz limit in <code>RieszFourDiagrams</code>. M5 (wave L14; accepted by the
+<code>d = 1</code> (<code>DiagramBridge</code>) and, for a measurable covariance and Green measures
+with a finite jointly measurable density, in every dimension (<code>PairingBridge.spatial_eq_of_density</code>, wave L17;
+not for the <code>d = 3</code> sphere measure); the TeX's joint limit at arbitrary
+vertexwise widths is formalized on M8 (wave L18), and M4's common-width limit
+follows from its full-kernel limit (temporal width <code>0</code>,
+<code>JointFixedOrder.joint_limit_aux</code>) at common vertex width <code>eps/2</code> through the
+identity <code>JointFixedOrder.m8_m4_identity</code>; the
+common-width convergence of the diagrams was the named input <code>DiagramLimits</code>
+and, with the finiteness of the limits, is a clause of the named input
+<code>MixedMoment</code> (the statement of <code>P:mixed</code>); the diagram limits were proved for
+white noise in <code>d = 1</code> and the order-two Riesz limit in <code>RieszFourDiagrams</code>,
+and in wave L18 for every <code>H:homog</code> covariance in <code>d = 1, 2, 3</code>
+(<code>WickFinal.diagramLimits_homog_l18</code>; in <code>d = 1</code> also by domination,
+<code>RieszDiagramLimits</code>, <code>RieszDiagramLimitsHomog</code>), which discharges
+<code>DiagramLimits</code>. M5 (wave L14; accepted by the
 author on 2026-11-13) realizes <code>H_t (x) G</code>, <code>H_t</code>, <code>H_I</code> and <code>H_Gamma</code> as
 <code>L^2</code> completions under the kernel and covariance forms
 (<code>OccupationCompletion</code>, <code>SourceHeatGram</code>, and the codomain <code>H_sp</code> of <code>Q</code> in
@@ -251,18 +284,87 @@ author on 2026-11-13) realizes <code>H_t (x) G</code>, <code>H_t</code>, <code>H
 <code>H_Gamma</code> is proved. M6 (wave L14; accepted by the author on 2026-11-13) is
 <code>H^1</code> as the graph of the weak gradient in <code>L^2 x L^2</code> (<code>ClassOH1.H1R</code>), with
 its topology proved equal to that of Mathlib's <code>H^1</code>; not proved: that every
-real element of Mathlib's <code>H^1</code> comes from it. Named inputs of waves L13 and
-L14: <code>MixedMoment</code> (<code>P:mixed</code>), <code>DiagramLimits</code> (the common-width diagram
-limits of <code>L:joint-fixed-order</code>), <code>FirstMomentSeries</code> (main TeX lines 796,
-5856-5857, for <code>C:d1-first-calibration</code>), <code>SignedMultiplierForm</code>
+real element of Mathlib's <code>H^1</code> comes from it. M7 (wave L17, decision 3;
+accepted by the author on 2026-11-20) is the label-set two-chain model of
+<code>PairingInterface</code>: the pairing integrals <code>I_D(G)</code> of
+<code>E:pairing-diagram-general</code> over a label type, chains as lists, the matching
+as a finite set of pairs, per-edge data and the norms of the TeX, with a
+bridge inequality from M4 (<code>PairingBridge.m4_bridge</code>; finite Green
+densities, interface amendment 1), not an identification. M8 (wave L18,
+decision 6; accepted by the author on 2026-11-21) is the gap-coordinate
+Wick-measure model of <code>WickInterface</code>: M4's labels and pairings, one gap per
+label, the Green measures as in M4, vertexwise spatial widths and vertexwise
+temporal widths (Laplace domains <code>(0, (delta_j v delta_h)^(-1)]</code> of the Gamma
+mixture), the measures <code>rho_(eps,D)</code>, <code>nu_(eps,D)</code> and the regularized
+diagrams <code>F_(eps,delta,D)</code>; it is the TeX's own definition in gap
+coordinates (a modelling statement, not a Lean theorem), with an identity to
+M4 (<code>JointFixedOrder.m8_m4_identity</code>: under <code>H:homog</code>, for <code>D in Pi2 m n</code> and
+<code>t &gt; 0</code>, M4's diagram at pair width <code>eps &gt; 0</code> is M8's at vertex width <code>eps/2</code>
+and temporal width <code>0</code>) and an inequality to M7 (<code>WickBridge.m8_m7_bridge</code>:
+under <code>H:homog</code>, for <code>D in Pi2 m n</code>, positive vertexwise widths, a Green
+family <code>G_s = g(s, .) dy</code> with <code>g</code> finite and jointly measurable, measurable
+Laplace domains in <code>(0, infinity)</code> and damping <code>theta &gt;= 0</code>, with the per-edge
+data <code>wickEdge</code>; <code>&lt;=</code> only). M9 (wave L19, decision 2; approved by the
+author on 2026-11-21 and fidelity-reviewed before the items that use it) is
+the source-field model of <code>SourceInterface</code>: the positive-width source fields
+of <code>E:pairing-source-covariance</code> (main TeX lines 1352-1370) as one real field
+<code>W</code> on space-time points with a positive width pair, on any probability
+space, that is a centered Gaussian field with covariance <code>srcCov</code> (the
+temporal kernel of M7 and M8 at the cap <code>delta v delta'</code>, the spatial
+covariance <code>p_(eps+eps') * Gamma</code>); results are stated for every such field
+(the manuscript's statement, decision 4) and are non-vacuous at the
+constructed instance <code>m9</code> (an isonormal field on a real Hilbert feature
+space, <code>SourceFinal.source_field_l19</code>); <code>Y_n^a</code> is the <code>L^2</code>-valued Bochner
+integral over the terminal chain measure, <code>S_n(g_n)</code> its limit at common
+noise widths (decision 5), <code>X_n = S_n(g_n)</code>, <code>X_0 = 1</code> and <code>u = sum_n X_n</code> in
+<code>L^2</code> (decision 6). No M4 diagram is realized at positive widths; the
+terminal pairing integrals at positive widths are M8 diagrams after the chain
+reversal (each pairing integral with the reversed pairing,
+<code>SourceReversal.terminal_reversal</code>; summed over pairings,
+<code>terminal_mixed_moment</code>), and M4 enters through the limits and the
+regularized diagram bounds. Named inputs of waves L13
+to L16 other than <code>DiagramLimits</code> and the two wave-L15 data structures (five
+listed, three open; with the two of wave L12 below, the named inputs still
+supplied after wave L20 were <code>SignedMultiplierForm</code>, <code>ThreeTransfer</code>,
+<code>CutoffCompact</code>, <code>TubeAttained</code> and <code>TubeTail</code>; wave L21 proves <code>TubeAttained</code>
+(<code>SourceTubeAttained</code>), so at the end point the author set on 2026-11-23 four are
+left: <code>SignedMultiplierForm</code>, <code>ThreeTransfer</code>, <code>TubeTail</code> and <code>CutoffCompact</code>): of waves L13 and L14, <code>MixedMoment</code> (<code>P:mixed</code>) and
+<code>FirstMomentSeries</code> (main TeX lines 796, 5856-5857, for
+<code>C:d1-first-calibration</code>), both discharged in wave L19 for the chaos terms and
+solution of every source field (<code>SourceFinal.mixed_terms_l19</code>,
+<code>first_moment_series_l19</code>; the seven consumer wrappers of <code>SourceFinal</code> take
+neither; the earlier wrappers for abstract random variables, still credited
+by the consumer rows, keep them as inputs; the white case of <code>P:d1-upper</code>,
+which had no source-field form at wave L19, has one since wave L20,
+<code>CleanupWrappers.d1_upper_paper_white_l20</code>), <code>SignedMultiplierForm</code>
 (<code>E:signed-multiplier-form</code>, with the Hermitian pairing, for
-<code>P:signed-closed-form</code>) and <code>ThreeTransfer</code> (<code>P:three-transfer</code>); see the
-ledger Scope. A registered standard choice preserves whole status only when the result's
+<code>P:signed-closed-form</code>) and <code>ThreeTransfer</code> (<code>P:three-transfer</code>); of wave
+L15 (data structures standing for objects the manuscript constructs):
+<code>CameronSpatialMap</code> (the <code>E</code> part of <code>P:cameron-spatial-map</code>) and
+<code>UniformMeanRegulator</code> (<code>T_R</code>, <code>C_t</code> and <code>C_t (x) I</code> of
+<code>P:uniform-mean-regulator</code>), both constructed in wave L16 from its named
+input <code>CutoffCompact</code> (the compactness sentence of
+<code>P:cutoff-singular-values</code>), which stays open; see the ledger Scope. The wave-L13 named input
+<code>DiagramLimits</code> (the common-width diagram limits of <code>L:joint-fixed-order</code>) is
+discharged in wave L18 (<code>WickFinal.diagramLimits_l18</code>;
+<code>RieszDiagramLimits.coeffALim_riesz_le'</code> replaces its only standalone use in
+the Riesz case); the four fallback named inputs of wave L18
+(<code>SpatialPositiveLaplace</code>, <code>WickMassBound</code>, <code>SpatialWickWeakLimit</code>,
+<code>JointTemporalTail</code>) are used nowhere, their contents proved, and so are
+the two fallback named inputs of wave L19 (<code>SourceNoise</code>, <code>TerminalReversal</code>)
+and the two of wave L20 (<code>JointMeasurability</code>, <code>TerminalFubini</code>).
+At the L19 gate the three Riesz consumer rows (<code>P:d1-upper</code>, <code>P:riesz-small</code>
+and the Riesz form of <code>C:d1-first-calibration</code>) kept the hypothesis
+<code>hH : HomogCovariance 1 alpha alpha0 (volume.withDensity (riesz c alpha)) mu</code>
+explicit (the author's decision of 2026-11-22). Wave L20 proves that Riesz
+instance of <code>H:homog</code> in <code>d = 1</code> (<code>RieszInstanceOne.riesz_homogCovariance_one</code>,
+the spectral measure a Gaussian mixture) and states the three rows without it
+(<code>CleanupWrappers.*_closed_l20</code>); <code>hH</code> is no longer a remaining condition. A registered standard choice preserves whole status only when the result's
 section names the model (as <code>LowAlphaConvolution</code>, <code>PhaseContractions</code>,
 <code>L9Completed</code>, <code>HigherRieszThree</code>, <code>AlphaOneConvolution</code> and <code>L10Completed</code>
 do for M1, as <code>TerminalWickInputs</code> does for M1 in <code>L:uniform-series-tail</code>,
 <code>TerminalWickComplete</code> for M1 in <code>L:terminal-wick</code>, <code>FiniteWordCutoff</code> for
-M2, <code>DampedSmoothing</code> for M1 and M3, <code>D1Spatial</code> and <code>WhiteFour</code> for M4,
+M2, <code>DampedSmoothing</code> for M1 and M3, <code>D1Spatial</code> and <code>WhiteFour</code> for M4, <code>PairingEnvelope</code> for M7, <code>WickMeasures</code> for M8, <code>SourceVertexCrude</code>, <code>SourceExpansion</code> and <code>SourceFinal</code> for M9, <code>MildFinal</code> and <code>CleanupWrappers</code> for M9 (and M1 in <code>d = 3</code>),
 <code>SourceHeatGram</code> for M5, and <code>ClassOH1</code> and <code>ClassOBridge</code> for M6; the narrower
 section <code>HigherRieszTwo</code> and the proof steps <code>TerminalWickRegularization</code> also
 name M1, which they use in the steps in <code>d = 3</code>); a missing construction (the
@@ -270,14 +372,15 @@ noise <code>W</code>, an abstract ground family, chain measures fixed by their m
 abstract random paths, an abstract moment function, the cutoff evolution of
 <code>L:fixed-split</code>, the identification of the Fourier-side model of
 <code>FockColumnBound</code> and <code>FockSandwichModel</code> with the physical-space operators,
-the solution and its chaos terms behind <code>P:mixed</code>, the abstract moment model
+the solution and its chaos terms behind <code>P:mixed</code> before wave L19, the abstract moment model
 of the three-dimensional corollaries) makes the result narrower.
 (A) "whole result": every conclusion of the labelled result is a Lean
 conclusion under the manuscript's hypotheses, possibly with named supplied
 inputs that are disclosed (coverage class same-assumptions or
 inputs-supplied, conclusion full; at present every whole result has the
 manuscript's hypotheses alone except <code>P:tube-rayleigh-transfer</code>, which has two
-named inputs); no other module carries it. (B) "narrower
+named inputs, one (<code>TubeTail</code>) since wave L21); no other module
+carries it. (B) "narrower
 result: ...": a labelled result some of whose conclusions are not Lean
 conclusions, or are proved for a modelled object (such as the class <code>O</code> by
 joint representatives, or the rate in Rayleigh form and the cost in integral
@@ -307,9 +410,10 @@ their own, count as whole-result modules; <code>DampedNorms</code>, <code>Spectr
 <code>TimeFractional</code>, <code>WaveKernel</code>, <code>GaussianIBP</code>, <code>GaussianTest</code> and
 <code>WeakSobolev</code> as foundations.</p>
 <p>These counts describe the package. They are not a percentage of the paper.
-The 44 whole results and 16 narrower results with the manuscript's
-hypotheses are deterministic lemmas,
-propositions and corollaries used inside the analytic argument, and the
+The 59 whole results and 22 narrower results with the manuscript's
+hypotheses are lemmas, propositions and corollaries used inside the analytic
+argument (mostly deterministic; among the exceptions <code>L:terminal-wick</code> and the
+wave-L19 results stated for every source field of the model M9), and the
 occupation ceiling <code>T:intrinsic-occupation-ceiling</code> (a narrower result: both
 forms with the exact constant over the class <code>O</code> itself, for <code>S_c^pos</code>;
 <code>C_2 &lt;= U_2</code> not formalized);
@@ -335,11 +439,10 @@ colored vector words. They are checked in the private development record
 and will be added here when that library is released.</p>
 <h2 id="possible-next-steps">Possible next steps</h2>
 <ul>
-<li>the proof of <code>P:mixed</code> (the named input <code>MixedMoment</code>: the Wick formula
-  at positive widths, the joint diagram limits of <code>L:joint-fixed-order</code> and
-  the <code>L^2</code> convergence of the chaos series), which would turn the
-  diagram-model results of waves L13 and L14 into statements about the
-  solution;</li>
+<li>none planned for the Lean companion: it closes after wave L21 (<code>TubeAttained</code>
+  proved), the end point the author set on 2026-11-23; <code>SignedMultiplierForm</code>,
+  <code>ThreeTransfer</code>, <code>TubeTail</code> and <code>CutoffCompact</code> stay supplied. Beyond that
+  point:</li>
 <li>a reusable Laplace-to-time growth lemma, with its analytic inputs as
   hypotheses;</li>
 <li>the constant and exponent algebra of the main upper and lower bounds.</li>
