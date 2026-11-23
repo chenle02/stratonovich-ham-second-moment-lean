@@ -1,7 +1,7 @@
 {
   "title": "stratonovich-ham-second-moment-lean: Lean companion to the second moment of the Stratonovich hyperbolic Anderson model",
   "upload_type": "software",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "creators": [
     {
       "name": "Chen, Le",
@@ -9,7 +9,7 @@
       "orcid": "0000-0001-8010-136X"
     }
   ],
-  "description": "Lean 4 checks of the finite, algebraic, scalar and selected analytic steps of the paper on the second moment of the Stratonovich hyperbolic Anderson model with time-dependent noise. Each Lean statement is mapped to the manuscript label it supports in docs/statement-ledger.md; analytic and probabilistic inputs that stay outside Lean enter as explicit named hypotheses. This is a partial formalization, not an end-to-end verification of the paper. The correspondence between the Lean statements and the paper was checked by AI review, not by a human reader. Release v0.10.0 is the wave-L13 and wave-L14 gates; every compared theorem is either credited to a manuscript result in coverage.yaml or compared in a separate helper configuration declared a smoke check.",
+  "description": "Lean 4 checks of the finite, algebraic, scalar and selected analytic steps of the paper on the second moment of the Stratonovich hyperbolic Anderson model with time-dependent noise. Each Lean statement is mapped to the manuscript label it supports in docs/statement-ledger.md; analytic and probabilistic inputs that stay outside Lean enter as explicit named hypotheses. This is a partial formalization, not an end-to-end verification of the paper. The correspondence between the Lean statements and the paper was checked by AI review, not by a human reader. Release v0.11.0 is the wave-L15 to wave-L21 gates, the end point of the Lean work, with every manuscript line citation at the book's release 1.1.3; every compared theorem is either credited to a manuscript result in coverage.yaml or compared in a separate helper configuration declared a smoke check.",
   "license": "apache-2.0",
   "access_right": "open",
   "keywords": [

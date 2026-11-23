@@ -1368,7 +1368,7 @@ release v0.9.0: [doi:10.5281/zenodo.24199105](https://doi.org/10.5281/zenodo.241
   author  = {Chen, Le},
   title   = {stratonovich-ham-second-moment-lean: Lean companion to the second moment of the Stratonovich hyperbolic Anderson model},
   year    = {2026},
-  version = {0.10.0},
+  version = {0.11.0},
   doi     = {10.5281/zenodo.24199104},
   url     = {https://github.com/chenle02/stratonovich-ham-second-moment-lean}
 }
