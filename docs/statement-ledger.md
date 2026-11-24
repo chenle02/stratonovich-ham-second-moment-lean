@@ -3455,7 +3455,7 @@ root `S` is not proved unique, so the statement does not say that one completed
 map serves every `r` (the TeX's 'the same completed map', line 234). Every
 temporal mean data has `L^2` meaning `S o iota` and a compact `C_t`
 (`temporalCompact`), so for a fixed `S` the maps for different `r` agree a.e.
-The orchestrator may treat (1) as 'whole under decision 7'.
+Item (1) may be read as 'whole under decision 7'.
 
 Proof route and differences from the TeX. Compactness of `K`: see
 `CameronTemporalKernel`, with B1's `L^2`-kernel lemma (`l2KernelCompact`).

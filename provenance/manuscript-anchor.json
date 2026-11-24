@@ -3136,5 +3136,8 @@
       },
       "note": "Revision at which the statement ledger was written and independently reviewed. Superseded by a presentation-only revision."
     }
+  ],
+  "book_release_notes": [
+    "Book release 1.2.0 replaces the blank line directly above the \\begin of 17 results with a non-printing margin-marker line (\\LeanMarker{label}%); no line number moves and no cited text changes. Four cited ranges contain such a line (main TeX 1156-1185 and 1156-1297 at line 1185; 1434-1488 and 1434-1639 at line 1488; 1970-2041 and 1970-2054 at line 1977; integrated_uniform_mean.tex 257-288 and 257-334 at line 271), and each still cites the same text."
   ]
 }

@@ -63,7 +63,7 @@ rows:
   - stratonovich-ham-second-moment-lean/cleanup-wrappers-riesz-instance-l20
   - stratonovich-ham-second-moment-lean/cleanup-wrappers-first-calibration-riesz-paper-closed-l20
   - stratonovich-ham-second-moment-lean/cleanup-wrappers-first-calibration-rate-riesz-closed-l20
-  note: 'Wrappers SourceFinal.first_calibration_paper_l19, _white_paper_l19, CleanupWrappers.first_calibration_riesz_paper_closed_l20; rate clause for the constructed u: first_calibration_rate_l20, _white_l20, _riesz_closed_l20. Retained: LowAlphaUpper forms MixedMoment and FirstMomentSeries, lower_rate_le conditional, SourceExpansion steps item targets (proved), _l19 Riesz hH, _l20 hR. M9, M4, M1.'
+  note: 'Wrappers SourceFinal.first_calibration_paper_l19, _white_paper_l19, CleanupWrappers.first_calibration_riesz_paper_closed_l20; rate: first_calibration_rate_l20, _white_l20, _riesz_closed_l20. Retained LowAlphaUpper.first_calibration_paper, _riesz, _white take DiagramModel.MixedMoment and FirstMomentSeries; lower_rate_le conditional; SourceExpansion targets proved; _l19 hH, _l20 hR. M9, M4, M1.'
 - paper:
     number: Corollary C:frequency-time
     title: A time exponent above one half
